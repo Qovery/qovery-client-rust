@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**list_scaleway_instance_type**](CloudProviderApi.md#list_scaleway_instance_type) | **GET** /scaleway/instanceType | List Scaleway available instance types
 [**list_scaleway_kapsule_instance_type**](CloudProviderApi.md#list_scaleway_kapsule_instance_type) | **GET** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 [**list_scaleway_regions**](CloudProviderApi.md#list_scaleway_regions) | **GET** /scaleway/region | List Scaleway regions
-[**list_scw_managed_database_instance_type**](CloudProviderApi.md#list_scw_managed_database_instance_type) | **GET** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 [**list_scw_managed_database_type**](CloudProviderApi.md#list_scw_managed_database_type) | **GET** /scaleway/managedDatabase/type | List Scaleway available managed database types
 
 
@@ -458,34 +457,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**models::ClusterRegionResponseList**](ClusterRegionResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## list_scw_managed_database_instance_type
-
-> models::ManagedDatabaseInstanceTypeResponseList list_scw_managed_database_instance_type(database_type)
-List Scaleway available managed database instance types
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**database_type** | **String** | Database type | [required] |
-
-### Return type
-
-[**models::ManagedDatabaseInstanceTypeResponseList**](ManagedDatabaseInstanceTypeResponseList.md)
 
 ### Authorization
 

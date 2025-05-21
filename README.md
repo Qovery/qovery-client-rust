@@ -113,7 +113,6 @@ Class | Method | HTTP request | Description
 *CloudProviderApi* | [**list_scaleway_instance_type**](docs/CloudProviderApi.md#list_scaleway_instance_type) | **GET** /scaleway/instanceType | List Scaleway available instance types
 *CloudProviderApi* | [**list_scaleway_kapsule_instance_type**](docs/CloudProviderApi.md#list_scaleway_kapsule_instance_type) | **GET** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 *CloudProviderApi* | [**list_scaleway_regions**](docs/CloudProviderApi.md#list_scaleway_regions) | **GET** /scaleway/region | List Scaleway regions
-*CloudProviderApi* | [**list_scw_managed_database_instance_type**](docs/CloudProviderApi.md#list_scw_managed_database_instance_type) | **GET** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 *CloudProviderApi* | [**list_scw_managed_database_type**](docs/CloudProviderApi.md#list_scw_managed_database_type) | **GET** /scaleway/managedDatabase/type | List Scaleway available managed database types
 *CloudProviderCredentialsApi* | [**create_aws_credentials**](docs/CloudProviderCredentialsApi.md#create_aws_credentials) | **POST** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsApi* | [**create_azure_credentials**](docs/CloudProviderCredentialsApi.md#create_azure_credentials) | **POST** /organization/{organizationId}/azure/credentials | Create Azure credentials set
