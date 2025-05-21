@@ -1,0 +1,67 @@
+# \TerraformsApi
+
+All URIs are relative to *https://api.qovery.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_terraform**](TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
+[**list_terraforms**](TerraformsApi.md#list_terraforms) | **GET** /environment/{environmentId}/terraform | List terraforms
+
+
+
+## create_terraform
+
+> models::TerraformResponse create_terraform(environment_id, terraform_request)
+Create a terraform
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **String** |  | [required] |
+**terraform_request** | Option<[**TerraformRequest**](TerraformRequest.md)> |  |  |
+
+### Return type
+
+[**models::TerraformResponse**](TerraformResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_terraforms
+
+> models::TerraformResponseList list_terraforms(environment_id)
+List terraforms
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+
+### Return type
+
+[**models::TerraformResponseList**](TerraformResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
