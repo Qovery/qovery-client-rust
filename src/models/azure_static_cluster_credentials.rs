@@ -23,21 +23,18 @@ pub struct AzureStaticClusterCredentials {
     pub azure_tenant_id: String,
     #[serde(rename = "azure_client_id")]
     pub azure_client_id: String,
-    #[serde(rename = "azure_resource_group_name")]
-    pub azure_resource_group_name: String,
     #[serde(rename = "object_type")]
     pub object_type: ObjectType,
 }
 
 impl AzureStaticClusterCredentials {
-    pub fn new(id: uuid::Uuid, name: String, azure_subscription_id: String, azure_tenant_id: String, azure_client_id: String, azure_resource_group_name: String, object_type: ObjectType) -> AzureStaticClusterCredentials {
+    pub fn new(id: uuid::Uuid, name: String, azure_subscription_id: String, azure_tenant_id: String, azure_client_id: String, object_type: ObjectType) -> AzureStaticClusterCredentials {
         AzureStaticClusterCredentials {
             id,
             name,
             azure_subscription_id,
             azure_tenant_id,
             azure_client_id,
-            azure_resource_group_name,
             object_type,
         }
     }

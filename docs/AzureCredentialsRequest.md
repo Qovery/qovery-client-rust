@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **azure_tenant_id** | **String** |  | 
 **azure_client_id** | **String** |  | 
 **azure_client_secret** | **String** |  | 
-**azure_resource_group_name** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

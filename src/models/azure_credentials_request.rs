@@ -23,19 +23,16 @@ pub struct AzureCredentialsRequest {
     pub azure_client_id: String,
     #[serde(rename = "azure_client_secret")]
     pub azure_client_secret: String,
-    #[serde(rename = "azure_resource_group_name")]
-    pub azure_resource_group_name: String,
 }
 
 impl AzureCredentialsRequest {
-    pub fn new(name: String, azure_subscription_id: String, azure_tenant_id: String, azure_client_id: String, azure_client_secret: String, azure_resource_group_name: String) -> AzureCredentialsRequest {
+    pub fn new(name: String, azure_subscription_id: String, azure_tenant_id: String, azure_client_id: String, azure_client_secret: String) -> AzureCredentialsRequest {
         AzureCredentialsRequest {
             name,
             azure_subscription_id,
             azure_tenant_id,
             azure_client_id,
             azure_client_secret,
-            azure_resource_group_name,
         }
     }
 }
