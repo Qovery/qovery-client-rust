@@ -621,6 +621,10 @@ docs/StorageTypeEnum.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformConfigurationApi.md
 docs/TerraformDeploymentHistoryApi.md
+docs/TerraformDeploymentRestrictionApi.md
+docs/TerraformDeploymentRestrictionRequest.md
+docs/TerraformDeploymentRestrictionResponse.md
+docs/TerraformDeploymentRestrictionResponseList.md
 docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
@@ -743,6 +747,7 @@ src/apis/referral_rewards_api.rs
 src/apis/service_status_api.rs
 src/apis/terraform_configuration_api.rs
 src/apis/terraform_deployment_history_api.rs
+src/apis/terraform_deployment_restriction_api.rs
 src/apis/terraform_main_calls_api.rs
 src/apis/terraforms_api.rs
 src/apis/user_sign_up_api.rs
@@ -1285,6 +1290,9 @@ src/models/status_kind_enum.rs
 src/models/step_metric_status_enum.rs
 src/models/storage_type_enum.rs
 src/models/terraform_advanced_settings.rs
+src/models/terraform_deployment_restriction_request.rs
+src/models/terraform_deployment_restriction_response.rs
+src/models/terraform_deployment_restriction_response_list.rs
 src/models/terraform_files_source_request.rs
 src/models/terraform_git_repository_request.rs
 src/models/terraform_job_resources_response.rs

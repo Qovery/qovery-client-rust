@@ -466,6 +466,8 @@ Class | Method | HTTP request | Description
 *TerraformConfigurationApi* | [**edit_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#edit_terraform_advanced_settings) | **PUT** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationApi* | [**get_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#get_terraform_advanced_settings) | **GET** /terraform/{terraformId}/advancedSettings | Get Advanced settings
 *TerraformDeploymentHistoryApi* | [**list_terraform_deployment_history_v2**](docs/TerraformDeploymentHistoryApi.md#list_terraform_deployment_history_v2) | **GET** /terraform/{terraformId}/deploymentHistoryV2 | List terraform deployments
+*TerraformDeploymentRestrictionApi* | [**create_terraform_deployment_restriction**](docs/TerraformDeploymentRestrictionApi.md#create_terraform_deployment_restriction) | **POST** /terraform/{terraformId}/deploymentRestriction | Create a terraform deployment restriction
+*TerraformDeploymentRestrictionApi* | [**get_terraform_deployment_restrictions**](docs/TerraformDeploymentRestrictionApi.md#get_terraform_deployment_restrictions) | **GET** /terraform/{terraformId}/deploymentRestriction | Get terraform deployment restrictions
 *TerraformMainCallsApi* | [**delete_terraform**](docs/TerraformMainCallsApi.md#delete_terraform) | **DELETE** /terraform/{terraformId} | Delete Terraform
 *TerraformMainCallsApi* | [**edit_terraform**](docs/TerraformMainCallsApi.md#edit_terraform) | **PUT** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
@@ -1022,6 +1024,9 @@ Class | Method | HTTP request | Description
  - [StepMetricStatusEnum](docs/StepMetricStatusEnum.md)
  - [StorageTypeEnum](docs/StorageTypeEnum.md)
  - [TerraformAdvancedSettings](docs/TerraformAdvancedSettings.md)
+ - [TerraformDeploymentRestrictionRequest](docs/TerraformDeploymentRestrictionRequest.md)
+ - [TerraformDeploymentRestrictionResponse](docs/TerraformDeploymentRestrictionResponse.md)
+ - [TerraformDeploymentRestrictionResponseList](docs/TerraformDeploymentRestrictionResponseList.md)
  - [TerraformFilesSourceRequest](docs/TerraformFilesSourceRequest.md)
  - [TerraformGitRepositoryRequest](docs/TerraformGitRepositoryRequest.md)
  - [TerraformJobResourcesResponse](docs/TerraformJobResourcesResponse.md)

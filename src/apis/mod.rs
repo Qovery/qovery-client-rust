@@ -193,6 +193,7 @@ pub mod referral_rewards_api;
 pub mod service_status_api;
 pub mod terraform_configuration_api;
 pub mod terraform_deployment_history_api;
+pub mod terraform_deployment_restriction_api;
 pub mod terraform_main_calls_api;
 pub mod terraforms_api;
 pub mod user_sign_up_api;
