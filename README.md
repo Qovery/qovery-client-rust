@@ -465,9 +465,11 @@ Class | Method | HTTP request | Description
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformConfigurationApi* | [**edit_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#edit_terraform_advanced_settings) | **PUT** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationApi* | [**get_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#get_terraform_advanced_settings) | **GET** /terraform/{terraformId}/advancedSettings | Get Advanced settings
+*TerraformDeploymentHistoryApi* | [**list_terraform_deployment_history_v2**](docs/TerraformDeploymentHistoryApi.md#list_terraform_deployment_history_v2) | **GET** /terraform/{terraformId}/deploymentHistoryV2 | List terraform deployments
 *TerraformMainCallsApi* | [**delete_terraform**](docs/TerraformMainCallsApi.md#delete_terraform) | **DELETE** /terraform/{terraformId} | Delete Terraform
 *TerraformMainCallsApi* | [**edit_terraform**](docs/TerraformMainCallsApi.md#edit_terraform) | **PUT** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
+*TerraformsApi* | [**clone_terraform**](docs/TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsApi* | [**create_terraform**](docs/TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
 *TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
 *TerraformsApi* | [**list_terraforms**](docs/TerraformsApi.md#list_terraforms) | **GET** /environment/{environmentId}/terraform | List terraforms

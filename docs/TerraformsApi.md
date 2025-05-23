@@ -4,10 +4,42 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**clone_terraform**](TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 [**create_terraform**](TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
 [**get_default_terraform_advanced_settings**](TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
 [**list_terraforms**](TerraformsApi.md#list_terraforms) | **GET** /environment/{environmentId}/terraform | List terraforms
 
+
+
+## clone_terraform
+
+> models::TerraformResponse clone_terraform(terraform_id, clone_service_request)
+Clone terraform
+
+This will create a new terraform with the same configuration on the targeted environment Id.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**clone_service_request** | Option<[**CloneServiceRequest**](CloneServiceRequest.md)> |  |  |
+
+### Return type
+
+[**models::TerraformResponse**](TerraformResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## create_terraform

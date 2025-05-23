@@ -620,6 +620,7 @@ docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformConfigurationApi.md
+docs/TerraformDeploymentHistoryApi.md
 docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
@@ -741,6 +742,7 @@ src/apis/projects_api.rs
 src/apis/referral_rewards_api.rs
 src/apis/service_status_api.rs
 src/apis/terraform_configuration_api.rs
+src/apis/terraform_deployment_history_api.rs
 src/apis/terraform_main_calls_api.rs
 src/apis/terraforms_api.rs
 src/apis/user_sign_up_api.rs
