@@ -39,6 +39,8 @@ pub enum OrganizationEventTargetType {
     Project,
     #[serde(rename = "WEBHOOK")]
     Webhook,
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
 
 }
 
@@ -57,6 +59,7 @@ impl std::fmt::Display for OrganizationEventTargetType {
             Self::Organization => write!(f, "ORGANIZATION"),
             Self::Project => write!(f, "PROJECT"),
             Self::Webhook => write!(f, "WEBHOOK"),
+            Self::Terraform => write!(f, "TERRAFORM"),
         }
     }
 }
