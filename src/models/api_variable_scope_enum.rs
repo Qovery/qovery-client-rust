@@ -28,6 +28,8 @@ pub enum ApiVariableScopeEnum {
     Job,
     #[serde(rename = "HELM")]
     Helm,
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
 
 }
 
@@ -41,6 +43,7 @@ impl std::fmt::Display for ApiVariableScopeEnum {
             Self::Container => write!(f, "CONTAINER"),
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),
+            Self::Terraform => write!(f, "TERRAFORM"),
         }
     }
 }
