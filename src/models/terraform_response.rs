@@ -33,8 +33,8 @@ pub struct TerraformResponse {
     #[serde(rename = "terraform_files_source", skip_serializing_if = "Option::is_none")]
     pub terraform_files_source: Option<Box<models::TerraformResponseAllOfTerraformFilesSource>>,
     /// Icon URI representing the terraform service.
-    #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
-    pub icon_uri: Option<String>,
+    #[serde(rename = "icon_uri")]
+    pub icon_uri: String,
     #[serde(rename = "service_type")]
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "terraform_variables_source")]
@@ -45,10 +45,12 @@ pub struct TerraformResponse {
     pub provider_version: Box<models::TerraformProviderVersion>,
     #[serde(rename = "job_resources")]
     pub job_resources: Box<models::TerraformJobResourcesResponse>,
+    #[serde(rename = "environment")]
+    pub environment: Box<models::ReferenceObject>,
 }
 
 impl TerraformResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse) -> TerraformResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject) -> TerraformResponse {
         TerraformResponse {
             id,
             created_at,
@@ -59,12 +61,13 @@ impl TerraformResponse {
             auto_approve,
             auto_deploy,
             terraform_files_source: None,
-            icon_uri: None,
+            icon_uri,
             service_type,
             terraform_variables_source: Box::new(terraform_variables_source),
             provider,
             provider_version: Box::new(provider_version),
             job_resources: Box::new(job_resources),
+            environment: Box::new(environment),
         }
     }
 }

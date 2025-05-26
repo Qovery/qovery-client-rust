@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **auto_approve** | **bool** |  | 
 **auto_deploy** | **bool** |  | 
 **terraform_files_source** | Option<[**models::TerraformResponseAllOfTerraformFilesSource**](TerraformResponse_allOf_terraform_files_source.md)> |  | [optional]
-**icon_uri** | Option<**String**> | Icon URI representing the terraform service. | [optional]
+**icon_uri** | **String** | Icon URI representing the terraform service. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **provider** | **String** |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **job_resources** | [**models::TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
+**environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
