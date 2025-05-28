@@ -6,6 +6,7 @@ README.md
 docs/AccountInfo.md
 docs/AccountInfoApi.md
 docs/AccountInfoEditRequest.md
+docs/AksInfrastructureOutputs.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/ApiVariableScopeEnum.md
@@ -244,6 +245,7 @@ docs/DeploymentStageServiceResponse.md
 docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
+docs/EksInfrastructureOutputs.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentActionsApi.md
@@ -313,6 +315,7 @@ docs/GitTokenRequest.md
 docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
 docs/GithubAppApi.md
+docs/GkeInfrastructureOutputs.md
 docs/Healthcheck.md
 docs/HelmActionsApi.md
 docs/HelmAdvancedSettings.md
@@ -375,6 +378,7 @@ docs/HelmSourceRepositoryResponseRepository.md
 docs/HelmVersionResponse.md
 docs/HelmVersionResponseList.md
 docs/HelmsApi.md
+docs/InfrastructureOutputs.md
 docs/IngressDeploymentStatusResponse.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
@@ -412,6 +416,7 @@ docs/JobScheduleEvent.md
 docs/JobSecretApi.md
 docs/JobSourceDockerResponse.md
 docs/JobsApi.md
+docs/KapsuleInfrastructureOutputs.md
 docs/KarpenterDefaultNodePoolOverride.md
 docs/KarpenterNodePool.md
 docs/KarpenterNodePoolConsolidation.md
@@ -755,6 +760,7 @@ src/apis/variable_main_calls_api.rs
 src/lib.rs
 src/models/account_info.rs
 src/models/account_info_edit_request.rs
+src/models/aks_infrastructure_outputs.rs
 src/models/annotation.rs
 src/models/annotations_group_associated_item_type.rs
 src/models/api_variable_scope_enum.rs
@@ -960,6 +966,7 @@ src/models/deployment_stage_service_response.rs
 src/models/deployment_stage_with_services_statuses.rs
 src/models/dockerfile_check_request.rs
 src/models/dockerfile_check_response.rs
+src/models/eks_infrastructure_outputs.rs
 src/models/env_deployment_status.rs
 src/models/environment.rs
 src/models/environment_all_of_cloud_provider.rs
@@ -1017,6 +1024,7 @@ src/models/git_token_associated_services_response_list.rs
 src/models/git_token_request.rs
 src/models/git_token_response.rs
 src/models/git_token_response_list.rs
+src/models/gke_infrastructure_outputs.rs
 src/models/healthcheck.rs
 src/models/helm_advanced_settings.rs
 src/models/helm_check_request.rs
@@ -1071,6 +1079,7 @@ src/models/helm_source_repository_response.rs
 src/models/helm_source_repository_response_repository.rs
 src/models/helm_version_response.rs
 src/models/helm_version_response_list.rs
+src/models/infrastructure_outputs.rs
 src/models/ingress_deployment_status_response.rs
 src/models/invite_member.rs
 src/models/invite_member_request.rs
@@ -1100,6 +1109,7 @@ src/models/job_response.rs
 src/models/job_response_list.rs
 src/models/job_schedule_event.rs
 src/models/job_source_docker_response.rs
+src/models/kapsule_infrastructure_outputs.rs
 src/models/karpenter_default_node_pool_override.rs
 src/models/karpenter_node_pool.rs
 src/models/karpenter_node_pool_consolidation.rs

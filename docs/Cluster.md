@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **features** | Option<[**Vec<models::ClusterFeatureResponse>**](ClusterFeatureResponse.md)> |  | [optional]
 **deployment_status** | Option<[**models::ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md)> |  | [optional]
 **metrics_parameters** | Option<[**models::MetricsParameters**](MetricsParameters.md)> |  | [optional]
+**infrastructure_outputs** | Option<[**models::InfrastructureOutputs**](InfrastructureOutputs.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

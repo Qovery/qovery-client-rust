@@ -74,6 +74,8 @@ pub struct Cluster {
     pub deployment_status: Option<models::ClusterDeploymentStatusEnum>,
     #[serde(rename = "metrics_parameters", skip_serializing_if = "Option::is_none")]
     pub metrics_parameters: Option<Box<models::MetricsParameters>>,
+    #[serde(rename = "infrastructure_outputs", skip_serializing_if = "Option::is_none")]
+    pub infrastructure_outputs: Option<Box<models::InfrastructureOutputs>>,
 }
 
 impl Cluster {
@@ -105,6 +107,7 @@ impl Cluster {
             features: None,
             deployment_status: None,
             metrics_parameters: None,
+            infrastructure_outputs: None,
         }
     }
 }
