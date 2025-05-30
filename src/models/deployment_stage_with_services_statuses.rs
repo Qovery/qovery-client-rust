@@ -23,6 +23,8 @@ pub struct DeploymentStageWithServicesStatuses {
     pub databases: Option<Vec<models::Status>>,
     #[serde(rename = "helms", skip_serializing_if = "Option::is_none")]
     pub helms: Option<Vec<models::Status>>,
+    #[serde(rename = "terraforms", skip_serializing_if = "Option::is_none")]
+    pub terraforms: Option<Vec<models::Status>>,
     #[serde(rename = "stage", skip_serializing_if = "Option::is_none")]
     pub stage: Option<Box<models::Stage>>,
 }
@@ -35,6 +37,7 @@ impl DeploymentStageWithServicesStatuses {
             jobs: None,
             databases: None,
             helms: None,
+            terraforms: None,
             stage: None,
         }
     }
