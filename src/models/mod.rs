@@ -1106,8 +1106,6 @@ pub mod terraform_response_all_of_terraform_files_source;
 pub use self::terraform_response_all_of_terraform_files_source::TerraformResponseAllOfTerraformFilesSource;
 pub mod terraform_response_list;
 pub use self::terraform_response_list::TerraformResponseList;
-pub mod terraform_var_key_value;
-pub use self::terraform_var_key_value::TerraformVarKeyValue;
 pub mod terraform_variables_source_request;
 pub use self::terraform_variables_source_request::TerraformVariablesSourceRequest;
 pub mod terraform_variables_source_response;

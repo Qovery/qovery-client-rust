@@ -641,7 +641,6 @@ docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfTerraformFilesSource.md
 docs/TerraformResponseList.md
-docs/TerraformVarKeyValue.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
 docs/TerraformsApi.md
@@ -1313,7 +1312,6 @@ src/models/terraform_request_terraform_files_source.rs
 src/models/terraform_response.rs
 src/models/terraform_response_all_of_terraform_files_source.rs
 src/models/terraform_response_list.rs
-src/models/terraform_var_key_value.rs
 src/models/terraform_variables_source_request.rs
 src/models/terraform_variables_source_response.rs
 src/models/transfer_ownership_request.rs
