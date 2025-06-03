@@ -13,30 +13,80 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BillingInfo {
-    #[serde(rename = "first_name", skip_serializing_if = "Option::is_none")]
-    pub first_name: Option<String>,
-    #[serde(rename = "last_name", skip_serializing_if = "Option::is_none")]
-    pub last_name: Option<String>,
+    #[serde(
+        rename = "first_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub first_name: Option<Option<String>>,
+    #[serde(
+        rename = "last_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub last_name: Option<Option<String>>,
     /// email used for billing, and to receive all invoices by email
-    #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<String>,
-    #[serde(rename = "address", skip_serializing_if = "Option::is_none")]
-    pub address: Option<String>,
-    #[serde(rename = "city", skip_serializing_if = "Option::is_none")]
-    pub city: Option<String>,
-    #[serde(rename = "zip", skip_serializing_if = "Option::is_none")]
-    pub zip: Option<String>,
+    #[serde(
+        rename = "email",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub email: Option<Option<String>>,
+    #[serde(
+        rename = "address",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub address: Option<Option<String>>,
+    #[serde(
+        rename = "city",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub city: Option<Option<String>>,
+    #[serde(
+        rename = "zip",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub zip: Option<Option<String>>,
     /// only for US
-    #[serde(rename = "state", skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
+    #[serde(
+        rename = "state",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub state: Option<Option<String>>,
     /// ISO code of the country
-    #[serde(rename = "country_code", skip_serializing_if = "Option::is_none")]
-    pub country_code: Option<String>,
+    #[serde(
+        rename = "country_code",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub country_code: Option<Option<String>>,
     /// name of the company to bill
-    #[serde(rename = "company", skip_serializing_if = "Option::is_none")]
-    pub company: Option<String>,
-    #[serde(rename = "vat_number", skip_serializing_if = "Option::is_none")]
-    pub vat_number: Option<String>,
+    #[serde(
+        rename = "company",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub company: Option<Option<String>>,
+    #[serde(
+        rename = "vat_number",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub vat_number: Option<Option<String>>,
 }
 
 impl BillingInfo {

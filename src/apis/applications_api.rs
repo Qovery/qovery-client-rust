@@ -312,11 +312,9 @@ pub async fn get_environment_application_status(
 pub async fn list_application(
     configuration: &configuration::Configuration,
     environment_id: &str,
-    to_update: Option<bool>,
 ) -> Result<models::ApplicationResponseList, Error<ListApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_environment_id = environment_id;
-    let p_to_update = to_update;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/application",
@@ -325,9 +323,6 @@ pub async fn list_application(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_to_update {
-        req_builder = req_builder.query(&[("toUpdate", &param_value.to_string())]);
-    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

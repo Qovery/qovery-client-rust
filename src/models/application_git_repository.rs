@@ -48,10 +48,20 @@ pub struct ApplicationGitRepository {
         skip_serializing_if = "Option::is_none"
     )]
     pub deployed_commit_tag: Option<String>,
-    #[serde(rename = "git_token_id", skip_serializing_if = "Option::is_none")]
-    pub git_token_id: Option<String>,
-    #[serde(rename = "git_token_name", skip_serializing_if = "Option::is_none")]
-    pub git_token_name: Option<String>,
+    #[serde(
+        rename = "git_token_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git_token_id: Option<Option<String>>,
+    #[serde(
+        rename = "git_token_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git_token_name: Option<Option<String>>,
 }
 
 impl ApplicationGitRepository {

@@ -61,8 +61,13 @@ pub struct ContainerRequest {
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
     /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<bool>,
+    #[serde(
+        rename = "auto_deploy",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_deploy: Option<Option<bool>>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]

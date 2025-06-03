@@ -16,17 +16,29 @@ pub struct JobRequestAllOfSourceDocker {
     #[serde(rename = "git_repository", skip_serializing_if = "Option::is_none")]
     pub git_repository: Option<models::ApplicationGitRepositoryRequest>,
     /// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-    #[serde(rename = "dockerfile_path", skip_serializing_if = "Option::is_none")]
-    pub dockerfile_path: Option<String>,
+    #[serde(
+        rename = "dockerfile_path",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub dockerfile_path: Option<Option<String>>,
     /// The content of your dockerfile if it is not stored inside your git repository
-    #[serde(rename = "dockerfile_raw", skip_serializing_if = "Option::is_none")]
-    pub dockerfile_raw: Option<String>,
+    #[serde(
+        rename = "dockerfile_raw",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub dockerfile_raw: Option<Option<String>>,
     /// The target build stage in the Dockerfile to build
     #[serde(
         rename = "docker_target_build_stage",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub docker_target_build_stage: Option<String>,
+    pub docker_target_build_stage: Option<Option<String>>,
 }
 
 impl JobRequestAllOfSourceDocker {

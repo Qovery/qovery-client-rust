@@ -14,8 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StageStepMetrics {
     /// The total duration in seconds of the stage deployment or null if the deployment is not completed
-    #[serde(rename = "total_duration_sec", skip_serializing_if = "Option::is_none")]
-    pub total_duration_sec: Option<i32>,
+    #[serde(
+        rename = "total_duration_sec",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub total_duration_sec: Option<Option<i32>>,
     /// A list of metrics for deployment steps of the stage.
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
     pub details: Option<Vec<models::StageStepMetric>>,

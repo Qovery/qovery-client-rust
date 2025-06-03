@@ -13,10 +13,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmRequestAllOfValuesOverrideFile {
-    #[serde(rename = "git", skip_serializing_if = "Option::is_none")]
-    pub git: Option<models::HelmRequestAllOfValuesOverrideFileGit>,
-    #[serde(rename = "raw", skip_serializing_if = "Option::is_none")]
-    pub raw: Option<models::HelmRequestAllOfValuesOverrideFileRaw>,
+    #[serde(
+        rename = "git",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git: Option<Option<models::HelmRequestAllOfValuesOverrideFileGit>>,
+    #[serde(
+        rename = "raw",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub raw: Option<Option<models::HelmRequestAllOfValuesOverrideFileRaw>>,
 }
 
 impl HelmRequestAllOfValuesOverrideFile {

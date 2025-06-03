@@ -20,8 +20,13 @@ pub struct VariableRequest {
     #[serde(rename = "value")]
     pub value: String,
     /// the path where the file will be mounted (only if type =file)
-    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<String>,
+    #[serde(
+        rename = "mount_path",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub mount_path: Option<Option<String>>,
     /// if true, the variable will be considered as a secret and will not be accessible after its creation. Only your applications will be able to access its value at build and run time.
     #[serde(rename = "is_secret")]
     pub is_secret: bool,
@@ -31,13 +36,20 @@ pub struct VariableRequest {
     #[serde(rename = "variable_parent_id")]
     pub variable_parent_id: uuid::Uuid,
     /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
     #[serde(
-        rename = "enable_interpolation_in_file",
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub enable_interpolation_in_file: Option<bool>,
+    pub description: Option<Option<String>>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<Option<bool>>,
 }
 
 impl VariableRequest {

@@ -18,13 +18,20 @@ pub struct SecretEditRequest {
     #[serde(rename = "key")]
     pub key: String,
     /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
     #[serde(
-        rename = "enable_interpolation_in_file",
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub enable_interpolation_in_file: Option<bool>,
+    pub description: Option<Option<String>>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<Option<bool>>,
 }
 
 impl SecretEditRequest {

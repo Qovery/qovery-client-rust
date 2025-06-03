@@ -15,8 +15,13 @@ use serde::{Deserialize, Serialize};
 pub struct ClusterRequestFeaturesInner {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<uuid::Uuid>,
-    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
-    pub value: Option<models::ClusterRequestFeaturesInnerValue>,
+    #[serde(
+        rename = "value",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub value: Option<Option<models::ClusterRequestFeaturesInnerValue>>,
 }
 
 impl ClusterRequestFeaturesInner {

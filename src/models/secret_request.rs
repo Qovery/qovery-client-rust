@@ -20,16 +20,28 @@ pub struct SecretRequest {
     #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// should be set for file only. variable mount path make secret a file (where file should be mounted).
-    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<String>,
-    /// optional variable description (255 character maximum)
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
     #[serde(
-        rename = "enable_interpolation_in_file",
+        rename = "mount_path",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub enable_interpolation_in_file: Option<bool>,
+    pub mount_path: Option<Option<String>>,
+    /// optional variable description (255 character maximum)
+    #[serde(
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub description: Option<Option<String>>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<Option<bool>>,
 }
 
 impl SecretRequest {

@@ -16,8 +16,13 @@ pub struct DeploymentHistoryJobResponseAllOfSchedule {
     #[serde(rename = "event", skip_serializing_if = "Option::is_none")]
     pub event: Option<models::JobScheduleEvent>,
     /// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
-    #[serde(rename = "schedule_at", skip_serializing_if = "Option::is_none")]
-    pub schedule_at: Option<String>,
+    #[serde(
+        rename = "schedule_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub schedule_at: Option<Option<String>>,
 }
 
 impl DeploymentHistoryJobResponseAllOfSchedule {

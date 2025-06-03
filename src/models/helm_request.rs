@@ -24,8 +24,13 @@ pub struct HelmRequest {
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
     pub timeout_sec: Option<i32>,
     /// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called or when a new commit is updated. If not specified, it takes the value of the `auto_preview` property from the associated environment.
-    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
-    pub auto_preview: Option<bool>,
+    #[serde(
+        rename = "auto_preview",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_preview: Option<Option<bool>>,
     /// Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,

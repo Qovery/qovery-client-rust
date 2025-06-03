@@ -28,8 +28,13 @@ pub struct DeploymentHistoryJobResponse {
     pub image_name: Option<String>,
     #[serde(rename = "tag", skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
-    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<models::Commit>,
+    #[serde(
+        rename = "commit",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub commit: Option<Option<models::Commit>>,
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
     pub schedule: Option<models::DeploymentHistoryJobResponseAllOfSchedule>,
     #[serde(rename = "arguments", skip_serializing_if = "Option::is_none")]

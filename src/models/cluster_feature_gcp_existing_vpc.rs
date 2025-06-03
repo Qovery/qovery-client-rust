@@ -15,17 +15,34 @@ use serde::{Deserialize, Serialize};
 pub struct ClusterFeatureGcpExistingVpc {
     #[serde(rename = "vpc_name")]
     pub vpc_name: String,
-    #[serde(rename = "vpc_project_id", skip_serializing_if = "Option::is_none")]
-    pub vpc_project_id: Option<String>,
-    #[serde(rename = "subnetwork_name", skip_serializing_if = "Option::is_none")]
-    pub subnetwork_name: Option<String>,
     #[serde(
-        rename = "ip_range_services_name",
+        rename = "vpc_project_id",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub ip_range_services_name: Option<String>,
-    #[serde(rename = "ip_range_pods_name", skip_serializing_if = "Option::is_none")]
-    pub ip_range_pods_name: Option<String>,
+    pub vpc_project_id: Option<Option<String>>,
+    #[serde(
+        rename = "subnetwork_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub subnetwork_name: Option<Option<String>>,
+    #[serde(
+        rename = "ip_range_services_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ip_range_services_name: Option<Option<String>>,
+    #[serde(
+        rename = "ip_range_pods_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ip_range_pods_name: Option<Option<String>>,
     #[serde(
         rename = "additional_ip_range_pods_names",
         skip_serializing_if = "Option::is_none"

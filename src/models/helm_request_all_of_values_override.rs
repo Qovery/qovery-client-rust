@@ -23,8 +23,13 @@ pub struct HelmRequestAllOfValuesOverride {
     /// The input is in json array format: [ [$KEY,$VALUE], [...] ]
     #[serde(rename = "set_json", skip_serializing_if = "Option::is_none")]
     pub set_json: Option<Vec<Vec<String>>>,
-    #[serde(rename = "file", skip_serializing_if = "Option::is_none")]
-    pub file: Option<models::HelmRequestAllOfValuesOverrideFile>,
+    #[serde(
+        rename = "file",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub file: Option<Option<models::HelmRequestAllOfValuesOverrideFile>>,
 }
 
 impl HelmRequestAllOfValuesOverride {

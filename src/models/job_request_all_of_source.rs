@@ -13,10 +13,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobRequestAllOfSource {
-    #[serde(rename = "image", skip_serializing_if = "Option::is_none")]
-    pub image: Option<models::JobRequestAllOfSourceImage>,
-    #[serde(rename = "docker", skip_serializing_if = "Option::is_none")]
-    pub docker: Option<models::JobRequestAllOfSourceDocker>,
+    #[serde(
+        rename = "image",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub image: Option<Option<models::JobRequestAllOfSourceImage>>,
+    #[serde(
+        rename = "docker",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub docker: Option<Option<models::JobRequestAllOfSourceDocker>>,
 }
 
 impl JobRequestAllOfSource {

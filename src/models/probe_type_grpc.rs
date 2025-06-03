@@ -13,8 +13,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProbeTypeGrpc {
-    #[serde(rename = "service", skip_serializing_if = "Option::is_none")]
-    pub service: Option<String>,
+    #[serde(
+        rename = "service",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub service: Option<Option<String>>,
     #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
     pub port: Option<i32>,
 }

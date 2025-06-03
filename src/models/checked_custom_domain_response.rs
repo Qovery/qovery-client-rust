@@ -19,8 +19,13 @@ pub struct CheckedCustomDomainResponse {
     #[serde(rename = "status")]
     pub status: models::CheckedCustomDomainStatus,
     /// optional field containing information about failure check
-    #[serde(rename = "error_details", skip_serializing_if = "Option::is_none")]
-    pub error_details: Option<String>,
+    #[serde(
+        rename = "error_details",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub error_details: Option<Option<String>>,
 }
 
 impl CheckedCustomDomainResponse {

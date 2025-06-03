@@ -24,10 +24,20 @@ pub struct DeploymentHistoryHelmResponse {
     pub name: Option<String>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::StateEnum>,
-    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<models::Commit>,
-    #[serde(rename = "repository", skip_serializing_if = "Option::is_none")]
-    pub repository: Option<models::DeploymentHistoryHelmResponseAllOfRepository>,
+    #[serde(
+        rename = "commit",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub commit: Option<Option<models::Commit>>,
+    #[serde(
+        rename = "repository",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub repository: Option<Option<models::DeploymentHistoryHelmResponseAllOfRepository>>,
 }
 
 impl DeploymentHistoryHelmResponse {

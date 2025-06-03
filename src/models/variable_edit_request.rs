@@ -17,16 +17,28 @@ pub struct VariableEditRequest {
     #[serde(rename = "key")]
     pub key: String,
     /// the value of the environment variable
-    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
-    /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
     #[serde(
-        rename = "enable_interpolation_in_file",
+        rename = "value",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub enable_interpolation_in_file: Option<bool>,
+    pub value: Option<Option<String>>,
+    /// optional variable description (255 characters maximum)
+    #[serde(
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub description: Option<Option<String>>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<Option<bool>>,
 }
 
 impl VariableEditRequest {

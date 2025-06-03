@@ -14,8 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmRequestAllOfSourceOneOf1HelmRepository {
     /// The id of the helm repository
-    #[serde(rename = "repository", skip_serializing_if = "Option::is_none")]
-    pub repository: Option<uuid::Uuid>,
+    #[serde(
+        rename = "repository",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub repository: Option<Option<uuid::Uuid>>,
     /// The name of the chart in the repository
     #[serde(rename = "chart_name", skip_serializing_if = "Option::is_none")]
     pub chart_name: Option<String>,

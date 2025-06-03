@@ -21,10 +21,15 @@ pub struct VariableResponse {
     pub updated_at: Option<String>,
     #[serde(rename = "key")]
     pub key: String,
-    #[serde(rename = "value")]
-    pub value: String,
-    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<String>,
+    #[serde(rename = "value", deserialize_with = "Option::deserialize")]
+    pub value: Option<String>,
+    #[serde(
+        rename = "mount_path",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub mount_path: Option<Option<String>>,
     #[serde(
         rename = "overridden_variable",
         skip_serializing_if = "Option::is_none"
@@ -63,7 +68,7 @@ impl VariableResponse {
         id: uuid::Uuid,
         created_at: String,
         key: String,
-        value: String,
+        value: Option<String>,
         scope: models::ApiVariableScopeEnum,
         variable_type: models::ApiVariableTypeEnum,
         is_secret: bool,

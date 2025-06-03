@@ -15,10 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct EnvironmentDeploymentRuleEditRequest {
     #[serde(rename = "on_demand_preview", skip_serializing_if = "Option::is_none")]
     pub on_demand_preview: Option<bool>,
-    #[serde(rename = "auto_stop", skip_serializing_if = "Option::is_none")]
-    pub auto_stop: Option<bool>,
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
+    #[serde(rename = "auto_stop", skip_serializing_if = "Option::is_none")]
+    pub auto_stop: Option<bool>,
     #[serde(rename = "timezone")]
     pub timezone: String,
     #[serde(rename = "start_time")]
@@ -38,8 +38,8 @@ impl EnvironmentDeploymentRuleEditRequest {
     ) -> EnvironmentDeploymentRuleEditRequest {
         EnvironmentDeploymentRuleEditRequest {
             on_demand_preview: None,
-            auto_stop: None,
             auto_preview: None,
+            auto_stop: None,
             timezone,
             start_time,
             stop_time,

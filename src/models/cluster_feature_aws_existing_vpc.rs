@@ -23,64 +23,88 @@ pub struct ClusterFeatureAwsExistingVpc {
     pub eks_subnets_zone_c_ids: Vec<String>,
     #[serde(
         rename = "documentdb_subnets_zone_a_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub documentdb_subnets_zone_a_ids: Option<Vec<String>>,
+    pub documentdb_subnets_zone_a_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "documentdb_subnets_zone_b_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub documentdb_subnets_zone_b_ids: Option<Vec<String>>,
+    pub documentdb_subnets_zone_b_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "documentdb_subnets_zone_c_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub documentdb_subnets_zone_c_ids: Option<Vec<String>>,
+    pub documentdb_subnets_zone_c_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "elasticache_subnets_zone_a_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub elasticache_subnets_zone_a_ids: Option<Vec<String>>,
+    pub elasticache_subnets_zone_a_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "elasticache_subnets_zone_b_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub elasticache_subnets_zone_b_ids: Option<Vec<String>>,
+    pub elasticache_subnets_zone_b_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "elasticache_subnets_zone_c_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub elasticache_subnets_zone_c_ids: Option<Vec<String>>,
+    pub elasticache_subnets_zone_c_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "rds_subnets_zone_a_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub rds_subnets_zone_a_ids: Option<Vec<String>>,
+    pub rds_subnets_zone_a_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "rds_subnets_zone_b_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub rds_subnets_zone_b_ids: Option<Vec<String>>,
+    pub rds_subnets_zone_b_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "rds_subnets_zone_c_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub rds_subnets_zone_c_ids: Option<Vec<String>>,
+    pub rds_subnets_zone_c_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "eks_karpenter_fargate_subnets_zone_a_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Vec<String>>,
+    pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "eks_karpenter_fargate_subnets_zone_b_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Vec<String>>,
+    pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Option<Vec<String>>>,
     #[serde(
         rename = "eks_karpenter_fargate_subnets_zone_c_ids",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Vec<String>>,
+    pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Option<Vec<String>>>,
 }
 
 impl ClusterFeatureAwsExistingVpc {

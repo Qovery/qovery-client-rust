@@ -159,7 +159,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_helms
 
-> models::HelmResponseList list_helms(environment_id, to_update)
+> models::HelmResponseList list_helms(environment_id)
 List helms
 
 ### Parameters
@@ -168,7 +168,6 @@ List helms
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** | Environment ID | [required] |
-**to_update** | Option<**bool**> | return (or not) results that must be updated |  |[default to false]
 
 ### Return type
 

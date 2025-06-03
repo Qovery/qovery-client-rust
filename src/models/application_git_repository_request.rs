@@ -23,8 +23,13 @@ pub struct ApplicationGitRepositoryRequest {
     #[serde(rename = "root_path", skip_serializing_if = "Option::is_none")]
     pub root_path: Option<String>,
     /// The git token id on Qovery side
-    #[serde(rename = "git_token_id", skip_serializing_if = "Option::is_none")]
-    pub git_token_id: Option<uuid::Uuid>,
+    #[serde(
+        rename = "git_token_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git_token_id: Option<Option<uuid::Uuid>>,
 }
 
 impl ApplicationGitRepositoryRequest {

@@ -19,22 +19,41 @@ pub struct EnvironmentStatus {
     pub state: models::StateEnum,
     #[serde(
         rename = "last_deployment_date",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub last_deployment_date: Option<String>,
+    pub last_deployment_date: Option<Option<String>>,
     #[serde(rename = "last_deployment_state")]
     pub last_deployment_state: models::StateEnum,
-    #[serde(rename = "last_deployment_id", skip_serializing_if = "Option::is_none")]
-    pub last_deployment_id: Option<String>,
     #[serde(
-        rename = "total_deployment_duration_in_seconds",
+        rename = "last_deployment_id",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub total_deployment_duration_in_seconds: Option<i32>,
-    #[serde(rename = "origin", skip_serializing_if = "Option::is_none")]
-    pub origin: Option<models::EnvironmentStatusEventOriginEnum>,
-    #[serde(rename = "triggered_by", skip_serializing_if = "Option::is_none")]
-    pub triggered_by: Option<String>,
+    pub last_deployment_id: Option<Option<String>>,
+    #[serde(
+        rename = "total_deployment_duration_in_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub total_deployment_duration_in_seconds: Option<Option<i32>>,
+    #[serde(
+        rename = "origin",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub origin: Option<Option<models::EnvironmentStatusEventOriginEnum>>,
+    #[serde(
+        rename = "triggered_by",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub triggered_by: Option<Option<String>>,
     #[serde(rename = "deployment_status", skip_serializing_if = "Option::is_none")]
     pub deployment_status: Option<models::EnvironmentDeploymentStatusEnum>,
 }

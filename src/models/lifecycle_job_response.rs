@@ -51,8 +51,13 @@ pub struct LifecycleJobResponse {
     #[serde(rename = "auto_preview")]
     pub auto_preview: bool,
     /// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-    #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
-    pub port: Option<i32>,
+    #[serde(
+        rename = "port",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub port: Option<Option<i32>>,
     #[serde(rename = "source")]
     pub source: models::BaseJobResponseAllOfSource,
     #[serde(rename = "healthchecks")]

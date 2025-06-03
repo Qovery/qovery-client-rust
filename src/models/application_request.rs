@@ -21,15 +21,25 @@ pub struct ApplicationRequest {
     #[serde(rename = "name")]
     pub name: String,
     /// give a description to this application
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    #[serde(
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub description: Option<Option<String>>,
     #[serde(rename = "git_repository")]
     pub git_repository: models::ApplicationGitRepositoryRequest,
     #[serde(rename = "build_mode", skip_serializing_if = "Option::is_none")]
     pub build_mode: Option<models::BuildModeEnum>,
     /// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-    #[serde(rename = "dockerfile_path", skip_serializing_if = "Option::is_none")]
-    pub dockerfile_path: Option<String>,
+    #[serde(
+        rename = "dockerfile_path",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub dockerfile_path: Option<Option<String>>,
     /// unit is millicores (m). 1000m = 1 cpu
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i32>,
@@ -59,8 +69,13 @@ pub struct ApplicationRequest {
     #[serde(rename = "entrypoint", skip_serializing_if = "Option::is_none")]
     pub entrypoint: Option<String>,
     /// Specify if the application will be automatically updated after receiving a new commit.
-    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<bool>,
+    #[serde(
+        rename = "auto_deploy",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_deploy: Option<Option<bool>>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
@@ -71,9 +86,11 @@ pub struct ApplicationRequest {
     /// The target build stage in the Dockerfile to build
     #[serde(
         rename = "docker_target_build_stage",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub docker_target_build_stage: Option<String>,
+    pub docker_target_build_stage: Option<Option<String>>,
 }
 
 impl ApplicationRequest {

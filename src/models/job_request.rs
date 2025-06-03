@@ -37,8 +37,13 @@ pub struct JobRequest {
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
     /// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-    #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
-    pub port: Option<i32>,
+    #[serde(
+        rename = "port",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub port: Option<Option<i32>>,
     #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
     pub source: Option<models::JobRequestAllOfSource>,
     #[serde(rename = "healthchecks")]
@@ -46,8 +51,13 @@ pub struct JobRequest {
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
     pub schedule: Option<models::JobRequestAllOfSchedule>,
     /// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<bool>,
+    #[serde(
+        rename = "auto_deploy",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_deploy: Option<Option<bool>>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]

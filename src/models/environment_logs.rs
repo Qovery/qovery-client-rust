@@ -19,10 +19,20 @@ pub struct EnvironmentLogs {
     pub timestamp: String,
     #[serde(rename = "details")]
     pub details: models::EnvironmentLogsDetails,
-    #[serde(rename = "error", skip_serializing_if = "Option::is_none")]
-    pub error: Option<models::EnvironmentLogsError>,
-    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
-    pub message: Option<models::EnvironmentLogsMessage>,
+    #[serde(
+        rename = "error",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub error: Option<Option<models::EnvironmentLogsError>>,
+    #[serde(
+        rename = "message",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub message: Option<Option<models::EnvironmentLogsMessage>>,
 }
 
 impl EnvironmentLogs {

@@ -18,8 +18,13 @@ pub struct DeploymentHistoryServiceDetailsOneOf2 {
     pub image_name: String,
     #[serde(rename = "tag")]
     pub tag: String,
-    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<models::Commit>,
+    #[serde(
+        rename = "commit",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub commit: Option<Option<models::Commit>>,
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
     pub schedule: Option<models::DeploymentHistoryServiceDetailsOneOf2Schedule>,
     #[serde(rename = "job_type")]

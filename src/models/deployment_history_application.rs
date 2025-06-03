@@ -21,8 +21,13 @@ pub struct DeploymentHistoryApplication {
     pub updated_at: Option<String>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<models::Commit>,
+    #[serde(
+        rename = "commit",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub commit: Option<Option<models::Commit>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::StateEnum>,
 }

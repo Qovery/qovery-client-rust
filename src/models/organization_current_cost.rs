@@ -22,8 +22,13 @@ pub struct OrganizationCurrentCost {
     )]
     pub remaining_trial_day: Option<i32>,
     /// date when the current plan will be renewed
-    #[serde(rename = "renewal_at", skip_serializing_if = "Option::is_none")]
-    pub renewal_at: Option<String>,
+    #[serde(
+        rename = "renewal_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub renewal_at: Option<Option<String>>,
     #[serde(rename = "cost", skip_serializing_if = "Option::is_none")]
     pub cost: Option<models::Cost>,
 }

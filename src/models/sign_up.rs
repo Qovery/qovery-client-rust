@@ -29,25 +29,57 @@ pub struct SignUp {
     pub type_of_use: models::TypeOfUseEnum,
     #[serde(rename = "qovery_usage")]
     pub qovery_usage: String,
-    #[serde(rename = "company_name", skip_serializing_if = "Option::is_none")]
-    pub company_name: Option<String>,
-    #[serde(rename = "company_size", skip_serializing_if = "Option::is_none")]
-    pub company_size: Option<models::CompanySizeEnum>,
-    #[serde(rename = "user_role", skip_serializing_if = "Option::is_none")]
-    pub user_role: Option<String>,
-    #[serde(rename = "qovery_usage_other", skip_serializing_if = "Option::is_none")]
-    pub qovery_usage_other: Option<String>,
-    #[serde(rename = "user_questions", skip_serializing_if = "Option::is_none")]
-    pub user_questions: Option<String>,
-    #[serde(rename = "current_step", skip_serializing_if = "Option::is_none")]
-    pub current_step: Option<String>,
-    #[serde(rename = "dx_auth", skip_serializing_if = "Option::is_none")]
-    pub dx_auth: Option<bool>,
     #[serde(
-        rename = "infrastructure_hosting",
+        rename = "company_name",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub infrastructure_hosting: Option<String>,
+    pub company_name: Option<Option<String>>,
+    #[serde(rename = "company_size", skip_serializing_if = "Option::is_none")]
+    pub company_size: Option<models::CompanySizeEnum>,
+    #[serde(
+        rename = "user_role",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub user_role: Option<Option<String>>,
+    #[serde(
+        rename = "qovery_usage_other",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub qovery_usage_other: Option<Option<String>>,
+    #[serde(
+        rename = "user_questions",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub user_questions: Option<Option<String>>,
+    #[serde(
+        rename = "current_step",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub current_step: Option<Option<String>>,
+    #[serde(
+        rename = "dx_auth",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub dx_auth: Option<Option<bool>>,
+    #[serde(
+        rename = "infrastructure_hosting",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub infrastructure_hosting: Option<Option<String>>,
 }
 
 impl SignUp {

@@ -14,8 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ServiceStepMetrics {
     /// The total duration in seconds of the service deployment or null if the deployment is not completed.
-    #[serde(rename = "total_duration_sec", skip_serializing_if = "Option::is_none")]
-    pub total_duration_sec: Option<i32>,
+    #[serde(
+        rename = "total_duration_sec",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub total_duration_sec: Option<Option<i32>>,
     /// The total duration in seconds of the service deployment without queuing steps.
     #[serde(
         rename = "total_computing_duration_sec",

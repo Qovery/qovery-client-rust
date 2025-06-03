@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 /// DeploymentHistoryServiceDetailsOneOf : ApplicationDeploymentHistoryData
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeploymentHistoryServiceDetailsOneOf {
-    #[serde(rename = "commit")]
-    pub commit: models::Commit,
+    #[serde(rename = "commit", deserialize_with = "Option::deserialize")]
+    pub commit: Option<models::Commit>,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf {
     /// ApplicationDeploymentHistoryData
-    pub fn new(commit: models::Commit) -> DeploymentHistoryServiceDetailsOneOf {
+    pub fn new(commit: Option<models::Commit>) -> DeploymentHistoryServiceDetailsOneOf {
         DeploymentHistoryServiceDetailsOneOf { commit }
     }
 }

@@ -15,8 +15,13 @@ use serde::{Deserialize, Serialize};
 pub struct ProbeTypeTcp {
     #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
     pub port: Option<i32>,
-    #[serde(rename = "host", skip_serializing_if = "Option::is_none")]
-    pub host: Option<String>,
+    #[serde(
+        rename = "host",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub host: Option<Option<String>>,
 }
 
 impl ProbeTypeTcp {

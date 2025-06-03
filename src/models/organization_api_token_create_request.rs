@@ -17,15 +17,20 @@ pub struct OrganizationApiTokenCreateRequest {
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
-    pub scope: Option<models::OrganizationApiTokenScope>,
+    #[serde(
+        rename = "scope",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub scope: Option<Option<models::OrganizationApiTokenScope>>,
     /// the roleId provided by the \"List organization custom roles\" endpoint.
-    #[serde(rename = "role_id")]
-    pub role_id: uuid::Uuid,
+    #[serde(rename = "role_id", deserialize_with = "Option::deserialize")]
+    pub role_id: Option<uuid::Uuid>,
 }
 
 impl OrganizationApiTokenCreateRequest {
-    pub fn new(name: String, role_id: uuid::Uuid) -> OrganizationApiTokenCreateRequest {
+    pub fn new(name: String, role_id: Option<uuid::Uuid>) -> OrganizationApiTokenCreateRequest {
         OrganizationApiTokenCreateRequest {
             name,
             description: None,

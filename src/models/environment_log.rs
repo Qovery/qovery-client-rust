@@ -22,8 +22,8 @@ pub struct EnvironmentLog {
     #[serde(rename = "state", skip_serializing_if = "Option::is_none")]
     pub state: Option<models::StatusKindEnum>,
     /// Log message
-    #[serde(rename = "message")]
-    pub message: String,
+    #[serde(rename = "message", deserialize_with = "Option::deserialize")]
+    pub message: Option<String>,
     /// Only for errors. Helps Qovery team to investigate.
     #[serde(rename = "execution_id", skip_serializing_if = "Option::is_none")]
     pub execution_id: Option<String>,
@@ -32,7 +32,7 @@ pub struct EnvironmentLog {
 }
 
 impl EnvironmentLog {
-    pub fn new(id: uuid::Uuid, created_at: String, message: String) -> EnvironmentLog {
+    pub fn new(id: uuid::Uuid, created_at: String, message: Option<String>) -> EnvironmentLog {
         EnvironmentLog {
             id,
             created_at,

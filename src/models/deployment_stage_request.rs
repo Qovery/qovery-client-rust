@@ -17,8 +17,13 @@ pub struct DeploymentStageRequest {
     #[serde(rename = "name")]
     pub name: String,
     /// free test describing this stage
-    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    #[serde(
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub description: Option<Option<String>>,
 }
 
 impl DeploymentStageRequest {

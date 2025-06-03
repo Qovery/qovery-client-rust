@@ -46,9 +46,11 @@ pub struct JobAdvancedSettings {
         Option<std::collections::HashMap<String, String>>,
     #[serde(
         rename = "job.delete_ttl_seconds_after_finished",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub job_period_delete_ttl_seconds_after_finished: Option<i32>,
+    pub job_period_delete_ttl_seconds_after_finished: Option<Option<i32>>,
     #[serde(
         rename = "cronjob.concurrency_policy",
         skip_serializing_if = "Option::is_none"

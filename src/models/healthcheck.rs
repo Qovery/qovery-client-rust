@@ -13,10 +13,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Healthcheck {
-    #[serde(rename = "readiness_probe", skip_serializing_if = "Option::is_none")]
-    pub readiness_probe: Option<models::Probe>,
-    #[serde(rename = "liveness_probe", skip_serializing_if = "Option::is_none")]
-    pub liveness_probe: Option<models::Probe>,
+    #[serde(
+        rename = "readiness_probe",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub readiness_probe: Option<Option<models::Probe>>,
+    #[serde(
+        rename = "liveness_probe",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub liveness_probe: Option<Option<models::Probe>>,
 }
 
 impl Healthcheck {

@@ -37,9 +37,11 @@ pub struct ReferenceObjectStatus {
     pub status_details: models::StatusDetails,
     #[serde(
         rename = "deployment_request_id",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub deployment_request_id: Option<uuid::Uuid>,
+    pub deployment_request_id: Option<Option<uuid::Uuid>>,
     #[serde(
         rename = "deployment_requests_count",
         skip_serializing_if = "Option::is_none"

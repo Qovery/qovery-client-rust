@@ -21,9 +21,11 @@ pub struct ClusterStatus {
     pub is_deployed: Option<bool>,
     #[serde(
         rename = "next_k8s_available_version",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub next_k8s_available_version: Option<String>,
+    pub next_k8s_available_version: Option<Option<String>>,
     #[serde(rename = "last_execution_id", skip_serializing_if = "Option::is_none")]
     pub last_execution_id: Option<String>,
     #[serde(rename = "cluster_lock", skip_serializing_if = "Option::is_none")]

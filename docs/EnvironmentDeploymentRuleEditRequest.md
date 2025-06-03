@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **on_demand_preview** | Option<**bool**> |  | [optional][default to false]
-**auto_stop** | Option<**bool**> |  | [optional][default to false]
 **auto_preview** | Option<**bool**> |  | [optional][default to false]
+**auto_stop** | Option<**bool**> |  | [optional][default to false]
 **timezone** | **String** |  | 
 **start_time** | **String** |  | 
 **stop_time** | **String** |  | 

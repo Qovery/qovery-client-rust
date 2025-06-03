@@ -18,16 +18,41 @@ pub struct OrganizationEditRequest {
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    #[serde(rename = "website_url", skip_serializing_if = "Option::is_none")]
-    pub website_url: Option<String>,
-    #[serde(rename = "repository", skip_serializing_if = "Option::is_none")]
-    pub repository: Option<String>,
-    #[serde(rename = "logo_url", skip_serializing_if = "Option::is_none")]
-    pub logo_url: Option<String>,
-    #[serde(rename = "icon_url", skip_serializing_if = "Option::is_none")]
-    pub icon_url: Option<String>,
-    #[serde(rename = "admin_emails", skip_serializing_if = "Option::is_none")]
-    pub admin_emails: Option<Vec<String>>,
+    #[serde(
+        rename = "website_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub website_url: Option<Option<String>>,
+    #[serde(
+        rename = "repository",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub repository: Option<Option<String>>,
+    #[serde(
+        rename = "logo_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub logo_url: Option<Option<String>>,
+    #[serde(
+        rename = "icon_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub icon_url: Option<Option<String>>,
+    #[serde(
+        rename = "admin_emails",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub admin_emails: Option<Option<Vec<String>>>,
 }
 
 impl OrganizationEditRequest {

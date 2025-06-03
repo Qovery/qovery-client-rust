@@ -15,10 +15,20 @@ use serde::{Deserialize, Serialize};
 pub struct EnvironmentLogsDetailsStage {
     #[serde(rename = "step", skip_serializing_if = "Option::is_none")]
     pub step: Option<String>,
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<uuid::Uuid>,
-    #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    #[serde(
+        rename = "id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub id: Option<Option<uuid::Uuid>>,
+    #[serde(
+        rename = "name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub name: Option<Option<String>>,
 }
 
 impl EnvironmentLogsDetailsStage {
