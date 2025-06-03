@@ -73,8 +73,11 @@ pub struct LifecycleJobResponse {
         default = "models::service_type_enum::service_type_job"
     )]
     pub service_type: models::ServiceTypeEnum,
-    #[serde(rename = "job_type")]
-    pub job_type: JobType,
+    #[serde(
+        rename = "job_type",
+        default = "models::job_type_enum::job_type_lifecycle"
+    )]
+    pub job_type: models::JobTypeEnum,
     #[serde(rename = "schedule")]
     pub schedule: models::LifecycleJobResponseAllOfSchedule,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
@@ -98,7 +101,7 @@ impl LifecycleJobResponse {
         healthchecks: models::Healthcheck,
         icon_uri: String,
         service_type: models::ServiceTypeEnum,
-        job_type: JobType,
+        job_type: models::JobTypeEnum,
         schedule: models::LifecycleJobResponseAllOfSchedule,
     ) -> LifecycleJobResponse {
         LifecycleJobResponse {
@@ -126,17 +129,5 @@ impl LifecycleJobResponse {
             annotations_groups: None,
             labels_groups: None,
         }
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum JobType {
-    #[serde(rename = "LIFECYCLE")]
-    Lifecycle,
-}
-
-impl Default for JobType {
-    fn default() -> JobType {
-        Self::Lifecycle
     }
 }

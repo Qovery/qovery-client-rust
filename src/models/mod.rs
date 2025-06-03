@@ -700,6 +700,8 @@ pub mod job_schedule_event;
 pub use self::job_schedule_event::JobScheduleEvent;
 pub mod job_source_docker_response;
 pub use self::job_source_docker_response::JobSourceDockerResponse;
+pub mod job_type_enum;
+pub use self::job_type_enum::JobTypeEnum;
 pub mod kapsule_infrastructure_outputs;
 pub use self::kapsule_infrastructure_outputs::KapsuleInfrastructureOutputs;
 pub mod karpenter_default_node_pool_override;

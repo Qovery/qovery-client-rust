@@ -36,18 +36,6 @@ impl Default for ListServicesByEnvironmentId200ResponseResultsInner {
 
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum JobType {
-    #[serde(rename = "CRON")]
-    Cron,
-}
-
-impl Default for JobType {
-    fn default() -> JobType {
-        Self::Cron
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
     #[serde(rename = "TERRAFORM")]
     Terraform,

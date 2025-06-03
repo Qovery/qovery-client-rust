@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **auto_deploy** | Option<**bool**> | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional]
 **icon_uri** | **String** | Icon URI representing the job. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
-**job_type** | **String** |  | 
+**job_type** | [**models::JobTypeEnum**](JobTypeEnum.md) |  | 
 **schedule** | [**models::LifecycleJobResponseAllOfSchedule**](LifecycleJobResponse_allOf_schedule.md) |  | 
 **annotations_groups** | Option<[**Vec<models::OrganizationAnnotationsGroupResponse>**](OrganizationAnnotationsGroupResponse.md)> |  | [optional]
 **labels_groups** | Option<[**Vec<models::OrganizationLabelsGroupResponse>**](OrganizationLabelsGroupResponse.md)> |  | [optional]
