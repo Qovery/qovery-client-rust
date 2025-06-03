@@ -186,7 +186,7 @@ pub async fn get_default_terraform_advanced_settings(
     configuration: &configuration::Configuration,
 ) -> Result<models::TerraformAdvancedSettings, Error<GetDefaultTerraformAdvancedSettingsError>> {
     let uri_str = format!(
-        "{}/defaultTerraformAdvancedSettings:",
+        "{}/defaultTerraformAdvancedSettings",
         configuration.base_path
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);

@@ -476,7 +476,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
 *TerraformsApi* | [**clone_terraform**](docs/TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsApi* | [**create_terraform**](docs/TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
-*TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
+*TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings | List default terraform advanced settings
 *TerraformsApi* | [**list_terraforms**](docs/TerraformsApi.md#list_terraforms) | **GET** /environment/{environmentId}/terraform | List terraforms
 *UserSignUpApi* | [**create_user_sign_up**](docs/UserSignUpApi.md#create_user_sign_up) | **POST** /admin/userSignUp | Send Sign Up request
 *UserSignUpApi* | [**get_user_sign_up**](docs/UserSignUpApi.md#get_user_sign_up) | **GET** /admin/userSignUp | Get Sign up information
