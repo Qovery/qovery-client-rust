@@ -19,7 +19,7 @@ Edit Advanced settings
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**terraform_id** | **uuid::Uuid** |  | [required] |
 **terraform_advanced_settings** | Option<[**TerraformAdvancedSettings**](TerraformAdvancedSettings.md)> |  |  |
 
 ### Return type
@@ -48,7 +48,7 @@ Get Advanced settings
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**terraform_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

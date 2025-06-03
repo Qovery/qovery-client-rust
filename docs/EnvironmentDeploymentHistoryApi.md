@@ -52,7 +52,7 @@ List previous and current environment deployments with the status deployment and
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**environment_id** | **uuid::Uuid** |  | [required] |
 **start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
 
 ### Return type

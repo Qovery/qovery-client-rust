@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContainerNetworkRequest {
-    /// Specify if the sticky session option (also called persistant session) is activated or not for this container. If activated, user will be redirected by the load balancer to the same instance each time he access to the container. 
+    /// Specify if the sticky session option (also called persistant session) is activated or not for this container. If activated, user will be redirected by the load balancer to the same instance each time he access to the container.
     #[serde(rename = "sticky_session", skip_serializing_if = "Option::is_none")]
     pub sticky_session: Option<bool>,
 }
@@ -25,4 +25,3 @@ impl ContainerNetworkRequest {
         }
     }
 }
-

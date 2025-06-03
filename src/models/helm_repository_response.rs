@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -29,13 +29,19 @@ pub struct HelmRepositoryResponse {
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     /// Bypass tls certificate verification when connecting to repository
-    #[serde(rename = "skip_tls_verification", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "skip_tls_verification",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub skip_tls_verification: Option<bool>,
     /// The number of services using this helm repository
-    #[serde(rename = "associated_services_count", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "associated_services_count",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub associated_services_count: Option<i32>,
     #[serde(rename = "config", skip_serializing_if = "Option::is_none")]
-    pub config: Option<Box<models::HelmRepositoryResponseAllOfConfig>>,
+    pub config: Option<models::HelmRepositoryResponseAllOfConfig>,
 }
 
 impl HelmRepositoryResponse {
@@ -54,4 +60,3 @@ impl HelmRepositoryResponse {
         }
     }
 }
-

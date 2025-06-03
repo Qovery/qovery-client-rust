@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,16 +14,13 @@ use serde::{Deserialize, Serialize};
 /// DeploymentHistoryServiceDetailsOneOf : ApplicationDeploymentHistoryData
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeploymentHistoryServiceDetailsOneOf {
-    #[serde(rename = "commit", deserialize_with = "Option::deserialize")]
-    pub commit: Option<Box<models::Commit>>,
+    #[serde(rename = "commit")]
+    pub commit: models::Commit,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf {
     /// ApplicationDeploymentHistoryData
-    pub fn new(commit: Option<models::Commit>) -> DeploymentHistoryServiceDetailsOneOf {
-        DeploymentHistoryServiceDetailsOneOf {
-            commit: if let Some(x) = commit {Some(Box::new(x))} else {None},
-        }
+    pub fn new(commit: models::Commit) -> DeploymentHistoryServiceDetailsOneOf {
+        DeploymentHistoryServiceDetailsOneOf { commit }
     }
 }
-

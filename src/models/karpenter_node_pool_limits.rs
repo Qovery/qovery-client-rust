@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,7 +24,11 @@ pub struct KarpenterNodePoolLimits {
 }
 
 impl KarpenterNodePoolLimits {
-    pub fn new(enabled: bool, max_cpu_in_vcpu: i32, max_memory_in_gibibytes: i32) -> KarpenterNodePoolLimits {
+    pub fn new(
+        enabled: bool,
+        max_cpu_in_vcpu: i32,
+        max_memory_in_gibibytes: i32,
+    ) -> KarpenterNodePoolLimits {
         KarpenterNodePoolLimits {
             enabled,
             max_cpu_in_vcpu,
@@ -32,4 +36,3 @@ impl KarpenterNodePoolLimits {
         }
     }
 }
-

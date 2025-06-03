@@ -20,7 +20,7 @@ Returns the 20 last terraform deployments
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**terraform_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

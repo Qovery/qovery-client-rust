@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -26,7 +26,7 @@ pub struct ContainerRequest {
     /// id of the linked registry
     #[serde(rename = "registry_id")]
     pub registry_id: String,
-    /// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository` 
+    /// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
     #[serde(rename = "image_name")]
     pub image_name: String,
     /// tag of the image container
@@ -43,20 +43,26 @@ pub struct ContainerRequest {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
-    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running. 
-    #[serde(rename = "min_running_instances", skip_serializing_if = "Option::is_none")]
+    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
+    #[serde(
+        rename = "min_running_instances",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub min_running_instances: Option<i32>,
-    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
-    #[serde(rename = "max_running_instances", skip_serializing_if = "Option::is_none")]
+    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
+    #[serde(
+        rename = "max_running_instances",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub max_running_instances: Option<i32>,
     #[serde(rename = "healthchecks")]
-    pub healthchecks: Box<models::Healthcheck>,
-    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
+    pub healthchecks: models::Healthcheck,
+    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
-    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments 
-    #[serde(rename = "auto_deploy", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<Option<bool>>,
+    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
+    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
+    pub auto_deploy: Option<bool>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
@@ -67,7 +73,13 @@ pub struct ContainerRequest {
 }
 
 impl ContainerRequest {
-    pub fn new(name: String, registry_id: String, image_name: String, tag: String, healthchecks: models::Healthcheck) -> ContainerRequest {
+    pub fn new(
+        name: String,
+        registry_id: String,
+        image_name: String,
+        tag: String,
+        healthchecks: models::Healthcheck,
+    ) -> ContainerRequest {
         ContainerRequest {
             storage: None,
             ports: None,
@@ -82,7 +94,7 @@ impl ContainerRequest {
             memory: None,
             min_running_instances: None,
             max_running_instances: None,
-            healthchecks: Box::new(healthchecks),
+            healthchecks,
             auto_preview: None,
             auto_deploy: None,
             annotations_groups: None,
@@ -91,4 +103,3 @@ impl ContainerRequest {
         }
     }
 }
-

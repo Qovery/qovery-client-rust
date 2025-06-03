@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,18 +14,20 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmResponseAllOfValuesOverrideFileGit {
     #[serde(rename = "git_repository")]
-    pub git_repository: Box<models::ApplicationGitRepository>,
+    pub git_repository: models::ApplicationGitRepository,
     /// List of path inside your git repository to locate values file. Must start by a /
     #[serde(rename = "paths")]
     pub paths: Vec<String>,
 }
 
 impl HelmResponseAllOfValuesOverrideFileGit {
-    pub fn new(git_repository: models::ApplicationGitRepository, paths: Vec<String>) -> HelmResponseAllOfValuesOverrideFileGit {
+    pub fn new(
+        git_repository: models::ApplicationGitRepository,
+        paths: Vec<String>,
+    ) -> HelmResponseAllOfValuesOverrideFileGit {
         HelmResponseAllOfValuesOverrideFileGit {
-            git_repository: Box::new(git_repository),
+            git_repository,
             paths,
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -16,7 +16,7 @@ pub struct MetricsParameters {
     #[serde(rename = "enabled", skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
     #[serde(rename = "configuration", skip_serializing_if = "Option::is_none")]
-    pub configuration: Option<Box<models::MetricsConfigurationManagedByQovery>>,
+    pub configuration: Option<models::MetricsConfigurationManagedByQovery>,
 }
 
 impl MetricsParameters {
@@ -27,4 +27,3 @@ impl MetricsParameters {
         }
     }
 }
-

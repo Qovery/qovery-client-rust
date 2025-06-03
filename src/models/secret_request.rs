@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,13 +20,16 @@ pub struct SecretRequest {
     #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
     /// should be set for file only. variable mount path make secret a file (where file should be mounted).
-    #[serde(rename = "mount_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<Option<String>>,
+    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
+    pub mount_path: Option<String>,
     /// optional variable description (255 character maximum)
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
-    #[serde(rename = "enable_interpolation_in_file", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub enable_interpolation_in_file: Option<Option<bool>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<bool>,
 }
 
 impl SecretRequest {
@@ -40,4 +43,3 @@ impl SecretRequest {
         }
     }
 }
-

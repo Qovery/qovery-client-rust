@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,12 +19,15 @@ pub struct CheckedCustomDomainResponse {
     #[serde(rename = "status")]
     pub status: models::CheckedCustomDomainStatus,
     /// optional field containing information about failure check
-    #[serde(rename = "error_details", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub error_details: Option<Option<String>>,
+    #[serde(rename = "error_details", skip_serializing_if = "Option::is_none")]
+    pub error_details: Option<String>,
 }
 
 impl CheckedCustomDomainResponse {
-    pub fn new(domain_name: String, status: models::CheckedCustomDomainStatus) -> CheckedCustomDomainResponse {
+    pub fn new(
+        domain_name: String,
+        status: models::CheckedCustomDomainStatus,
+    ) -> CheckedCustomDomainResponse {
         CheckedCustomDomainResponse {
             domain_name,
             status,
@@ -32,4 +35,3 @@ impl CheckedCustomDomainResponse {
         }
     }
 }
-

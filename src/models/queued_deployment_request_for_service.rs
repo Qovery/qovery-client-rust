@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,23 +14,27 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct QueuedDeploymentRequestForService {
     #[serde(rename = "identifier")]
-    pub identifier: Box<models::QueuedDeploymentRequestForServiceIdentifier>,
+    pub identifier: models::QueuedDeploymentRequestForServiceIdentifier,
     #[serde(rename = "auditing_data")]
-    pub auditing_data: Box<models::QueuedDeploymentRequestForServiceAuditingData>,
+    pub auditing_data: models::QueuedDeploymentRequestForServiceAuditingData,
     #[serde(rename = "status_details")]
-    pub status_details: Box<models::StatusDetails>,
+    pub status_details: models::StatusDetails,
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
 }
 
 impl QueuedDeploymentRequestForService {
-    pub fn new(identifier: models::QueuedDeploymentRequestForServiceIdentifier, auditing_data: models::QueuedDeploymentRequestForServiceAuditingData, status_details: models::StatusDetails, icon_uri: String) -> QueuedDeploymentRequestForService {
+    pub fn new(
+        identifier: models::QueuedDeploymentRequestForServiceIdentifier,
+        auditing_data: models::QueuedDeploymentRequestForServiceAuditingData,
+        status_details: models::StatusDetails,
+        icon_uri: String,
+    ) -> QueuedDeploymentRequestForService {
         QueuedDeploymentRequestForService {
-            identifier: Box::new(identifier),
-            auditing_data: Box::new(auditing_data),
-            status_details: Box::new(status_details),
+            identifier,
+            auditing_data,
+            status_details,
             icon_uri,
         }
     }
 }
-

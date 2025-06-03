@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,9 +15,15 @@ use serde::{Deserialize, Serialize};
 pub struct ProjectStats {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
-    #[serde(rename = "service_total_number", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "service_total_number",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub service_total_number: Option<f64>,
-    #[serde(rename = "environment_total_number", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "environment_total_number",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub environment_total_number: Option<f64>,
 }
 
@@ -30,4 +36,3 @@ impl ProjectStats {
         }
     }
 }
-

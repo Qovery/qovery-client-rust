@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ pub struct ServiceStorageRequestStorageInner {
     pub id: Option<uuid::Uuid>,
     #[serde(rename = "type")]
     pub r#type: models::StorageTypeEnum,
-    /// unit is GB Minimum size is 4 GB 
+    /// unit is GB Minimum size is 4 GB
     #[serde(rename = "size")]
     pub size: i32,
     #[serde(rename = "mount_point")]
@@ -25,7 +25,11 @@ pub struct ServiceStorageRequestStorageInner {
 }
 
 impl ServiceStorageRequestStorageInner {
-    pub fn new(r#type: models::StorageTypeEnum, size: i32, mount_point: String) -> ServiceStorageRequestStorageInner {
+    pub fn new(
+        r#type: models::StorageTypeEnum,
+        size: i32,
+        mount_point: String,
+    ) -> ServiceStorageRequestStorageInner {
         ServiceStorageRequestStorageInner {
             id: None,
             r#type,
@@ -34,4 +38,3 @@ impl ServiceStorageRequestStorageInner {
         }
     }
 }
-

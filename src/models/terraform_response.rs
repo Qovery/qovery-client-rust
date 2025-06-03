@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -30,27 +30,47 @@ pub struct TerraformResponse {
     pub auto_approve: bool,
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
-    #[serde(rename = "terraform_files_source", skip_serializing_if = "Option::is_none")]
-    pub terraform_files_source: Option<Box<models::TerraformResponseAllOfTerraformFilesSource>>,
+    #[serde(
+        rename = "terraform_files_source",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub terraform_files_source: Option<models::TerraformResponseAllOfTerraformFilesSource>,
     /// Icon URI representing the terraform service.
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_terraform"
+    )]
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "terraform_variables_source")]
-    pub terraform_variables_source: Box<models::TerraformVariablesSourceResponse>,
+    pub terraform_variables_source: models::TerraformVariablesSourceResponse,
     #[serde(rename = "provider")]
     pub provider: Provider,
     #[serde(rename = "provider_version")]
-    pub provider_version: Box<models::TerraformProviderVersion>,
+    pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "job_resources")]
-    pub job_resources: Box<models::TerraformJobResourcesResponse>,
+    pub job_resources: models::TerraformJobResourcesResponse,
     #[serde(rename = "environment")]
-    pub environment: Box<models::ReferenceObject>,
+    pub environment: models::ReferenceObject,
 }
 
 impl TerraformResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject) -> TerraformResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        timeout_sec: i32,
+        auto_approve: bool,
+        auto_deploy: bool,
+        icon_uri: String,
+        service_type: models::ServiceTypeEnum,
+        terraform_variables_source: models::TerraformVariablesSourceResponse,
+        provider: Provider,
+        provider_version: models::TerraformProviderVersion,
+        job_resources: models::TerraformJobResourcesResponse,
+        environment: models::ReferenceObject,
+    ) -> TerraformResponse {
         TerraformResponse {
             id,
             created_at,
@@ -63,15 +83,15 @@ impl TerraformResponse {
             terraform_files_source: None,
             icon_uri,
             service_type,
-            terraform_variables_source: Box::new(terraform_variables_source),
+            terraform_variables_source,
             provider,
-            provider_version: Box::new(provider_version),
-            job_resources: Box::new(job_resources),
-            environment: Box::new(environment),
+            provider_version,
+            job_resources,
+            environment,
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
     #[serde(rename = "TERRAFORM")]
@@ -83,4 +103,3 @@ impl Default for Provider {
         Self::Terraform
     }
 }
-

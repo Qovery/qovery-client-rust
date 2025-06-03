@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,8 +15,8 @@ use serde::{Deserialize, Serialize};
 pub struct ClusterRequestFeaturesInner {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<uuid::Uuid>,
-    #[serde(rename = "value", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub value: Option<Option<Box<models::ClusterRequestFeaturesInnerValue>>>,
+    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
+    pub value: Option<models::ClusterRequestFeaturesInnerValue>,
 }
 
 impl ClusterRequestFeaturesInner {
@@ -27,4 +27,3 @@ impl ClusterRequestFeaturesInner {
         }
     }
 }
-

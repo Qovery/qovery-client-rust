@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,8 +14,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum HelmResponseAllOfSource {
-    HelmResponseAllOfSourceOneOf(Box<models::HelmResponseAllOfSourceOneOf>),
-    HelmResponseAllOfSourceOneOf1(Box<models::HelmResponseAllOfSourceOneOf1>),
+    HelmResponseAllOfSourceOneOf(models::HelmResponseAllOfSourceOneOf),
+    HelmResponseAllOfSourceOneOf1(models::HelmResponseAllOfSourceOneOf1),
 }
 
 impl Default for HelmResponseAllOfSource {
@@ -23,4 +23,3 @@ impl Default for HelmResponseAllOfSource {
         Self::HelmResponseAllOfSourceOneOf(Default::default())
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,8 +22,11 @@ pub struct ClusterRequest {
     pub region: String,
     #[serde(rename = "cloud_provider")]
     pub cloud_provider: models::CloudVendorEnum,
-    #[serde(rename = "cloud_provider_credentials", skip_serializing_if = "Option::is_none")]
-    pub cloud_provider_credentials: Option<Box<models::ClusterCloudProviderInfoRequest>>,
+    #[serde(
+        rename = "cloud_provider_credentials",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cloud_provider_credentials: Option<models::ClusterCloudProviderInfoRequest>,
     #[serde(rename = "min_running_nodes", skip_serializing_if = "Option::is_none")]
     pub min_running_nodes: Option<i32>,
     #[serde(rename = "max_running_nodes", skip_serializing_if = "Option::is_none")]
@@ -45,11 +48,15 @@ pub struct ClusterRequest {
     #[serde(rename = "features", skip_serializing_if = "Option::is_none")]
     pub features: Option<Vec<models::ClusterRequestFeaturesInner>>,
     #[serde(rename = "metrics_parameters", skip_serializing_if = "Option::is_none")]
-    pub metrics_parameters: Option<Box<models::MetricsParameters>>,
+    pub metrics_parameters: Option<models::MetricsParameters>,
 }
 
 impl ClusterRequest {
-    pub fn new(name: String, region: String, cloud_provider: models::CloudVendorEnum) -> ClusterRequest {
+    pub fn new(
+        name: String,
+        region: String,
+        cloud_provider: models::CloudVendorEnum,
+    ) -> ClusterRequest {
         ClusterRequest {
             name,
             description: None,
@@ -68,4 +75,3 @@ impl ClusterRequest {
         }
     }
 }
-

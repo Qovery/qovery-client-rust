@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -25,7 +25,10 @@ pub struct User {
     pub last_name: Option<String>,
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
-    #[serde(rename = "profile_picture_url", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "profile_picture_url",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub profile_picture_url: Option<String>,
 }
 
@@ -42,4 +45,3 @@ impl User {
         }
     }
 }
-

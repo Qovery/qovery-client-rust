@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -27,7 +27,6 @@ pub enum ServiceTypeEnum {
     Helm,
     #[serde(rename = "TERRAFORM")]
     Terraform,
-
 }
 
 impl std::fmt::Display for ServiceTypeEnum {
@@ -49,3 +48,21 @@ impl Default for ServiceTypeEnum {
     }
 }
 
+pub fn service_type_application() -> ServiceTypeEnum {
+    ServiceTypeEnum::Application
+}
+pub fn service_type_container() -> ServiceTypeEnum {
+    ServiceTypeEnum::Container
+}
+pub fn service_type_database() -> ServiceTypeEnum {
+    ServiceTypeEnum::Database
+}
+pub fn service_type_helm() -> ServiceTypeEnum {
+    ServiceTypeEnum::Helm
+}
+pub fn service_type_terraform() -> ServiceTypeEnum {
+    ServiceTypeEnum::Terraform
+}
+pub fn service_type_job() -> ServiceTypeEnum {
+    ServiceTypeEnum::Job
+}

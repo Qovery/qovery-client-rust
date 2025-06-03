@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -13,10 +13,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobDeployRequest {
-    /// Image tag to deploy.   Cannot be set if `git_commit_id` is defined 
+    /// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
     #[serde(rename = "image_tag", skip_serializing_if = "Option::is_none")]
     pub image_tag: Option<String>,
-    /// Commit to deploy Cannot be set if `image_tag` is defined 
+    /// Commit to deploy Cannot be set if `image_tag` is defined
     #[serde(rename = "git_commit_id", skip_serializing_if = "Option::is_none")]
     pub git_commit_id: Option<String>,
 }
@@ -29,4 +29,3 @@ impl JobDeployRequest {
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OrganizationCustomRoleProjectPermission : Indicates the permission for a target project and a given environment type, from the lowest to the highest: - `NO_ACCESS` user has no access - `VIEWER` user can access the environment (and applications / containers / databases / variables) - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`) - `MANAGER` user can create an environment (and applications / containers / databases / variables) 
-/// Indicates the permission for a target project and a given environment type, from the lowest to the highest: - `NO_ACCESS` user has no access - `VIEWER` user can access the environment (and applications / containers / databases / variables) - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`) - `MANAGER` user can create an environment (and applications / containers / databases / variables) 
+/// OrganizationCustomRoleProjectPermission : Indicates the permission for a target project and a given environment type, from the lowest to the highest: - `NO_ACCESS` user has no access - `VIEWER` user can access the environment (and applications / containers / databases / variables) - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`) - `MANAGER` user can create an environment (and applications / containers / databases / variables)
+/// Indicates the permission for a target project and a given environment type, from the lowest to the highest: - `NO_ACCESS` user has no access - `VIEWER` user can access the environment (and applications / containers / databases / variables) - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`) - `MANAGER` user can create an environment (and applications / containers / databases / variables)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum OrganizationCustomRoleProjectPermission {
     #[serde(rename = "NO_ACCESS")]
@@ -23,7 +23,6 @@ pub enum OrganizationCustomRoleProjectPermission {
     Deployer,
     #[serde(rename = "MANAGER")]
     Manager,
-
 }
 
 impl std::fmt::Display for OrganizationCustomRoleProjectPermission {
@@ -42,4 +41,3 @@ impl Default for OrganizationCustomRoleProjectPermission {
         Self::NoAccess
     }
 }
-

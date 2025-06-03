@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -27,13 +27,13 @@ pub struct DatabaseRequest {
     pub mode: models::DatabaseModeEnum,
     #[serde(rename = "accessibility", skip_serializing_if = "Option::is_none")]
     pub accessibility: Option<models::DatabaseAccessibilityEnum>,
-    /// unit is millicores (m). 1000m = 1 cpu This field will be ignored for managed DB (instance type will be used instead). 
+    /// unit is millicores (m). 1000m = 1 cpu This field will be ignored for managed DB (instance type will be used instead).
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i32>,
     /// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
     #[serde(rename = "instance_type", skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
-    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256` 
+    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
     /// unit is GB
@@ -49,7 +49,12 @@ pub struct DatabaseRequest {
 }
 
 impl DatabaseRequest {
-    pub fn new(name: String, r#type: models::DatabaseTypeEnum, version: String, mode: models::DatabaseModeEnum) -> DatabaseRequest {
+    pub fn new(
+        name: String,
+        r#type: models::DatabaseTypeEnum,
+        version: String,
+        mode: models::DatabaseModeEnum,
+    ) -> DatabaseRequest {
         DatabaseRequest {
             name,
             description: None,
@@ -67,4 +72,3 @@ impl DatabaseRequest {
         }
     }
 }
-

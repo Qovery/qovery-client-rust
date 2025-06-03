@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,14 +19,24 @@ pub struct OrganizationCustomRoleUpdateRequest {
     pub description: Option<String>,
     /// Should contain an entry for every existing cluster
     #[serde(rename = "cluster_permissions")]
-    pub cluster_permissions: Vec<models::OrganizationCustomRoleUpdateRequestClusterPermissionsInner>,
+    pub cluster_permissions:
+        Vec<models::OrganizationCustomRoleUpdateRequestClusterPermissionsInner>,
     /// Should contain an entry for every existing project
     #[serde(rename = "project_permissions")]
-    pub project_permissions: Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInner>,
+    pub project_permissions:
+        Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInner>,
 }
 
 impl OrganizationCustomRoleUpdateRequest {
-    pub fn new(name: String, cluster_permissions: Vec<models::OrganizationCustomRoleUpdateRequestClusterPermissionsInner>, project_permissions: Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInner>) -> OrganizationCustomRoleUpdateRequest {
+    pub fn new(
+        name: String,
+        cluster_permissions: Vec<
+            models::OrganizationCustomRoleUpdateRequestClusterPermissionsInner,
+        >,
+        project_permissions: Vec<
+            models::OrganizationCustomRoleUpdateRequestProjectPermissionsInner,
+        >,
+    ) -> OrganizationCustomRoleUpdateRequest {
         OrganizationCustomRoleUpdateRequest {
             name,
             description: None,
@@ -35,4 +45,3 @@ impl OrganizationCustomRoleUpdateRequest {
         }
     }
 }
-

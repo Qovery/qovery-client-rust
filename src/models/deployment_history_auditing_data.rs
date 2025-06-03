@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,7 +24,11 @@ pub struct DeploymentHistoryAuditingData {
 }
 
 impl DeploymentHistoryAuditingData {
-    pub fn new(created_at: String, updated_at: String, triggered_by: String) -> DeploymentHistoryAuditingData {
+    pub fn new(
+        created_at: String,
+        updated_at: String,
+        triggered_by: String,
+    ) -> DeploymentHistoryAuditingData {
         DeploymentHistoryAuditingData {
             created_at,
             updated_at,
@@ -33,4 +37,3 @@ impl DeploymentHistoryAuditingData {
         }
     }
 }
-

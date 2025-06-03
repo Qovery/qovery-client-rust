@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,7 +20,10 @@ pub struct CloneEnvironmentRequest {
     pub cluster_id: Option<uuid::Uuid>,
     #[serde(rename = "mode", skip_serializing_if = "Option::is_none")]
     pub mode: Option<models::EnvironmentModeEnum>,
-    #[serde(rename = "apply_deployment_rule", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "apply_deployment_rule",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub apply_deployment_rule: Option<bool>,
     #[serde(rename = "project_id", skip_serializing_if = "Option::is_none")]
     pub project_id: Option<uuid::Uuid>,
@@ -37,4 +40,3 @@ impl CloneEnvironmentRequest {
         }
     }
 }
-

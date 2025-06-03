@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -28,13 +28,20 @@ pub struct ClusterInstanceTypeResponseListResultsInner {
     #[serde(rename = "architecture", skip_serializing_if = "Option::is_none")]
     pub architecture: Option<String>,
     #[serde(rename = "gpu_info", skip_serializing_if = "Option::is_none")]
-    pub gpu_info: Option<Box<models::ClusterInstanceGpuInfo>>,
+    pub gpu_info: Option<models::ClusterInstanceGpuInfo>,
     #[serde(rename = "attributes", skip_serializing_if = "Option::is_none")]
-    pub attributes: Option<Box<models::ClusterInstanceAttributes>>,
+    pub attributes: Option<models::ClusterInstanceAttributes>,
 }
 
 impl ClusterInstanceTypeResponseListResultsInner {
-    pub fn new(r#type: String, name: String, cpu: i32, ram_in_gb: i32, bandwidth_in_gbps: String, bandwidth_guarantee: String) -> ClusterInstanceTypeResponseListResultsInner {
+    pub fn new(
+        r#type: String,
+        name: String,
+        cpu: i32,
+        ram_in_gb: i32,
+        bandwidth_in_gbps: String,
+        bandwidth_guarantee: String,
+    ) -> ClusterInstanceTypeResponseListResultsInner {
         ClusterInstanceTypeResponseListResultsInner {
             r#type,
             name,
@@ -48,4 +55,3 @@ impl ClusterInstanceTypeResponseListResultsInner {
         }
     }
 }
-

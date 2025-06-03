@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -33,13 +33,13 @@ pub struct Database {
     pub mode: models::DatabaseModeEnum,
     #[serde(rename = "accessibility", skip_serializing_if = "Option::is_none")]
     pub accessibility: Option<models::DatabaseAccessibilityEnum>,
-    /// unit is millicores (m). 1000m = 1 cpu This field will be ignored for managed DB (instance type will be used instead). 
+    /// unit is millicores (m). 1000m = 1 cpu This field will be ignored for managed DB (instance type will be used instead).
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i32>,
     /// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB.
     #[serde(rename = "instance_type", skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
-    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256` 
+    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
     /// unit is GB
@@ -53,7 +53,7 @@ pub struct Database {
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
     #[serde(rename = "environment")]
-    pub environment: Box<models::ReferenceObject>,
+    pub environment: models::ReferenceObject,
     #[serde(rename = "host", skip_serializing_if = "Option::is_none")]
     pub host: Option<String>,
     #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
@@ -67,12 +67,25 @@ pub struct Database {
     /// indicates if the database disk is encrypted or not
     #[serde(rename = "disk_encrypted", skip_serializing_if = "Option::is_none")]
     pub disk_encrypted: Option<bool>,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_database"
+    )]
     pub service_type: models::ServiceTypeEnum,
 }
 
 impl Database {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, r#type: models::DatabaseTypeEnum, version: String, mode: models::DatabaseModeEnum, icon_uri: String, environment: models::ReferenceObject, service_type: models::ServiceTypeEnum) -> Database {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        r#type: models::DatabaseTypeEnum,
+        version: String,
+        mode: models::DatabaseModeEnum,
+        icon_uri: String,
+        environment: models::ReferenceObject,
+        service_type: models::ServiceTypeEnum,
+    ) -> Database {
         Database {
             id,
             created_at,
@@ -90,7 +103,7 @@ impl Database {
             annotations_groups: None,
             labels_groups: None,
             icon_uri,
-            environment: Box::new(environment),
+            environment,
             host: None,
             port: None,
             maximum_cpu: None,
@@ -100,4 +113,3 @@ impl Database {
         }
     }
 }
-

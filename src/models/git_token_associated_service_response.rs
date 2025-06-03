@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -30,7 +30,15 @@ pub struct GitTokenAssociatedServiceResponse {
 }
 
 impl GitTokenAssociatedServiceResponse {
-    pub fn new(project_id: uuid::Uuid, project_name: String, environment_id: uuid::Uuid, environment_name: String, service_id: uuid::Uuid, service_name: String, service_type: models::GitTokenAssociatedServiceType) -> GitTokenAssociatedServiceResponse {
+    pub fn new(
+        project_id: uuid::Uuid,
+        project_name: String,
+        environment_id: uuid::Uuid,
+        environment_name: String,
+        service_id: uuid::Uuid,
+        service_name: String,
+        service_type: models::GitTokenAssociatedServiceType,
+    ) -> GitTokenAssociatedServiceResponse {
         GitTokenAssociatedServiceResponse {
             project_id,
             project_name,
@@ -42,4 +50,3 @@ impl GitTokenAssociatedServiceResponse {
         }
     }
 }
-

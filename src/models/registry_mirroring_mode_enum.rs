@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,15 +11,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RegistryMirroringModeEnum : Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository 
-/// Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository 
+/// RegistryMirroringModeEnum : Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository
+/// Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum RegistryMirroringModeEnum {
     #[serde(rename = "Cluster")]
     Cluster,
     #[serde(rename = "Service")]
     Service,
-
 }
 
 impl std::fmt::Display for RegistryMirroringModeEnum {
@@ -36,4 +35,3 @@ impl Default for RegistryMirroringModeEnum {
         Self::Cluster
     }
 }
-

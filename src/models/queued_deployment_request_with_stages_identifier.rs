@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,11 +20,13 @@ pub struct QueuedDeploymentRequestWithStagesIdentifier {
 }
 
 impl QueuedDeploymentRequestWithStagesIdentifier {
-    pub fn new(deployment_request_id: uuid::Uuid, environment_id: uuid::Uuid) -> QueuedDeploymentRequestWithStagesIdentifier {
+    pub fn new(
+        deployment_request_id: uuid::Uuid,
+        environment_id: uuid::Uuid,
+    ) -> QueuedDeploymentRequestWithStagesIdentifier {
         QueuedDeploymentRequestWithStagesIdentifier {
             deployment_request_id,
             environment_id,
         }
     }
 }
-

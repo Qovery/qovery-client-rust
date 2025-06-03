@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,8 +22,8 @@ pub struct ProjectDeploymentRule {
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
     #[serde(rename = "mode")]
     pub mode: models::EnvironmentModeEnum,
     #[serde(rename = "cluster_id")]
@@ -47,7 +47,18 @@ pub struct ProjectDeploymentRule {
 }
 
 impl ProjectDeploymentRule {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, mode: models::EnvironmentModeEnum, cluster_id: uuid::Uuid, timezone: String, start_time: String, stop_time: String, weekdays: Vec<models::WeekdayEnum>, wildcard: String) -> ProjectDeploymentRule {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        mode: models::EnvironmentModeEnum,
+        cluster_id: uuid::Uuid,
+        timezone: String,
+        start_time: String,
+        stop_time: String,
+        weekdays: Vec<models::WeekdayEnum>,
+        wildcard: String,
+    ) -> ProjectDeploymentRule {
         ProjectDeploymentRule {
             id,
             created_at,
@@ -66,4 +77,3 @@ impl ProjectDeploymentRule {
         }
     }
 }
-

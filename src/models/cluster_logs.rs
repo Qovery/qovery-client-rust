@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,11 +23,11 @@ pub struct ClusterLogs {
     #[serde(rename = "step", skip_serializing_if = "Option::is_none")]
     pub step: Option<Step>,
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
-    pub message: Option<Box<models::ClusterLogsMessage>>,
+    pub message: Option<models::ClusterLogsMessage>,
     #[serde(rename = "error", skip_serializing_if = "Option::is_none")]
-    pub error: Option<Box<models::ClusterLogsError>>,
+    pub error: Option<models::ClusterLogsError>,
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
-    pub details: Option<Box<models::ClusterLogsDetails>>,
+    pub details: Option<models::ClusterLogsDetails>,
 }
 
 impl ClusterLogs {
@@ -82,4 +82,3 @@ impl Default for Step {
         Self::LoadConfiguration
     }
 }
-

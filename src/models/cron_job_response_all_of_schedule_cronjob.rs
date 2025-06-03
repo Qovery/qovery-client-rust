@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,7 +21,7 @@ pub struct CronJobResponseAllOfScheduleCronjob {
     /// tz identifier at which the schedule at will be executed
     #[serde(rename = "timezone")]
     pub timezone: String,
-    /// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UT 
+    /// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UT
     #[serde(rename = "scheduled_at")]
     pub scheduled_at: String,
 }
@@ -36,4 +36,3 @@ impl CronJobResponseAllOfScheduleCronjob {
         }
     }
 }
-

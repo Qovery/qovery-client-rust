@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 /// DeploymentHistoryServiceDetailsOneOf3 : HelmDeploymentHistoryDetails
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DeploymentHistoryServiceDetailsOneOf3 {
-    #[serde(rename = "commit", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<Option<Box<models::Commit>>>,
+    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
+    pub commit: Option<models::Commit>,
     #[serde(rename = "repository", skip_serializing_if = "Option::is_none")]
-    pub repository: Option<Box<models::DeploymentHistoryServiceDetailsOneOf3Repository>>,
+    pub repository: Option<models::DeploymentHistoryServiceDetailsOneOf3Repository>,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf3 {
@@ -29,4 +29,3 @@ impl DeploymentHistoryServiceDetailsOneOf3 {
         }
     }
 }
-

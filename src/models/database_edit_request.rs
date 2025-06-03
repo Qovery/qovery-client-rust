@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,10 +23,10 @@ pub struct DatabaseEditRequest {
     pub version: Option<String>,
     #[serde(rename = "accessibility", skip_serializing_if = "Option::is_none")]
     pub accessibility: Option<models::DatabaseAccessibilityEnum>,
-    /// unit is millicores (m). 1000m = 1 cpu. This field will be ignored for managed DB (instance type will be used instead). 
+    /// unit is millicores (m). 1000m = 1 cpu. This field will be ignored for managed DB (instance type will be used instead).
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i32>,
-    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256 
+    /// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
     /// unit is GB
@@ -61,4 +61,3 @@ impl DatabaseEditRequest {
         }
     }
 }
-

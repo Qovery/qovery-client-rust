@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,16 +14,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "type")]
 pub enum ClusterFeatureResponseValueObject {
-    #[serde(rename="STRING")]
-    String(Box<models::ClusterFeatureStringResponse>),
-    #[serde(rename="BOOLEAN")]
-    Boolean(Box<models::ClusterFeatureBooleanResponse>),
-    #[serde(rename="AWS_USER_PROVIDED_NETWORK")]
-    AwsUserProvidedNetwork(Box<models::ClusterFeatureAwsExistingVpcResponse>),
-    #[serde(rename="GCP_USER_PROVIDED_NETWORK")]
-    GcpUserProvidedNetwork(Box<models::ClusterFeatureGcpExistingVpcResponse>),
-    #[serde(rename="KARPENTER")]
-    Karpenter(Box<models::ClusterFeatureKarpenterParametersResponse>),
+    #[serde(rename = "STRING")]
+    String(models::ClusterFeatureStringResponse),
+    #[serde(rename = "BOOLEAN")]
+    Boolean(models::ClusterFeatureBooleanResponse),
+    #[serde(rename = "AWS_USER_PROVIDED_NETWORK")]
+    AwsUserProvidedNetwork(models::ClusterFeatureAwsExistingVpcResponse),
+    #[serde(rename = "GCP_USER_PROVIDED_NETWORK")]
+    GcpUserProvidedNetwork(models::ClusterFeatureGcpExistingVpcResponse),
+    #[serde(rename = "KARPENTER")]
+    Karpenter(models::ClusterFeatureKarpenterParametersResponse),
 }
 
 impl Default for ClusterFeatureResponseValueObject {
@@ -31,5 +31,3 @@ impl Default for ClusterFeatureResponseValueObject {
         Self::String(Default::default())
     }
 }
-
-

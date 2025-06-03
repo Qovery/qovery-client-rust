@@ -52,7 +52,7 @@ By default it returns the 20 last results. The response is paginated.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**database_id** | **uuid::Uuid** | Database ID | [required] |
+**database_id** | **uuid::Uuid** |  | [required] |
 **start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
 
 ### Return type

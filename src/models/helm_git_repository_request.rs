@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -16,15 +16,15 @@ pub struct HelmGitRepositoryRequest {
     /// application git repository URL
     #[serde(rename = "url")]
     pub url: String,
-    /// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one 
+    /// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one
     #[serde(rename = "branch", skip_serializing_if = "Option::is_none")]
     pub branch: Option<String>,
     /// indicates the root path of the application.
     #[serde(rename = "root_path", skip_serializing_if = "Option::is_none")]
     pub root_path: Option<String>,
     /// The git token id on Qovery side
-    #[serde(rename = "git_token_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub git_token_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "git_token_id", skip_serializing_if = "Option::is_none")]
+    pub git_token_id: Option<uuid::Uuid>,
 }
 
 impl HelmGitRepositoryRequest {
@@ -37,4 +37,3 @@ impl HelmGitRepositoryRequest {
         }
     }
 }
-

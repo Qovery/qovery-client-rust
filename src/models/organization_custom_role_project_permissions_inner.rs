@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,11 +17,13 @@ pub struct OrganizationCustomRoleProjectPermissionsInner {
     pub project_id: Option<uuid::Uuid>,
     #[serde(rename = "project_name", skip_serializing_if = "Option::is_none")]
     pub project_name: Option<String>,
-    /// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project    Note that `permissions` can then be ignored for this project 
+    /// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project    Note that `permissions` can then be ignored for this project
     #[serde(rename = "is_admin", skip_serializing_if = "Option::is_none")]
     pub is_admin: Option<bool>,
     #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
-    pub permissions: Option<Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner>>,
+    pub permissions: Option<
+        Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner>,
+    >,
 }
 
 impl OrganizationCustomRoleProjectPermissionsInner {
@@ -34,4 +36,3 @@ impl OrganizationCustomRoleProjectPermissionsInner {
         }
     }
 }
-

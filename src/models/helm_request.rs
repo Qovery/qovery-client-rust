@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,32 +20,41 @@ pub struct HelmRequest {
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// Maximum number of seconds allowed for helm to run before killing it and mark it as failed 
+    /// Maximum number of seconds allowed for helm to run before killing it and mark it as failed
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
     pub timeout_sec: Option<i32>,
-    /// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called or when a new commit is updated. If not specified, it takes the value of the `auto_preview` property from the associated environment. 
-    #[serde(rename = "auto_preview", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub auto_preview: Option<Option<bool>>,
-    /// Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type. 
+    /// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called or when a new commit is updated. If not specified, it takes the value of the `auto_preview` property from the associated environment.
+    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
+    pub auto_preview: Option<bool>,
+    /// Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     #[serde(rename = "source")]
-    pub source: Box<models::HelmRequestAllOfSource>,
+    pub source: models::HelmRequestAllOfSource,
     /// The extra arguments to pass to helm
     #[serde(rename = "arguments")]
     pub arguments: Vec<String>,
-    /// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights 
-    #[serde(rename = "allow_cluster_wide_resources", skip_serializing_if = "Option::is_none")]
+    /// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
+    #[serde(
+        rename = "allow_cluster_wide_resources",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub allow_cluster_wide_resources: Option<bool>,
     #[serde(rename = "values_override")]
-    pub values_override: Box<models::HelmRequestAllOfValuesOverride>,
+    pub values_override: models::HelmRequestAllOfValuesOverride,
     /// Icon URI representing the helm service.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
 }
 
 impl HelmRequest {
-    pub fn new(name: String, auto_deploy: bool, source: models::HelmRequestAllOfSource, arguments: Vec<String>, values_override: models::HelmRequestAllOfValuesOverride) -> HelmRequest {
+    pub fn new(
+        name: String,
+        auto_deploy: bool,
+        source: models::HelmRequestAllOfSource,
+        arguments: Vec<String>,
+        values_override: models::HelmRequestAllOfValuesOverride,
+    ) -> HelmRequest {
         HelmRequest {
             ports: None,
             name,
@@ -53,12 +62,11 @@ impl HelmRequest {
             timeout_sec: None,
             auto_preview: None,
             auto_deploy,
-            source: Box::new(source),
+            source,
             arguments,
             allow_cluster_wide_resources: None,
-            values_override: Box::new(values_override),
+            values_override,
             icon_uri: None,
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,8 +20,8 @@ pub struct VariableRequest {
     #[serde(rename = "value")]
     pub value: String,
     /// the path where the file will be mounted (only if type =file)
-    #[serde(rename = "mount_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<Option<String>>,
+    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
+    pub mount_path: Option<String>,
     /// if true, the variable will be considered as a secret and will not be accessible after its creation. Only your applications will be able to access its value at build and run time.
     #[serde(rename = "is_secret")]
     pub is_secret: bool,
@@ -31,14 +31,23 @@ pub struct VariableRequest {
     #[serde(rename = "variable_parent_id")]
     pub variable_parent_id: uuid::Uuid,
     /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
-    #[serde(rename = "enable_interpolation_in_file", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub enable_interpolation_in_file: Option<Option<bool>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<bool>,
 }
 
 impl VariableRequest {
-    pub fn new(key: String, value: String, is_secret: bool, variable_scope: models::ApiVariableScopeEnum, variable_parent_id: uuid::Uuid) -> VariableRequest {
+    pub fn new(
+        key: String,
+        value: String,
+        is_secret: bool,
+        variable_scope: models::ApiVariableScopeEnum,
+        variable_parent_id: uuid::Uuid,
+    ) -> VariableRequest {
         VariableRequest {
             key,
             value,
@@ -51,4 +60,3 @@ impl VariableRequest {
         }
     }
 }
-

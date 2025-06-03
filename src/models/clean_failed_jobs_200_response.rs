@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,7 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct CleanFailedJobs200Response {
     #[serde(rename = "clean_job_ids", skip_serializing_if = "Option::is_none")]
     pub clean_job_ids: Option<Vec<uuid::Uuid>>,
-    #[serde(rename = "clean_kubernetes_jobs", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "clean_kubernetes_jobs",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub clean_kubernetes_jobs: Option<Vec<String>>,
 }
 
@@ -27,4 +30,3 @@ impl CleanFailedJobs200Response {
         }
     }
 }
-

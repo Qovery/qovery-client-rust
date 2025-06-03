@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -12,13 +12,20 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(untagged)]
+#[serde(tag = "service_type")]
 pub enum ListServicesByEnvironmentId200ResponseResultsInner {
-    Application(Box<models::Application>),
-    ContainerResponse(Box<models::ContainerResponse>),
-    Database(Box<models::Database>),
-    HelmResponse(Box<models::HelmResponse>),
-    JobResponse(Box<models::JobResponse>),
+    #[serde(rename = "APPLICATION")]
+    Application(models::Application),
+    #[serde(rename = "CONTAINER")]
+    Container(models::ContainerResponse),
+    #[serde(rename = "DATABASE")]
+    Database(models::Database),
+    #[serde(rename = "HELM")]
+    Helm(models::HelmResponse),
+    #[serde(rename = "JOB")]
+    Job(models::JobResponse),
+    #[serde(rename = "TERRAFORM")]
+    Terraform(models::TerraformResponse),
 }
 
 impl Default for ListServicesByEnvironmentId200ResponseResultsInner {
@@ -26,7 +33,8 @@ impl Default for ListServicesByEnvironmentId200ResponseResultsInner {
         Self::Application(Default::default())
     }
 }
-/// 
+
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum JobType {
     #[serde(rename = "CRON")]
@@ -38,4 +46,15 @@ impl Default for JobType {
         Self::Cron
     }
 }
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Provider {
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
+}
 
+impl Default for Provider {
+    fn default() -> Provider {
+        Self::Terraform
+    }
+}

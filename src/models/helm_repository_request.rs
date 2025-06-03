@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,26 +19,30 @@ pub struct HelmRepositoryRequest {
     pub kind: models::HelmRepositoryKindEnum,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// URL of the helm chart repository: * For `OCI`: it must start by oci:// * For `HTTPS`: it must be start by https:// 
+    /// URL of the helm chart repository: * For `OCI`: it must start by oci:// * For `HTTPS`: it must be start by https://
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     /// Bypass tls certificate verification when connecting to repository
     #[serde(rename = "skip_tls_verification")]
     pub skip_tls_verification: bool,
     #[serde(rename = "config")]
-    pub config: Box<models::HelmRepositoryRequestConfig>,
+    pub config: models::HelmRepositoryRequestConfig,
 }
 
 impl HelmRepositoryRequest {
-    pub fn new(name: String, kind: models::HelmRepositoryKindEnum, skip_tls_verification: bool, config: models::HelmRepositoryRequestConfig) -> HelmRepositoryRequest {
+    pub fn new(
+        name: String,
+        kind: models::HelmRepositoryKindEnum,
+        skip_tls_verification: bool,
+        config: models::HelmRepositoryRequestConfig,
+    ) -> HelmRepositoryRequest {
         HelmRepositoryRequest {
             name,
             kind,
             description: None,
             url: None,
             skip_tls_verification,
-            config: Box::new(config),
+            config,
         }
     }
 }
-

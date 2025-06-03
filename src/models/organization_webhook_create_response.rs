@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,7 +21,7 @@ pub struct OrganizationWebhookCreateResponse {
     pub updated_at: Option<String>,
     #[serde(rename = "kind", skip_serializing_if = "Option::is_none")]
     pub kind: Option<models::OrganizationWebhookKindEnum>,
-    /// Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with `http://` or `https://` 
+    /// Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with `http://` or `https://`
     #[serde(rename = "target_url", skip_serializing_if = "Option::is_none")]
     pub target_url: Option<String>,
     #[serde(rename = "target_secret_set", skip_serializing_if = "Option::is_none")]
@@ -33,11 +33,17 @@ pub struct OrganizationWebhookCreateResponse {
     pub enabled: Option<bool>,
     #[serde(rename = "events", skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<models::OrganizationWebhookEventEnum>>,
-    /// Specify the project names you want to filter to.  This webhook will be triggered only if the event is coming from the specified Project IDs. Notes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case insensitive. 
-    #[serde(rename = "project_names_filter", skip_serializing_if = "Option::is_none")]
+    /// Specify the project names you want to filter to.  This webhook will be triggered only if the event is coming from the specified Project IDs. Notes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case insensitive.
+    #[serde(
+        rename = "project_names_filter",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub project_names_filter: Option<Vec<String>>,
-    /// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode. 
-    #[serde(rename = "environment_types_filter", skip_serializing_if = "Option::is_none")]
+    /// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
+    #[serde(
+        rename = "environment_types_filter",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub environment_types_filter: Option<Vec<models::EnvironmentModeEnum>>,
 }
 
@@ -58,4 +64,3 @@ impl OrganizationWebhookCreateResponse {
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,27 +24,30 @@ pub struct JobRequest {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
-    /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed 
+    /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
     #[serde(rename = "max_nb_restart", skip_serializing_if = "Option::is_none")]
     pub max_nb_restart: Option<i32>,
-    /// Maximum number of seconds allowed for the job to run before killing it and mark it as failed 
-    #[serde(rename = "max_duration_seconds", skip_serializing_if = "Option::is_none")]
+    /// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+    #[serde(
+        rename = "max_duration_seconds",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub max_duration_seconds: Option<i32>,
-    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
+    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
     /// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-    #[serde(rename = "port", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub port: Option<Option<i32>>,
+    #[serde(rename = "port", skip_serializing_if = "Option::is_none")]
+    pub port: Option<i32>,
     #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
-    pub source: Option<Box<models::JobRequestAllOfSource>>,
+    pub source: Option<models::JobRequestAllOfSource>,
     #[serde(rename = "healthchecks")]
-    pub healthchecks: Box<models::Healthcheck>,
+    pub healthchecks: models::Healthcheck,
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
-    pub schedule: Option<Box<models::JobRequestAllOfSchedule>>,
-    /// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments 
-    #[serde(rename = "auto_deploy", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<Option<bool>>,
+    pub schedule: Option<models::JobRequestAllOfSchedule>,
+    /// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
+    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
+    pub auto_deploy: Option<bool>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
@@ -66,7 +69,7 @@ impl JobRequest {
             auto_preview: None,
             port: None,
             source: None,
-            healthchecks: Box::new(healthchecks),
+            healthchecks,
             schedule: None,
             auto_deploy: None,
             annotations_groups: None,
@@ -75,4 +78,3 @@ impl JobRequest {
         }
     }
 }
-

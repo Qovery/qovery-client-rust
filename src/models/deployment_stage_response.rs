@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,7 +20,7 @@ pub struct DeploymentStageResponse {
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
     #[serde(rename = "environment")]
-    pub environment: Box<models::ReferenceObject>,
+    pub environment: models::ReferenceObject,
     /// name is case insensitive
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
@@ -34,12 +34,16 @@ pub struct DeploymentStageResponse {
 }
 
 impl DeploymentStageResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, environment: models::ReferenceObject) -> DeploymentStageResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        environment: models::ReferenceObject,
+    ) -> DeploymentStageResponse {
         DeploymentStageResponse {
             id,
             created_at,
             updated_at: None,
-            environment: Box::new(environment),
+            environment,
             name: None,
             description: None,
             deployment_order: None,
@@ -47,4 +51,3 @@ impl DeploymentStageResponse {
         }
     }
 }
-

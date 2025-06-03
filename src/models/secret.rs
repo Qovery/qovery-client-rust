@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,9 +23,9 @@ pub struct Secret {
     #[serde(rename = "key")]
     pub key: String,
     #[serde(rename = "overridden_secret", skip_serializing_if = "Option::is_none")]
-    pub overridden_secret: Option<Box<models::SecretOverride>>,
+    pub overridden_secret: Option<models::SecretOverride>,
     #[serde(rename = "aliased_secret", skip_serializing_if = "Option::is_none")]
-    pub aliased_secret: Option<Box<models::SecretAlias>>,
+    pub aliased_secret: Option<models::SecretAlias>,
     #[serde(rename = "scope")]
     pub scope: models::ApiVariableScopeEnum,
     #[serde(rename = "variable_type", skip_serializing_if = "Option::is_none")]
@@ -40,14 +40,22 @@ pub struct Secret {
     #[serde(rename = "owned_by", skip_serializing_if = "Option::is_none")]
     pub owned_by: Option<String>,
     /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
-    #[serde(rename = "enable_interpolation_in_file", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub enable_interpolation_in_file: Option<Option<bool>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<bool>,
 }
 
 impl Secret {
-    pub fn new(id: uuid::Uuid, created_at: String, key: String, scope: models::ApiVariableScopeEnum) -> Secret {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        key: String,
+        scope: models::ApiVariableScopeEnum,
+    ) -> Secret {
         Secret {
             id,
             created_at,
@@ -66,4 +74,3 @@ impl Secret {
         }
     }
 }
-

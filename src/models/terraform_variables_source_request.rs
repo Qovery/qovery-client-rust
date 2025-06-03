@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,11 +21,13 @@ pub struct TerraformVariablesSourceRequest {
 }
 
 impl TerraformVariablesSourceRequest {
-    pub fn new(tf_var_file_paths: Vec<String>, tf_vars: Vec<Vec<String>>) -> TerraformVariablesSourceRequest {
+    pub fn new(
+        tf_var_file_paths: Vec<String>,
+        tf_vars: Vec<Vec<String>>,
+    ) -> TerraformVariablesSourceRequest {
         TerraformVariablesSourceRequest {
             tf_var_file_paths,
             tf_vars,
         }
     }
 }
-

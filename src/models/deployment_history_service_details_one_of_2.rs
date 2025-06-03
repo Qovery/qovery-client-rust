@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -18,17 +18,21 @@ pub struct DeploymentHistoryServiceDetailsOneOf2 {
     pub image_name: String,
     #[serde(rename = "tag")]
     pub tag: String,
-    #[serde(rename = "commit", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<Option<Box<models::Commit>>>,
+    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
+    pub commit: Option<models::Commit>,
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
-    pub schedule: Option<Box<models::DeploymentHistoryServiceDetailsOneOf2Schedule>>,
+    pub schedule: Option<models::DeploymentHistoryServiceDetailsOneOf2Schedule>,
     #[serde(rename = "job_type")]
     pub job_type: JobType,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf2 {
     /// JobDeploymentHistoryDetails
-    pub fn new(image_name: String, tag: String, job_type: JobType) -> DeploymentHistoryServiceDetailsOneOf2 {
+    pub fn new(
+        image_name: String,
+        tag: String,
+        job_type: JobType,
+    ) -> DeploymentHistoryServiceDetailsOneOf2 {
         DeploymentHistoryServiceDetailsOneOf2 {
             image_name,
             tag,
@@ -38,7 +42,7 @@ impl DeploymentHistoryServiceDetailsOneOf2 {
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum JobType {
     #[serde(rename = "CRON")]
@@ -52,4 +56,3 @@ impl Default for JobType {
         Self::Cron
     }
 }
-

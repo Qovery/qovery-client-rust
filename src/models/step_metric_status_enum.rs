@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// StepMetricStatusEnum : The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary. 
-/// The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary. 
+/// StepMetricStatusEnum : The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
+/// The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum StepMetricStatusEnum {
     #[serde(rename = "SUCCESS")]
@@ -23,7 +23,6 @@ pub enum StepMetricStatusEnum {
     Cancel,
     #[serde(rename = "SKIP")]
     Skip,
-
 }
 
 impl std::fmt::Display for StepMetricStatusEnum {
@@ -42,4 +41,3 @@ impl Default for StepMetricStatusEnum {
         Self::Success
     }
 }
-

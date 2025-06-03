@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -18,22 +18,25 @@ pub struct EnvironmentLogs {
     #[serde(rename = "timestamp")]
     pub timestamp: String,
     #[serde(rename = "details")]
-    pub details: Box<models::EnvironmentLogsDetails>,
-    #[serde(rename = "error", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub error: Option<Option<Box<models::EnvironmentLogsError>>>,
-    #[serde(rename = "message", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub message: Option<Option<Box<models::EnvironmentLogsMessage>>>,
+    pub details: models::EnvironmentLogsDetails,
+    #[serde(rename = "error", skip_serializing_if = "Option::is_none")]
+    pub error: Option<models::EnvironmentLogsError>,
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    pub message: Option<models::EnvironmentLogsMessage>,
 }
 
 impl EnvironmentLogs {
-    pub fn new(r#type: String, timestamp: String, details: models::EnvironmentLogsDetails) -> EnvironmentLogs {
+    pub fn new(
+        r#type: String,
+        timestamp: String,
+        details: models::EnvironmentLogsDetails,
+    ) -> EnvironmentLogs {
         EnvironmentLogs {
             r#type,
             timestamp,
-            details: Box::new(details),
+            details,
             error: None,
             message: None,
         }
     }
 }
-

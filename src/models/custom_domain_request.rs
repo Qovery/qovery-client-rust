@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,7 +19,7 @@ pub struct CustomDomainRequest {
     /// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
     #[serde(rename = "generate_certificate")]
     pub generate_certificate: bool,
-    /// Indicates if the custom domain is behind a CDN (i.e Cloudflare). This will condition the way we are checking CNAME before & during a deployment: * If `true` then we only check the domain points to an IP * If `false` then we check that the domain resolves to the correct service Load Balancer 
+    /// Indicates if the custom domain is behind a CDN (i.e Cloudflare). This will condition the way we are checking CNAME before & during a deployment: * If `true` then we only check the domain points to an IP * If `false` then we check that the domain resolves to the correct service Load Balancer
     #[serde(rename = "use_cdn", skip_serializing_if = "Option::is_none")]
     pub use_cdn: Option<bool>,
 }
@@ -33,4 +33,3 @@ impl CustomDomainRequest {
         }
     }
 }
-

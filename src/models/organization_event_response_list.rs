@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,9 +14,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OrganizationEventResponseList {
     #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<Box<models::OrganizationEventResponseListLinks>>,
+    pub links: Option<models::OrganizationEventResponseListLinks>,
     /// Indicates if you cannot see previous logs according to your organization max limit
-    #[serde(rename = "organization_max_limit_reached", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "organization_max_limit_reached",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub organization_max_limit_reached: Option<bool>,
     #[serde(rename = "events", skip_serializing_if = "Option::is_none")]
     pub events: Option<Vec<models::OrganizationEventResponse>>,
@@ -31,4 +34,3 @@ impl OrganizationEventResponseList {
         }
     }
 }
-

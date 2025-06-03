@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,16 +17,21 @@ pub struct KarpenterNodePoolConsolidation {
     pub enabled: bool,
     #[serde(rename = "days")]
     pub days: Vec<models::WeekdayEnum>,
-    /// The start date of the consolidation. The format should follow ISO-8601 convention: \"PThh:mm\" 
+    /// The start date of the consolidation. The format should follow ISO-8601 convention: \"PThh:mm\"
     #[serde(rename = "start_time")]
     pub start_time: String,
-    /// The duration during the consolidation will be active. The format should follow ISO-8601 convention: \"PThhHmmM\" 
+    /// The duration during the consolidation will be active. The format should follow ISO-8601 convention: \"PThhHmmM\"
     #[serde(rename = "duration")]
     pub duration: String,
 }
 
 impl KarpenterNodePoolConsolidation {
-    pub fn new(enabled: bool, days: Vec<models::WeekdayEnum>, start_time: String, duration: String) -> KarpenterNodePoolConsolidation {
+    pub fn new(
+        enabled: bool,
+        days: Vec<models::WeekdayEnum>,
+        start_time: String,
+        duration: String,
+    ) -> KarpenterNodePoolConsolidation {
         KarpenterNodePoolConsolidation {
             enabled,
             days,
@@ -35,4 +40,3 @@ impl KarpenterNodePoolConsolidation {
         }
     }
 }
-

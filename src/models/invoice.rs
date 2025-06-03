@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -28,7 +28,14 @@ pub struct Invoice {
 }
 
 impl Invoice {
-    pub fn new(total_in_cents: i32, total: f64, currency_code: String, id: uuid::Uuid, created_at: String, status: models::InvoiceStatusEnum) -> Invoice {
+    pub fn new(
+        total_in_cents: i32,
+        total: f64,
+        currency_code: String,
+        id: uuid::Uuid,
+        created_at: String,
+        status: models::InvoiceStatusEnum,
+    ) -> Invoice {
         Invoice {
             total_in_cents,
             total,
@@ -39,4 +46,3 @@ impl Invoice {
         }
     }
 }
-

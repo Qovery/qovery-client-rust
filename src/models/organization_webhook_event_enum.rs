@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OrganizationWebhookEventEnum : Events to subscribe to and send to the `target_url`. - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled - `DEPLOYMENT_FAILURE` send an event when a deployment failed - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful 
-/// Events to subscribe to and send to the `target_url`. - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled - `DEPLOYMENT_FAILURE` send an event when a deployment failed - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful 
+/// OrganizationWebhookEventEnum : Events to subscribe to and send to the `target_url`. - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled - `DEPLOYMENT_FAILURE` send an event when a deployment failed - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful
+/// Events to subscribe to and send to the `target_url`. - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled - `DEPLOYMENT_FAILURE` send an event when a deployment failed - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum OrganizationWebhookEventEnum {
     #[serde(rename = "DEPLOYMENT_STARTED")]
@@ -23,7 +23,6 @@ pub enum OrganizationWebhookEventEnum {
     DeploymentFailure,
     #[serde(rename = "DEPLOYMENT_SUCCESSFUL")]
     DeploymentSuccessful,
-
 }
 
 impl std::fmt::Display for OrganizationWebhookEventEnum {
@@ -42,4 +41,3 @@ impl Default for OrganizationWebhookEventEnum {
         Self::DeploymentStarted
     }
 }
-

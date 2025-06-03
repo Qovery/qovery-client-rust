@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,9 +15,9 @@ use serde::{Deserialize, Serialize};
 pub struct DeploymentHistoryJobResponseAllOfSchedule {
     #[serde(rename = "event", skip_serializing_if = "Option::is_none")]
     pub event: Option<models::JobScheduleEvent>,
-    /// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC 
-    #[serde(rename = "schedule_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub schedule_at: Option<Option<String>>,
+    /// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
+    #[serde(rename = "schedule_at", skip_serializing_if = "Option::is_none")]
+    pub schedule_at: Option<String>,
 }
 
 impl DeploymentHistoryJobResponseAllOfSchedule {
@@ -28,4 +28,3 @@ impl DeploymentHistoryJobResponseAllOfSchedule {
         }
     }
 }
-

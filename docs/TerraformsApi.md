@@ -52,7 +52,7 @@ Create a terraform
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**environment_id** | **String** |  | [required] |
+**environment_id** | **uuid::Uuid** |  | [required] |
 **terraform_request** | Option<[**TerraformRequest**](TerraformRequest.md)> |  |  |
 
 ### Return type
@@ -106,7 +106,7 @@ List terraforms
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**environment_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

@@ -216,8 +216,8 @@ Delete a set of Azure credentials
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**credentials_id** | **uuid::Uuid** | Credentials ID | [required] |
+**organization_id** | **uuid::Uuid** |  | [required] |
+**credentials_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 
@@ -362,8 +362,8 @@ Edit a set of Azure credentials
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**credentials_id** | **uuid::Uuid** | Credentials ID | [required] |
+**organization_id** | **uuid::Uuid** |  | [required] |
+**credentials_id** | **uuid::Uuid** |  | [required] |
 **azure_credentials_request** | Option<[**AzureCredentialsRequest**](AzureCredentialsRequest.md)> |  |  |
 
 ### Return type
@@ -511,8 +511,8 @@ Get a set of Azure credentials
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**credentials_id** | **uuid::Uuid** | Credentials ID | [required] |
+**organization_id** | **uuid::Uuid** |  | [required] |
+**credentials_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

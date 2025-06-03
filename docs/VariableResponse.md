@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **key** | **String** |  | 
-**value** | Option<**String**> |  | 
+**value** | **String** |  | 
 **mount_path** | Option<**String**> |  | [optional]
 **overridden_variable** | Option<[**models::VariableOverride**](VariableOverride.md)> |  | [optional]
 **aliased_variable** | Option<[**models::VariableAlias**](VariableAlias.md)> |  | [optional]

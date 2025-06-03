@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,27 +22,33 @@ pub struct ApplicationEditRequest {
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(rename = "git_repository", skip_serializing_if = "Option::is_none")]
-    pub git_repository: Option<Box<models::ApplicationGitRepositoryRequest>>,
+    pub git_repository: Option<models::ApplicationGitRepositoryRequest>,
     #[serde(rename = "build_mode", skip_serializing_if = "Option::is_none")]
     pub build_mode: Option<models::BuildModeEnum>,
     /// The path of the associated Dockerfile
-    #[serde(rename = "dockerfile_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub dockerfile_path: Option<Option<String>>,
+    #[serde(rename = "dockerfile_path", skip_serializing_if = "Option::is_none")]
+    pub dockerfile_path: Option<String>,
     /// unit is millicores (m). 1000m = 1 cpu
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
     pub cpu: Option<i32>,
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
-    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
-    #[serde(rename = "min_running_instances", skip_serializing_if = "Option::is_none")]
+    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
+    #[serde(
+        rename = "min_running_instances",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub min_running_instances: Option<i32>,
-    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
-    #[serde(rename = "max_running_instances", skip_serializing_if = "Option::is_none")]
+    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
+    #[serde(
+        rename = "max_running_instances",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub max_running_instances: Option<i32>,
     #[serde(rename = "healthchecks")]
-    pub healthchecks: Box<models::Healthcheck>,
-    /// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
+    pub healthchecks: models::Healthcheck,
+    /// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
     #[serde(rename = "ports", skip_serializing_if = "Option::is_none")]
@@ -53,8 +59,8 @@ pub struct ApplicationEditRequest {
     #[serde(rename = "entrypoint", skip_serializing_if = "Option::is_none")]
     pub entrypoint: Option<String>,
     /// Specify if the application will be automatically updated after receiving a new commit.
-    #[serde(rename = "auto_deploy", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub auto_deploy: Option<Option<bool>>,
+    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
+    pub auto_deploy: Option<bool>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
     pub annotations_groups: Option<Vec<models::ServiceAnnotationRequest>>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
@@ -63,8 +69,11 @@ pub struct ApplicationEditRequest {
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
     /// The target build stage in the Dockerfile to build
-    #[serde(rename = "docker_target_build_stage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub docker_target_build_stage: Option<Option<String>>,
+    #[serde(
+        rename = "docker_target_build_stage",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub docker_target_build_stage: Option<String>,
 }
 
 impl ApplicationEditRequest {
@@ -80,7 +89,7 @@ impl ApplicationEditRequest {
             memory: None,
             min_running_instances: None,
             max_running_instances: None,
-            healthchecks: Box::new(healthchecks),
+            healthchecks,
             auto_preview: None,
             ports: None,
             arguments: None,
@@ -93,4 +102,3 @@ impl ApplicationEditRequest {
         }
     }
 }
-

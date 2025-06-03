@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **String** |  | 
 **scope** | Option<[**models::EnvironmentLogScope**](EnvironmentLog_scope.md)> |  | [optional]
 **state** | Option<[**models::StatusKindEnum**](StatusKindEnum.md)> |  | [optional]
-**message** | Option<**String**> | Log message | 
+**message** | **String** | Log message | 
 **execution_id** | Option<**String**> | Only for errors. Helps Qovery team to investigate. | [optional]
 **hint** | Option<**String**> |  | [optional]
 

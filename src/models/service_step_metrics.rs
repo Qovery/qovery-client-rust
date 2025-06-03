@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,10 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ServiceStepMetrics {
     /// The total duration in seconds of the service deployment or null if the deployment is not completed.
-    #[serde(rename = "total_duration_sec", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub total_duration_sec: Option<Option<i32>>,
+    #[serde(rename = "total_duration_sec", skip_serializing_if = "Option::is_none")]
+    pub total_duration_sec: Option<i32>,
     /// The total duration in seconds of the service deployment without queuing steps.
-    #[serde(rename = "total_computing_duration_sec", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "total_computing_duration_sec",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub total_computing_duration_sec: Option<i32>,
     /// A list of metrics for deployment steps of the service.
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
@@ -33,4 +36,3 @@ impl ServiceStepMetrics {
         }
     }
 }
-

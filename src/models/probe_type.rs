@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -13,14 +13,14 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProbeType {
-    #[serde(rename = "tcp", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub tcp: Option<Option<Box<models::ProbeTypeTcp>>>,
-    #[serde(rename = "http", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub http: Option<Option<Box<models::ProbeTypeHttp>>>,
-    #[serde(rename = "exec", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub exec: Option<Option<Box<models::ProbeTypeExec>>>,
-    #[serde(rename = "grpc", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub grpc: Option<Option<Box<models::ProbeTypeGrpc>>>,
+    #[serde(rename = "tcp", skip_serializing_if = "Option::is_none")]
+    pub tcp: Option<models::ProbeTypeTcp>,
+    #[serde(rename = "http", skip_serializing_if = "Option::is_none")]
+    pub http: Option<models::ProbeTypeHttp>,
+    #[serde(rename = "exec", skip_serializing_if = "Option::is_none")]
+    pub exec: Option<models::ProbeTypeExec>,
+    #[serde(rename = "grpc", skip_serializing_if = "Option::is_none")]
+    pub grpc: Option<models::ProbeTypeGrpc>,
 }
 
 impl ProbeType {
@@ -33,4 +33,3 @@ impl ProbeType {
         }
     }
 }
-

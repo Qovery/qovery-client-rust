@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ApiVariableTypeEnum : type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN) 
-/// type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN) 
+/// ApiVariableTypeEnum : type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN)
+/// type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ApiVariableTypeEnum {
     #[serde(rename = "VALUE")]
@@ -25,7 +25,6 @@ pub enum ApiVariableTypeEnum {
     BuiltIn,
     #[serde(rename = "FILE")]
     File,
-
 }
 
 impl std::fmt::Display for ApiVariableTypeEnum {
@@ -45,4 +44,3 @@ impl Default for ApiVariableTypeEnum {
         Self::Value
     }
 }
-

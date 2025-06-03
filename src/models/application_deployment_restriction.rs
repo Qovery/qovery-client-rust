@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -29,7 +29,13 @@ pub struct ApplicationDeploymentRestriction {
 }
 
 impl ApplicationDeploymentRestriction {
-    pub fn new(id: uuid::Uuid, created_at: String, mode: models::DeploymentRestrictionModeEnum, r#type: models::DeploymentRestrictionTypeEnum, value: String) -> ApplicationDeploymentRestriction {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        mode: models::DeploymentRestrictionModeEnum,
+        r#type: models::DeploymentRestrictionTypeEnum,
+        value: String,
+    ) -> ApplicationDeploymentRestriction {
         ApplicationDeploymentRestriction {
             id,
             created_at,
@@ -40,4 +46,3 @@ impl ApplicationDeploymentRestriction {
         }
     }
 }
-

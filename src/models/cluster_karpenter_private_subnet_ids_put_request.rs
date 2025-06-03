@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -13,11 +13,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ClusterKarpenterPrivateSubnetIdsPutRequest {
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_a_ids", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_a_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Vec<String>>,
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_b_ids", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_b_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Vec<String>>,
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_c_ids", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_c_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Vec<String>>,
 }
 
@@ -30,4 +39,3 @@ impl ClusterKarpenterPrivateSubnetIdsPutRequest {
         }
     }
 }
-

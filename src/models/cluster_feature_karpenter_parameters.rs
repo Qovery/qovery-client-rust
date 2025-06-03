@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,17 +20,21 @@ pub struct ClusterFeatureKarpenterParameters {
     #[serde(rename = "default_service_architecture")]
     pub default_service_architecture: models::CpuArchitectureEnum,
     #[serde(rename = "qovery_node_pools")]
-    pub qovery_node_pools: Box<models::KarpenterNodePool>,
+    pub qovery_node_pools: models::KarpenterNodePool,
 }
 
 impl ClusterFeatureKarpenterParameters {
-    pub fn new(spot_enabled: bool, disk_size_in_gib: i32, default_service_architecture: models::CpuArchitectureEnum, qovery_node_pools: models::KarpenterNodePool) -> ClusterFeatureKarpenterParameters {
+    pub fn new(
+        spot_enabled: bool,
+        disk_size_in_gib: i32,
+        default_service_architecture: models::CpuArchitectureEnum,
+        qovery_node_pools: models::KarpenterNodePool,
+    ) -> ClusterFeatureKarpenterParameters {
         ClusterFeatureKarpenterParameters {
             spot_enabled,
             disk_size_in_gib,
             default_service_architecture,
-            qovery_node_pools: Box::new(qovery_node_pools),
+            qovery_node_pools,
         }
     }
 }
-

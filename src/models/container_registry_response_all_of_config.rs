@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,9 +17,15 @@ pub struct ContainerRegistryResponseAllOfConfig {
     pub username: Option<String>,
     #[serde(rename = "region", skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
-    #[serde(rename = "scaleway_access_key", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "scaleway_access_key",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub scaleway_access_key: Option<String>,
-    #[serde(rename = "scaleway_project_id", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "scaleway_project_id",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub scaleway_project_id: Option<String>,
     #[serde(rename = "access_key_id", skip_serializing_if = "Option::is_none")]
     pub access_key_id: Option<String>,
@@ -39,4 +45,3 @@ impl ContainerRegistryResponseAllOfConfig {
         }
     }
 }
-

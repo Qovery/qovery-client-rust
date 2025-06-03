@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,10 +14,10 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "job_type")]
 pub enum JobResponse {
-    #[serde(rename="LIFECYCLE")]
-    Lifecycle(Box<models::LifecycleJobResponse>),
-    #[serde(rename="CRON")]
-    Cron(Box<models::CronJobResponse>),
+    #[serde(rename = "LIFECYCLE")]
+    Lifecycle(models::LifecycleJobResponse),
+    #[serde(rename = "CRON")]
+    Cron(models::CronJobResponse),
 }
 
 impl Default for JobResponse {
@@ -25,5 +25,3 @@ impl Default for JobResponse {
         Self::Lifecycle(Default::default())
     }
 }
-
-

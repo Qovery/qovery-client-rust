@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_application
 
-> models::ApplicationResponseList list_application(environment_id)
+> models::ApplicationResponseList list_application(environment_id, to_update)
 List applications
 
 ### Parameters
@@ -140,6 +140,7 @@ List applications
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**to_update** | Option<**bool**> | return (or not) results that must be updated |  |[default to false]
 
 ### Return type
 

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -31,7 +31,7 @@ pub struct LifecycleTemplateResponse {
     #[serde(rename = "max_duration_in_sec")]
     pub max_duration_in_sec: i32,
     #[serde(rename = "resources")]
-    pub resources: Box<models::LifecycleTemplateResponseResources>,
+    pub resources: models::LifecycleTemplateResponseResources,
     /// Variables to inject at the creation of this lifecycle job
     #[serde(rename = "variables")]
     pub variables: Vec<models::LifecycleTemplateResponseVariablesInner>,
@@ -41,7 +41,18 @@ pub struct LifecycleTemplateResponse {
 }
 
 impl LifecycleTemplateResponse {
-    pub fn new(id: uuid::Uuid, name: String, description: String, source_url: String, cloud_provider: models::CloudProviderEnum, events: Vec<models::LifecycleTemplateResponseEventsInner>, max_duration_in_sec: i32, resources: models::LifecycleTemplateResponseResources, variables: Vec<models::LifecycleTemplateResponseVariablesInner>, dockerfile: String) -> LifecycleTemplateResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        name: String,
+        description: String,
+        source_url: String,
+        cloud_provider: models::CloudProviderEnum,
+        events: Vec<models::LifecycleTemplateResponseEventsInner>,
+        max_duration_in_sec: i32,
+        resources: models::LifecycleTemplateResponseResources,
+        variables: Vec<models::LifecycleTemplateResponseVariablesInner>,
+        dockerfile: String,
+    ) -> LifecycleTemplateResponse {
         LifecycleTemplateResponse {
             id,
             name,
@@ -50,10 +61,9 @@ impl LifecycleTemplateResponse {
             cloud_provider,
             events,
             max_duration_in_sec,
-            resources: Box::new(resources),
+            resources,
             variables,
             dockerfile,
         }
     }
 }
-

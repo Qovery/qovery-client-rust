@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -36,7 +36,17 @@ pub struct ServiceLightResponse {
 }
 
 impl ServiceLightResponse {
-    pub fn new(id: uuid::Uuid, name: String, description: String, icon_uri: String, service_type: models::ServiceTypeEnum, project_id: uuid::Uuid, project_name: String, environment_id: uuid::Uuid, environment_name: String) -> ServiceLightResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        name: String,
+        description: String,
+        icon_uri: String,
+        service_type: models::ServiceTypeEnum,
+        project_id: uuid::Uuid,
+        project_name: String,
+        environment_id: uuid::Uuid,
+        environment_name: String,
+    ) -> ServiceLightResponse {
         ServiceLightResponse {
             id,
             name,
@@ -51,7 +61,7 @@ impl ServiceLightResponse {
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum JobType {
     #[serde(rename = "CRON")]
@@ -65,4 +75,3 @@ impl Default for JobType {
         Self::Cron
     }
 }
-

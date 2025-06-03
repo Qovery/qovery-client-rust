@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,26 +17,41 @@ pub struct ClusterFeatureResponse {
     pub id: Option<uuid::Uuid>,
     #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
-    #[serde(rename = "cost_per_month_in_cents", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub cost_per_month_in_cents: Option<Option<i32>>,
-    #[serde(rename = "cost_per_month", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub cost_per_month: Option<Option<f64>>,
-    #[serde(rename = "currency_code", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub currency_code: Option<Option<String>>,
-    #[serde(rename = "is_cloud_provider_paying_feature", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(
+        rename = "cost_per_month_in_cents",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cost_per_month_in_cents: Option<i32>,
+    #[serde(rename = "cost_per_month", skip_serializing_if = "Option::is_none")]
+    pub cost_per_month: Option<f64>,
+    #[serde(rename = "currency_code", skip_serializing_if = "Option::is_none")]
+    pub currency_code: Option<String>,
+    #[serde(
+        rename = "is_cloud_provider_paying_feature",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub is_cloud_provider_paying_feature: Option<bool>,
-    #[serde(rename = "cloud_provider_feature_documentation", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub cloud_provider_feature_documentation: Option<Option<String>>,
-    #[serde(rename = "is_qovery_paying_feature", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "cloud_provider_feature_documentation",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cloud_provider_feature_documentation: Option<String>,
+    #[serde(
+        rename = "is_qovery_paying_feature",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub is_qovery_paying_feature: Option<bool>,
-    #[serde(rename = "qovery_feature_documentation", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub qovery_feature_documentation: Option<Option<String>>,
+    #[serde(
+        rename = "qovery_feature_documentation",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub qovery_feature_documentation: Option<String>,
     #[serde(rename = "value_type", skip_serializing_if = "Option::is_none")]
     pub value_type: Option<ValueType>,
-    #[serde(rename = "value_object", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub value_object: Option<Option<Box<models::ClusterFeatureResponseValueObject>>>,
+    #[serde(rename = "value_object", skip_serializing_if = "Option::is_none")]
+    pub value_object: Option<models::ClusterFeatureResponseValueObject>,
     #[serde(rename = "is_value_updatable", skip_serializing_if = "Option::is_none")]
     pub is_value_updatable: Option<bool>,
     #[serde(rename = "accepted_values", skip_serializing_if = "Option::is_none")]
@@ -63,7 +78,7 @@ impl ClusterFeatureResponse {
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ValueType {
     #[serde(rename = "BOOLEAN")]
@@ -75,4 +90,3 @@ impl Default for ValueType {
         Self::Boolean
     }
 }
-

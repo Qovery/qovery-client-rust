@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -25,12 +25,21 @@ pub struct OrganizationAnnotationsGroupEnrichedResponse {
     pub annotations: Vec<models::Annotation>,
     #[serde(rename = "scopes")]
     pub scopes: Vec<models::OrganizationAnnotationsGroupScopeEnum>,
-    #[serde(rename = "associated_items_count", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "associated_items_count",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub associated_items_count: Option<i32>,
 }
 
 impl OrganizationAnnotationsGroupEnrichedResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, annotations: Vec<models::Annotation>, scopes: Vec<models::OrganizationAnnotationsGroupScopeEnum>) -> OrganizationAnnotationsGroupEnrichedResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        annotations: Vec<models::Annotation>,
+        scopes: Vec<models::OrganizationAnnotationsGroupScopeEnum>,
+    ) -> OrganizationAnnotationsGroupEnrichedResponse {
         OrganizationAnnotationsGroupEnrichedResponse {
             id,
             created_at,
@@ -42,4 +51,3 @@ impl OrganizationAnnotationsGroupEnrichedResponse {
         }
     }
 }
-

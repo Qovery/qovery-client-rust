@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -28,7 +28,14 @@ pub struct ScalewayClusterCredentials {
 }
 
 impl ScalewayClusterCredentials {
-    pub fn new(id: uuid::Uuid, name: String, scaleway_access_key: String, object_type: ObjectType, scaleway_project_id: String, scaleway_organization_id: String) -> ScalewayClusterCredentials {
+    pub fn new(
+        id: uuid::Uuid,
+        name: String,
+        scaleway_access_key: String,
+        object_type: ObjectType,
+        scaleway_project_id: String,
+        scaleway_organization_id: String,
+    ) -> ScalewayClusterCredentials {
         ScalewayClusterCredentials {
             id,
             name,
@@ -39,7 +46,7 @@ impl ScalewayClusterCredentials {
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ObjectType {
     #[serde(rename = "SCW")]
@@ -51,4 +58,3 @@ impl Default for ObjectType {
         Self::Scw
     }
 }
-

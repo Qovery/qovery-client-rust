@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,14 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmResponseAllOfSourceOneOf1 {
     #[serde(rename = "repository")]
-    pub repository: Box<models::HelmSourceRepositoryResponse>,
+    pub repository: models::HelmSourceRepositoryResponse,
 }
 
 impl HelmResponseAllOfSourceOneOf1 {
     pub fn new(repository: models::HelmSourceRepositoryResponse) -> HelmResponseAllOfSourceOneOf1 {
-        HelmResponseAllOfSourceOneOf1 {
-            repository: Box::new(repository),
-        }
+        HelmResponseAllOfSourceOneOf1 { repository }
     }
 }
-

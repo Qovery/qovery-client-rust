@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,60 +20,75 @@ pub struct HelmResponse {
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
     #[serde(rename = "environment")]
-    pub environment: Box<models::ReferenceObject>,
+    pub environment: models::ReferenceObject,
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// Maximum number of seconds allowed for helm to run before killing it and mark it as failed 
+    /// Maximum number of seconds allowed for helm to run before killing it and mark it as failed
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
     pub timeout_sec: Option<i32>,
-    /// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
+    /// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
     #[serde(rename = "auto_preview")]
     pub auto_preview: bool,
-    /// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type. 
+    /// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     #[serde(rename = "ports", skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<models::HelmResponseAllOfPorts>>,
     #[serde(rename = "source")]
-    pub source: Box<models::HelmResponseAllOfSource>,
+    pub source: models::HelmResponseAllOfSource,
     /// The extra arguments to pass to helm
     #[serde(rename = "arguments")]
     pub arguments: Vec<String>,
-    /// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights 
+    /// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
     #[serde(rename = "allow_cluster_wide_resources")]
     pub allow_cluster_wide_resources: bool,
     #[serde(rename = "values_override")]
-    pub values_override: Box<models::HelmResponseAllOfValuesOverride>,
+    pub values_override: models::HelmResponseAllOfValuesOverride,
     /// Icon URI representing the helm service.
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_helm"
+    )]
     pub service_type: models::ServiceTypeEnum,
 }
 
 impl HelmResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, environment: models::ReferenceObject, name: String, auto_preview: bool, auto_deploy: bool, source: models::HelmResponseAllOfSource, arguments: Vec<String>, allow_cluster_wide_resources: bool, values_override: models::HelmResponseAllOfValuesOverride, icon_uri: String, service_type: models::ServiceTypeEnum) -> HelmResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        environment: models::ReferenceObject,
+        name: String,
+        auto_preview: bool,
+        auto_deploy: bool,
+        source: models::HelmResponseAllOfSource,
+        arguments: Vec<String>,
+        allow_cluster_wide_resources: bool,
+        values_override: models::HelmResponseAllOfValuesOverride,
+        icon_uri: String,
+        service_type: models::ServiceTypeEnum,
+    ) -> HelmResponse {
         HelmResponse {
             id,
             created_at,
             updated_at: None,
-            environment: Box::new(environment),
+            environment,
             name,
             description: None,
             timeout_sec: None,
             auto_preview,
             auto_deploy,
             ports: None,
-            source: Box::new(source),
+            source,
             arguments,
             allow_cluster_wide_resources,
-            values_override: Box::new(values_override),
+            values_override,
             icon_uri,
             service_type,
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum EnvironmentLogTypeEnum {
     #[serde(rename = "APPLICATION")]
@@ -20,7 +20,6 @@ pub enum EnvironmentLogTypeEnum {
     Database,
     #[serde(rename = "ENVIRONMENT")]
     Environment,
-
 }
 
 impl std::fmt::Display for EnvironmentLogTypeEnum {
@@ -38,4 +37,3 @@ impl Default for EnvironmentLogTypeEnum {
         Self::Application
     }
 }
-

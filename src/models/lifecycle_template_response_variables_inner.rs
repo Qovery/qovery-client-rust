@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -25,11 +25,16 @@ pub struct LifecycleTemplateResponseVariablesInner {
     #[serde(rename = "is_secret")]
     pub is_secret: bool,
     #[serde(rename = "file", skip_serializing_if = "Option::is_none")]
-    pub file: Option<Box<models::LifecycleTemplateResponseVariablesInnerFile>>,
+    pub file: Option<models::LifecycleTemplateResponseVariablesInnerFile>,
 }
 
 impl LifecycleTemplateResponseVariablesInner {
-    pub fn new(name: String, description: String, default: String, is_secret: bool) -> LifecycleTemplateResponseVariablesInner {
+    pub fn new(
+        name: String,
+        description: String,
+        default: String,
+        is_secret: bool,
+    ) -> LifecycleTemplateResponseVariablesInner {
         LifecycleTemplateResponseVariablesInner {
             name,
             description,
@@ -39,4 +44,3 @@ impl LifecycleTemplateResponseVariablesInner {
         }
     }
 }
-

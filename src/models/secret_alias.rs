@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,14 +24,23 @@ pub struct SecretAlias {
     #[serde(rename = "variable_type")]
     pub variable_type: models::ApiVariableTypeEnum,
     /// optional variable description (255 characters maximum)
-    #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub description: Option<Option<String>>,
-    #[serde(rename = "enable_interpolation_in_file", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub enable_interpolation_in_file: Option<Option<bool>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub enable_interpolation_in_file: Option<bool>,
 }
 
 impl SecretAlias {
-    pub fn new(id: uuid::Uuid, key: String, mount_path: String, scope: models::ApiVariableScopeEnum, variable_type: models::ApiVariableTypeEnum) -> SecretAlias {
+    pub fn new(
+        id: uuid::Uuid,
+        key: String,
+        mount_path: String,
+        scope: models::ApiVariableScopeEnum,
+        variable_type: models::ApiVariableTypeEnum,
+    ) -> SecretAlias {
         SecretAlias {
             id,
             key,
@@ -43,4 +52,3 @@ impl SecretAlias {
         }
     }
 }
-

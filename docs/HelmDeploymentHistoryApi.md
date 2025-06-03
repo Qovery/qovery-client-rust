@@ -51,7 +51,7 @@ Returns the 20 last helm deployments
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**helm_id** | **uuid::Uuid** | Helm ID | [required] |
+**helm_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

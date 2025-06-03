@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -26,7 +26,12 @@ pub struct ClusterLock {
 }
 
 impl ClusterLock {
-    pub fn new(reason: String, cluster_id: uuid::Uuid, locked_at: String, owner_name: String) -> ClusterLock {
+    pub fn new(
+        reason: String,
+        cluster_id: uuid::Uuid,
+        locked_at: String,
+        owner_name: String,
+    ) -> ClusterLock {
         ClusterLock {
             reason,
             ttl_in_days: None,
@@ -36,4 +41,3 @@ impl ClusterLock {
         }
     }
 }
-

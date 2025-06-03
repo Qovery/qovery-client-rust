@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,17 +20,21 @@ pub struct GetClusterTokenByClusterId200Response {
     #[serde(rename = "spec")]
     pub spec: serde_json::Value,
     #[serde(rename = "status")]
-    pub status: Box<models::GetClusterTokenByClusterId200ResponseStatus>,
+    pub status: models::GetClusterTokenByClusterId200ResponseStatus,
 }
 
 impl GetClusterTokenByClusterId200Response {
-    pub fn new(api_version: String, kind: String, spec: serde_json::Value, status: models::GetClusterTokenByClusterId200ResponseStatus) -> GetClusterTokenByClusterId200Response {
+    pub fn new(
+        api_version: String,
+        kind: String,
+        spec: serde_json::Value,
+        status: models::GetClusterTokenByClusterId200ResponseStatus,
+    ) -> GetClusterTokenByClusterId200Response {
         GetClusterTokenByClusterId200Response {
             api_version,
             kind,
             spec,
-            status: Box::new(status),
+            status,
         }
     }
 }
-

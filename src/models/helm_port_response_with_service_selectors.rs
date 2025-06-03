@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -37,7 +37,13 @@ pub struct HelmPortResponseWithServiceSelectors {
 }
 
 impl HelmPortResponseWithServiceSelectors {
-    pub fn new(id: uuid::Uuid, port_type: String, internal_port: i32, protocol: models::HelmPortProtocolEnum, service_selectors: Vec<models::KubernetesSelector>) -> HelmPortResponseWithServiceSelectors {
+    pub fn new(
+        id: uuid::Uuid,
+        port_type: String,
+        internal_port: i32,
+        protocol: models::HelmPortProtocolEnum,
+        service_selectors: Vec<models::KubernetesSelector>,
+    ) -> HelmPortResponseWithServiceSelectors {
         HelmPortResponseWithServiceSelectors {
             id,
             port_type,
@@ -51,4 +57,3 @@ impl HelmPortResponseWithServiceSelectors {
         }
     }
 }
-

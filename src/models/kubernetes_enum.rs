@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,14 +11,13 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum KubernetesEnum {
     #[serde(rename = "MANAGED")]
     Managed,
     #[serde(rename = "SELF_MANAGED")]
     SelfManaged,
-
 }
 
 impl std::fmt::Display for KubernetesEnum {
@@ -35,4 +34,3 @@ impl Default for KubernetesEnum {
         Self::Managed
     }
 }
-

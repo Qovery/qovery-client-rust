@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -26,7 +26,13 @@ pub struct EksInfrastructureOutputs {
 }
 
 impl EksInfrastructureOutputs {
-    pub fn new(kind: Kind, cluster_name: String, cluster_arn: String, cluster_oidc_issuer: String, vpc_id: String) -> EksInfrastructureOutputs {
+    pub fn new(
+        kind: Kind,
+        cluster_name: String,
+        cluster_arn: String,
+        cluster_oidc_issuer: String,
+        vpc_id: String,
+    ) -> EksInfrastructureOutputs {
         EksInfrastructureOutputs {
             kind,
             cluster_name,
@@ -36,7 +42,7 @@ impl EksInfrastructureOutputs {
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Kind {
     #[serde(rename = "EKS")]
@@ -48,4 +54,3 @@ impl Default for Kind {
         Self::Eks
     }
 }
-

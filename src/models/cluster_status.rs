@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,13 +19,19 @@ pub struct ClusterStatus {
     pub status: Option<models::ClusterStateEnum>,
     #[serde(rename = "is_deployed", skip_serializing_if = "Option::is_none")]
     pub is_deployed: Option<bool>,
-    #[serde(rename = "next_k8s_available_version", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub next_k8s_available_version: Option<Option<String>>,
+    #[serde(
+        rename = "next_k8s_available_version",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub next_k8s_available_version: Option<String>,
     #[serde(rename = "last_execution_id", skip_serializing_if = "Option::is_none")]
     pub last_execution_id: Option<String>,
     #[serde(rename = "cluster_lock", skip_serializing_if = "Option::is_none")]
-    pub cluster_lock: Option<Box<models::ClusterLock>>,
-    #[serde(rename = "last_deployment_date", skip_serializing_if = "Option::is_none")]
+    pub cluster_lock: Option<models::ClusterLock>,
+    #[serde(
+        rename = "last_deployment_date",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub last_deployment_date: Option<String>,
 }
 
@@ -42,4 +48,3 @@ impl ClusterStatus {
         }
     }
 }
-

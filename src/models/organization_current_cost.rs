@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -16,13 +16,16 @@ pub struct OrganizationCurrentCost {
     #[serde(rename = "plan", skip_serializing_if = "Option::is_none")]
     pub plan: Option<models::PlanEnum>,
     /// number of days remaining before the end of the trial period
-    #[serde(rename = "remaining_trial_day", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "remaining_trial_day",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub remaining_trial_day: Option<i32>,
     /// date when the current plan will be renewed
-    #[serde(rename = "renewal_at", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub renewal_at: Option<Option<String>>,
+    #[serde(rename = "renewal_at", skip_serializing_if = "Option::is_none")]
+    pub renewal_at: Option<String>,
     #[serde(rename = "cost", skip_serializing_if = "Option::is_none")]
-    pub cost: Option<Box<models::Cost>>,
+    pub cost: Option<models::Cost>,
 }
 
 impl OrganizationCurrentCost {
@@ -35,4 +38,3 @@ impl OrganizationCurrentCost {
         }
     }
 }
-

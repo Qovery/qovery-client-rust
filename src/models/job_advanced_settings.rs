@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,36 +14,73 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobAdvancedSettings {
     /// define the max timeout for the build
-    #[serde(rename = "build.timeout_max_sec", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "build.timeout_max_sec",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub build_period_timeout_max_sec: Option<i32>,
     /// define the max cpu resources (in milli)
-    #[serde(rename = "build.cpu_max_in_milli", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "build.cpu_max_in_milli",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub build_period_cpu_max_in_milli: Option<i32>,
     /// define the max ram resources (in gib)
-    #[serde(rename = "build.ram_max_in_gib", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "build.ram_max_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub build_period_ram_max_in_gib: Option<i32>,
     /// define how long in seconds an application is supposed to be stopped gracefully
-    #[serde(rename = "deployment.termination_grace_period_seconds", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "deployment.termination_grace_period_seconds",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub deployment_period_termination_grace_period_seconds: Option<i32>,
     /// Set pod placement on specific Kubernetes nodes labels
-    #[serde(rename = "deployment.affinity.node.required", skip_serializing_if = "Option::is_none")]
-    pub deployment_period_affinity_period_node_period_required: Option<std::collections::HashMap<String, String>>,
-    #[serde(rename = "job.delete_ttl_seconds_after_finished", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub job_period_delete_ttl_seconds_after_finished: Option<Option<i32>>,
-    #[serde(rename = "cronjob.concurrency_policy", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "deployment.affinity.node.required",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub deployment_period_affinity_period_node_period_required:
+        Option<std::collections::HashMap<String, String>>,
+    #[serde(
+        rename = "job.delete_ttl_seconds_after_finished",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub job_period_delete_ttl_seconds_after_finished: Option<i32>,
+    #[serde(
+        rename = "cronjob.concurrency_policy",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub cronjob_period_concurrency_policy: Option<String>,
-    #[serde(rename = "cronjob.failed_jobs_history_limit", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "cronjob.failed_jobs_history_limit",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub cronjob_period_failed_jobs_history_limit: Option<i32>,
-    #[serde(rename = "cronjob.success_jobs_history_limit", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "cronjob.success_jobs_history_limit",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub cronjob_period_success_jobs_history_limit: Option<i32>,
-    /// Allows you to set an existing Kubernetes service account name 
-    #[serde(rename = "security.service_account_name", skip_serializing_if = "Option::is_none")]
+    /// Allows you to set an existing Kubernetes service account name
+    #[serde(
+        rename = "security.service_account_name",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub security_period_service_account_name: Option<String>,
-    /// Automount Kubernetes service account token to have access to Kubernetes API from pods 
-    #[serde(rename = "security.automount_service_account_token", skip_serializing_if = "Option::is_none")]
+    /// Automount Kubernetes service account token to have access to Kubernetes API from pods
+    #[serde(
+        rename = "security.automount_service_account_token",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub security_period_automount_service_account_token: Option<bool>,
-    /// Mounts the container's root filesystem as read-only 
-    #[serde(rename = "security.read_only_root_filesystem", skip_serializing_if = "Option::is_none")]
+    /// Mounts the container's root filesystem as read-only
+    #[serde(
+        rename = "security.read_only_root_filesystem",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub security_period_read_only_root_filesystem: Option<bool>,
 }
 
@@ -65,4 +102,3 @@ impl JobAdvancedSettings {
         }
     }
 }
-

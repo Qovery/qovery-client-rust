@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,24 +19,41 @@ pub struct ReferenceObjectStatus {
     pub state: models::StateEnum,
     #[serde(rename = "service_deployment_status")]
     pub service_deployment_status: models::ServiceDeploymentStatusEnum,
-    #[serde(rename = "last_deployment_date", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "last_deployment_date",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub last_deployment_date: Option<String>,
-    #[serde(rename = "is_part_last_deployment", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "is_part_last_deployment",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub is_part_last_deployment: Option<bool>,
     #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
-    pub steps: Option<Box<models::ServiceStepMetrics>>,
+    pub steps: Option<models::ServiceStepMetrics>,
     #[serde(rename = "execution_id", skip_serializing_if = "Option::is_none")]
     pub execution_id: Option<String>,
     #[serde(rename = "status_details")]
-    pub status_details: Box<models::StatusDetails>,
-    #[serde(rename = "deployment_request_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub deployment_request_id: Option<Option<uuid::Uuid>>,
-    #[serde(rename = "deployment_requests_count", skip_serializing_if = "Option::is_none")]
+    pub status_details: models::StatusDetails,
+    #[serde(
+        rename = "deployment_request_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub deployment_request_id: Option<uuid::Uuid>,
+    #[serde(
+        rename = "deployment_requests_count",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub deployment_requests_count: Option<i32>,
 }
 
 impl ReferenceObjectStatus {
-    pub fn new(id: uuid::Uuid, state: models::StateEnum, service_deployment_status: models::ServiceDeploymentStatusEnum, status_details: models::StatusDetails) -> ReferenceObjectStatus {
+    pub fn new(
+        id: uuid::Uuid,
+        state: models::StateEnum,
+        service_deployment_status: models::ServiceDeploymentStatusEnum,
+        status_details: models::StatusDetails,
+    ) -> ReferenceObjectStatus {
         ReferenceObjectStatus {
             id,
             state,
@@ -45,10 +62,9 @@ impl ReferenceObjectStatus {
             is_part_last_deployment: None,
             steps: None,
             execution_id: None,
-            status_details: Box::new(status_details),
+            status_details,
             deployment_request_id: None,
             deployment_requests_count: None,
         }
     }
 }
-

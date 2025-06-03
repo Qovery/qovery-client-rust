@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,7 +24,12 @@ pub struct VariableImportRequestVarsInner {
 }
 
 impl VariableImportRequestVarsInner {
-    pub fn new(name: String, value: String, scope: models::ApiVariableScopeEnum, is_secret: bool) -> VariableImportRequestVarsInner {
+    pub fn new(
+        name: String,
+        value: String,
+        scope: models::ApiVariableScopeEnum,
+        is_secret: bool,
+    ) -> VariableImportRequestVarsInner {
         VariableImportRequestVarsInner {
             name,
             value,
@@ -33,4 +38,3 @@ impl VariableImportRequestVarsInner {
         }
     }
 }
-

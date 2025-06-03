@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -36,7 +36,13 @@ pub struct GitTokenResponse {
 }
 
 impl GitTokenResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, r#type: models::GitProviderEnum, associated_services_count: f64) -> GitTokenResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        r#type: models::GitProviderEnum,
+        associated_services_count: f64,
+    ) -> GitTokenResponse {
         GitTokenResponse {
             id,
             created_at,
@@ -50,4 +56,3 @@ impl GitTokenResponse {
         }
     }
 }
-

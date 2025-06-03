@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -16,9 +16,9 @@ use serde::{Deserialize, Serialize};
 pub enum ClusterRequestFeaturesInnerValue {
     String(String),
     Boolean(bool),
-    ClusterFeatureAwsExistingVpc(Box<models::ClusterFeatureAwsExistingVpc>),
-    ClusterFeatureGcpExistingVpc(Box<models::ClusterFeatureGcpExistingVpc>),
-    ClusterFeatureKarpenterParameters(Box<models::ClusterFeatureKarpenterParameters>),
+    ClusterFeatureAwsExistingVpc(models::ClusterFeatureAwsExistingVpc),
+    ClusterFeatureGcpExistingVpc(models::ClusterFeatureGcpExistingVpc),
+    ClusterFeatureKarpenterParameters(models::ClusterFeatureKarpenterParameters),
 }
 
 impl Default for ClusterRequestFeaturesInnerValue {
@@ -26,4 +26,3 @@ impl Default for ClusterRequestFeaturesInnerValue {
         Self::String(Default::default())
     }
 }
-

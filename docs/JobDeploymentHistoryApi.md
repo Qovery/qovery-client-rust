@@ -51,7 +51,7 @@ Returns the 20 last job deployments
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**job_id** | **uuid::Uuid** | Job ID | [required] |
+**job_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 

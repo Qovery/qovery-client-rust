@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,16 +14,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "object_type")]
 pub enum ClusterCredentials {
-    #[serde(rename="AWS")]
-    Aws(Box<models::AwsStaticClusterCredentials>),
-    #[serde(rename="SCW")]
-    Scw(Box<models::ScalewayClusterCredentials>),
-    #[serde(rename="OTHER")]
-    Other(Box<models::GenericClusterCredentials>),
-    #[serde(rename="AWS_ROLE")]
-    AwsRole(Box<models::AwsRoleClusterCredentials>),
-    #[serde(rename="AZURE")]
-    Azure(Box<models::AzureStaticClusterCredentials>),
+    #[serde(rename = "AWS")]
+    Aws(models::AwsStaticClusterCredentials),
+    #[serde(rename = "SCW")]
+    Scw(models::ScalewayClusterCredentials),
+    #[serde(rename = "OTHER")]
+    Other(models::GenericClusterCredentials),
+    #[serde(rename = "AWS_ROLE")]
+    AwsRole(models::AwsRoleClusterCredentials),
+    #[serde(rename = "AZURE")]
+    Azure(models::AzureStaticClusterCredentials),
 }
 
 impl Default for ClusterCredentials {
@@ -31,5 +31,3 @@ impl Default for ClusterCredentials {
         Self::Aws(Default::default())
     }
 }
-
-

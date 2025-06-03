@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,8 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Probe {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub r#type: Option<Box<models::ProbeType>>,
-    #[serde(rename = "initial_delay_seconds", skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<models::ProbeType>,
+    #[serde(
+        rename = "initial_delay_seconds",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub initial_delay_seconds: Option<i32>,
     #[serde(rename = "period_seconds", skip_serializing_if = "Option::is_none")]
     pub period_seconds: Option<i32>,
@@ -39,4 +42,3 @@ impl Probe {
         }
     }
 }
-

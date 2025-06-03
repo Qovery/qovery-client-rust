@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -29,12 +29,15 @@ pub struct ContainerRegistryResponse {
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     #[serde(rename = "cluster", skip_serializing_if = "Option::is_none")]
-    pub cluster: Option<Box<models::ContainerRegistryResponseAllOfCluster>>,
+    pub cluster: Option<models::ContainerRegistryResponseAllOfCluster>,
     /// The number of services using this container registry
-    #[serde(rename = "associated_services_count", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "associated_services_count",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub associated_services_count: Option<i32>,
     #[serde(rename = "config", skip_serializing_if = "Option::is_none")]
-    pub config: Option<Box<models::ContainerRegistryResponseAllOfConfig>>,
+    pub config: Option<models::ContainerRegistryResponseAllOfConfig>,
 }
 
 impl ContainerRegistryResponse {
@@ -53,4 +56,3 @@ impl ContainerRegistryResponse {
         }
     }
 }
-

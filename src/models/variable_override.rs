@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,8 +20,8 @@ pub struct VariableOverride {
     #[serde(rename = "key")]
     pub key: String,
     /// The value of the overriden variable
-    #[serde(rename = "value", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub value: Option<Option<String>>,
+    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
     /// The mounth path of the overriden variable (only if environment variable type is 'file')
     #[serde(rename = "mount_path")]
     pub mount_path: String,
@@ -32,7 +32,13 @@ pub struct VariableOverride {
 }
 
 impl VariableOverride {
-    pub fn new(id: uuid::Uuid, key: String, mount_path: String, scope: models::ApiVariableScopeEnum, variable_type: models::ApiVariableTypeEnum) -> VariableOverride {
+    pub fn new(
+        id: uuid::Uuid,
+        key: String,
+        mount_path: String,
+        scope: models::ApiVariableScopeEnum,
+        variable_type: models::ApiVariableTypeEnum,
+    ) -> VariableOverride {
         VariableOverride {
             id,
             key,
@@ -43,4 +49,3 @@ impl VariableOverride {
         }
     }
 }
-

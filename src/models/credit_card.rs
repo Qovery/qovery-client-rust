@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -30,7 +30,15 @@ pub struct CreditCard {
 }
 
 impl CreditCard {
-    pub fn new(id: uuid::Uuid, created_at: String, expiry_month: i32, expiry_year: i32, last_digit: String, is_expired: bool, brand: String) -> CreditCard {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        expiry_month: i32,
+        expiry_year: i32,
+        last_digit: String,
+        is_expired: bool,
+        brand: String,
+    ) -> CreditCard {
         CreditCard {
             id,
             created_at,
@@ -42,4 +50,3 @@ impl CreditCard {
         }
     }
 }
-

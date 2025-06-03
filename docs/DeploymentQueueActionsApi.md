@@ -20,7 +20,7 @@ Cancel the a deployment request.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**deployment_request_id** | **uuid::Uuid** | Deployment Request ID | [required] |
+**deployment_request_id** | **uuid::Uuid** |  | [required] |
 **body** | Option<**serde_json::Value**> |  |  |
 
 ### Return type

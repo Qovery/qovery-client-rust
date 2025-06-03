@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -29,26 +29,37 @@ pub struct SignUp {
     pub type_of_use: models::TypeOfUseEnum,
     #[serde(rename = "qovery_usage")]
     pub qovery_usage: String,
-    #[serde(rename = "company_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub company_name: Option<Option<String>>,
+    #[serde(rename = "company_name", skip_serializing_if = "Option::is_none")]
+    pub company_name: Option<String>,
     #[serde(rename = "company_size", skip_serializing_if = "Option::is_none")]
     pub company_size: Option<models::CompanySizeEnum>,
-    #[serde(rename = "user_role", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub user_role: Option<Option<String>>,
-    #[serde(rename = "qovery_usage_other", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub qovery_usage_other: Option<Option<String>>,
-    #[serde(rename = "user_questions", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub user_questions: Option<Option<String>>,
-    #[serde(rename = "current_step", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub current_step: Option<Option<String>>,
-    #[serde(rename = "dx_auth", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub dx_auth: Option<Option<bool>>,
-    #[serde(rename = "infrastructure_hosting", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub infrastructure_hosting: Option<Option<String>>,
+    #[serde(rename = "user_role", skip_serializing_if = "Option::is_none")]
+    pub user_role: Option<String>,
+    #[serde(rename = "qovery_usage_other", skip_serializing_if = "Option::is_none")]
+    pub qovery_usage_other: Option<String>,
+    #[serde(rename = "user_questions", skip_serializing_if = "Option::is_none")]
+    pub user_questions: Option<String>,
+    #[serde(rename = "current_step", skip_serializing_if = "Option::is_none")]
+    pub current_step: Option<String>,
+    #[serde(rename = "dx_auth", skip_serializing_if = "Option::is_none")]
+    pub dx_auth: Option<bool>,
+    #[serde(
+        rename = "infrastructure_hosting",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub infrastructure_hosting: Option<String>,
 }
 
 impl SignUp {
-    pub fn new(id: uuid::Uuid, created_at: String, first_name: String, last_name: String, user_email: String, type_of_use: models::TypeOfUseEnum, qovery_usage: String) -> SignUp {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        first_name: String,
+        last_name: String,
+        user_email: String,
+        type_of_use: models::TypeOfUseEnum,
+        qovery_usage: String,
+    ) -> SignUp {
         SignUp {
             id,
             created_at,
@@ -69,4 +80,3 @@ impl SignUp {
         }
     }
 }
-

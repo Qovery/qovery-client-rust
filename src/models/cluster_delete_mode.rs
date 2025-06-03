@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ClusterDeleteMode : Indicates the mode to apply on cluster deletion   **\"hard delete\"** means that we delete directly from our database, this is different from a **\"trigger delete\"** that cleans the resource - `DEFAULT`: this is the normal way, trigger delete the cluster only if no environment linked to this cluster remains - `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete environments linked to this cluster then trigger delete the cluster - `DELETE_QOVERY_CONFIG`: ⚠️ ⚠️ ⚠️ hard delete environments linked to this cluster then hard delete the cluster - whole cluster ressources **are not deleted** on our side and must be deleted on your side 
-/// Indicates the mode to apply on cluster deletion   **\"hard delete\"** means that we delete directly from our database, this is different from a **\"trigger delete\"** that cleans the resource - `DEFAULT`: this is the normal way, trigger delete the cluster only if no environment linked to this cluster remains - `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete environments linked to this cluster then trigger delete the cluster - `DELETE_QOVERY_CONFIG`: ⚠️ ⚠️ ⚠️ hard delete environments linked to this cluster then hard delete the cluster - whole cluster ressources **are not deleted** on our side and must be deleted on your side 
+/// ClusterDeleteMode : Indicates the mode to apply on cluster deletion   **\"hard delete\"** means that we delete directly from our database, this is different from a **\"trigger delete\"** that cleans the resource - `DEFAULT`: this is the normal way, trigger delete the cluster only if no environment linked to this cluster remains - `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete environments linked to this cluster then trigger delete the cluster - `DELETE_QOVERY_CONFIG`: ⚠️ ⚠️ ⚠️ hard delete environments linked to this cluster then hard delete the cluster - whole cluster ressources **are not deleted** on our side and must be deleted on your side
+/// Indicates the mode to apply on cluster deletion   **\"hard delete\"** means that we delete directly from our database, this is different from a **\"trigger delete\"** that cleans the resource - `DEFAULT`: this is the normal way, trigger delete the cluster only if no environment linked to this cluster remains - `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete environments linked to this cluster then trigger delete the cluster - `DELETE_QOVERY_CONFIG`: ⚠️ ⚠️ ⚠️ hard delete environments linked to this cluster then hard delete the cluster - whole cluster ressources **are not deleted** on our side and must be deleted on your side
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ClusterDeleteMode {
     #[serde(rename = "DEFAULT")]
@@ -21,7 +21,6 @@ pub enum ClusterDeleteMode {
     DeleteClusterAndQoveryConfig,
     #[serde(rename = "DELETE_QOVERY_CONFIG")]
     DeleteQoveryConfig,
-
 }
 
 impl std::fmt::Display for ClusterDeleteMode {
@@ -39,4 +38,3 @@ impl Default for ClusterDeleteMode {
         Self::Default
     }
 }
-

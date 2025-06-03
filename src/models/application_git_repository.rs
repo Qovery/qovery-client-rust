@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -32,21 +32,35 @@ pub struct ApplicationGitRepository {
     #[serde(rename = "deployed_commit_id", skip_serializing_if = "Option::is_none")]
     pub deployed_commit_id: Option<String>,
     /// Git commit date corresponding to the deployed version of the app
-    #[serde(rename = "deployed_commit_date", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "deployed_commit_date",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub deployed_commit_date: Option<String>,
     /// Git commit user corresponding to the deployed version of the app
-    #[serde(rename = "deployed_commit_contributor", skip_serializing_if = "Option::is_none")]
-    pub deployed_commit_contributor: Option<uuid::Uuid>,
-    #[serde(rename = "deployed_commit_tag", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "deployed_commit_contributor",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub deployed_commit_contributor: Option<String>,
+    #[serde(
+        rename = "deployed_commit_tag",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub deployed_commit_tag: Option<String>,
-    #[serde(rename = "git_token_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub git_token_id: Option<Option<uuid::Uuid>>,
-    #[serde(rename = "git_token_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub git_token_name: Option<Option<String>>,
+    #[serde(rename = "git_token_id", skip_serializing_if = "Option::is_none")]
+    pub git_token_id: Option<String>,
+    #[serde(rename = "git_token_name", skip_serializing_if = "Option::is_none")]
+    pub git_token_name: Option<String>,
 }
 
 impl ApplicationGitRepository {
-    pub fn new(provider: models::GitProviderEnum, owner: String, url: String, name: String) -> ApplicationGitRepository {
+    pub fn new(
+        provider: models::GitProviderEnum,
+        owner: String,
+        url: String,
+        name: String,
+    ) -> ApplicationGitRepository {
         ApplicationGitRepository {
             has_access: None,
             provider,
@@ -64,4 +78,3 @@ impl ApplicationGitRepository {
         }
     }
 }
-

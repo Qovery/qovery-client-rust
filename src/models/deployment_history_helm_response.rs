@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,10 +24,10 @@ pub struct DeploymentHistoryHelmResponse {
     pub name: Option<String>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::StateEnum>,
-    #[serde(rename = "commit", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub commit: Option<Option<Box<models::Commit>>>,
-    #[serde(rename = "repository", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub repository: Option<Option<Box<models::DeploymentHistoryHelmResponseAllOfRepository>>>,
+    #[serde(rename = "commit", skip_serializing_if = "Option::is_none")]
+    pub commit: Option<models::Commit>,
+    #[serde(rename = "repository", skip_serializing_if = "Option::is_none")]
+    pub repository: Option<models::DeploymentHistoryHelmResponseAllOfRepository>,
 }
 
 impl DeploymentHistoryHelmResponse {
@@ -43,4 +43,3 @@ impl DeploymentHistoryHelmResponse {
         }
     }
 }
-

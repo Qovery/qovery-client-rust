@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,39 +22,49 @@ pub struct TerraformRequest {
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     #[serde(rename = "terraform_files_source")]
-    pub terraform_files_source: Box<models::TerraformRequestTerraformFilesSource>,
+    pub terraform_files_source: models::TerraformRequestTerraformFilesSource,
     #[serde(rename = "terraform_variables_source")]
-    pub terraform_variables_source: Box<models::TerraformVariablesSourceRequest>,
+    pub terraform_variables_source: models::TerraformVariablesSourceRequest,
     #[serde(rename = "provider")]
     pub provider: Provider,
     #[serde(rename = "provider_version")]
-    pub provider_version: Box<models::TerraformProviderVersion>,
+    pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
     pub timeout_sec: Option<String>,
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
     #[serde(rename = "job_resources")]
-    pub job_resources: Box<models::TerraformRequestJobResources>,
+    pub job_resources: models::TerraformRequestJobResources,
 }
 
 impl TerraformRequest {
-    pub fn new(name: String, description: String, auto_approve: bool, auto_deploy: bool, terraform_files_source: models::TerraformRequestTerraformFilesSource, terraform_variables_source: models::TerraformVariablesSourceRequest, provider: Provider, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformRequestJobResources) -> TerraformRequest {
+    pub fn new(
+        name: String,
+        description: String,
+        auto_approve: bool,
+        auto_deploy: bool,
+        terraform_files_source: models::TerraformRequestTerraformFilesSource,
+        terraform_variables_source: models::TerraformVariablesSourceRequest,
+        provider: Provider,
+        provider_version: models::TerraformProviderVersion,
+        job_resources: models::TerraformRequestJobResources,
+    ) -> TerraformRequest {
         TerraformRequest {
             name,
             description,
             auto_approve,
             auto_deploy,
-            terraform_files_source: Box::new(terraform_files_source),
-            terraform_variables_source: Box::new(terraform_variables_source),
+            terraform_files_source,
+            terraform_variables_source,
             provider,
-            provider_version: Box::new(provider_version),
+            provider_version,
             timeout_sec: None,
             icon_uri: None,
-            job_resources: Box::new(job_resources),
+            job_resources,
         }
     }
 }
-/// 
+///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
     #[serde(rename = "Terraform")]
@@ -66,4 +76,3 @@ impl Default for Provider {
         Self::Terraform
     }
 }
-

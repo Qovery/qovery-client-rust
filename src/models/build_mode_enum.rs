@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,13 +11,12 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// BuildModeEnum : `DOCKER` requires `dockerfile_path` 
-/// `DOCKER` requires `dockerfile_path` 
+/// BuildModeEnum : `DOCKER` requires `dockerfile_path`
+/// `DOCKER` requires `dockerfile_path`
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum BuildModeEnum {
     #[serde(rename = "DOCKER")]
     Docker,
-
 }
 
 impl std::fmt::Display for BuildModeEnum {
@@ -33,4 +32,3 @@ impl Default for BuildModeEnum {
         Self::Docker
     }
 }
-

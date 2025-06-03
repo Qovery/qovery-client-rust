@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,15 +15,21 @@ use serde::{Deserialize, Serialize};
 pub struct ClusterFeatureGcpExistingVpc {
     #[serde(rename = "vpc_name")]
     pub vpc_name: String,
-    #[serde(rename = "vpc_project_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub vpc_project_id: Option<Option<String>>,
-    #[serde(rename = "subnetwork_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub subnetwork_name: Option<Option<String>>,
-    #[serde(rename = "ip_range_services_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub ip_range_services_name: Option<Option<String>>,
-    #[serde(rename = "ip_range_pods_name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub ip_range_pods_name: Option<Option<String>>,
-    #[serde(rename = "additional_ip_range_pods_names", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "vpc_project_id", skip_serializing_if = "Option::is_none")]
+    pub vpc_project_id: Option<String>,
+    #[serde(rename = "subnetwork_name", skip_serializing_if = "Option::is_none")]
+    pub subnetwork_name: Option<String>,
+    #[serde(
+        rename = "ip_range_services_name",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ip_range_services_name: Option<String>,
+    #[serde(rename = "ip_range_pods_name", skip_serializing_if = "Option::is_none")]
+    pub ip_range_pods_name: Option<String>,
+    #[serde(
+        rename = "additional_ip_range_pods_names",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub additional_ip_range_pods_names: Option<Vec<String>>,
 }
 
@@ -39,4 +45,3 @@ impl ClusterFeatureGcpExistingVpc {
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,7 +19,7 @@ pub struct ClusterLogsErrorEventDetails {
     #[serde(rename = "region", skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
     #[serde(rename = "transmitter", skip_serializing_if = "Option::is_none")]
-    pub transmitter: Option<Box<models::ClusterLogsErrorEventDetailsTransmitter>>,
+    pub transmitter: Option<models::ClusterLogsErrorEventDetailsTransmitter>,
 }
 
 impl ClusterLogsErrorEventDetails {
@@ -31,4 +31,3 @@ impl ClusterLogsErrorEventDetails {
         }
     }
 }
-

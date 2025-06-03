@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -35,7 +35,6 @@ pub enum ContainerRegistryKindEnum {
     GcpArtifactRegistry,
     #[serde(rename = "AZURE_CR")]
     AzureCr,
-
 }
 
 impl std::fmt::Display for ContainerRegistryKindEnum {
@@ -60,4 +59,3 @@ impl Default for ContainerRegistryKindEnum {
         Self::Ecr
     }
 }
-

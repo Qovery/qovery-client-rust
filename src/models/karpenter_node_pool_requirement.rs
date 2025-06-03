@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,7 +22,11 @@ pub struct KarpenterNodePoolRequirement {
 }
 
 impl KarpenterNodePoolRequirement {
-    pub fn new(key: models::KarpenterNodePoolRequirementKey, operator: models::KarpenterNodePoolRequirementOperator, values: Vec<String>) -> KarpenterNodePoolRequirement {
+    pub fn new(
+        key: models::KarpenterNodePoolRequirementKey,
+        operator: models::KarpenterNodePoolRequirementOperator,
+        values: Vec<String>,
+    ) -> KarpenterNodePoolRequirement {
         KarpenterNodePoolRequirement {
             key,
             operator,
@@ -30,4 +34,3 @@ impl KarpenterNodePoolRequirement {
         }
     }
 }
-

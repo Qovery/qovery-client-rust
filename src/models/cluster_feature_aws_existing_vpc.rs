@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,34 +21,75 @@ pub struct ClusterFeatureAwsExistingVpc {
     pub eks_subnets_zone_b_ids: Vec<String>,
     #[serde(rename = "eks_subnets_zone_c_ids")]
     pub eks_subnets_zone_c_ids: Vec<String>,
-    #[serde(rename = "documentdb_subnets_zone_a_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub documentdb_subnets_zone_a_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "documentdb_subnets_zone_b_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub documentdb_subnets_zone_b_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "documentdb_subnets_zone_c_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub documentdb_subnets_zone_c_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "elasticache_subnets_zone_a_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub elasticache_subnets_zone_a_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "elasticache_subnets_zone_b_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub elasticache_subnets_zone_b_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "elasticache_subnets_zone_c_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub elasticache_subnets_zone_c_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "rds_subnets_zone_a_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub rds_subnets_zone_a_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "rds_subnets_zone_b_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub rds_subnets_zone_b_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "rds_subnets_zone_c_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub rds_subnets_zone_c_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_a_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_b_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Option<Vec<String>>>,
-    #[serde(rename = "eks_karpenter_fargate_subnets_zone_c_ids", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Option<Vec<String>>>,
+    #[serde(
+        rename = "documentdb_subnets_zone_a_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub documentdb_subnets_zone_a_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "documentdb_subnets_zone_b_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub documentdb_subnets_zone_b_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "documentdb_subnets_zone_c_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub documentdb_subnets_zone_c_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "elasticache_subnets_zone_a_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub elasticache_subnets_zone_a_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "elasticache_subnets_zone_b_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub elasticache_subnets_zone_b_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "elasticache_subnets_zone_c_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub elasticache_subnets_zone_c_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "rds_subnets_zone_a_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub rds_subnets_zone_a_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "rds_subnets_zone_b_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub rds_subnets_zone_b_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "rds_subnets_zone_c_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub rds_subnets_zone_c_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_a_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_b_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Vec<String>>,
+    #[serde(
+        rename = "eks_karpenter_fargate_subnets_zone_c_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Vec<String>>,
 }
 
 impl ClusterFeatureAwsExistingVpc {
-    pub fn new(aws_vpc_eks_id: String, eks_subnets_zone_a_ids: Vec<String>, eks_subnets_zone_b_ids: Vec<String>, eks_subnets_zone_c_ids: Vec<String>) -> ClusterFeatureAwsExistingVpc {
+    pub fn new(
+        aws_vpc_eks_id: String,
+        eks_subnets_zone_a_ids: Vec<String>,
+        eks_subnets_zone_b_ids: Vec<String>,
+        eks_subnets_zone_c_ids: Vec<String>,
+    ) -> ClusterFeatureAwsExistingVpc {
         ClusterFeatureAwsExistingVpc {
             aws_vpc_eks_id,
             eks_subnets_zone_a_ids,
@@ -69,4 +110,3 @@ impl ClusterFeatureAwsExistingVpc {
         }
     }
 }
-

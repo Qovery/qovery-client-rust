@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,12 +23,20 @@ pub struct OrganizationLabelsGroupEnrichedResponse {
     pub name: String,
     #[serde(rename = "labels")]
     pub labels: Vec<models::Label>,
-    #[serde(rename = "associated_items_count", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "associated_items_count",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub associated_items_count: Option<i32>,
 }
 
 impl OrganizationLabelsGroupEnrichedResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, labels: Vec<models::Label>) -> OrganizationLabelsGroupEnrichedResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        labels: Vec<models::Label>,
+    ) -> OrganizationLabelsGroupEnrichedResponse {
         OrganizationLabelsGroupEnrichedResponse {
             id,
             created_at,
@@ -39,4 +47,3 @@ impl OrganizationLabelsGroupEnrichedResponse {
         }
     }
 }
-

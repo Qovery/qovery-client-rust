@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -22,7 +22,7 @@ pub struct EnvironmentLogsError {
     #[serde(rename = "hint_message", skip_serializing_if = "Option::is_none")]
     pub hint_message: Option<String>,
     #[serde(rename = "underlying_error", skip_serializing_if = "Option::is_none")]
-    pub underlying_error: Option<Box<models::EnvironmentLogsErrorUnderlyingError>>,
+    pub underlying_error: Option<models::EnvironmentLogsErrorUnderlyingError>,
 }
 
 impl EnvironmentLogsError {
@@ -36,4 +36,3 @@ impl EnvironmentLogsError {
         }
     }
 }
-

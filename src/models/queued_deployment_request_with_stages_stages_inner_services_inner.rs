@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,23 +14,25 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct QueuedDeploymentRequestWithStagesStagesInnerServicesInner {
     #[serde(rename = "identifier")]
-    pub identifier: Box<models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier>,
+    pub identifier: models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier,
     #[serde(rename = "status")]
     pub status: models::StageStatusEnum,
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
     #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
-    pub details: Option<Box<models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails>>,
+    pub details: Option<models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails>,
 }
 
 impl QueuedDeploymentRequestWithStagesStagesInnerServicesInner {
-    pub fn new(identifier: models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier, status: models::StageStatusEnum) -> QueuedDeploymentRequestWithStagesStagesInnerServicesInner {
+    pub fn new(
+        identifier: models::QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier,
+        status: models::StageStatusEnum,
+    ) -> QueuedDeploymentRequestWithStagesStagesInnerServicesInner {
         QueuedDeploymentRequestWithStagesStagesInnerServicesInner {
-            identifier: Box::new(identifier),
+            identifier,
             status,
             icon_uri: None,
             details: None,
         }
     }
 }
-

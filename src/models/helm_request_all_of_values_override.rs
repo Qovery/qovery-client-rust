@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// HelmRequestAllOfValuesOverride : Specify helm values you want to set or override 
+/// HelmRequestAllOfValuesOverride : Specify helm values you want to set or override
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmRequestAllOfValuesOverride {
     /// The input is in json array format: [ [$KEY,$VALUE], [...] ]
@@ -23,12 +23,12 @@ pub struct HelmRequestAllOfValuesOverride {
     /// The input is in json array format: [ [$KEY,$VALUE], [...] ]
     #[serde(rename = "set_json", skip_serializing_if = "Option::is_none")]
     pub set_json: Option<Vec<Vec<String>>>,
-    #[serde(rename = "file", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub file: Option<Option<Box<models::HelmRequestAllOfValuesOverrideFile>>>,
+    #[serde(rename = "file", skip_serializing_if = "Option::is_none")]
+    pub file: Option<models::HelmRequestAllOfValuesOverrideFile>,
 }
 
 impl HelmRequestAllOfValuesOverride {
-    /// Specify helm values you want to set or override 
+    /// Specify helm values you want to set or override
     pub fn new() -> HelmRequestAllOfValuesOverride {
         HelmRequestAllOfValuesOverride {
             set: None,
@@ -38,4 +38,3 @@ impl HelmRequestAllOfValuesOverride {
         }
     }
 }
-

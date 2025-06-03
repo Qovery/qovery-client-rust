@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,23 +11,23 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// JobRequestAllOfSchedule : If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete` 
+/// JobRequestAllOfSchedule : If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete`
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobRequestAllOfSchedule {
     #[serde(rename = "on_start", skip_serializing_if = "Option::is_none")]
-    pub on_start: Option<Box<models::JobRequestAllOfScheduleOnStart>>,
+    pub on_start: Option<models::JobRequestAllOfScheduleOnStart>,
     #[serde(rename = "on_stop", skip_serializing_if = "Option::is_none")]
-    pub on_stop: Option<Box<models::JobRequestAllOfScheduleOnStart>>,
+    pub on_stop: Option<models::JobRequestAllOfScheduleOnStart>,
     #[serde(rename = "on_delete", skip_serializing_if = "Option::is_none")]
-    pub on_delete: Option<Box<models::JobRequestAllOfScheduleOnStart>>,
+    pub on_delete: Option<models::JobRequestAllOfScheduleOnStart>,
     #[serde(rename = "cronjob", skip_serializing_if = "Option::is_none")]
-    pub cronjob: Option<Box<models::JobRequestAllOfScheduleCronjob>>,
+    pub cronjob: Option<models::JobRequestAllOfScheduleCronjob>,
     #[serde(rename = "lifecycle_type", skip_serializing_if = "Option::is_none")]
     pub lifecycle_type: Option<models::JobLifecycleTypeEnum>,
 }
 
 impl JobRequestAllOfSchedule {
-    /// If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete` 
+    /// If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete`
     pub fn new() -> JobRequestAllOfSchedule {
         JobRequestAllOfSchedule {
             on_start: None,
@@ -38,4 +38,3 @@ impl JobRequestAllOfSchedule {
         }
     }
 }
-

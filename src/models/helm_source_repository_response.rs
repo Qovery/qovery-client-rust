@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -18,16 +18,19 @@ pub struct HelmSourceRepositoryResponse {
     #[serde(rename = "chart_version")]
     pub chart_version: String,
     #[serde(rename = "repository")]
-    pub repository: Box<models::HelmSourceRepositoryResponseRepository>,
+    pub repository: models::HelmSourceRepositoryResponseRepository,
 }
 
 impl HelmSourceRepositoryResponse {
-    pub fn new(chart_name: String, chart_version: String, repository: models::HelmSourceRepositoryResponseRepository) -> HelmSourceRepositoryResponse {
+    pub fn new(
+        chart_name: String,
+        chart_version: String,
+        repository: models::HelmSourceRepositoryResponseRepository,
+    ) -> HelmSourceRepositoryResponse {
         HelmSourceRepositoryResponse {
             chart_name,
             chart_version,
-            repository: Box::new(repository),
+            repository,
         }
     }
 }
-

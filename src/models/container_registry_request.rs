@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -19,22 +19,25 @@ pub struct ContainerRegistryRequest {
     pub kind: models::ContainerRegistryKindEnum,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for `DOCKER_HUB`) * For `GITHUB_CR`: it must be `https://ghcr.io` (default with 'https://ghcr.io' if no url provided for `GITHUB_CR`) * For `GITLAB_CR`: it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com' if no url provided for `GITLAB_CR`) * For others: it's required and must start by `https://` 
+    /// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for `DOCKER_HUB`) * For `GITHUB_CR`: it must be `https://ghcr.io` (default with 'https://ghcr.io' if no url provided for `GITHUB_CR`) * For `GITLAB_CR`: it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com' if no url provided for `GITLAB_CR`) * For others: it's required and must start by `https://`
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     #[serde(rename = "config")]
-    pub config: Box<models::ContainerRegistryRequestConfig>,
+    pub config: models::ContainerRegistryRequestConfig,
 }
 
 impl ContainerRegistryRequest {
-    pub fn new(name: String, kind: models::ContainerRegistryKindEnum, config: models::ContainerRegistryRequestConfig) -> ContainerRegistryRequest {
+    pub fn new(
+        name: String,
+        kind: models::ContainerRegistryKindEnum,
+        config: models::ContainerRegistryRequestConfig,
+    ) -> ContainerRegistryRequest {
         ContainerRegistryRequest {
             name,
             kind,
             description: None,
             url: None,
-            config: Box::new(config),
+            config,
         }
     }
 }
-

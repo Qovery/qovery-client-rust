@@ -23,7 +23,7 @@ Create a terraform deployment restriction
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**terraform_id** | **String** |  | [required] |
 **terraform_deployment_restriction_request** | Option<[**TerraformDeploymentRestrictionRequest**](TerraformDeploymentRestrictionRequest.md)> |  |  |
 
 ### Return type
@@ -54,8 +54,8 @@ Delete a terraform deployment restriction
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
-**deployment_restriction_id** | **uuid::Uuid** | Deployment Restriction ID | [required] |
+**terraform_id** | **uuid::Uuid** |  | [required] |
+**deployment_restriction_id** | **uuid::Uuid** |  | [required] |
 
 ### Return type
 
@@ -85,8 +85,8 @@ Edit a terraform deployment restriction
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
-**deployment_restriction_id** | **uuid::Uuid** | Deployment Restriction ID | [required] |
+**terraform_id** | **uuid::Uuid** |  | [required] |
+**deployment_restriction_id** | **uuid::Uuid** |  | [required] |
 **terraform_deployment_restriction_request** | Option<[**TerraformDeploymentRestrictionRequest**](TerraformDeploymentRestrictionRequest.md)> |  |  |
 
 ### Return type
@@ -117,7 +117,7 @@ Get terraform deployment restrictions
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**terraform_id** | **String** |  | [required] |
 
 ### Return type
 

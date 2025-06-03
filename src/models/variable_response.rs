@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,14 +21,17 @@ pub struct VariableResponse {
     pub updated_at: Option<String>,
     #[serde(rename = "key")]
     pub key: String,
-    #[serde(rename = "value", deserialize_with = "Option::deserialize")]
-    pub value: Option<String>,
-    #[serde(rename = "mount_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub mount_path: Option<Option<String>>,
-    #[serde(rename = "overridden_variable", skip_serializing_if = "Option::is_none")]
-    pub overridden_variable: Option<Box<models::VariableOverride>>,
+    #[serde(rename = "value")]
+    pub value: String,
+    #[serde(rename = "mount_path", skip_serializing_if = "Option::is_none")]
+    pub mount_path: Option<String>,
+    #[serde(
+        rename = "overridden_variable",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub overridden_variable: Option<models::VariableOverride>,
     #[serde(rename = "aliased_variable", skip_serializing_if = "Option::is_none")]
-    pub aliased_variable: Option<Box<models::VariableAlias>>,
+    pub aliased_variable: Option<models::VariableAlias>,
     #[serde(rename = "scope")]
     pub scope: models::ApiVariableScopeEnum,
     #[serde(rename = "variable_type")]
@@ -48,12 +51,23 @@ pub struct VariableResponse {
     pub is_secret: bool,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    #[serde(rename = "enable_interpolation_in_file", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "enable_interpolation_in_file",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub enable_interpolation_in_file: Option<bool>,
 }
 
 impl VariableResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, key: String, value: Option<String>, scope: models::ApiVariableScopeEnum, variable_type: models::ApiVariableTypeEnum, is_secret: bool) -> VariableResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        key: String,
+        value: String,
+        scope: models::ApiVariableScopeEnum,
+        variable_type: models::ApiVariableTypeEnum,
+        is_secret: bool,
+    ) -> VariableResponse {
         VariableResponse {
             id,
             created_at,
@@ -75,4 +89,3 @@ impl VariableResponse {
         }
     }
 }
-

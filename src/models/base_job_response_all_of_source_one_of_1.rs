@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,14 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BaseJobResponseAllOfSourceOneOf1 {
     #[serde(rename = "docker")]
-    pub docker: Box<models::JobSourceDockerResponse>,
+    pub docker: models::JobSourceDockerResponse,
 }
 
 impl BaseJobResponseAllOfSourceOneOf1 {
     pub fn new(docker: models::JobSourceDockerResponse) -> BaseJobResponseAllOfSourceOneOf1 {
-        BaseJobResponseAllOfSourceOneOf1 {
-            docker: Box::new(docker),
-        }
+        BaseJobResponseAllOfSourceOneOf1 { docker }
     }
 }
-

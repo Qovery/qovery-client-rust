@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -17,7 +17,10 @@ pub struct ClusterInstanceAttributes {
     #[serde(rename = "instance_category", skip_serializing_if = "Option::is_none")]
     pub instance_category: Option<String>,
     /// The generation of the instance.
-    #[serde(rename = "instance_generation", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "instance_generation",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub instance_generation: Option<i32>,
     /// The family or series of the instance.
     #[serde(rename = "instance_family", skip_serializing_if = "Option::is_none")]
@@ -26,7 +29,10 @@ pub struct ClusterInstanceAttributes {
     #[serde(rename = "instance_size", skip_serializing_if = "Option::is_none")]
     pub instance_size: Option<String>,
     /// The instance has sufficient resources to be chosen as a standalone instance in a cluster.
-    #[serde(rename = "meets_resource_reqs", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "meets_resource_reqs",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub meets_resource_reqs: Option<bool>,
 }
 
@@ -41,4 +47,3 @@ impl ClusterInstanceAttributes {
         }
     }
 }
-

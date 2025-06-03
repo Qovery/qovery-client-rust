@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -13,10 +13,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobRequestAllOfSource {
-    #[serde(rename = "image", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub image: Option<Option<Box<models::JobRequestAllOfSourceImage>>>,
-    #[serde(rename = "docker", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub docker: Option<Option<Box<models::JobRequestAllOfSourceDocker>>>,
+    #[serde(rename = "image", skip_serializing_if = "Option::is_none")]
+    pub image: Option<models::JobRequestAllOfSourceImage>,
+    #[serde(rename = "docker", skip_serializing_if = "Option::is_none")]
+    pub docker: Option<models::JobRequestAllOfSourceDocker>,
 }
 
 impl JobRequestAllOfSource {
@@ -27,4 +27,3 @@ impl JobRequestAllOfSource {
         }
     }
 }
-

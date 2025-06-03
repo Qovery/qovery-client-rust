@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// JobScheduleEvent : On which event the job is going to run.   ON_START means when a deployment is requested for the environment   ON_STOP means when a stop of the environment is requested   ON_DELETE means when an environment delete is requested   CRON means at a scheduled interval 
-/// On which event the job is going to run.   ON_START means when a deployment is requested for the environment   ON_STOP means when a stop of the environment is requested   ON_DELETE means when an environment delete is requested   CRON means at a scheduled interval 
+/// JobScheduleEvent : On which event the job is going to run.   ON_START means when a deployment is requested for the environment   ON_STOP means when a stop of the environment is requested   ON_DELETE means when an environment delete is requested   CRON means at a scheduled interval
+/// On which event the job is going to run.   ON_START means when a deployment is requested for the environment   ON_STOP means when a stop of the environment is requested   ON_DELETE means when an environment delete is requested   CRON means at a scheduled interval
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum JobScheduleEvent {
     #[serde(rename = "ON_START")]
@@ -23,7 +23,6 @@ pub enum JobScheduleEvent {
     OnDelete,
     #[serde(rename = "CRON")]
     Cron,
-
 }
 
 impl std::fmt::Display for JobScheduleEvent {
@@ -42,4 +41,3 @@ impl Default for JobScheduleEvent {
         Self::OnStart
     }
 }
-

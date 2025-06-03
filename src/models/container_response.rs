@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -21,7 +21,7 @@ pub struct ContainerResponse {
     pub updated_at: Option<String>,
     #[serde(rename = "storage", skip_serializing_if = "Option::is_none")]
     pub storage: Option<Vec<models::ServiceStorageStorageInner>>,
-    /// The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository` 
+    /// The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
     #[serde(rename = "image_name")]
     pub image_name: String,
     /// tag of the image container
@@ -31,9 +31,9 @@ pub struct ContainerResponse {
     #[serde(rename = "registry_id", skip_serializing_if = "Option::is_none")]
     pub registry_id: Option<String>,
     #[serde(rename = "registry")]
-    pub registry: Box<models::ContainerRegistryProviderDetailsResponse>,
+    pub registry: models::ContainerRegistryProviderDetailsResponse,
     #[serde(rename = "environment")]
-    pub environment: Box<models::ReferenceObject>,
+    pub environment: models::ReferenceObject,
     /// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
     #[serde(rename = "maximum_cpu")]
     pub maximum_cpu: i32,
@@ -57,20 +57,20 @@ pub struct ContainerResponse {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory")]
     pub memory: i32,
-    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running. 
+    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
     #[serde(rename = "min_running_instances")]
     pub min_running_instances: i32,
-    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
+    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
     #[serde(rename = "max_running_instances")]
     pub max_running_instances: i32,
     #[serde(rename = "healthchecks")]
-    pub healthchecks: Box<models::Healthcheck>,
-    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
+    pub healthchecks: models::Healthcheck,
+    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
     #[serde(rename = "auto_preview")]
     pub auto_preview: bool,
     #[serde(rename = "ports", skip_serializing_if = "Option::is_none")]
     pub ports: Option<Vec<models::ServicePort>>,
-    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments 
+    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
     #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
     pub auto_deploy: Option<bool>,
     #[serde(rename = "annotations_groups", skip_serializing_if = "Option::is_none")]
@@ -80,12 +80,33 @@ pub struct ContainerResponse {
     /// Icon URI representing the container.
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_container"
+    )]
     pub service_type: models::ServiceTypeEnum,
 }
 
 impl ContainerResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, image_name: String, tag: String, registry: models::ContainerRegistryProviderDetailsResponse, environment: models::ReferenceObject, maximum_cpu: i32, maximum_memory: i32, name: String, cpu: i32, memory: i32, min_running_instances: i32, max_running_instances: i32, healthchecks: models::Healthcheck, auto_preview: bool, icon_uri: String, service_type: models::ServiceTypeEnum) -> ContainerResponse {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        image_name: String,
+        tag: String,
+        registry: models::ContainerRegistryProviderDetailsResponse,
+        environment: models::ReferenceObject,
+        maximum_cpu: i32,
+        maximum_memory: i32,
+        name: String,
+        cpu: i32,
+        memory: i32,
+        min_running_instances: i32,
+        max_running_instances: i32,
+        healthchecks: models::Healthcheck,
+        auto_preview: bool,
+        icon_uri: String,
+        service_type: models::ServiceTypeEnum,
+    ) -> ContainerResponse {
         ContainerResponse {
             id,
             created_at,
@@ -94,8 +115,8 @@ impl ContainerResponse {
             image_name,
             tag,
             registry_id: None,
-            registry: Box::new(registry),
-            environment: Box::new(environment),
+            registry,
+            environment,
             maximum_cpu,
             maximum_memory,
             name,
@@ -106,7 +127,7 @@ impl ContainerResponse {
             memory,
             min_running_instances,
             max_running_instances,
-            healthchecks: Box::new(healthchecks),
+            healthchecks,
             auto_preview,
             ports: None,
             auto_deploy: None,
@@ -117,4 +138,3 @@ impl ContainerResponse {
         }
     }
 }
-

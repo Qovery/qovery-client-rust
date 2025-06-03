@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -32,7 +32,10 @@ pub struct Service {
     #[serde(rename = "last_updated_by", skip_serializing_if = "Option::is_none")]
     pub last_updated_by: Option<uuid::Uuid>,
     /// global overview of resources consumption of the service
-    #[serde(rename = "consumed_resources_in_percent", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "consumed_resources_in_percent",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub consumed_resources_in_percent: Option<f64>,
     /// describes the typology of service (container, postgresl, redis...)
     #[serde(rename = "service_typology", skip_serializing_if = "Option::is_none")]
@@ -61,4 +64,3 @@ impl Service {
         }
     }
 }
-

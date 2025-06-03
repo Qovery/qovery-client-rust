@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,17 +20,21 @@ pub struct GenericObjectCurrentCost {
     #[serde(rename = "consumed_time_in_seconds")]
     pub consumed_time_in_seconds: i32,
     #[serde(rename = "cost")]
-    pub cost: Box<models::Cost>,
+    pub cost: models::Cost,
 }
 
 impl GenericObjectCurrentCost {
-    pub fn new(id: uuid::Uuid, name: String, consumed_time_in_seconds: i32, cost: models::Cost) -> GenericObjectCurrentCost {
+    pub fn new(
+        id: uuid::Uuid,
+        name: String,
+        consumed_time_in_seconds: i32,
+        cost: models::Cost,
+    ) -> GenericObjectCurrentCost {
         GenericObjectCurrentCost {
             id,
             name,
             consumed_time_in_seconds,
-            cost: Box::new(cost),
+            cost,
         }
     }
 }
-

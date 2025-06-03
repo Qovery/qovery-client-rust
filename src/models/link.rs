@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -24,7 +24,7 @@ pub struct Link {
     /// True if the domain is managed by Qovery, false if it belongs to the user
     #[serde(rename = "is_qovery_domain", skip_serializing_if = "Option::is_none")]
     pub is_qovery_domain: Option<bool>,
-    /// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false 
+    /// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false
     #[serde(rename = "is_default", skip_serializing_if = "Option::is_none")]
     pub is_default: Option<bool>,
 }
@@ -40,4 +40,3 @@ impl Link {
         }
     }
 }
-

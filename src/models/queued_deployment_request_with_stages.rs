@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,9 +14,9 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct QueuedDeploymentRequestWithStages {
     #[serde(rename = "identifier")]
-    pub identifier: Box<models::QueuedDeploymentRequestWithStagesIdentifier>,
+    pub identifier: models::QueuedDeploymentRequestWithStagesIdentifier,
     #[serde(rename = "auditing_data")]
-    pub auditing_data: Box<models::QueuedDeploymentRequestWithStagesAuditingData>,
+    pub auditing_data: models::QueuedDeploymentRequestWithStagesAuditingData,
     #[serde(rename = "trigger_action")]
     pub trigger_action: models::DeploymentHistoryTriggerAction,
     #[serde(rename = "stages")]
@@ -24,13 +24,17 @@ pub struct QueuedDeploymentRequestWithStages {
 }
 
 impl QueuedDeploymentRequestWithStages {
-    pub fn new(identifier: models::QueuedDeploymentRequestWithStagesIdentifier, auditing_data: models::QueuedDeploymentRequestWithStagesAuditingData, trigger_action: models::DeploymentHistoryTriggerAction, stages: Vec<models::QueuedDeploymentRequestWithStagesStagesInner>) -> QueuedDeploymentRequestWithStages {
+    pub fn new(
+        identifier: models::QueuedDeploymentRequestWithStagesIdentifier,
+        auditing_data: models::QueuedDeploymentRequestWithStagesAuditingData,
+        trigger_action: models::DeploymentHistoryTriggerAction,
+        stages: Vec<models::QueuedDeploymentRequestWithStagesStagesInner>,
+    ) -> QueuedDeploymentRequestWithStages {
         QueuedDeploymentRequestWithStages {
-            identifier: Box::new(identifier),
-            auditing_data: Box::new(auditing_data),
+            identifier,
+            auditing_data,
             trigger_action,
             stages,
         }
     }
 }
-

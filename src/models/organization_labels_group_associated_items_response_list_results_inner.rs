@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -34,7 +34,11 @@ pub struct OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
 }
 
 impl OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
-    pub fn new(item_id: uuid::Uuid, item_name: String, item_type: models::LabelsGroupAssociatedItemType) -> OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
+    pub fn new(
+        item_id: uuid::Uuid,
+        item_name: String,
+        item_type: models::LabelsGroupAssociatedItemType,
+    ) -> OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
         OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
             cluster_id: None,
             cluster_name: None,
@@ -48,4 +52,3 @@ impl OrganizationLabelsGroupAssociatedItemsResponseListResultsInner {
         }
     }
 }
-

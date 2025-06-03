@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,7 +23,10 @@ pub struct DeployAllRequestHelmsInner {
     #[serde(rename = "git_commit_id", skip_serializing_if = "Option::is_none")]
     pub git_commit_id: Option<String>,
     /// The commit Id of the override values to deploy. Use only if the helm has a Git override values repository.
-    #[serde(rename = "values_override_git_commit_id", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "values_override_git_commit_id",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub values_override_git_commit_id: Option<String>,
 }
 
@@ -37,4 +40,3 @@ impl DeployAllRequestHelmsInner {
         }
     }
 }
-

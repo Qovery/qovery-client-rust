@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -30,7 +30,13 @@ pub struct Commit {
 }
 
 impl Commit {
-    pub fn new(created_at: String, git_commit_id: String, tag: String, message: String, author_name: String) -> Commit {
+    pub fn new(
+        created_at: String,
+        git_commit_id: String,
+        tag: String,
+        message: String,
+        author_name: String,
+    ) -> Commit {
         Commit {
             created_at,
             git_commit_id,
@@ -42,4 +48,3 @@ impl Commit {
         }
     }
 }
-

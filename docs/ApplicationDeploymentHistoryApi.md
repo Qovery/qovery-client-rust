@@ -52,7 +52,7 @@ By default it returns the 20 last results. The response is paginated. In order t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**application_id** | **uuid::Uuid** | Application ID | [required] |
+**application_id** | **String** |  | [required] |
 **start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
 
 ### Return type

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -14,14 +14,14 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "kind")]
 pub enum InfrastructureOutputs {
-    #[serde(rename="AKS")]
-    Aks(Box<models::AksInfrastructureOutputs>),
-    #[serde(rename="EKS")]
-    Eks(Box<models::EksInfrastructureOutputs>),
-    #[serde(rename="GKE")]
-    Gke(Box<models::GkeInfrastructureOutputs>),
-    #[serde(rename="SCW_KAPSULE")]
-    ScwKapsule(Box<models::KapsuleInfrastructureOutputs>),
+    #[serde(rename = "AKS")]
+    Aks(models::AksInfrastructureOutputs),
+    #[serde(rename = "EKS")]
+    Eks(models::EksInfrastructureOutputs),
+    #[serde(rename = "GKE")]
+    Gke(models::GkeInfrastructureOutputs),
+    #[serde(rename = "SCW_KAPSULE")]
+    ScwKapsule(models::KapsuleInfrastructureOutputs),
 }
 
 impl Default for InfrastructureOutputs {
@@ -29,5 +29,3 @@ impl Default for InfrastructureOutputs {
         Self::Aks(Default::default())
     }
 }
-
-

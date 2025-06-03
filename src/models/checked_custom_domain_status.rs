@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// CheckedCustomDomainStatus : This enum represents the final status for your domain. There are 2 successful statuses:   * `RESOLVES_TO_IP`: we succeeded to resolve an IP to your domain. This is the successful final status for custom domains where `use_cdn` is `true`   * `MATCHES_LOAD_BALANCER_HOST`: we succeeded to lookup CNAMEs & found that it matches your cluser Load Balancer host. This is the successful final status for custom domain where `use_cdn` is `false`   * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look at the `error_details` field for more information    * `DOMAIN_LINKED_TO_WRONG_HOST`: the domain has CNAME(s) that matches a different host than your Load Balancer one   * `GENERIC_FAILURE`: an error occured when attempting to validate your domain, look at the `error_details` field for more information 
-/// This enum represents the final status for your domain. There are 2 successful statuses:   * `RESOLVES_TO_IP`: we succeeded to resolve an IP to your domain. This is the successful final status for custom domains where `use_cdn` is `true`   * `MATCHES_LOAD_BALANCER_HOST`: we succeeded to lookup CNAMEs & found that it matches your cluser Load Balancer host. This is the successful final status for custom domain where `use_cdn` is `false`   * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look at the `error_details` field for more information    * `DOMAIN_LINKED_TO_WRONG_HOST`: the domain has CNAME(s) that matches a different host than your Load Balancer one   * `GENERIC_FAILURE`: an error occured when attempting to validate your domain, look at the `error_details` field for more information 
+/// CheckedCustomDomainStatus : This enum represents the final status for your domain. There are 2 successful statuses:   * `RESOLVES_TO_IP`: we succeeded to resolve an IP to your domain. This is the successful final status for custom domains where `use_cdn` is `true`   * `MATCHES_LOAD_BALANCER_HOST`: we succeeded to lookup CNAMEs & found that it matches your cluser Load Balancer host. This is the successful final status for custom domain where `use_cdn` is `false`   * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look at the `error_details` field for more information    * `DOMAIN_LINKED_TO_WRONG_HOST`: the domain has CNAME(s) that matches a different host than your Load Balancer one   * `GENERIC_FAILURE`: an error occured when attempting to validate your domain, look at the `error_details` field for more information
+/// This enum represents the final status for your domain. There are 2 successful statuses:   * `RESOLVES_TO_IP`: we succeeded to resolve an IP to your domain. This is the successful final status for custom domains where `use_cdn` is `true`   * `MATCHES_LOAD_BALANCER_HOST`: we succeeded to lookup CNAMEs & found that it matches your cluser Load Balancer host. This is the successful final status for custom domain where `use_cdn` is `false`   * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look at the `error_details` field for more information    * `DOMAIN_LINKED_TO_WRONG_HOST`: the domain has CNAME(s) that matches a different host than your Load Balancer one   * `GENERIC_FAILURE`: an error occured when attempting to validate your domain, look at the `error_details` field for more information
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum CheckedCustomDomainStatus {
     #[serde(rename = "RESOLVES_TO_IP")]
@@ -25,7 +25,6 @@ pub enum CheckedCustomDomainStatus {
     DomainLinkedToWrongHost,
     #[serde(rename = "GENERIC_FAILURE")]
     GenericFailure,
-
 }
 
 impl std::fmt::Display for CheckedCustomDomainStatus {
@@ -45,4 +44,3 @@ impl Default for CheckedCustomDomainStatus {
         Self::ResolvesToIp
     }
 }
-

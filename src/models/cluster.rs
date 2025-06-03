@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -20,7 +20,7 @@ pub struct Cluster {
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
     #[serde(rename = "organization")]
-    pub organization: Box<models::ReferenceObject>,
+    pub organization: models::ReferenceObject,
     /// name is case-insensitive
     #[serde(rename = "name")]
     pub name: String,
@@ -49,7 +49,10 @@ pub struct Cluster {
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
     /// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-    #[serde(rename = "estimated_cloud_provider_cost", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "estimated_cloud_provider_cost",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub estimated_cloud_provider_cost: Option<i32>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::ClusterStateEnum>,
@@ -73,18 +76,28 @@ pub struct Cluster {
     #[serde(rename = "deployment_status", skip_serializing_if = "Option::is_none")]
     pub deployment_status: Option<models::ClusterDeploymentStatusEnum>,
     #[serde(rename = "metrics_parameters", skip_serializing_if = "Option::is_none")]
-    pub metrics_parameters: Option<Box<models::MetricsParameters>>,
-    #[serde(rename = "infrastructure_outputs", skip_serializing_if = "Option::is_none")]
-    pub infrastructure_outputs: Option<Box<models::InfrastructureOutputs>>,
+    pub metrics_parameters: Option<models::MetricsParameters>,
+    #[serde(
+        rename = "infrastructure_outputs",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub infrastructure_outputs: Option<models::InfrastructureOutputs>,
 }
 
 impl Cluster {
-    pub fn new(id: uuid::Uuid, created_at: String, organization: models::ReferenceObject, name: String, region: String, cloud_provider: models::CloudVendorEnum) -> Cluster {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        organization: models::ReferenceObject,
+        name: String,
+        region: String,
+        cloud_provider: models::CloudVendorEnum,
+    ) -> Cluster {
         Cluster {
             id,
             created_at,
             updated_at: None,
-            organization: Box::new(organization),
+            organization,
             name,
             description: None,
             region,
@@ -111,4 +124,3 @@ impl Cluster {
         }
     }
 }
-

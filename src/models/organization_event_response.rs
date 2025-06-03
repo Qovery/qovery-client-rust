@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OrganizationEventResponse : 
+/// OrganizationEventResponse :
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OrganizationEventResponse {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
@@ -20,34 +20,34 @@ pub struct OrganizationEventResponse {
     pub timestamp: Option<String>,
     #[serde(rename = "event_type", skip_serializing_if = "Option::is_none")]
     pub event_type: Option<models::OrganizationEventType>,
-    #[serde(rename = "target_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub target_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "target_id", skip_serializing_if = "Option::is_none")]
+    pub target_id: Option<uuid::Uuid>,
     #[serde(rename = "target_name", skip_serializing_if = "Option::is_none")]
     pub target_name: Option<String>,
     #[serde(rename = "target_type", skip_serializing_if = "Option::is_none")]
     pub target_type: Option<models::OrganizationEventTargetType>,
-    #[serde(rename = "sub_target_type", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub sub_target_type: Option<Option<models::OrganizationEventSubTargetType>>,
+    #[serde(rename = "sub_target_type", skip_serializing_if = "Option::is_none")]
+    pub sub_target_type: Option<models::OrganizationEventSubTargetType>,
     #[serde(rename = "change", skip_serializing_if = "Option::is_none")]
     pub change: Option<String>,
     #[serde(rename = "origin", skip_serializing_if = "Option::is_none")]
     pub origin: Option<models::OrganizationEventOrigin>,
     #[serde(rename = "triggered_by", skip_serializing_if = "Option::is_none")]
     pub triggered_by: Option<String>,
-    #[serde(rename = "project_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub project_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "project_id", skip_serializing_if = "Option::is_none")]
+    pub project_id: Option<uuid::Uuid>,
     #[serde(rename = "project_name", skip_serializing_if = "Option::is_none")]
     pub project_name: Option<String>,
-    #[serde(rename = "environment_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub environment_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "environment_id", skip_serializing_if = "Option::is_none")]
+    pub environment_id: Option<uuid::Uuid>,
     #[serde(rename = "environment_name", skip_serializing_if = "Option::is_none")]
     pub environment_name: Option<String>,
-    #[serde(rename = "user_agent", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub user_agent: Option<Option<String>>,
+    #[serde(rename = "user_agent", skip_serializing_if = "Option::is_none")]
+    pub user_agent: Option<String>,
 }
 
 impl OrganizationEventResponse {
-    /// 
+    ///
     pub fn new() -> OrganizationEventResponse {
         OrganizationEventResponse {
             id: None,
@@ -68,4 +68,3 @@ impl OrganizationEventResponse {
         }
     }
 }
-

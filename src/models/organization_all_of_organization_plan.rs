@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -16,7 +16,10 @@ pub struct OrganizationAllOfOrganizationPlan {
     #[serde(rename = "plan", skip_serializing_if = "Option::is_none")]
     pub plan: Option<models::PlanEnum>,
     /// audit logs maximum period available in days
-    #[serde(rename = "audit_logs_retention_in_days", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "audit_logs_retention_in_days",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub audit_logs_retention_in_days: Option<f64>,
 }
 
@@ -28,4 +31,3 @@ impl OrganizationAllOfOrganizationPlan {
         }
     }
 }
-

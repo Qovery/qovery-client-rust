@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -15,10 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct EnvironmentDeploymentRuleEditRequest {
     #[serde(rename = "on_demand_preview", skip_serializing_if = "Option::is_none")]
     pub on_demand_preview: Option<bool>,
-    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
-    pub auto_preview: Option<bool>,
     #[serde(rename = "auto_stop", skip_serializing_if = "Option::is_none")]
     pub auto_stop: Option<bool>,
+    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
+    pub auto_preview: Option<bool>,
     #[serde(rename = "timezone")]
     pub timezone: String,
     #[serde(rename = "start_time")]
@@ -30,11 +30,16 @@ pub struct EnvironmentDeploymentRuleEditRequest {
 }
 
 impl EnvironmentDeploymentRuleEditRequest {
-    pub fn new(timezone: String, start_time: String, stop_time: String, weekdays: Vec<models::WeekdayEnum>) -> EnvironmentDeploymentRuleEditRequest {
+    pub fn new(
+        timezone: String,
+        start_time: String,
+        stop_time: String,
+        weekdays: Vec<models::WeekdayEnum>,
+    ) -> EnvironmentDeploymentRuleEditRequest {
         EnvironmentDeploymentRuleEditRequest {
             on_demand_preview: None,
-            auto_preview: None,
             auto_stop: None,
+            auto_preview: None,
             timezone,
             start_time,
             stop_time,
@@ -42,4 +47,3 @@ impl EnvironmentDeploymentRuleEditRequest {
         }
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
  *
  * The version of the OpenAPI document: 1.0.3
  * Contact: support+api+documentation@qovery.com
@@ -23,14 +23,14 @@ pub struct Environment {
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "organization")]
-    pub organization: Box<models::ReferenceObject>,
+    pub organization: models::ReferenceObject,
     #[serde(rename = "project")]
-    pub project: Box<models::ReferenceObject>,
+    pub project: models::ReferenceObject,
     /// uuid of the user that made the last update
     #[serde(rename = "last_updated_by", skip_serializing_if = "Option::is_none")]
     pub last_updated_by: Option<uuid::Uuid>,
     #[serde(rename = "cloud_provider")]
-    pub cloud_provider: Box<models::EnvironmentAllOfCloudProvider>,
+    pub cloud_provider: models::EnvironmentAllOfCloudProvider,
     #[serde(rename = "mode")]
     pub mode: models::EnvironmentModeEnum,
     #[serde(rename = "cluster_id")]
@@ -40,20 +40,28 @@ pub struct Environment {
 }
 
 impl Environment {
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, organization: models::ReferenceObject, project: models::ReferenceObject, cloud_provider: models::EnvironmentAllOfCloudProvider, mode: models::EnvironmentModeEnum, cluster_id: uuid::Uuid) -> Environment {
+    pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
+        name: String,
+        organization: models::ReferenceObject,
+        project: models::ReferenceObject,
+        cloud_provider: models::EnvironmentAllOfCloudProvider,
+        mode: models::EnvironmentModeEnum,
+        cluster_id: uuid::Uuid,
+    ) -> Environment {
         Environment {
             id,
             created_at,
             updated_at: None,
             name,
-            organization: Box::new(organization),
-            project: Box::new(project),
+            organization,
+            project,
             last_updated_by: None,
-            cloud_provider: Box::new(cloud_provider),
+            cloud_provider,
             mode,
             cluster_id,
             cluster_name: None,
         }
     }
 }
-
