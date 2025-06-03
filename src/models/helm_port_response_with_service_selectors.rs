@@ -15,7 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct HelmPortResponseWithServiceSelectors {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
-    #[serde(rename = "port_type")]
+    #[serde(
+        rename = "port_type",
+        default = "models::helm_response_all_of_ports::default_port_type_service_selectors"
+    )]
     pub port_type: String,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,

@@ -25,3 +25,11 @@ impl Default for HelmResponseAllOfPorts {
         Self::ServiceName(Default::default())
     }
 }
+
+pub fn default_port_type_service_name() -> String {
+    "SERVICE_NAME".to_string()
+}
+
+pub fn default_port_type_service_selectors() -> String {
+    "SERVICE_SELECTORS".to_string()
+}
