@@ -25,6 +25,8 @@ pub enum LinkedServiceTypeEnum {
     Job,
     #[serde(rename = "HELM")]
     Helm,
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
 }
 
 impl std::fmt::Display for LinkedServiceTypeEnum {
@@ -35,6 +37,7 @@ impl std::fmt::Display for LinkedServiceTypeEnum {
             Self::Database => write!(f, "DATABASE"),
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),
+            Self::Terraform => write!(f, "TERRAFORM"),
         }
     }
 }

@@ -22,6 +22,8 @@ pub enum GitTokenAssociatedServiceType {
     Lifecycle,
     #[serde(rename = "HELM")]
     Helm,
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
 }
 
 impl std::fmt::Display for GitTokenAssociatedServiceType {
@@ -31,6 +33,7 @@ impl std::fmt::Display for GitTokenAssociatedServiceType {
             Self::Cron => write!(f, "CRON"),
             Self::Lifecycle => write!(f, "LIFECYCLE"),
             Self::Helm => write!(f, "HELM"),
+            Self::Terraform => write!(f, "TERRAFORM"),
         }
     }
 }

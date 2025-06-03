@@ -23,6 +23,8 @@ pub enum ServiceTypeForVariableEnum {
     Job,
     #[serde(rename = "HELM")]
     Helm,
+    #[serde(rename = "TERRAFORM")]
+    Terraform,
 }
 
 impl std::fmt::Display for ServiceTypeForVariableEnum {
@@ -32,6 +34,7 @@ impl std::fmt::Display for ServiceTypeForVariableEnum {
             Self::Container => write!(f, "CONTAINER"),
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),
+            Self::Terraform => write!(f, "TERRAFORM"),
         }
     }
 }
