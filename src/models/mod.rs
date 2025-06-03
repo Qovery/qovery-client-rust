@@ -1080,6 +1080,8 @@ pub mod storage_type_enum;
 pub use self::storage_type_enum::StorageTypeEnum;
 pub mod terraform_advanced_settings;
 pub use self::terraform_advanced_settings::TerraformAdvancedSettings;
+pub mod terraform_deploy_request;
+pub use self::terraform_deploy_request::TerraformDeployRequest;
 pub mod terraform_deployment_restriction_request;
 pub use self::terraform_deployment_restriction_request::TerraformDeploymentRestrictionRequest;
 pub mod terraform_deployment_restriction_response;

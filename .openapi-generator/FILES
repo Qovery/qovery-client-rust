@@ -623,8 +623,10 @@ docs/StatusDetails.md
 docs/StatusKindEnum.md
 docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
+docs/TerraformActionsApi.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformConfigurationApi.md
+docs/TerraformDeployRequest.md
 docs/TerraformDeploymentHistoryApi.md
 docs/TerraformDeploymentRestrictionApi.md
 docs/TerraformDeploymentRestrictionRequest.md
@@ -749,6 +751,7 @@ src/apis/project_secret_api.rs
 src/apis/projects_api.rs
 src/apis/referral_rewards_api.rs
 src/apis/service_status_api.rs
+src/apis/terraform_actions_api.rs
 src/apis/terraform_configuration_api.rs
 src/apis/terraform_deployment_history_api.rs
 src/apis/terraform_deployment_restriction_api.rs
@@ -1299,6 +1302,7 @@ src/models/status_kind_enum.rs
 src/models/step_metric_status_enum.rs
 src/models/storage_type_enum.rs
 src/models/terraform_advanced_settings.rs
+src/models/terraform_deploy_request.rs
 src/models/terraform_deployment_restriction_request.rs
 src/models/terraform_deployment_restriction_response.rs
 src/models/terraform_deployment_restriction_response_list.rs
