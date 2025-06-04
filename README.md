@@ -474,6 +474,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsApi* | [**delete_terraform**](docs/TerraformMainCallsApi.md#delete_terraform) | **DELETE** /terraform/{terraformId} | Delete Terraform
 *TerraformMainCallsApi* | [**edit_terraform**](docs/TerraformMainCallsApi.md#edit_terraform) | **PUT** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
+*TerraformMainCallsApi* | [**list_terraform_commit**](docs/TerraformMainCallsApi.md#list_terraform_commit) | **GET** /terraform/{terraformId}/commit | List last commits
 *TerraformsApi* | [**clone_terraform**](docs/TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsApi* | [**create_terraform**](docs/TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
 *TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings | List default terraform advanced settings
