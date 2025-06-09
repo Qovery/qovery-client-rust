@@ -24,8 +24,8 @@ pub struct TerraformDeploymentRestrictionResponse {
     #[serde(rename = "type")]
     pub r#type: models::DeploymentRestrictionTypeEnum,
     /// ‘For `PATH` restrictions, the value must not start with `/`’
-    #[serde(rename = "value", skip_serializing_if = "Option::is_none")]
-    pub value: Option<String>,
+    #[serde(rename = "value")]
+    pub value: String,
 }
 
 impl TerraformDeploymentRestrictionResponse {
@@ -34,6 +34,7 @@ impl TerraformDeploymentRestrictionResponse {
         created_at: String,
         mode: models::DeploymentRestrictionModeEnum,
         r#type: models::DeploymentRestrictionTypeEnum,
+        value: String,
     ) -> TerraformDeploymentRestrictionResponse {
         TerraformDeploymentRestrictionResponse {
             id,
@@ -41,7 +42,7 @@ impl TerraformDeploymentRestrictionResponse {
             updated_at: None,
             mode,
             r#type,
-            value: None,
+            value,
         }
     }
 }
