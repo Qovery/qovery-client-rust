@@ -1108,6 +1108,8 @@ pub mod terraform_response;
 pub use self::terraform_response::TerraformResponse;
 pub mod terraform_response_all_of_terraform_files_source;
 pub use self::terraform_response_all_of_terraform_files_source::TerraformResponseAllOfTerraformFilesSource;
+pub mod terraform_response_all_of_terraform_files_source_git;
+pub use self::terraform_response_all_of_terraform_files_source_git::TerraformResponseAllOfTerraformFilesSourceGit;
 pub mod terraform_response_list;
 pub use self::terraform_response_list::TerraformResponseList;
 pub mod terraform_variables_source_request;

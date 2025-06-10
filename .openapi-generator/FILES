@@ -643,6 +643,7 @@ docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfTerraformFilesSource.md
+docs/TerraformResponseAllOfTerraformFilesSourceGit.md
 docs/TerraformResponseList.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
@@ -1317,6 +1318,7 @@ src/models/terraform_request_job_resources.rs
 src/models/terraform_request_terraform_files_source.rs
 src/models/terraform_response.rs
 src/models/terraform_response_all_of_terraform_files_source.rs
+src/models/terraform_response_all_of_terraform_files_source_git.rs
 src/models/terraform_response_list.rs
 src/models/terraform_variables_source_request.rs
 src/models/terraform_variables_source_response.rs

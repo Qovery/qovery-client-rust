@@ -1047,6 +1047,7 @@ Class | Method | HTTP request | Description
  - [TerraformRequestTerraformFilesSource](docs/TerraformRequestTerraformFilesSource.md)
  - [TerraformResponse](docs/TerraformResponse.md)
  - [TerraformResponseAllOfTerraformFilesSource](docs/TerraformResponseAllOfTerraformFilesSource.md)
+ - [TerraformResponseAllOfTerraformFilesSourceGit](docs/TerraformResponseAllOfTerraformFilesSourceGit.md)
  - [TerraformResponseList](docs/TerraformResponseList.md)
  - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
