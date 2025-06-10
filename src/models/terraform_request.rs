@@ -35,6 +35,11 @@ pub struct TerraformRequest {
     pub icon_uri: Option<String>,
     #[serde(rename = "job_resources")]
     pub job_resources: models::TerraformRequestJobResources,
+    #[serde(
+        rename = "use_cluster_credentials",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub use_cluster_credentials: Option<bool>,
 }
 
 impl TerraformRequest {
@@ -61,6 +66,7 @@ impl TerraformRequest {
             timeout_sec: None,
             icon_uri: None,
             job_resources,
+            use_cluster_credentials: None,
         }
     }
 }

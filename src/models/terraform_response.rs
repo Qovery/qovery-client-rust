@@ -53,6 +53,8 @@ pub struct TerraformResponse {
     pub job_resources: models::TerraformJobResourcesResponse,
     #[serde(rename = "environment")]
     pub environment: models::ReferenceObject,
+    #[serde(rename = "use_cluster_credentials")]
+    pub use_cluster_credentials: bool,
 }
 
 impl TerraformResponse {
@@ -70,6 +72,7 @@ impl TerraformResponse {
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformJobResourcesResponse,
         environment: models::ReferenceObject,
+        use_cluster_credentials: bool,
     ) -> TerraformResponse {
         TerraformResponse {
             id,
@@ -88,6 +91,7 @@ impl TerraformResponse {
             provider_version,
             job_resources,
             environment,
+            use_cluster_credentials,
         }
     }
 }

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **timeout_sec** | Option<**String**> |  | [optional]
 **icon_uri** | Option<**String**> |  | [optional]
 **job_resources** | [**models::TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
+**use_cluster_credentials** | Option<**bool**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **job_resources** | [**models::TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
+**use_cluster_credentials** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
