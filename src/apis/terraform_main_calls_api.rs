@@ -58,9 +58,11 @@ pub enum ListTerraformCommitError {
 pub async fn delete_terraform(
     configuration: &configuration::Configuration,
     terraform_id: &str,
+    delete_resources_only: Option<bool>,
 ) -> Result<(), Error<DeleteTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
+    let p_delete_resources_only = delete_resources_only;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}",
@@ -71,6 +73,9 @@ pub async fn delete_terraform(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_delete_resources_only {
+        req_builder = req_builder.query(&[("delete_resources_only", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

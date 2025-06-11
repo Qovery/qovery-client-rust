@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## delete_terraform
 
-> delete_terraform(terraform_id)
+> delete_terraform(terraform_id, delete_resources_only)
 Delete Terraform
 
 ### Parameters
@@ -22,6 +22,7 @@ Delete Terraform
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
+**delete_resources_only** | Option<**bool**> |  |  |
 
 ### Return type
 
