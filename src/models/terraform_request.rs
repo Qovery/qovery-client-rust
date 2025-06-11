@@ -73,7 +73,7 @@ impl TerraformRequest {
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
-    #[serde(rename = "Terraform")]
+    #[serde(rename = "TERRAFORM")]
     Terraform,
 }
 
