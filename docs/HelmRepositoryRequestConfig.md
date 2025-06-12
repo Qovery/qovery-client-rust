@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **scaleway_access_key** | Option<**String**> | Required if kind is `SCALEWAY_CR` | [optional]
 **scaleway_secret_key** | Option<**String**> | Required if kind is `SCALEWAY_CR` | [optional]
 **scaleway_project_id** | Option<**String**> | Required if kind is `SCALEWAY_CR` | [optional]
+**azure_tenant_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
+**azure_subscription_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

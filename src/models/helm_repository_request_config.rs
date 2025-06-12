@@ -46,6 +46,15 @@ pub struct HelmRepositoryRequestConfig {
         skip_serializing_if = "Option::is_none"
     )]
     pub scaleway_project_id: Option<String>,
+    /// Required if kind is `AZURE_CR`.
+    #[serde(rename = "azure_tenant_id", skip_serializing_if = "Option::is_none")]
+    pub azure_tenant_id: Option<String>,
+    /// Required if kind is `AZURE_CR`.
+    #[serde(
+        rename = "azure_subscription_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_subscription_id: Option<String>,
 }
 
 impl HelmRepositoryRequestConfig {
@@ -59,6 +68,8 @@ impl HelmRepositoryRequestConfig {
             scaleway_access_key: None,
             scaleway_secret_key: None,
             scaleway_project_id: None,
+            azure_tenant_id: None,
+            azure_subscription_id: None,
         }
     }
 }
