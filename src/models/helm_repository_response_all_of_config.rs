@@ -29,6 +29,13 @@ pub struct HelmRepositoryResponseAllOfConfig {
         skip_serializing_if = "Option::is_none"
     )]
     pub scaleway_project_id: Option<String>,
+    #[serde(rename = "azure_tenant_id", skip_serializing_if = "Option::is_none")]
+    pub azure_tenant_id: Option<String>,
+    #[serde(
+        rename = "azure_subscription_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_subscription_id: Option<String>,
 }
 
 impl HelmRepositoryResponseAllOfConfig {
@@ -39,6 +46,8 @@ impl HelmRepositoryResponseAllOfConfig {
             access_key_id: None,
             scaleway_access_key: None,
             scaleway_project_id: None,
+            azure_tenant_id: None,
+            azure_subscription_id: None,
         }
     }
 }
