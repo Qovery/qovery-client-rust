@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **username** | Option<**String**> | optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional]
 **password** | Option<**String**> | optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional]
 **role_arn** | Option<**String**> | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional]
+**azure_tenant_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
+**azure_subscription_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

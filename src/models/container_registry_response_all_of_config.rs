@@ -31,6 +31,13 @@ pub struct ContainerRegistryResponseAllOfConfig {
     pub access_key_id: Option<String>,
     #[serde(rename = "role_arn", skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
+    #[serde(rename = "azure_tenant_id", skip_serializing_if = "Option::is_none")]
+    pub azure_tenant_id: Option<String>,
+    #[serde(
+        rename = "azure_subscription_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_subscription_id: Option<String>,
 }
 
 impl ContainerRegistryResponseAllOfConfig {
@@ -42,6 +49,8 @@ impl ContainerRegistryResponseAllOfConfig {
             scaleway_project_id: None,
             access_key_id: None,
             role_arn: None,
+            azure_tenant_id: None,
+            azure_subscription_id: None,
         }
     }
 }

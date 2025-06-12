@@ -53,6 +53,15 @@ pub struct ContainerRegistryRequestConfig {
     /// For ECR, you can either set a static access_key or use a role arn that we are going to assume
     #[serde(rename = "role_arn", skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
+    /// Required if kind is `AZURE_CR`.
+    #[serde(rename = "azure_tenant_id", skip_serializing_if = "Option::is_none")]
+    pub azure_tenant_id: Option<String>,
+    /// Required if kind is `AZURE_CR`.
+    #[serde(
+        rename = "azure_subscription_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_subscription_id: Option<String>,
 }
 
 impl ContainerRegistryRequestConfig {
@@ -69,6 +78,8 @@ impl ContainerRegistryRequestConfig {
             username: None,
             password: None,
             role_arn: None,
+            azure_tenant_id: None,
+            azure_subscription_id: None,
         }
     }
 }
