@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**deploy_helm**](HelmActionsApi.md#deploy_helm) | **POST** /helm/{helmId}/deploy | Deploy helm
 [**redeploy_helm**](HelmActionsApi.md#redeploy_helm) | **POST** /helm/{helmId}/redeploy | Redeploy helm
 [**stop_helm**](HelmActionsApi.md#stop_helm) | **POST** /helm/{helmId}/stop | Stop helm
+[**uninstall_helm**](HelmActionsApi.md#uninstall_helm) | **POST** /helm/{helmId}/uninstall | Uninstall helm
 
 
 
@@ -94,6 +95,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## uninstall_helm
+
+> serde_json::Value uninstall_helm(helm_id, body)
+Uninstall helm
+
+Delete the resources of the helm but keep Qovery configuration
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**helm_id** | **uuid::Uuid** | Helm ID | [required] |
+**body** | Option<**serde_json::Value**> |  |  |
+
+### Return type
+
+[**serde_json::Value**](serde_json::Value.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

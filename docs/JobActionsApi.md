@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deploy_job**](JobActionsApi.md#deploy_job) | **POST** /job/{jobId}/deploy | Deploy job
 [**redeploy_job**](JobActionsApi.md#redeploy_job) | **POST** /job/{jobId}/redeploy | Redeploy job
 [**stop_job**](JobActionsApi.md#stop_job) | **POST** /job/{jobId}/stop | Stop job
+[**uninstall_job**](JobActionsApi.md#uninstall_job) | **POST** /job/{jobId}/uninstall | Uninstall job
 
 
 
@@ -123,6 +124,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## uninstall_job
+
+> serde_json::Value uninstall_job(job_id, body)
+Uninstall job
+
+Delete the resources of the job but keep Qovery configuration
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**job_id** | **uuid::Uuid** | Job ID | [required] |
+**body** | Option<**serde_json::Value**> |  |  |
+
+### Return type
+
+[**serde_json::Value**](serde_json::Value.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

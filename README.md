@@ -35,6 +35,7 @@ Class | Method | HTTP request | Description
 *ApplicationActionsApi* | [**reboot_application**](docs/ApplicationActionsApi.md#reboot_application) | **POST** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsApi* | [**redeploy_application**](docs/ApplicationActionsApi.md#redeploy_application) | **POST** /application/{applicationId}/redeploy | Redeploy application
 *ApplicationActionsApi* | [**stop_application**](docs/ApplicationActionsApi.md#stop_application) | **POST** /application/{applicationId}/stop | Stop application
+*ApplicationActionsApi* | [**uninstall_application**](docs/ApplicationActionsApi.md#uninstall_application) | **POST** /application/{applicationId}/uninstall | Uninstall application
 *ApplicationConfigurationApi* | [**edit_advanced_settings**](docs/ApplicationConfigurationApi.md#edit_advanced_settings) | **PUT** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationApi* | [**edit_application_network**](docs/ApplicationConfigurationApi.md#edit_application_network) | **PUT** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationApi* | [**get_advanced_settings**](docs/ApplicationConfigurationApi.md#get_advanced_settings) | **GET** /application/{applicationId}/advancedSettings | Get advanced settings
@@ -169,6 +170,7 @@ Class | Method | HTTP request | Description
 *ContainerActionsApi* | [**reboot_container**](docs/ContainerActionsApi.md#reboot_container) | **POST** /container/{containerId}/restart-service | Reboot container
 *ContainerActionsApi* | [**redeploy_container**](docs/ContainerActionsApi.md#redeploy_container) | **POST** /container/{containerId}/redeploy | Redeploy container
 *ContainerActionsApi* | [**stop_container**](docs/ContainerActionsApi.md#stop_container) | **POST** /container/{containerId}/stop | Stop container
+*ContainerActionsApi* | [**uninstall_container**](docs/ContainerActionsApi.md#uninstall_container) | **POST** /container/{containerId}/uninstall | Uninstall container
 *ContainerConfigurationApi* | [**edit_container_advanced_settings**](docs/ContainerConfigurationApi.md#edit_container_advanced_settings) | **PUT** /container/{containerId}/advancedSettings | Edit advanced settings
 *ContainerConfigurationApi* | [**edit_container_network**](docs/ContainerConfigurationApi.md#edit_container_network) | **PUT** /container/{containerId}/network | Edit Container Network
 *ContainerConfigurationApi* | [**get_container_advanced_settings**](docs/ContainerConfigurationApi.md#get_container_advanced_settings) | **GET** /container/{containerId}/advancedSettings | Get advanced settings
@@ -219,6 +221,7 @@ Class | Method | HTTP request | Description
 *DatabaseActionsApi* | [**reboot_database**](docs/DatabaseActionsApi.md#reboot_database) | **POST** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsApi* | [**redeploy_database**](docs/DatabaseActionsApi.md#redeploy_database) | **POST** /database/{databaseId}/redeploy | Redeploy database
 *DatabaseActionsApi* | [**stop_database**](docs/DatabaseActionsApi.md#stop_database) | **POST** /database/{databaseId}/stop | Stop database
+*DatabaseActionsApi* | [**uninstall_database**](docs/DatabaseActionsApi.md#uninstall_database) | **POST** /database/{databaseId}/uninstall | Uninstall database
 *DatabaseApplicationApi* | [**list_database_application**](docs/DatabaseApplicationApi.md#list_database_application) | **GET** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationApi* | [**remove_application_from_database**](docs/DatabaseApplicationApi.md#remove_application_from_database) | **DELETE** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryApi* | [**list_database_deployment_history**](docs/DatabaseDeploymentHistoryApi.md#list_database_deployment_history) | **GET** /database/{databaseId}/deploymentHistory | List database deploys
@@ -305,6 +308,7 @@ Class | Method | HTTP request | Description
 *HelmActionsApi* | [**deploy_helm**](docs/HelmActionsApi.md#deploy_helm) | **POST** /helm/{helmId}/deploy | Deploy helm
 *HelmActionsApi* | [**redeploy_helm**](docs/HelmActionsApi.md#redeploy_helm) | **POST** /helm/{helmId}/redeploy | Redeploy helm
 *HelmActionsApi* | [**stop_helm**](docs/HelmActionsApi.md#stop_helm) | **POST** /helm/{helmId}/stop | Stop helm
+*HelmActionsApi* | [**uninstall_helm**](docs/HelmActionsApi.md#uninstall_helm) | **POST** /helm/{helmId}/uninstall | Uninstall helm
 *HelmConfigurationApi* | [**edit_helm_advanced_settings**](docs/HelmConfigurationApi.md#edit_helm_advanced_settings) | **PUT** /helm/{helmId}/advancedSettings | Edit advanced settings
 *HelmConfigurationApi* | [**get_helm_advanced_settings**](docs/HelmConfigurationApi.md#get_helm_advanced_settings) | **GET** /helm/{helmId}/advancedSettings | Get advanced settings
 *HelmCustomDomainApi* | [**check_helm_custom_domain**](docs/HelmCustomDomainApi.md#check_helm_custom_domain) | **GET** /helm/{helmId}/checkCustomDomain | Check Helm Custom Domain
@@ -343,6 +347,7 @@ Class | Method | HTTP request | Description
 *JobActionsApi* | [**deploy_job**](docs/JobActionsApi.md#deploy_job) | **POST** /job/{jobId}/deploy | Deploy job
 *JobActionsApi* | [**redeploy_job**](docs/JobActionsApi.md#redeploy_job) | **POST** /job/{jobId}/redeploy | Redeploy job
 *JobActionsApi* | [**stop_job**](docs/JobActionsApi.md#stop_job) | **POST** /job/{jobId}/stop | Stop job
+*JobActionsApi* | [**uninstall_job**](docs/JobActionsApi.md#uninstall_job) | **POST** /job/{jobId}/uninstall | Uninstall job
 *JobConfigurationApi* | [**edit_job_advanced_settings**](docs/JobConfigurationApi.md#edit_job_advanced_settings) | **PUT** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationApi* | [**get_job_advanced_settings**](docs/JobConfigurationApi.md#get_job_advanced_settings) | **GET** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryApi* | [**list_job_deployment_history**](docs/JobDeploymentHistoryApi.md#list_job_deployment_history) | **GET** /job/{jobId}/deploymentHistory | List job deployments
@@ -464,6 +469,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsApi* | [**post_account_reward_claim**](docs/ReferralRewardsApi.md#post_account_reward_claim) | **POST** /account/rewardClaim | Claim a reward
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsApi* | [**deploy_terraform**](docs/TerraformActionsApi.md#deploy_terraform) | **POST** /terraform/{terraformId}/deploy | Deploy terraform
+*TerraformActionsApi* | [**uninstall_terraform**](docs/TerraformActionsApi.md#uninstall_terraform) | **POST** /terraform/{terraformId}/uninstall | Uninstall terraform
 *TerraformConfigurationApi* | [**edit_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#edit_terraform_advanced_settings) | **PUT** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationApi* | [**get_terraform_advanced_settings**](docs/TerraformConfigurationApi.md#get_terraform_advanced_settings) | **GET** /terraform/{terraformId}/advancedSettings | Get Advanced settings
 *TerraformDeploymentHistoryApi* | [**list_terraform_deployment_history_v2**](docs/TerraformDeploymentHistoryApi.md#list_terraform_deployment_history_v2) | **GET** /terraform/{terraformId}/deploymentHistoryV2 | List terraform deployments

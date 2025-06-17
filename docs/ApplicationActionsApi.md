@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**reboot_application**](ApplicationActionsApi.md#reboot_application) | **POST** /application/{applicationId}/restart-service | Reboot application
 [**redeploy_application**](ApplicationActionsApi.md#redeploy_application) | **POST** /application/{applicationId}/redeploy | Redeploy application
 [**stop_application**](ApplicationActionsApi.md#stop_application) | **POST** /application/{applicationId}/stop | Stop application
+[**uninstall_application**](ApplicationActionsApi.md#uninstall_application) | **POST** /application/{applicationId}/uninstall | Uninstall application
 
 
 
@@ -121,6 +122,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## uninstall_application
+
+> serde_json::Value uninstall_application(application_id, body)
+Uninstall application
+
+Delete the resources of an application but keep the Qovery config. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**application_id** | **uuid::Uuid** | Application ID | [required] |
+**body** | Option<**serde_json::Value**> |  |  |
+
+### Return type
+
+[**serde_json::Value**](serde_json::Value.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

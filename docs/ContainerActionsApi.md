@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**reboot_container**](ContainerActionsApi.md#reboot_container) | **POST** /container/{containerId}/restart-service | Reboot container
 [**redeploy_container**](ContainerActionsApi.md#redeploy_container) | **POST** /container/{containerId}/redeploy | Redeploy container
 [**stop_container**](ContainerActionsApi.md#stop_container) | **POST** /container/{containerId}/stop | Stop container
+[**uninstall_container**](ContainerActionsApi.md#uninstall_container) | **POST** /container/{containerId}/uninstall | Uninstall container
 
 
 
@@ -121,6 +122,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## uninstall_container
+
+> serde_json::Value uninstall_container(container_id, body)
+Uninstall container
+
+Delete the resources of the container but keep Qovery configuration
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**container_id** | **uuid::Uuid** | Container ID | [required] |
+**body** | Option<**serde_json::Value**> |  |  |
+
+### Return type
+
+[**serde_json::Value**](serde_json::Value.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
