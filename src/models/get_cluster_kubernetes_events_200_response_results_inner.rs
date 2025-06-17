@@ -34,6 +34,17 @@ pub struct GetClusterKubernetesEvents200ResponseResultsInner {
     /// As of today it can be either Warning or Normal (can evolve in the next releases)
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
     pub r#type: Option<String>,
+    #[serde(
+        rename = "reporting_component",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub reporting_component: Option<String>,
+    #[serde(rename = "count", skip_serializing_if = "Option::is_none")]
+    pub count: Option<i32>,
+    #[serde(rename = "first_occurrence", skip_serializing_if = "Option::is_none")]
+    pub first_occurrence: Option<String>,
+    #[serde(rename = "last_occurrence", skip_serializing_if = "Option::is_none")]
+    pub last_occurrence: Option<String>,
 }
 
 impl GetClusterKubernetesEvents200ResponseResultsInner {
@@ -46,6 +57,10 @@ impl GetClusterKubernetesEvents200ResponseResultsInner {
             reason: None,
             message: None,
             r#type: None,
+            reporting_component: None,
+            count: None,
+            first_occurrence: None,
+            last_occurrence: None,
         }
     }
 }

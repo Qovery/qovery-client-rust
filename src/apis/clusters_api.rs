@@ -847,6 +847,7 @@ pub async fn get_cluster_kubernetes_events(
     to_date_time: &str,
     node_name: Option<&str>,
     pod_name: Option<&str>,
+    reporting_component: Option<&str>,
 ) -> Result<models::GetClusterKubernetesEvents200Response, Error<GetClusterKubernetesEventsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_cluster_id = cluster_id;
@@ -854,6 +855,7 @@ pub async fn get_cluster_kubernetes_events(
     let p_to_date_time = to_date_time;
     let p_node_name = node_name;
     let p_pod_name = pod_name;
+    let p_reporting_component = reporting_component;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/events",
@@ -869,6 +871,9 @@ pub async fn get_cluster_kubernetes_events(
     }
     if let Some(ref param_value) = p_pod_name {
         req_builder = req_builder.query(&[("pod_name", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_reporting_component {
+        req_builder = req_builder.query(&[("reporting_component", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

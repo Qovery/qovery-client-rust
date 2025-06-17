@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **reason** | Option<**String**> | The action that triggered the Event | [optional]
 **message** | Option<**String**> | A description of the Event | [optional]
 **r#type** | Option<**String**> | As of today it can be either Warning or Normal (can evolve in the next releases) | [optional]
+**reporting_component** | Option<**String**> |  | [optional]
+**count** | Option<**i32**> |  | [optional]
+**first_occurrence** | Option<**String**> |  | [optional]
+**last_occurrence** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

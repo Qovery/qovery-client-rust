@@ -311,7 +311,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cluster_kubernetes_events
 
-> models::GetClusterKubernetesEvents200Response get_cluster_kubernetes_events(cluster_id, from_date_time, to_date_time, node_name, pod_name)
+> models::GetClusterKubernetesEvents200Response get_cluster_kubernetes_events(cluster_id, from_date_time, to_date_time, node_name, pod_name, reporting_component)
 List Cluster Kubernetes Events
 
 List Cluster Kubernetes Events
@@ -326,6 +326,7 @@ Name | Type | Description  | Required | Notes
 **to_date_time** | **String** | The end date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`)  | [required] |
 **node_name** | Option<**String**> | The name of the node to fetch event from |  |
 **pod_name** | Option<**String**> | The name of the pod to fetch event from |  |
+**reporting_component** | Option<**String**> | The name of the reporting component used to filter events. |  |
 
 ### Return type
 
