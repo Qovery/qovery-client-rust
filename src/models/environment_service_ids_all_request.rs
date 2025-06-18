@@ -23,6 +23,8 @@ pub struct EnvironmentServiceIdsAllRequest {
     pub job_ids: Option<Vec<uuid::Uuid>>,
     #[serde(rename = "helm_ids", skip_serializing_if = "Option::is_none")]
     pub helm_ids: Option<Vec<uuid::Uuid>>,
+    #[serde(rename = "terraform_ids", skip_serializing_if = "Option::is_none")]
+    pub terraform_ids: Option<Vec<uuid::Uuid>>,
 }
 
 impl EnvironmentServiceIdsAllRequest {
@@ -33,6 +35,7 @@ impl EnvironmentServiceIdsAllRequest {
             database_ids: None,
             job_ids: None,
             helm_ids: None,
+            terraform_ids: None,
         }
     }
 }

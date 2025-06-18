@@ -123,6 +123,18 @@ pub enum StopSelectedServicesError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`uninstall_selected_services`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UninstallSelectedServicesError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    UnknownValue(serde_json::Value),
+}
+
 /// Cancel the current deployment of your environment.
 pub async fn cancel_environment_deployment(
     configuration: &configuration::Configuration,
@@ -721,6 +733,59 @@ pub async fn stop_selected_services(
     } else {
         let content = resp.text().await?;
         let entity: Option<StopSelectedServicesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// uninstall selected services
+pub async fn uninstall_selected_services(
+    configuration: &configuration::Configuration,
+    environment_id: &str,
+    environment_service_ids_all_request: Option<models::EnvironmentServiceIdsAllRequest>,
+) -> Result<(), Error<UninstallSelectedServicesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_environment_id = environment_id;
+    let p_environment_service_ids_all_request = environment_service_ids_all_request;
+
+    let uri_str = format!(
+        "{}/environment/{environmentId}/service/uninstall",
+        configuration.base_path,
+        environmentId = crate::apis::urlencode(p_environment_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_environment_service_ids_all_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<UninstallSelectedServicesError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
