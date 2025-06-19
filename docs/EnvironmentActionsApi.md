@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**redeploy_environment**](EnvironmentActionsApi.md#redeploy_environment) | **POST** /environment/{environmentId}/redeploy | Redeploy environment
 [**stop_environment**](EnvironmentActionsApi.md#stop_environment) | **POST** /environment/{environmentId}/stop | Stop environment
 [**stop_selected_services**](EnvironmentActionsApi.md#stop_selected_services) | **POST** /environment/{environmentId}/service/stop | Stop services
+[**uninstall_environment**](EnvironmentActionsApi.md#uninstall_environment) | **POST** /environment/{environmentId}/uninstall | Uninstall environment
 [**uninstall_selected_services**](EnvironmentActionsApi.md#uninstall_selected_services) | **POST** /environment/{environmentId}/service/uninstall | Uninstall services
 
 
@@ -315,6 +316,36 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## uninstall_environment
+
+> serde_json::Value uninstall_environment(environment_id)
+Uninstall environment
+
+This will uninstall all the services of this environment.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+
+### Return type
+
+[**serde_json::Value**](serde_json::Value.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

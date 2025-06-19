@@ -123,6 +123,17 @@ pub enum StopSelectedServicesError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`uninstall_environment`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UninstallEnvironmentError {
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`uninstall_selected_services`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -733,6 +744,67 @@ pub async fn stop_selected_services(
     } else {
         let content = resp.text().await?;
         let entity: Option<StopSelectedServicesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// This will uninstall all the services of this environment.
+pub async fn uninstall_environment(
+    configuration: &configuration::Configuration,
+    environment_id: &str,
+) -> Result<serde_json::Value, Error<UninstallEnvironmentError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_environment_id = environment_id;
+
+    let uri_str = format!(
+        "{}/environment/{environmentId}/uninstall",
+        configuration.base_path,
+        environmentId = crate::apis::urlencode(p_environment_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `serde_json::Value`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `serde_json::Value`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<UninstallEnvironmentError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
