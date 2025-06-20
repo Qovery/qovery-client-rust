@@ -129,7 +129,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_container
 
-> serde_json::Value uninstall_container(container_id, body)
+> models::Status uninstall_container(container_id, body)
 Uninstall container
 
 Delete the resources of the container but keep Qovery configuration
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 

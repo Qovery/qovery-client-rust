@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_job
 
-> serde_json::Value uninstall_job(job_id, body)
+> models::Status uninstall_job(job_id, body)
 Uninstall job
 
 Delete the resources of the job but keep Qovery configuration
@@ -146,7 +146,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 

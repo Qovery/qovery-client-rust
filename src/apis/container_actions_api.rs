@@ -319,7 +319,7 @@ pub async fn uninstall_container(
     configuration: &configuration::Configuration,
     container_id: &str,
     body: Option<serde_json::Value>,
-) -> Result<serde_json::Value, Error<UninstallContainerError>> {
+) -> Result<models::Status, Error<UninstallContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_container_id = container_id;
     let p_body = body;
@@ -364,8 +364,8 @@ pub async fn uninstall_container(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `serde_json::Value`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `serde_json::Value`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Status`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Status`")))),
         }
     } else {
         let content = resp.text().await?;

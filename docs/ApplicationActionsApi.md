@@ -129,7 +129,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_application
 
-> serde_json::Value uninstall_application(application_id, body)
+> models::Status uninstall_application(application_id, body)
 Uninstall application
 
 Delete the resources of an application but keep the Qovery config. 
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 

@@ -126,7 +126,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_database
 
-> serde_json::Value uninstall_database(database_id, body)
+> models::Status uninstall_database(database_id, body)
 Uninstall database
 
 ### Parameters
@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 

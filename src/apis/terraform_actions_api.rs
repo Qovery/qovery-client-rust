@@ -106,7 +106,7 @@ pub async fn uninstall_terraform(
     configuration: &configuration::Configuration,
     terraform_id: &str,
     body: Option<serde_json::Value>,
-) -> Result<serde_json::Value, Error<UninstallTerraformError>> {
+) -> Result<models::Status, Error<UninstallTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
     let p_body = body;
@@ -151,8 +151,8 @@ pub async fn uninstall_terraform(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `serde_json::Value`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `serde_json::Value`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Status`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Status`")))),
         }
     } else {
         let content = resp.text().await?;

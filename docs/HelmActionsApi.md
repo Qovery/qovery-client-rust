@@ -102,7 +102,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_helm
 
-> serde_json::Value uninstall_helm(helm_id, body)
+> models::Status uninstall_helm(helm_id, body)
 Uninstall helm
 
 Delete the resources of the helm but keep Qovery configuration
@@ -117,7 +117,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 

@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## uninstall_terraform
 
-> serde_json::Value uninstall_terraform(terraform_id, body)
+> models::Status uninstall_terraform(terraform_id, body)
 Uninstall terraform
 
 Delete the resources of the terraform but keep Qovery configuration
@@ -57,7 +57,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**serde_json::Value**](serde_json::Value.md)
+[**models::Status**](Status.md)
 
 ### Authorization
 
