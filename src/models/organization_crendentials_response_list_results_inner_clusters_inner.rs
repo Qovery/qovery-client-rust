@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner {
+pub struct OrganizationCrendentialsResponseListResultsInnerClustersInner {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<uuid::Uuid>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
@@ -21,9 +21,9 @@ pub struct GetOrganizationOrganizationIdCredentials200ResponseResultsInnerCluste
     pub cloud_provider: Option<models::CloudProviderEnum>,
 }
 
-impl GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner {
-    pub fn new() -> GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner {
-        GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner {
+impl OrganizationCrendentialsResponseListResultsInnerClustersInner {
+    pub fn new() -> OrganizationCrendentialsResponseListResultsInnerClustersInner {
+        OrganizationCrendentialsResponseListResultsInnerClustersInner {
             id: None,
             name: None,
             cloud_provider: None,

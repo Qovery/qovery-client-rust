@@ -12,14 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct GetOrganizationOrganizationIdCredentials200Response {
+pub struct OrganizationCrendentialsResponseList {
     #[serde(rename = "results", skip_serializing_if = "Option::is_none")]
-    pub results:
-        Option<Vec<models::GetOrganizationOrganizationIdCredentials200ResponseResultsInner>>,
+    pub results: Option<Vec<models::OrganizationCrendentialsResponseListResultsInner>>,
 }
 
-impl GetOrganizationOrganizationIdCredentials200Response {
-    pub fn new() -> GetOrganizationOrganizationIdCredentials200Response {
-        GetOrganizationOrganizationIdCredentials200Response { results: None }
+impl OrganizationCrendentialsResponseList {
+    pub fn new() -> OrganizationCrendentialsResponseList {
+        OrganizationCrendentialsResponseList { results: None }
     }
 }

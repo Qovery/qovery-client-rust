@@ -12,18 +12,17 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct GetOrganizationOrganizationIdCredentials200ResponseResultsInner {
+pub struct OrganizationCrendentialsResponseListResultsInner {
     #[serde(rename = "credential", skip_serializing_if = "Option::is_none")]
     pub credential: Option<models::ClusterCredentials>,
     #[serde(rename = "clusters", skip_serializing_if = "Option::is_none")]
-    pub clusters: Option<
-        Vec<models::GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner>,
-    >,
+    pub clusters:
+        Option<Vec<models::OrganizationCrendentialsResponseListResultsInnerClustersInner>>,
 }
 
-impl GetOrganizationOrganizationIdCredentials200ResponseResultsInner {
-    pub fn new() -> GetOrganizationOrganizationIdCredentials200ResponseResultsInner {
-        GetOrganizationOrganizationIdCredentials200ResponseResultsInner {
+impl OrganizationCrendentialsResponseListResultsInner {
+    pub fn new() -> OrganizationCrendentialsResponseListResultsInner {
+        OrganizationCrendentialsResponseListResultsInner {
             credential: None,
             clusters: None,
         }

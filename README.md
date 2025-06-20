@@ -240,7 +240,6 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**list_environment_database_config**](docs/DatabasesApi.md#list_environment_database_config) | **GET** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultApi* | [**get_cluster_token_by_cluster_id**](docs/DefaultApi.md#get_cluster_token_by_cluster_id) | **GET** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultApi* | [**get_deployment_status_by_deployment_request_id**](docs/DefaultApi.md#get_deployment_status_by_deployment_request_id) | **GET** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
-*DefaultApi* | [**get_organization_organization_id_credentials**](docs/DefaultApi.md#get_organization_organization_id_credentials) | **GET** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 *DeploymentQueueActionsApi* | [**cancel_deployment_request**](docs/DeploymentQueueActionsApi.md#cancel_deployment_request) | **POST** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
 *DeploymentStageMainCallsApi* | [**attach_service_to_deployment_stage**](docs/DeploymentStageMainCallsApi.md#attach_service_to_deployment_stage) | **PUT** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsApi* | [**create_environment_deployment_stage**](docs/DeploymentStageMainCallsApi.md#create_environment_deployment_stage) | **POST** /environment/{environmentId}/deploymentStage | Create environment deployment stage
@@ -437,6 +436,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**get_organization_git_token**](docs/OrganizationMainCallsApi.md#get_organization_git_token) | **GET** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 *OrganizationMainCallsApi* | [**list_organization**](docs/OrganizationMainCallsApi.md#list_organization) | **GET** /organization | List user organizations
 *OrganizationMainCallsApi* | [**list_organization_available_roles**](docs/OrganizationMainCallsApi.md#list_organization_available_roles) | **GET** /organization/{organizationId}/availableRole | List organization available roles
+*OrganizationMainCallsApi* | [**list_organization_credentials**](docs/OrganizationMainCallsApi.md#list_organization_credentials) | **GET** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 *OrganizationMainCallsApi* | [**list_organization_git_tokens**](docs/OrganizationMainCallsApi.md#list_organization_git_tokens) | **GET** /organization/{organizationId}/gitToken | List organization git tokens
 *OrganizationMainCallsApi* | [**list_services_by_organization_id**](docs/OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
 *OrganizationWebhookApi* | [**create_organization_webhook**](docs/OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
@@ -753,9 +753,6 @@ Class | Method | HTTP request | Description
  - [GetClusterKubernetesEvents200ResponseResultsInner](docs/GetClusterKubernetesEvents200ResponseResultsInner.md)
  - [GetClusterTokenByClusterId200Response](docs/GetClusterTokenByClusterId200Response.md)
  - [GetClusterTokenByClusterId200ResponseStatus](docs/GetClusterTokenByClusterId200ResponseStatus.md)
- - [GetOrganizationOrganizationIdCredentials200Response](docs/GetOrganizationOrganizationIdCredentials200Response.md)
- - [GetOrganizationOrganizationIdCredentials200ResponseResultsInner](docs/GetOrganizationOrganizationIdCredentials200ResponseResultsInner.md)
- - [GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner](docs/GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitFileCheckRequest](docs/GitFileCheckRequest.md)
@@ -931,6 +928,9 @@ Class | Method | HTTP request | Description
  - [OrganizationContainerAutoDeployRequest](docs/OrganizationContainerAutoDeployRequest.md)
  - [OrganizationContainerPreviewRequest](docs/OrganizationContainerPreviewRequest.md)
  - [OrganizationCreditCodeRequest](docs/OrganizationCreditCodeRequest.md)
+ - [OrganizationCrendentialsResponseList](docs/OrganizationCrendentialsResponseList.md)
+ - [OrganizationCrendentialsResponseListResultsInner](docs/OrganizationCrendentialsResponseListResultsInner.md)
+ - [OrganizationCrendentialsResponseListResultsInnerClustersInner](docs/OrganizationCrendentialsResponseListResultsInnerClustersInner.md)
  - [OrganizationCurrentCost](docs/OrganizationCurrentCost.md)
  - [OrganizationCustomRole](docs/OrganizationCustomRole.md)
  - [OrganizationCustomRoleClusterPermission](docs/OrganizationCustomRoleClusterPermission.md)

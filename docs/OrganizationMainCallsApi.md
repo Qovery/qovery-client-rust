@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**get_organization_git_token**](OrganizationMainCallsApi.md#get_organization_git_token) | **GET** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 [**list_organization**](OrganizationMainCallsApi.md#list_organization) | **GET** /organization | List user organizations
 [**list_organization_available_roles**](OrganizationMainCallsApi.md#list_organization_available_roles) | **GET** /organization/{organizationId}/availableRole | List organization available roles
+[**list_organization_credentials**](OrganizationMainCallsApi.md#list_organization_credentials) | **GET** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 [**list_organization_git_tokens**](OrganizationMainCallsApi.md#list_organization_git_tokens) | **GET** /organization/{organizationId}/gitToken | List organization git tokens
 [**list_services_by_organization_id**](OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
 
@@ -395,6 +396,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::OrganizationAvailableRoleList**](OrganizationAvailableRoleList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_organization_credentials
+
+> models::OrganizationCrendentialsResponseList list_organization_credentials(organization_id)
+List credentials of an organization and their associated clusters
+
+List credentials of an organization and their associated clusters
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **String** |  | [required] |
+
+### Return type
+
+[**models::OrganizationCrendentialsResponseList**](OrganizationCrendentialsResponseList.md)
 
 ### Authorization
 
