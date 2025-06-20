@@ -16,8 +16,7 @@ pub struct OrganizationCrendentialsResponseListResultsInner {
     #[serde(rename = "credential", skip_serializing_if = "Option::is_none")]
     pub credential: Option<models::ClusterCredentials>,
     #[serde(rename = "clusters", skip_serializing_if = "Option::is_none")]
-    pub clusters:
-        Option<Vec<models::OrganizationCrendentialsResponseListResultsInnerClustersInner>>,
+    pub clusters: Option<Vec<models::CredentialCluster>>,
 }
 
 impl OrganizationCrendentialsResponseListResultsInner {

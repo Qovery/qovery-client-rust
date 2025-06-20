@@ -169,6 +169,7 @@ docs/CostRange.md
 docs/CpuArchitectureEnum.md
 docs/CreateEnvironmentModeEnum.md
 docs/CreateEnvironmentRequest.md
+docs/CredentialCluster.md
 docs/Credentials.md
 docs/CredentialsRequest.md
 docs/CreditCard.md
@@ -500,7 +501,6 @@ docs/OrganizationContainerPreviewRequest.md
 docs/OrganizationCreditCodeRequest.md
 docs/OrganizationCrendentialsResponseList.md
 docs/OrganizationCrendentialsResponseListResultsInner.md
-docs/OrganizationCrendentialsResponseListResultsInnerClustersInner.md
 docs/OrganizationCurrentCost.md
 docs/OrganizationCustomRole.md
 docs/OrganizationCustomRoleApi.md
@@ -905,6 +905,7 @@ src/models/cost_range.rs
 src/models/cpu_architecture_enum.rs
 src/models/create_environment_mode_enum.rs
 src/models/create_environment_request.rs
+src/models/credential_cluster.rs
 src/models/credentials.rs
 src/models/credentials_request.rs
 src/models/credit_card.rs
@@ -1195,7 +1196,6 @@ src/models/organization_container_preview_request.rs
 src/models/organization_credit_code_request.rs
 src/models/organization_crendentials_response_list.rs
 src/models/organization_crendentials_response_list_results_inner.rs
-src/models/organization_crendentials_response_list_results_inner_clusters_inner.rs
 src/models/organization_current_cost.rs
 src/models/organization_custom_role.rs
 src/models/organization_custom_role_cluster_permission.rs
