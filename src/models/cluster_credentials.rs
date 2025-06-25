@@ -24,6 +24,8 @@ pub enum ClusterCredentials {
     AwsRole(models::AwsRoleClusterCredentials),
     #[serde(rename = "AZURE")]
     Azure(models::AzureStaticClusterCredentials),
+    #[serde(rename = "GCP")]
+    Gcp(models::GcpStaticClusterCredentials),
 }
 
 impl Default for ClusterCredentials {

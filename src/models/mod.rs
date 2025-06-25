@@ -492,6 +492,8 @@ pub mod environment_variable_response_list;
 pub use self::environment_variable_response_list::EnvironmentVariableResponseList;
 pub mod gcp_credentials_request;
 pub use self::gcp_credentials_request::GcpCredentialsRequest;
+pub mod gcp_static_cluster_credentials;
+pub use self::gcp_static_cluster_credentials::GcpStaticClusterCredentials;
 pub mod generic_cluster_credentials;
 pub use self::generic_cluster_credentials::GenericClusterCredentials;
 pub mod generic_object_current_cost;
