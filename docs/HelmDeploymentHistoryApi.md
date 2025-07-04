@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_helm_deployment_history_v2
 
-> models::DeploymentHistoryServicePaginatedResponseListV2 list_helm_deployment_history_v2(helm_id)
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_helm_deployment_history_v2(helm_id, page_size)
 List helm deployments
 
 Returns the 20 last helm deployments
@@ -52,6 +52,7 @@ Returns the 20 last helm deployments
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **helm_id** | **uuid::Uuid** |  | [required] |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

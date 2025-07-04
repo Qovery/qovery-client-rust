@@ -96,12 +96,14 @@ pub async fn list_job_deployment_history(
 pub async fn list_job_deployment_history_v2(
     configuration: &configuration::Configuration,
     job_id: &str,
+    page_size: Option<f64>,
 ) -> Result<
     models::DeploymentHistoryServicePaginatedResponseListV2,
     Error<ListJobDeploymentHistoryV2Error>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_job_id = job_id;
+    let p_page_size = page_size;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentHistoryV2",
@@ -110,6 +112,9 @@ pub async fn list_job_deployment_history_v2(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

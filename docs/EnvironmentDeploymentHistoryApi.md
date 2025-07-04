@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_environment_deployment_history_v2
 
-> models::DeploymentHistoryEnvironmentPaginatedResponseListV2 list_environment_deployment_history_v2(environment_id, start_id)
+> models::DeploymentHistoryEnvironmentPaginatedResponseListV2 list_environment_deployment_history_v2(environment_id, page_size)
 List environment deployments
 
 List previous and current environment deployments with the status deployment and the related services. By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
@@ -53,7 +53,7 @@ List previous and current environment deployments with the status deployment and
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** |  | [required] |
-**start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

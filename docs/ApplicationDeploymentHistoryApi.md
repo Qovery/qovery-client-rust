@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_application_deployment_history_v2
 
-> models::DeploymentHistoryServicePaginatedResponseListV2 list_application_deployment_history_v2(application_id, start_id)
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_application_deployment_history_v2(application_id, page_size)
 List application deploys
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter. You can also filter by status (FAILED or SUCCESS), and git_commit_id
@@ -53,7 +53,7 @@ By default it returns the 20 last results. The response is paginated. In order t
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **application_id** | **String** |  | [required] |
-**start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

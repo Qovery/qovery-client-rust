@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_database_deployment_history_v2
 
-> models::DeploymentHistoryServicePaginatedResponseListV2 list_database_deployment_history_v2(database_id, start_id)
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_database_deployment_history_v2(database_id, page_size)
 List database deploys
 
 By default it returns the 20 last results. The response is paginated.
@@ -53,7 +53,7 @@ By default it returns the 20 last results. The response is paginated.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **database_id** | **uuid::Uuid** |  | [required] |
-**start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

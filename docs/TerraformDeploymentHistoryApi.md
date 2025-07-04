@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## list_terraform_deployment_history_v2
 
-> models::DeploymentHistoryServicePaginatedResponseListV2 list_terraform_deployment_history_v2(terraform_id)
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_terraform_deployment_history_v2(terraform_id, page_size)
 List terraform deployments
 
 Returns the 20 last terraform deployments
@@ -21,6 +21,7 @@ Returns the 20 last terraform deployments
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** |  | [required] |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

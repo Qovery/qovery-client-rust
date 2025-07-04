@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_job_deployment_history_v2
 
-> models::DeploymentHistoryServicePaginatedResponseListV2 list_job_deployment_history_v2(job_id)
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_job_deployment_history_v2(job_id, page_size)
 List job deployments
 
 Returns the 20 last job deployments
@@ -52,6 +52,7 @@ Returns the 20 last job deployments
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **uuid::Uuid** |  | [required] |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
 
 ### Return type
 

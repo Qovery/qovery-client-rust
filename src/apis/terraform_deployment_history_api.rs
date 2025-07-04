@@ -27,12 +27,14 @@ pub enum ListTerraformDeploymentHistoryV2Error {
 pub async fn list_terraform_deployment_history_v2(
     configuration: &configuration::Configuration,
     terraform_id: &str,
+    page_size: Option<f64>,
 ) -> Result<
     models::DeploymentHistoryServicePaginatedResponseListV2,
     Error<ListTerraformDeploymentHistoryV2Error>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
+    let p_page_size = page_size;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploymentHistoryV2",
@@ -41,6 +43,9 @@ pub async fn list_terraform_deployment_history_v2(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_page_size {
+        req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
