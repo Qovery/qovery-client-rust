@@ -23,6 +23,10 @@ pub struct AzureStaticClusterCredentials {
     pub azure_tenant_id: String,
     #[serde(rename = "object_type")]
     pub object_type: ObjectType,
+    #[serde(rename = "azure_application_id")]
+    pub azure_application_id: String,
+    #[serde(rename = "azure_application_object_id")]
+    pub azure_application_object_id: String,
 }
 
 impl AzureStaticClusterCredentials {
@@ -32,6 +36,8 @@ impl AzureStaticClusterCredentials {
         azure_subscription_id: String,
         azure_tenant_id: String,
         object_type: ObjectType,
+        azure_application_id: String,
+        azure_application_object_id: String,
     ) -> AzureStaticClusterCredentials {
         AzureStaticClusterCredentials {
             id,
@@ -39,6 +45,8 @@ impl AzureStaticClusterCredentials {
             azure_subscription_id,
             azure_tenant_id,
             object_type,
+            azure_application_id,
+            azure_application_object_id,
         }
     }
 }
