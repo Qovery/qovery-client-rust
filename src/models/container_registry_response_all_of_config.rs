@@ -38,6 +38,16 @@ pub struct ContainerRegistryResponseAllOfConfig {
         skip_serializing_if = "Option::is_none"
     )]
     pub azure_subscription_id: Option<String>,
+    #[serde(
+        rename = "azure_application_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_application_id: Option<String>,
+    #[serde(
+        rename = "azure_application_object_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub azure_application_object_id: Option<String>,
 }
 
 impl ContainerRegistryResponseAllOfConfig {
@@ -51,6 +61,8 @@ impl ContainerRegistryResponseAllOfConfig {
             role_arn: None,
             azure_tenant_id: None,
             azure_subscription_id: None,
+            azure_application_id: None,
+            azure_application_object_id: None,
         }
     }
 }
