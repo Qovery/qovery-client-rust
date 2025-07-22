@@ -1062,6 +1062,7 @@ Class | Method | HTTP request | Description
  - [TerraformResponseAllOfTerraformFilesSource](docs/TerraformResponseAllOfTerraformFilesSource.md)
  - [TerraformResponseAllOfTerraformFilesSourceGit](docs/TerraformResponseAllOfTerraformFilesSourceGit.md)
  - [TerraformResponseList](docs/TerraformResponseList.md)
+ - [TerraformVarKeyValue](docs/TerraformVarKeyValue.md)
  - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)

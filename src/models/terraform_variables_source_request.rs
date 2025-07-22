@@ -15,15 +15,14 @@ use serde::{Deserialize, Serialize};
 pub struct TerraformVariablesSourceRequest {
     #[serde(rename = "tf_var_file_paths")]
     pub tf_var_file_paths: Vec<String>,
-    /// The input is in json array format: [ [$KEY,$VALUE], [...] ]
     #[serde(rename = "tf_vars")]
-    pub tf_vars: Vec<Vec<String>>,
+    pub tf_vars: models::TerraformVarKeyValue,
 }
 
 impl TerraformVariablesSourceRequest {
     pub fn new(
         tf_var_file_paths: Vec<String>,
-        tf_vars: Vec<Vec<String>>,
+        tf_vars: models::TerraformVarKeyValue,
     ) -> TerraformVariablesSourceRequest {
         TerraformVariablesSourceRequest {
             tf_var_file_paths,
