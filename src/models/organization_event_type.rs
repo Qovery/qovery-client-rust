@@ -25,24 +25,52 @@ pub enum OrganizationEventType {
     Accept,
     #[serde(rename = "EXPORT")]
     Export,
-    #[serde(rename = "TRIGGER_DEPLOY")]
-    TriggerDeploy,
+    #[serde(rename = "CLONE")]
+    Clone,
+    #[serde(rename = "DEPLOY_QUEUED")]
+    DeployQueued,
+    #[serde(rename = "STOP_QUEUED")]
+    StopQueued,
+    #[serde(rename = "RESTART_QUEUED")]
+    RestartQueued,
+    #[serde(rename = "DELETE_QUEUED")]
+    DeleteQueued,
+    #[serde(rename = "MAINTENANCE")]
+    Maintenance,
+    #[serde(rename = "DRY_RUN")]
+    DryRun,
     #[serde(rename = "TRIGGER_REDEPLOY")]
     TriggerRedeploy,
-    #[serde(rename = "TRIGGER_STOP")]
-    TriggerStop,
     #[serde(rename = "TRIGGER_CANCEL")]
     TriggerCancel,
+    #[serde(rename = "FORCE_RUN_QUEUED")]
+    ForceRunQueued,
+    #[serde(rename = "FORCE_RUN_QUEUED_DEPLOY")]
+    ForceRunQueuedDeploy,
+    #[serde(rename = "FORCE_RUN_QUEUED_STOP")]
+    ForceRunQueuedStop,
+    #[serde(rename = "FORCE_RUN_QUEUED_DELETE")]
+    ForceRunQueuedDelete,
+    #[serde(rename = "TRIGGER_DEPLOY")]
+    TriggerDeploy,
+    #[serde(rename = "TRIGGER_STOP")]
+    TriggerStop,
     #[serde(rename = "TRIGGER_RESTART")]
     TriggerRestart,
     #[serde(rename = "TRIGGER_DELETE")]
     TriggerDelete,
-    #[serde(rename = "SHELL")]
-    Shell,
-    #[serde(rename = "PORT_FORWARD")]
-    PortForward,
-    #[serde(rename = "CLONE")]
-    Clone,
+    #[serde(rename = "TRIGGER_DEPLOY_DRY_RUN")]
+    TriggerDeployDryRun,
+    #[serde(rename = "TRIGGER_DELETE_RESOURCES_ONLY")]
+    TriggerDeleteResourcesOnly,
+    #[serde(rename = "TRIGGER_FORCE_RUN")]
+    TriggerForceRun,
+    #[serde(rename = "TRIGGER_FORCE_RUN_DEPLOY")]
+    TriggerForceRunDeploy,
+    #[serde(rename = "TRIGGER_FORCE_RUN_STOP")]
+    TriggerForceRunStop,
+    #[serde(rename = "TRIGGER_FORCE_RUN_DELETE")]
+    TriggerForceRunDelete,
     #[serde(rename = "DEPLOYED")]
     Deployed,
     #[serde(rename = "STOPPED")]
@@ -51,6 +79,10 @@ pub enum OrganizationEventType {
     Deleted,
     #[serde(rename = "RESTARTED")]
     Restarted,
+    #[serde(rename = "DEPLOYED_DRY_RUN")]
+    DeployedDryRun,
+    #[serde(rename = "DELETE_RESOURCES_ONLY")]
+    DeleteResourcesOnly,
     #[serde(rename = "DEPLOY_FAILED")]
     DeployFailed,
     #[serde(rename = "STOP_FAILED")]
@@ -59,8 +91,20 @@ pub enum OrganizationEventType {
     DeleteFailed,
     #[serde(rename = "RESTART_FAILED")]
     RestartFailed,
-    #[serde(rename = "MAINTENANCE")]
-    Maintenance,
+    #[serde(rename = "DEPLOYED_DRY_RUN_FAILED")]
+    DeployedDryRunFailed,
+    #[serde(rename = "SHELL")]
+    Shell,
+    #[serde(rename = "PORT_FORWARD")]
+    PortForward,
+    #[serde(rename = "REMOTE_DEBUG")]
+    RemoteDebug,
+    #[serde(rename = "IMPORT")]
+    Import,
+    #[serde(rename = "LOCK")]
+    Lock,
+    #[serde(rename = "UNLOCK")]
+    Unlock,
 }
 
 impl std::fmt::Display for OrganizationEventType {
@@ -71,24 +115,46 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Delete => write!(f, "DELETE"),
             Self::Accept => write!(f, "ACCEPT"),
             Self::Export => write!(f, "EXPORT"),
-            Self::TriggerDeploy => write!(f, "TRIGGER_DEPLOY"),
+            Self::Clone => write!(f, "CLONE"),
+            Self::DeployQueued => write!(f, "DEPLOY_QUEUED"),
+            Self::StopQueued => write!(f, "STOP_QUEUED"),
+            Self::RestartQueued => write!(f, "RESTART_QUEUED"),
+            Self::DeleteQueued => write!(f, "DELETE_QUEUED"),
+            Self::Maintenance => write!(f, "MAINTENANCE"),
+            Self::DryRun => write!(f, "DRY_RUN"),
             Self::TriggerRedeploy => write!(f, "TRIGGER_REDEPLOY"),
-            Self::TriggerStop => write!(f, "TRIGGER_STOP"),
             Self::TriggerCancel => write!(f, "TRIGGER_CANCEL"),
+            Self::ForceRunQueued => write!(f, "FORCE_RUN_QUEUED"),
+            Self::ForceRunQueuedDeploy => write!(f, "FORCE_RUN_QUEUED_DEPLOY"),
+            Self::ForceRunQueuedStop => write!(f, "FORCE_RUN_QUEUED_STOP"),
+            Self::ForceRunQueuedDelete => write!(f, "FORCE_RUN_QUEUED_DELETE"),
+            Self::TriggerDeploy => write!(f, "TRIGGER_DEPLOY"),
+            Self::TriggerStop => write!(f, "TRIGGER_STOP"),
             Self::TriggerRestart => write!(f, "TRIGGER_RESTART"),
             Self::TriggerDelete => write!(f, "TRIGGER_DELETE"),
-            Self::Shell => write!(f, "SHELL"),
-            Self::PortForward => write!(f, "PORT_FORWARD"),
-            Self::Clone => write!(f, "CLONE"),
+            Self::TriggerDeployDryRun => write!(f, "TRIGGER_DEPLOY_DRY_RUN"),
+            Self::TriggerDeleteResourcesOnly => write!(f, "TRIGGER_DELETE_RESOURCES_ONLY"),
+            Self::TriggerForceRun => write!(f, "TRIGGER_FORCE_RUN"),
+            Self::TriggerForceRunDeploy => write!(f, "TRIGGER_FORCE_RUN_DEPLOY"),
+            Self::TriggerForceRunStop => write!(f, "TRIGGER_FORCE_RUN_STOP"),
+            Self::TriggerForceRunDelete => write!(f, "TRIGGER_FORCE_RUN_DELETE"),
             Self::Deployed => write!(f, "DEPLOYED"),
             Self::Stopped => write!(f, "STOPPED"),
             Self::Deleted => write!(f, "DELETED"),
             Self::Restarted => write!(f, "RESTARTED"),
+            Self::DeployedDryRun => write!(f, "DEPLOYED_DRY_RUN"),
+            Self::DeleteResourcesOnly => write!(f, "DELETE_RESOURCES_ONLY"),
             Self::DeployFailed => write!(f, "DEPLOY_FAILED"),
             Self::StopFailed => write!(f, "STOP_FAILED"),
             Self::DeleteFailed => write!(f, "DELETE_FAILED"),
             Self::RestartFailed => write!(f, "RESTART_FAILED"),
-            Self::Maintenance => write!(f, "MAINTENANCE"),
+            Self::DeployedDryRunFailed => write!(f, "DEPLOYED_DRY_RUN_FAILED"),
+            Self::Shell => write!(f, "SHELL"),
+            Self::PortForward => write!(f, "PORT_FORWARD"),
+            Self::RemoteDebug => write!(f, "REMOTE_DEBUG"),
+            Self::Import => write!(f, "IMPORT"),
+            Self::Lock => write!(f, "LOCK"),
+            Self::Unlock => write!(f, "UNLOCK"),
         }
     }
 }
