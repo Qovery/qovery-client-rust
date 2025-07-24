@@ -24,6 +24,8 @@ pub enum DeploymentHistoryTriggerAction {
     Stop,
     #[serde(rename = "UNKNOWN")]
     Unknown,
+    #[serde(rename = "UNINSTALL")]
+    Uninstall,
 }
 
 impl std::fmt::Display for DeploymentHistoryTriggerAction {
@@ -34,6 +36,7 @@ impl std::fmt::Display for DeploymentHistoryTriggerAction {
             Self::Restart => write!(f, "RESTART"),
             Self::Stop => write!(f, "STOP"),
             Self::Unknown => write!(f, "UNKNOWN"),
+            Self::Uninstall => write!(f, "UNINSTALL"),
         }
     }
 }
