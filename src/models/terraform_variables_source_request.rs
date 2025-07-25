@@ -16,13 +16,13 @@ pub struct TerraformVariablesSourceRequest {
     #[serde(rename = "tf_var_file_paths")]
     pub tf_var_file_paths: Vec<String>,
     #[serde(rename = "tf_vars")]
-    pub tf_vars: models::TerraformVarKeyValue,
+    pub tf_vars: Vec<models::TerraformVarKeyValue>,
 }
 
 impl TerraformVariablesSourceRequest {
     pub fn new(
         tf_var_file_paths: Vec<String>,
-        tf_vars: models::TerraformVarKeyValue,
+        tf_vars: Vec<models::TerraformVarKeyValue>,
     ) -> TerraformVariablesSourceRequest {
         TerraformVariablesSourceRequest {
             tf_var_file_paths,
