@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformVariableParsingRequest {
-    #[serde(rename = "gitRepository")]
+    #[serde(rename = "git_repository")]
     pub git_repository: models::ApplicationGitRepositoryRequest,
 }
 
