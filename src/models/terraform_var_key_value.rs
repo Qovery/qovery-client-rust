@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// TerraformVarKeyValue :
+/// TerraformVarKeyValue : A Terraform input variable
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformVarKeyValue {
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]
@@ -23,7 +23,7 @@ pub struct TerraformVarKeyValue {
 }
 
 impl TerraformVarKeyValue {
-    ///
+    /// A Terraform input variable
     pub fn new() -> TerraformVarKeyValue {
         TerraformVarKeyValue {
             key: None,
