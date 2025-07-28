@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**list_organization_credentials**](OrganizationMainCallsApi.md#list_organization_credentials) | **GET** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 [**list_organization_git_tokens**](OrganizationMainCallsApi.md#list_organization_git_tokens) | **GET** /organization/{organizationId}/gitToken | List organization git tokens
 [**list_services_by_organization_id**](OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
+[**parse_terraform_variables_from_git_repo**](OrganizationMainCallsApi.md#parse_terraform_variables_from_git_repo) | **POST** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
 
 
 
@@ -495,6 +496,35 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## parse_terraform_variables_from_git_repo
+
+> models::ParseTerraformVariablesFromGitRepo200Response parse_terraform_variables_from_git_repo(organization_id, terraform_variable_parsing_request)
+Parse Terraform variables from Git repository
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**terraform_variable_parsing_request** | [**TerraformVariableParsingRequest**](TerraformVariableParsingRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ParseTerraformVariablesFromGitRepo200Response**](parseTerraformVariablesFromGitRepo_200_response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
