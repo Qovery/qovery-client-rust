@@ -12,15 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct TerraformResponseAllOfTerraformFilesSourceGit {
-    #[serde(rename = "git_repository")]
-    pub git_repository: models::ApplicationGitRepository,
+pub struct TerraformFilesSource {
+    #[serde(rename = "git", skip_serializing_if = "Option::is_none")]
+    pub git: Option<models::TerraformFilesSourceGit>,
 }
 
-impl TerraformResponseAllOfTerraformFilesSourceGit {
-    pub fn new(
-        git_repository: models::ApplicationGitRepository,
-    ) -> TerraformResponseAllOfTerraformFilesSourceGit {
-        TerraformResponseAllOfTerraformFilesSourceGit { git_repository }
+impl TerraformFilesSource {
+    pub fn new() -> TerraformFilesSource {
+        TerraformFilesSource { git: None }
     }
 }

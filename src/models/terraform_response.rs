@@ -35,7 +35,7 @@ pub struct TerraformResponse {
         rename = "terraform_files_source",
         skip_serializing_if = "Option::is_none"
     )]
-    pub terraform_files_source: Option<models::TerraformResponseAllOfTerraformFilesSource>,
+    pub terraform_files_source: Option<models::TerraformFilesSource>,
     /// Icon URI representing the terraform service.
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,

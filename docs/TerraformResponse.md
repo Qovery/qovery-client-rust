@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **timeout_sec** | **i32** |  | [default to 600]
 **auto_approve** | **bool** |  | 
 **auto_deploy** | **bool** |  | 
-**terraform_files_source** | Option<[**models::TerraformResponseAllOfTerraformFilesSource**](TerraformResponse_allOf_terraform_files_source.md)> |  | [optional]
+**terraform_files_source** | Option<[**models::TerraformFilesSource**](TerraformFilesSource.md)> |  | [optional]
 **icon_uri** | **String** | Icon URI representing the terraform service. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
