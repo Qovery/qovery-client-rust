@@ -25,10 +25,10 @@ pub enum DeployTerraformError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`redeploy_terrraform`]
+/// struct for typed errors of method [`redeploy_terraform`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RedeployTerrraformError {
+pub enum RedeployTerraformError {
     Status401(),
     Status403(),
     Status404(),
@@ -112,10 +112,10 @@ pub async fn deploy_terraform(
     }
 }
 
-pub async fn redeploy_terrraform(
+pub async fn redeploy_terraform(
     configuration: &configuration::Configuration,
     terraform_id: &str,
-) -> Result<models::Status, Error<RedeployTerrraformError>> {
+) -> Result<models::Status, Error<RedeployTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
 
@@ -163,7 +163,7 @@ pub async fn redeploy_terrraform(
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<RedeployTerrraformError> = serde_json::from_str(&content).ok();
+        let entity: Option<RedeployTerraformError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
