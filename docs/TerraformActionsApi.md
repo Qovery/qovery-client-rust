@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deploy_terraform**](TerraformActionsApi.md#deploy_terraform) | **POST** /terraform/{terraformId}/deploy | Deploy terraform
+[**redeploy_terrraform**](TerraformActionsApi.md#redeploy_terrraform) | **POST** /terraform/{terraformId}/redeploy | Redeploy terraform
 [**uninstall_terraform**](TerraformActionsApi.md#uninstall_terraform) | **POST** /terraform/{terraformId}/uninstall | Uninstall terraform
 
 
@@ -35,6 +36,34 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## redeploy_terrraform
+
+> models::Status redeploy_terrraform(terraform_id)
+Redeploy terraform
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**terraform_id** | **String** |  | [required] |
+
+### Return type
+
+[**models::Status**](Status.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
