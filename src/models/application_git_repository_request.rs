@@ -30,15 +30,18 @@ pub struct ApplicationGitRepositoryRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub git_token_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "provider")]
+    pub provider: models::GitProviderEnum,
 }
 
 impl ApplicationGitRepositoryRequest {
-    pub fn new(url: String) -> ApplicationGitRepositoryRequest {
+    pub fn new(url: String, provider: models::GitProviderEnum) -> ApplicationGitRepositoryRequest {
         ApplicationGitRepositoryRequest {
             url,
             branch: None,
             root_path: None,
             git_token_id: None,
+            provider,
         }
     }
 }
