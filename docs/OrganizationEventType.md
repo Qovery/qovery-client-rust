@@ -14,6 +14,7 @@
 | StopQueued | STOP_QUEUED |
 | RestartQueued | RESTART_QUEUED |
 | DeleteQueued | DELETE_QUEUED |
+| UninstallQueued | UNINSTALL_QUEUED |
 | Maintenance | MAINTENANCE |
 | DryRun | DRY_RUN |
 | TriggerRedeploy | TRIGGER_REDEPLOY |
@@ -26,8 +27,8 @@
 | TriggerStop | TRIGGER_STOP |
 | TriggerRestart | TRIGGER_RESTART |
 | TriggerDelete | TRIGGER_DELETE |
+| TriggerUninstall | TRIGGER_UNINSTALL |
 | TriggerDeployDryRun | TRIGGER_DEPLOY_DRY_RUN |
-| TriggerDeleteResourcesOnly | TRIGGER_DELETE_RESOURCES_ONLY |
 | TriggerForceRun | TRIGGER_FORCE_RUN |
 | TriggerForceRunDeploy | TRIGGER_FORCE_RUN_DEPLOY |
 | TriggerForceRunStop | TRIGGER_FORCE_RUN_STOP |
@@ -35,12 +36,13 @@
 | Deployed | DEPLOYED |
 | Stopped | STOPPED |
 | Deleted | DELETED |
+| Uninstalled | UNINSTALLED |
 | Restarted | RESTARTED |
 | DeployedDryRun | DEPLOYED_DRY_RUN |
-| DeleteResourcesOnly | DELETE_RESOURCES_ONLY |
 | DeployFailed | DEPLOY_FAILED |
 | StopFailed | STOP_FAILED |
 | DeleteFailed | DELETE_FAILED |
+| UninstallFailed | UNINSTALL_FAILED |
 | RestartFailed | RESTART_FAILED |
 | DeployedDryRunFailed | DEPLOYED_DRY_RUN_FAILED |
 | Shell | SHELL |

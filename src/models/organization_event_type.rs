@@ -35,6 +35,8 @@ pub enum OrganizationEventType {
     RestartQueued,
     #[serde(rename = "DELETE_QUEUED")]
     DeleteQueued,
+    #[serde(rename = "UNINSTALL_QUEUED")]
+    UninstallQueued,
     #[serde(rename = "MAINTENANCE")]
     Maintenance,
     #[serde(rename = "DRY_RUN")]
@@ -59,10 +61,10 @@ pub enum OrganizationEventType {
     TriggerRestart,
     #[serde(rename = "TRIGGER_DELETE")]
     TriggerDelete,
+    #[serde(rename = "TRIGGER_UNINSTALL")]
+    TriggerUninstall,
     #[serde(rename = "TRIGGER_DEPLOY_DRY_RUN")]
     TriggerDeployDryRun,
-    #[serde(rename = "TRIGGER_DELETE_RESOURCES_ONLY")]
-    TriggerDeleteResourcesOnly,
     #[serde(rename = "TRIGGER_FORCE_RUN")]
     TriggerForceRun,
     #[serde(rename = "TRIGGER_FORCE_RUN_DEPLOY")]
@@ -77,18 +79,20 @@ pub enum OrganizationEventType {
     Stopped,
     #[serde(rename = "DELETED")]
     Deleted,
+    #[serde(rename = "UNINSTALLED")]
+    Uninstalled,
     #[serde(rename = "RESTARTED")]
     Restarted,
     #[serde(rename = "DEPLOYED_DRY_RUN")]
     DeployedDryRun,
-    #[serde(rename = "DELETE_RESOURCES_ONLY")]
-    DeleteResourcesOnly,
     #[serde(rename = "DEPLOY_FAILED")]
     DeployFailed,
     #[serde(rename = "STOP_FAILED")]
     StopFailed,
     #[serde(rename = "DELETE_FAILED")]
     DeleteFailed,
+    #[serde(rename = "UNINSTALL_FAILED")]
+    UninstallFailed,
     #[serde(rename = "RESTART_FAILED")]
     RestartFailed,
     #[serde(rename = "DEPLOYED_DRY_RUN_FAILED")]
@@ -120,6 +124,7 @@ impl std::fmt::Display for OrganizationEventType {
             Self::StopQueued => write!(f, "STOP_QUEUED"),
             Self::RestartQueued => write!(f, "RESTART_QUEUED"),
             Self::DeleteQueued => write!(f, "DELETE_QUEUED"),
+            Self::UninstallQueued => write!(f, "UNINSTALL_QUEUED"),
             Self::Maintenance => write!(f, "MAINTENANCE"),
             Self::DryRun => write!(f, "DRY_RUN"),
             Self::TriggerRedeploy => write!(f, "TRIGGER_REDEPLOY"),
@@ -132,8 +137,8 @@ impl std::fmt::Display for OrganizationEventType {
             Self::TriggerStop => write!(f, "TRIGGER_STOP"),
             Self::TriggerRestart => write!(f, "TRIGGER_RESTART"),
             Self::TriggerDelete => write!(f, "TRIGGER_DELETE"),
+            Self::TriggerUninstall => write!(f, "TRIGGER_UNINSTALL"),
             Self::TriggerDeployDryRun => write!(f, "TRIGGER_DEPLOY_DRY_RUN"),
-            Self::TriggerDeleteResourcesOnly => write!(f, "TRIGGER_DELETE_RESOURCES_ONLY"),
             Self::TriggerForceRun => write!(f, "TRIGGER_FORCE_RUN"),
             Self::TriggerForceRunDeploy => write!(f, "TRIGGER_FORCE_RUN_DEPLOY"),
             Self::TriggerForceRunStop => write!(f, "TRIGGER_FORCE_RUN_STOP"),
@@ -141,12 +146,13 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Deployed => write!(f, "DEPLOYED"),
             Self::Stopped => write!(f, "STOPPED"),
             Self::Deleted => write!(f, "DELETED"),
+            Self::Uninstalled => write!(f, "UNINSTALLED"),
             Self::Restarted => write!(f, "RESTARTED"),
             Self::DeployedDryRun => write!(f, "DEPLOYED_DRY_RUN"),
-            Self::DeleteResourcesOnly => write!(f, "DELETE_RESOURCES_ONLY"),
             Self::DeployFailed => write!(f, "DEPLOY_FAILED"),
             Self::StopFailed => write!(f, "STOP_FAILED"),
             Self::DeleteFailed => write!(f, "DELETE_FAILED"),
+            Self::UninstallFailed => write!(f, "UNINSTALL_FAILED"),
             Self::RestartFailed => write!(f, "RESTART_FAILED"),
             Self::DeployedDryRunFailed => write!(f, "DEPLOYED_DRY_RUN_FAILED"),
             Self::Shell => write!(f, "SHELL"),
