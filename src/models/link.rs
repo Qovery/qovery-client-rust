@@ -13,30 +13,46 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Link {
-    #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
+    /// ID of the associated service
+    #[serde(rename = "service_id")]
+    pub service_id: uuid::Uuid,
+    #[serde(rename = "service_type")]
+    pub service_type: models::ServiceTypeEnum,
+    /// URL to access the service
+    #[serde(rename = "url")]
+    pub url: String,
     /// The port from which the service is reachable from within the cluster
-    #[serde(rename = "internal_port", skip_serializing_if = "Option::is_none")]
-    pub internal_port: Option<i32>,
+    #[serde(rename = "internal_port")]
+    pub internal_port: i32,
     /// The port from which the service is reachable from externally (i.e: 443 for HTTPS)
-    #[serde(rename = "external_port", skip_serializing_if = "Option::is_none")]
-    pub external_port: Option<i32>,
+    #[serde(rename = "external_port")]
+    pub external_port: i32,
     /// True if the domain is managed by Qovery, false if it belongs to the user
-    #[serde(rename = "is_qovery_domain", skip_serializing_if = "Option::is_none")]
-    pub is_qovery_domain: Option<bool>,
+    #[serde(rename = "is_qovery_domain")]
+    pub is_qovery_domain: bool,
     /// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false
-    #[serde(rename = "is_default", skip_serializing_if = "Option::is_none")]
-    pub is_default: Option<bool>,
+    #[serde(rename = "is_default")]
+    pub is_default: bool,
 }
 
 impl Link {
-    pub fn new() -> Link {
+    pub fn new(
+        service_id: uuid::Uuid,
+        service_type: models::ServiceTypeEnum,
+        url: String,
+        internal_port: i32,
+        external_port: i32,
+        is_qovery_domain: bool,
+        is_default: bool,
+    ) -> Link {
         Link {
-            url: None,
-            internal_port: None,
-            external_port: None,
-            is_qovery_domain: None,
-            is_default: None,
+            service_id,
+            service_type,
+            url,
+            internal_port,
+            external_port,
+            is_qovery_domain,
+            is_default,
         }
     }
 }

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**check_dockerfile**](EnvironmentApi.md#check_dockerfile) | **POST** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
 [**check_git_file**](EnvironmentApi.md#check_git_file) | **POST** /environment/{environmentId}/checkGitFile | Check git file configuration is correct
 [**check_helm_repository**](EnvironmentApi.md#check_helm_repository) | **POST** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
+[**list_environment_services_links**](EnvironmentApi.md#list_environment_services_links) | **GET** /api/environment/{environmentId}/link | List environment services links
 
 
 
@@ -122,6 +123,34 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_environment_services_links
+
+> models::LinkResponseList list_environment_services_links(environment_id)
+List environment services links
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+
+### Return type
+
+[**models::LinkResponseList**](LinkResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

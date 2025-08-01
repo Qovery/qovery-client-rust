@@ -254,6 +254,7 @@ Class | Method | HTTP request | Description
 *EnvironmentApi* | [**check_dockerfile**](docs/EnvironmentApi.md#check_dockerfile) | **POST** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
 *EnvironmentApi* | [**check_git_file**](docs/EnvironmentApi.md#check_git_file) | **POST** /environment/{environmentId}/checkGitFile | Check git file configuration is correct
 *EnvironmentApi* | [**check_helm_repository**](docs/EnvironmentApi.md#check_helm_repository) | **POST** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
+*EnvironmentApi* | [**list_environment_services_links**](docs/EnvironmentApi.md#list_environment_services_links) | **GET** /api/environment/{environmentId}/link | List environment services links
 *EnvironmentActionsApi* | [**cancel_environment_deployment**](docs/EnvironmentActionsApi.md#cancel_environment_deployment) | **POST** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**clean_failed_jobs**](docs/EnvironmentActionsApi.md#clean_failed_jobs) | **POST** /environment/{environmentId}/cleanFailedJobs | Clean failed jobs within an environment
 *EnvironmentActionsApi* | [**clone_environment**](docs/EnvironmentActionsApi.md#clone_environment) | **POST** /environment/{environmentId}/clone | Clone environment
