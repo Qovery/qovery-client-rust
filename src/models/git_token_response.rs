@@ -33,6 +33,8 @@ pub struct GitTokenResponse {
     /// The number of services using this git token
     #[serde(rename = "associated_services_count")]
     pub associated_services_count: f64,
+    #[serde(rename = "git_api_url")]
+    pub git_api_url: String,
 }
 
 impl GitTokenResponse {
@@ -42,6 +44,7 @@ impl GitTokenResponse {
         name: String,
         r#type: models::GitProviderEnum,
         associated_services_count: f64,
+        git_api_url: String,
     ) -> GitTokenResponse {
         GitTokenResponse {
             id,
@@ -53,6 +56,7 @@ impl GitTokenResponse {
             expired_at: None,
             workspace: None,
             associated_services_count,
+            git_api_url,
         }
     }
 }

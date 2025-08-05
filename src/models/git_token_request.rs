@@ -25,6 +25,9 @@ pub struct GitTokenRequest {
     /// Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service
     #[serde(rename = "workspace", skip_serializing_if = "Option::is_none")]
     pub workspace: Option<String>,
+    /// custom git api url for the given git provider/type. I.e: Self-hosted version of Gitlab
+    #[serde(rename = "git_api_url", skip_serializing_if = "Option::is_none")]
+    pub git_api_url: Option<String>,
 }
 
 impl GitTokenRequest {
@@ -35,6 +38,7 @@ impl GitTokenRequest {
             r#type,
             token,
             workspace: None,
+            git_api_url: None,
         }
     }
 }

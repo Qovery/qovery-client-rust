@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **expired_at** | Option<[**String**](string.md)> |  | [optional]
 **workspace** | Option<**String**> | Mandatory only for BITBUCKET git provider | [optional]
 **associated_services_count** | **f64** | The number of services using this git token | 
+**git_api_url** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
