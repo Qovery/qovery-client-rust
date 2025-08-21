@@ -934,7 +934,7 @@ pub async fn get_cluster_metrics(
     partial_response: Option<&str>,
     max_source_resolution: Option<&str>,
     engine: Option<&str>,
-    analyse: Option<&str>,
+    analyze: Option<&str>,
 ) -> Result<models::ClusterMetricsResponse, Error<GetClusterMetricsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_cluster_id = cluster_id;
@@ -949,7 +949,7 @@ pub async fn get_cluster_metrics(
     let p_partial_response = partial_response;
     let p_max_source_resolution = max_source_resolution;
     let p_engine = engine;
-    let p_analyse = analyse;
+    let p_analyze = analyze;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/metrics",
@@ -987,8 +987,8 @@ pub async fn get_cluster_metrics(
     if let Some(ref param_value) = p_engine {
         req_builder = req_builder.query(&[("engine", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_analyse {
-        req_builder = req_builder.query(&[("analyse", &param_value.to_string())]);
+    if let Some(ref param_value) = p_analyze {
+        req_builder = req_builder.query(&[("analyze", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
