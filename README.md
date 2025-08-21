@@ -238,6 +238,7 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**get_environment_database_status**](docs/DatabasesApi.md#get_environment_database_status) | **GET** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesApi* | [**list_database**](docs/DatabasesApi.md#list_database) | **GET** /environment/{environmentId}/database | List environment databases
 *DatabasesApi* | [**list_environment_database_config**](docs/DatabasesApi.md#list_environment_database_config) | **GET** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DefaultApi* | [**get_cluster_logs**](docs/DefaultApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 *DefaultApi* | [**get_cluster_token_by_cluster_id**](docs/DefaultApi.md#get_cluster_token_by_cluster_id) | **GET** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultApi* | [**get_deployment_status_by_deployment_request_id**](docs/DefaultApi.md#get_deployment_status_by_deployment_request_id) | **GET** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
 *DeploymentQueueActionsApi* | [**cancel_deployment_request**](docs/DeploymentQueueActionsApi.md#cancel_deployment_request) | **POST** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
@@ -599,6 +600,7 @@ Class | Method | HTTP request | Description
  - [ClusterLogsErrorEventDetailsTransmitter](docs/ClusterLogsErrorEventDetailsTransmitter.md)
  - [ClusterLogsErrorUnderlyingError](docs/ClusterLogsErrorUnderlyingError.md)
  - [ClusterLogsMessage](docs/ClusterLogsMessage.md)
+ - [ClusterLogsResponse](docs/ClusterLogsResponse.md)
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
  - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)

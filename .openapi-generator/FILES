@@ -113,6 +113,7 @@ docs/ClusterLogsErrorEventDetails.md
 docs/ClusterLogsErrorEventDetailsTransmitter.md
 docs/ClusterLogsErrorUnderlyingError.md
 docs/ClusterLogsMessage.md
+docs/ClusterLogsResponse.md
 docs/ClusterLogsResponseList.md
 docs/ClusterMetricsResponse.md
 docs/ClusterReadinessStatus.md
@@ -865,6 +866,7 @@ src/models/cluster_logs_error_event_details.rs
 src/models/cluster_logs_error_event_details_transmitter.rs
 src/models/cluster_logs_error_underlying_error.rs
 src/models/cluster_logs_message.rs
+src/models/cluster_logs_response.rs
 src/models/cluster_logs_response_list.rs
 src/models/cluster_metrics_response.rs
 src/models/cluster_readiness_status.rs

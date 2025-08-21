@@ -932,6 +932,7 @@ pub async fn get_cluster_metrics(
     timeout: Option<&str>,
     dedup: Option<&str>,
     partial_response: Option<&str>,
+    max_source_resolution: Option<&str>,
 ) -> Result<models::ClusterMetricsResponse, Error<GetClusterMetricsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_cluster_id = cluster_id;
@@ -944,6 +945,7 @@ pub async fn get_cluster_metrics(
     let p_timeout = timeout;
     let p_dedup = dedup;
     let p_partial_response = partial_response;
+    let p_max_source_resolution = max_source_resolution;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/metrics",
@@ -974,6 +976,9 @@ pub async fn get_cluster_metrics(
     }
     if let Some(ref param_value) = p_partial_response {
         req_builder = req_builder.query(&[("partial_response", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_max_source_resolution {
+        req_builder = req_builder.query(&[("max_source_resolution", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

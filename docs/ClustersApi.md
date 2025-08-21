@@ -346,7 +346,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cluster_metrics
 
-> models::ClusterMetricsResponse get_cluster_metrics(cluster_id, endpoint, query, start, end, step, time, timeout, dedup, partial_response)
+> models::ClusterMetricsResponse get_cluster_metrics(cluster_id, endpoint, query, start, end, step, time, timeout, dedup, partial_response, max_source_resolution)
 Fetch cluster metrics
 
 Fetch cluster metrics
@@ -366,6 +366,7 @@ Name | Type | Description  | Required | Notes
 **timeout** | Option<**String**> |  |  |
 **dedup** | Option<**String**> |  |  |
 **partial_response** | Option<**String**> |  |  |
+**max_source_resolution** | Option<**String**> |  |  |
 
 ### Return type
 

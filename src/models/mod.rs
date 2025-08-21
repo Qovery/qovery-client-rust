@@ -188,6 +188,8 @@ pub mod cluster_logs_error_underlying_error;
 pub use self::cluster_logs_error_underlying_error::ClusterLogsErrorUnderlyingError;
 pub mod cluster_logs_message;
 pub use self::cluster_logs_message::ClusterLogsMessage;
+pub mod cluster_logs_response;
+pub use self::cluster_logs_response::ClusterLogsResponse;
 pub mod cluster_logs_response_list;
 pub use self::cluster_logs_response_list::ClusterLogsResponseList;
 pub mod cluster_metrics_response;
