@@ -327,7 +327,7 @@ pub async fn list_environment_services_links(
     let p_environment_id = environment_id;
 
     let uri_str = format!(
-        "{}/api/environment/{environmentId}/link",
+        "{}/environment/{environmentId}/link",
         configuration.base_path,
         environmentId = crate::apis::urlencode(p_environment_id)
     );

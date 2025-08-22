@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**check_dockerfile**](EnvironmentApi.md#check_dockerfile) | **POST** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
 [**check_git_file**](EnvironmentApi.md#check_git_file) | **POST** /environment/{environmentId}/checkGitFile | Check git file configuration is correct
 [**check_helm_repository**](EnvironmentApi.md#check_helm_repository) | **POST** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
-[**list_environment_services_links**](EnvironmentApi.md#list_environment_services_links) | **GET** /api/environment/{environmentId}/link | List environment services links
+[**list_environment_services_links**](EnvironmentApi.md#list_environment_services_links) | **GET** /environment/{environmentId}/link | List environment services links
 
 
 
