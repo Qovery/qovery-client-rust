@@ -82,6 +82,11 @@ pub struct Cluster {
         skip_serializing_if = "Option::is_none"
     )]
     pub infrastructure_outputs: Option<models::InfrastructureOutputs>,
+    #[serde(
+        rename = "infrastructure_charts_parameters",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureNginxChartParameters>,
 }
 
 impl Cluster {
@@ -121,6 +126,7 @@ impl Cluster {
             deployment_status: None,
             metrics_parameters: None,
             infrastructure_outputs: None,
+            infrastructure_charts_parameters: None,
         }
     }
 }

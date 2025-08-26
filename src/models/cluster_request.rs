@@ -49,6 +49,11 @@ pub struct ClusterRequest {
     pub features: Option<Vec<models::ClusterRequestFeaturesInner>>,
     #[serde(rename = "metrics_parameters", skip_serializing_if = "Option::is_none")]
     pub metrics_parameters: Option<models::MetricsParameters>,
+    #[serde(
+        rename = "infrastructure_charts_parameters",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureNginxChartParameters>,
 }
 
 impl ClusterRequest {
@@ -72,6 +77,7 @@ impl ClusterRequest {
             ssh_keys: None,
             features: None,
             metrics_parameters: None,
+            infrastructure_charts_parameters: None,
         }
     }
 }

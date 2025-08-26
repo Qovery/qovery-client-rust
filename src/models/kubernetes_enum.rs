@@ -18,6 +18,8 @@ pub enum KubernetesEnum {
     Managed,
     #[serde(rename = "SELF_MANAGED")]
     SelfManaged,
+    #[serde(rename = "PARTIALLY_MANAGED")]
+    PartiallyManaged,
 }
 
 impl std::fmt::Display for KubernetesEnum {
@@ -25,6 +27,7 @@ impl std::fmt::Display for KubernetesEnum {
         match self {
             Self::Managed => write!(f, "MANAGED"),
             Self::SelfManaged => write!(f, "SELF_MANAGED"),
+            Self::PartiallyManaged => write!(f, "PARTIALLY_MANAGED"),
         }
     }
 }
