@@ -99,6 +99,7 @@ docs/ClusterFeatureResponseTypeEnum.md
 docs/ClusterFeatureResponseValueObject.md
 docs/ClusterFeatureStringResponse.md
 docs/ClusterInfrastructureCertManagerChartParameters.md
+docs/ClusterInfrastructureChartsParameters.md
 docs/ClusterInfrastructureMetalLbChartParameters.md
 docs/ClusterInfrastructureNginxChartParameters.md
 docs/ClusterInstanceAttributes.md
@@ -855,6 +856,7 @@ src/models/cluster_feature_response_type_enum.rs
 src/models/cluster_feature_response_value_object.rs
 src/models/cluster_feature_string_response.rs
 src/models/cluster_infrastructure_cert_manager_chart_parameters.rs
+src/models/cluster_infrastructure_charts_parameters.rs
 src/models/cluster_infrastructure_metal_lb_chart_parameters.rs
 src/models/cluster_infrastructure_nginx_chart_parameters.rs
 src/models/cluster_instance_attributes.rs

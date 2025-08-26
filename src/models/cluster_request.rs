@@ -53,7 +53,7 @@ pub struct ClusterRequest {
         rename = "infrastructure_charts_parameters",
         skip_serializing_if = "Option::is_none"
     )]
-    pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureNginxChartParameters>,
+    pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureChartsParameters>,
 }
 
 impl ClusterRequest {

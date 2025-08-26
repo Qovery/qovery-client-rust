@@ -160,6 +160,8 @@ pub mod cluster_feature_string_response;
 pub use self::cluster_feature_string_response::ClusterFeatureStringResponse;
 pub mod cluster_infrastructure_cert_manager_chart_parameters;
 pub use self::cluster_infrastructure_cert_manager_chart_parameters::ClusterInfrastructureCertManagerChartParameters;
+pub mod cluster_infrastructure_charts_parameters;
+pub use self::cluster_infrastructure_charts_parameters::ClusterInfrastructureChartsParameters;
 pub mod cluster_infrastructure_metal_lb_chart_parameters;
 pub use self::cluster_infrastructure_metal_lb_chart_parameters::ClusterInfrastructureMetalLbChartParameters;
 pub mod cluster_infrastructure_nginx_chart_parameters;

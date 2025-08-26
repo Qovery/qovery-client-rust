@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ssh_keys** | Option<**Vec<String>**> | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional]
 **features** | Option<[**Vec<models::ClusterRequestFeaturesInner>**](ClusterRequest_features_inner.md)> |  | [optional]
 **metrics_parameters** | Option<[**models::MetricsParameters**](MetricsParameters.md)> |  | [optional]
-**infrastructure_charts_parameters** | Option<[**models::ClusterInfrastructureNginxChartParameters**](ClusterInfrastructureNginxChartParameters.md)> |  | [optional]
+**infrastructure_charts_parameters** | Option<[**models::ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
