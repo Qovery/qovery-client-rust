@@ -319,6 +319,7 @@ pub async fn check_helm_repository(
     }
 }
 
+/// List services links of an environment
 pub async fn list_environment_services_links(
     configuration: &configuration::Configuration,
     environment_id: &str,

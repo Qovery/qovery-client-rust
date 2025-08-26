@@ -133,6 +133,8 @@ Name | Type | Description  | Required | Notes
 > models::LinkResponseList list_environment_services_links(environment_id)
 List environment services links
 
+List services links of an environment
+
 ### Parameters
 
 
