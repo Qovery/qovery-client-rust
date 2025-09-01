@@ -20,7 +20,10 @@ pub struct ClusterInfrastructureChartsParameters {
         skip_serializing_if = "Option::is_none"
     )]
     pub cert_manager_parameters: Option<models::ClusterInfrastructureCertManagerChartParameters>,
-    #[serde(rename = "metalLb_parameters", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "metal_lb_parameters",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub metal_lb_parameters: Option<models::ClusterInfrastructureMetalLbChartParameters>,
 }
 
