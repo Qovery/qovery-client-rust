@@ -22,6 +22,8 @@ pub enum ServiceActionStatusEnum {
     Success,
     #[serde(rename = "ERROR")]
     Error,
+    #[serde(rename = "EXECUTING")]
+    Executing,
     #[serde(rename = "CANCELED")]
     Canceled,
     #[serde(rename = "CANCELING")]
@@ -37,6 +39,7 @@ impl std::fmt::Display for ServiceActionStatusEnum {
             Self::Ongoing => write!(f, "ONGOING"),
             Self::Success => write!(f, "SUCCESS"),
             Self::Error => write!(f, "ERROR"),
+            Self::Executing => write!(f, "EXECUTING"),
             Self::Canceled => write!(f, "CANCELED"),
             Self::Canceling => write!(f, "CANCELING"),
             Self::Never => write!(f, "NEVER"),

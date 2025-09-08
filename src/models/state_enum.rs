@@ -38,6 +38,8 @@ pub enum StateEnum {
     DeploymentError,
     #[serde(rename = "DEPLOYMENT_QUEUED")]
     DeploymentQueued,
+    #[serde(rename = "EXECUTING")]
+    Executing,
     #[serde(rename = "QUEUED")]
     Queued,
     #[serde(rename = "READY")]
@@ -85,6 +87,7 @@ impl std::fmt::Display for StateEnum {
             Self::Deploying => write!(f, "DEPLOYING"),
             Self::DeploymentError => write!(f, "DEPLOYMENT_ERROR"),
             Self::DeploymentQueued => write!(f, "DEPLOYMENT_QUEUED"),
+            Self::Executing => write!(f, "EXECUTING"),
             Self::Queued => write!(f, "QUEUED"),
             Self::Ready => write!(f, "READY"),
             Self::Recap => write!(f, "RECAP"),

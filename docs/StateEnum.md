@@ -16,6 +16,7 @@
 | Deploying | DEPLOYING |
 | DeploymentError | DEPLOYMENT_ERROR |
 | DeploymentQueued | DEPLOYMENT_QUEUED |
+| Executing | EXECUTING |
 | Queued | QUEUED |
 | Ready | READY |
 | Recap | RECAP |

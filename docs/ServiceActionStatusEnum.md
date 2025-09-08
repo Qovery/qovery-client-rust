@@ -8,6 +8,7 @@
 | Ongoing | ONGOING |
 | Success | SUCCESS |
 | Error | ERROR |
+| Executing | EXECUTING |
 | Canceled | CANCELED |
 | Canceling | CANCELING |
 | Never | NEVER |
