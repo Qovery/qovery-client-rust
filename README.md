@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_cluster_advanced_settings**](docs/ClustersApi.md#get_cluster_advanced_settings) | **GET** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 *ClustersApi* | [**get_cluster_kubeconfig**](docs/ClustersApi.md#get_cluster_kubeconfig) | **GET** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 *ClustersApi* | [**get_cluster_kubernetes_events**](docs/ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
+*ClustersApi* | [**get_cluster_logs**](docs/ClustersApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 *ClustersApi* | [**get_cluster_metrics**](docs/ClustersApi.md#get_cluster_metrics) | **GET** /cluster/{clusterId}/metrics | Fetch cluster metrics
 *ClustersApi* | [**get_cluster_readiness_status**](docs/ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**get_cluster_status**](docs/ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
@@ -238,7 +239,6 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**get_environment_database_status**](docs/DatabasesApi.md#get_environment_database_status) | **GET** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesApi* | [**list_database**](docs/DatabasesApi.md#list_database) | **GET** /environment/{environmentId}/database | List environment databases
 *DatabasesApi* | [**list_environment_database_config**](docs/DatabasesApi.md#list_environment_database_config) | **GET** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
-*DefaultApi* | [**get_cluster_logs**](docs/DefaultApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 *DefaultApi* | [**get_cluster_token_by_cluster_id**](docs/DefaultApi.md#get_cluster_token_by_cluster_id) | **GET** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultApi* | [**get_deployment_status_by_deployment_request_id**](docs/DefaultApi.md#get_deployment_status_by_deployment_request_id) | **GET** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
 *DeploymentQueueActionsApi* | [**cancel_deployment_request**](docs/DeploymentQueueActionsApi.md#cancel_deployment_request) | **POST** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request

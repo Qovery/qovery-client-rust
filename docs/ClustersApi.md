@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_cluster_advanced_settings**](ClustersApi.md#get_cluster_advanced_settings) | **GET** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**get_cluster_kubeconfig**](ClustersApi.md#get_cluster_kubeconfig) | **GET** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**get_cluster_kubernetes_events**](ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
+[**get_cluster_logs**](ClustersApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 [**get_cluster_metrics**](ClustersApi.md#get_cluster_metrics) | **GET** /cluster/{clusterId}/metrics | Fetch cluster metrics
 [**get_cluster_readiness_status**](ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**get_cluster_status**](ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
@@ -331,6 +332,45 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::GetClusterKubernetesEvents200Response**](get_cluster_kubernetes_events_200_response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_cluster_logs
+
+> models::ClusterLogsResponse get_cluster_logs(cluster_id, endpoint, query, start, end, limit, since, step, interval, direction)
+Fetch cluster logs
+
+Fetch cluster logs
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **String** |  | [required] |
+**endpoint** | **String** |  | [required] |
+**query** | **String** |  | [required] |
+**start** | Option<**String**> |  |  |
+**end** | Option<**String**> |  |  |
+**limit** | Option<**String**> |  |  |
+**since** | Option<**String**> |  |  |
+**step** | Option<**String**> |  |  |
+**interval** | Option<**String**> |  |  |
+**direction** | Option<**String**> |  |  |
+
+### Return type
+
+[**models::ClusterLogsResponse**](ClusterLogsResponse.md)
 
 ### Authorization
 
