@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **terraform_variables_source** | [**models::TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **provider** | **String** |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
-**timeout_sec** | Option<**String**> |  | [optional]
+**timeout_sec** | Option<**i32**> |  | [optional]
 **icon_uri** | Option<**String**> |  | [optional]
 **job_resources** | [**models::TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
 **use_cluster_credentials** | Option<**bool**> |  | [optional]

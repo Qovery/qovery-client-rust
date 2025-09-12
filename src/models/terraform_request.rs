@@ -30,7 +30,7 @@ pub struct TerraformRequest {
     #[serde(rename = "provider_version")]
     pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
-    pub timeout_sec: Option<String>,
+    pub timeout_sec: Option<i32>,
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
     #[serde(rename = "job_resources")]
