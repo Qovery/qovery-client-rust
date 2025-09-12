@@ -18,6 +18,8 @@ pub struct TerraformDeployRequest {
     pub git_commit_id: Option<String>,
     #[serde(rename = "dry_run", skip_serializing_if = "Option::is_none")]
     pub dry_run: Option<bool>,
+    #[serde(rename = "force_unlock_state", skip_serializing_if = "Option::is_none")]
+    pub force_unlock_state: Option<bool>,
 }
 
 impl TerraformDeployRequest {
@@ -25,6 +27,7 @@ impl TerraformDeployRequest {
         TerraformDeployRequest {
             git_commit_id: None,
             dry_run: None,
+            force_unlock_state: None,
         }
     }
 }
