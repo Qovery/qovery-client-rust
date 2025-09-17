@@ -65,6 +65,8 @@ pub enum OrganizationEventType {
     TriggerUninstall,
     #[serde(rename = "TRIGGER_DEPLOY_DRY_RUN")]
     TriggerDeployDryRun,
+    #[serde(rename = "TRIGGER_FORCE_UNLOCK_STATE")]
+    TriggerForceUnlockState,
     #[serde(rename = "TRIGGER_FORCE_RUN")]
     TriggerForceRun,
     #[serde(rename = "TRIGGER_FORCE_RUN_DEPLOY")]
@@ -85,6 +87,10 @@ pub enum OrganizationEventType {
     Restarted,
     #[serde(rename = "DEPLOYED_DRY_RUN")]
     DeployedDryRun,
+    #[serde(rename = "FORCE_RUN_SUCCEEDED")]
+    ForceRunSucceeded,
+    #[serde(rename = "FORCE_UNLOCK_STATE_SUCCEEDED")]
+    ForceUnlockStateSucceeded,
     #[serde(rename = "DEPLOY_FAILED")]
     DeployFailed,
     #[serde(rename = "STOP_FAILED")]
@@ -97,6 +103,10 @@ pub enum OrganizationEventType {
     RestartFailed,
     #[serde(rename = "DEPLOYED_DRY_RUN_FAILED")]
     DeployedDryRunFailed,
+    #[serde(rename = "FORCE_RUN_FAILED")]
+    ForceRunFailed,
+    #[serde(rename = "FORCE_UNLOCK_STATE_FAILED")]
+    ForceUnlockStateFailed,
     #[serde(rename = "SHELL")]
     Shell,
     #[serde(rename = "PORT_FORWARD")]
@@ -139,6 +149,7 @@ impl std::fmt::Display for OrganizationEventType {
             Self::TriggerDelete => write!(f, "TRIGGER_DELETE"),
             Self::TriggerUninstall => write!(f, "TRIGGER_UNINSTALL"),
             Self::TriggerDeployDryRun => write!(f, "TRIGGER_DEPLOY_DRY_RUN"),
+            Self::TriggerForceUnlockState => write!(f, "TRIGGER_FORCE_UNLOCK_STATE"),
             Self::TriggerForceRun => write!(f, "TRIGGER_FORCE_RUN"),
             Self::TriggerForceRunDeploy => write!(f, "TRIGGER_FORCE_RUN_DEPLOY"),
             Self::TriggerForceRunStop => write!(f, "TRIGGER_FORCE_RUN_STOP"),
@@ -149,12 +160,16 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Uninstalled => write!(f, "UNINSTALLED"),
             Self::Restarted => write!(f, "RESTARTED"),
             Self::DeployedDryRun => write!(f, "DEPLOYED_DRY_RUN"),
+            Self::ForceRunSucceeded => write!(f, "FORCE_RUN_SUCCEEDED"),
+            Self::ForceUnlockStateSucceeded => write!(f, "FORCE_UNLOCK_STATE_SUCCEEDED"),
             Self::DeployFailed => write!(f, "DEPLOY_FAILED"),
             Self::StopFailed => write!(f, "STOP_FAILED"),
             Self::DeleteFailed => write!(f, "DELETE_FAILED"),
             Self::UninstallFailed => write!(f, "UNINSTALL_FAILED"),
             Self::RestartFailed => write!(f, "RESTART_FAILED"),
             Self::DeployedDryRunFailed => write!(f, "DEPLOYED_DRY_RUN_FAILED"),
+            Self::ForceRunFailed => write!(f, "FORCE_RUN_FAILED"),
+            Self::ForceUnlockStateFailed => write!(f, "FORCE_UNLOCK_STATE_FAILED"),
             Self::Shell => write!(f, "SHELL"),
             Self::PortForward => write!(f, "PORT_FORWARD"),
             Self::RemoteDebug => write!(f, "REMOTE_DEBUG"),

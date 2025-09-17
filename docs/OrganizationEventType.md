@@ -29,6 +29,7 @@
 | TriggerDelete | TRIGGER_DELETE |
 | TriggerUninstall | TRIGGER_UNINSTALL |
 | TriggerDeployDryRun | TRIGGER_DEPLOY_DRY_RUN |
+| TriggerForceUnlockState | TRIGGER_FORCE_UNLOCK_STATE |
 | TriggerForceRun | TRIGGER_FORCE_RUN |
 | TriggerForceRunDeploy | TRIGGER_FORCE_RUN_DEPLOY |
 | TriggerForceRunStop | TRIGGER_FORCE_RUN_STOP |
@@ -39,12 +40,16 @@
 | Uninstalled | UNINSTALLED |
 | Restarted | RESTARTED |
 | DeployedDryRun | DEPLOYED_DRY_RUN |
+| ForceRunSucceeded | FORCE_RUN_SUCCEEDED |
+| ForceUnlockStateSucceeded | FORCE_UNLOCK_STATE_SUCCEEDED |
 | DeployFailed | DEPLOY_FAILED |
 | StopFailed | STOP_FAILED |
 | DeleteFailed | DELETE_FAILED |
 | UninstallFailed | UNINSTALL_FAILED |
 | RestartFailed | RESTART_FAILED |
 | DeployedDryRunFailed | DEPLOYED_DRY_RUN_FAILED |
+| ForceRunFailed | FORCE_RUN_FAILED |
+| ForceUnlockStateFailed | FORCE_UNLOCK_STATE_FAILED |
 | Shell | SHELL |
 | PortForward | PORT_FORWARD |
 | RemoteDebug | REMOTE_DEBUG |
