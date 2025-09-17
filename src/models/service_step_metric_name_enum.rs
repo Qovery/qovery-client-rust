@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ServiceStepMetricNameEnum : The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD_QUEUEING: The queuing time preceding the actual building step. - BUILD: The step to build the source code. - DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment step. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.  - MIRROR_IMAGE: The step to mirror the image to the private registry.
-/// The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD_QUEUEING: The queuing time preceding the actual building step. - BUILD: The step to build the source code. - DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment step. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.  - MIRROR_IMAGE: The step to mirror the image to the private registry.
+/// ServiceStepMetricNameEnum : The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD_QUEUEING: The queuing time preceding the actual building step. - BUILD: The step to build the source code. - DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment step. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.  - MIRROR_IMAGE: The step to mirror the image to the private registry. - EXECUTING: The step to execute a job or terraform apply.
+/// The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD_QUEUEING: The queuing time preceding the actual building step. - BUILD: The step to build the source code. - DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment step. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.  - MIRROR_IMAGE: The step to mirror the image to the private registry. - EXECUTING: The step to execute a job or terraform apply.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ServiceStepMetricNameEnum {
     #[serde(rename = "REGISTRY_CREATE_REPOSITORY")]
@@ -31,6 +31,8 @@ pub enum ServiceStepMetricNameEnum {
     RouterDeployment,
     #[serde(rename = "MIRROR_IMAGE")]
     MirrorImage,
+    #[serde(rename = "EXECUTING")]
+    Executing,
 }
 
 impl std::fmt::Display for ServiceStepMetricNameEnum {
@@ -44,6 +46,7 @@ impl std::fmt::Display for ServiceStepMetricNameEnum {
             Self::Deployment => write!(f, "DEPLOYMENT"),
             Self::RouterDeployment => write!(f, "ROUTER_DEPLOYMENT"),
             Self::MirrorImage => write!(f, "MIRROR_IMAGE"),
+            Self::Executing => write!(f, "EXECUTING"),
         }
     }
 }
