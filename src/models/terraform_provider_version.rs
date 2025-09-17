@@ -13,17 +13,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformProviderVersion {
-    #[serde(rename = "read_from_terraform_block")]
-    pub read_from_terraform_block: bool,
-    #[serde(rename = "explicit_version", skip_serializing_if = "Option::is_none")]
-    pub explicit_version: Option<String>,
+    #[serde(
+        rename = "read_from_terraform_block",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub read_from_terraform_block: Option<bool>,
+    #[serde(rename = "explicit_version")]
+    pub explicit_version: String,
 }
 
 impl TerraformProviderVersion {
-    pub fn new(read_from_terraform_block: bool) -> TerraformProviderVersion {
+    pub fn new(explicit_version: String) -> TerraformProviderVersion {
         TerraformProviderVersion {
-            read_from_terraform_block,
-            explicit_version: None,
+            read_from_terraform_block: None,
+            explicit_version,
         }
     }
 }
