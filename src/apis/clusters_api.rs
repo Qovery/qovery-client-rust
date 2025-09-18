@@ -1042,6 +1042,10 @@ pub async fn get_cluster_metrics(
     max_source_resolution: Option<&str>,
     engine: Option<&str>,
     analyze: Option<&str>,
+    board_short_name: Option<&str>,
+    metric_short_name: Option<&str>,
+    trace_id: Option<&str>,
+    range: Option<&str>,
 ) -> Result<models::ClusterMetricsResponse, Error<GetClusterMetricsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_cluster_id = cluster_id;
@@ -1057,6 +1061,10 @@ pub async fn get_cluster_metrics(
     let p_max_source_resolution = max_source_resolution;
     let p_engine = engine;
     let p_analyze = analyze;
+    let p_board_short_name = board_short_name;
+    let p_metric_short_name = metric_short_name;
+    let p_trace_id = trace_id;
+    let p_range = range;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/metrics",
@@ -1096,6 +1104,18 @@ pub async fn get_cluster_metrics(
     }
     if let Some(ref param_value) = p_analyze {
         req_builder = req_builder.query(&[("analyze", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_board_short_name {
+        req_builder = req_builder.query(&[("board_short_name", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_metric_short_name {
+        req_builder = req_builder.query(&[("metric_short_name", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_trace_id {
+        req_builder = req_builder.query(&[("trace_id", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_range {
+        req_builder = req_builder.query(&[("range", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
