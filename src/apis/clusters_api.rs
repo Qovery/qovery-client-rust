@@ -1026,7 +1026,7 @@ pub async fn get_cluster_logs(
     }
 }
 
-/// Fetch cluster metrics
+/// Fetch cluster metrics.
 pub async fn get_cluster_metrics(
     configuration: &configuration::Configuration,
     cluster_id: &str,

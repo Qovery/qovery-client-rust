@@ -389,7 +389,7 @@ Name | Type | Description  | Required | Notes
 > models::ClusterMetricsResponse get_cluster_metrics(cluster_id, endpoint, query, start, end, step, time, timeout, dedup, partial_response, max_source_resolution, engine, analyze, board_short_name, metric_short_name, trace_id, range)
 Fetch cluster metrics
 
-Fetch cluster metrics
+Fetch cluster metrics.
 
 ### Parameters
 
