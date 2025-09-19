@@ -13,12 +13,12 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformResponseList {
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<Vec<models::TerraformResponse>>,
+    #[serde(rename = "results", skip_serializing_if = "Option::is_none")]
+    pub results: Option<Vec<models::TerraformResponse>>,
 }
 
 impl TerraformResponseList {
     pub fn new() -> TerraformResponseList {
-        TerraformResponseList { id: None }
+        TerraformResponseList { results: None }
     }
 }
