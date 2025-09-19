@@ -42,6 +42,8 @@ pub struct TerraformResponse {
     pub terraform_variables_source: models::TerraformVariablesSourceResponse,
     #[serde(rename = "provider")]
     pub provider: Provider,
+    #[serde(rename = "backend")]
+    pub backend: models::TerraformBackend,
     #[serde(rename = "provider_version")]
     pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "job_resources")]
@@ -54,7 +56,7 @@ pub struct TerraformResponse {
 
 impl TerraformResponse {
     /// A Terraform service
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject, use_cluster_credentials: bool) -> TerraformResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, backend: models::TerraformBackend, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject, use_cluster_credentials: bool) -> TerraformResponse {
         TerraformResponse {
             id,
             created_at,
@@ -69,6 +71,7 @@ impl TerraformResponse {
             service_type,
             terraform_variables_source,
             provider,
+            backend,
             provider_version,
             job_resources,
             environment,

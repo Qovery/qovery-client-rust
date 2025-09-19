@@ -25,6 +25,8 @@ pub struct TerraformRequest {
     pub terraform_files_source: models::TerraformRequestTerraformFilesSource,
     #[serde(rename = "terraform_variables_source")]
     pub terraform_variables_source: models::TerraformVariablesSourceRequest,
+    #[serde(rename = "backend")]
+    pub backend: models::TerraformBackend,
     #[serde(rename = "provider")]
     pub provider: Provider,
     #[serde(rename = "provider_version")]
@@ -50,6 +52,7 @@ impl TerraformRequest {
         auto_deploy: bool,
         terraform_files_source: models::TerraformRequestTerraformFilesSource,
         terraform_variables_source: models::TerraformVariablesSourceRequest,
+        backend: models::TerraformBackend,
         provider: Provider,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformRequestJobResources,
@@ -61,6 +64,7 @@ impl TerraformRequest {
             auto_deploy,
             terraform_files_source,
             terraform_variables_source,
+            backend,
             provider,
             provider_version,
             timeout_sec: None,

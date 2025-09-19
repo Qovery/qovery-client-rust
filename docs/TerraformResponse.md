@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **provider** | **String** |  | 
+**backend** | [**models::TerraformBackend**](TerraformBackend.md) |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **job_resources** | [**models::TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 

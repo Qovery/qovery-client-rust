@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **auto_deploy** | **bool** |  | 
 **terraform_files_source** | [**models::TerraformRequestTerraformFilesSource**](TerraformRequest_terraform_files_source.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
+**backend** | [**models::TerraformBackend**](TerraformBackend.md) |  | 
 **provider** | **String** |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **timeout_sec** | Option<**i32**> |  | [optional]
