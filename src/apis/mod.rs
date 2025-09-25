@@ -182,6 +182,7 @@ pub mod organization_annotations_group_api;
 pub mod organization_api_token_api;
 pub mod organization_cluster_lock_api;
 pub mod organization_custom_role_api;
+pub mod organization_enterprise_connection_api;
 pub mod organization_event_api;
 pub mod organization_labels_group_api;
 pub mod organization_main_calls_api;

@@ -252,6 +252,7 @@ docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
 docs/EksInfrastructureOutputs.md
+docs/EnterpriseConnectionDto.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentActionsApi.md
@@ -521,6 +522,7 @@ docs/OrganizationCustomRoleUpdateRequestClusterPermissionsInner.md
 docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md
 docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md
 docs/OrganizationEditRequest.md
+docs/OrganizationEnterpriseConnectionApi.md
 docs/OrganizationEventApi.md
 docs/OrganizationEventOrigin.md
 docs/OrganizationEventResponse.md
@@ -758,6 +760,7 @@ src/apis/organization_annotations_group_api.rs
 src/apis/organization_api_token_api.rs
 src/apis/organization_cluster_lock_api.rs
 src/apis/organization_custom_role_api.rs
+src/apis/organization_enterprise_connection_api.rs
 src/apis/organization_event_api.rs
 src/apis/organization_labels_group_api.rs
 src/apis/organization_main_calls_api.rs
@@ -993,6 +996,7 @@ src/models/deployment_stage_with_services_statuses.rs
 src/models/dockerfile_check_request.rs
 src/models/dockerfile_check_response.rs
 src/models/eks_infrastructure_outputs.rs
+src/models/enterprise_connection_dto.rs
 src/models/env_deployment_status.rs
 src/models/environment.rs
 src/models/environment_all_of_cloud_provider.rs

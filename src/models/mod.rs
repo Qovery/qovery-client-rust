@@ -428,6 +428,8 @@ pub mod dockerfile_check_response;
 pub use self::dockerfile_check_response::DockerfileCheckResponse;
 pub mod eks_infrastructure_outputs;
 pub use self::eks_infrastructure_outputs::EksInfrastructureOutputs;
+pub mod enterprise_connection_dto;
+pub use self::enterprise_connection_dto::EnterpriseConnectionDto;
 pub mod env_deployment_status;
 pub use self::env_deployment_status::EnvDeploymentStatus;
 pub mod environment;
