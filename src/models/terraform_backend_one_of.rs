@@ -14,12 +14,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformBackendOneOf {
     /// Kubernetes-specific backend configuration
-    #[serde(rename = "kubernetes", skip_serializing_if = "Option::is_none")]
-    pub kubernetes: Option<serde_json::Value>,
+    #[serde(rename = "kubernetes")]
+    pub kubernetes: serde_json::Value,
 }
 
 impl TerraformBackendOneOf {
-    pub fn new() -> TerraformBackendOneOf {
-        TerraformBackendOneOf { kubernetes: None }
+    pub fn new(kubernetes: serde_json::Value) -> TerraformBackendOneOf {
+        TerraformBackendOneOf { kubernetes }
     }
 }

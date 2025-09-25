@@ -14,14 +14,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformBackendOneOf1 {
     /// User-provided backend configuration
-    #[serde(rename = "user_provided", skip_serializing_if = "Option::is_none")]
-    pub user_provided: Option<serde_json::Value>,
+    #[serde(rename = "user_provided")]
+    pub user_provided: serde_json::Value,
 }
 
 impl TerraformBackendOneOf1 {
-    pub fn new() -> TerraformBackendOneOf1 {
-        TerraformBackendOneOf1 {
-            user_provided: None,
-        }
+    pub fn new(user_provided: serde_json::Value) -> TerraformBackendOneOf1 {
+        TerraformBackendOneOf1 { user_provided }
     }
 }
