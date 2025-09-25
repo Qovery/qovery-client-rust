@@ -31,6 +31,15 @@ pub struct ServicePortRequestPortsInner {
     pub is_default: Option<bool>,
     #[serde(rename = "protocol", skip_serializing_if = "Option::is_none")]
     pub protocol: Option<models::PortProtocolEnum>,
+    /// Indicate the path or regex that must match for traffic to be accepted on your service i.e: /api/ will only accept http calls that start with /api/  Only valid for publicly_accessible HTTP or GRPC ports.
+    #[serde(rename = "public_path", skip_serializing_if = "Option::is_none")]
+    pub public_path: Option<String>,
+    /// Indicate the new path that will be used to reach your service after replacement i.e: public_path -> /(.*)  public_path_rewrite -> /api/$1 will append /api/ on all externaly requested url when reaching the service  external/use url -> example.com/foobar  -> url seen by the service -> example.com/api/foobar Only valid for publicly_accessible HTTP or GRPC ports.
+    #[serde(
+        rename = "public_path_rewrite",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub public_path_rewrite: Option<String>,
 }
 
 impl ServicePortRequestPortsInner {
@@ -43,6 +52,8 @@ impl ServicePortRequestPortsInner {
             publicly_accessible,
             is_default: None,
             protocol: None,
+            public_path: None,
+            public_path_rewrite: None,
         }
     }
 }
