@@ -25,6 +25,8 @@ pub enum OrganizationEventTargetType {
     ContainerRegistry,
     #[serde(rename = "DATABASE")]
     Database,
+    #[serde(rename = "ENTERPRISE_CONNECTION")]
+    EnterpriseConnection,
     #[serde(rename = "ENVIRONMENT")]
     Environment,
     #[serde(rename = "JOB")]
@@ -51,6 +53,7 @@ impl std::fmt::Display for OrganizationEventTargetType {
             Self::Container => write!(f, "CONTAINER"),
             Self::ContainerRegistry => write!(f, "CONTAINER_REGISTRY"),
             Self::Database => write!(f, "DATABASE"),
+            Self::EnterpriseConnection => write!(f, "ENTERPRISE_CONNECTION"),
             Self::Environment => write!(f, "ENVIRONMENT"),
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),

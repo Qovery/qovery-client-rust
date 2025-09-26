@@ -109,6 +109,8 @@ pub enum OrganizationEventType {
     ForceUnlockStateFailed,
     #[serde(rename = "SHELL")]
     Shell,
+    #[serde(rename = "SSO")]
+    Sso,
     #[serde(rename = "PORT_FORWARD")]
     PortForward,
     #[serde(rename = "REMOTE_DEBUG")]
@@ -171,6 +173,7 @@ impl std::fmt::Display for OrganizationEventType {
             Self::ForceRunFailed => write!(f, "FORCE_RUN_FAILED"),
             Self::ForceUnlockStateFailed => write!(f, "FORCE_UNLOCK_STATE_FAILED"),
             Self::Shell => write!(f, "SHELL"),
+            Self::Sso => write!(f, "SSO"),
             Self::PortForward => write!(f, "PORT_FORWARD"),
             Self::RemoteDebug => write!(f, "REMOTE_DEBUG"),
             Self::Import => write!(f, "IMPORT"),

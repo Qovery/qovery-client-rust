@@ -51,6 +51,7 @@
 | ForceRunFailed | FORCE_RUN_FAILED |
 | ForceUnlockStateFailed | FORCE_UNLOCK_STATE_FAILED |
 | Shell | SHELL |
+| Sso | SSO |
 | PortForward | PORT_FORWARD |
 | RemoteDebug | REMOTE_DEBUG |
 | Import | IMPORT |

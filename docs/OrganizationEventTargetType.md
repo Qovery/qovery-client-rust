@@ -9,6 +9,7 @@
 | Container | CONTAINER |
 | ContainerRegistry | CONTAINER_REGISTRY |
 | Database | DATABASE |
+| EnterpriseConnection | ENTERPRISE_CONNECTION |
 | Environment | ENVIRONMENT |
 | Job | JOB |
 | Helm | HELM |
