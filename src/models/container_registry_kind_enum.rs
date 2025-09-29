@@ -23,6 +23,8 @@ pub enum ContainerRegistryKindEnum {
     DockerHub,
     #[serde(rename = "GITHUB_CR")]
     GithubCr,
+    #[serde(rename = "GITHUB_ENTERPRISE_CR")]
+    GithubEnterpriseCr,
     #[serde(rename = "GITLAB_CR")]
     GitlabCr,
     #[serde(rename = "PUBLIC_ECR")]
@@ -44,6 +46,7 @@ impl std::fmt::Display for ContainerRegistryKindEnum {
             Self::ScalewayCr => write!(f, "SCALEWAY_CR"),
             Self::DockerHub => write!(f, "DOCKER_HUB"),
             Self::GithubCr => write!(f, "GITHUB_CR"),
+            Self::GithubEnterpriseCr => write!(f, "GITHUB_ENTERPRISE_CR"),
             Self::GitlabCr => write!(f, "GITLAB_CR"),
             Self::PublicEcr => write!(f, "PUBLIC_ECR"),
             Self::Docr => write!(f, "DOCR"),

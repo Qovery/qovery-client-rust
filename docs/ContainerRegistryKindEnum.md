@@ -8,6 +8,7 @@
 | ScalewayCr | SCALEWAY_CR |
 | DockerHub | DOCKER_HUB |
 | GithubCr | GITHUB_CR |
+| GithubEnterpriseCr | GITHUB_ENTERPRISE_CR |
 | GitlabCr | GITLAB_CR |
 | PublicEcr | PUBLIC_ECR |
 | Docr | DOCR |
