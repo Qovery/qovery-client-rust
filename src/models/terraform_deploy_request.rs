@@ -13,21 +13,64 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformDeployRequest {
+    /// Terraform service identifier
+    #[serde(
+        rename = "id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub id: Option<Option<uuid::Uuid>>,
     /// Commit to deploy for chart source.
     #[serde(rename = "git_commit_id", skip_serializing_if = "Option::is_none")]
     pub git_commit_id: Option<String>,
+    /// Deprecated: use action=PLAN instead.
     #[serde(rename = "dry_run", skip_serializing_if = "Option::is_none")]
     pub dry_run: Option<bool>,
-    #[serde(rename = "force_unlock_state", skip_serializing_if = "Option::is_none")]
-    pub force_unlock_state: Option<bool>,
+    /// Deprecated: use action=FORCE_UNLOCK instead.
+    #[serde(
+        rename = "force_unlock_state",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub force_unlock_state: Option<Option<bool>>,
+    /// Terraform action to execute.
+    #[serde(
+        rename = "action",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub action: Option<Option<Action>>,
 }
 
 impl TerraformDeployRequest {
     pub fn new() -> TerraformDeployRequest {
         TerraformDeployRequest {
+            id: None,
             git_commit_id: None,
             dry_run: None,
             force_unlock_state: None,
+            action: None,
         }
+    }
+}
+/// Terraform action to execute.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Action {
+    #[serde(rename = "PLAN")]
+    Plan,
+    #[serde(rename = "PLAN_AND_APPLY")]
+    PlanAndApply,
+    #[serde(rename = "FORCE_UNLOCK")]
+    ForceUnlock,
+    #[serde(rename = "DESTROY")]
+    Destroy,
+}
+
+impl Default for Action {
+    fn default() -> Action {
+        Self::Plan
     }
 }

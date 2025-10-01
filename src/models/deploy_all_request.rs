@@ -23,6 +23,8 @@ pub struct DeployAllRequest {
     pub jobs: Option<Vec<models::DeployAllRequestJobsInner>>,
     #[serde(rename = "helms", skip_serializing_if = "Option::is_none")]
     pub helms: Option<Vec<models::DeployAllRequestHelmsInner>>,
+    #[serde(rename = "terraforms", skip_serializing_if = "Option::is_none")]
+    pub terraforms: Option<Vec<models::TerraformDeployRequest>>,
 }
 
 impl DeployAllRequest {
@@ -33,6 +35,7 @@ impl DeployAllRequest {
             containers: None,
             jobs: None,
             helms: None,
+            terraforms: None,
         }
     }
 }
