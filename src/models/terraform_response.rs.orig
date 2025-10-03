@@ -52,11 +52,14 @@ pub struct TerraformResponse {
     pub environment: models::ReferenceObject,
     #[serde(rename = "use_cluster_credentials")]
     pub use_cluster_credentials: bool,
+    /// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
+    #[serde(rename = "action_extra_arguments")]
+    pub action_extra_arguments: std::collections::HashMap<String, Vec<String>>,
 }
 
 impl TerraformResponse {
     /// A Terraform service
-    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, backend: models::TerraformBackend, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject, use_cluster_credentials: bool) -> TerraformResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, name: String, timeout_sec: i32, auto_approve: bool, auto_deploy: bool, icon_uri: String, service_type: models::ServiceTypeEnum, terraform_variables_source: models::TerraformVariablesSourceResponse, provider: Provider, backend: models::TerraformBackend, provider_version: models::TerraformProviderVersion, job_resources: models::TerraformJobResourcesResponse, environment: models::ReferenceObject, use_cluster_credentials: bool, action_extra_arguments: std::collections::HashMap<String, Vec<String>>) -> TerraformResponse {
         TerraformResponse {
             id,
             created_at,
@@ -76,6 +79,7 @@ impl TerraformResponse {
             job_resources,
             environment,
             use_cluster_credentials,
+            action_extra_arguments,
         }
     }
 }

@@ -58,6 +58,9 @@ pub struct TerraformResponse {
     pub environment: models::ReferenceObject,
     #[serde(rename = "use_cluster_credentials")]
     pub use_cluster_credentials: bool,
+    /// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
+    #[serde(rename = "action_extra_arguments")]
+    pub action_extra_arguments: std::collections::HashMap<String, Vec<String>>,
 }
 
 impl TerraformResponse {
@@ -78,6 +81,7 @@ impl TerraformResponse {
         job_resources: models::TerraformJobResourcesResponse,
         environment: models::ReferenceObject,
         use_cluster_credentials: bool,
+        action_extra_arguments: std::collections::HashMap<String, Vec<String>>,
     ) -> TerraformResponse {
         TerraformResponse {
             id,
@@ -98,6 +102,7 @@ impl TerraformResponse {
             job_resources,
             environment,
             use_cluster_credentials,
+            action_extra_arguments,
         }
     }
 }

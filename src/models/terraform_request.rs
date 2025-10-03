@@ -42,6 +42,12 @@ pub struct TerraformRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub use_cluster_credentials: Option<bool>,
+    /// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
+    #[serde(
+        rename = "action_extra_arguments",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub action_extra_arguments: Option<std::collections::HashMap<String, Vec<String>>>,
 }
 
 impl TerraformRequest {
@@ -71,6 +77,7 @@ impl TerraformRequest {
             icon_uri: None,
             job_resources,
             use_cluster_credentials: None,
+            action_extra_arguments: None,
         }
     }
 }
