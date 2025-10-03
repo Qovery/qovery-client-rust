@@ -27,6 +27,9 @@ pub struct CronJobResponse {
     /// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
     #[serde(rename = "maximum_memory")]
     pub maximum_memory: i32,
+    /// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
+    #[serde(rename = "maximum_gpu")]
+    pub maximum_gpu: i32,
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
@@ -38,6 +41,8 @@ pub struct CronJobResponse {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory")]
     pub memory: i32,
+    #[serde(rename = "gpu")]
+    pub gpu: i32,
     /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
     #[serde(rename = "max_nb_restart", skip_serializing_if = "Option::is_none")]
     pub max_nb_restart: Option<i32>,
@@ -59,7 +64,7 @@ pub struct CronJobResponse {
     )]
     pub port: Option<Option<i32>>,
     #[serde(rename = "source")]
-    pub source: models::BaseJobResponseAllOfSource,
+    pub source: serde_json::Value,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
     /// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
@@ -90,11 +95,13 @@ impl CronJobResponse {
         environment: models::ReferenceObject,
         maximum_cpu: i32,
         maximum_memory: i32,
+        maximum_gpu: i32,
         name: String,
         cpu: i32,
         memory: i32,
+        gpu: i32,
         auto_preview: bool,
-        source: models::BaseJobResponseAllOfSource,
+        source: serde_json::Value,
         healthchecks: models::Healthcheck,
         icon_uri: String,
         service_type: models::ServiceTypeEnum,
@@ -108,10 +115,12 @@ impl CronJobResponse {
             environment,
             maximum_cpu,
             maximum_memory,
+            maximum_gpu,
             name,
             description: None,
             cpu,
             memory,
+            gpu,
             max_nb_restart: None,
             max_duration_seconds: None,
             auto_preview,

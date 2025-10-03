@@ -12,12 +12,14 @@ Name | Type | Description | Notes
 **git_repository** | Option<[**models::ApplicationGitRepository**](ApplicationGitRepository.md)> |  | [optional]
 **maximum_cpu** | Option<**i32**> | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | [optional]
 **maximum_memory** | Option<**i32**> | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB | [optional]
+**maximun_gpu** | Option<**i32**> |  | [optional][default to 0]
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> | give a description to this application | [optional]
 **build_mode** | Option<[**models::BuildModeEnum**](BuildModeEnum.md)> |  | [optional]
 **dockerfile_path** | Option<**String**> | The path of the associated Dockerfile. Only if you are using build_mode = DOCKER | [optional]
 **cpu** | Option<**i32**> | unit is millicores (m). 1000m = 1 cpu | [optional]
 **memory** | Option<**i32**> | unit is MB. 1024 MB = 1GB | [optional]
+**gpu** | Option<**i32**> |  | [optional][default to 0]
 **min_running_instances** | Option<**i32**> | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional][default to 1]
 **max_running_instances** | Option<**i32**> | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional][default to 1]
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 

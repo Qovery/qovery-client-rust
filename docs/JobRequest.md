@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **cpu** | Option<**i32**> | unit is millicores (m). 1000m = 1 cpu | [optional][default to 500]
 **memory** | Option<**i32**> | unit is MB. 1024 MB = 1GB | [optional][default to 512]
+**gpu** | Option<**i32**> |  | [optional][default to 0]
 **max_nb_restart** | Option<**i32**> | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional][default to 0]
 **max_duration_seconds** | Option<**i32**> | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional]
 **auto_preview** | Option<**bool**> | Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  | [optional]

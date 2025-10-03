@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
  *
  * The version of the OpenAPI document: 1.0.4
  * Contact: support+api+documentation@qovery.com
@@ -42,12 +42,7 @@ pub struct Application {
     #[serde(rename = "build_mode", skip_serializing_if = "Option::is_none")]
     pub build_mode: Option<models::BuildModeEnum>,
     /// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-    #[serde(
-        rename = "dockerfile_path",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "dockerfile_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub dockerfile_path: Option<Option<String>>,
     /// unit is millicores (m). 1000m = 1 cpu
     #[serde(rename = "cpu", skip_serializing_if = "Option::is_none")]
@@ -57,21 +52,15 @@ pub struct Application {
     pub memory: Option<i32>,
     #[serde(rename = "gpu", skip_serializing_if = "Option::is_none")]
     pub gpu: Option<i32>,
-    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
-    #[serde(
-        rename = "min_running_instances",
-        skip_serializing_if = "Option::is_none"
-    )]
+    /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
+    #[serde(rename = "min_running_instances", skip_serializing_if = "Option::is_none")]
     pub min_running_instances: Option<i32>,
-    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-    #[serde(
-        rename = "max_running_instances",
-        skip_serializing_if = "Option::is_none"
-    )]
+    /// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
+    #[serde(rename = "max_running_instances", skip_serializing_if = "Option::is_none")]
     pub max_running_instances: Option<i32>,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
-    /// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
+    /// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment. 
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
     #[serde(rename = "ports", skip_serializing_if = "Option::is_none")]
@@ -91,31 +80,15 @@ pub struct Application {
     /// Icon URI representing the application.
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
-    #[serde(
-        rename = "service_type",
-        default = "models::service_type_enum::service_type_application"
-    )]
+    #[serde(rename = "service_type")]
     pub service_type: models::ServiceTypeEnum,
     /// The target build stage in the Dockerfile to build
-    #[serde(
-        rename = "docker_target_build_stage",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "docker_target_build_stage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub docker_target_build_stage: Option<Option<String>>,
 }
 
 impl Application {
-    pub fn new(
-        id: uuid::Uuid,
-        created_at: String,
-        environment: models::ReferenceObject,
-        name: String,
-        healthchecks: models::Healthcheck,
-        icon_uri: String,
-        service_type: models::ServiceTypeEnum,
-    ) -> Application {
+    pub fn new(id: uuid::Uuid, created_at: String, environment: models::ReferenceObject, name: String, healthchecks: models::Healthcheck, icon_uri: String, service_type: models::ServiceTypeEnum) -> Application {
         Application {
             id,
             created_at,
@@ -149,3 +122,4 @@ impl Application {
         }
     }
 }
+

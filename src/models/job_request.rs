@@ -24,6 +24,8 @@ pub struct JobRequest {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
+    #[serde(rename = "gpu", skip_serializing_if = "Option::is_none")]
+    pub gpu: Option<i32>,
     /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
     #[serde(rename = "max_nb_restart", skip_serializing_if = "Option::is_none")]
     pub max_nb_restart: Option<i32>,
@@ -74,6 +76,7 @@ impl JobRequest {
             description: None,
             cpu: None,
             memory: None,
+            gpu: None,
             max_nb_restart: None,
             max_duration_seconds: None,
             auto_preview: None,

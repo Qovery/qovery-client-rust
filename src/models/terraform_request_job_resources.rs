@@ -17,15 +17,23 @@ pub struct TerraformRequestJobResources {
     pub cpu_milli: i32,
     #[serde(rename = "ram_mib")]
     pub ram_mib: i32,
+    #[serde(rename = "gpu")]
+    pub gpu: i32,
     #[serde(rename = "storage_gib")]
     pub storage_gib: i32,
 }
 
 impl TerraformRequestJobResources {
-    pub fn new(cpu_milli: i32, ram_mib: i32, storage_gib: i32) -> TerraformRequestJobResources {
+    pub fn new(
+        cpu_milli: i32,
+        ram_mib: i32,
+        gpu: i32,
+        storage_gib: i32,
+    ) -> TerraformRequestJobResources {
         TerraformRequestJobResources {
             cpu_milli,
             ram_mib,
+            gpu,
             storage_gib,
         }
     }

@@ -11,7 +11,6 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// KarpenterNodePool :
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KarpenterNodePool {
     #[serde(rename = "requirements")]
@@ -20,15 +19,17 @@ pub struct KarpenterNodePool {
     pub stable_override: Option<models::KarpenterStableNodePoolOverride>,
     #[serde(rename = "default_override", skip_serializing_if = "Option::is_none")]
     pub default_override: Option<models::KarpenterDefaultNodePoolOverride>,
+    #[serde(rename = "gpu_override", skip_serializing_if = "Option::is_none")]
+    pub gpu_override: Option<models::KarpenterGpuNodePoolOverride>,
 }
 
 impl KarpenterNodePool {
-    ///
     pub fn new(requirements: Vec<models::KarpenterNodePoolRequirement>) -> KarpenterNodePool {
         KarpenterNodePool {
             requirements,
             stable_override: None,
             default_override: None,
+            gpu_override: None,
         }
     }
 }

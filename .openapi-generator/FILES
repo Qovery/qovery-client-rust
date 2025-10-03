@@ -51,9 +51,6 @@ docs/BackupResponseList.md
 docs/BackupsApi.md
 docs/Base.md
 docs/BaseJobResponse.md
-docs/BaseJobResponseAllOfSource.md
-docs/BaseJobResponseAllOfSourceOneOf.md
-docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BillingApi.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -427,6 +424,7 @@ docs/JobTypeEnum.md
 docs/JobsApi.md
 docs/KapsuleInfrastructureOutputs.md
 docs/KarpenterDefaultNodePoolOverride.md
+docs/KarpenterGpuNodePoolOverride.md
 docs/KarpenterNodePool.md
 docs/KarpenterNodePoolConsolidation.md
 docs/KarpenterNodePoolLimits.md
@@ -817,9 +815,6 @@ src/models/backup_request.rs
 src/models/backup_response_list.rs
 src/models/base.rs
 src/models/base_job_response.rs
-src/models/base_job_response_all_of_source.rs
-src/models/base_job_response_all_of_source_one_of.rs
-src/models/base_job_response_all_of_source_one_of_1.rs
 src/models/billing_external_id.rs
 src/models/billing_info.rs
 src/models/billing_info_request.rs
@@ -1143,6 +1138,7 @@ src/models/job_source_docker_response.rs
 src/models/job_type_enum.rs
 src/models/kapsule_infrastructure_outputs.rs
 src/models/karpenter_default_node_pool_override.rs
+src/models/karpenter_gpu_node_pool_override.rs
 src/models/karpenter_node_pool.rs
 src/models/karpenter_node_pool_consolidation.rs
 src/models/karpenter_node_pool_limits.rs

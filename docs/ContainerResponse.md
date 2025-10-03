@@ -15,12 +15,14 @@ Name | Type | Description | Notes
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **maximum_cpu** | **i32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | 
 **maximum_memory** | **i32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB | 
+**maximum_gpu** | **i32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB | [default to 0]
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> | give a description to this container | [optional]
 **arguments** | Option<**Vec<String>**> |  | [optional]
 **entrypoint** | Option<**String**> | optional entrypoint when launching container | [optional]
 **cpu** | **i32** | unit is millicores (m). 1000m = 1 cpu | 
 **memory** | **i32** | unit is MB. 1024 MB = 1GB | 
+**gpu** | **i32** |  | [default to 0]
 **min_running_instances** | **i32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **max_running_instances** | **i32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 
