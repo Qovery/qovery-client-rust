@@ -19,6 +19,8 @@ pub struct KarpenterGpuNodePoolOverride {
     pub limits: Option<models::KarpenterNodePoolLimits>,
     #[serde(rename = "requirements", skip_serializing_if = "Option::is_none")]
     pub requirements: Option<Vec<models::KarpenterNodePoolRequirement>>,
+    #[serde(rename = "disk_size_in_gib", skip_serializing_if = "Option::is_none")]
+    pub disk_size_in_gib: Option<i32>,
 }
 
 impl KarpenterGpuNodePoolOverride {
@@ -27,6 +29,7 @@ impl KarpenterGpuNodePoolOverride {
             consolidation: None,
             limits: None,
             requirements: None,
+            disk_size_in_gib: None,
         }
     }
 }
