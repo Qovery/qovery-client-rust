@@ -39,6 +39,8 @@ pub struct ApplicationEditRequest {
     /// unit is MB. 1024 MB = 1GB
     #[serde(rename = "memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<i32>,
+    #[serde(rename = "gpu", skip_serializing_if = "Option::is_none")]
+    pub gpu: Option<i32>,
     /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
     #[serde(
         rename = "min_running_instances",
@@ -99,6 +101,7 @@ impl ApplicationEditRequest {
             dockerfile_path: None,
             cpu: None,
             memory: None,
+            gpu: None,
             min_running_instances: None,
             max_running_instances: None,
             healthchecks,

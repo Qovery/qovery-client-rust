@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dockerfile_path** | Option<**String**> | The path of the associated Dockerfile | [optional]
 **cpu** | Option<**i32**> | unit is millicores (m). 1000m = 1 cpu | [optional][default to 500]
 **memory** | Option<**i32**> | unit is MB. 1024 MB = 1GB | [optional][default to 512]
+**gpu** | Option<**i32**> |  | [optional][default to 0]
 **min_running_instances** | Option<**i32**> | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional][default to 1]
 **max_running_instances** | Option<**i32**> | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional][default to 1]
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 
