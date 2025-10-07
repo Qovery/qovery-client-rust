@@ -253,6 +253,7 @@ docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
 docs/EksInfrastructureOutputs.md
 docs/EnterpriseConnectionDto.md
+docs/EnterpriseConnectionResponseList.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentActionsApi.md
@@ -998,6 +999,7 @@ src/models/dockerfile_check_request.rs
 src/models/dockerfile_check_response.rs
 src/models/eks_infrastructure_outputs.rs
 src/models/enterprise_connection_dto.rs
+src/models/enterprise_connection_response_list.rs
 src/models/env_deployment_status.rs
 src/models/environment.rs
 src/models/environment_all_of_cloud_provider.rs

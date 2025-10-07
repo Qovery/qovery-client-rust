@@ -430,6 +430,8 @@ pub mod eks_infrastructure_outputs;
 pub use self::eks_infrastructure_outputs::EksInfrastructureOutputs;
 pub mod enterprise_connection_dto;
 pub use self::enterprise_connection_dto::EnterpriseConnectionDto;
+pub mod enterprise_connection_response_list;
+pub use self::enterprise_connection_response_list::EnterpriseConnectionResponseList;
 pub mod env_deployment_status;
 pub use self::env_deployment_status::EnvDeploymentStatus;
 pub mod environment;
