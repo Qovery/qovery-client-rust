@@ -51,6 +51,9 @@ docs/BackupResponseList.md
 docs/BackupsApi.md
 docs/Base.md
 docs/BaseJobResponse.md
+docs/BaseJobResponseAllOfSource.md
+docs/BaseJobResponseAllOfSourceOneOf.md
+docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BillingApi.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -815,6 +818,9 @@ src/models/backup_request.rs
 src/models/backup_response_list.rs
 src/models/base.rs
 src/models/base_job_response.rs
+src/models/base_job_response_all_of_source.rs
+src/models/base_job_response_all_of_source_one_of.rs
+src/models/base_job_response_all_of_source_one_of_1.rs
 src/models/billing_external_id.rs
 src/models/billing_info.rs
 src/models/billing_info_request.rs

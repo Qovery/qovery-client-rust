@@ -64,7 +64,7 @@ pub struct CronJobResponse {
     )]
     pub port: Option<Option<i32>>,
     #[serde(rename = "source")]
-    pub source: serde_json::Value,
+    pub source: models::BaseJobResponseAllOfSource,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
     /// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
@@ -101,7 +101,7 @@ impl CronJobResponse {
         memory: i32,
         gpu: i32,
         auto_preview: bool,
-        source: serde_json::Value,
+        source: models::BaseJobResponseAllOfSource,
         healthchecks: models::Healthcheck,
         icon_uri: String,
         service_type: models::ServiceTypeEnum,

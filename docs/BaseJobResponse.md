@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **max_duration_seconds** | Option<**i32**> | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional]
 **auto_preview** | **bool** | Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  | 
 **port** | Option<**i32**> | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional]
-**source** | [**serde_json::Value**](.md) |  | 
+**source** | [**models::BaseJobResponseAllOfSource**](BaseJobResponse_allOf_source.md) |  | 
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 
 **auto_deploy** | Option<**bool**> | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional]
 **icon_uri** | **String** | Icon URI representing the job. | 
