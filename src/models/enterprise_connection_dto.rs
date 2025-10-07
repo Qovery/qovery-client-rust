@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EnterpriseConnectionDto {
+    /// The connection name
+    #[serde(rename = "connection_name")]
+    pub connection_name: String,
     /// The purpose of this default role is to be associated to your users if: - you choose to not expose your IDPs groups to the SAML / OIDC connection - no associated group is found in your `group_mappings` defined  You can define either a Qovery provided role (i.e `viewer`) or one of your custom role`s uuid.
     #[serde(rename = "default_role")]
     pub default_role: String,
@@ -26,11 +29,13 @@ pub struct EnterpriseConnectionDto {
 
 impl EnterpriseConnectionDto {
     pub fn new(
+        connection_name: String,
         default_role: String,
         enforce_group_sync: bool,
         group_mappings: std::collections::HashMap<String, Vec<String>>,
     ) -> EnterpriseConnectionDto {
         EnterpriseConnectionDto {
+            connection_name,
             default_role,
             enforce_group_sync,
             group_mappings,
