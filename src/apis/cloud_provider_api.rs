@@ -463,11 +463,13 @@ pub async fn list_awseks_instance_type(
     region: &str,
     only_meets_resource_reqs: Option<bool>,
     with_gpu: Option<bool>,
+    gpu: Option<&str>,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListAwseksInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_region = region;
     let p_only_meets_resource_reqs = only_meets_resource_reqs;
     let p_with_gpu = with_gpu;
+    let p_gpu = gpu;
 
     let uri_str = format!(
         "{}/aws/eks/instanceType/{region}",
@@ -481,6 +483,9 @@ pub async fn list_awseks_instance_type(
     }
     if let Some(ref param_value) = p_with_gpu {
         req_builder = req_builder.query(&[("with_gpu", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_gpu {
+        req_builder = req_builder.query(&[("gpu", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -531,11 +536,13 @@ pub async fn list_azure_aks_instance_type(
     region: &str,
     only_meets_resource_reqs: Option<bool>,
     with_gpu: Option<bool>,
+    gpu: Option<&str>,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListAzureAksInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_region = region;
     let p_only_meets_resource_reqs = only_meets_resource_reqs;
     let p_with_gpu = with_gpu;
+    let p_gpu = gpu;
 
     let uri_str = format!(
         "{}/azure/aks/instanceType/{region}",
@@ -549,6 +556,9 @@ pub async fn list_azure_aks_instance_type(
     }
     if let Some(ref param_value) = p_with_gpu {
         req_builder = req_builder.query(&[("with_gpu", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_gpu {
+        req_builder = req_builder.query(&[("gpu", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

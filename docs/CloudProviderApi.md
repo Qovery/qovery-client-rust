@@ -156,7 +156,7 @@ This endpoint does not need any parameter.
 
 ## list_awseks_instance_type
 
-> models::ClusterInstanceTypeResponseList list_awseks_instance_type(region, only_meets_resource_reqs, with_gpu)
+> models::ClusterInstanceTypeResponseList list_awseks_instance_type(region, only_meets_resource_reqs, with_gpu, gpu)
 List AWS EKS available instance types
 
 ### Parameters
@@ -166,7 +166,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **region** | **String** | region name | [required] |
 **only_meets_resource_reqs** | Option<**bool**> |  |  |
-**with_gpu** | Option<**bool**> |  |  |
+**with_gpu** | Option<**bool**> | deprecated field, use `gpu` instead |  |
+**gpu** | Option<**String**> |  |  |[default to INCLUDE]
 
 ### Return type
 
@@ -186,7 +187,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_azure_aks_instance_type
 
-> models::ClusterInstanceTypeResponseList list_azure_aks_instance_type(region, only_meets_resource_reqs, with_gpu)
+> models::ClusterInstanceTypeResponseList list_azure_aks_instance_type(region, only_meets_resource_reqs, with_gpu, gpu)
 List Azure AKS available instance types
 
 ### Parameters
@@ -196,7 +197,8 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **region** | **String** | region name | [required] |
 **only_meets_resource_reqs** | Option<**bool**> |  |  |
-**with_gpu** | Option<**bool**> |  |  |
+**with_gpu** | Option<**bool**> | deprecated field, use `gpu` instead |  |
+**gpu** | Option<**String**> |  |  |[default to INCLUDE]
 
 ### Return type
 
