@@ -29,7 +29,8 @@
 | TriggerDelete | TRIGGER_DELETE |
 | TriggerUninstall | TRIGGER_UNINSTALL |
 | TriggerDeployDryRun | TRIGGER_DEPLOY_DRY_RUN |
-| TriggerForceUnlockState | TRIGGER_FORCE_UNLOCK_STATE |
+| TriggerTerraformForceUnlock | TRIGGER_TERRAFORM_FORCE_UNLOCK |
+| TriggerTerraformMigrateState | TRIGGER_TERRAFORM_MIGRATE_STATE |
 | TriggerForceRun | TRIGGER_FORCE_RUN |
 | TriggerForceRunDeploy | TRIGGER_FORCE_RUN_DEPLOY |
 | TriggerForceRunStop | TRIGGER_FORCE_RUN_STOP |
@@ -41,7 +42,8 @@
 | Restarted | RESTARTED |
 | DeployedDryRun | DEPLOYED_DRY_RUN |
 | ForceRunSucceeded | FORCE_RUN_SUCCEEDED |
-| ForceUnlockStateSucceeded | FORCE_UNLOCK_STATE_SUCCEEDED |
+| TerraformForceUnlockSucceeded | TERRAFORM_FORCE_UNLOCK_SUCCEEDED |
+| TerraformMigrateStateSucceeded | TERRAFORM_MIGRATE_STATE_SUCCEEDED |
 | DeployFailed | DEPLOY_FAILED |
 | StopFailed | STOP_FAILED |
 | DeleteFailed | DELETE_FAILED |
@@ -49,7 +51,8 @@
 | RestartFailed | RESTART_FAILED |
 | DeployedDryRunFailed | DEPLOYED_DRY_RUN_FAILED |
 | ForceRunFailed | FORCE_RUN_FAILED |
-| ForceUnlockStateFailed | FORCE_UNLOCK_STATE_FAILED |
+| TerraformForceUnlockFailed | TERRAFORM_FORCE_UNLOCK_FAILED |
+| TerraformMigrateStateFailed | TERRAFORM_MIGRATE_STATE_FAILED |
 | Shell | SHELL |
 | Sso | SSO |
 | PortForward | PORT_FORWARD |

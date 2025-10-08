@@ -65,8 +65,10 @@ pub enum OrganizationEventType {
     TriggerUninstall,
     #[serde(rename = "TRIGGER_DEPLOY_DRY_RUN")]
     TriggerDeployDryRun,
-    #[serde(rename = "TRIGGER_FORCE_UNLOCK_STATE")]
-    TriggerForceUnlockState,
+    #[serde(rename = "TRIGGER_TERRAFORM_FORCE_UNLOCK")]
+    TriggerTerraformForceUnlock,
+    #[serde(rename = "TRIGGER_TERRAFORM_MIGRATE_STATE")]
+    TriggerTerraformMigrateState,
     #[serde(rename = "TRIGGER_FORCE_RUN")]
     TriggerForceRun,
     #[serde(rename = "TRIGGER_FORCE_RUN_DEPLOY")]
@@ -89,8 +91,10 @@ pub enum OrganizationEventType {
     DeployedDryRun,
     #[serde(rename = "FORCE_RUN_SUCCEEDED")]
     ForceRunSucceeded,
-    #[serde(rename = "FORCE_UNLOCK_STATE_SUCCEEDED")]
-    ForceUnlockStateSucceeded,
+    #[serde(rename = "TERRAFORM_FORCE_UNLOCK_SUCCEEDED")]
+    TerraformForceUnlockSucceeded,
+    #[serde(rename = "TERRAFORM_MIGRATE_STATE_SUCCEEDED")]
+    TerraformMigrateStateSucceeded,
     #[serde(rename = "DEPLOY_FAILED")]
     DeployFailed,
     #[serde(rename = "STOP_FAILED")]
@@ -105,8 +109,10 @@ pub enum OrganizationEventType {
     DeployedDryRunFailed,
     #[serde(rename = "FORCE_RUN_FAILED")]
     ForceRunFailed,
-    #[serde(rename = "FORCE_UNLOCK_STATE_FAILED")]
-    ForceUnlockStateFailed,
+    #[serde(rename = "TERRAFORM_FORCE_UNLOCK_FAILED")]
+    TerraformForceUnlockFailed,
+    #[serde(rename = "TERRAFORM_MIGRATE_STATE_FAILED")]
+    TerraformMigrateStateFailed,
     #[serde(rename = "SHELL")]
     Shell,
     #[serde(rename = "SSO")]
@@ -151,7 +157,8 @@ impl std::fmt::Display for OrganizationEventType {
             Self::TriggerDelete => write!(f, "TRIGGER_DELETE"),
             Self::TriggerUninstall => write!(f, "TRIGGER_UNINSTALL"),
             Self::TriggerDeployDryRun => write!(f, "TRIGGER_DEPLOY_DRY_RUN"),
-            Self::TriggerForceUnlockState => write!(f, "TRIGGER_FORCE_UNLOCK_STATE"),
+            Self::TriggerTerraformForceUnlock => write!(f, "TRIGGER_TERRAFORM_FORCE_UNLOCK"),
+            Self::TriggerTerraformMigrateState => write!(f, "TRIGGER_TERRAFORM_MIGRATE_STATE"),
             Self::TriggerForceRun => write!(f, "TRIGGER_FORCE_RUN"),
             Self::TriggerForceRunDeploy => write!(f, "TRIGGER_FORCE_RUN_DEPLOY"),
             Self::TriggerForceRunStop => write!(f, "TRIGGER_FORCE_RUN_STOP"),
@@ -163,7 +170,8 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Restarted => write!(f, "RESTARTED"),
             Self::DeployedDryRun => write!(f, "DEPLOYED_DRY_RUN"),
             Self::ForceRunSucceeded => write!(f, "FORCE_RUN_SUCCEEDED"),
-            Self::ForceUnlockStateSucceeded => write!(f, "FORCE_UNLOCK_STATE_SUCCEEDED"),
+            Self::TerraformForceUnlockSucceeded => write!(f, "TERRAFORM_FORCE_UNLOCK_SUCCEEDED"),
+            Self::TerraformMigrateStateSucceeded => write!(f, "TERRAFORM_MIGRATE_STATE_SUCCEEDED"),
             Self::DeployFailed => write!(f, "DEPLOY_FAILED"),
             Self::StopFailed => write!(f, "STOP_FAILED"),
             Self::DeleteFailed => write!(f, "DELETE_FAILED"),
@@ -171,7 +179,8 @@ impl std::fmt::Display for OrganizationEventType {
             Self::RestartFailed => write!(f, "RESTART_FAILED"),
             Self::DeployedDryRunFailed => write!(f, "DEPLOYED_DRY_RUN_FAILED"),
             Self::ForceRunFailed => write!(f, "FORCE_RUN_FAILED"),
-            Self::ForceUnlockStateFailed => write!(f, "FORCE_UNLOCK_STATE_FAILED"),
+            Self::TerraformForceUnlockFailed => write!(f, "TERRAFORM_FORCE_UNLOCK_FAILED"),
+            Self::TerraformMigrateStateFailed => write!(f, "TERRAFORM_MIGRATE_STATE_FAILED"),
             Self::Shell => write!(f, "SHELL"),
             Self::Sso => write!(f, "SSO"),
             Self::PortForward => write!(f, "PORT_FORWARD"),

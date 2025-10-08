@@ -65,6 +65,8 @@ pub enum Action {
     PlanAndApply,
     #[serde(rename = "FORCE_UNLOCK")]
     ForceUnlock,
+    #[serde(rename = "MIGRATE_STATE")]
+    MigrateState,
     #[serde(rename = "DESTROY")]
     Destroy,
 }
