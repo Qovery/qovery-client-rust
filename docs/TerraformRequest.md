@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
 **description** | **String** |  | 
-**auto_approve** | **bool** |  | 
 **auto_deploy** | **bool** |  | 
 **terraform_files_source** | [**models::TerraformRequestTerraformFilesSource**](TerraformRequest_terraform_files_source.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 

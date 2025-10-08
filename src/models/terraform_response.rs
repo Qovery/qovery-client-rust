@@ -27,8 +27,6 @@ pub struct TerraformResponse {
     pub description: Option<String>,
     #[serde(rename = "timeout_sec")]
     pub timeout_sec: i32,
-    #[serde(rename = "auto_approve")]
-    pub auto_approve: bool,
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     #[serde(
@@ -70,7 +68,6 @@ impl TerraformResponse {
         created_at: String,
         name: String,
         timeout_sec: i32,
-        auto_approve: bool,
         auto_deploy: bool,
         icon_uri: String,
         service_type: models::ServiceTypeEnum,
@@ -90,7 +87,6 @@ impl TerraformResponse {
             name,
             description: None,
             timeout_sec,
-            auto_approve,
             auto_deploy,
             terraform_files_source: None,
             icon_uri,

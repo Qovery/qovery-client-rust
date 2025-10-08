@@ -17,8 +17,6 @@ pub struct TerraformRequest {
     pub name: String,
     #[serde(rename = "description")]
     pub description: String,
-    #[serde(rename = "auto_approve")]
-    pub auto_approve: bool,
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     #[serde(rename = "terraform_files_source")]
@@ -54,7 +52,6 @@ impl TerraformRequest {
     pub fn new(
         name: String,
         description: String,
-        auto_approve: bool,
         auto_deploy: bool,
         terraform_files_source: models::TerraformRequestTerraformFilesSource,
         terraform_variables_source: models::TerraformVariablesSourceRequest,
@@ -66,7 +63,6 @@ impl TerraformRequest {
         TerraformRequest {
             name,
             description,
-            auto_approve,
             auto_deploy,
             terraform_files_source,
             terraform_variables_source,

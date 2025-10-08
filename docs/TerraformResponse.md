@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional]
 **timeout_sec** | **i32** |  | [default to 600]
-**auto_approve** | **bool** |  | 
 **auto_deploy** | **bool** |  | 
 **terraform_files_source** | Option<[**models::TerraformFilesSource**](TerraformFilesSource.md)> |  | [optional]
 **icon_uri** | **String** | Icon URI representing the terraform service. | 
