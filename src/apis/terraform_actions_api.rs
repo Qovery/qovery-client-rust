@@ -176,10 +176,12 @@ pub async fn redeploy_terraform(
 pub async fn uninstall_terraform(
     configuration: &configuration::Configuration,
     terraform_id: &str,
+    force_terraform_action: Option<models::DeleteTerraformAction>,
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
+    let p_force_terraform_action = force_terraform_action;
     let p_body = body;
 
     let uri_str = format!(
@@ -191,6 +193,9 @@ pub async fn uninstall_terraform(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_force_terraform_action {
+        req_builder = req_builder.query(&[("force_terraform_action", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

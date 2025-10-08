@@ -205,6 +205,7 @@ docs/DatabaseVersionMode.md
 docs/DatabasesApi.md
 docs/DefaultApi.md
 docs/DeleteMemberRequest.md
+docs/DeleteTerraformAction.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
 docs/DeployAllRequestContainersInner.md
@@ -953,6 +954,7 @@ src/models/database_response_list.rs
 src/models/database_type_enum.rs
 src/models/database_version_mode.rs
 src/models/delete_member_request.rs
+src/models/delete_terraform_action.rs
 src/models/deploy_all_request.rs
 src/models/deploy_all_request_applications_inner.rs
 src/models/deploy_all_request_containers_inner.rs

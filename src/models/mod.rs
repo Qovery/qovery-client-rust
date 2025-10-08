@@ -338,6 +338,8 @@ pub mod database_version_mode;
 pub use self::database_version_mode::DatabaseVersionMode;
 pub mod delete_member_request;
 pub use self::delete_member_request::DeleteMemberRequest;
+pub mod delete_terraform_action;
+pub use self::delete_terraform_action::DeleteTerraformAction;
 pub mod deploy_all_request;
 pub use self::deploy_all_request::DeployAllRequest;
 pub mod deploy_all_request_applications_inner;

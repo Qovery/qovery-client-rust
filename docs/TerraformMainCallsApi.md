@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## delete_terraform
 
-> delete_terraform(terraform_id, delete_resources_only)
+> delete_terraform(terraform_id, resources_only, force_terraform_action)
 Delete Terraform
 
 ### Parameters
@@ -22,7 +22,8 @@ Delete Terraform
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
-**delete_resources_only** | Option<**bool**> |  |  |
+**resources_only** | Option<**bool**> | When true, only resources are deleted and Qovery configuration is kept. |  |[default to false]
+**force_terraform_action** | Option<[**DeleteTerraformAction**](.md)> | Force a specific action to be executed by Terraform during deletion. |  |
 
 ### Return type
 
