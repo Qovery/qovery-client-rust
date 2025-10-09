@@ -21,6 +21,9 @@ pub struct KarpenterNodePoolLimits {
     /// Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi = 1024 mebibytes)
     #[serde(rename = "max_memory_in_gibibytes")]
     pub max_memory_in_gibibytes: i32,
+    /// GPU limit that will be applied for the node pool
+    #[serde(rename = "max_gpu")]
+    pub max_gpu: i32,
 }
 
 impl KarpenterNodePoolLimits {
@@ -28,11 +31,13 @@ impl KarpenterNodePoolLimits {
         enabled: bool,
         max_cpu_in_vcpu: i32,
         max_memory_in_gibibytes: i32,
+        max_gpu: i32,
     ) -> KarpenterNodePoolLimits {
         KarpenterNodePoolLimits {
             enabled,
             max_cpu_in_vcpu,
             max_memory_in_gibibytes,
+            max_gpu,
         }
     }
 }
