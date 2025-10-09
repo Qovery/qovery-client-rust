@@ -668,6 +668,8 @@ docs/TerraformVariableDefinition.md
 docs/TerraformVariableParsingRequest.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
+docs/TerraformVersionResponse.md
+docs/TerraformVersionResponseList.md
 docs/TerraformsApi.md
 docs/TransferOwnershipRequest.md
 docs/TypeOfUseEnum.md
@@ -1364,6 +1366,8 @@ src/models/terraform_variable_definition.rs
 src/models/terraform_variable_parsing_request.rs
 src/models/terraform_variables_source_request.rs
 src/models/terraform_variables_source_response.rs
+src/models/terraform_version_response.rs
+src/models/terraform_version_response_list.rs
 src/models/transfer_ownership_request.rs
 src/models/type_of_use_enum.rs
 src/models/user.rs

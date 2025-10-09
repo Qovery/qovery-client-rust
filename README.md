@@ -491,6 +491,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsApi* | [**edit_terraform**](docs/TerraformMainCallsApi.md#edit_terraform) | **PUT** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
 *TerraformMainCallsApi* | [**list_terraform_commit**](docs/TerraformMainCallsApi.md#list_terraform_commit) | **GET** /terraform/{terraformId}/commit | List last commits
+*TerraformMainCallsApi* | [**list_terraform_versions**](docs/TerraformMainCallsApi.md#list_terraform_versions) | **GET** /terraform/available-versions | List available Terraform versions
 *TerraformsApi* | [**clone_terraform**](docs/TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsApi* | [**create_terraform**](docs/TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
 *TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings | List default terraform advanced settings
@@ -1087,6 +1088,8 @@ Class | Method | HTTP request | Description
  - [TerraformVariableParsingRequest](docs/TerraformVariableParsingRequest.md)
  - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
+ - [TerraformVersionResponse](docs/TerraformVersionResponse.md)
+ - [TerraformVersionResponseList](docs/TerraformVersionResponseList.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)
  - [TypeOfUseEnum](docs/TypeOfUseEnum.md)
  - [User](docs/User.md)
