@@ -61,14 +61,10 @@ impl TerraformDeployRequest {
 pub enum Action {
     #[serde(rename = "PLAN")]
     Plan,
-    #[serde(rename = "PLAN_AND_APPLY")]
-    PlanAndApply,
     #[serde(rename = "FORCE_UNLOCK")]
     ForceUnlock,
     #[serde(rename = "MIGRATE_STATE")]
     MigrateState,
-    #[serde(rename = "DESTROY")]
-    Destroy,
 }
 
 impl Default for Action {
