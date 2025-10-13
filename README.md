@@ -36,6 +36,10 @@ Class | Method | HTTP request | Description
 *AlertReceiversApi* | [**edit_alert_receiver**](docs/AlertReceiversApi.md#edit_alert_receiver) | **PUT** /api/alert-receivers/{alertReceiverId} | Update alert receiver
 *AlertReceiversApi* | [**get_alert_receiver**](docs/AlertReceiversApi.md#get_alert_receiver) | **GET** /api/alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversApi* | [**get_alert_receivers**](docs/AlertReceiversApi.md#get_alert_receivers) | **GET** /api/organization/{organizationId}/alert-receivers | List alert receivers
+*AlertRulesApi* | [**create_alert_rule**](docs/AlertRulesApi.md#create_alert_rule) | **POST** /api/alert-rules | Create alert rule
+*AlertRulesApi* | [**delete_alert_rule**](docs/AlertRulesApi.md#delete_alert_rule) | **DELETE** /api/alert-rules/{alertRuleId} | Delete alert rule
+*AlertRulesApi* | [**edit_alert_rule**](docs/AlertRulesApi.md#edit_alert_rule) | **PUT** /api/alert-rules/{alertRuleId} | Update alert rule
+*AlertRulesApi* | [**get_alert_rule**](docs/AlertRulesApi.md#get_alert_rule) | **GET** /api/alert-rules/{alertRuleId} | Get alert rule
 *ApplicationActionsApi* | [**deploy_application**](docs/ApplicationActionsApi.md#deploy_application) | **POST** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsApi* | [**reboot_application**](docs/ApplicationActionsApi.md#reboot_application) | **POST** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsApi* | [**redeploy_application**](docs/ApplicationActionsApi.md#redeploy_application) | **POST** /application/{applicationId}/redeploy | Redeploy application
@@ -517,11 +521,17 @@ Class | Method | HTTP request | Description
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
  - [AksInfrastructureOutputs](docs/AksInfrastructureOutputs.md)
+ - [AlertPresentation](docs/AlertPresentation.md)
+ - [AlertPresentationResponse](docs/AlertPresentationResponse.md)
  - [AlertReceiverCreationRequest](docs/AlertReceiverCreationRequest.md)
  - [AlertReceiverEditRequest](docs/AlertReceiverEditRequest.md)
  - [AlertReceiverList](docs/AlertReceiverList.md)
  - [AlertReceiverResponse](docs/AlertReceiverResponse.md)
  - [AlertReceiverType](docs/AlertReceiverType.md)
+ - [AlertRuleCreationRequest](docs/AlertRuleCreationRequest.md)
+ - [AlertRuleEditRequest](docs/AlertRuleEditRequest.md)
+ - [AlertRuleResponse](docs/AlertRuleResponse.md)
+ - [AlertSeverity](docs/AlertSeverity.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationsGroupAssociatedItemType](docs/AnnotationsGroupAssociatedItemType.md)
  - [ApiVariableScopeEnum](docs/ApiVariableScopeEnum.md)

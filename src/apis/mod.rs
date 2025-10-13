@@ -115,6 +115,7 @@ impl From<&str> for ContentType {
 
 pub mod account_info_api;
 pub mod alert_receivers_api;
+pub mod alert_rules_api;
 pub mod application_actions_api;
 pub mod application_configuration_api;
 pub mod application_custom_domain_api;
