@@ -31,6 +31,11 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoApi* | [**edit_account_information**](docs/AccountInfoApi.md#edit_account_information) | **PUT** /account | Edit account information
 *AccountInfoApi* | [**get_account_information**](docs/AccountInfoApi.md#get_account_information) | **GET** /account | Get Account information
+*AlertReceiversApi* | [**create_alert_receiver**](docs/AlertReceiversApi.md#create_alert_receiver) | **POST** /api/alert-receivers | Create alert receiver
+*AlertReceiversApi* | [**delete_alert_receiver**](docs/AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
+*AlertReceiversApi* | [**edit_alert_receiver**](docs/AlertReceiversApi.md#edit_alert_receiver) | **PUT** /api/alert-receivers/{alertReceiverId} | Update alert receiver
+*AlertReceiversApi* | [**get_alert_receiver**](docs/AlertReceiversApi.md#get_alert_receiver) | **GET** /api/alert-receivers/{alertReceiverId} | Get alert receiver
+*AlertReceiversApi* | [**get_alert_receivers**](docs/AlertReceiversApi.md#get_alert_receivers) | **GET** /api/organization/{organizationId}/alert-receivers | List alert receivers
 *ApplicationActionsApi* | [**deploy_application**](docs/ApplicationActionsApi.md#deploy_application) | **POST** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsApi* | [**reboot_application**](docs/ApplicationActionsApi.md#reboot_application) | **POST** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsApi* | [**redeploy_application**](docs/ApplicationActionsApi.md#redeploy_application) | **POST** /application/{applicationId}/redeploy | Redeploy application
@@ -512,6 +517,11 @@ Class | Method | HTTP request | Description
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
  - [AksInfrastructureOutputs](docs/AksInfrastructureOutputs.md)
+ - [AlertReceiverCreationRequest](docs/AlertReceiverCreationRequest.md)
+ - [AlertReceiverEditRequest](docs/AlertReceiverEditRequest.md)
+ - [AlertReceiverList](docs/AlertReceiverList.md)
+ - [AlertReceiverResponse](docs/AlertReceiverResponse.md)
+ - [AlertReceiverType](docs/AlertReceiverType.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationsGroupAssociatedItemType](docs/AnnotationsGroupAssociatedItemType.md)
  - [ApiVariableScopeEnum](docs/ApiVariableScopeEnum.md)
@@ -1053,6 +1063,8 @@ Class | Method | HTTP request | Description
  - [ServiceTypeForVariableEnum](docs/ServiceTypeForVariableEnum.md)
  - [SignUp](docs/SignUp.md)
  - [SignUpRequest](docs/SignUpRequest.md)
+ - [SlackAlertReceiverCreationRequest](docs/SlackAlertReceiverCreationRequest.md)
+ - [SlackAlertReceiverEditRequest](docs/SlackAlertReceiverEditRequest.md)
  - [Stage](docs/Stage.md)
  - [StageStatusEnum](docs/StageStatusEnum.md)
  - [StageStepMetric](docs/StageStepMetric.md)
