@@ -21,8 +21,8 @@ pub struct DeploymentHistoryService {
     pub auditing_data: models::DeploymentHistoryAuditingData,
     #[serde(rename = "details")]
     pub details: models::DeploymentHistoryServiceDetails,
-    #[serde(rename = "status_details", skip_serializing_if = "Option::is_none")]
-    pub status_details: Option<models::StatusDetails>,
+    #[serde(rename = "status_details")]
+    pub status_details: models::StatusDetails,
     #[serde(rename = "icon_uri")]
     pub icon_uri: String,
     #[serde(rename = "total_duration", skip_serializing_if = "Option::is_none")]
@@ -35,6 +35,7 @@ impl DeploymentHistoryService {
         status: models::StateEnum,
         auditing_data: models::DeploymentHistoryAuditingData,
         details: models::DeploymentHistoryServiceDetails,
+        status_details: models::StatusDetails,
         icon_uri: String,
     ) -> DeploymentHistoryService {
         DeploymentHistoryService {
@@ -42,7 +43,7 @@ impl DeploymentHistoryService {
             status,
             auditing_data,
             details,
-            status_details: None,
+            status_details,
             icon_uri,
             total_duration: None,
         }

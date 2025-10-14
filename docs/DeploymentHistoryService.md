@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **status** | [**models::StateEnum**](StateEnum.md) |  | 
 **auditing_data** | [**models::DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **details** | [**models::DeploymentHistoryServiceDetails**](DeploymentHistoryServiceDetails.md) |  | 
-**status_details** | Option<[**models::StatusDetails**](StatusDetails.md)> |  | [optional]
+**status_details** | [**models::StatusDetails**](StatusDetails.md) |  | 
 **icon_uri** | **String** |  | 
 **total_duration** | Option<**String**> |  | [optional]
 
