@@ -17,13 +17,20 @@ pub struct StatusDetails {
     pub action: models::ServiceActionEnum,
     #[serde(rename = "status")]
     pub status: models::ServiceActionStatusEnum,
+    #[serde(rename = "sub_action")]
+    pub sub_action: models::ServiceSubActionEnum,
 }
 
 impl StatusDetails {
     pub fn new(
         action: models::ServiceActionEnum,
         status: models::ServiceActionStatusEnum,
+        sub_action: models::ServiceSubActionEnum,
     ) -> StatusDetails {
-        StatusDetails { action, status }
+        StatusDetails {
+            action,
+            status,
+            sub_action,
+        }
     }
 }

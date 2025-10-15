@@ -1102,6 +1102,8 @@ pub mod service_storage_request_storage_inner;
 pub use self::service_storage_request_storage_inner::ServiceStorageRequestStorageInner;
 pub mod service_storage_storage_inner;
 pub use self::service_storage_storage_inner::ServiceStorageStorageInner;
+pub mod service_sub_action_enum;
+pub use self::service_sub_action_enum::ServiceSubActionEnum;
 pub mod service_total_number;
 pub use self::service_total_number::ServiceTotalNumber;
 pub mod service_type_enum;
