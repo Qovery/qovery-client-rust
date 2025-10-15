@@ -16,28 +16,27 @@ pub struct ServiceStepMetrics {
     /// The total duration in seconds of the service deployment or null if the deployment is not completed.
     #[serde(
         rename = "total_duration_sec",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
+        deserialize_with = "Option::deserialize"
     )]
-    pub total_duration_sec: Option<Option<i32>>,
+    pub total_duration_sec: Option<i32>,
     /// The total duration in seconds of the service deployment without queuing steps.
-    #[serde(
-        rename = "total_computing_duration_sec",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub total_computing_duration_sec: Option<i32>,
+    #[serde(rename = "total_computing_duration_sec")]
+    pub total_computing_duration_sec: i32,
     /// A list of metrics for deployment steps of the service.
-    #[serde(rename = "details", skip_serializing_if = "Option::is_none")]
-    pub details: Option<Vec<models::ServiceStepMetric>>,
+    #[serde(rename = "details")]
+    pub details: Vec<models::ServiceStepMetric>,
 }
 
 impl ServiceStepMetrics {
-    pub fn new() -> ServiceStepMetrics {
+    pub fn new(
+        total_duration_sec: Option<i32>,
+        total_computing_duration_sec: i32,
+        details: Vec<models::ServiceStepMetric>,
+    ) -> ServiceStepMetrics {
         ServiceStepMetrics {
-            total_duration_sec: None,
-            total_computing_duration_sec: None,
-            details: None,
+            total_duration_sec,
+            total_computing_duration_sec,
+            details,
         }
     }
 }

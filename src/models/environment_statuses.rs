@@ -13,32 +13,40 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EnvironmentStatuses {
-    #[serde(rename = "environment", skip_serializing_if = "Option::is_none")]
-    pub environment: Option<models::EnvironmentStatus>,
-    #[serde(rename = "applications", skip_serializing_if = "Option::is_none")]
-    pub applications: Option<Vec<models::Status>>,
-    #[serde(rename = "containers", skip_serializing_if = "Option::is_none")]
-    pub containers: Option<Vec<models::Status>>,
-    #[serde(rename = "jobs", skip_serializing_if = "Option::is_none")]
-    pub jobs: Option<Vec<models::Status>>,
-    #[serde(rename = "databases", skip_serializing_if = "Option::is_none")]
-    pub databases: Option<Vec<models::Status>>,
-    #[serde(rename = "helms", skip_serializing_if = "Option::is_none")]
-    pub helms: Option<Vec<models::Status>>,
-    #[serde(rename = "terraforms", skip_serializing_if = "Option::is_none")]
-    pub terraforms: Option<Vec<models::Status>>,
+    #[serde(rename = "environment")]
+    pub environment: models::EnvironmentStatus,
+    #[serde(rename = "applications")]
+    pub applications: Vec<models::Status>,
+    #[serde(rename = "containers")]
+    pub containers: Vec<models::Status>,
+    #[serde(rename = "jobs")]
+    pub jobs: Vec<models::Status>,
+    #[serde(rename = "databases")]
+    pub databases: Vec<models::Status>,
+    #[serde(rename = "helms")]
+    pub helms: Vec<models::Status>,
+    #[serde(rename = "terraforms")]
+    pub terraforms: Vec<models::Status>,
 }
 
 impl EnvironmentStatuses {
-    pub fn new() -> EnvironmentStatuses {
+    pub fn new(
+        environment: models::EnvironmentStatus,
+        applications: Vec<models::Status>,
+        containers: Vec<models::Status>,
+        jobs: Vec<models::Status>,
+        databases: Vec<models::Status>,
+        helms: Vec<models::Status>,
+        terraforms: Vec<models::Status>,
+    ) -> EnvironmentStatuses {
         EnvironmentStatuses {
-            environment: None,
-            applications: None,
-            containers: None,
-            jobs: None,
-            databases: None,
-            helms: None,
-            terraforms: None,
+            environment,
+            applications,
+            containers,
+            jobs,
+            databases,
+            helms,
+            terraforms,
         }
     }
 }

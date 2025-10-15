@@ -24,11 +24,8 @@ pub struct Status {
         skip_serializing_if = "Option::is_none"
     )]
     pub last_deployment_date: Option<String>,
-    #[serde(
-        rename = "is_part_last_deployment",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub is_part_last_deployment: Option<bool>,
+    #[serde(rename = "is_part_last_deployment")]
+    pub is_part_last_deployment: bool,
     #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
     pub steps: Option<models::ServiceStepMetrics>,
     #[serde(rename = "execution_id", skip_serializing_if = "Option::is_none")]
@@ -37,16 +34,11 @@ pub struct Status {
     pub status_details: models::StatusDetails,
     #[serde(
         rename = "deployment_request_id",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
+        deserialize_with = "Option::deserialize"
     )]
-    pub deployment_request_id: Option<Option<uuid::Uuid>>,
-    #[serde(
-        rename = "deployment_requests_count",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub deployment_requests_count: Option<i32>,
+    pub deployment_request_id: Option<uuid::Uuid>,
+    #[serde(rename = "deployment_requests_count")]
+    pub deployment_requests_count: i32,
 }
 
 impl Status {
@@ -54,19 +46,22 @@ impl Status {
         id: uuid::Uuid,
         state: models::StateEnum,
         service_deployment_status: models::ServiceDeploymentStatusEnum,
+        is_part_last_deployment: bool,
         status_details: models::StatusDetails,
+        deployment_request_id: Option<uuid::Uuid>,
+        deployment_requests_count: i32,
     ) -> Status {
         Status {
             id,
             state,
             service_deployment_status,
             last_deployment_date: None,
-            is_part_last_deployment: None,
+            is_part_last_deployment,
             steps: None,
             execution_id: None,
             status_details,
-            deployment_request_id: None,
-            deployment_requests_count: None,
+            deployment_request_id,
+            deployment_requests_count,
         }
     }
 }
