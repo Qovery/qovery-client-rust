@@ -21,6 +21,8 @@ pub struct KarpenterGpuNodePoolOverride {
     pub requirements: Option<Vec<models::KarpenterNodePoolRequirement>>,
     #[serde(rename = "disk_size_in_gib", skip_serializing_if = "Option::is_none")]
     pub disk_size_in_gib: Option<i32>,
+    #[serde(rename = "spot_enabled", skip_serializing_if = "Option::is_none")]
+    pub spot_enabled: Option<bool>,
 }
 
 impl KarpenterGpuNodePoolOverride {
@@ -30,6 +32,7 @@ impl KarpenterGpuNodePoolOverride {
             limits: None,
             requirements: None,
             disk_size_in_gib: None,
+            spot_enabled: None,
         }
     }
 }
