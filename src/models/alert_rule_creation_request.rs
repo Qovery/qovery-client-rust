@@ -33,14 +33,16 @@ pub struct AlertRuleCreationRequest {
     pub for_duration: String,
     #[serde(rename = "severity")]
     pub severity: models::AlertSeverity,
+    #[serde(rename = "presentation")]
+    pub presentation: models::AlertPresentation,
     /// Whether the alert rule is enabled
     #[serde(rename = "enabled")]
     pub enabled: bool,
     /// List of alert receiver IDs to send notifications to
     #[serde(rename = "alert_receiver_ids")]
     pub alert_receiver_ids: Vec<uuid::Uuid>,
-    #[serde(rename = "presentation")]
-    pub presentation: models::AlertPresentation,
+    #[serde(rename = "target")]
+    pub target: models::AlertTarget,
 }
 
 impl AlertRuleCreationRequest {
@@ -52,9 +54,10 @@ impl AlertRuleCreationRequest {
         promql_expr: String,
         for_duration: String,
         severity: models::AlertSeverity,
+        presentation: models::AlertPresentation,
         enabled: bool,
         alert_receiver_ids: Vec<uuid::Uuid>,
-        presentation: models::AlertPresentation,
+        target: models::AlertTarget,
     ) -> AlertRuleCreationRequest {
         AlertRuleCreationRequest {
             organization_id,
@@ -64,9 +67,10 @@ impl AlertRuleCreationRequest {
             promql_expr,
             for_duration,
             severity,
+            presentation,
             enabled,
             alert_receiver_ids,
-            presentation,
+            target,
         }
     }
 }

@@ -20,6 +20,8 @@ docs/AlertRuleEditRequest.md
 docs/AlertRuleResponse.md
 docs/AlertRulesApi.md
 docs/AlertSeverity.md
+docs/AlertTarget.md
+docs/AlertTargetType.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/ApiVariableScopeEnum.md
@@ -817,6 +819,8 @@ src/models/alert_rule_creation_request.rs
 src/models/alert_rule_edit_request.rs
 src/models/alert_rule_response.rs
 src/models/alert_severity.rs
+src/models/alert_target.rs
+src/models/alert_target_type.rs
 src/models/annotation.rs
 src/models/annotations_group_associated_item_type.rs
 src/models/api_variable_scope_enum.rs
