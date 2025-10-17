@@ -28,15 +28,19 @@ pub struct TerraformVariableDefinition {
         skip_serializing_if = "Option::is_none"
     )]
     pub default: Option<Option<String>>,
+    /// The path inside your git repository where the variable is defined
+    #[serde(rename = "source")]
+    pub source: String,
 }
 
 impl TerraformVariableDefinition {
     /// Represents a Terraform variable definition extracted from a Terraform file.
-    pub fn new(key: String, sensitive: bool) -> TerraformVariableDefinition {
+    pub fn new(key: String, sensitive: bool, source: String) -> TerraformVariableDefinition {
         TerraformVariableDefinition {
             key,
             sensitive,
             default: None,
+            source,
         }
     }
 }
