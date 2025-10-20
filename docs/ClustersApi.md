@@ -347,7 +347,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cluster_logs
 
-> models::ClusterLogsResponse get_cluster_logs(cluster_id, endpoint, query, start, end, limit, since, step, interval, direction)
+> models::ClusterLogsResponse get_cluster_logs(cluster_id, endpoint, query, start, end, limit, since, step, interval, direction, time)
 Fetch cluster logs
 
 Fetch cluster logs
@@ -367,6 +367,7 @@ Name | Type | Description  | Required | Notes
 **step** | Option<**String**> |  |  |
 **interval** | Option<**String**> |  |  |
 **direction** | Option<**String**> |  |  |
+**time** | Option<**String**> |  |  |
 
 ### Return type
 

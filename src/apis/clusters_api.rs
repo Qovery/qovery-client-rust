@@ -939,6 +939,7 @@ pub async fn get_cluster_logs(
     step: Option<&str>,
     interval: Option<&str>,
     direction: Option<&str>,
+    time: Option<&str>,
 ) -> Result<models::ClusterLogsResponse, Error<GetClusterLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_cluster_id = cluster_id;
@@ -951,6 +952,7 @@ pub async fn get_cluster_logs(
     let p_step = step;
     let p_interval = interval;
     let p_direction = direction;
+    let p_time = time;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/logs",
@@ -981,6 +983,9 @@ pub async fn get_cluster_logs(
     }
     if let Some(ref param_value) = p_direction {
         req_builder = req_builder.query(&[("direction", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_time {
+        req_builder = req_builder.query(&[("time", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
