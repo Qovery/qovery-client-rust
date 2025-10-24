@@ -54,6 +54,16 @@ pub enum GetAlertRuleError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_alert_rules`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetAlertRulesError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// Create a new alert rule with PromQL expression
 pub async fn create_alert_rule(
     configuration: &configuration::Configuration,
@@ -275,6 +285,65 @@ pub async fn get_alert_rule(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetAlertRuleError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Retrieve all alert rules for a specific organization
+pub async fn get_alert_rules(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+) -> Result<models::AlertRuleList, Error<GetAlertRulesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_organization_id = organization_id;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/alert-rules",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_organization_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AlertRuleList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AlertRuleList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetAlertRulesError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

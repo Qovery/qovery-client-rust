@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **alert_receiver_ids** | [**Vec<uuid::Uuid>**](uuid::Uuid.md) | List of alert receiver IDs to send notifications to | 
 **presentation** | [**models::AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **target** | [**models::AlertTarget**](AlertTarget.md) |  | 
+**state** | [**models::AlertRuleState**](AlertRuleState.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

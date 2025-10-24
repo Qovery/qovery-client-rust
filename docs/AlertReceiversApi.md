@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_alert_receiver**](AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
 [**edit_alert_receiver**](AlertReceiversApi.md#edit_alert_receiver) | **PUT** /api/alert-receivers/{alertReceiverId} | Update alert receiver
 [**get_alert_receiver**](AlertReceiversApi.md#get_alert_receiver) | **GET** /api/alert-receivers/{alertReceiverId} | Get alert receiver
-[**get_alert_receivers**](AlertReceiversApi.md#get_alert_receivers) | **GET** /api/organization/{organizationId}/alert-receivers | List alert receivers
+[**get_alert_receivers**](AlertReceiversApi.md#get_alert_receivers) | **GET** /organization/{organizationId}/alert-receivers | List alert receivers
 
 
 

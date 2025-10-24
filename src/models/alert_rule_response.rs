@@ -49,6 +49,8 @@ pub struct AlertRuleResponse {
     pub presentation: models::AlertPresentationResponse,
     #[serde(rename = "target")]
     pub target: models::AlertTarget,
+    #[serde(rename = "state")]
+    pub state: models::AlertRuleState,
 }
 
 impl AlertRuleResponse {
@@ -66,6 +68,7 @@ impl AlertRuleResponse {
         alert_receiver_ids: Vec<uuid::Uuid>,
         presentation: models::AlertPresentationResponse,
         target: models::AlertTarget,
+        state: models::AlertRuleState,
     ) -> AlertRuleResponse {
         AlertRuleResponse {
             id,
@@ -82,6 +85,7 @@ impl AlertRuleResponse {
             alert_receiver_ids,
             presentation,
             target,
+            state,
         }
     }
 }

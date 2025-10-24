@@ -302,7 +302,7 @@ pub async fn get_alert_receivers(
     let p_organization_id = organization_id;
 
     let uri_str = format!(
-        "{}/api/organization/{organizationId}/alert-receivers",
+        "{}/organization/{organizationId}/alert-receivers",
         configuration.base_path,
         organizationId = crate::apis::urlencode(p_organization_id)
     );
