@@ -20,12 +20,14 @@ pub enum AlertRuleState {
     Ok,
     #[serde(rename = "TRIGGERED")]
     Triggered,
-    #[serde(rename = "FIRED")]
-    Fired,
+    #[serde(rename = "PENDING_NOTIFICATION")]
+    PendingNotification,
     #[serde(rename = "NOTIFIED")]
     Notified,
     #[serde(rename = "SUPPRESSED")]
     Suppressed,
+    #[serde(rename = "UNROUTED")]
+    Unrouted,
 }
 
 impl std::fmt::Display for AlertRuleState {
@@ -34,9 +36,10 @@ impl std::fmt::Display for AlertRuleState {
             Self::Undeployed => write!(f, "UNDEPLOYED"),
             Self::Ok => write!(f, "OK"),
             Self::Triggered => write!(f, "TRIGGERED"),
-            Self::Fired => write!(f, "FIRED"),
+            Self::PendingNotification => write!(f, "PENDING_NOTIFICATION"),
             Self::Notified => write!(f, "NOTIFIED"),
             Self::Suppressed => write!(f, "SUPPRESSED"),
+            Self::Unrouted => write!(f, "UNROUTED"),
         }
     }
 }
