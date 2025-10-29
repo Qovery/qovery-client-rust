@@ -305,7 +305,7 @@ pub async fn list_terraform_commit(
 pub async fn list_terraform_versions(
     configuration: &configuration::Configuration,
 ) -> Result<models::TerraformVersionResponseList, Error<ListTerraformVersionsError>> {
-    let uri_str = format!("{}/terraform/available-versions", configuration.base_path);
+    let uri_str = format!("{}/terraform/availableVersion", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
