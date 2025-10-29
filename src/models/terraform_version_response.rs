@@ -14,19 +14,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformVersionResponse {
     /// Terraform engine
-    #[serde(rename = "engine", skip_serializing_if = "Option::is_none")]
-    pub engine: Option<Engine>,
+    #[serde(rename = "engine")]
+    pub engine: Engine,
     /// Terraform version string
-    #[serde(rename = "version", skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    #[serde(rename = "version")]
+    pub version: String,
 }
 
 impl TerraformVersionResponse {
-    pub fn new() -> TerraformVersionResponse {
-        TerraformVersionResponse {
-            engine: None,
-            version: None,
-        }
+    pub fn new(engine: Engine, version: String) -> TerraformVersionResponse {
+        TerraformVersionResponse { engine, version }
     }
 }
 /// Terraform engine
