@@ -454,6 +454,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**list_organization_credentials**](docs/OrganizationMainCallsApi.md#list_organization_credentials) | **GET** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 *OrganizationMainCallsApi* | [**list_organization_git_tokens**](docs/OrganizationMainCallsApi.md#list_organization_git_tokens) | **GET** /organization/{organizationId}/gitToken | List organization git tokens
 *OrganizationMainCallsApi* | [**list_services_by_organization_id**](docs/OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
+*OrganizationMainCallsApi* | [**list_tf_vars_files_from_git_repo**](docs/OrganizationMainCallsApi.md#list_tf_vars_files_from_git_repo) | **POST** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 *OrganizationMainCallsApi* | [**parse_terraform_variables_from_git_repo**](docs/OrganizationMainCallsApi.md#parse_terraform_variables_from_git_repo) | **POST** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
 *OrganizationWebhookApi* | [**create_organization_webhook**](docs/OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookApi* | [**delete_organization_webhook**](docs/OrganizationWebhookApi.md#delete_organization_webhook) | **DELETE** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
@@ -799,10 +800,12 @@ Class | Method | HTTP request | Description
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitFileCheckRequest](docs/GitFileCheckRequest.md)
+ - [GitProvider](docs/GitProvider.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)
  - [GitRepository](docs/GitRepository.md)
  - [GitRepositoryBranch](docs/GitRepositoryBranch.md)
  - [GitRepositoryBranchResponseList](docs/GitRepositoryBranchResponseList.md)
+ - [GitRepositoryRequest](docs/GitRepositoryRequest.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
  - [GitTokenAssociatedServiceResponse](docs/GitTokenAssociatedServiceResponse.md)
  - [GitTokenAssociatedServiceType](docs/GitTokenAssociatedServiceType.md)
@@ -939,6 +942,7 @@ Class | Method | HTTP request | Description
  - [ListServicesByEnvironmentId200Response](docs/ListServicesByEnvironmentId200Response.md)
  - [ListServicesByEnvironmentId200ResponseResultsInner](docs/ListServicesByEnvironmentId200ResponseResultsInner.md)
  - [ListServicesByOrganizationId200Response](docs/ListServicesByOrganizationId200Response.md)
+ - [ListTfVarsFilesFromGitRepo200Response](docs/ListTfVarsFilesFromGitRepo200Response.md)
  - [Log](docs/Log.md)
  - [LogResponseList](docs/LogResponseList.md)
  - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)
@@ -1118,6 +1122,8 @@ Class | Method | HTTP request | Description
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
  - [TerraformVersionResponse](docs/TerraformVersionResponse.md)
  - [TerraformVersionResponseList](docs/TerraformVersionResponseList.md)
+ - [TfVarsFileResponse](docs/TfVarsFileResponse.md)
+ - [TfVarsListRequest](docs/TfVarsListRequest.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)
  - [TypeOfUseEnum](docs/TypeOfUseEnum.md)
  - [User](docs/User.md)
