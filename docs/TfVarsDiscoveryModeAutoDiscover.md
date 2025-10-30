@@ -1,11 +1,10 @@
-# TfVarsListRequest
+# TfVarsDiscoveryModeAutoDiscover
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**git_repository** | [**models::GitRepositoryRequest**](GitRepositoryRequest.md) |  | 
-**mode** | [**models::TfVarsDiscoveryMode**](TfVarsDiscoveryMode.md) |  | 
+**r#type** | **String** | Discriminator for auto-discovery mode | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
