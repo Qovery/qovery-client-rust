@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TfVarsListRequest {
     #[serde(rename = "git_repository")]
-    pub git_repository: models::GitRepositoryRequest,
+    pub git_repository: models::ApplicationGitRepositoryRequest,
     #[serde(rename = "mode")]
     pub mode: models::TfVarsDiscoveryMode,
 }
@@ -23,7 +23,7 @@ pub struct TfVarsListRequest {
 impl TfVarsListRequest {
     /// Request to list Terraform tfvars files from a Git repository
     pub fn new(
-        git_repository: models::GitRepositoryRequest,
+        git_repository: models::ApplicationGitRepositoryRequest,
         mode: models::TfVarsDiscoveryMode,
     ) -> TfVarsListRequest {
         TfVarsListRequest {
