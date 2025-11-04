@@ -13,6 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CloudWatchExportConfig {
+    /// To enable the cloudwatch exporter.
     #[serde(rename = "enabled")]
     pub enabled: bool,
 }
