@@ -45,7 +45,7 @@ pub struct TerraformResponse {
     #[serde(rename = "terraform_variables_source")]
     pub terraform_variables_source: models::TerraformVariablesSourceResponse,
     #[serde(rename = "provider")]
-    pub provider: Provider,
+    pub provider: models::TerraformProviderEnum,
     #[serde(rename = "backend")]
     pub backend: models::TerraformBackend,
     #[serde(rename = "provider_version")]
@@ -72,7 +72,7 @@ impl TerraformResponse {
         icon_uri: String,
         service_type: models::ServiceTypeEnum,
         terraform_variables_source: models::TerraformVariablesSourceResponse,
-        provider: Provider,
+        provider: models::TerraformProviderEnum,
         backend: models::TerraformBackend,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformJobResourcesResponse,
@@ -100,17 +100,5 @@ impl TerraformResponse {
             use_cluster_credentials,
             action_extra_arguments,
         }
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Provider {
-    #[serde(rename = "TERRAFORM")]
-    Terraform,
-}
-
-impl Default for Provider {
-    fn default() -> Provider {
-        Self::Terraform
     }
 }

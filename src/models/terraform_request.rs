@@ -26,7 +26,7 @@ pub struct TerraformRequest {
     #[serde(rename = "backend")]
     pub backend: models::TerraformBackend,
     #[serde(rename = "provider")]
-    pub provider: Provider,
+    pub provider: models::TerraformProviderEnum,
     #[serde(rename = "provider_version")]
     pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
@@ -56,7 +56,7 @@ impl TerraformRequest {
         terraform_files_source: models::TerraformRequestTerraformFilesSource,
         terraform_variables_source: models::TerraformVariablesSourceRequest,
         backend: models::TerraformBackend,
-        provider: Provider,
+        provider: models::TerraformProviderEnum,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformRequestJobResources,
     ) -> TerraformRequest {
@@ -75,17 +75,5 @@ impl TerraformRequest {
             use_cluster_credentials: None,
             action_extra_arguments: None,
         }
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Provider {
-    #[serde(rename = "TERRAFORM")]
-    Terraform,
-}
-
-impl Default for Provider {
-    fn default() -> Provider {
-        Self::Terraform
     }
 }

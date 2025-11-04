@@ -33,16 +33,3 @@ impl Default for ListServicesByEnvironmentId200ResponseResultsInner {
         Self::Application(Default::default())
     }
 }
-
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Provider {
-    #[serde(rename = "TERRAFORM")]
-    Terraform,
-}
-
-impl Default for Provider {
-    fn default() -> Provider {
-        Self::Terraform
-    }
-}

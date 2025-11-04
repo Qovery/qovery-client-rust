@@ -1172,6 +1172,8 @@ pub mod terraform_git_repository_request;
 pub use self::terraform_git_repository_request::TerraformGitRepositoryRequest;
 pub mod terraform_job_resources_response;
 pub use self::terraform_job_resources_response::TerraformJobResourcesResponse;
+pub mod terraform_provider_enum;
+pub use self::terraform_provider_enum::TerraformProviderEnum;
 pub mod terraform_provider_version;
 pub use self::terraform_provider_version::TerraformProviderVersion;
 pub mod terraform_request;
