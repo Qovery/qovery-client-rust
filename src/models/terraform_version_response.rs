@@ -13,30 +13,15 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformVersionResponse {
-    /// Terraform engine
     #[serde(rename = "engine")]
-    pub engine: Engine,
+    pub engine: models::TerraformProviderEnum,
     /// Terraform version string
     #[serde(rename = "version")]
     pub version: String,
 }
 
 impl TerraformVersionResponse {
-    pub fn new(engine: Engine, version: String) -> TerraformVersionResponse {
+    pub fn new(engine: models::TerraformProviderEnum, version: String) -> TerraformVersionResponse {
         TerraformVersionResponse { engine, version }
-    }
-}
-/// Terraform engine
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Engine {
-    #[serde(rename = "TERRAFORM")]
-    Terraform,
-    #[serde(rename = "OPEN_TOFU")]
-    OpenTofu,
-}
-
-impl Default for Engine {
-    fn default() -> Engine {
-        Self::Terraform
     }
 }
