@@ -18,14 +18,14 @@ pub struct MetricsConfigurationManagedByQovery {
     #[serde(rename = "resource_profile", skip_serializing_if = "Option::is_none")]
     pub resource_profile: Option<models::ObservabilityResourceProfile>,
     #[serde(
-        rename = "cloudWatchExportConfig",
+        rename = "cloud_watch_export_config",
         skip_serializing_if = "Option::is_none"
     )]
     pub cloud_watch_export_config: Option<models::CloudWatchExportConfig>,
-    #[serde(rename = "highAvailability", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "high_availability", skip_serializing_if = "Option::is_none")]
     pub high_availability: Option<bool>,
     #[serde(
-        rename = "internalNetworkMonitoring",
+        rename = "internal_network_monitoring",
         skip_serializing_if = "Option::is_none"
     )]
     pub internal_network_monitoring: Option<models::InternalNetworkMonitoring>,
