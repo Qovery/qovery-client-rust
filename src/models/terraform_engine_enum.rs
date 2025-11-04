@@ -13,14 +13,14 @@ use serde::{Deserialize, Serialize};
 
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum TerraformProviderEnum {
+pub enum TerraformEngineEnum {
     #[serde(rename = "TERRAFORM")]
     Terraform,
     #[serde(rename = "OPEN_TOFU")]
     OpenTofu,
 }
 
-impl std::fmt::Display for TerraformProviderEnum {
+impl std::fmt::Display for TerraformEngineEnum {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Terraform => write!(f, "TERRAFORM"),
@@ -29,8 +29,8 @@ impl std::fmt::Display for TerraformProviderEnum {
     }
 }
 
-impl Default for TerraformProviderEnum {
-    fn default() -> TerraformProviderEnum {
+impl Default for TerraformEngineEnum {
+    fn default() -> TerraformEngineEnum {
         Self::Terraform
     }
 }

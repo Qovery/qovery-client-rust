@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **icon_uri** | **String** | Icon URI representing the terraform service. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
-**provider** | [**models::TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
+**engine** | [**models::TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
 **backend** | [**models::TerraformBackend**](TerraformBackend.md) |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **job_resources** | [**models::TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 

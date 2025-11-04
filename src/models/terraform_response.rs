@@ -44,8 +44,8 @@ pub struct TerraformResponse {
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "terraform_variables_source")]
     pub terraform_variables_source: models::TerraformVariablesSourceResponse,
-    #[serde(rename = "provider")]
-    pub provider: models::TerraformProviderEnum,
+    #[serde(rename = "engine")]
+    pub engine: models::TerraformEngineEnum,
     #[serde(rename = "backend")]
     pub backend: models::TerraformBackend,
     #[serde(rename = "provider_version")]
@@ -72,7 +72,7 @@ impl TerraformResponse {
         icon_uri: String,
         service_type: models::ServiceTypeEnum,
         terraform_variables_source: models::TerraformVariablesSourceResponse,
-        provider: models::TerraformProviderEnum,
+        engine: models::TerraformEngineEnum,
         backend: models::TerraformBackend,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformJobResourcesResponse,
@@ -92,7 +92,7 @@ impl TerraformResponse {
             icon_uri,
             service_type,
             terraform_variables_source,
-            provider,
+            engine,
             backend,
             provider_version,
             job_resources,

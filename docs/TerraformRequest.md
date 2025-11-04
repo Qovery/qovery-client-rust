@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **terraform_files_source** | [**models::TerraformRequestTerraformFilesSource**](TerraformRequest_terraform_files_source.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **backend** | [**models::TerraformBackend**](TerraformBackend.md) |  | 
-**provider** | [**models::TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
+**engine** | [**models::TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **timeout_sec** | Option<**i32**> |  | [optional]
 **icon_uri** | Option<**String**> |  | [optional]

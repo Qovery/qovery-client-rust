@@ -14,14 +14,14 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformVersionResponse {
     #[serde(rename = "engine")]
-    pub engine: models::TerraformProviderEnum,
+    pub engine: models::TerraformEngineEnum,
     /// Terraform version string
     #[serde(rename = "version")]
     pub version: String,
 }
 
 impl TerraformVersionResponse {
-    pub fn new(engine: models::TerraformProviderEnum, version: String) -> TerraformVersionResponse {
+    pub fn new(engine: models::TerraformEngineEnum, version: String) -> TerraformVersionResponse {
         TerraformVersionResponse { engine, version }
     }
 }

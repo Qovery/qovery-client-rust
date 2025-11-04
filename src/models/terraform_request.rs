@@ -25,8 +25,8 @@ pub struct TerraformRequest {
     pub terraform_variables_source: models::TerraformVariablesSourceRequest,
     #[serde(rename = "backend")]
     pub backend: models::TerraformBackend,
-    #[serde(rename = "provider")]
-    pub provider: models::TerraformProviderEnum,
+    #[serde(rename = "engine")]
+    pub engine: models::TerraformEngineEnum,
     #[serde(rename = "provider_version")]
     pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
@@ -56,7 +56,7 @@ impl TerraformRequest {
         terraform_files_source: models::TerraformRequestTerraformFilesSource,
         terraform_variables_source: models::TerraformVariablesSourceRequest,
         backend: models::TerraformBackend,
-        provider: models::TerraformProviderEnum,
+        engine: models::TerraformEngineEnum,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformRequestJobResources,
     ) -> TerraformRequest {
@@ -67,7 +67,7 @@ impl TerraformRequest {
             terraform_files_source,
             terraform_variables_source,
             backend,
-            provider,
+            engine,
             provider_version,
             timeout_sec: None,
             icon_uri: None,
