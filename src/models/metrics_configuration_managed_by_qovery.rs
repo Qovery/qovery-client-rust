@@ -15,11 +15,34 @@ use serde::{Deserialize, Serialize};
 pub struct MetricsConfigurationManagedByQovery {
     #[serde(rename = "kind", skip_serializing_if = "Option::is_none")]
     pub kind: Option<Kind>,
+    #[serde(rename = "resource_profile", skip_serializing_if = "Option::is_none")]
+    pub resource_profile: Option<models::ObservabilityResourceProfile>,
+    #[serde(
+        rename = "cloudWatchExportConfig",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cloud_watch_export_config: Option<models::CloudWatchExportConfig>,
+    #[serde(rename = "highAvailability", skip_serializing_if = "Option::is_none")]
+    pub high_availability: Option<bool>,
+    #[serde(
+        rename = "internalNetworkMonitoring",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub internal_network_monitoring: Option<models::InternalNetworkMonitoring>,
+    #[serde(rename = "alerting", skip_serializing_if = "Option::is_none")]
+    pub alerting: Option<models::AlertingConfig>,
 }
 
 impl MetricsConfigurationManagedByQovery {
     pub fn new() -> MetricsConfigurationManagedByQovery {
-        MetricsConfigurationManagedByQovery { kind: None }
+        MetricsConfigurationManagedByQovery {
+            kind: None,
+            resource_profile: None,
+            cloud_watch_export_config: None,
+            high_availability: None,
+            internal_network_monitoring: None,
+            alerting: None,
+        }
     }
 }
 ///

@@ -24,6 +24,7 @@ docs/AlertRulesApi.md
 docs/AlertSeverity.md
 docs/AlertTarget.md
 docs/AlertTargetType.md
+docs/AlertingConfig.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/ApiVariableScopeEnum.md
@@ -93,6 +94,7 @@ docs/CloudProviderCredentialsApi.md
 docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
 docs/CloudVendorEnum.md
+docs/CloudWatchExportConfig.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterCloudProviderInfo.md
@@ -407,6 +409,7 @@ docs/HelmVersionResponseList.md
 docs/HelmsApi.md
 docs/InfrastructureOutputs.md
 docs/IngressDeploymentStatusResponse.md
+docs/InternalNetworkMonitoring.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
 docs/InviteMemberResponseList.md
@@ -501,6 +504,7 @@ docs/MemberRoleUpdateRequest.md
 docs/MembersApi.md
 docs/MetricsConfigurationManagedByQovery.md
 docs/MetricsParameters.md
+docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesApi.md
@@ -833,6 +837,7 @@ src/models/alert_rule_state.rs
 src/models/alert_severity.rs
 src/models/alert_target.rs
 src/models/alert_target_type.rs
+src/models/alerting_config.rs
 src/models/annotation.rs
 src/models/annotations_group_associated_item_type.rs
 src/models/api_variable_scope_enum.rs
@@ -888,6 +893,7 @@ src/models/cloud_provider.rs
 src/models/cloud_provider_enum.rs
 src/models/cloud_provider_response_list.rs
 src/models/cloud_vendor_enum.rs
+src/models/cloud_watch_export_config.rs
 src/models/cluster.rs
 src/models/cluster_advanced_settings.rs
 src/models/cluster_cloud_provider_info.rs
@@ -1163,6 +1169,7 @@ src/models/helm_version_response.rs
 src/models/helm_version_response_list.rs
 src/models/infrastructure_outputs.rs
 src/models/ingress_deployment_status_response.rs
+src/models/internal_network_monitoring.rs
 src/models/invite_member.rs
 src/models/invite_member_request.rs
 src/models/invite_member_response_list.rs
@@ -1248,6 +1255,7 @@ src/models/member_role_update_request.rs
 src/models/metrics_configuration_managed_by_qovery.rs
 src/models/metrics_parameters.rs
 src/models/mod.rs
+src/models/observability_resource_profile.rs
 src/models/on_premise_credentials_request.rs
 src/models/organization.rs
 src/models/organization_all_of_organization_plan.rs
