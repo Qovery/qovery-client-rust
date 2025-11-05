@@ -72,7 +72,7 @@ pub async fn create_alert_rule(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_alert_rule_creation_request = alert_rule_creation_request;
 
-    let uri_str = format!("{}/api/alert-rules", configuration.base_path);
+    let uri_str = format!("{}/alert-rules", configuration.base_path);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
@@ -131,7 +131,7 @@ pub async fn delete_alert_rule(
     let p_alert_rule_id = alert_rule_id;
 
     let uri_str = format!(
-        "{}/api/alert-rules/{alertRuleId}",
+        "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
         alertRuleId = crate::apis::urlencode(p_alert_rule_id)
     );
@@ -183,7 +183,7 @@ pub async fn edit_alert_rule(
     let p_alert_rule_edit_request = alert_rule_edit_request;
 
     let uri_str = format!(
-        "{}/api/alert-rules/{alertRuleId}",
+        "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
         alertRuleId = crate::apis::urlencode(p_alert_rule_id)
     );
@@ -243,7 +243,7 @@ pub async fn get_alert_rule(
     let p_alert_rule_id = alert_rule_id;
 
     let uri_str = format!(
-        "{}/api/alert-rules/{alertRuleId}",
+        "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
         alertRuleId = crate::apis::urlencode(p_alert_rule_id)
     );
