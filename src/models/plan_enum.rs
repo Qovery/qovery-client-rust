@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// PlanEnum : BUSINESS & PROFESSIONAL are deprecated
-/// BUSINESS & PROFESSIONAL are deprecated
+/// PlanEnum : FREE, BUSINESS & PROFESSIONAL are deprecated. 2025 plans are the new plans available.
+/// FREE, BUSINESS & PROFESSIONAL are deprecated. 2025 plans are the new plans available.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum PlanEnum {
     #[serde(rename = "FREE")]
@@ -29,6 +29,14 @@ pub enum PlanEnum {
     Professional,
     #[serde(rename = "BUSINESS")]
     Business,
+    #[serde(rename = "USER_2025")]
+    User2025,
+    #[serde(rename = "TEAM_2025")]
+    Team2025,
+    #[serde(rename = "BUSINESS_2025")]
+    Business2025,
+    #[serde(rename = "ENTERPRISE_2025")]
+    Enterprise2025,
 }
 
 impl std::fmt::Display for PlanEnum {
@@ -41,6 +49,10 @@ impl std::fmt::Display for PlanEnum {
             Self::EnterpriseYearly => write!(f, "ENTERPRISE_YEARLY"),
             Self::Professional => write!(f, "PROFESSIONAL"),
             Self::Business => write!(f, "BUSINESS"),
+            Self::User2025 => write!(f, "USER_2025"),
+            Self::Team2025 => write!(f, "TEAM_2025"),
+            Self::Business2025 => write!(f, "BUSINESS_2025"),
+            Self::Enterprise2025 => write!(f, "ENTERPRISE_2025"),
         }
     }
 }
