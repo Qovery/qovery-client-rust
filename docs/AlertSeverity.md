@@ -4,7 +4,9 @@
 
 | Name | Value |
 |---- | -----|
-| Warning | WARNING |
+| Low | LOW |
+| Medium | MEDIUM |
+| High | HIGH |
 | Critical | CRITICAL |
 
 

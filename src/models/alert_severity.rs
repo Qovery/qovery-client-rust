@@ -11,12 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// AlertSeverity : Alert severity level:         - WARNING: Non-critical issue requiring attention         - CRITICAL: Critical issue requiring immediate action
-/// Alert severity level:         - WARNING: Non-critical issue requiring attention         - CRITICAL: Critical issue requiring immediate action
+/// AlertSeverity : Alert severity level:         - LOW: Minor issues or informational alerts that don't require immediate attention. Can be addressed during normal business hours.         - MEDIUM: Moderate issues that should be investigated soon but don't impact critical services. May cause degraded performance or minor service disruption.         - HIGH: Serious issues affecting service quality or availability. Requires prompt attention and resolution within hours.         - CRITICAL: Critical issue requiring immediate action. Service outage, data loss risk, or severe performance degradation affecting users.
+/// Alert severity level:         - LOW: Minor issues or informational alerts that don't require immediate attention. Can be addressed during normal business hours.         - MEDIUM: Moderate issues that should be investigated soon but don't impact critical services. May cause degraded performance or minor service disruption.         - HIGH: Serious issues affecting service quality or availability. Requires prompt attention and resolution within hours.         - CRITICAL: Critical issue requiring immediate action. Service outage, data loss risk, or severe performance degradation affecting users.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum AlertSeverity {
-    #[serde(rename = "WARNING")]
-    Warning,
+    #[serde(rename = "LOW")]
+    Low,
+    #[serde(rename = "MEDIUM")]
+    Medium,
+    #[serde(rename = "HIGH")]
+    High,
     #[serde(rename = "CRITICAL")]
     Critical,
 }
@@ -24,7 +28,9 @@ pub enum AlertSeverity {
 impl std::fmt::Display for AlertSeverity {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Warning => write!(f, "WARNING"),
+            Self::Low => write!(f, "LOW"),
+            Self::Medium => write!(f, "MEDIUM"),
+            Self::High => write!(f, "HIGH"),
             Self::Critical => write!(f, "CRITICAL"),
         }
     }
@@ -32,6 +38,6 @@ impl std::fmt::Display for AlertSeverity {
 
 impl Default for AlertSeverity {
     fn default() -> AlertSeverity {
-        Self::Warning
+        Self::Low
     }
 }
