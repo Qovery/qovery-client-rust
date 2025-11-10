@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **presentation** | [**models::AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **target** | [**models::AlertTarget**](AlertTarget.md) |  | 
 **state** | [**models::AlertRuleState**](AlertRuleState.md) |  | 
+**is_up_to_date** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

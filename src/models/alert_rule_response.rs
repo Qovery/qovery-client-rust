@@ -51,6 +51,9 @@ pub struct AlertRuleResponse {
     pub target: models::AlertTarget,
     #[serde(rename = "state")]
     pub state: models::AlertRuleState,
+    /// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
+    #[serde(rename = "is_up_to_date")]
+    pub is_up_to_date: bool,
 }
 
 impl AlertRuleResponse {
@@ -69,6 +72,7 @@ impl AlertRuleResponse {
         presentation: models::AlertPresentationResponse,
         target: models::AlertTarget,
         state: models::AlertRuleState,
+        is_up_to_date: bool,
     ) -> AlertRuleResponse {
         AlertRuleResponse {
             id,
@@ -86,6 +90,7 @@ impl AlertRuleResponse {
             presentation,
             target,
             state,
+            is_up_to_date,
         }
     }
 }
