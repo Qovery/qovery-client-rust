@@ -1202,6 +1202,8 @@ pub mod terraform_variable_parsing_request;
 pub use self::terraform_variable_parsing_request::TerraformVariableParsingRequest;
 pub mod terraform_variable_response;
 pub use self::terraform_variable_response::TerraformVariableResponse;
+pub mod terraform_variables_replace_request;
+pub use self::terraform_variables_replace_request::TerraformVariablesReplaceRequest;
 pub mod terraform_variables_response;
 pub use self::terraform_variables_response::TerraformVariablesResponse;
 pub mod terraform_variables_source_request;

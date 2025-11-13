@@ -54,10 +54,10 @@ pub enum GetTerraformVariablesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`update_terraform_variable`]
+/// struct for typed errors of method [`replace_all_terraform_variables`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum UpdateTerraformVariableError {
+pub enum ReplaceAllTerraformVariablesError {
     Status400(),
     Status401(),
     Status403(),
@@ -295,23 +295,21 @@ pub async fn get_terraform_variables(
     }
 }
 
-pub async fn update_terraform_variable(
+pub async fn replace_all_terraform_variables(
     configuration: &configuration::Configuration,
     terraform_id: &str,
-    terraform_var_key_value: models::TerraformVarKeyValue,
-) -> Result<(), Error<UpdateTerraformVariableError>> {
+    terraform_variables_replace_request: models::TerraformVariablesReplaceRequest,
+) -> Result<(), Error<ReplaceAllTerraformVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_terraform_id = terraform_id;
-    let p_terraform_var_key_value = terraform_var_key_value;
+    let p_terraform_variables_replace_request = terraform_variables_replace_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/variables",
         configuration.base_path,
         terraformId = crate::apis::urlencode(p_terraform_id)
     );
-    let mut req_builder = configuration
-        .client
-        .request(reqwest::Method::POST, &uri_str);
+    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -327,7 +325,7 @@ pub async fn update_terraform_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_var_key_value);
+    req_builder = req_builder.json(&p_terraform_variables_replace_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -338,7 +336,7 @@ pub async fn update_terraform_variable(
         Ok(())
     } else {
         let content = resp.text().await?;
-        let entity: Option<UpdateTerraformVariableError> = serde_json::from_str(&content).ok();
+        let entity: Option<ReplaceAllTerraformVariablesError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

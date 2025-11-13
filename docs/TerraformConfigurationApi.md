@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**edit_terraform_advanced_settings**](TerraformConfigurationApi.md#edit_terraform_advanced_settings) | **PUT** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 [**get_terraform_advanced_settings**](TerraformConfigurationApi.md#get_terraform_advanced_settings) | **GET** /terraform/{terraformId}/advancedSettings | Get Advanced settings
 [**get_terraform_variables**](TerraformConfigurationApi.md#get_terraform_variables) | **GET** /terraform/{terraformId}/variables | Get terraform variables
-[**update_terraform_variable**](TerraformConfigurationApi.md#update_terraform_variable) | **POST** /terraform/{terraformId}/variables | Create or update a terraform variable
+[**replace_all_terraform_variables**](TerraformConfigurationApi.md#replace_all_terraform_variables) | **PUT** /terraform/{terraformId}/variables | Replace all terraform variables
 
 
 
@@ -126,10 +126,10 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## update_terraform_variable
+## replace_all_terraform_variables
 
-> update_terraform_variable(terraform_id, terraform_var_key_value)
-Create or update a terraform variable
+> replace_all_terraform_variables(terraform_id, terraform_variables_replace_request)
+Replace all terraform variables
 
 ### Parameters
 
@@ -137,7 +137,7 @@ Create or update a terraform variable
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
-**terraform_var_key_value** | [**TerraformVarKeyValue**](TerraformVarKeyValue.md) |  | [required] |
+**terraform_variables_replace_request** | [**TerraformVariablesReplaceRequest**](TerraformVariablesReplaceRequest.md) |  | [required] |
 
 ### Return type
 
