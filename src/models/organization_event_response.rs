@@ -69,6 +69,13 @@ pub struct OrganizationEventResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub user_agent: Option<Option<String>>,
+    #[serde(
+        rename = "original_change",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub original_change: Option<Option<String>>,
 }
 
 impl OrganizationEventResponse {
@@ -90,6 +97,7 @@ impl OrganizationEventResponse {
             environment_id: None,
             environment_name: None,
             user_agent: None,
+            original_change: None,
         }
     }
 }
