@@ -8,10 +8,10 @@
 | Delete | DELETE |
 | Restart | RESTART |
 | Stop | STOP |
-| DeployDryRunComma | DEPLOY_DRY_RUN, |
-| TerraformForceUnlockComma | TERRAFORM_FORCE_UNLOCK, |
-| TerraformMigrateStateComma | TERRAFORM_MIGRATE_STATE, |
-| DeleteResourcesOnlyComma | DELETE_RESOURCES_ONLY, |
+| DeployDryRun | DEPLOY_DRY_RUN |
+| TerraformForceUnlock | TERRAFORM_FORCE_UNLOCK |
+| TerraformMigrateState | TERRAFORM_MIGRATE_STATE |
+| DeleteResourcesOnly | DELETE_RESOURCES_ONLY |
 | Unknown | UNKNOWN |
 | Uninstall | UNINSTALL |
 

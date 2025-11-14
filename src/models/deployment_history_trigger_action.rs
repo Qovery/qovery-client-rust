@@ -22,14 +22,14 @@ pub enum DeploymentHistoryTriggerAction {
     Restart,
     #[serde(rename = "STOP")]
     Stop,
-    #[serde(rename = "DEPLOY_DRY_RUN,")]
-    DeployDryRunComma,
-    #[serde(rename = "TERRAFORM_FORCE_UNLOCK,")]
-    TerraformForceUnlockComma,
-    #[serde(rename = "TERRAFORM_MIGRATE_STATE,")]
-    TerraformMigrateStateComma,
-    #[serde(rename = "DELETE_RESOURCES_ONLY,")]
-    DeleteResourcesOnlyComma,
+    #[serde(rename = "DEPLOY_DRY_RUN")]
+    DeployDryRun,
+    #[serde(rename = "TERRAFORM_FORCE_UNLOCK")]
+    TerraformForceUnlock,
+    #[serde(rename = "TERRAFORM_MIGRATE_STATE")]
+    TerraformMigrateState,
+    #[serde(rename = "DELETE_RESOURCES_ONLY")]
+    DeleteResourcesOnly,
     #[serde(rename = "UNKNOWN")]
     Unknown,
     #[serde(rename = "UNINSTALL")]
@@ -43,10 +43,10 @@ impl std::fmt::Display for DeploymentHistoryTriggerAction {
             Self::Delete => write!(f, "DELETE"),
             Self::Restart => write!(f, "RESTART"),
             Self::Stop => write!(f, "STOP"),
-            Self::DeployDryRunComma => write!(f, "DEPLOY_DRY_RUN,"),
-            Self::TerraformForceUnlockComma => write!(f, "TERRAFORM_FORCE_UNLOCK,"),
-            Self::TerraformMigrateStateComma => write!(f, "TERRAFORM_MIGRATE_STATE,"),
-            Self::DeleteResourcesOnlyComma => write!(f, "DELETE_RESOURCES_ONLY,"),
+            Self::DeployDryRun => write!(f, "DEPLOY_DRY_RUN"),
+            Self::TerraformForceUnlock => write!(f, "TERRAFORM_FORCE_UNLOCK"),
+            Self::TerraformMigrateState => write!(f, "TERRAFORM_MIGRATE_STATE"),
+            Self::DeleteResourcesOnly => write!(f, "DELETE_RESOURCES_ONLY"),
             Self::Unknown => write!(f, "UNKNOWN"),
             Self::Uninstall => write!(f, "UNINSTALL"),
         }
