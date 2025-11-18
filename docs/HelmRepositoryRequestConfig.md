@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **scaleway_project_id** | Option<**String**> | Required if kind is `SCALEWAY_CR` | [optional]
 **azure_tenant_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
 **azure_subscription_id** | Option<**String**> | Required if kind is `AZURE_CR`. | [optional]
+**role_arn** | Option<**String**> | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

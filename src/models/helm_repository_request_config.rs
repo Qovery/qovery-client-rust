@@ -55,6 +55,9 @@ pub struct HelmRepositoryRequestConfig {
         skip_serializing_if = "Option::is_none"
     )]
     pub azure_subscription_id: Option<String>,
+    /// For ECR, you can either set a static access_key or use a role arn that we are going to assume
+    #[serde(rename = "role_arn", skip_serializing_if = "Option::is_none")]
+    pub role_arn: Option<String>,
 }
 
 impl HelmRepositoryRequestConfig {
@@ -70,6 +73,7 @@ impl HelmRepositoryRequestConfig {
             scaleway_project_id: None,
             azure_tenant_id: None,
             azure_subscription_id: None,
+            role_arn: None,
         }
     }
 }
