@@ -105,6 +105,11 @@ pub struct ClusterFeatureAwsExistingVpc {
         skip_serializing_if = "Option::is_none"
     )]
     pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Option<Vec<String>>>,
+    #[serde(
+        rename = "eks_create_nodes_in_private_subnet",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub eks_create_nodes_in_private_subnet: Option<bool>,
 }
 
 impl ClusterFeatureAwsExistingVpc {
@@ -131,6 +136,7 @@ impl ClusterFeatureAwsExistingVpc {
             eks_karpenter_fargate_subnets_zone_a_ids: None,
             eks_karpenter_fargate_subnets_zone_b_ids: None,
             eks_karpenter_fargate_subnets_zone_c_ids: None,
+            eks_create_nodes_in_private_subnet: None,
         }
     }
 }
