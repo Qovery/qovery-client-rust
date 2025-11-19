@@ -25,9 +25,10 @@ pub struct AlertRuleCreationRequest {
     /// Description of what the alert monitors
     #[serde(rename = "description")]
     pub description: String,
-    /// PromQL expression to evaluate
-    #[serde(rename = "promql_expr")]
-    pub promql_expr: String,
+    #[serde(rename = "tag")]
+    pub tag: String,
+    #[serde(rename = "condition")]
+    pub condition: models::AlertRuleCondition,
     /// Duration the condition must be true before firing (ISO-8601 duration format)
     #[serde(rename = "for_duration")]
     pub for_duration: String,
@@ -51,7 +52,8 @@ impl AlertRuleCreationRequest {
         cluster_id: uuid::Uuid,
         name: String,
         description: String,
-        promql_expr: String,
+        tag: String,
+        condition: models::AlertRuleCondition,
         for_duration: String,
         severity: models::AlertSeverity,
         presentation: models::AlertPresentation,
@@ -64,7 +66,8 @@ impl AlertRuleCreationRequest {
             cluster_id,
             name,
             description,
-            promql_expr,
+            tag,
+            condition,
             for_duration,
             severity,
             presentation,

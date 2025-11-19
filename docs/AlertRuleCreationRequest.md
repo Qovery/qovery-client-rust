@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  Cluster identifier where the rule will be deployed | 
 **name** | **String** | Name of the alert rule | 
 **description** | **String** | Description of what the alert monitors  | 
-**promql_expr** | **String** | PromQL expression to evaluate | 
+**tag** | **String** |  | 
+**condition** | [**models::AlertRuleCondition**](AlertRuleCondition.md) |  | 
 **for_duration** | **String** | Duration the condition must be true before firing (ISO-8601 duration format) | 
 **severity** | [**models::AlertSeverity**](AlertSeverity.md) |  | 
 **presentation** | [**models::AlertPresentation**](AlertPresentation.md) |  | 
