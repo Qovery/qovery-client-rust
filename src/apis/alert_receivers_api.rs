@@ -72,7 +72,7 @@ pub async fn create_alert_receiver(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_alert_receiver_creation_request = alert_receiver_creation_request;
 
-    let uri_str = format!("{}/api/alert-receivers", configuration.base_path);
+    let uri_str = format!("{}/alert-receivers", configuration.base_path);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
@@ -131,7 +131,7 @@ pub async fn delete_alert_receiver(
     let p_alert_receiver_id = alert_receiver_id;
 
     let uri_str = format!(
-        "{}/api/alert-receivers/{alertReceiverId}",
+        "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
         alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
     );
@@ -183,7 +183,7 @@ pub async fn edit_alert_receiver(
     let p_alert_receiver_edit_request = alert_receiver_edit_request;
 
     let uri_str = format!(
-        "{}/api/alert-receivers/{alertReceiverId}",
+        "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
         alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
     );
@@ -243,7 +243,7 @@ pub async fn get_alert_receiver(
     let p_alert_receiver_id = alert_receiver_id;
 
     let uri_str = format!(
-        "{}/api/alert-receivers/{alertReceiverId}",
+        "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
         alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
     );

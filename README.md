@@ -31,10 +31,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoApi* | [**edit_account_information**](docs/AccountInfoApi.md#edit_account_information) | **PUT** /account | Edit account information
 *AccountInfoApi* | [**get_account_information**](docs/AccountInfoApi.md#get_account_information) | **GET** /account | Get Account information
-*AlertReceiversApi* | [**create_alert_receiver**](docs/AlertReceiversApi.md#create_alert_receiver) | **POST** /api/alert-receivers | Create alert receiver
-*AlertReceiversApi* | [**delete_alert_receiver**](docs/AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
-*AlertReceiversApi* | [**edit_alert_receiver**](docs/AlertReceiversApi.md#edit_alert_receiver) | **PUT** /api/alert-receivers/{alertReceiverId} | Update alert receiver
-*AlertReceiversApi* | [**get_alert_receiver**](docs/AlertReceiversApi.md#get_alert_receiver) | **GET** /api/alert-receivers/{alertReceiverId} | Get alert receiver
+*AlertReceiversApi* | [**create_alert_receiver**](docs/AlertReceiversApi.md#create_alert_receiver) | **POST** /alert-receivers | Create alert receiver
+*AlertReceiversApi* | [**delete_alert_receiver**](docs/AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /alert-receivers/{alertReceiverId} | Delete alert receiver
+*AlertReceiversApi* | [**edit_alert_receiver**](docs/AlertReceiversApi.md#edit_alert_receiver) | **PUT** /alert-receivers/{alertReceiverId} | Update alert receiver
+*AlertReceiversApi* | [**get_alert_receiver**](docs/AlertReceiversApi.md#get_alert_receiver) | **GET** /alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversApi* | [**get_alert_receivers**](docs/AlertReceiversApi.md#get_alert_receivers) | **GET** /organization/{organizationId}/alert-receivers | List alert receivers
 *AlertRulesApi* | [**create_alert_rule**](docs/AlertRulesApi.md#create_alert_rule) | **POST** /alert-rules | Create alert rule
 *AlertRulesApi* | [**delete_alert_rule**](docs/AlertRulesApi.md#delete_alert_rule) | **DELETE** /alert-rules/{alertRuleId} | Delete alert rule

@@ -4,10 +4,10 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_alert_receiver**](AlertReceiversApi.md#create_alert_receiver) | **POST** /api/alert-receivers | Create alert receiver
-[**delete_alert_receiver**](AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
-[**edit_alert_receiver**](AlertReceiversApi.md#edit_alert_receiver) | **PUT** /api/alert-receivers/{alertReceiverId} | Update alert receiver
-[**get_alert_receiver**](AlertReceiversApi.md#get_alert_receiver) | **GET** /api/alert-receivers/{alertReceiverId} | Get alert receiver
+[**create_alert_receiver**](AlertReceiversApi.md#create_alert_receiver) | **POST** /alert-receivers | Create alert receiver
+[**delete_alert_receiver**](AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /alert-receivers/{alertReceiverId} | Delete alert receiver
+[**edit_alert_receiver**](AlertReceiversApi.md#edit_alert_receiver) | **PUT** /alert-receivers/{alertReceiverId} | Update alert receiver
+[**get_alert_receiver**](AlertReceiversApi.md#get_alert_receiver) | **GET** /alert-receivers/{alertReceiverId} | Get alert receiver
 [**get_alert_receivers**](AlertReceiversApi.md#get_alert_receivers) | **GET** /organization/{organizationId}/alert-receivers | List alert receivers
 
 
