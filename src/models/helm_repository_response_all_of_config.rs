@@ -19,6 +19,8 @@ pub struct HelmRepositoryResponseAllOfConfig {
     pub region: Option<String>,
     #[serde(rename = "access_key_id", skip_serializing_if = "Option::is_none")]
     pub access_key_id: Option<String>,
+    #[serde(rename = "role_arn", skip_serializing_if = "Option::is_none")]
+    pub role_arn: Option<String>,
     #[serde(
         rename = "scaleway_access_key",
         skip_serializing_if = "Option::is_none"
@@ -44,6 +46,7 @@ impl HelmRepositoryResponseAllOfConfig {
             username: None,
             region: None,
             access_key_id: None,
+            role_arn: None,
             scaleway_access_key: None,
             scaleway_project_id: None,
             azure_tenant_id: None,
