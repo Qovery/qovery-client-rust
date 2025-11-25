@@ -544,6 +544,8 @@ Class | Method | HTTP request | Description
  - [AlertRuleState](docs/AlertRuleState.md)
  - [AlertSeverity](docs/AlertSeverity.md)
  - [AlertTarget](docs/AlertTarget.md)
+ - [AlertTargetOneOf](docs/AlertTargetOneOf.md)
+ - [AlertTargetOneOf1](docs/AlertTargetOneOf1.md)
  - [AlertTargetType](docs/AlertTargetType.md)
  - [AlertingConfig](docs/AlertingConfig.md)
  - [Annotation](docs/Annotation.md)
