@@ -11,15 +11,22 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum AlertTarget {
-    AlertTargetOneOf(models::AlertTargetOneOf),
-    AlertTargetOneOf1(models::AlertTargetOneOf1),
+#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+pub struct AlertTarget {
+    #[serde(rename = "target_type")]
+    pub target_type: models::AlertTargetType,
+    #[serde(rename = "target_id")]
+    pub target_id: uuid::Uuid,
+    #[serde(rename = "service", skip_serializing_if = "Option::is_none")]
+    pub service: Option<models::ServiceLightResponse>,
 }
 
-impl Default for AlertTarget {
-    fn default() -> Self {
-        Self::AlertTargetOneOf(Default::default())
+impl AlertTarget {
+    pub fn new(target_type: models::AlertTargetType, target_id: uuid::Uuid) -> AlertTarget {
+        AlertTarget {
+            target_type,
+            target_id,
+            service: None,
+        }
     }
 }

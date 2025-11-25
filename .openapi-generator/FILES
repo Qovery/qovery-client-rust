@@ -27,8 +27,6 @@ docs/AlertRuleState.md
 docs/AlertRulesApi.md
 docs/AlertSeverity.md
 docs/AlertTarget.md
-docs/AlertTargetOneOf.md
-docs/AlertTargetOneOf1.md
 docs/AlertTargetType.md
 docs/AlertingConfig.md
 docs/Annotation.md
@@ -849,8 +847,6 @@ src/models/alert_rule_response.rs
 src/models/alert_rule_state.rs
 src/models/alert_severity.rs
 src/models/alert_target.rs
-src/models/alert_target_one_of.rs
-src/models/alert_target_one_of_1.rs
 src/models/alert_target_type.rs
 src/models/alerting_config.rs
 src/models/annotation.rs
