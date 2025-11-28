@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **target** | [**models::AlertTarget**](AlertTarget.md) |  | 
 **state** | [**models::AlertRuleState**](AlertRuleState.md) |  | 
 **is_up_to_date** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
+**starts_at** | Option<**String**> | when the alert starts firing | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

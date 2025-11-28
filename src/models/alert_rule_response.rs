@@ -55,6 +55,9 @@ pub struct AlertRuleResponse {
     /// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
     #[serde(rename = "is_up_to_date")]
     pub is_up_to_date: bool,
+    /// when the alert starts firing
+    #[serde(rename = "starts_at", skip_serializing_if = "Option::is_none")]
+    pub starts_at: Option<String>,
 }
 
 impl AlertRuleResponse {
@@ -94,6 +97,7 @@ impl AlertRuleResponse {
             target,
             state,
             is_up_to_date,
+            starts_at: None,
         }
     }
 }
