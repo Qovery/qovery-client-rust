@@ -24,17 +24,6 @@ pub struct TerraformDeployRequest {
     /// Commit to deploy for chart source.
     #[serde(rename = "git_commit_id", skip_serializing_if = "Option::is_none")]
     pub git_commit_id: Option<String>,
-    /// Deprecated: use action=PLAN instead.
-    #[serde(rename = "dry_run", skip_serializing_if = "Option::is_none")]
-    pub dry_run: Option<bool>,
-    /// Deprecated: use action=FORCE_UNLOCK instead.
-    #[serde(
-        rename = "force_unlock_state",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub force_unlock_state: Option<Option<bool>>,
     /// Terraform action to execute.
     #[serde(
         rename = "action",
@@ -50,8 +39,6 @@ impl TerraformDeployRequest {
         TerraformDeployRequest {
             id: None,
             git_commit_id: None,
-            dry_run: None,
-            force_unlock_state: None,
             action: None,
         }
     }
