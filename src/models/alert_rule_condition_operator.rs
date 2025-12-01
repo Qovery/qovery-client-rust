@@ -14,23 +14,35 @@ use serde::{Deserialize, Serialize};
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum AlertRuleConditionOperator {
+    #[serde(rename = "NONE")]
+    None,
     #[serde(rename = "ABOVE")]
     Above,
     #[serde(rename = "BELOW")]
     Below,
+    #[serde(rename = "ABOVE_OR_EQUAL")]
+    AboveOrEqual,
+    #[serde(rename = "BELOW_OR_EQUAL")]
+    BelowOrEqual,
+    #[serde(rename = "EQUAL")]
+    Equal,
 }
 
 impl std::fmt::Display for AlertRuleConditionOperator {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::None => write!(f, "NONE"),
             Self::Above => write!(f, "ABOVE"),
             Self::Below => write!(f, "BELOW"),
+            Self::AboveOrEqual => write!(f, "ABOVE_OR_EQUAL"),
+            Self::BelowOrEqual => write!(f, "BELOW_OR_EQUAL"),
+            Self::Equal => write!(f, "EQUAL"),
         }
     }
 }
 
 impl Default for AlertRuleConditionOperator {
     fn default() -> AlertRuleConditionOperator {
-        Self::Above
+        Self::None
     }
 }

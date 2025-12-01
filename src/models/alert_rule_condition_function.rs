@@ -22,6 +22,10 @@ pub enum AlertRuleConditionFunction {
     Max,
     #[serde(rename = "MIN")]
     Min,
+    #[serde(rename = "SUM")]
+    Sum,
+    #[serde(rename = "COUNT")]
+    Count,
 }
 
 impl std::fmt::Display for AlertRuleConditionFunction {
@@ -31,6 +35,8 @@ impl std::fmt::Display for AlertRuleConditionFunction {
             Self::Avg => write!(f, "AVG"),
             Self::Max => write!(f, "MAX"),
             Self::Min => write!(f, "MIN"),
+            Self::Sum => write!(f, "SUM"),
+            Self::Count => write!(f, "COUNT"),
         }
     }
 }
