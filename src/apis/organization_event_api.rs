@@ -152,6 +152,8 @@ pub async fn get_organization_events(
     sub_target_type: Option<models::OrganizationEventSubTargetType>,
     triggered_by: Option<&str>,
     origin: Option<models::OrganizationEventOrigin>,
+    service_project_id: Option<&str>,
+    service_environment_id: Option<&str>,
 ) -> Result<models::OrganizationEventResponseList, Error<GetOrganizationEventsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_organization_id = organization_id;
@@ -166,6 +168,8 @@ pub async fn get_organization_events(
     let p_sub_target_type = sub_target_type;
     let p_triggered_by = triggered_by;
     let p_origin = origin;
+    let p_service_project_id = service_project_id;
+    let p_service_environment_id = service_environment_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/events",
@@ -206,6 +210,12 @@ pub async fn get_organization_events(
     }
     if let Some(ref param_value) = p_origin {
         req_builder = req_builder.query(&[("origin", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_service_project_id {
+        req_builder = req_builder.query(&[("serviceProjectId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_service_environment_id {
+        req_builder = req_builder.query(&[("serviceEnvironmentId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

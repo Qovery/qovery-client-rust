@@ -50,7 +50,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_organization_events
 
-> models::OrganizationEventResponseList get_organization_events(organization_id, page_size, from_timestamp, to_timestamp, continue_token, step_back_token, event_type, target_type, target_id, sub_target_type, triggered_by, origin)
+> models::OrganizationEventResponseList get_organization_events(organization_id, page_size, from_timestamp, to_timestamp, continue_token, step_back_token, event_type, target_type, target_id, sub_target_type, triggered_by, origin, service_project_id, service_environment_id)
 Get all events inside the organization
 
 Get all events inside the organization
@@ -72,6 +72,8 @@ Name | Type | Description  | Required | Notes
 **sub_target_type** | Option<[**OrganizationEventSubTargetType**](.md)> |  |  |
 **triggered_by** | Option<**String**> | Information about the owner of the event (user name / apitoken / automatic action) |  |
 **origin** | Option<[**OrganizationEventOrigin**](.md)> |  |  |
+**service_project_id** | Option<**String**> | The project chosen when filtering on a service type |  |
+**service_environment_id** | Option<**String**> | The environment chosen when filtering on a service type |  |
 
 ### Return type
 
