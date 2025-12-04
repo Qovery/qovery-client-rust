@@ -962,6 +962,8 @@ pub mod organization_event_response_list_links;
 pub use self::organization_event_response_list_links::OrganizationEventResponseListLinks;
 pub mod organization_event_sub_target_type;
 pub use self::organization_event_sub_target_type::OrganizationEventSubTargetType;
+pub mod organization_event_target_level;
+pub use self::organization_event_target_level::OrganizationEventTargetLevel;
 pub mod organization_event_target_response_list;
 pub use self::organization_event_target_response_list::OrganizationEventTargetResponseList;
 pub mod organization_event_target_type;

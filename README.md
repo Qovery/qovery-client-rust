@@ -1002,6 +1002,7 @@ Class | Method | HTTP request | Description
  - [OrganizationEventResponseList](docs/OrganizationEventResponseList.md)
  - [OrganizationEventResponseListLinks](docs/OrganizationEventResponseListLinks.md)
  - [OrganizationEventSubTargetType](docs/OrganizationEventSubTargetType.md)
+ - [OrganizationEventTargetLevel](docs/OrganizationEventTargetLevel.md)
  - [OrganizationEventTargetResponseList](docs/OrganizationEventTargetResponseList.md)
  - [OrganizationEventTargetType](docs/OrganizationEventTargetType.md)
  - [OrganizationEventType](docs/OrganizationEventType.md)

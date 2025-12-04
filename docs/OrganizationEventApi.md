@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## get_organization_event_targets
 
-> models::OrganizationEventTargetResponseList get_organization_event_targets(organization_id, from_timestamp, to_timestamp, event_type, target_type, triggered_by, origin, project_id, environment_id)
+> models::OrganizationEventTargetResponseList get_organization_event_targets(organization_id, from_timestamp, to_timestamp, event_type, target_type, triggered_by, origin, project_id, environment_id, target_level_to_fetch)
 Get available event targets to filter events
 
 Get available event targets to filter events
@@ -30,6 +30,7 @@ Name | Type | Description  | Required | Notes
 **origin** | Option<[**OrganizationEventOrigin**](.md)> |  |  |
 **project_id** | Option<**uuid::Uuid**> | Mandatory when requesting an environment or a service |  |
 **environment_id** | Option<**uuid::Uuid**> | Mandatory when requesting a service |  |
+**target_level_to_fetch** | Option<[**OrganizationEventTargetLevel**](.md)> | Used only to retrieve projects or environments linked to service typed events |  |
 
 ### Return type
 

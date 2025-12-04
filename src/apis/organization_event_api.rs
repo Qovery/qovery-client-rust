@@ -45,6 +45,7 @@ pub async fn get_organization_event_targets(
     origin: Option<models::OrganizationEventOrigin>,
     project_id: Option<&str>,
     environment_id: Option<&str>,
+    target_level_to_fetch: Option<models::OrganizationEventTargetLevel>,
 ) -> Result<models::OrganizationEventTargetResponseList, Error<GetOrganizationEventTargetsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_organization_id = organization_id;
@@ -56,6 +57,7 @@ pub async fn get_organization_event_targets(
     let p_origin = origin;
     let p_project_id = project_id;
     let p_environment_id = environment_id;
+    let p_target_level_to_fetch = target_level_to_fetch;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/targets",
@@ -87,6 +89,9 @@ pub async fn get_organization_event_targets(
     }
     if let Some(ref param_value) = p_environment_id {
         req_builder = req_builder.query(&[("environmentId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_target_level_to_fetch {
+        req_builder = req_builder.query(&[("targetLevelToFetch", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
