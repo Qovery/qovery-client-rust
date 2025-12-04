@@ -31,6 +31,14 @@ pub struct TerraformVariableDefinition {
     /// The path inside your git repository where the variable is defined
     #[serde(rename = "source")]
     pub source: String,
+    /// The description of the variable, or null if no description is provided
+    #[serde(
+        rename = "description",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub description: Option<Option<String>>,
 }
 
 impl TerraformVariableDefinition {
@@ -41,6 +49,7 @@ impl TerraformVariableDefinition {
             sensitive,
             default: None,
             source,
+            description: None,
         }
     }
 }
