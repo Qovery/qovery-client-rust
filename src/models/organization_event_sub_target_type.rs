@@ -17,10 +17,16 @@ use serde::{Deserialize, Serialize};
 pub enum OrganizationEventSubTargetType {
     #[serde(rename = "ADVANCED_SETTINGS")]
     AdvancedSettings,
+    #[serde(rename = "ALERT_RULE")]
+    AlertRule,
+    #[serde(rename = "ANNOTATIONS_GROUP")]
+    AnnotationsGroup,
     #[serde(rename = "API_TOKEN")]
     ApiToken,
     #[serde(rename = "BILLING_INFO")]
     BillingInfo,
+    #[serde(rename = "BILLING_USAGE_REPORT")]
+    BillingUsageReport,
     #[serde(rename = "CLOUD_PROVIDER_CREDENTIALS")]
     CloudProviderCredentials,
     #[serde(rename = "CLUSTER_CREDENTIALS")]
@@ -49,12 +55,22 @@ pub enum OrganizationEventSubTargetType {
     GitToken,
     #[serde(rename = "INVITATION")]
     Invitation,
+    #[serde(rename = "KUBERNETES_CONFIGURATION")]
+    KubernetesConfiguration,
+    #[serde(rename = "KUBERNETES_CREDENTIALS")]
+    KubernetesCredentials,
+    #[serde(rename = "LABELS_GROUP")]
+    LabelsGroup,
     #[serde(rename = "MEMBER_ROLE")]
     MemberRole,
     #[serde(rename = "PLAN")]
     Plan,
+    #[serde(rename = "REMOTE_ACCESS")]
+    RemoteAccess,
     #[serde(rename = "SECRET")]
     Secret,
+    #[serde(rename = "SSO")]
+    Sso,
     #[serde(rename = "TERRAFORM")]
     Terraform,
     #[serde(rename = "TRANSFER_OWNERSHIP")]
@@ -67,8 +83,11 @@ impl std::fmt::Display for OrganizationEventSubTargetType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::AdvancedSettings => write!(f, "ADVANCED_SETTINGS"),
+            Self::AlertRule => write!(f, "ALERT_RULE"),
+            Self::AnnotationsGroup => write!(f, "ANNOTATIONS_GROUP"),
             Self::ApiToken => write!(f, "API_TOKEN"),
             Self::BillingInfo => write!(f, "BILLING_INFO"),
+            Self::BillingUsageReport => write!(f, "BILLING_USAGE_REPORT"),
             Self::CloudProviderCredentials => write!(f, "CLOUD_PROVIDER_CREDENTIALS"),
             Self::ClusterCredentials => write!(f, "CLUSTER_CREDENTIALS"),
             Self::ClusterRoutingTable => write!(f, "CLUSTER_ROUTING_TABLE"),
@@ -83,9 +102,14 @@ impl std::fmt::Display for OrganizationEventSubTargetType {
             Self::GitRepository => write!(f, "GIT_REPOSITORY"),
             Self::GitToken => write!(f, "GIT_TOKEN"),
             Self::Invitation => write!(f, "INVITATION"),
+            Self::KubernetesConfiguration => write!(f, "KUBERNETES_CONFIGURATION"),
+            Self::KubernetesCredentials => write!(f, "KUBERNETES_CREDENTIALS"),
+            Self::LabelsGroup => write!(f, "LABELS_GROUP"),
             Self::MemberRole => write!(f, "MEMBER_ROLE"),
             Self::Plan => write!(f, "PLAN"),
+            Self::RemoteAccess => write!(f, "REMOTE_ACCESS"),
             Self::Secret => write!(f, "SECRET"),
+            Self::Sso => write!(f, "SSO"),
             Self::Terraform => write!(f, "TERRAFORM"),
             Self::TransferOwnership => write!(f, "TRANSFER_OWNERSHIP"),
             Self::Variable => write!(f, "VARIABLE"),

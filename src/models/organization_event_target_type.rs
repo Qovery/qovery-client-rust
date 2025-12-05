@@ -33,6 +33,8 @@ pub enum OrganizationEventTargetType {
     Job,
     #[serde(rename = "HELM")]
     Helm,
+    #[serde(rename = "HELM_REPOSITORY")]
+    HelmRepository,
     #[serde(rename = "MEMBERS_AND_ROLES")]
     MembersAndRoles,
     #[serde(rename = "ORGANIZATION")]
@@ -57,6 +59,7 @@ impl std::fmt::Display for OrganizationEventTargetType {
             Self::Environment => write!(f, "ENVIRONMENT"),
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),
+            Self::HelmRepository => write!(f, "HELM_REPOSITORY"),
             Self::MembersAndRoles => write!(f, "MEMBERS_AND_ROLES"),
             Self::Organization => write!(f, "ORGANIZATION"),
             Self::Project => write!(f, "PROJECT"),

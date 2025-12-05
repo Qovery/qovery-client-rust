@@ -13,6 +13,7 @@
 | Environment | ENVIRONMENT |
 | Job | JOB |
 | Helm | HELM |
+| HelmRepository | HELM_REPOSITORY |
 | MembersAndRoles | MEMBERS_AND_ROLES |
 | Organization | ORGANIZATION |
 | Project | PROJECT |
