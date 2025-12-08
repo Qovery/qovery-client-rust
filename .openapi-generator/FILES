@@ -24,7 +24,10 @@ docs/AlertRuleConditionOperator.md
 docs/AlertRuleCreationRequest.md
 docs/AlertRuleEditRequest.md
 docs/AlertRuleList.md
+docs/AlertRuleListResultsInner.md
 docs/AlertRuleResponse.md
+docs/AlertRuleResponseBase.md
+docs/AlertRuleSource.md
 docs/AlertRuleState.md
 docs/AlertRulesApi.md
 docs/AlertSeverity.md
@@ -334,6 +337,8 @@ docs/GetClusterKubernetesEvents200Response.md
 docs/GetClusterKubernetesEvents200ResponseResultsInner.md
 docs/GetClusterTokenByClusterId200Response.md
 docs/GetClusterTokenByClusterId200ResponseStatus.md
+docs/GhostAlertRuleResponse.md
+docs/GhostAlertRuleResponseAllOfTarget.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitFileCheckRequest.md
@@ -845,7 +850,10 @@ src/models/alert_rule_condition_operator.rs
 src/models/alert_rule_creation_request.rs
 src/models/alert_rule_edit_request.rs
 src/models/alert_rule_list.rs
+src/models/alert_rule_list_results_inner.rs
 src/models/alert_rule_response.rs
+src/models/alert_rule_response_base.rs
+src/models/alert_rule_source.rs
 src/models/alert_rule_state.rs
 src/models/alert_severity.rs
 src/models/alert_target.rs
@@ -1111,6 +1119,8 @@ src/models/get_cluster_kubernetes_events_200_response.rs
 src/models/get_cluster_kubernetes_events_200_response_results_inner.rs
 src/models/get_cluster_token_by_cluster_id_200_response.rs
 src/models/get_cluster_token_by_cluster_id_200_response_status.rs
+src/models/ghost_alert_rule_response.rs
+src/models/ghost_alert_rule_response_all_of_target.rs
 src/models/git_auth_provider.rs
 src/models/git_auth_provider_response_list.rs
 src/models/git_file_check_request.rs

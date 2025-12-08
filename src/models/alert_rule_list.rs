@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AlertRuleList {
     #[serde(rename = "results")]
-    pub results: Vec<models::AlertRuleResponse>,
+    pub results: Vec<models::AlertRuleListResultsInner>,
 }
 
 impl AlertRuleList {
-    pub fn new(results: Vec<models::AlertRuleResponse>) -> AlertRuleList {
+    pub fn new(results: Vec<models::AlertRuleListResultsInner>) -> AlertRuleList {
         AlertRuleList { results }
     }
 }

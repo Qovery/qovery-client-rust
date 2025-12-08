@@ -19,15 +19,19 @@ pub struct AlertRuleResponse {
     pub created_at: String,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
+    #[serde(rename = "source")]
+    pub source: models::AlertRuleSource,
+    /// Name of the alert rule
+    #[serde(rename = "name")]
+    pub name: String,
+    #[serde(rename = "state")]
+    pub state: models::AlertRuleState,
     /// Organization identifier
     #[serde(rename = "organization_id")]
     pub organization_id: uuid::Uuid,
     ///  Cluster identifier
     #[serde(rename = "cluster_id")]
     pub cluster_id: uuid::Uuid,
-    /// Name of the alert rule
-    #[serde(rename = "name")]
-    pub name: String,
     /// Description of what the alert monitors
     #[serde(rename = "description")]
     pub description: String,
@@ -50,8 +54,6 @@ pub struct AlertRuleResponse {
     pub presentation: models::AlertPresentationResponse,
     #[serde(rename = "target")]
     pub target: models::AlertTarget,
-    #[serde(rename = "state")]
-    pub state: models::AlertRuleState,
     /// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
     #[serde(rename = "is_up_to_date")]
     pub is_up_to_date: bool,
@@ -64,9 +66,11 @@ impl AlertRuleResponse {
     pub fn new(
         id: uuid::Uuid,
         created_at: String,
+        source: models::AlertRuleSource,
+        name: String,
+        state: models::AlertRuleState,
         organization_id: uuid::Uuid,
         cluster_id: uuid::Uuid,
-        name: String,
         description: String,
         tag: String,
         condition: models::AlertRuleCondition,
@@ -76,16 +80,17 @@ impl AlertRuleResponse {
         alert_receiver_ids: Vec<uuid::Uuid>,
         presentation: models::AlertPresentationResponse,
         target: models::AlertTarget,
-        state: models::AlertRuleState,
         is_up_to_date: bool,
     ) -> AlertRuleResponse {
         AlertRuleResponse {
             id,
             created_at,
             updated_at: None,
+            source,
+            name,
+            state,
             organization_id,
             cluster_id,
-            name,
             description,
             tag,
             condition,
@@ -95,7 +100,6 @@ impl AlertRuleResponse {
             alert_receiver_ids,
             presentation,
             target,
-            state,
             is_up_to_date,
             starts_at: None,
         }

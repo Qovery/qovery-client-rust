@@ -7,9 +7,11 @@ Name | Type | Description | Notes
 **id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
+**source** | [**models::AlertRuleSource**](AlertRuleSource.md) |  | 
+**name** | **String** | Name of the alert rule | 
+**state** | [**models::AlertRuleState**](AlertRuleState.md) |  | 
 **organization_id** | [**uuid::Uuid**](uuid::Uuid.md) | Organization identifier | 
 **cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  Cluster identifier | 
-**name** | **String** | Name of the alert rule  | 
 **description** | **String** | Description of what the alert monitors | 
 **tag** | **String** |  | 
 **condition** | [**models::AlertRuleCondition**](AlertRuleCondition.md) |  | 
@@ -19,7 +21,6 @@ Name | Type | Description | Notes
 **alert_receiver_ids** | [**Vec<uuid::Uuid>**](uuid::Uuid.md) | List of alert receiver IDs to send notifications to | 
 **presentation** | [**models::AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **target** | [**models::AlertTarget**](AlertTarget.md) |  | 
-**state** | [**models::AlertRuleState**](AlertRuleState.md) |  | 
 **is_up_to_date** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
 **starts_at** | Option<**String**> | when the alert starts firing | [optional]
 
