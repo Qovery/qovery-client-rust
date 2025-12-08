@@ -10,10 +10,12 @@ docs/AksInfrastructureOutputs.md
 docs/AlertPresentation.md
 docs/AlertPresentationResponse.md
 docs/AlertReceiverCreationRequest.md
+docs/AlertReceiverCreationValidationRequest.md
 docs/AlertReceiverEditRequest.md
 docs/AlertReceiverList.md
 docs/AlertReceiverResponse.md
 docs/AlertReceiverType.md
+docs/AlertReceiverValidationRequest.md
 docs/AlertReceiversApi.md
 docs/AlertRuleCondition.md
 docs/AlertRuleConditionFunction.md
@@ -830,10 +832,12 @@ src/models/aks_infrastructure_outputs.rs
 src/models/alert_presentation.rs
 src/models/alert_presentation_response.rs
 src/models/alert_receiver_creation_request.rs
+src/models/alert_receiver_creation_validation_request.rs
 src/models/alert_receiver_edit_request.rs
 src/models/alert_receiver_list.rs
 src/models/alert_receiver_response.rs
 src/models/alert_receiver_type.rs
+src/models/alert_receiver_validation_request.rs
 src/models/alert_rule_condition.rs
 src/models/alert_rule_condition_function.rs
 src/models/alert_rule_condition_kind.rs

@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**edit_alert_receiver**](AlertReceiversApi.md#edit_alert_receiver) | **PUT** /alert-receivers/{alertReceiverId} | Update alert receiver
 [**get_alert_receiver**](AlertReceiversApi.md#get_alert_receiver) | **GET** /alert-receivers/{alertReceiverId} | Get alert receiver
 [**get_alert_receivers**](AlertReceiversApi.md#get_alert_receivers) | **GET** /organization/{organizationId}/alert-receivers | List alert receivers
+[**validate_existing_alert_receiver**](AlertReceiversApi.md#validate_existing_alert_receiver) | **POST** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
+[**validate_new_alert_receiver**](AlertReceiversApi.md#validate_new_alert_receiver) | **GET** /alert-receivers/validate | Validate New Alert Receiver
 
 
 
@@ -159,6 +161,67 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## validate_existing_alert_receiver
+
+> validate_existing_alert_receiver(alert_receiver_id, alert_receiver_validation_request)
+Validate Existing Alert Receiver
+
+Validate an existing alert receiver by sending a test message for example
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**alert_receiver_id** | **uuid::Uuid** | Alert Receiver ID | [required] |
+**alert_receiver_validation_request** | Option<[**AlertReceiverValidationRequest**](AlertReceiverValidationRequest.md)> |  |  |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## validate_new_alert_receiver
+
+> validate_new_alert_receiver(alert_receiver_creation_validation_request)
+Validate New Alert Receiver
+
+Validate a future alert receiver by sending a test message for example
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**alert_receiver_creation_validation_request** | Option<[**AlertReceiverCreationValidationRequest**](AlertReceiverCreationValidationRequest.md)> |  |  |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
