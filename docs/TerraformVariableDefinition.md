@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** | The name of the variable | 
 **sensitive** | **bool** | Whether the variable is marked as sensitive | 
+**nullable** | Option<**bool**> | Whether the variable accepts null values. If false, the variable is required. | [optional][default to true]
 **default** | Option<**String**> | The default value of the variable, or null if no default is provided | [optional]
 **source** | **String** | The path inside your git repository where the variable is defined | 
 **description** | Option<**String**> | The description of the variable, or null if no description is provided | [optional]

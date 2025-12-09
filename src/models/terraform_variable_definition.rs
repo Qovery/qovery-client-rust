@@ -20,6 +20,9 @@ pub struct TerraformVariableDefinition {
     /// Whether the variable is marked as sensitive
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
+    /// Whether the variable accepts null values. If false, the variable is required.
+    #[serde(rename = "nullable", skip_serializing_if = "Option::is_none")]
+    pub nullable: Option<bool>,
     /// The default value of the variable, or null if no default is provided
     #[serde(
         rename = "default",
@@ -47,6 +50,7 @@ impl TerraformVariableDefinition {
         TerraformVariableDefinition {
             key,
             sensitive,
+            nullable: None,
             default: None,
             source,
             description: None,
