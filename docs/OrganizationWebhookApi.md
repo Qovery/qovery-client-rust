@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## create_organization_webhook
 
-> models::OrganizationWebhookCreateResponse create_organization_webhook(organization_id, organization_webhook_create_request)
+> models::OrganizationWebhookCreateResponse create_organization_webhook(organization_id, webhook_id, organization_webhook_create_request)
 Create an organization webhook
 
 Create an organization webhook.
@@ -26,6 +26,7 @@ Create an organization webhook.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 **organization_webhook_create_request** | Option<[**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md)> |  |  |
 
 ### Return type

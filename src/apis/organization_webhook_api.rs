@@ -78,16 +78,19 @@ pub enum ListWebhookEventError {
 pub async fn create_organization_webhook(
     configuration: &configuration::Configuration,
     organization_id: &str,
+    webhook_id: &str,
     organization_webhook_create_request: Option<models::OrganizationWebhookCreateRequest>,
 ) -> Result<models::OrganizationWebhookCreateResponse, Error<CreateOrganizationWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_organization_id = organization_id;
+    let p_webhook_id = webhook_id;
     let p_organization_webhook_create_request = organization_webhook_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}/event",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_organization_id),
+        webhookId = crate::apis::urlencode(p_webhook_id)
     );
     let mut req_builder = configuration
         .client
