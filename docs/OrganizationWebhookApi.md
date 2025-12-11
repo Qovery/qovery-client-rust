@@ -4,11 +4,12 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_organization_webhook**](OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
+[**create_organization_webhook**](OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook/{webhookId}/event | Create an organization webhook
 [**delete_organization_webhook**](OrganizationWebhookApi.md#delete_organization_webhook) | **DELETE** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 [**edit_organization_webhook**](OrganizationWebhookApi.md#edit_organization_webhook) | **PUT** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
 [**get_organization_webhook**](OrganizationWebhookApi.md#get_organization_webhook) | **GET** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
 [**list_organization_web_hooks**](OrganizationWebhookApi.md#list_organization_web_hooks) | **GET** /organization/{organizationId}/webhook | List organization webhooks
+[**list_webhook_event**](OrganizationWebhookApi.md#list_webhook_event) | **GET** /organization/{organizationId}/webhook/{webhookId}/event | List events of a webhook
 
 
 
@@ -154,6 +155,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::OrganizationWebhookResponseList**](OrganizationWebhookResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_webhook_event
+
+> models::WebhookEventResponseList list_webhook_event(organization_id, webhook_id)
+List events of a webhook
+
+List events of a webhooks
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
+
+### Return type
+
+[**models::WebhookEventResponseList**](WebhookEventResponseList.md)
 
 ### Authorization
 

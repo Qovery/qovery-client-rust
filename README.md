@@ -458,11 +458,12 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**list_services_by_organization_id**](docs/OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
 *OrganizationMainCallsApi* | [**list_tf_vars_files_from_git_repo**](docs/OrganizationMainCallsApi.md#list_tf_vars_files_from_git_repo) | **POST** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 *OrganizationMainCallsApi* | [**parse_terraform_variables_from_git_repo**](docs/OrganizationMainCallsApi.md#parse_terraform_variables_from_git_repo) | **POST** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
-*OrganizationWebhookApi* | [**create_organization_webhook**](docs/OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
+*OrganizationWebhookApi* | [**create_organization_webhook**](docs/OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook/{webhookId}/event | Create an organization webhook
 *OrganizationWebhookApi* | [**delete_organization_webhook**](docs/OrganizationWebhookApi.md#delete_organization_webhook) | **DELETE** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookApi* | [**edit_organization_webhook**](docs/OrganizationWebhookApi.md#edit_organization_webhook) | **PUT** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
 *OrganizationWebhookApi* | [**get_organization_webhook**](docs/OrganizationWebhookApi.md#get_organization_webhook) | **GET** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
 *OrganizationWebhookApi* | [**list_organization_web_hooks**](docs/OrganizationWebhookApi.md#list_organization_web_hooks) | **GET** /organization/{organizationId}/webhook | List organization webhooks
+*OrganizationWebhookApi* | [**list_webhook_event**](docs/OrganizationWebhookApi.md#list_webhook_event) | **GET** /organization/{organizationId}/webhook/{webhookId}/event | List events of a webhook
 *ProjectDeploymentRuleApi* | [**create_deployment_rule**](docs/ProjectDeploymentRuleApi.md#create_deployment_rule) | **POST** /project/{projectId}/deploymentRule | Create a deployment rule
 *ProjectDeploymentRuleApi* | [**delete_project_deployment_rule**](docs/ProjectDeploymentRuleApi.md#delete_project_deployment_rule) | **DELETE** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
 *ProjectDeploymentRuleApi* | [**edit_project_deployemtn_rule**](docs/ProjectDeploymentRuleApi.md#edit_project_deployemtn_rule) | **PUT** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
@@ -1163,6 +1164,8 @@ Class | Method | HTTP request | Description
  - [VariableResponseList](docs/VariableResponseList.md)
  - [Version](docs/Version.md)
  - [VersionResponseList](docs/VersionResponseList.md)
+ - [WebhookEventResponse](docs/WebhookEventResponse.md)
+ - [WebhookEventResponseList](docs/WebhookEventResponseList.md)
  - [WeekdayEnum](docs/WeekdayEnum.md)
 
 
