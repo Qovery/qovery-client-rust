@@ -37,7 +37,7 @@ Class | Method | HTTP request | Description
 *AlertReceiversApi* | [**get_alert_receiver**](docs/AlertReceiversApi.md#get_alert_receiver) | **GET** /alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversApi* | [**get_alert_receivers**](docs/AlertReceiversApi.md#get_alert_receivers) | **GET** /organization/{organizationId}/alert-receivers | List alert receivers
 *AlertReceiversApi* | [**validate_existing_alert_receiver**](docs/AlertReceiversApi.md#validate_existing_alert_receiver) | **POST** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
-*AlertReceiversApi* | [**validate_new_alert_receiver**](docs/AlertReceiversApi.md#validate_new_alert_receiver) | **GET** /alert-receivers/validate | Validate New Alert Receiver
+*AlertReceiversApi* | [**validate_new_alert_receiver**](docs/AlertReceiversApi.md#validate_new_alert_receiver) | **POST** /alert-receivers/validate | Validate New Alert Receiver
 *AlertRulesApi* | [**create_alert_rule**](docs/AlertRulesApi.md#create_alert_rule) | **POST** /alert-rules | Create alert rule
 *AlertRulesApi* | [**delete_alert_rule**](docs/AlertRulesApi.md#delete_alert_rule) | **DELETE** /alert-rules/{alertRuleId} | Delete alert rule
 *AlertRulesApi* | [**edit_alert_rule**](docs/AlertRulesApi.md#edit_alert_rule) | **PUT** /alert-rules/{alertRuleId} | Update alert rule
