@@ -17,24 +17,24 @@ pub struct WebhookEventResponse {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     /// Timestamp when the webhook event was created
-    #[serde(rename = "createdAt")]
+    #[serde(rename = "created_at")]
     pub created_at: String,
     #[serde(rename = "kind")]
     pub kind: models::OrganizationWebhookKindEnum,
-    #[serde(rename = "matchedEvent")]
+    #[serde(rename = "matched_event")]
     pub matched_event: models::OrganizationWebhookEventEnum,
     /// The webhook target URL that was invoked
-    #[serde(rename = "targetUrlUsed")]
+    #[serde(rename = "target_url_used")]
     pub target_url_used: String,
     /// The request payload sent to the webhook
     #[serde(rename = "request")]
     pub request: std::collections::HashMap<String, serde_json::Value>,
     /// HTTP status code returned by the webhook target
-    #[serde(rename = "targetResponseStatusCode")]
+    #[serde(rename = "target_response_status_code")]
     pub target_response_status_code: i32,
     /// Response body from the webhook target
     #[serde(
-        rename = "targetResponseBody",
+        rename = "target_response_body",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
