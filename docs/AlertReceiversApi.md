@@ -170,7 +170,7 @@ Name | Type | Description  | Required | Notes
 > validate_existing_alert_receiver(alert_receiver_id, alert_receiver_validation_request)
 Validate Existing Alert Receiver
 
-Validate an existing alert receiver by sending a test message for example
+Validate an existing alert receiver by sending a test message for example.
 
 ### Parameters
 

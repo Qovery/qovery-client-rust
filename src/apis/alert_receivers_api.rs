@@ -374,7 +374,7 @@ pub async fn get_alert_receivers(
     }
 }
 
-/// Validate an existing alert receiver by sending a test message for example
+/// Validate an existing alert receiver by sending a test message for example.
 pub async fn validate_existing_alert_receiver(
     configuration: &configuration::Configuration,
     alert_receiver_id: &str,
