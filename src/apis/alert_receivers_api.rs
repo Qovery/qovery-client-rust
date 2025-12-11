@@ -428,7 +428,7 @@ pub async fn validate_existing_alert_receiver(
     }
 }
 
-/// Validate a future alert receiver by sending a test message for example
+/// Validate a future alert receiver by sending a test message.
 pub async fn validate_new_alert_receiver(
     configuration: &configuration::Configuration,
     alert_receiver_creation_validation_request: Option<

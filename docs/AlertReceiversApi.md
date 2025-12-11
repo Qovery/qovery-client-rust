@@ -201,7 +201,7 @@ Name | Type | Description  | Required | Notes
 > validate_new_alert_receiver(alert_receiver_creation_validation_request)
 Validate New Alert Receiver
 
-Validate a future alert receiver by sending a test message for example
+Validate a future alert receiver by sending a test message.
 
 ### Parameters
 
