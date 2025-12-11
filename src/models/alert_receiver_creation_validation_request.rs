@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AlertReceiverCreationValidationRequest {
-    #[serde(rename = "alertReceiver")]
+    #[serde(rename = "alert_receiver")]
     pub alert_receiver: models::AlertReceiverCreationRequest,
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
