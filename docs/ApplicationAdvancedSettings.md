@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **build_period_timeout_max_sec** | Option<**i32**> |  | [optional]
 **build_period_cpu_max_in_milli** | Option<**i32**> | define the max cpu resources (in milli) | [optional]
 **build_period_ram_max_in_gib** | Option<**i32**> | define the max ram resources (in gib) | [optional]
+**build_period_disable_buildkit_cache** | Option<**bool**> | disable buildkit registry cache during build | [optional]
 **network_period_ingress_period_proxy_body_size_mb** | Option<**i32**> |  | [optional]
 **network_period_ingress_period_force_ssl_redirect** | Option<**bool**> | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional]
 **network_period_ingress_period_enable_cors** | Option<**bool**> |  | [optional]

@@ -31,6 +31,12 @@ pub struct JobAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_period_ram_max_in_gib: Option<i32>,
+    /// disable buildkit registry cache during build
+    #[serde(
+        rename = "build.disable_buildkit_cache",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_period_disable_buildkit_cache: Option<bool>,
     /// define how long in seconds an application is supposed to be stopped gracefully
     #[serde(
         rename = "deployment.termination_grace_period_seconds",
@@ -92,6 +98,7 @@ impl JobAdvancedSettings {
             build_period_timeout_max_sec: None,
             build_period_cpu_max_in_milli: None,
             build_period_ram_max_in_gib: None,
+            build_period_disable_buildkit_cache: None,
             deployment_period_termination_grace_period_seconds: None,
             deployment_period_affinity_period_node_period_required: None,
             job_period_delete_ttl_seconds_after_finished: None,

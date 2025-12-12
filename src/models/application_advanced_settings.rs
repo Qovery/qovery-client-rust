@@ -88,6 +88,12 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_period_ram_max_in_gib: Option<i32>,
+    /// disable buildkit registry cache during build
+    #[serde(
+        rename = "build.disable_buildkit_cache",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_period_disable_buildkit_cache: Option<bool>,
     #[serde(
         rename = "network.ingress.proxy_body_size_mb",
         skip_serializing_if = "Option::is_none"
@@ -250,6 +256,7 @@ impl ApplicationAdvancedSettings {
             build_period_timeout_max_sec: None,
             build_period_cpu_max_in_milli: None,
             build_period_ram_max_in_gib: None,
+            build_period_disable_buildkit_cache: None,
             network_period_ingress_period_proxy_body_size_mb: None,
             network_period_ingress_period_force_ssl_redirect: None,
             network_period_ingress_period_enable_cors: None,
