@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_organization_webhook**](OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook/{webhookId}/event | Create an organization webhook
+[**create_organization_webhook**](OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
 [**delete_organization_webhook**](OrganizationWebhookApi.md#delete_organization_webhook) | **DELETE** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 [**edit_organization_webhook**](OrganizationWebhookApi.md#edit_organization_webhook) | **PUT** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
 [**get_organization_webhook**](OrganizationWebhookApi.md#get_organization_webhook) | **GET** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
@@ -141,7 +141,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_organization_web_hooks
 
-> models::OrganizationWebhookResponseList list_organization_web_hooks(organization_id)
+> models::OrganizationWebhookResponseList list_organization_web_hooks(organization_id, webhook_id)
 List organization webhooks
 
 List organization webhooks
@@ -152,6 +152,7 @@ List organization webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 
 ### Return type
 
@@ -171,7 +172,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_webhook_event
 
-> models::WebhookEventResponseList list_webhook_event(organization_id, webhook_id)
+> models::WebhookEventResponseList list_webhook_event(organization_id)
 List events of a webhook
 
 List events of a webhooks
@@ -182,7 +183,6 @@ List events of a webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 
 ### Return type
 

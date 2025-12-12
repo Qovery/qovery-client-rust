@@ -87,7 +87,7 @@ pub async fn create_organization_webhook(
     let p_organization_webhook_create_request = organization_webhook_create_request;
 
     let uri_str = format!(
-        "{}/organization/{organizationId}/webhook/{webhookId}/event",
+        "{}/organization/{organizationId}/webhook",
         configuration.base_path,
         organizationId = crate::apis::urlencode(p_organization_id),
         webhookId = crate::apis::urlencode(p_webhook_id)
@@ -325,14 +325,17 @@ pub async fn get_organization_webhook(
 pub async fn list_organization_web_hooks(
     configuration: &configuration::Configuration,
     organization_id: &str,
+    webhook_id: &str,
 ) -> Result<models::OrganizationWebhookResponseList, Error<ListOrganizationWebHooksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_organization_id = organization_id;
+    let p_webhook_id = webhook_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_organization_id),
+        webhookId = crate::apis::urlencode(p_webhook_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -384,17 +387,14 @@ pub async fn list_organization_web_hooks(
 pub async fn list_webhook_event(
     configuration: &configuration::Configuration,
     organization_id: &str,
-    webhook_id: &str,
 ) -> Result<models::WebhookEventResponseList, Error<ListWebhookEventError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_organization_id = organization_id;
-    let p_webhook_id = webhook_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}/event",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        webhookId = crate::apis::urlencode(p_webhook_id)
+        organizationId = crate::apis::urlencode(p_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
