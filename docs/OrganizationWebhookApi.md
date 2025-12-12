@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## create_organization_webhook
 
-> models::OrganizationWebhookCreateResponse create_organization_webhook(organization_id, webhook_id, organization_webhook_create_request)
+> models::OrganizationWebhookCreateResponse create_organization_webhook(organization_id, organization_webhook_create_request)
 Create an organization webhook
 
 Create an organization webhook.
@@ -26,7 +26,6 @@ Create an organization webhook.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 **organization_webhook_create_request** | Option<[**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md)> |  |  |
 
 ### Return type
@@ -141,7 +140,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_organization_web_hooks
 
-> models::OrganizationWebhookResponseList list_organization_web_hooks(organization_id, webhook_id)
+> models::OrganizationWebhookResponseList list_organization_web_hooks(organization_id)
 List organization webhooks
 
 List organization webhooks
@@ -152,7 +151,6 @@ List organization webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 
 ### Return type
 
@@ -172,7 +170,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_webhook_event
 
-> models::WebhookEventResponseList list_webhook_event(organization_id)
+> models::WebhookEventResponseList list_webhook_event(organization_id, webhook_id)
 List events of a webhook
 
 List events of a webhooks
@@ -183,6 +181,7 @@ List events of a webhooks
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**webhook_id** | **uuid::Uuid** | Webhook ID | [required] |
 
 ### Return type
 
