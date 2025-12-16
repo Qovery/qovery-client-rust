@@ -53,6 +53,8 @@ pub struct TerraformResponse {
     /// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
     #[serde(rename = "action_extra_arguments")]
     pub action_extra_arguments: std::collections::HashMap<String, Vec<String>>,
+    #[serde(rename = "dockerfile_fragment", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub dockerfile_fragment: Option<Option<models::TerraformResponseAllOfDockerfileFragment>>,
 }
 
 impl TerraformResponse {
@@ -77,6 +79,7 @@ impl TerraformResponse {
             environment,
             use_cluster_credentials,
             action_extra_arguments,
+            dockerfile_fragment: None,
         }
     }
 }

@@ -46,6 +46,13 @@ pub struct TerraformRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub action_extra_arguments: Option<std::collections::HashMap<String, Vec<String>>>,
+    #[serde(
+        rename = "dockerfile_fragment",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub dockerfile_fragment: Option<Option<models::TerraformRequestDockerfileFragment>>,
 }
 
 impl TerraformRequest {
@@ -74,6 +81,7 @@ impl TerraformRequest {
             job_resources,
             use_cluster_credentials: None,
             action_extra_arguments: None,
+            dockerfile_fragment: None,
         }
     }
 }
