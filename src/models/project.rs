@@ -23,6 +23,8 @@ pub struct Project {
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(rename = "associated_environments_count")]
+    pub associated_environments_count: i32,
     #[serde(rename = "organization")]
     pub organization: models::ReferenceObject,
 }
@@ -32,6 +34,7 @@ impl Project {
         id: uuid::Uuid,
         created_at: String,
         name: String,
+        associated_environments_count: i32,
         organization: models::ReferenceObject,
     ) -> Project {
         Project {
@@ -40,6 +43,7 @@ impl Project {
             updated_at: None,
             name,
             description: None,
+            associated_environments_count,
             organization,
         }
     }
