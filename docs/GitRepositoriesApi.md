@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_github_repository_branches**](GitRepositoriesApi.md#get_github_repository_branches) | **GET** /account/github/repository/branch | Get github branches of the specified repository
 [**get_gitlab_repositories**](GitRepositoriesApi.md#get_gitlab_repositories) | **GET** /account/gitlab/repository | Get gitlab repositories of the connected user
 [**get_gitlab_repository_branches**](GitRepositoriesApi.md#get_gitlab_repository_branches) | **GET** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
+[**list_directories_from_git_repository**](GitRepositoriesApi.md#list_directories_from_git_repository) | **POST** /organization/{organizationId}/listDirectoriesFromGitRepository | List directories from a git repository
 
 
 
@@ -193,6 +194,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_directories_from_git_repository
+
+> models::ListDirectoriesFromGitRepository200Response list_directories_from_git_repository(organization_id, application_git_repository_request)
+List directories from a git repository
+
+List immediate subdirectories at a specified path in a git repository. This endpoint is used when creating Terraform services to help users browse and select the appropriate root path. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**application_git_repository_request** | Option<[**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md)> |  |  |
+
+### Return type
+
+[**models::ListDirectoriesFromGitRepository200Response**](listDirectoriesFromGitRepository_200_response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
