@@ -597,7 +597,7 @@ pub async fn get_cluster_current_cost(
     }
 }
 
-/// This endpoint returns the external ID of the organization's billing account.
+/// This endpoint returns the external ID of the organization's billing account
 pub async fn get_organization_billing_external_id(
     configuration: &configuration::Configuration,
     organization_id: &str,

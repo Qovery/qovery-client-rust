@@ -233,7 +233,7 @@ Name | Type | Description  | Required | Notes
 > models::BillingExternalId get_organization_billing_external_id(organization_id)
 Get organization billing external ID
 
-This endpoint returns the external ID of the organization's billing account. 
+This endpoint returns the external ID of the organization's billing account 
 
 ### Parameters
 
