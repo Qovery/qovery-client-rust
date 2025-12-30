@@ -31,6 +31,8 @@ pub struct ServiceLightResponse {
     pub environment_id: uuid::Uuid,
     #[serde(rename = "environment_name")]
     pub environment_name: String,
+    #[serde(rename = "cluster_id")]
+    pub cluster_id: uuid::Uuid,
     #[serde(rename = "job_type", skip_serializing_if = "Option::is_none")]
     pub job_type: Option<JobType>,
 }
@@ -46,6 +48,7 @@ impl ServiceLightResponse {
         project_name: String,
         environment_id: uuid::Uuid,
         environment_name: String,
+        cluster_id: uuid::Uuid,
     ) -> ServiceLightResponse {
         ServiceLightResponse {
             id,
@@ -57,6 +60,7 @@ impl ServiceLightResponse {
             project_name,
             environment_id,
             environment_name,
+            cluster_id,
             job_type: None,
         }
     }
