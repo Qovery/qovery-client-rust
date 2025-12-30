@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **icon_uri** | **String** | Icon URI representing the application. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **docker_target_build_stage** | Option<**String**> | The target build stage in the Dockerfile to build | [optional]
+**autoscaling** | Option<[**models::KedaAutoscalingResponse**](KedaAutoscalingResponse.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

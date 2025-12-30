@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **labels_groups** | Option<[**Vec<models::OrganizationLabelsGroupResponse>**](OrganizationLabelsGroupResponse.md)> |  | [optional]
 **icon_uri** | **String** | Icon URI representing the container. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**autoscaling** | Option<[**models::KedaAutoscalingResponse**](KedaAutoscalingResponse.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

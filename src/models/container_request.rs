@@ -77,6 +77,8 @@ pub struct ContainerRequest {
     /// Icon URI representing the container.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
+    #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
+    pub autoscaling: Option<models::KedaAutoscalingRequest>,
 }
 
 impl ContainerRequest {
@@ -108,6 +110,7 @@ impl ContainerRequest {
             annotations_groups: None,
             labels_groups: None,
             icon_uri: None,
+            autoscaling: None,
         }
     }
 }

@@ -90,6 +90,8 @@ pub struct ContainerResponse {
         default = "models::service_type_enum::service_type_container"
     )]
     pub service_type: models::ServiceTypeEnum,
+    #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
+    pub autoscaling: Option<models::KedaAutoscalingResponse>,
 }
 
 impl ContainerResponse {
@@ -144,6 +146,7 @@ impl ContainerResponse {
             labels_groups: None,
             icon_uri,
             service_type,
+            autoscaling: None,
         }
     }
 }

@@ -85,6 +85,8 @@ pub struct Application {
     /// The target build stage in the Dockerfile to build
     #[serde(rename = "docker_target_build_stage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub docker_target_build_stage: Option<Option<String>>,
+    #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
+    pub autoscaling: Option<models::KedaAutoscalingResponse>,
 }
 
 impl Application {
@@ -119,6 +121,7 @@ impl Application {
             icon_uri,
             service_type,
             docker_target_build_stage: None,
+            autoscaling: None,
         }
     }
 }

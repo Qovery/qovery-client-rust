@@ -60,6 +60,8 @@ docs/ApplicationRequest.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
 docs/ApplicationsApi.md
+docs/AutoscalingMode.md
+docs/AutoscalingPolicyApi.md
 docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
@@ -471,6 +473,11 @@ docs/KarpenterNodePoolRequirement.md
 docs/KarpenterNodePoolRequirementKey.md
 docs/KarpenterNodePoolRequirementOperator.md
 docs/KarpenterStableNodePoolOverride.md
+docs/KedaAutoscalingRequest.md
+docs/KedaAutoscalingResponse.md
+docs/KedaScalerRequest.md
+docs/KedaScalerResponse.md
+docs/KedaScalerRole.md
 docs/Key.md
 docs/KubernetesEnum.md
 docs/KubernetesMetadata.md
@@ -758,6 +765,7 @@ src/apis/application_logs_api.rs
 src/apis/application_main_calls_api.rs
 src/apis/application_secret_api.rs
 src/apis/applications_api.rs
+src/apis/autoscaling_policy_api.rs
 src/apis/backups_api.rs
 src/apis/billing_api.rs
 src/apis/cloud_provider_api.rs
@@ -883,6 +891,7 @@ src/models/application_network.rs
 src/models/application_network_request.rs
 src/models/application_request.rs
 src/models/application_response_list.rs
+src/models/autoscaling_mode.rs
 src/models/available_container_registry_response.rs
 src/models/available_container_registry_response_list.rs
 src/models/available_helm_repository_response.rs
@@ -1243,6 +1252,11 @@ src/models/karpenter_node_pool_requirement.rs
 src/models/karpenter_node_pool_requirement_key.rs
 src/models/karpenter_node_pool_requirement_operator.rs
 src/models/karpenter_stable_node_pool_override.rs
+src/models/keda_autoscaling_request.rs
+src/models/keda_autoscaling_response.rs
+src/models/keda_scaler_request.rs
+src/models/keda_scaler_response.rs
+src/models/keda_scaler_role.rs
 src/models/key.rs
 src/models/kubernetes_enum.rs
 src/models/kubernetes_metadata.rs

@@ -104,6 +104,8 @@ pub struct Application {
         skip_serializing_if = "Option::is_none"
     )]
     pub docker_target_build_stage: Option<Option<String>>,
+    #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
+    pub autoscaling: Option<models::KedaAutoscalingResponse>,
 }
 
 impl Application {
@@ -146,6 +148,7 @@ impl Application {
             icon_uri,
             service_type,
             docker_target_build_stage: None,
+            autoscaling: None,
         }
     }
 }
