@@ -54,6 +54,8 @@ pub struct ClusterRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureChartsParameters>,
+    #[serde(rename = "keda", skip_serializing_if = "Option::is_none")]
+    pub keda: Option<models::ClusterKeda>,
 }
 
 impl ClusterRequest {
@@ -78,6 +80,7 @@ impl ClusterRequest {
             features: None,
             metrics_parameters: None,
             infrastructure_charts_parameters: None,
+            keda: None,
         }
     }
 }

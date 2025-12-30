@@ -135,6 +135,7 @@ docs/ClusterInstanceGpuInfo.md
 docs/ClusterInstanceTypeResponseList.md
 docs/ClusterInstanceTypeResponseListResultsInner.md
 docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md
+docs/ClusterKeda.md
 docs/ClusterLock.md
 docs/ClusterLockList.md
 docs/ClusterLockRequest.md
@@ -953,6 +954,7 @@ src/models/cluster_instance_gpu_info.rs
 src/models/cluster_instance_type_response_list.rs
 src/models/cluster_instance_type_response_list_results_inner.rs
 src/models/cluster_karpenter_private_subnet_ids_put_request.rs
+src/models/cluster_keda.rs
 src/models/cluster_lock.rs
 src/models/cluster_lock_list.rs
 src/models/cluster_lock_request.rs

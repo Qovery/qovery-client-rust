@@ -87,6 +87,8 @@ pub struct Cluster {
         skip_serializing_if = "Option::is_none"
     )]
     pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureChartsParameters>,
+    #[serde(rename = "keda", skip_serializing_if = "Option::is_none")]
+    pub keda: Option<models::ClusterKeda>,
 }
 
 impl Cluster {
@@ -127,6 +129,7 @@ impl Cluster {
             metrics_parameters: None,
             infrastructure_outputs: None,
             infrastructure_charts_parameters: None,
+            keda: None,
         }
     }
 }

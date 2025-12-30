@@ -228,6 +228,8 @@ pub mod cluster_instance_type_response_list_results_inner;
 pub use self::cluster_instance_type_response_list_results_inner::ClusterInstanceTypeResponseListResultsInner;
 pub mod cluster_karpenter_private_subnet_ids_put_request;
 pub use self::cluster_karpenter_private_subnet_ids_put_request::ClusterKarpenterPrivateSubnetIdsPutRequest;
+pub mod cluster_keda;
+pub use self::cluster_keda::ClusterKeda;
 pub mod cluster_lock;
 pub use self::cluster_lock::ClusterLock;
 pub mod cluster_lock_list;
