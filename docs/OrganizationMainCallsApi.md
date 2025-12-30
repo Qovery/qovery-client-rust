@@ -178,7 +178,7 @@ Name | Type | Description  | Required | Notes
 > models::Organization edit_organization(organization_id, organization_edit_request)
 Edit an organization
 
-To edit an organization you must have the admin permission
+To edit an organization you must have the admin permission.
 
 ### Parameters
 

@@ -482,7 +482,7 @@ pub async fn edit_git_token(
     }
 }
 
-/// To edit an organization you must have the admin permission
+/// To edit an organization you must have the admin permission.
 pub async fn edit_organization(
     configuration: &configuration::Configuration,
     organization_id: &str,
