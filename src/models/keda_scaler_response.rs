@@ -25,6 +25,20 @@ pub struct KedaScalerResponse {
     pub enabled: bool,
     #[serde(rename = "role")]
     pub role: models::KedaScalerRole,
+    #[serde(
+        rename = "config_json",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub config_json: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    #[serde(
+        rename = "config_yaml",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub config_yaml: Option<Option<String>>,
 }
 
 impl KedaScalerResponse {
@@ -42,6 +56,8 @@ impl KedaScalerResponse {
             scaler_type,
             enabled,
             role,
+            config_json: None,
+            config_yaml: None,
         }
     }
 }
