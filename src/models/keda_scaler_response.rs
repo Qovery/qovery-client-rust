@@ -39,6 +39,11 @@ pub struct KedaScalerResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub config_yaml: Option<Option<String>>,
+    #[serde(
+        rename = "trigger_authentication_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub trigger_authentication_id: Option<uuid::Uuid>,
 }
 
 impl KedaScalerResponse {
@@ -58,6 +63,7 @@ impl KedaScalerResponse {
             role,
             config_json: None,
             config_yaml: None,
+            trigger_authentication_id: None,
         }
     }
 }
