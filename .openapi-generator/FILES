@@ -478,6 +478,10 @@ docs/KedaAutoscalingResponse.md
 docs/KedaScalerRequest.md
 docs/KedaScalerResponse.md
 docs/KedaScalerRole.md
+docs/KedaTriggerAuthenticationApi.md
+docs/KedaTriggerAuthenticationRequest.md
+docs/KedaTriggerAuthenticationResponse.md
+docs/KedaTriggerAuthenticationResponseList.md
 docs/Key.md
 docs/KubernetesEnum.md
 docs/KubernetesMetadata.md
@@ -818,6 +822,7 @@ src/apis/job_environment_variable_api.rs
 src/apis/job_main_calls_api.rs
 src/apis/job_secret_api.rs
 src/apis/jobs_api.rs
+src/apis/keda_trigger_authentication_api.rs
 src/apis/lifecycle_template_main_calls_api.rs
 src/apis/members_api.rs
 src/apis/mod.rs
@@ -1257,6 +1262,9 @@ src/models/keda_autoscaling_response.rs
 src/models/keda_scaler_request.rs
 src/models/keda_scaler_response.rs
 src/models/keda_scaler_role.rs
+src/models/keda_trigger_authentication_request.rs
+src/models/keda_trigger_authentication_response.rs
+src/models/keda_trigger_authentication_response_list.rs
 src/models/key.rs
 src/models/kubernetes_enum.rs
 src/models/kubernetes_metadata.rs

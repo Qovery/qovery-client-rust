@@ -178,6 +178,7 @@ pub mod job_environment_variable_api;
 pub mod job_main_calls_api;
 pub mod job_secret_api;
 pub mod jobs_api;
+pub mod keda_trigger_authentication_api;
 pub mod lifecycle_template_main_calls_api;
 pub mod members_api;
 pub mod organization_account_git_repositories_api;
