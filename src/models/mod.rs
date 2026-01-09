@@ -878,6 +878,8 @@ pub mod list_deployment_request_by_service_id_200_response;
 pub use self::list_deployment_request_by_service_id_200_response::ListDeploymentRequestByServiceId200Response;
 pub mod list_directories_from_git_repository_200_response;
 pub use self::list_directories_from_git_repository_200_response::ListDirectoriesFromGitRepository200Response;
+pub mod list_environments_by_organization_id_200_response;
+pub use self::list_environments_by_organization_id_200_response::ListEnvironmentsByOrganizationId200Response;
 pub mod list_helm_deployment_history_200_response;
 pub use self::list_helm_deployment_history_200_response::ListHelmDeploymentHistory200Response;
 pub mod list_job_deployment_history_200_response;
@@ -992,6 +994,8 @@ pub mod organization_custom_role_update_request_project_permissions_inner_permis
 pub use self::organization_custom_role_update_request_project_permissions_inner_permissions_inner::OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner;
 pub mod organization_edit_request;
 pub use self::organization_edit_request::OrganizationEditRequest;
+pub mod organization_environment_response;
+pub use self::organization_environment_response::OrganizationEnvironmentResponse;
 pub mod organization_event_origin;
 pub use self::organization_event_origin::OrganizationEventOrigin;
 pub mod organization_event_response;

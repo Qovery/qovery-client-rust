@@ -510,6 +510,7 @@ docs/ListDatabaseDeploymentHistory200Response.md
 docs/ListDeploymentRequestByEnvironmentId200Response.md
 docs/ListDeploymentRequestByServiceId200Response.md
 docs/ListDirectoriesFromGitRepository200Response.md
+docs/ListEnvironmentsByOrganizationId200Response.md
 docs/ListHelmDeploymentHistory200Response.md
 docs/ListJobDeploymentHistory200Response.md
 docs/ListOrganizationAnnotationsGroup200Response.md
@@ -574,6 +575,7 @@ docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md
 docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md
 docs/OrganizationEditRequest.md
 docs/OrganizationEnterpriseConnectionApi.md
+docs/OrganizationEnvironmentResponse.md
 docs/OrganizationEventApi.md
 docs/OrganizationEventOrigin.md
 docs/OrganizationEventResponse.md
@@ -1292,6 +1294,7 @@ src/models/list_database_deployment_history_200_response.rs
 src/models/list_deployment_request_by_environment_id_200_response.rs
 src/models/list_deployment_request_by_service_id_200_response.rs
 src/models/list_directories_from_git_repository_200_response.rs
+src/models/list_environments_by_organization_id_200_response.rs
 src/models/list_helm_deployment_history_200_response.rs
 src/models/list_job_deployment_history_200_response.rs
 src/models/list_organization_annotations_group_200_response.rs
@@ -1350,6 +1353,7 @@ src/models/organization_custom_role_update_request_cluster_permissions_inner.rs
 src/models/organization_custom_role_update_request_project_permissions_inner.rs
 src/models/organization_custom_role_update_request_project_permissions_inner_permissions_inner.rs
 src/models/organization_edit_request.rs
+src/models/organization_environment_response.rs
 src/models/organization_event_origin.rs
 src/models/organization_event_response.rs
 src/models/organization_event_response_list.rs
