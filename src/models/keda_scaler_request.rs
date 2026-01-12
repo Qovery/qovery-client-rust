@@ -24,10 +24,10 @@ pub struct KedaScalerRequest {
     #[serde(rename = "config_yaml", skip_serializing_if = "Option::is_none")]
     pub config_yaml: Option<String>,
     #[serde(
-        rename = "trigger_authentication_id",
+        rename = "trigger_authentication",
         skip_serializing_if = "Option::is_none"
     )]
-    pub trigger_authentication_id: Option<uuid::Uuid>,
+    pub trigger_authentication: Option<models::KedaTriggerAuthenticationRequest>,
 }
 
 impl KedaScalerRequest {
@@ -38,7 +38,7 @@ impl KedaScalerRequest {
             role,
             config_json: None,
             config_yaml: None,
-            trigger_authentication_id: None,
+            trigger_authentication: None,
         }
     }
 }

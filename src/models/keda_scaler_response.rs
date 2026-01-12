@@ -31,7 +31,7 @@ pub struct KedaScalerResponse {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub config_json: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    pub config_json: Option<Option<serde_json::Value>>,
     #[serde(
         rename = "config_yaml",
         default,
@@ -40,10 +40,10 @@ pub struct KedaScalerResponse {
     )]
     pub config_yaml: Option<Option<String>>,
     #[serde(
-        rename = "trigger_authentication_id",
+        rename = "trigger_authentication",
         skip_serializing_if = "Option::is_none"
     )]
-    pub trigger_authentication_id: Option<uuid::Uuid>,
+    pub trigger_authentication: Option<models::KedaTriggerAuthenticationResponse>,
 }
 
 impl KedaScalerResponse {
@@ -63,7 +63,7 @@ impl KedaScalerResponse {
             role,
             config_json: None,
             config_yaml: None,
-            trigger_authentication_id: None,
+            trigger_authentication: None,
         }
     }
 }
