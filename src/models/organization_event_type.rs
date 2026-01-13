@@ -115,8 +115,6 @@ pub enum OrganizationEventType {
     TerraformMigrateStateFailed,
     #[serde(rename = "SHELL")]
     Shell,
-    #[serde(rename = "SSO")]
-    Sso,
     #[serde(rename = "PORT_FORWARD")]
     PortForward,
     #[serde(rename = "REMOTE_DEBUG")]
@@ -182,7 +180,6 @@ impl std::fmt::Display for OrganizationEventType {
             Self::TerraformForceUnlockFailed => write!(f, "TERRAFORM_FORCE_UNLOCK_FAILED"),
             Self::TerraformMigrateStateFailed => write!(f, "TERRAFORM_MIGRATE_STATE_FAILED"),
             Self::Shell => write!(f, "SHELL"),
-            Self::Sso => write!(f, "SSO"),
             Self::PortForward => write!(f, "PORT_FORWARD"),
             Self::RemoteDebug => write!(f, "REMOTE_DEBUG"),
             Self::Import => write!(f, "IMPORT"),
