@@ -221,6 +221,14 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub hpa_period_cpu_period_average_utilization_percent: Option<i32>,
+    /// Percentage value of memory usage at which point pods should scale up.
+    #[serde(
+        rename = "hpa.memory.average_utilization_percent",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub hpa_period_memory_period_average_utilization_percent: Option<Option<i32>>,
     /// Allows you to set an existing Kubernetes service account name
     #[serde(
         rename = "security.service_account_name",
@@ -279,6 +287,7 @@ impl ApplicationAdvancedSettings {
             network_period_ingress_period_grpc_read_timeout_seconds: None,
             network_period_ingress_period_extra_headers: None,
             hpa_period_cpu_period_average_utilization_percent: None,
+            hpa_period_memory_period_average_utilization_percent: None,
             security_period_service_account_name: None,
             security_period_automount_service_account_token: None,
             security_period_read_only_root_filesystem: None,

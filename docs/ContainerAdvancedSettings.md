@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **network_period_ingress_period_enable_sticky_session** | Option<**bool**> | Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional]
 **security_period_service_account_name** | Option<**String**> | Allows you to set an existing Kubernetes service account name  | [optional]
 **hpa_period_cpu_period_average_utilization_percent** | Option<**i32**> | Percentage value of cpu usage at which point pods should scale up. | [optional]
+**hpa_period_memory_period_average_utilization_percent** | Option<**i32**> | Percentage value of memory usage at which point pods should scale up. | [optional]
 **security_period_automount_service_account_token** | Option<**bool**> | Automount Kubernetes service account token to have access to Kubernetes API from pods  | [optional]
 **security_period_read_only_root_filesystem** | Option<**bool**> | Mounts the container's root filesystem as read-only  | [optional]
 

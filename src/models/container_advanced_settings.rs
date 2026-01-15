@@ -198,6 +198,14 @@ pub struct ContainerAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub hpa_period_cpu_period_average_utilization_percent: Option<i32>,
+    /// Percentage value of memory usage at which point pods should scale up.
+    #[serde(
+        rename = "hpa.memory.average_utilization_percent",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub hpa_period_memory_period_average_utilization_percent: Option<Option<i32>>,
     /// Automount Kubernetes service account token to have access to Kubernetes API from pods
     #[serde(
         rename = "security.automount_service_account_token",
@@ -246,6 +254,7 @@ impl ContainerAdvancedSettings {
             network_period_ingress_period_enable_sticky_session: None,
             security_period_service_account_name: None,
             hpa_period_cpu_period_average_utilization_percent: None,
+            hpa_period_memory_period_average_utilization_percent: None,
             security_period_automount_service_account_token: None,
             security_period_read_only_root_filesystem: None,
         }
