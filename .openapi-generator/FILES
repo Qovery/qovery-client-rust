@@ -61,7 +61,6 @@ docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
 docs/ApplicationsApi.md
 docs/AutoscalingMode.md
-docs/AutoscalingPolicyApi.md
 docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
@@ -770,7 +769,6 @@ src/apis/application_logs_api.rs
 src/apis/application_main_calls_api.rs
 src/apis/application_secret_api.rs
 src/apis/applications_api.rs
-src/apis/autoscaling_policy_api.rs
 src/apis/backups_api.rs
 src/apis/billing_api.rs
 src/apis/cloud_provider_api.rs

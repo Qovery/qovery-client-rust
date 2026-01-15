@@ -126,7 +126,6 @@ pub mod application_logs_api;
 pub mod application_main_calls_api;
 pub mod application_secret_api;
 pub mod applications_api;
-pub mod autoscaling_policy_api;
 pub mod backups_api;
 pub mod billing_api;
 pub mod cloud_provider_api;
