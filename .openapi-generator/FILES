@@ -715,6 +715,11 @@ docs/TerraformRequest.md
 docs/TerraformRequestDockerfileFragment.md
 docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
+docs/TerraformResourceAttribute.md
+docs/TerraformResourceResponse.md
+docs/TerraformResourcesApi.md
+docs/TerraformResourcesRequest.md
+docs/TerraformResourcesResponse.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfDockerfileFragment.md
 docs/TerraformResponseList.md
@@ -846,6 +851,7 @@ src/apis/terraform_configuration_api.rs
 src/apis/terraform_deployment_history_api.rs
 src/apis/terraform_deployment_restriction_api.rs
 src/apis/terraform_main_calls_api.rs
+src/apis/terraform_resources_api.rs
 src/apis/terraforms_api.rs
 src/apis/user_sign_up_api.rs
 src/apis/variable_main_calls_api.rs
@@ -1475,6 +1481,10 @@ src/models/terraform_request.rs
 src/models/terraform_request_dockerfile_fragment.rs
 src/models/terraform_request_job_resources.rs
 src/models/terraform_request_terraform_files_source.rs
+src/models/terraform_resource_attribute.rs
+src/models/terraform_resource_response.rs
+src/models/terraform_resources_request.rs
+src/models/terraform_resources_response.rs
 src/models/terraform_response.rs
 src/models/terraform_response_all_of_dockerfile_fragment.rs
 src/models/terraform_response_list.rs
