@@ -15,13 +15,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TerraformResourcesResponse {
     /// Array of Terraform resources
-    #[serde(rename = "resources")]
-    pub resources: Vec<models::TerraformResourceResponse>,
+    #[serde(rename = "results")]
+    pub results: Vec<models::TerraformResourceResponse>,
 }
 
 impl TerraformResourcesResponse {
     /// List of Terraform resources from the latest deployment
-    pub fn new(resources: Vec<models::TerraformResourceResponse>) -> TerraformResourcesResponse {
-        TerraformResourcesResponse { resources }
+    pub fn new(results: Vec<models::TerraformResourceResponse>) -> TerraformResourcesResponse {
+        TerraformResourcesResponse { results }
     }
 }

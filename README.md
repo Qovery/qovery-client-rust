@@ -508,7 +508,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsApi* | [**get_terraform**](docs/TerraformMainCallsApi.md#get_terraform) | **GET** /terraform/{terraformId} | Get terraform by ID
 *TerraformMainCallsApi* | [**list_terraform_commit**](docs/TerraformMainCallsApi.md#list_terraform_commit) | **GET** /terraform/{terraformId}/commit | List last commits
 *TerraformMainCallsApi* | [**list_terraform_versions**](docs/TerraformMainCallsApi.md#list_terraform_versions) | **GET** /terraform/availableVersion | List available Terraform versions
-*TerraformResourcesApi* | [**get_terraform_resources**](docs/TerraformResourcesApi.md#get_terraform_resources) | **GET** /api/v1/terraform/{terraformId}/terraformResources | Get terraform resources from latest deployment
+*TerraformResourcesApi* | [**get_terraform_resources**](docs/TerraformResourcesApi.md#get_terraform_resources) | **GET** /terraform/{terraformId}/terraformResources | Get terraform resources from latest deployment
 *TerraformsApi* | [**clone_terraform**](docs/TerraformsApi.md#clone_terraform) | **POST** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsApi* | [**create_terraform**](docs/TerraformsApi.md#create_terraform) | **POST** /environment/{environmentId}/terraform | Create a terraform
 *TerraformsApi* | [**get_default_terraform_advanced_settings**](docs/TerraformsApi.md#get_default_terraform_advanced_settings) | **GET** /defaultTerraformAdvancedSettings | List default terraform advanced settings

@@ -32,7 +32,7 @@ pub async fn get_terraform_resources(
     let p_terraform_id = terraform_id;
 
     let uri_str = format!(
-        "{}/api/v1/terraform/{terraformId}/terraformResources",
+        "{}/terraform/{terraformId}/terraformResources",
         configuration.base_path,
         terraformId = crate::apis::urlencode(p_terraform_id)
     );
