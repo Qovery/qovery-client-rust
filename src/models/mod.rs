@@ -1246,8 +1246,6 @@ pub mod terraform_request_job_resources;
 pub use self::terraform_request_job_resources::TerraformRequestJobResources;
 pub mod terraform_request_terraform_files_source;
 pub use self::terraform_request_terraform_files_source::TerraformRequestTerraformFilesSource;
-pub mod terraform_resource_attribute;
-pub use self::terraform_resource_attribute::TerraformResourceAttribute;
 pub mod terraform_resource_response;
 pub use self::terraform_resource_response::TerraformResourceResponse;
 pub mod terraform_resources_request;

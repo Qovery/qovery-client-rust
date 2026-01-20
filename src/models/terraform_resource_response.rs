@@ -18,7 +18,7 @@ pub struct TerraformResourceResponse {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     /// Type of the Terraform resource (e.g., aws_instance, aws_s3_bucket)
-    #[serde(rename = "resourceType")]
+    #[serde(rename = "resource_type")]
     pub resource_type: String,
     /// Name of the resource as defined in Terraform configuration
     #[serde(rename = "name")]
@@ -36,11 +36,8 @@ pub struct TerraformResourceResponse {
     #[serde(rename = "attributes")]
     pub attributes: std::collections::HashMap<String, serde_json::Value>,
     /// Timestamp when the resource was extracted from Terraform state
-    #[serde(rename = "extractedAt")]
-    pub extracted_at: String,
-    /// Most important attributes for this resource type (for display)
-    #[serde(rename = "keyAttributes")]
-    pub key_attributes: Vec<models::TerraformResourceAttribute>,
+    #[serde(rename = "extractedAt", skip_serializing_if = "Option::is_none")]
+    pub extracted_at: Option<String>,
 }
 
 impl TerraformResourceResponse {
@@ -53,8 +50,6 @@ impl TerraformResourceResponse {
         provider: String,
         mode: Mode,
         attributes: std::collections::HashMap<String, serde_json::Value>,
-        extracted_at: String,
-        key_attributes: Vec<models::TerraformResourceAttribute>,
     ) -> TerraformResourceResponse {
         TerraformResourceResponse {
             id,
@@ -64,8 +59,7 @@ impl TerraformResourceResponse {
             provider,
             mode,
             attributes,
-            extracted_at,
-            key_attributes,
+            extracted_at: None,
         }
     }
 }

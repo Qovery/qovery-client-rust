@@ -1150,7 +1150,6 @@ Class | Method | HTTP request | Description
  - [TerraformRequestDockerfileFragment](docs/TerraformRequestDockerfileFragment.md)
  - [TerraformRequestJobResources](docs/TerraformRequestJobResources.md)
  - [TerraformRequestTerraformFilesSource](docs/TerraformRequestTerraformFilesSource.md)
- - [TerraformResourceAttribute](docs/TerraformResourceAttribute.md)
  - [TerraformResourceResponse](docs/TerraformResourceResponse.md)
  - [TerraformResourcesRequest](docs/TerraformResourcesRequest.md)
  - [TerraformResourcesResponse](docs/TerraformResourcesResponse.md)
