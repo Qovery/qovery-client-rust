@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **provider** | **String** | Terraform provider name (e.g., aws, google, azurerm) | 
 **mode** | **String** | Resource mode (managed or data source) | 
 **attributes** | [**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md) | All resource attributes as key-value pairs | 
-**extracted_at** | Option<**String**> | Timestamp when the resource was extracted from Terraform state | [optional]
+**extracted_at** | **String** | Timestamp when the resource was extracted from Terraform state | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
