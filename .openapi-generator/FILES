@@ -150,6 +150,7 @@ docs/ClusterLogsMessage.md
 docs/ClusterLogsResponse.md
 docs/ClusterLogsResponseList.md
 docs/ClusterMetricsResponse.md
+docs/ClusterOverviewResponse.md
 docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
@@ -313,6 +314,8 @@ docs/EnvironmentLogsErrorUnderlyingError.md
 docs/EnvironmentLogsMessage.md
 docs/EnvironmentMainCallsApi.md
 docs/EnvironmentModeEnum.md
+docs/EnvironmentOverviewResponse.md
+docs/EnvironmentOverviewResponseList.md
 docs/EnvironmentResponseList.md
 docs/EnvironmentSecretApi.md
 docs/EnvironmentServiceIdsAllRequest.md
@@ -985,6 +988,7 @@ src/models/cluster_logs_message.rs
 src/models/cluster_logs_response.rs
 src/models/cluster_logs_response_list.rs
 src/models/cluster_metrics_response.rs
+src/models/cluster_overview_response.rs
 src/models/cluster_readiness_status.rs
 src/models/cluster_region.rs
 src/models/cluster_region_response_list.rs
@@ -1122,6 +1126,8 @@ src/models/environment_logs_error.rs
 src/models/environment_logs_error_underlying_error.rs
 src/models/environment_logs_message.rs
 src/models/environment_mode_enum.rs
+src/models/environment_overview_response.rs
+src/models/environment_overview_response_list.rs
 src/models/environment_response_list.rs
 src/models/environment_service_ids_all_request.rs
 src/models/environment_stats.rs

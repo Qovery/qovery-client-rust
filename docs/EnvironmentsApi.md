@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_environment**](EnvironmentsApi.md#create_environment) | **POST** /project/{projectId}/environment | Create an environment
 [**get_project_environment_service_number**](EnvironmentsApi.md#get_project_environment_service_number) | **GET** /project/{projectId}/environment/stats | List total number of services for each environment of the project
+[**get_project_environments_overview**](EnvironmentsApi.md#get_project_environments_overview) | **GET** /project/{projectId}/environmentOverview | List environments overview
 [**get_project_environments_status**](EnvironmentsApi.md#get_project_environments_status) | **GET** /project/{projectId}/environment/status | List environments statuses
 [**list_environment**](EnvironmentsApi.md#list_environment) | **GET** /project/{projectId}/environment | List environments
 
@@ -57,6 +58,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::EnvironmentStatsResponseList**](EnvironmentStatsResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_project_environments_overview
+
+> models::EnvironmentOverviewResponseList get_project_environments_overview(project_id)
+List environments overview
+
+Returns a list of environments with their overview information including deployment status, service count, and cluster details.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **uuid::Uuid** | Project ID | [required] |
+
+### Return type
+
+[**models::EnvironmentOverviewResponseList**](EnvironmentOverviewResponseList.md)
 
 ### Authorization
 
