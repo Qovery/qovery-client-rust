@@ -11,41 +11,17 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct AlertReceiverResponse {
-    #[serde(rename = "id")]
-    pub id: uuid::Uuid,
-    #[serde(rename = "created_at")]
-    pub created_at: String,
-    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
-    #[serde(rename = "name")]
-    pub name: String,
-    #[serde(rename = "description")]
-    pub description: String,
-    #[serde(rename = "type")]
-    pub r#type: models::AlertReceiverType,
-    #[serde(rename = "send_resolved")]
-    pub send_resolved: bool,
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(tag = "type")]
+pub enum AlertReceiverResponse {
+    #[serde(rename = "SLACK")]
+    Slack(models::SlackAlertReceiverResponse),
+    #[serde(rename = "EMAIL")]
+    Email(models::EmailAlertReceiverResponse),
 }
 
-impl AlertReceiverResponse {
-    pub fn new(
-        id: uuid::Uuid,
-        created_at: String,
-        name: String,
-        description: String,
-        r#type: models::AlertReceiverType,
-        send_resolved: bool,
-    ) -> AlertReceiverResponse {
-        AlertReceiverResponse {
-            id,
-            created_at,
-            updated_at: None,
-            name,
-            description,
-            r#type,
-            send_resolved,
-        }
+impl Default for AlertReceiverResponse {
+    fn default() -> Self {
+        Self::Slack(Default::default())
     }
 }

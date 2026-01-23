@@ -15,22 +15,13 @@ use serde::{Deserialize, Serialize};
 #[serde(tag = "type")]
 pub enum AlertReceiverEditRequest {
     #[serde(rename = "SLACK")]
-    SlackAlertReceiverEditRequest {
-        #[serde(rename = "name")]
-        name: String,
-        #[serde(rename = "description")]
-        description: String,
-        #[serde(rename = "send_resolved")]
-        send_resolved: bool,
-    },
+    Slack(models::SlackAlertReceiverEditRequest),
+    #[serde(rename = "EMAIL")]
+    Email(models::EmailAlertReceiverEditRequest),
 }
 
 impl Default for AlertReceiverEditRequest {
     fn default() -> Self {
-        Self::SlackAlertReceiverEditRequest {
-            name: Default::default(),
-            description: Default::default(),
-            send_resolved: Default::default(),
-        }
+        Self::Slack(Default::default())
     }
 }

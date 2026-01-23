@@ -1,4 +1,4 @@
-# SlackAlertReceiverCreationRequest
+# AlertReceiverCreationRequestBase
 
 ## Properties
 
@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **send_resolved** | **bool** |  | 
 **owner** | Option<**String**> |  | [optional]
 **severity** | Option<**String**> |  | [optional]
-**webhook_url** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

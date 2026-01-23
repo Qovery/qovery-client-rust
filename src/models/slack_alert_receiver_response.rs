@@ -12,7 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct SlackAlertReceiverEditRequest {
+pub struct SlackAlertReceiverResponse {
+    #[serde(rename = "id")]
+    pub id: uuid::Uuid,
+    #[serde(rename = "created_at")]
+    pub created_at: String,
+    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description")]
@@ -35,31 +41,27 @@ pub struct SlackAlertReceiverEditRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub severity: Option<Option<String>>,
-    /// Update webhook URL. If null, keeps existing value.
-    #[serde(
-        rename = "webhook_url",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub webhook_url: Option<Option<String>>,
 }
 
-impl SlackAlertReceiverEditRequest {
+impl SlackAlertReceiverResponse {
     pub fn new(
+        id: uuid::Uuid,
+        created_at: String,
         name: String,
         description: String,
         r#type: models::AlertReceiverType,
         send_resolved: bool,
-    ) -> SlackAlertReceiverEditRequest {
-        SlackAlertReceiverEditRequest {
+    ) -> SlackAlertReceiverResponse {
+        SlackAlertReceiverResponse {
+            id,
+            created_at,
+            updated_at: None,
             name,
             description,
             r#type,
             send_resolved,
             owner: None,
             severity: None,
-            webhook_url: None,
         }
     }
 }

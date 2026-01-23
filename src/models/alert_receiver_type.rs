@@ -16,12 +16,15 @@ use serde::{Deserialize, Serialize};
 pub enum AlertReceiverType {
     #[serde(rename = "SLACK")]
     Slack,
+    #[serde(rename = "EMAIL")]
+    Email,
 }
 
 impl std::fmt::Display for AlertReceiverType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Slack => write!(f, "SLACK"),
+            Self::Email => write!(f, "EMAIL"),
         }
     }
 }

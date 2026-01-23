@@ -12,7 +12,9 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct SlackAlertReceiverEditRequest {
+pub struct EmailAlertReceiverCreationRequest {
+    #[serde(rename = "organization_id")]
+    pub organization_id: uuid::Uuid,
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description")]
@@ -35,31 +37,58 @@ pub struct SlackAlertReceiverEditRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub severity: Option<Option<String>>,
-    /// Update webhook URL. If null, keeps existing value.
+    /// Recipient email address
+    #[serde(rename = "to")]
+    pub to: String,
+    /// Sender email address
+    #[serde(rename = "from")]
+    pub from: String,
+    /// SMTP server in format 'host:port'
+    #[serde(rename = "smarthost")]
+    pub smarthost: String,
+    /// SMTP authentication username. Defaults to 'from' if not provided.
     #[serde(
-        rename = "webhook_url",
+        rename = "auth_username",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub webhook_url: Option<Option<String>>,
+    pub auth_username: Option<Option<String>>,
+    /// SMTP authentication password
+    #[serde(rename = "auth_password")]
+    pub auth_password: String,
+    /// Whether to require TLS for SMTP connection
+    #[serde(rename = "require_tls")]
+    pub require_tls: bool,
 }
 
-impl SlackAlertReceiverEditRequest {
+impl EmailAlertReceiverCreationRequest {
     pub fn new(
+        organization_id: uuid::Uuid,
         name: String,
         description: String,
         r#type: models::AlertReceiverType,
         send_resolved: bool,
-    ) -> SlackAlertReceiverEditRequest {
-        SlackAlertReceiverEditRequest {
+        to: String,
+        from: String,
+        smarthost: String,
+        auth_password: String,
+        require_tls: bool,
+    ) -> EmailAlertReceiverCreationRequest {
+        EmailAlertReceiverCreationRequest {
+            organization_id,
             name,
             description,
             r#type,
             send_resolved,
             owner: None,
             severity: None,
-            webhook_url: None,
+            to,
+            from,
+            smarthost,
+            auth_username: None,
+            auth_password,
+            require_tls,
         }
     }
 }

@@ -23,6 +23,20 @@ pub struct SlackAlertReceiverCreationRequest {
     pub r#type: models::AlertReceiverType,
     #[serde(rename = "send_resolved")]
     pub send_resolved: bool,
+    #[serde(
+        rename = "owner",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub owner: Option<Option<String>>,
+    #[serde(
+        rename = "severity",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub severity: Option<Option<String>>,
     #[serde(rename = "webhook_url")]
     pub webhook_url: String,
 }
@@ -42,6 +56,8 @@ impl SlackAlertReceiverCreationRequest {
             description,
             r#type,
             send_resolved,
+            owner: None,
+            severity: None,
             webhook_url,
         }
     }

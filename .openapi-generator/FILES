@@ -10,8 +10,10 @@ docs/AksInfrastructureOutputs.md
 docs/AlertPresentation.md
 docs/AlertPresentationResponse.md
 docs/AlertReceiverCreationRequest.md
+docs/AlertReceiverCreationRequestBase.md
 docs/AlertReceiverCreationValidationRequest.md
 docs/AlertReceiverEditRequest.md
+docs/AlertReceiverEditRequestBase.md
 docs/AlertReceiverList.md
 docs/AlertReceiverResponse.md
 docs/AlertReceiverType.md
@@ -286,6 +288,9 @@ docs/DockerfileCheckResponse.md
 docs/DockerfileFragmentFile.md
 docs/DockerfileFragmentInline.md
 docs/EksInfrastructureOutputs.md
+docs/EmailAlertReceiverCreationRequest.md
+docs/EmailAlertReceiverEditRequest.md
+docs/EmailAlertReceiverResponse.md
 docs/EnterpriseConnectionDto.md
 docs/EnterpriseConnectionResponseList.md
 docs/EnvDeploymentStatus.md
@@ -683,6 +688,7 @@ docs/SignUp.md
 docs/SignUpRequest.md
 docs/SlackAlertReceiverCreationRequest.md
 docs/SlackAlertReceiverEditRequest.md
+docs/SlackAlertReceiverResponse.md
 docs/Stage.md
 docs/StageStatusEnum.md
 docs/StageStepMetric.md
@@ -864,8 +870,10 @@ src/models/aks_infrastructure_outputs.rs
 src/models/alert_presentation.rs
 src/models/alert_presentation_response.rs
 src/models/alert_receiver_creation_request.rs
+src/models/alert_receiver_creation_request_base.rs
 src/models/alert_receiver_creation_validation_request.rs
 src/models/alert_receiver_edit_request.rs
+src/models/alert_receiver_edit_request_base.rs
 src/models/alert_receiver_list.rs
 src/models/alert_receiver_response.rs
 src/models/alert_receiver_type.rs
@@ -1105,6 +1113,9 @@ src/models/dockerfile_check_response.rs
 src/models/dockerfile_fragment_file.rs
 src/models/dockerfile_fragment_inline.rs
 src/models/eks_infrastructure_outputs.rs
+src/models/email_alert_receiver_creation_request.rs
+src/models/email_alert_receiver_edit_request.rs
+src/models/email_alert_receiver_response.rs
 src/models/enterprise_connection_dto.rs
 src/models/enterprise_connection_response_list.rs
 src/models/env_deployment_status.rs
@@ -1456,6 +1467,7 @@ src/models/sign_up.rs
 src/models/sign_up_request.rs
 src/models/slack_alert_receiver_creation_request.rs
 src/models/slack_alert_receiver_edit_request.rs
+src/models/slack_alert_receiver_response.rs
 src/models/stage.rs
 src/models/stage_status_enum.rs
 src/models/stage_step_metric.rs

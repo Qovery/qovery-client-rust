@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct SlackAlertReceiverEditRequest {
+pub struct EmailAlertReceiverEditRequest {
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description")]
@@ -35,31 +35,56 @@ pub struct SlackAlertReceiverEditRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub severity: Option<Option<String>>,
-    /// Update webhook URL. If null, keeps existing value.
+    #[serde(rename = "to")]
+    pub to: String,
+    #[serde(rename = "from")]
+    pub from: String,
+    /// SMTP server in format 'host:port'
+    #[serde(rename = "smarthost")]
+    pub smarthost: String,
     #[serde(
-        rename = "webhook_url",
+        rename = "auth_username",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub webhook_url: Option<Option<String>>,
+    pub auth_username: Option<Option<String>>,
+    /// SMTP password. If null, keeps existing password.
+    #[serde(
+        rename = "auth_password",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auth_password: Option<Option<String>>,
+    #[serde(rename = "require_tls")]
+    pub require_tls: bool,
 }
 
-impl SlackAlertReceiverEditRequest {
+impl EmailAlertReceiverEditRequest {
     pub fn new(
         name: String,
         description: String,
         r#type: models::AlertReceiverType,
         send_resolved: bool,
-    ) -> SlackAlertReceiverEditRequest {
-        SlackAlertReceiverEditRequest {
+        to: String,
+        from: String,
+        smarthost: String,
+        require_tls: bool,
+    ) -> EmailAlertReceiverEditRequest {
+        EmailAlertReceiverEditRequest {
             name,
             description,
             r#type,
             send_resolved,
             owner: None,
             severity: None,
-            webhook_url: None,
+            to,
+            from,
+            smarthost,
+            auth_username: None,
+            auth_password: None,
+            require_tls,
         }
     }
 }
