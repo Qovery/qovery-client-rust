@@ -493,6 +493,7 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**list_project**](docs/ProjectsApi.md#list_project) | **GET** /organization/{organizationId}/project | List projects
 *ReferralRewardsApi* | [**get_account_referral**](docs/ReferralRewardsApi.md#get_account_referral) | **GET** /account/referral | Get your referral information
 *ReferralRewardsApi* | [**post_account_reward_claim**](docs/ReferralRewardsApi.md#post_account_reward_claim) | **POST** /account/rewardClaim | Claim a reward
+*ServiceMainCallsApi* | [**get_service_git_webhook_status**](docs/ServiceMainCallsApi.md#get_service_git_webhook_status) | **GET** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsApi* | [**deploy_terraform**](docs/TerraformActionsApi.md#deploy_terraform) | **POST** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsApi* | [**redeploy_terraform**](docs/TerraformActionsApi.md#redeploy_terraform) | **POST** /terraform/{terraformId}/redeploy | Redeploy terraform
@@ -843,6 +844,7 @@ Class | Method | HTTP request | Description
  - [GitTokenRequest](docs/GitTokenRequest.md)
  - [GitTokenResponse](docs/GitTokenResponse.md)
  - [GitTokenResponseList](docs/GitTokenResponseList.md)
+ - [GitWebhookStatusResponse](docs/GitWebhookStatusResponse.md)
  - [GkeInfrastructureOutputs](docs/GkeInfrastructureOutputs.md)
  - [Healthcheck](docs/Healthcheck.md)
  - [HelmAdvancedSettings](docs/HelmAdvancedSettings.md)

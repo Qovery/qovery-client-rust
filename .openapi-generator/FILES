@@ -366,6 +366,7 @@ docs/GitTokenAssociatedServicesResponseList.md
 docs/GitTokenRequest.md
 docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
+docs/GitWebhookStatusResponse.md
 docs/GithubAppApi.md
 docs/GkeInfrastructureOutputs.md
 docs/Healthcheck.md
@@ -669,6 +670,7 @@ docs/ServiceAnnotationRequest.md
 docs/ServiceDeploymentStatusEnum.md
 docs/ServiceLabelRequest.md
 docs/ServiceLightResponse.md
+docs/ServiceMainCallsApi.md
 docs/ServicePort.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
@@ -853,6 +855,7 @@ src/apis/project_main_calls_api.rs
 src/apis/project_secret_api.rs
 src/apis/projects_api.rs
 src/apis/referral_rewards_api.rs
+src/apis/service_main_calls_api.rs
 src/apis/service_status_api.rs
 src/apis/terraform_actions_api.rs
 src/apis/terraform_configuration_api.rs
@@ -1180,6 +1183,7 @@ src/models/git_token_associated_services_response_list.rs
 src/models/git_token_request.rs
 src/models/git_token_response.rs
 src/models/git_token_response_list.rs
+src/models/git_webhook_status_response.rs
 src/models/gke_infrastructure_outputs.rs
 src/models/healthcheck.rs
 src/models/helm_advanced_settings.rs

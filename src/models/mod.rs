@@ -630,6 +630,8 @@ pub mod git_token_response;
 pub use self::git_token_response::GitTokenResponse;
 pub mod git_token_response_list;
 pub use self::git_token_response_list::GitTokenResponseList;
+pub mod git_webhook_status_response;
+pub use self::git_webhook_status_response::GitWebhookStatusResponse;
 pub mod gke_infrastructure_outputs;
 pub use self::gke_infrastructure_outputs::GkeInfrastructureOutputs;
 pub mod healthcheck;
