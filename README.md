@@ -494,6 +494,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsApi* | [**get_account_referral**](docs/ReferralRewardsApi.md#get_account_referral) | **GET** /account/referral | Get your referral information
 *ReferralRewardsApi* | [**post_account_reward_claim**](docs/ReferralRewardsApi.md#post_account_reward_claim) | **POST** /account/rewardClaim | Claim a reward
 *ServiceMainCallsApi* | [**get_service_git_webhook_status**](docs/ServiceMainCallsApi.md#get_service_git_webhook_status) | **GET** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
+*ServiceMainCallsApi* | [**sync_service_git_webhook**](docs/ServiceMainCallsApi.md#sync_service_git_webhook) | **POST** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsApi* | [**deploy_terraform**](docs/TerraformActionsApi.md#deploy_terraform) | **POST** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsApi* | [**redeploy_terraform**](docs/TerraformActionsApi.md#redeploy_terraform) | **POST** /terraform/{terraformId}/redeploy | Redeploy terraform
