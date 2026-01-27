@@ -34,6 +34,12 @@ pub struct ClusterRequest {
     /// Unit is in GB. The disk size to be used for the node configuration
     #[serde(rename = "disk_size", skip_serializing_if = "Option::is_none")]
     pub disk_size: Option<i32>,
+    /// Unit is operation/seconds. The disk IOPS to be used for the node configuration
+    #[serde(rename = "disk_iops", skip_serializing_if = "Option::is_none")]
+    pub disk_iops: Option<i32>,
+    /// Unit is in MB/s. The disk thoughput to be used for the node configuration
+    #[serde(rename = "disk_throughput", skip_serializing_if = "Option::is_none")]
+    pub disk_throughput: Option<i32>,
     /// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
     #[serde(rename = "instance_type", skip_serializing_if = "Option::is_none")]
     pub instance_type: Option<String>,
@@ -73,6 +79,8 @@ impl ClusterRequest {
             min_running_nodes: None,
             max_running_nodes: None,
             disk_size: None,
+            disk_iops: None,
+            disk_throughput: None,
             instance_type: None,
             kubernetes: None,
             production: None,

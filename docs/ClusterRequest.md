@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **min_running_nodes** | Option<**i32**> |  | [optional][default to 1]
 **max_running_nodes** | Option<**i32**> |  | [optional][default to 1]
 **disk_size** | Option<**i32**> | Unit is in GB. The disk size to be used for the node configuration | [optional][default to 40]
+**disk_iops** | Option<**i32**> | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional]
+**disk_throughput** | Option<**i32**> | Unit is in MB/s. The disk thoughput to be used for the node configuration | [optional]
 **instance_type** | Option<**String**> | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional]
 **kubernetes** | Option<[**models::KubernetesEnum**](KubernetesEnum.md)> |  | [optional]
 **production** | Option<**bool**> | specific flag to indicate that this cluster is a production one | [optional]
