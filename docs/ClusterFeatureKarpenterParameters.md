@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **spot_enabled** | **bool** |  | 
 **disk_size_in_gib** | **i32** |  | 
 **disk_iops** | Option<**i32**> |  | [optional]
-**disk_throuput** | Option<**i32**> |  | [optional]
+**disk_throughput** | Option<**i32**> |  | [optional]
 **default_service_architecture** | [**models::CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
 **qovery_node_pools** | [**models::KarpenterNodePool**](KarpenterNodePool.md) |  | 
 
