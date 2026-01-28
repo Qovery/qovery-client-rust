@@ -19,8 +19,8 @@ pub struct ClusterFeatureKarpenterParameters {
     pub disk_size_in_gib: i32,
     #[serde(rename = "disk_iops", skip_serializing_if = "Option::is_none")]
     pub disk_iops: Option<i32>,
-    #[serde(rename = "disk_throuput", skip_serializing_if = "Option::is_none")]
-    pub disk_throuput: Option<i32>,
+    #[serde(rename = "disk_throughput", skip_serializing_if = "Option::is_none")]
+    pub disk_throughput: Option<i32>,
     #[serde(rename = "default_service_architecture")]
     pub default_service_architecture: models::CpuArchitectureEnum,
     #[serde(rename = "qovery_node_pools")]
@@ -38,7 +38,7 @@ impl ClusterFeatureKarpenterParameters {
             spot_enabled,
             disk_size_in_gib,
             disk_iops: None,
-            disk_throuput: None,
+            disk_throughput: None,
             default_service_architecture,
             qovery_node_pools,
         }
