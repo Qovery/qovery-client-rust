@@ -42,6 +42,9 @@ pub struct DatabaseEditRequest {
     /// Icon URI representing the database.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
+    /// Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases. Warning: Applying changes immediately may cause a brief service interruption.
+    #[serde(rename = "apply_immediately", skip_serializing_if = "Option::is_none")]
+    pub apply_immediately: Option<bool>,
 }
 
 impl DatabaseEditRequest {
@@ -58,6 +61,7 @@ impl DatabaseEditRequest {
             annotations_groups: None,
             labels_groups: None,
             icon_uri: None,
+            apply_immediately: None,
         }
     }
 }

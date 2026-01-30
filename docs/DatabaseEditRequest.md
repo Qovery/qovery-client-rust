@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **annotations_groups** | Option<[**Vec<models::ServiceAnnotationRequest>**](ServiceAnnotationRequest.md)> |  | [optional]
 **labels_groups** | Option<[**Vec<models::ServiceLabelRequest>**](ServiceLabelRequest.md)> |  | [optional]
 **icon_uri** | Option<**String**> | Icon URI representing the database. | [optional]
+**apply_immediately** | Option<**bool**> | Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases. Warning: Applying changes immediately may cause a brief service interruption.  | [optional][default to false]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
