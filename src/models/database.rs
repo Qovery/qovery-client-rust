@@ -67,10 +67,10 @@ pub struct Database {
     /// indicates if the database disk is encrypted or not
     #[serde(rename = "disk_encrypted", skip_serializing_if = "Option::is_none")]
     pub disk_encrypted: Option<bool>,
-    /// Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases.
-    #[serde(rename = "apply_immediately", skip_serializing_if = "Option::is_none")]
-    pub apply_immediately: Option<bool>,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_database"
+    )]
     pub service_type: models::ServiceTypeEnum,
 }
 
@@ -109,7 +109,6 @@ impl Database {
             maximum_cpu: None,
             maximum_memory: None,
             disk_encrypted: None,
-            apply_immediately: None,
             service_type,
         }
     }
