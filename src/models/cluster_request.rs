@@ -62,6 +62,8 @@ pub struct ClusterRequest {
     pub infrastructure_charts_parameters: Option<models::ClusterInfrastructureChartsParameters>,
     #[serde(rename = "keda", skip_serializing_if = "Option::is_none")]
     pub keda: Option<models::ClusterKeda>,
+    #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
+    pub labels_groups: Option<models::ClusterLabelsGroupList>,
 }
 
 impl ClusterRequest {
@@ -89,6 +91,7 @@ impl ClusterRequest {
             metrics_parameters: None,
             infrastructure_charts_parameters: None,
             keda: None,
+            labels_groups: None,
         }
     }
 }
