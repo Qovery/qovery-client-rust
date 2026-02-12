@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## deploy_database
 
-> models::Status deploy_database(database_id)
+> models::Status deploy_database(database_id, apply_immediately)
 Deploy database 
 
 ### Parameters
@@ -23,6 +23,7 @@ Deploy database
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **database_id** | **uuid::Uuid** | Database ID | [required] |
+**apply_immediately** | Option<**bool**> | Apply immediately regardless of the maintenance window |  |
 
 ### Return type
 
@@ -70,7 +71,7 @@ Name | Type | Description  | Required | Notes
 
 ## redeploy_database
 
-> models::Status redeploy_database(database_id)
+> models::Status redeploy_database(database_id, apply_immediately)
 Redeploy database
 
 ### Parameters
@@ -79,6 +80,7 @@ Redeploy database
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **database_id** | **uuid::Uuid** | Database ID | [required] |
+**apply_immediately** | Option<**bool**> | Apply immediately regardless of the maintenance window |  |
 
 ### Return type
 

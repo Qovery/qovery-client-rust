@@ -71,9 +71,11 @@ pub enum UninstallDatabaseError {
 pub async fn deploy_database(
     configuration: &configuration::Configuration,
     database_id: &str,
+    apply_immediately: Option<bool>,
 ) -> Result<models::Status, Error<DeployDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_database_id = database_id;
+    let p_apply_immediately = apply_immediately;
 
     let uri_str = format!(
         "{}/database/{databaseId}/deploy",
@@ -84,6 +86,9 @@ pub async fn deploy_database(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_apply_immediately {
+        req_builder = req_builder.query(&[("applyImmediately", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -191,9 +196,11 @@ pub async fn reboot_database(
 pub async fn redeploy_database(
     configuration: &configuration::Configuration,
     database_id: &str,
+    apply_immediately: Option<bool>,
 ) -> Result<models::Status, Error<RedeployDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_database_id = database_id;
+    let p_apply_immediately = apply_immediately;
 
     let uri_str = format!(
         "{}/database/{databaseId}/redeploy",
@@ -204,6 +211,9 @@ pub async fn redeploy_database(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_apply_immediately {
+        req_builder = req_builder.query(&[("applyImmediately", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
