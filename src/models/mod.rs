@@ -90,6 +90,8 @@ pub mod application_request;
 pub use self::application_request::ApplicationRequest;
 pub mod application_response_list;
 pub use self::application_response_list::ApplicationResponseList;
+pub mod attach_service_to_deployment_stage_request;
+pub use self::attach_service_to_deployment_stage_request::AttachServiceToDeploymentStageRequest;
 pub mod autoscaling_mode;
 pub use self::autoscaling_mode::AutoscalingMode;
 pub mod available_container_registry_response;

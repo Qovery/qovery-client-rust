@@ -103,14 +103,19 @@ pub enum MoveBeforeDeploymentStageError {
     UnknownValue(serde_json::Value),
 }
 
+/// Moves the service to the specified deployment stage. To skip a service from environment-level deployments while keeping it in its current stage, set `is_skipped: true` in the request body. Moving the service to a different stage automatically un-skips it (sets `is_skipped: false`).
 pub async fn attach_service_to_deployment_stage(
     configuration: &configuration::Configuration,
     deployment_stage_id: &str,
     service_id: &str,
+    attach_service_to_deployment_stage_request: Option<
+        models::AttachServiceToDeploymentStageRequest,
+    >,
 ) -> Result<models::DeploymentStageResponseList, Error<AttachServiceToDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_deployment_stage_id = deployment_stage_id;
     let p_service_id = service_id;
+    let p_attach_service_to_deployment_stage_request = attach_service_to_deployment_stage_request;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}/service/{serviceId}",
@@ -134,6 +139,7 @@ pub async fn attach_service_to_deployment_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
+    req_builder = req_builder.json(&p_attach_service_to_deployment_stage_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

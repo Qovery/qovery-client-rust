@@ -18,8 +18,10 @@ Method | HTTP request | Description
 
 ## attach_service_to_deployment_stage
 
-> models::DeploymentStageResponseList attach_service_to_deployment_stage(deployment_stage_id, service_id)
+> models::DeploymentStageResponseList attach_service_to_deployment_stage(deployment_stage_id, service_id, attach_service_to_deployment_stage_request)
 Attach service to deployment stage
+
+Moves the service to the specified deployment stage. To skip a service from environment-level deployments while keeping it in its current stage, set `is_skipped: true` in the request body. Moving the service to a different stage automatically un-skips it (sets `is_skipped: false`).
 
 ### Parameters
 
@@ -28,6 +30,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **deployment_stage_id** | **uuid::Uuid** | Deployment Stage ID | [required] |
 **service_id** | **uuid::Uuid** | Service ID of an application/job/container/database | [required] |
+**attach_service_to_deployment_stage_request** | Option<[**AttachServiceToDeploymentStageRequest**](AttachServiceToDeploymentStageRequest.md)> |  |  |
 
 ### Return type
 
@@ -39,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

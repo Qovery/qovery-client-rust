@@ -575,6 +575,7 @@ Class | Method | HTTP request | Description
  - [ApplicationNetworkRequest](docs/ApplicationNetworkRequest.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [ApplicationResponseList](docs/ApplicationResponseList.md)
+ - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutoscalingMode](docs/AutoscalingMode.md)
  - [AvailableContainerRegistryResponse](docs/AvailableContainerRegistryResponse.md)
  - [AvailableContainerRegistryResponseList](docs/AvailableContainerRegistryResponseList.md)

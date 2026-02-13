@@ -62,6 +62,7 @@ docs/ApplicationRequest.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
 docs/ApplicationsApi.md
+docs/AttachServiceToDeploymentStageRequest.md
 docs/AutoscalingMode.md
 docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
@@ -915,6 +916,7 @@ src/models/application_network.rs
 src/models/application_network_request.rs
 src/models/application_request.rs
 src/models/application_response_list.rs
+src/models/attach_service_to_deployment_stage_request.rs
 src/models/autoscaling_mode.rs
 src/models/available_container_registry_response.rs
 src/models/available_container_registry_response_list.rs

@@ -25,6 +25,9 @@ pub struct DeploymentStageServiceResponse {
     /// type of the service (i.e APPLICATION, JOB, DATABASE, ...)
     #[serde(rename = "service_type", skip_serializing_if = "Option::is_none")]
     pub service_type: Option<String>,
+    /// whether the service is excluded from environment-level deployments
+    #[serde(rename = "is_skipped", skip_serializing_if = "Option::is_none")]
+    pub is_skipped: Option<bool>,
 }
 
 impl DeploymentStageServiceResponse {
@@ -35,6 +38,7 @@ impl DeploymentStageServiceResponse {
             updated_at: None,
             service_id: None,
             service_type: None,
+            is_skipped: None,
         }
     }
 }
