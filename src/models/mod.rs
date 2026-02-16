@@ -240,8 +240,6 @@ pub mod cluster_keda;
 pub use self::cluster_keda::ClusterKeda;
 pub mod cluster_labels_group;
 pub use self::cluster_labels_group::ClusterLabelsGroup;
-pub mod cluster_labels_group_list;
-pub use self::cluster_labels_group_list::ClusterLabelsGroupList;
 pub mod cluster_lock;
 pub use self::cluster_lock::ClusterLock;
 pub mod cluster_lock_list;

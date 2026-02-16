@@ -96,7 +96,7 @@ pub struct Cluster {
     #[serde(rename = "keda", skip_serializing_if = "Option::is_none")]
     pub keda: Option<models::ClusterKeda>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
-    pub labels_groups: Option<models::ClusterLabelsGroupList>,
+    pub labels_groups: Option<Vec<models::ClusterLabelsGroup>>,
 }
 
 impl Cluster {

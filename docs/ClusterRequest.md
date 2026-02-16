@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **metrics_parameters** | Option<[**models::MetricsParameters**](MetricsParameters.md)> |  | [optional]
 **infrastructure_charts_parameters** | Option<[**models::ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md)> |  | [optional]
 **keda** | Option<[**models::ClusterKeda**](ClusterKeda.md)> |  | [optional]
-**labels_groups** | Option<[**models::ClusterLabelsGroupList**](ClusterLabelsGroupList.md)> |  | [optional]
+**labels_groups** | Option<[**Vec<models::ClusterLabelsGroup>**](ClusterLabelsGroup.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
