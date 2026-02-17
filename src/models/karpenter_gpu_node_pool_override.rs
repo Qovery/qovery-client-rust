@@ -23,6 +23,9 @@ pub struct KarpenterGpuNodePoolOverride {
     pub disk_size_in_gib: Option<i32>,
     #[serde(rename = "spot_enabled", skip_serializing_if = "Option::is_none")]
     pub spot_enabled: Option<bool>,
+    /// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
+    #[serde(rename = "consolidate_after", skip_serializing_if = "Option::is_none")]
+    pub consolidate_after: Option<String>,
 }
 
 impl KarpenterGpuNodePoolOverride {
@@ -33,6 +36,7 @@ impl KarpenterGpuNodePoolOverride {
             requirements: None,
             disk_size_in_gib: None,
             spot_enabled: None,
+            consolidate_after: None,
         }
     }
 }
