@@ -69,6 +69,14 @@ pub struct Organization {
     /// uuid of the user owning the organization
     #[serde(rename = "owner", skip_serializing_if = "Option::is_none")]
     pub owner: Option<uuid::Uuid>,
+    /// If set, indicates a billing-related restriction on the organization. 'NO_CREDIT_CARD' means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction.
+    #[serde(
+        rename = "billing_deployment_restriction",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub billing_deployment_restriction: Option<Option<String>>,
     #[serde(rename = "organization_plan", skip_serializing_if = "Option::is_none")]
     pub organization_plan: Option<models::OrganizationAllOfOrganizationPlan>,
 }
@@ -93,6 +101,7 @@ impl Organization {
             icon_url: None,
             admin_emails: None,
             owner: None,
+            billing_deployment_restriction: None,
             organization_plan: None,
         }
     }
