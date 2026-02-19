@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | 
-**default_rule_labels** | Option<**String**> |  | [optional]
+**default_rule_labels** | Option<**std::collections::HashMap<String, String>**> | Key-value pairs of default labels to be applied to alert rules | [optional]
 **spec_config_secret** | Option<**String**> |  | [optional]
 **spec_external_url** | Option<**String**> |  | [optional]
 **config_name** | Option<**String**> |  | [optional]

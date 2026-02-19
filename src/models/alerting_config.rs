@@ -15,11 +15,14 @@ use serde::{Deserialize, Serialize};
 pub struct AlertingConfig {
     #[serde(rename = "enabled")]
     pub enabled: bool,
+    /// Key-value pairs of default labels to be applied to alert rules
     #[serde(
         rename = "default_rule_labels",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub default_rule_labels: Option<String>,
+    pub default_rule_labels: Option<Option<std::collections::HashMap<String, String>>>,
     #[serde(rename = "spec_config_secret", skip_serializing_if = "Option::is_none")]
     pub spec_config_secret: Option<String>,
     #[serde(rename = "spec_external_url", skip_serializing_if = "Option::is_none")]
