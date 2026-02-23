@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **database_period_redis_period_allowed_cidrs** | Option<**Vec<String>**> | List of CIDRs allowed to access the Redis database | [optional]
 **aws_period_iam_period_admin_group** | Option<**String**> | AWS IAM group name with cluster access | [optional]
 **aws_period_eks_period_ec2_period_metadata_imds** | Option<**String**> | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2  | [optional]
+**aws_period_eks_period_ec2_period_ami** | Option<**String**> | Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket  | [optional][default to AmazonLinux2023]
 **pleco_period_resources_ttl** | Option<**i32**> |  | [optional]
 **registry_period_mirroring_mode** | Option<[**models::RegistryMirroringModeEnum**](RegistryMirroringModeEnum.md)> |  | [optional]
 **nginx_period_vcpu_period_request_in_milli_cpu** | Option<**i32**> | vcpu request in millicores | [optional]

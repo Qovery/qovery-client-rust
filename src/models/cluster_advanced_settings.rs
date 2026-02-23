@@ -120,6 +120,9 @@ pub struct ClusterAdvancedSettings {
     )]
     pub aws_period_eks_period_ec2_period_metadata_imds:
         Option<AwsPeriodEksPeriodEc2PeriodMetadataImds>,
+    /// Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
+    #[serde(rename = "aws.eks.ec2.ami", skip_serializing_if = "Option::is_none")]
+    pub aws_period_eks_period_ec2_period_ami: Option<String>,
     #[serde(
         rename = "pleco.resources_ttl",
         skip_serializing_if = "Option::is_none"
@@ -213,6 +216,7 @@ impl ClusterAdvancedSettings {
             database_period_redis_period_allowed_cidrs: None,
             aws_period_iam_period_admin_group: None,
             aws_period_eks_period_ec2_period_metadata_imds: None,
+            aws_period_eks_period_ec2_period_ami: None,
             pleco_period_resources_ttl: None,
             registry_period_mirroring_mode: None,
             nginx_period_vcpu_period_request_in_milli_cpu: None,
