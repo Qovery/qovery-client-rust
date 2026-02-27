@@ -706,6 +706,7 @@ docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
 docs/TerraformActionsApi.md
 docs/TerraformAdvancedSettings.md
+docs/TerraformAutoDeployConfig.md
 docs/TerraformBackend.md
 docs/TerraformBackendOneOf.md
 docs/TerraformBackendOneOf1.md
@@ -1488,6 +1489,7 @@ src/models/status_kind_enum.rs
 src/models/step_metric_status_enum.rs
 src/models/storage_type_enum.rs
 src/models/terraform_advanced_settings.rs
+src/models/terraform_auto_deploy_config.rs
 src/models/terraform_backend.rs
 src/models/terraform_backend_one_of.rs
 src/models/terraform_backend_one_of_1.rs

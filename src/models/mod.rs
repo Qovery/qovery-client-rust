@@ -1234,6 +1234,8 @@ pub mod storage_type_enum;
 pub use self::storage_type_enum::StorageTypeEnum;
 pub mod terraform_advanced_settings;
 pub use self::terraform_advanced_settings::TerraformAdvancedSettings;
+pub mod terraform_auto_deploy_config;
+pub use self::terraform_auto_deploy_config::TerraformAutoDeployConfig;
 pub mod terraform_backend;
 pub use self::terraform_backend::TerraformBackend;
 pub mod terraform_backend_one_of;
