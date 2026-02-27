@@ -21,6 +21,9 @@ pub struct ClusterRegion {
     pub country: String,
     #[serde(rename = "city")]
     pub city: String,
+    /// List of availability zones supported by this region
+    #[serde(rename = "zones", skip_serializing_if = "Option::is_none")]
+    pub zones: Option<Vec<String>>,
 }
 
 impl ClusterRegion {
@@ -30,6 +33,7 @@ impl ClusterRegion {
             country_code,
             country,
             city,
+            zones: None,
         }
     }
 }
