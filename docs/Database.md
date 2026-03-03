@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **maximum_cpu** | Option<**i32**> | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | [optional]
 **maximum_memory** | Option<**i32**> | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB | [optional]
 **disk_encrypted** | Option<**bool**> | indicates if the database disk is encrypted or not | [optional]
+**disk_type** | Option<**String**> | EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode. | [optional]
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

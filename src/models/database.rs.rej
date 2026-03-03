@@ -1,0 +1,11 @@
+--- src/models/database.rs
++++ src/models/database.rs
+@@ -67,7 +67,7 @@ pub struct Database {
+     /// indicates if the database disk is encrypted or not
+     #[serde(rename = "disk_encrypted", skip_serializing_if = "Option::is_none")]
+     pub disk_encrypted: Option<bool>,
+-    #[serde(rename = "service_type")]
++    #[serde(rename = "service_type", default="models::service_type_enum::service_type_database")]
+     pub service_type: models::ServiceTypeEnum,
+ }
+ 

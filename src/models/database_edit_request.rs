@@ -42,6 +42,9 @@ pub struct DatabaseEditRequest {
     /// Icon URI representing the database.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
+    /// EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode.
+    #[serde(rename = "disk_type", skip_serializing_if = "Option::is_none")]
+    pub disk_type: Option<DiskType>,
 }
 
 impl DatabaseEditRequest {
@@ -58,6 +61,21 @@ impl DatabaseEditRequest {
             annotations_groups: None,
             labels_groups: None,
             icon_uri: None,
+            disk_type: None,
         }
+    }
+}
+/// EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum DiskType {
+    #[serde(rename = "gp2")]
+    Gp2,
+    #[serde(rename = "gp3")]
+    Gp3,
+}
+
+impl Default for DiskType {
+    fn default() -> DiskType {
+        Self::Gp2
     }
 }

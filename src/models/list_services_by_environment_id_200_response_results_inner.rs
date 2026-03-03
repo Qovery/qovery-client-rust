@@ -33,3 +33,18 @@ impl Default for ListServicesByEnvironmentId200ResponseResultsInner {
         Self::Application(Default::default())
     }
 }
+
+/// EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum DiskType {
+    #[serde(rename = "gp2")]
+    Gp2,
+    #[serde(rename = "gp3")]
+    Gp3,
+}
+
+impl Default for DiskType {
+    fn default() -> DiskType {
+        Self::Gp2
+    }
+}
