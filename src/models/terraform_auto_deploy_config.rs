@@ -16,38 +16,31 @@ pub struct TerraformAutoDeployConfig {
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
     /// Action to force a specific Terraform behavior on autodeploy. `DEFAULT`: The action is resolved based on the deployment type:   - Start/Restart -> PLAN_AND_APPLY   - Delete -> DESTROY   - Pause -> PLAN_ONLY
-    #[serde(rename = "auto_deploy_action")]
-    pub auto_deploy_action: AutoDeployAction,
+    #[serde(rename = "terraform_action")]
+    pub terraform_action: TerraformAction,
 }
 
 impl TerraformAutoDeployConfig {
-    pub fn new(
-        auto_deploy: bool,
-        auto_deploy_action: AutoDeployAction,
-    ) -> TerraformAutoDeployConfig {
+    pub fn new(auto_deploy: bool, terraform_action: TerraformAction) -> TerraformAutoDeployConfig {
         TerraformAutoDeployConfig {
             auto_deploy,
-            auto_deploy_action,
+            terraform_action,
         }
     }
 }
 /// Action to force a specific Terraform behavior on autodeploy. `DEFAULT`: The action is resolved based on the deployment type:   - Start/Restart -> PLAN_AND_APPLY   - Delete -> DESTROY   - Pause -> PLAN_ONLY
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum AutoDeployAction {
+pub enum TerraformAction {
     #[serde(rename = "DEFAULT")]
     Default,
     #[serde(rename = "PLAN")]
     Plan,
-    #[serde(rename = "FORCE_UNLOCK")]
-    ForceUnlock,
-    #[serde(rename = "MIGRATE_STATE")]
-    MigrateState,
     #[serde(rename = "NOOP")]
     Noop,
 }
 
-impl Default for AutoDeployAction {
-    fn default() -> AutoDeployAction {
+impl Default for TerraformAction {
+    fn default() -> TerraformAction {
         Self::Default
     }
 }
