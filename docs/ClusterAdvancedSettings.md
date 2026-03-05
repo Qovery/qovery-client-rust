@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **aws_period_cloudwatch_period_eks_logs_retention_days** | Option<**i32**> | Set the number of retention days for EKS Cloudwatch logs | [optional]
 **aws_period_vpc_period_enable_s3_flow_logs** | Option<**bool**> | Enable flow logs for on the VPC and store them in an S3 bucket | [optional]
 **aws_period_vpc_period_flow_logs_retention_days** | Option<**i32**> | Set the number of retention days for flow logs. Disable with value \"0\" | [optional]
+**aws_period_vpc_period_enable_nat_gateway_secondary_eip** | Option<**bool**> | Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits. | [optional]
 **loki_period_log_retention_in_week** | Option<**i32**> | For how long in week loki is going to keep logs of your applications | [optional]
 **registry_period_image_retention_time** | Option<**i32**> | Configure the number of seconds before cleaning images in the registry | [optional]
 **cloud_provider_period_container_registry_period_tags** | Option<**std::collections::HashMap<String, String>**> | Add additional tags on the cluster dedicated registry | [optional]

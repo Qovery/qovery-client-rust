@@ -31,6 +31,12 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub aws_period_vpc_period_flow_logs_retention_days: Option<i32>,
+    /// Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits.
+    #[serde(
+        rename = "aws.vpc.enable_nat_gateway_secondary_eip",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_period_vpc_period_enable_nat_gateway_secondary_eip: Option<bool>,
     /// For how long in week loki is going to keep logs of your applications
     #[serde(
         rename = "loki.log_retention_in_week",
@@ -201,6 +207,7 @@ impl ClusterAdvancedSettings {
             aws_period_cloudwatch_period_eks_logs_retention_days: None,
             aws_period_vpc_period_enable_s3_flow_logs: None,
             aws_period_vpc_period_flow_logs_retention_days: None,
+            aws_period_vpc_period_enable_nat_gateway_secondary_eip: None,
             loki_period_log_retention_in_week: None,
             registry_period_image_retention_time: None,
             cloud_provider_period_container_registry_period_tags: None,
