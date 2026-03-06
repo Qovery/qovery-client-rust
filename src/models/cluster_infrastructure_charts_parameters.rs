@@ -25,6 +25,11 @@ pub struct ClusterInfrastructureChartsParameters {
         skip_serializing_if = "Option::is_none"
     )]
     pub metal_lb_parameters: Option<models::ClusterInfrastructureMetalLbChartParameters>,
+    #[serde(
+        rename = "eks_anywhere_parameters",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub eks_anywhere_parameters: Option<models::ClusterInfrastructureEksAnywhereParameters>,
 }
 
 impl ClusterInfrastructureChartsParameters {
@@ -33,6 +38,7 @@ impl ClusterInfrastructureChartsParameters {
             nginx_parameters: None,
             cert_manager_parameters: None,
             metal_lb_parameters: None,
+            eks_anywhere_parameters: None,
         }
     }
 }
