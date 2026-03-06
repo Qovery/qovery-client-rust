@@ -43,8 +43,13 @@ pub struct DatabaseEditRequest {
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
     /// EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode.
-    #[serde(rename = "disk_type", skip_serializing_if = "Option::is_none")]
-    pub disk_type: Option<DiskType>,
+    #[serde(
+        rename = "disk_type",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub disk_type: Option<Option<DiskType>>,
 }
 
 impl DatabaseEditRequest {
