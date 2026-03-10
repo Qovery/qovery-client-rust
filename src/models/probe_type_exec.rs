@@ -11,13 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// ProbeTypeExec : Execute a command inside the container. The probe succeeds if the command exits with status code 0.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProbeTypeExec {
+    /// Command to execute inside the container, specified as an array of strings. The first element is the executable, followed by its arguments. Example: [\"sh\", \"-c\", \"test -f /tmp/healthy\"]
     #[serde(rename = "command", skip_serializing_if = "Option::is_none")]
     pub command: Option<Vec<String>>,
 }
 
 impl ProbeTypeExec {
+    /// Execute a command inside the container. The probe succeeds if the command exits with status code 0.
     pub fn new() -> ProbeTypeExec {
         ProbeTypeExec { command: None }
     }
