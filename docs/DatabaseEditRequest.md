@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **annotations_groups** | Option<[**Vec<models::ServiceAnnotationRequest>**](ServiceAnnotationRequest.md)> |  | [optional]
 **labels_groups** | Option<[**Vec<models::ServiceLabelRequest>**](ServiceLabelRequest.md)> |  | [optional]
 **icon_uri** | Option<**String**> | Icon URI representing the database. | [optional]
-**disk_type** | Option<**String**> | EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode. | [optional]
+**disk_type** | Option<**DiskType**> | EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode. (enum: gp2, gp3) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -77,13 +77,13 @@ pub async fn deploy_application(
     deploy_request: Option<models::DeployRequest>,
 ) -> Result<models::Status, Error<DeployApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_deploy_request = deploy_request;
+    let p_path_application_id = application_id;
+    let p_body_deploy_request = deploy_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploy",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -103,7 +103,7 @@ pub async fn deploy_application(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_deploy_request);
+    req_builder = req_builder.json(&p_body_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -139,12 +139,12 @@ pub async fn reboot_application(
     application_id: &str,
 ) -> Result<models::Status, Error<RebootApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/restart-service",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -199,12 +199,12 @@ pub async fn redeploy_application(
     application_id: &str,
 ) -> Result<models::Status, Error<RedeployApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/redeploy",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -259,12 +259,12 @@ pub async fn stop_application(
     application_id: &str,
 ) -> Result<models::Status, Error<StopApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/stop",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -321,13 +321,13 @@ pub async fn uninstall_application(
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_body = body;
+    let p_path_application_id = application_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/application/{applicationId}/uninstall",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -347,7 +347,7 @@ pub async fn uninstall_application(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

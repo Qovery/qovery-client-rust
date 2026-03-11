@@ -51,12 +51,12 @@ pub async fn delete_project(
     project_id: &str,
 ) -> Result<(), Error<DeleteProjectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration
         .client
@@ -102,13 +102,13 @@ pub async fn edit_project(
     project_request: Option<models::ProjectRequest>,
 ) -> Result<models::Project, Error<EditProjectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_project_request = project_request;
+    let p_path_project_id = project_id;
+    let p_body_project_request = project_request;
 
     let uri_str = format!(
         "{}/project/{projectId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -126,7 +126,7 @@ pub async fn edit_project(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_project_request);
+    req_builder = req_builder.json(&p_body_project_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -162,12 +162,12 @@ pub async fn get_project(
     project_id: &str,
 ) -> Result<models::Project, Error<GetProjectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

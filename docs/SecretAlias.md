@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **key** | **String** |  | 
 **mount_path** | **String** |  | 
 **scope** | [**models::ApiVariableScopeEnum**](APIVariableScopeEnum.md) |  | 

@@ -94,7 +94,7 @@ pub async fn create_variable(
     variable_request: Option<models::VariableRequest>,
 ) -> Result<models::VariableResponse, Error<CreateVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_request = variable_request;
+    let p_body_variable_request = variable_request;
 
     let uri_str = format!("{}/variable", configuration.base_path);
     let mut req_builder = configuration
@@ -115,7 +115,7 @@ pub async fn create_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_request);
+    req_builder = req_builder.json(&p_body_variable_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -153,13 +153,13 @@ pub async fn create_variable_alias(
     variable_alias_request: Option<models::VariableAliasRequest>,
 ) -> Result<models::VariableResponse, Error<CreateVariableAliasError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_id = variable_id;
-    let p_variable_alias_request = variable_alias_request;
+    let p_path_variable_id = variable_id;
+    let p_body_variable_alias_request = variable_alias_request;
 
     let uri_str = format!(
         "{}/variable/{variableId}/alias",
         configuration.base_path,
-        variableId = crate::apis::urlencode(p_variable_id)
+        variableId = crate::apis::urlencode(p_path_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -179,7 +179,7 @@ pub async fn create_variable_alias(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_alias_request);
+    req_builder = req_builder.json(&p_body_variable_alias_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -217,13 +217,13 @@ pub async fn create_variable_override(
     variable_override_request: Option<models::VariableOverrideRequest>,
 ) -> Result<models::VariableResponse, Error<CreateVariableOverrideError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_id = variable_id;
-    let p_variable_override_request = variable_override_request;
+    let p_path_variable_id = variable_id;
+    let p_body_variable_override_request = variable_override_request;
 
     let uri_str = format!(
         "{}/variable/{variableId}/override",
         configuration.base_path,
-        variableId = crate::apis::urlencode(p_variable_id)
+        variableId = crate::apis::urlencode(p_path_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -243,7 +243,7 @@ pub async fn create_variable_override(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_override_request);
+    req_builder = req_builder.json(&p_body_variable_override_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -280,12 +280,12 @@ pub async fn delete_variable(
     variable_id: &str,
 ) -> Result<(), Error<DeleteVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_id = variable_id;
+    let p_path_variable_id = variable_id;
 
     let uri_str = format!(
         "{}/variable/{variableId}",
         configuration.base_path,
-        variableId = crate::apis::urlencode(p_variable_id)
+        variableId = crate::apis::urlencode(p_path_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -331,13 +331,13 @@ pub async fn edit_variable(
     variable_edit_request: models::VariableEditRequest,
 ) -> Result<models::VariableResponse, Error<EditVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_id = variable_id;
-    let p_variable_edit_request = variable_edit_request;
+    let p_path_variable_id = variable_id;
+    let p_body_variable_edit_request = variable_edit_request;
 
     let uri_str = format!(
         "{}/variable/{variableId}",
         configuration.base_path,
-        variableId = crate::apis::urlencode(p_variable_id)
+        variableId = crate::apis::urlencode(p_path_variable_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -355,7 +355,7 @@ pub async fn edit_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_edit_request);
+    req_builder = req_builder.json(&p_body_variable_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -394,17 +394,17 @@ pub async fn import_environment_variables(
     variable_import_request: Option<models::VariableImportRequest>,
 ) -> Result<models::VariableImport, Error<ImportEnvironmentVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_id = service_id;
-    let p_service_type = service_type;
-    let p_variable_import_request = variable_import_request;
+    let p_query_service_id = service_id;
+    let p_query_service_type = service_type;
+    let p_body_variable_import_request = variable_import_request;
 
     let uri_str = format!("{}/variable/import", configuration.base_path);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    req_builder = req_builder.query(&[("service_id", &p_service_id.to_string())]);
-    req_builder = req_builder.query(&[("service_type", &p_service_type.to_string())]);
+    req_builder = req_builder.query(&[("service_id", &p_query_service_id.to_string())]);
+    req_builder = req_builder.query(&[("service_type", &p_query_service_type.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -419,7 +419,7 @@ pub async fn import_environment_variables(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_import_request);
+    req_builder = req_builder.json(&p_body_variable_import_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -458,16 +458,16 @@ pub async fn list_variables(
     is_secret: Option<bool>,
 ) -> Result<models::VariableResponseList, Error<ListVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_parent_id = parent_id;
-    let p_scope = scope;
-    let p_is_secret = is_secret;
+    let p_query_parent_id = parent_id;
+    let p_query_scope = scope;
+    let p_query_is_secret = is_secret;
 
     let uri_str = format!("{}/variable", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("parent_id", &p_parent_id.to_string())]);
-    req_builder = req_builder.query(&[("scope", &p_scope.to_string())]);
-    if let Some(ref param_value) = p_is_secret {
+    req_builder = req_builder.query(&[("parent_id", &p_query_parent_id.to_string())]);
+    req_builder = req_builder.query(&[("scope", &p_query_scope.to_string())]);
+    if let Some(ref param_value) = p_query_is_secret {
         req_builder = req_builder.query(&[("is_secret", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

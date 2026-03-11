@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**id** | Option<**uuid::Uuid**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **cloud_provider** | Option<[**models::CloudProviderEnum**](CloudProviderEnum.md)> |  | [optional]
 

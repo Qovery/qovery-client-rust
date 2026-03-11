@@ -71,13 +71,13 @@ pub async fn create_environment(
     create_environment_request: Option<models::CreateEnvironmentRequest>,
 ) -> Result<models::Environment, Error<CreateEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_create_environment_request = create_environment_request;
+    let p_path_project_id = project_id;
+    let p_body_create_environment_request = create_environment_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/environment",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration
         .client
@@ -97,7 +97,7 @@ pub async fn create_environment(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_create_environment_request);
+    req_builder = req_builder.json(&p_body_create_environment_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -134,12 +134,12 @@ pub async fn get_project_environment_service_number(
     project_id: &str,
 ) -> Result<models::EnvironmentStatsResponseList, Error<GetProjectEnvironmentServiceNumberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/environment/stats",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -194,12 +194,12 @@ pub async fn get_project_environments_overview(
     project_id: &str,
 ) -> Result<models::EnvironmentOverviewResponseList, Error<GetProjectEnvironmentsOverviewError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/environmentOverview",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -254,12 +254,12 @@ pub async fn get_project_environments_status(
     project_id: &str,
 ) -> Result<models::EnvironmentStatusList, Error<GetProjectEnvironmentsStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/environment/status",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -312,12 +312,12 @@ pub async fn list_environment(
     project_id: &str,
 ) -> Result<models::EnvironmentResponseList, Error<ListEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/environment",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

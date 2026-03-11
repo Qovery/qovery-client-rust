@@ -43,12 +43,12 @@ pub async fn get_service_git_webhook_status(
     service_id: &str,
 ) -> Result<models::GitWebhookStatusResponse, Error<GetServiceGitWebhookStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_id = service_id;
+    let p_path_service_id = service_id;
 
     let uri_str = format!(
         "{}/service/{serviceId}/gitWebhookStatus",
         configuration.base_path,
-        serviceId = crate::apis::urlencode(p_service_id)
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -102,12 +102,12 @@ pub async fn sync_service_git_webhook(
     service_id: &str,
 ) -> Result<models::GitWebhookStatusResponse, Error<SyncServiceGitWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_id = service_id;
+    let p_path_service_id = service_id;
 
     let uri_str = format!(
         "{}/service/{serviceId}/gitWebhook/sync",
         configuration.base_path,
-        serviceId = crate::apis::urlencode(p_service_id)
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration
         .client

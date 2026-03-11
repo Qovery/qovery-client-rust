@@ -43,17 +43,17 @@ pub async fn list_application_deployment_history(
     Error<ListApplicationDeploymentHistoryError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_start_id = start_id;
+    let p_path_application_id = application_id;
+    let p_query_start_id = start_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentHistory",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_start_id {
+    if let Some(ref param_value) = p_query_start_id {
         req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -111,17 +111,17 @@ pub async fn list_application_deployment_history_v2(
     Error<ListApplicationDeploymentHistoryV2Error>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_page_size = page_size;
+    let p_path_application_id = application_id;
+    let p_query_page_size = page_size;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentHistoryV2",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

@@ -91,12 +91,12 @@ pub async fn delete_helm(
     helm_id: &str,
 ) -> Result<(), Error<DeleteHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration
         .client
@@ -142,13 +142,13 @@ pub async fn edit_helm(
     helm_request: Option<models::HelmRequest>,
 ) -> Result<models::HelmResponse, Error<EditHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_helm_request = helm_request;
+    let p_path_helm_id = helm_id;
+    let p_body_helm_request = helm_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -166,7 +166,7 @@ pub async fn edit_helm(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_request);
+    req_builder = req_builder.json(&p_body_helm_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -202,12 +202,12 @@ pub async fn get_helm(
     helm_id: &str,
 ) -> Result<models::HelmResponse, Error<GetHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -261,12 +261,12 @@ pub async fn get_helm_kubernetes_services(
     helm_id: &str,
 ) -> Result<models::KubernetesServiceResponseList, Error<GetHelmKubernetesServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/listServices",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -319,12 +319,12 @@ pub async fn get_helm_status(
     helm_id: &str,
 ) -> Result<models::Status, Error<GetHelmStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/status",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -379,17 +379,17 @@ pub async fn list_helm_commit(
     of: Option<&str>,
 ) -> Result<models::CommitResponseList, Error<ListHelmCommitError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_of = of;
+    let p_path_helm_id = helm_id;
+    let p_query_of = of;
 
     let uri_str = format!(
         "{}/helm/{helmId}/commit",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_of {
+    if let Some(ref param_value) = p_query_of {
         req_builder = req_builder.query(&[("of", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -442,12 +442,12 @@ pub async fn list_helm_links(
     helm_id: &str,
 ) -> Result<models::LinkResponseList, Error<ListHelmLinksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/link",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

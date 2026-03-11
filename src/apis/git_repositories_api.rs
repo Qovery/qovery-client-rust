@@ -80,6 +80,7 @@ pub enum ListDirectoriesFromGitRepositoryError {
     UnknownValue(serde_json::Value),
 }
 
+#[deprecated]
 pub async fn get_bitbucket_repositories(
     configuration: &configuration::Configuration,
 ) -> Result<models::GitRepositoryResponseList, Error<GetBitbucketRepositoriesError>> {
@@ -130,12 +131,13 @@ pub async fn get_bitbucket_repositories(
     }
 }
 
+#[deprecated]
 pub async fn get_bitbucket_repository_branches(
     configuration: &configuration::Configuration,
     name: Option<&str>,
 ) -> Result<models::GitRepositoryBranchResponseList, Error<GetBitbucketRepositoryBranchesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_name = name;
+    let p_query_name = name;
 
     let uri_str = format!(
         "{}/account/bitbucket/repository/branch",
@@ -143,7 +145,7 @@ pub async fn get_bitbucket_repository_branches(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -191,6 +193,7 @@ pub async fn get_bitbucket_repository_branches(
     }
 }
 
+#[deprecated]
 pub async fn get_git_provider_account(
     configuration: &configuration::Configuration,
 ) -> Result<models::GitAuthProviderResponseList, Error<GetGitProviderAccountError>> {
@@ -241,6 +244,7 @@ pub async fn get_git_provider_account(
     }
 }
 
+#[deprecated]
 pub async fn get_github_repositories(
     configuration: &configuration::Configuration,
 ) -> Result<models::GitRepositoryResponseList, Error<GetGithubRepositoriesError>> {
@@ -291,12 +295,13 @@ pub async fn get_github_repositories(
     }
 }
 
+#[deprecated]
 pub async fn get_github_repository_branches(
     configuration: &configuration::Configuration,
     name: Option<&str>,
 ) -> Result<models::GitRepositoryBranchResponseList, Error<GetGithubRepositoryBranchesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_name = name;
+    let p_query_name = name;
 
     let uri_str = format!(
         "{}/account/github/repository/branch",
@@ -304,7 +309,7 @@ pub async fn get_github_repository_branches(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -351,6 +356,7 @@ pub async fn get_github_repository_branches(
     }
 }
 
+#[deprecated]
 pub async fn get_gitlab_repositories(
     configuration: &configuration::Configuration,
 ) -> Result<models::GitRepositoryResponseList, Error<GetGitlabRepositoriesError>> {
@@ -401,12 +407,13 @@ pub async fn get_gitlab_repositories(
     }
 }
 
+#[deprecated]
 pub async fn get_gitlab_repository_branches(
     configuration: &configuration::Configuration,
     name: Option<&str>,
 ) -> Result<models::GitRepositoryBranchResponseList, Error<GetGitlabRepositoryBranchesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_name = name;
+    let p_query_name = name;
 
     let uri_str = format!(
         "{}/account/gitlab/repository/branch",
@@ -414,7 +421,7 @@ pub async fn get_gitlab_repository_branches(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -471,13 +478,13 @@ pub async fn list_directories_from_git_repository(
     Error<ListDirectoriesFromGitRepositoryError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_application_git_repository_request = application_git_repository_request;
+    let p_path_organization_id = organization_id;
+    let p_body_application_git_repository_request = application_git_repository_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/listDirectoriesFromGitRepository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -497,7 +504,7 @@ pub async fn list_directories_from_git_repository(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_git_repository_request);
+    req_builder = req_builder.json(&p_body_application_git_repository_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

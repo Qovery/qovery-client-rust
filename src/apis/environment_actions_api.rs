@@ -153,13 +153,13 @@ pub async fn cancel_environment_deployment(
     cancel_environment_deployment_request: Option<models::CancelEnvironmentDeploymentRequest>,
 ) -> Result<models::EnvironmentStatus, Error<CancelEnvironmentDeploymentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_cancel_environment_deployment_request = cancel_environment_deployment_request;
+    let p_path_environment_id = environment_id;
+    let p_body_cancel_environment_deployment_request = cancel_environment_deployment_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/cancelDeployment",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -179,7 +179,7 @@ pub async fn cancel_environment_deployment(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cancel_environment_deployment_request);
+    req_builder = req_builder.json(&p_body_cancel_environment_deployment_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -216,13 +216,13 @@ pub async fn clean_failed_jobs(
     clean_failed_jobs_request: Option<models::CleanFailedJobsRequest>,
 ) -> Result<models::CleanFailedJobs200Response, Error<CleanFailedJobsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_clean_failed_jobs_request = clean_failed_jobs_request;
+    let p_path_environment_id = environment_id;
+    let p_body_clean_failed_jobs_request = clean_failed_jobs_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/cleanFailedJobs",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -242,7 +242,7 @@ pub async fn clean_failed_jobs(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clean_failed_jobs_request);
+    req_builder = req_builder.json(&p_body_clean_failed_jobs_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -280,13 +280,13 @@ pub async fn clone_environment(
     clone_environment_request: Option<models::CloneEnvironmentRequest>,
 ) -> Result<models::Environment, Error<CloneEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_clone_environment_request = clone_environment_request;
+    let p_path_environment_id = environment_id;
+    let p_body_clone_environment_request = clone_environment_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/clone",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -306,7 +306,7 @@ pub async fn clone_environment(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_environment_request);
+    req_builder = req_builder.json(&p_body_clone_environment_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -344,13 +344,13 @@ pub async fn delete_selected_services(
     environment_service_ids_all_request: Option<models::EnvironmentServiceIdsAllRequest>,
 ) -> Result<(), Error<DeleteSelectedServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_service_ids_all_request = environment_service_ids_all_request;
+    let p_path_environment_id = environment_id;
+    let p_body_environment_service_ids_all_request = environment_service_ids_all_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/service/delete",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -370,7 +370,7 @@ pub async fn delete_selected_services(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_service_ids_all_request);
+    req_builder = req_builder.json(&p_body_environment_service_ids_all_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -397,13 +397,13 @@ pub async fn deploy_all_services(
     deploy_all_request: Option<models::DeployAllRequest>,
 ) -> Result<models::EnvironmentStatus, Error<DeployAllServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_deploy_all_request = deploy_all_request;
+    let p_path_environment_id = environment_id;
+    let p_body_deploy_all_request = deploy_all_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/service/deploy",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -423,7 +423,7 @@ pub async fn deploy_all_services(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_deploy_all_request);
+    req_builder = req_builder.json(&p_body_deploy_all_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -460,12 +460,12 @@ pub async fn deploy_environment(
     environment_id: &str,
 ) -> Result<models::Status, Error<DeployEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploy",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -522,13 +522,13 @@ pub async fn reboot_services(
     reboot_services_request: Option<models::RebootServicesRequest>,
 ) -> Result<models::Status, Error<RebootServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_reboot_services_request = reboot_services_request;
+    let p_path_environment_id = environment_id;
+    let p_body_reboot_services_request = reboot_services_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/service/restart-service",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -548,7 +548,7 @@ pub async fn reboot_services(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_reboot_services_request);
+    req_builder = req_builder.json(&p_body_reboot_services_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -584,12 +584,12 @@ pub async fn redeploy_environment(
     environment_id: &str,
 ) -> Result<models::EnvironmentStatus, Error<RedeployEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/redeploy",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -644,12 +644,12 @@ pub async fn stop_environment(
     environment_id: &str,
 ) -> Result<models::EnvironmentStatus, Error<StopEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/stop",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -706,13 +706,13 @@ pub async fn stop_selected_services(
     environment_service_ids_all_request: Option<models::EnvironmentServiceIdsAllRequest>,
 ) -> Result<(), Error<StopSelectedServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_service_ids_all_request = environment_service_ids_all_request;
+    let p_path_environment_id = environment_id;
+    let p_body_environment_service_ids_all_request = environment_service_ids_all_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/service/stop",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -732,7 +732,7 @@ pub async fn stop_selected_services(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_service_ids_all_request);
+    req_builder = req_builder.json(&p_body_environment_service_ids_all_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -758,12 +758,12 @@ pub async fn uninstall_environment(
     environment_id: &str,
 ) -> Result<serde_json::Value, Error<UninstallEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/uninstall",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -820,13 +820,13 @@ pub async fn uninstall_selected_services(
     environment_service_ids_all_request: Option<models::EnvironmentServiceIdsAllRequest>,
 ) -> Result<(), Error<UninstallSelectedServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_service_ids_all_request = environment_service_ids_all_request;
+    let p_path_environment_id = environment_id;
+    let p_body_environment_service_ids_all_request = environment_service_ids_all_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/service/uninstall",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -846,7 +846,7 @@ pub async fn uninstall_selected_services(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_service_ids_all_request);
+    req_builder = req_builder.json(&p_body_environment_service_ids_all_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

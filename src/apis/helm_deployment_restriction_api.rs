@@ -63,13 +63,13 @@ pub async fn create_helm_deployment_restriction(
 ) -> Result<models::HelmDeploymentRestrictionResponse, Error<CreateHelmDeploymentRestrictionError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_helm_deployment_restriction_request = helm_deployment_restriction_request;
+    let p_path_helm_id = helm_id;
+    let p_body_helm_deployment_restriction_request = helm_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}/deploymentRestriction",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration
         .client
@@ -89,7 +89,7 @@ pub async fn create_helm_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_helm_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -128,14 +128,14 @@ pub async fn delete_helm_deployment_restriction(
     deployment_restriction_id: &str,
 ) -> Result<(), Error<DeleteHelmDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
+    let p_path_helm_id = helm_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        helmId = crate::apis::urlencode(p_path_helm_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration
         .client
@@ -183,15 +183,15 @@ pub async fn edit_helm_deployment_restriction(
     helm_deployment_restriction_request: Option<models::HelmDeploymentRestrictionRequest>,
 ) -> Result<models::HelmDeploymentRestrictionResponse, Error<EditHelmDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
-    let p_helm_deployment_restriction_request = helm_deployment_restriction_request;
+    let p_path_helm_id = helm_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+    let p_body_helm_deployment_restriction_request = helm_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        helmId = crate::apis::urlencode(p_path_helm_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -209,7 +209,7 @@ pub async fn edit_helm_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_helm_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -248,12 +248,12 @@ pub async fn get_helm_deployment_restrictions(
 ) -> Result<models::HelmDeploymentRestrictionResponseList, Error<GetHelmDeploymentRestrictionsError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/deploymentRestriction",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

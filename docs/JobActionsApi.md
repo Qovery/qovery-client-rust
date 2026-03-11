@@ -53,7 +53,7 @@ You must provide a git commit id or an image tag depending on the source locatio
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **uuid::Uuid** | Job ID | [required] |
-**force_event** | Option<[**JobForceEvent**](.md)> | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  |  |
+**force_event** | Option<[**JobForceEvent**](JobForceEvent.md)> | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  |  |
 **job_deploy_request** | Option<[**JobDeployRequest**](JobDeployRequest.md)> |  |  |
 
 ### Return type
@@ -83,7 +83,7 @@ Redeploy job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **uuid::Uuid** | Job ID | [required] |
-**force_event** | Option<[**JobForceEvent**](.md)> | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  |  |
+**force_event** | Option<[**JobForceEvent**](JobForceEvent.md)> | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  |  |
 
 ### Return type
 

@@ -115,14 +115,14 @@ pub async fn delete_invite_member(
     invite_id: &str,
 ) -> Result<(), Error<DeleteInviteMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invite_id = invite_id;
+    let p_path_organization_id = organization_id;
+    let p_path_invite_id = invite_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/inviteMember/{inviteId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        inviteId = crate::apis::urlencode(p_invite_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        inviteId = crate::apis::urlencode(p_path_invite_id)
     );
     let mut req_builder = configuration
         .client
@@ -167,13 +167,13 @@ pub async fn delete_member(
     delete_member_request: Option<models::DeleteMemberRequest>,
 ) -> Result<(), Error<DeleteMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_delete_member_request = delete_member_request;
+    let p_path_organization_id = organization_id;
+    let p_body_delete_member_request = delete_member_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/member",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -193,7 +193,7 @@ pub async fn delete_member(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_delete_member_request);
+    req_builder = req_builder.json(&p_body_delete_member_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -220,13 +220,13 @@ pub async fn edit_organization_member_role(
     member_role_update_request: Option<models::MemberRoleUpdateRequest>,
 ) -> Result<(), Error<EditOrganizationMemberRoleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_member_role_update_request = member_role_update_request;
+    let p_path_organization_id = organization_id;
+    let p_body_member_role_update_request = member_role_update_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/member",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -244,7 +244,7 @@ pub async fn edit_organization_member_role(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_member_role_update_request);
+    req_builder = req_builder.json(&p_body_member_role_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -270,14 +270,14 @@ pub async fn get_member_invitation(
     invite_id: &str,
 ) -> Result<models::InviteMember, Error<GetMemberInvitationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invite_id = invite_id;
+    let p_path_organization_id = organization_id;
+    let p_path_invite_id = invite_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/inviteMember/{inviteId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        inviteId = crate::apis::urlencode(p_invite_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        inviteId = crate::apis::urlencode(p_path_invite_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -330,12 +330,12 @@ pub async fn get_organization_invited_members(
     organization_id: &str,
 ) -> Result<models::InviteMemberResponseList, Error<GetOrganizationInvitedMembersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/inviteMember",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -389,12 +389,12 @@ pub async fn get_organization_members(
     organization_id: &str,
 ) -> Result<models::MemberResponseList, Error<GetOrganizationMembersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/member",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -448,14 +448,14 @@ pub async fn post_accept_invite_member(
     invite_id: &str,
 ) -> Result<models::InviteMember, Error<PostAcceptInviteMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invite_id = invite_id;
+    let p_path_organization_id = organization_id;
+    let p_path_invite_id = invite_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/inviteMember/{inviteId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        inviteId = crate::apis::urlencode(p_invite_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        inviteId = crate::apis::urlencode(p_path_invite_id)
     );
     let mut req_builder = configuration
         .client
@@ -511,13 +511,13 @@ pub async fn post_invite_member(
     invite_member_request: Option<models::InviteMemberRequest>,
 ) -> Result<models::InviteMember, Error<PostInviteMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invite_member_request = invite_member_request;
+    let p_path_organization_id = organization_id;
+    let p_body_invite_member_request = invite_member_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/inviteMember",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -537,7 +537,7 @@ pub async fn post_invite_member(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_invite_member_request);
+    req_builder = req_builder.json(&p_body_invite_member_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -574,13 +574,13 @@ pub async fn post_organization_transfer_ownership(
     transfer_ownership_request: Option<models::TransferOwnershipRequest>,
 ) -> Result<(), Error<PostOrganizationTransferOwnershipError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_transfer_ownership_request = transfer_ownership_request;
+    let p_path_organization_id = organization_id;
+    let p_body_transfer_ownership_request = transfer_ownership_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/transferOwnership",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -600,7 +600,7 @@ pub async fn post_organization_transfer_ownership(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_transfer_ownership_request);
+    req_builder = req_builder.json(&p_body_transfer_ownership_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

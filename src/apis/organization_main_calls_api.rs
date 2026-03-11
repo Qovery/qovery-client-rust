@@ -209,13 +209,13 @@ pub async fn create_git_token(
     git_token_request: Option<models::GitTokenRequest>,
 ) -> Result<models::GitTokenResponse, Error<CreateGitTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_request = git_token_request;
+    let p_path_organization_id = organization_id;
+    let p_body_git_token_request = git_token_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -235,7 +235,7 @@ pub async fn create_git_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_git_token_request);
+    req_builder = req_builder.json(&p_body_git_token_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -271,7 +271,7 @@ pub async fn create_organization(
     organization_request: Option<models::OrganizationRequest>,
 ) -> Result<models::Organization, Error<CreateOrganizationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_request = organization_request;
+    let p_body_organization_request = organization_request;
 
     let uri_str = format!("{}/organization", configuration.base_path);
     let mut req_builder = configuration
@@ -292,7 +292,7 @@ pub async fn create_organization(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_request);
+    req_builder = req_builder.json(&p_body_organization_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -329,14 +329,14 @@ pub async fn delete_git_token(
     git_token_id: &str,
 ) -> Result<(), Error<DeleteGitTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_path_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken/{gitTokenId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        gitTokenId = crate::apis::urlencode(p_git_token_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        gitTokenId = crate::apis::urlencode(p_path_git_token_id)
     );
     let mut req_builder = configuration
         .client
@@ -381,12 +381,12 @@ pub async fn delete_organization(
     organization_id: &str,
 ) -> Result<(), Error<DeleteOrganizationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -432,15 +432,15 @@ pub async fn edit_git_token(
     git_token_request: Option<models::GitTokenRequest>,
 ) -> Result<models::GitTokenResponse, Error<EditGitTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
-    let p_git_token_request = git_token_request;
+    let p_path_organization_id = organization_id;
+    let p_path_git_token_id = git_token_id;
+    let p_body_git_token_request = git_token_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken/{gitTokenId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        gitTokenId = crate::apis::urlencode(p_git_token_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        gitTokenId = crate::apis::urlencode(p_path_git_token_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -458,7 +458,7 @@ pub async fn edit_git_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_git_token_request);
+    req_builder = req_builder.json(&p_body_git_token_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -496,13 +496,13 @@ pub async fn edit_organization(
     organization_edit_request: Option<models::OrganizationEditRequest>,
 ) -> Result<models::Organization, Error<EditOrganizationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_edit_request = organization_edit_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_edit_request = organization_edit_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -520,7 +520,7 @@ pub async fn edit_organization(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_edit_request);
+    req_builder = req_builder.json(&p_body_organization_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -561,10 +561,10 @@ pub async fn get_container_registry_associated_services(
     Error<GetContainerRegistryAssociatedServicesError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
 
-    let uri_str = format!("{}/organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices", configuration.base_path, organizationId=crate::apis::urlencode(p_organization_id), containerRegistryId=crate::apis::urlencode(p_container_registry_id));
+    let uri_str = format!("{}/organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices", configuration.base_path, organizationId=crate::apis::urlencode(p_path_organization_id), containerRegistryId=crate::apis::urlencode(p_path_container_registry_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -620,14 +620,14 @@ pub async fn get_git_token_associated_services(
 ) -> Result<models::GitTokenAssociatedServicesResponseList, Error<GetGitTokenAssociatedServicesError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_path_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken/{gitTokenId}/associatedServices",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        gitTokenId = crate::apis::urlencode(p_git_token_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        gitTokenId = crate::apis::urlencode(p_path_git_token_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -686,14 +686,14 @@ pub async fn get_helm_repository_associated_services(
     Error<GetHelmRepositoryAssociatedServicesError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_id = helm_repository_id;
+    let p_path_organization_id = organization_id;
+    let p_path_helm_repository_id = helm_repository_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        helmRepositoryId = crate::apis::urlencode(p_helm_repository_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        helmRepositoryId = crate::apis::urlencode(p_path_helm_repository_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -747,12 +747,12 @@ pub async fn get_organization(
     organization_id: &str,
 ) -> Result<models::Organization, Error<GetOrganizationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -807,14 +807,14 @@ pub async fn get_organization_git_token(
     git_token_id: &str,
 ) -> Result<models::GitTokenResponse, Error<GetOrganizationGitTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_path_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken/{gitTokenId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        gitTokenId = crate::apis::urlencode(p_git_token_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        gitTokenId = crate::apis::urlencode(p_path_git_token_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -870,12 +870,12 @@ pub async fn list_environments_by_organization_id(
     Error<ListEnvironmentsByOrganizationIdError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/environments",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -980,12 +980,12 @@ pub async fn list_organization_available_roles(
     organization_id: &str,
 ) -> Result<models::OrganizationAvailableRoleList, Error<ListOrganizationAvailableRolesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/availableRole",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1040,12 +1040,12 @@ pub async fn list_organization_credentials(
     organization_id: &str,
 ) -> Result<models::OrganizationCrendentialsResponseList, Error<ListOrganizationCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1099,12 +1099,12 @@ pub async fn list_organization_git_tokens(
     organization_id: &str,
 ) -> Result<models::GitTokenResponseList, Error<ListOrganizationGitTokensError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gitToken",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1161,25 +1161,25 @@ pub async fn list_services_by_organization_id(
 ) -> Result<models::ListServicesByOrganizationId200Response, Error<ListServicesByOrganizationIdError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_project_id = project_id;
-    let p_environment_id = environment_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_query_project_id = project_id;
+    let p_query_environment_id = environment_id;
+    let p_query_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/services",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_project_id {
+    if let Some(ref param_value) = p_query_project_id {
         req_builder = req_builder.query(&[("project_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_environment_id {
+    if let Some(ref param_value) = p_query_environment_id {
         req_builder = req_builder.query(&[("environment_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_cluster_id {
+    if let Some(ref param_value) = p_query_cluster_id {
         req_builder = req_builder.query(&[("cluster_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1232,13 +1232,13 @@ pub async fn list_tf_vars_files_from_git_repo(
     tf_vars_list_request: models::TfVarsListRequest,
 ) -> Result<models::ListTfVarsFilesFromGitRepo200Response, Error<ListTfVarsFilesFromGitRepoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_tf_vars_list_request = tf_vars_list_request;
+    let p_path_organization_id = organization_id;
+    let p_body_tf_vars_list_request = tf_vars_list_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/listTfVarsFilesFromGitRepo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -1258,7 +1258,7 @@ pub async fn list_tf_vars_files_from_git_repo(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_tf_vars_list_request);
+    req_builder = req_builder.json(&p_body_tf_vars_list_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1298,13 +1298,13 @@ pub async fn parse_terraform_variables_from_git_repo(
     Error<ParseTerraformVariablesFromGitRepoError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_terraform_variable_parsing_request = terraform_variable_parsing_request;
+    let p_path_organization_id = organization_id;
+    let p_body_terraform_variable_parsing_request = terraform_variable_parsing_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/parseTerraformVariablesFromGitRepo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -1324,7 +1324,7 @@ pub async fn parse_terraform_variables_from_git_repo(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_variable_parsing_request);
+    req_builder = req_builder.json(&p_body_terraform_variable_parsing_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional]
 **mode** | [**models::EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
-**cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**cluster_id** | **uuid::Uuid** |  | 
 **auto_stop** | Option<**bool**> |  | [optional][default to false]
 **timezone** | **String** |  | 
 **start_time** | **String** |  | 

@@ -39,12 +39,12 @@ pub async fn list_job_deployment_history(
     job_id: &str,
 ) -> Result<models::ListJobDeploymentHistory200Response, Error<ListJobDeploymentHistoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentHistory",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -102,17 +102,17 @@ pub async fn list_job_deployment_history_v2(
     Error<ListJobDeploymentHistoryV2Error>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_page_size = page_size;
+    let p_path_job_id = job_id;
+    let p_query_page_size = page_size;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentHistoryV2",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

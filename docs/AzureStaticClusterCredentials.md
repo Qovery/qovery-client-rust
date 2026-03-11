@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | **String** |  | 
 **azure_subscription_id** | **String** |  | 
 **azure_tenant_id** | **String** |  | 
-**object_type** | **String** |  | 
+**object_type** | **ObjectType** |  (enum: AZURE) | 
 **azure_application_id** | **String** |  | 
 **azure_application_object_id** | **String** |  | 
 

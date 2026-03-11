@@ -108,13 +108,14 @@ pub async fn auto_deploy_container_environments(
     >,
 ) -> Result<models::Status, Error<AutoDeployContainerEnvironmentsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_container_auto_deploy_request = organization_container_auto_deploy_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_container_auto_deploy_request =
+        organization_container_auto_deploy_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/container/deploy",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -134,7 +135,7 @@ pub async fn auto_deploy_container_environments(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_container_auto_deploy_request);
+    req_builder = req_builder.json(&p_body_organization_container_auto_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -173,13 +174,13 @@ pub async fn clone_container(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::ContainerResponse, Error<CloneContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_container_id = container_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/container/{containerId}/clone",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -199,7 +200,7 @@ pub async fn clone_container(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -236,13 +237,13 @@ pub async fn create_container(
     container_request: Option<models::ContainerRequest>,
 ) -> Result<models::ContainerResponse, Error<CreateContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_container_request = container_request;
+    let p_path_environment_id = environment_id;
+    let p_body_container_request = container_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/container",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -262,7 +263,7 @@ pub async fn create_container(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_request);
+    req_builder = req_builder.json(&p_body_container_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -303,14 +304,14 @@ pub async fn get_container_registry_container_status(
     Error<GetContainerRegistryContainerStatusError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        containerRegistryId = crate::apis::urlencode(p_container_registry_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        containerRegistryId = crate::apis::urlencode(p_path_container_registry_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -420,12 +421,12 @@ pub async fn get_environment_container_status(
     environment_id: &str,
 ) -> Result<models::ReferenceObjectStatusResponseList, Error<GetEnvironmentContainerStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/container/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -479,12 +480,12 @@ pub async fn list_container(
     environment_id: &str,
 ) -> Result<models::ContainerResponseList, Error<ListContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/container",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -539,13 +540,13 @@ pub async fn preview_container_environments(
     organization_container_preview_request: Option<models::OrganizationContainerPreviewRequest>,
 ) -> Result<models::Status, Error<PreviewContainerEnvironmentsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_container_preview_request = organization_container_preview_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_container_preview_request = organization_container_preview_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/container/preview",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -565,7 +566,7 @@ pub async fn preview_container_environments(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_container_preview_request);
+    req_builder = req_builder.json(&p_body_organization_container_preview_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**project_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**project_id** | **uuid::Uuid** |  | 
 **project_name** | **String** |  | 
-**environment_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**environment_id** | **uuid::Uuid** |  | 
 **environment_name** | **String** |  | 
-**service_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**service_id** | **uuid::Uuid** |  | 
 **service_name** | **String** |  | 
 **service_type** | [**models::HelmRepositoryAssociatedServiceType**](HelmRepositoryAssociatedServiceType.md) |  | 
 

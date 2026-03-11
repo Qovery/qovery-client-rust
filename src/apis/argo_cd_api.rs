@@ -62,13 +62,13 @@ pub async fn check_argo_cd_connection(
     argo_cd_credentials_request: models::ArgoCdCredentialsRequest,
 ) -> Result<models::ArgoCdConnectionCheckResponse, Error<CheckArgoCdConnectionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_argo_cd_credentials_request = argo_cd_credentials_request;
+    let p_path_cluster_id = cluster_id;
+    let p_body_argo_cd_credentials_request = argo_cd_credentials_request;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/argoCdConfig/check",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -88,7 +88,7 @@ pub async fn check_argo_cd_connection(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_argo_cd_credentials_request);
+    req_builder = req_builder.json(&p_body_argo_cd_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -125,12 +125,12 @@ pub async fn delete_argo_cd_credentials(
     cluster_id: &str,
 ) -> Result<(), Error<DeleteArgoCdCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/argoCdConfig",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -175,12 +175,12 @@ pub async fn get_argo_cd_credentials(
     cluster_id: &str,
 ) -> Result<models::ArgoCdCredentialsResponse, Error<GetArgoCdCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/argoCdConfig",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -235,13 +235,13 @@ pub async fn save_argo_cd_credentials(
     argo_cd_credentials_request: models::ArgoCdCredentialsRequest,
 ) -> Result<models::ArgoCdCredentialsResponse, Error<SaveArgoCdCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_argo_cd_credentials_request = argo_cd_credentials_request;
+    let p_path_cluster_id = cluster_id;
+    let p_body_argo_cd_credentials_request = argo_cd_credentials_request;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/argoCdConfig",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -261,7 +261,7 @@ pub async fn save_argo_cd_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_argo_cd_credentials_request);
+    req_builder = req_builder.json(&p_body_argo_cd_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

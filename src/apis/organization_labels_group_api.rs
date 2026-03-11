@@ -80,13 +80,13 @@ pub async fn create_organization_labels_group(
     organization_labels_group_create_request: Option<models::OrganizationLabelsGroupCreateRequest>,
 ) -> Result<models::OrganizationLabelsGroupResponse, Error<CreateOrganizationLabelsGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_labels_group_create_request = organization_labels_group_create_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_labels_group_create_request = organization_labels_group_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -106,7 +106,7 @@ pub async fn create_organization_labels_group(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_labels_group_create_request);
+    req_builder = req_builder.json(&p_body_organization_labels_group_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -145,14 +145,14 @@ pub async fn delete_organization_labels_group(
     labels_group_id: &str,
 ) -> Result<(), Error<DeleteOrganizationLabelsGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_labels_group_id = labels_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_labels_group_id = labels_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups/{labelsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        labelsGroupId = crate::apis::urlencode(p_labels_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        labelsGroupId = crate::apis::urlencode(p_path_labels_group_id)
     );
     let mut req_builder = configuration
         .client
@@ -200,15 +200,15 @@ pub async fn edit_organization_labels_group(
     organization_labels_group_create_request: Option<models::OrganizationLabelsGroupCreateRequest>,
 ) -> Result<models::OrganizationLabelsGroupResponse, Error<EditOrganizationLabelsGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_labels_group_id = labels_group_id;
-    let p_organization_labels_group_create_request = organization_labels_group_create_request;
+    let p_path_organization_id = organization_id;
+    let p_path_labels_group_id = labels_group_id;
+    let p_body_organization_labels_group_create_request = organization_labels_group_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups/{labelsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        labelsGroupId = crate::apis::urlencode(p_labels_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        labelsGroupId = crate::apis::urlencode(p_path_labels_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -226,7 +226,7 @@ pub async fn edit_organization_labels_group(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_labels_group_create_request);
+    req_builder = req_builder.json(&p_body_organization_labels_group_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -267,14 +267,14 @@ pub async fn get_organization_labels_group_associated_items(
     Error<GetOrganizationLabelsGroupAssociatedItemsError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_labels_group_id = labels_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_labels_group_id = labels_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups/{labelsGroupId}/associatedItems",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        labelsGroupId = crate::apis::urlencode(p_labels_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        labelsGroupId = crate::apis::urlencode(p_path_labels_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -330,14 +330,14 @@ pub async fn get_organization_labelss_group(
     labels_group_id: &str,
 ) -> Result<models::OrganizationLabelsGroupResponse, Error<GetOrganizationLabelssGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_labels_group_id = labels_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_labels_group_id = labels_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups/{labelsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        labelsGroupId = crate::apis::urlencode(p_labels_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        labelsGroupId = crate::apis::urlencode(p_path_labels_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -392,12 +392,12 @@ pub async fn list_organization_labels_group(
 ) -> Result<models::ListOrganizationLabelsGroup200Response, Error<ListOrganizationLabelsGroupError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/labelsGroups",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

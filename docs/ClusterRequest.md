@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **kubernetes** | Option<[**models::KubernetesEnum**](KubernetesEnum.md)> |  | [optional]
 **production** | Option<**bool**> | specific flag to indicate that this cluster is a production one | [optional]
 **ssh_keys** | Option<**Vec<String>**> | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional]
-**features** | Option<[**Vec<models::ClusterRequestFeaturesInner>**](ClusterRequest_features_inner.md)> |  | [optional]
+**features** | Option<[**Vec<models::ClusterRequestFeaturesInner>**](ClusterRequestFeaturesInner.md)> |  | [optional]
 **metrics_parameters** | Option<[**models::MetricsParameters**](MetricsParameters.md)> |  | [optional]
 **infrastructure_charts_parameters** | Option<[**models::ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md)> |  | [optional]
 **keda** | Option<[**models::ClusterKeda**](ClusterKeda.md)> |  | [optional]

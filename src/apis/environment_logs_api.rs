@@ -39,12 +39,12 @@ pub async fn list_environment_log(
     environment_id: &str,
 ) -> Result<models::EnvironmentLogResponseList, Error<ListEnvironmentLogError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/log",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -99,17 +99,17 @@ pub async fn list_environment_logs(
     version: Option<&str>,
 ) -> Result<Vec<models::EnvironmentLogs>, Error<ListEnvironmentLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_version = version;
+    let p_path_environment_id = environment_id;
+    let p_query_version = version;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/logs",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_version {
+    if let Some(ref param_value) = p_query_version {
         req_builder = req_builder.query(&[("version", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | Option<**String**> |  | [optional]
+**kind** | Option<**Kind**> |  (enum: MANAGED_BY_QOVERY) | [optional]
 **resource_profile** | Option<[**models::ObservabilityResourceProfile**](ObservabilityResourceProfile.md)> |  | [optional]
 **cloud_watch_export_config** | Option<[**models::CloudWatchExportConfig**](CloudWatchExportConfig.md)> |  | [optional]
 **high_availability** | Option<**bool**> |  | [optional]

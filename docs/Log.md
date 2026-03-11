@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **created_at** | **String** |  | 
 **message** | **String** |  | 
 **pod_name** | Option<**String**> |  | [optional]

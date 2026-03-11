@@ -80,12 +80,12 @@ pub async fn check_application_custom_domain(
     application_id: &str,
 ) -> Result<models::CheckedCustomDomainsResponse, Error<CheckApplicationCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/checkCustomDomain",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -140,13 +140,13 @@ pub async fn create_application_custom_domain(
     custom_domain_request: Option<models::CustomDomainRequest>,
 ) -> Result<models::CustomDomain, Error<CreateApplicationCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_custom_domain_request = custom_domain_request;
+    let p_path_application_id = application_id;
+    let p_body_custom_domain_request = custom_domain_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/customDomain",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -166,7 +166,7 @@ pub async fn create_application_custom_domain(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_custom_domain_request);
+    req_builder = req_builder.json(&p_body_custom_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -205,14 +205,14 @@ pub async fn delete_custom_domain(
     custom_domain_id: &str,
 ) -> Result<(), Error<DeleteCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_custom_domain_id = custom_domain_id;
+    let p_path_application_id = application_id;
+    let p_path_custom_domain_id = custom_domain_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/customDomain/{customDomainId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        applicationId = crate::apis::urlencode(p_path_application_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration
         .client
@@ -259,15 +259,15 @@ pub async fn edit_custom_domain(
     custom_domain_request: Option<models::CustomDomainRequest>,
 ) -> Result<models::CustomDomain, Error<EditCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_custom_domain_id = custom_domain_id;
-    let p_custom_domain_request = custom_domain_request;
+    let p_path_application_id = application_id;
+    let p_path_custom_domain_id = custom_domain_id;
+    let p_body_custom_domain_request = custom_domain_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/customDomain/{customDomainId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        applicationId = crate::apis::urlencode(p_path_application_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -285,7 +285,7 @@ pub async fn edit_custom_domain(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_custom_domain_request);
+    req_builder = req_builder.json(&p_body_custom_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -322,14 +322,14 @@ pub async fn get_custom_domain_status(
     custom_domain_id: &str,
 ) -> Result<models::CustomDomain, Error<GetCustomDomainStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_custom_domain_id = custom_domain_id;
+    let p_path_application_id = application_id;
+    let p_path_custom_domain_id = custom_domain_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/customDomain/{customDomainId}/status",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        applicationId = crate::apis::urlencode(p_path_application_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -382,12 +382,12 @@ pub async fn list_application_custom_domain(
     application_id: &str,
 ) -> Result<models::CustomDomainResponseList, Error<ListApplicationCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/customDomain",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

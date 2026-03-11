@@ -41,13 +41,13 @@ pub async fn edit_helm_advanced_settings(
     helm_advanced_settings: Option<models::HelmAdvancedSettings>,
 ) -> Result<models::HelmAdvancedSettings, Error<EditHelmAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_helm_advanced_settings = helm_advanced_settings;
+    let p_path_helm_id = helm_id;
+    let p_body_helm_advanced_settings = helm_advanced_settings;
 
     let uri_str = format!(
         "{}/helm/{helmId}/advancedSettings",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -65,7 +65,7 @@ pub async fn edit_helm_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_advanced_settings);
+    req_builder = req_builder.json(&p_body_helm_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -102,12 +102,12 @@ pub async fn get_helm_advanced_settings(
     helm_id: &str,
 ) -> Result<models::HelmAdvancedSettings, Error<GetHelmAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/advancedSettings",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

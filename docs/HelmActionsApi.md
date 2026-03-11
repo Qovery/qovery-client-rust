@@ -24,7 +24,7 @@ You must provide a git commit id or a helm version depending on the source locat
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **helm_id** | **uuid::Uuid** | Helm ID | [required] |
-**force_event** | Option<[**HelmForceEvent**](.md)> | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  |  |
+**force_event** | Option<[**HelmForceEvent**](HelmForceEvent.md)> | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  |  |
 **helm_deploy_request** | Option<[**HelmDeployRequest**](HelmDeployRequest.md)> |  |  |
 
 ### Return type
@@ -54,7 +54,7 @@ Redeploy helm
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **helm_id** | **uuid::Uuid** | Helm ID | [required] |
-**force_event** | Option<[**HelmForceEvent**](.md)> | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  |  |
+**force_event** | Option<[**HelmForceEvent**](HelmForceEvent.md)> | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  |  |
 
 ### Return type
 

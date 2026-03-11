@@ -70,7 +70,7 @@ pub async fn create_alert_rule(
     alert_rule_creation_request: Option<models::AlertRuleCreationRequest>,
 ) -> Result<models::AlertRuleResponse, Error<CreateAlertRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_rule_creation_request = alert_rule_creation_request;
+    let p_body_alert_rule_creation_request = alert_rule_creation_request;
 
     let uri_str = format!("{}/alert-rules", configuration.base_path);
     let mut req_builder = configuration
@@ -91,7 +91,7 @@ pub async fn create_alert_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_rule_creation_request);
+    req_builder = req_builder.json(&p_body_alert_rule_creation_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -128,12 +128,12 @@ pub async fn delete_alert_rule(
     alert_rule_id: &str,
 ) -> Result<(), Error<DeleteAlertRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_rule_id = alert_rule_id;
+    let p_path_alert_rule_id = alert_rule_id;
 
     let uri_str = format!(
         "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
-        alertRuleId = crate::apis::urlencode(p_alert_rule_id)
+        alertRuleId = crate::apis::urlencode(p_path_alert_rule_id)
     );
     let mut req_builder = configuration
         .client
@@ -179,13 +179,13 @@ pub async fn edit_alert_rule(
     alert_rule_edit_request: Option<models::AlertRuleEditRequest>,
 ) -> Result<models::AlertRuleResponse, Error<EditAlertRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_rule_id = alert_rule_id;
-    let p_alert_rule_edit_request = alert_rule_edit_request;
+    let p_path_alert_rule_id = alert_rule_id;
+    let p_body_alert_rule_edit_request = alert_rule_edit_request;
 
     let uri_str = format!(
         "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
-        alertRuleId = crate::apis::urlencode(p_alert_rule_id)
+        alertRuleId = crate::apis::urlencode(p_path_alert_rule_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -203,7 +203,7 @@ pub async fn edit_alert_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_rule_edit_request);
+    req_builder = req_builder.json(&p_body_alert_rule_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -240,12 +240,12 @@ pub async fn get_alert_rule(
     alert_rule_id: &str,
 ) -> Result<models::AlertRuleResponse, Error<GetAlertRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_rule_id = alert_rule_id;
+    let p_path_alert_rule_id = alert_rule_id;
 
     let uri_str = format!(
         "{}/alert-rules/{alertRuleId}",
         configuration.base_path,
-        alertRuleId = crate::apis::urlencode(p_alert_rule_id)
+        alertRuleId = crate::apis::urlencode(p_path_alert_rule_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -299,12 +299,12 @@ pub async fn get_alert_rules(
     organization_id: &str,
 ) -> Result<models::AlertRuleList, Error<GetAlertRulesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/alert-rules",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

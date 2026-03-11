@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cluster_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**cluster_id** | Option<**uuid::Uuid**> |  | [optional]
 **status** | Option<[**models::ClusterStateEnum**](ClusterStateEnum.md)> |  | [optional]
 **is_deployed** | Option<**bool**> |  | [optional]
 **next_k8s_available_version** | Option<**String**> |  | [optional]

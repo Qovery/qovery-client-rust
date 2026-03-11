@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | **String** | stage name | 
 **steps** | Option<[**models::StageStepMetrics**](StageStepMetrics.md)> |  | [optional]
 **description** | **String** |  | 

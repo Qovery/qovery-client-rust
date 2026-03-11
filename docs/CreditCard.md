@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **created_at** | **String** |  | 
 **expiry_month** | **i32** |  | 
 **expiry_year** | **i32** |  | 

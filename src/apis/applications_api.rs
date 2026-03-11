@@ -72,13 +72,13 @@ pub async fn clone_application(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::Application, Error<CloneApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_application_id = application_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/clone",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -98,7 +98,7 @@ pub async fn clone_application(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -135,13 +135,13 @@ pub async fn create_application(
     application_request: Option<models::ApplicationRequest>,
 ) -> Result<models::Application, Error<CreateApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_application_request = application_request;
+    let p_path_environment_id = environment_id;
+    let p_body_application_request = application_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/application",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -161,7 +161,7 @@ pub async fn create_application(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_request);
+    req_builder = req_builder.json(&p_body_application_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -255,12 +255,12 @@ pub async fn get_environment_application_status(
 ) -> Result<models::ReferenceObjectStatusResponseList, Error<GetEnvironmentApplicationStatusError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/application/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -314,12 +314,12 @@ pub async fn list_application(
     environment_id: &str,
 ) -> Result<models::ApplicationResponseList, Error<ListApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/application",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

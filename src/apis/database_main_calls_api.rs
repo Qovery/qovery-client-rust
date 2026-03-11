@@ -92,12 +92,12 @@ pub async fn delete_database(
     database_id: &str,
 ) -> Result<(), Error<DeleteDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -143,13 +143,13 @@ pub async fn edit_database(
     database_edit_request: Option<models::DatabaseEditRequest>,
 ) -> Result<models::Database, Error<EditDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_database_edit_request = database_edit_request;
+    let p_path_database_id = database_id;
+    let p_body_database_edit_request = database_edit_request;
 
     let uri_str = format!(
         "{}/database/{databaseId}",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -167,7 +167,7 @@ pub async fn edit_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_database_edit_request);
+    req_builder = req_builder.json(&p_body_database_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -204,13 +204,13 @@ pub async fn edit_database_credentials(
     credentials_request: Option<models::CredentialsRequest>,
 ) -> Result<models::Credentials, Error<EditDatabaseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_credentials_request = credentials_request;
+    let p_path_database_id = database_id;
+    let p_body_credentials_request = credentials_request;
 
     let uri_str = format!(
         "{}/database/{databaseId}/masterCredentials",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -228,7 +228,7 @@ pub async fn edit_database_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_credentials_request);
+    req_builder = req_builder.json(&p_body_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -264,12 +264,12 @@ pub async fn get_database(
     database_id: &str,
 ) -> Result<models::Database, Error<GetDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -322,12 +322,12 @@ pub async fn get_database_master_credentials(
     database_id: &str,
 ) -> Result<models::Credentials, Error<GetDatabaseMasterCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/masterCredentials",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -380,12 +380,12 @@ pub async fn get_database_status(
     database_id: &str,
 ) -> Result<models::Status, Error<GetDatabaseStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/status",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -438,12 +438,12 @@ pub async fn list_database_version(
     database_id: &str,
 ) -> Result<models::VersionResponseList, Error<ListDatabaseVersionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/version",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

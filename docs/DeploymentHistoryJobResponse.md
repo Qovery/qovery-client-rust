@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **name** | Option<**String**> | name of the job | [optional]
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **image_name** | Option<**String**> |  | [optional]
 **tag** | Option<**String**> |  | [optional]
 **commit** | Option<[**models::Commit**](Commit.md)> |  | [optional]
-**schedule** | Option<[**models::DeploymentHistoryJobResponseAllOfSchedule**](DeploymentHistoryJobResponse_allOf_schedule.md)> |  | [optional]
+**schedule** | Option<[**models::DeploymentHistoryJobResponseAllOfSchedule**](DeploymentHistoryJobResponseAllOfSchedule.md)> |  | [optional]
 **arguments** | Option<**Vec<String>**> |  | [optional]
 **entrypoint** | Option<**String**> |  | [optional]
 

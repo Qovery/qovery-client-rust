@@ -91,13 +91,13 @@ pub async fn create_helm_repository(
     helm_repository_request: Option<models::HelmRepositoryRequest>,
 ) -> Result<models::HelmRepositoryResponse, Error<CreateHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_request = helm_repository_request;
+    let p_path_organization_id = organization_id;
+    let p_body_helm_repository_request = helm_repository_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -117,7 +117,7 @@ pub async fn create_helm_repository(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_repository_request);
+    req_builder = req_builder.json(&p_body_helm_repository_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -154,14 +154,14 @@ pub async fn delete_helm_repository(
     helm_repository_id: &str,
 ) -> Result<(), Error<DeleteHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_id = helm_repository_id;
+    let p_path_organization_id = organization_id;
+    let p_path_helm_repository_id = helm_repository_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository/{helmRepositoryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        helmRepositoryId = crate::apis::urlencode(p_helm_repository_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        helmRepositoryId = crate::apis::urlencode(p_path_helm_repository_id)
     );
     let mut req_builder = configuration
         .client
@@ -207,15 +207,15 @@ pub async fn edit_helm_repository(
     helm_repository_request: Option<models::HelmRepositoryRequest>,
 ) -> Result<models::HelmRepositoryResponse, Error<EditHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_id = helm_repository_id;
-    let p_helm_repository_request = helm_repository_request;
+    let p_path_organization_id = organization_id;
+    let p_path_helm_repository_id = helm_repository_id;
+    let p_body_helm_repository_request = helm_repository_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository/{helmRepositoryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        helmRepositoryId = crate::apis::urlencode(p_helm_repository_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        helmRepositoryId = crate::apis::urlencode(p_path_helm_repository_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -233,7 +233,7 @@ pub async fn edit_helm_repository(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_repository_request);
+    req_builder = req_builder.json(&p_body_helm_repository_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -271,19 +271,19 @@ pub async fn get_helm_charts(
     chart_name: Option<&str>,
 ) -> Result<models::HelmVersionResponseList, Error<GetHelmChartsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_id = helm_repository_id;
-    let p_chart_name = chart_name;
+    let p_path_organization_id = organization_id;
+    let p_path_helm_repository_id = helm_repository_id;
+    let p_query_chart_name = chart_name;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository/{helmRepositoryId}/charts",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        helmRepositoryId = crate::apis::urlencode(p_helm_repository_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        helmRepositoryId = crate::apis::urlencode(p_path_helm_repository_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_chart_name {
+    if let Some(ref param_value) = p_query_chart_name {
         req_builder = req_builder.query(&[("chartName", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -336,14 +336,14 @@ pub async fn get_helm_repository(
     helm_repository_id: &str,
 ) -> Result<models::HelmRepositoryResponse, Error<GetHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_helm_repository_id = helm_repository_id;
+    let p_path_organization_id = organization_id;
+    let p_path_helm_repository_id = helm_repository_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository/{helmRepositoryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        helmRepositoryId = crate::apis::urlencode(p_helm_repository_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        helmRepositoryId = crate::apis::urlencode(p_path_helm_repository_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -447,12 +447,12 @@ pub async fn list_helm_repository(
     organization_id: &str,
 ) -> Result<models::HelmRepositoryResponseList, Error<ListHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/helmRepository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -62,13 +62,13 @@ pub async fn create_job_deployment_restriction(
     job_deployment_restriction_request: Option<models::JobDeploymentRestrictionRequest>,
 ) -> Result<models::JobDeploymentRestrictionResponse, Error<CreateJobDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_job_deployment_restriction_request = job_deployment_restriction_request;
+    let p_path_job_id = job_id;
+    let p_body_job_deployment_restriction_request = job_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentRestriction",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -88,7 +88,7 @@ pub async fn create_job_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_job_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -127,14 +127,14 @@ pub async fn delete_job_deployment_restriction(
     deployment_restriction_id: &str,
 ) -> Result<(), Error<DeleteJobDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
+    let p_path_job_id = job_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        jobId = crate::apis::urlencode(p_path_job_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration
         .client
@@ -182,15 +182,15 @@ pub async fn edit_job_deployment_restriction(
     job_deployment_restriction_request: Option<models::JobDeploymentRestrictionRequest>,
 ) -> Result<models::JobDeploymentRestrictionResponse, Error<EditJobDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
-    let p_job_deployment_restriction_request = job_deployment_restriction_request;
+    let p_path_job_id = job_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+    let p_body_job_deployment_restriction_request = job_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        jobId = crate::apis::urlencode(p_path_job_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -208,7 +208,7 @@ pub async fn edit_job_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_job_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -246,12 +246,12 @@ pub async fn get_job_deployment_restrictions(
 ) -> Result<models::JobDeploymentRestrictionResponseList, Error<GetJobDeploymentRestrictionsError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploymentRestriction",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -81,12 +81,12 @@ pub async fn check_helm_custom_domain(
     helm_id: &str,
 ) -> Result<models::CheckedCustomDomainsResponse, Error<CheckHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/checkCustomDomain",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -141,13 +141,13 @@ pub async fn create_helm_custom_domain(
     custom_domain_request: Option<models::CustomDomainRequest>,
 ) -> Result<models::CustomDomain, Error<CreateHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_custom_domain_request = custom_domain_request;
+    let p_path_helm_id = helm_id;
+    let p_body_custom_domain_request = custom_domain_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}/customDomain",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration
         .client
@@ -167,7 +167,7 @@ pub async fn create_helm_custom_domain(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_custom_domain_request);
+    req_builder = req_builder.json(&p_body_custom_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -205,14 +205,14 @@ pub async fn delete_helm_custom_domain(
     custom_domain_id: &str,
 ) -> Result<(), Error<DeleteHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_custom_domain_id = custom_domain_id;
+    let p_path_helm_id = helm_id;
+    let p_path_custom_domain_id = custom_domain_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/customDomain/{customDomainId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        helmId = crate::apis::urlencode(p_path_helm_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration
         .client
@@ -259,15 +259,15 @@ pub async fn edit_helm_custom_domain(
     custom_domain_request: Option<models::CustomDomainRequest>,
 ) -> Result<models::CustomDomain, Error<EditHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_custom_domain_id = custom_domain_id;
-    let p_custom_domain_request = custom_domain_request;
+    let p_path_helm_id = helm_id;
+    let p_path_custom_domain_id = custom_domain_id;
+    let p_body_custom_domain_request = custom_domain_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}/customDomain/{customDomainId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        helmId = crate::apis::urlencode(p_path_helm_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -285,7 +285,7 @@ pub async fn edit_helm_custom_domain(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_custom_domain_request);
+    req_builder = req_builder.json(&p_body_custom_domain_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -323,14 +323,14 @@ pub async fn get_helm_custom_domain(
     custom_domain_id: &str,
 ) -> Result<models::CustomDomain, Error<GetHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_custom_domain_id = custom_domain_id;
+    let p_path_helm_id = helm_id;
+    let p_path_custom_domain_id = custom_domain_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/customDomain/{customDomainId}",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id),
-        customDomainId = crate::apis::urlencode(p_custom_domain_id)
+        helmId = crate::apis::urlencode(p_path_helm_id),
+        customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -384,12 +384,12 @@ pub async fn list_helm_custom_domain(
     helm_id: &str,
 ) -> Result<models::CustomDomainResponseList, Error<ListHelmCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
+    let p_path_helm_id = helm_id;
 
     let uri_str = format!(
         "{}/helm/{helmId}/customDomain",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

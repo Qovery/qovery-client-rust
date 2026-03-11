@@ -67,13 +67,14 @@ pub async fn create_application_deployment_restriction(
     Error<CreateApplicationDeploymentRestrictionError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_application_deployment_restriction_request = application_deployment_restriction_request;
+    let p_path_application_id = application_id;
+    let p_body_application_deployment_restriction_request =
+        application_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentRestriction",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -93,7 +94,7 @@ pub async fn create_application_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_application_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -132,14 +133,14 @@ pub async fn delete_application_deployment_restriction(
     deployment_restriction_id: &str,
 ) -> Result<(), Error<DeleteApplicationDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
+    let p_path_application_id = application_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        applicationId = crate::apis::urlencode(p_path_application_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration
         .client
@@ -192,15 +193,16 @@ pub async fn edit_application_deployment_restriction(
     Error<EditApplicationDeploymentRestrictionError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
-    let p_application_deployment_restriction_request = application_deployment_restriction_request;
+    let p_path_application_id = application_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+    let p_body_application_deployment_restriction_request =
+        application_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        applicationId = crate::apis::urlencode(p_path_application_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -218,7 +220,7 @@ pub async fn edit_application_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_application_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -259,12 +261,12 @@ pub async fn get_application_deployment_restrictions(
     Error<GetApplicationDeploymentRestrictionsError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/deploymentRestriction",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

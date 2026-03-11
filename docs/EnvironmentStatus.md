@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **state** | [**models::StateEnum**](StateEnum.md) |  | 
 **last_deployment_date** | Option<**String**> |  | [optional]
 **last_deployment_state** | [**models::StateEnum**](StateEnum.md) |  | 

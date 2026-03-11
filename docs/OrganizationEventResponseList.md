@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**links** | Option<[**models::OrganizationEventResponseListLinks**](OrganizationEventResponseList_links.md)> |  | [optional]
+**links** | Option<[**models::OrganizationEventResponseListLinks**](OrganizationEventResponseListLinks.md)> |  | [optional]
 **organization_max_limit_reached** | Option<**bool**> | Indicates if you cannot see previous logs according to your organization max limit | [optional]
 **events** | Option<[**Vec<models::OrganizationEventResponse>**](OrganizationEventResponse.md)> |  | [optional]
 

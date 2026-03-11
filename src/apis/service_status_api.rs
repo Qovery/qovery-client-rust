@@ -26,14 +26,14 @@ pub async fn get_ingress_deployment_status(
     service_id: &str,
 ) -> Result<models::IngressDeploymentStatusResponse, Error<GetIngressDeploymentStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_type = service_type;
-    let p_service_id = service_id;
+    let p_path_service_type = service_type;
+    let p_path_service_id = service_id;
 
     let uri_str = format!(
         "{}/{serviceType}/{serviceId}/ingressDeploymentStatus",
         configuration.base_path,
-        serviceType = crate::apis::urlencode(p_service_type),
-        serviceId = crate::apis::urlencode(p_service_id)
+        serviceType = crate::apis::urlencode(p_path_service_type),
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -29,12 +29,12 @@ pub async fn get_terraform_resources(
     terraform_id: &str,
 ) -> Result<models::TerraformResourcesResponse, Error<GetTerraformResourcesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/terraformResources",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

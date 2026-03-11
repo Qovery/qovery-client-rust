@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **total_in_cents** | **i32** |  | 
 **total** | **f64** |  | 
 **currency_code** | **String** |  | 
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **created_at** | **String** |  | 
 **status** | [**models::InvoiceStatusEnum**](InvoiceStatusEnum.md) |  | 
 

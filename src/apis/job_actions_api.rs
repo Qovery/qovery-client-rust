@@ -71,12 +71,12 @@ pub async fn clean_failed_job(
     job_id: &str,
 ) -> Result<models::CleanFailedJob200Response, Error<CleanFailedJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/cleanFailedJob",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -134,20 +134,20 @@ pub async fn deploy_job(
     job_deploy_request: Option<models::JobDeployRequest>,
 ) -> Result<models::Status, Error<DeployJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_force_event = force_event;
-    let p_job_deploy_request = job_deploy_request;
+    let p_path_job_id = job_id;
+    let p_query_force_event = force_event;
+    let p_body_job_deploy_request = job_deploy_request;
 
     let uri_str = format!(
         "{}/job/{jobId}/deploy",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_force_event {
+    if let Some(ref param_value) = p_query_force_event {
         req_builder = req_builder.query(&[("forceEvent", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -164,7 +164,7 @@ pub async fn deploy_job(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_deploy_request);
+    req_builder = req_builder.json(&p_body_job_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -201,19 +201,19 @@ pub async fn redeploy_job(
     force_event: Option<models::JobForceEvent>,
 ) -> Result<models::Status, Error<RedeployJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_force_event = force_event;
+    let p_path_job_id = job_id;
+    let p_query_force_event = force_event;
 
     let uri_str = format!(
         "{}/job/{jobId}/redeploy",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_force_event {
+    if let Some(ref param_value) = p_query_force_event {
         req_builder = req_builder.query(&[("forceEvent", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -265,12 +265,12 @@ pub async fn stop_job(
     job_id: &str,
 ) -> Result<models::Status, Error<StopJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/stop",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -327,13 +327,13 @@ pub async fn uninstall_job(
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_body = body;
+    let p_path_job_id = job_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/job/{jobId}/uninstall",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -353,7 +353,7 @@ pub async fn uninstall_job(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

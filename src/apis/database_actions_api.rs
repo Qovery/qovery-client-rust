@@ -74,19 +74,19 @@ pub async fn deploy_database(
     apply_immediately: Option<bool>,
 ) -> Result<models::Status, Error<DeployDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_apply_immediately = apply_immediately;
+    let p_path_database_id = database_id;
+    let p_query_apply_immediately = apply_immediately;
 
     let uri_str = format!(
         "{}/database/{databaseId}/deploy",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_apply_immediately {
+    if let Some(ref param_value) = p_query_apply_immediately {
         req_builder = req_builder.query(&[("applyImmediately", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -138,12 +138,12 @@ pub async fn reboot_database(
     database_id: &str,
 ) -> Result<models::Status, Error<RebootDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/restart-service",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -199,19 +199,19 @@ pub async fn redeploy_database(
     apply_immediately: Option<bool>,
 ) -> Result<models::Status, Error<RedeployDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_apply_immediately = apply_immediately;
+    let p_path_database_id = database_id;
+    let p_query_apply_immediately = apply_immediately;
 
     let uri_str = format!(
         "{}/database/{databaseId}/redeploy",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_apply_immediately {
+    if let Some(ref param_value) = p_query_apply_immediately {
         req_builder = req_builder.query(&[("applyImmediately", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -263,12 +263,12 @@ pub async fn stop_database(
     database_id: &str,
 ) -> Result<models::Status, Error<StopDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/stop",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -324,13 +324,13 @@ pub async fn uninstall_database(
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_body = body;
+    let p_path_database_id = database_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/database/{databaseId}/uninstall",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -350,7 +350,7 @@ pub async fn uninstall_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

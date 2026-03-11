@@ -50,13 +50,13 @@ pub async fn add_backup_database(
     backup_request: Option<models::BackupRequest>,
 ) -> Result<models::Backup, Error<AddBackupDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_backup_request = backup_request;
+    let p_path_database_id = database_id;
+    let p_body_backup_request = backup_request;
 
     let uri_str = format!(
         "{}/database/{databaseId}/backup",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -76,7 +76,7 @@ pub async fn add_backup_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_backup_request);
+    req_builder = req_builder.json(&p_body_backup_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -114,17 +114,17 @@ pub async fn list_database_backup(
     start_id: Option<&str>,
 ) -> Result<models::BackupPaginatedResponseList, Error<ListDatabaseBackupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_start_id = start_id;
+    let p_path_database_id = database_id;
+    let p_query_start_id = start_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/backup",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_start_id {
+    if let Some(ref param_value) = p_query_start_id {
         req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -177,14 +177,14 @@ pub async fn remove_database_backup(
     backup_id: &str,
 ) -> Result<(), Error<RemoveDatabaseBackupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_backup_id = backup_id;
+    let p_path_database_id = database_id;
+    let p_path_backup_id = backup_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/backup/{backupId}",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id),
-        backupId = crate::apis::urlencode(p_backup_id)
+        databaseId = crate::apis::urlencode(p_path_database_id),
+        backupId = crate::apis::urlencode(p_path_backup_id)
     );
     let mut req_builder = configuration
         .client

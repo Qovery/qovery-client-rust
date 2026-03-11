@@ -62,13 +62,13 @@ pub async fn clone_terraform(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::TerraformResponse, Error<CloneTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_terraform_id = terraform_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/clone",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
@@ -88,7 +88,7 @@ pub async fn clone_terraform(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -125,13 +125,13 @@ pub async fn create_terraform(
     terraform_request: Option<models::TerraformRequest>,
 ) -> Result<models::TerraformResponse, Error<CreateTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_terraform_request = terraform_request;
+    let p_path_environment_id = environment_id;
+    let p_body_terraform_request = terraform_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/terraform",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -151,7 +151,7 @@ pub async fn create_terraform(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_request);
+    req_builder = req_builder.json(&p_body_terraform_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -241,12 +241,12 @@ pub async fn list_terraforms(
     environment_id: &str,
 ) -> Result<models::TerraformResponseList, Error<ListTerraformsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/terraform",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

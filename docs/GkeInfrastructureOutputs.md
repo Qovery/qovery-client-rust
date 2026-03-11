@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **String** |  | 
+**kind** | **Kind** |  (enum: GKE) | 
 **cluster_name** | **String** |  | 
 **cluster_self_link** | **String** |  | 
 

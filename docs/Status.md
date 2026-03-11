@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **state** | [**models::StateEnum**](StateEnum.md) |  | 
 **service_deployment_status** | [**models::ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **last_deployment_date** | Option<**String**> |  | [optional]
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **steps** | Option<[**models::ServiceStepMetrics**](ServiceStepMetrics.md)> |  | [optional]
 **execution_id** | Option<**String**> |  | [optional]
 **status_details** | [**models::StatusDetails**](StatusDetails.md) |  | 
-**deployment_request_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | 
+**deployment_request_id** | Option<**uuid::Uuid**> |  | 
 **deployment_requests_count** | **i32** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

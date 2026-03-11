@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**id** | Option<**uuid::Uuid**> |  | [optional]
 **r#type** | [**models::StorageTypeEnum**](StorageTypeEnum.md) |  | 
 **size** | **i32** | unit is GB Minimum size is 4 GB  | 
 **mount_point** | **String** |  | 

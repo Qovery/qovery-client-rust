@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorage_storage_inner.md)> |  | [optional]
+**storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorageStorageInner.md)> |  | [optional]
 **image_name** | **String** | The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`  | 
 **tag** | **String** | tag of the image container | 
 **registry_id** | Option<**String**> | tag of the image container | [optional]

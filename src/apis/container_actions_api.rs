@@ -77,13 +77,13 @@ pub async fn deploy_container(
     container_deploy_request: Option<models::ContainerDeployRequest>,
 ) -> Result<models::Status, Error<DeployContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_container_deploy_request = container_deploy_request;
+    let p_path_container_id = container_id;
+    let p_body_container_deploy_request = container_deploy_request;
 
     let uri_str = format!(
         "{}/container/{containerId}/deploy",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -103,7 +103,7 @@ pub async fn deploy_container(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_deploy_request);
+    req_builder = req_builder.json(&p_body_container_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -139,12 +139,12 @@ pub async fn reboot_container(
     container_id: &str,
 ) -> Result<models::Status, Error<RebootContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/restart-service",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -199,12 +199,12 @@ pub async fn redeploy_container(
     container_id: &str,
 ) -> Result<models::Status, Error<RedeployContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/redeploy",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -259,12 +259,12 @@ pub async fn stop_container(
     container_id: &str,
 ) -> Result<models::Status, Error<StopContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/stop",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -321,13 +321,13 @@ pub async fn uninstall_container(
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_body = body;
+    let p_path_container_id = container_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/container/{containerId}/uninstall",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -347,7 +347,7 @@ pub async fn uninstall_container(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

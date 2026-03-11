@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reason** | **String** |  | 
 **ttl_in_days** | Option<**i32**> |  | [optional]
-**cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**cluster_id** | **uuid::Uuid** |  | 
 **locked_at** | **String** |  | 
 **owner_name** | **String** |  | 
 

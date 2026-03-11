@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **name** | **String** |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **url** | Option<**String**> | URL of the helm repository | [optional]
 **skip_tls_verification** | Option<**bool**> | Bypass tls certificate verification when connecting to repository | [optional]
 **associated_services_count** | Option<**i32**> | The number of services using this helm repository | [optional]
-**config** | Option<[**models::HelmRepositoryResponseAllOfConfig**](HelmRepositoryResponse_allOf_config.md)> |  | [optional]
+**config** | Option<[**models::HelmRepositoryResponseAllOfConfig**](HelmRepositoryResponseAllOfConfig.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

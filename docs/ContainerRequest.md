@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storage** | Option<[**Vec<models::ServiceStorageRequestStorageInner>**](ServiceStorageRequest_storage_inner.md)> |  | [optional]
-**ports** | Option<[**Vec<models::ServicePortRequestPortsInner>**](ServicePortRequest_ports_inner.md)> |  | [optional]
+**storage** | Option<[**Vec<models::ServiceStorageRequestStorageInner>**](ServiceStorageRequestStorageInner.md)> |  | [optional]
+**ports** | Option<[**Vec<models::ServicePortRequestPortsInner>**](ServicePortRequestPortsInner.md)> |  | [optional]
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> | give a description to this container | [optional]
 **registry_id** | **String** | id of the linked registry | 

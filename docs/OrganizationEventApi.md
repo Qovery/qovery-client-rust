@@ -24,13 +24,13 @@ Name | Type | Description  | Required | Notes
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
 **from_timestamp** | Option<**String**> | Display targets available since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  |  |
 **to_timestamp** | Option<**String**> | Display targets triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  |  |
-**event_type** | Option<[**OrganizationEventType**](.md)> |  |  |
-**target_type** | Option<[**OrganizationEventTargetType**](.md)> |  |  |
+**event_type** | Option<[**OrganizationEventType**](OrganizationEventType.md)> |  |  |
+**target_type** | Option<[**OrganizationEventTargetType**](OrganizationEventTargetType.md)> |  |  |
 **triggered_by** | Option<**String**> | Information about the owner of the event (user name / apitoken / automatic action) |  |
-**origin** | Option<[**OrganizationEventOrigin**](.md)> |  |  |
+**origin** | Option<[**OrganizationEventOrigin**](OrganizationEventOrigin.md)> |  |  |
 **project_id** | Option<**uuid::Uuid**> | Mandatory when requesting an environment or a service |  |
 **environment_id** | Option<**uuid::Uuid**> | Mandatory when requesting a service |  |
-**target_level_to_fetch** | Option<[**OrganizationEventTargetLevel**](.md)> | Used only to retrieve projects or environments linked to service typed events |  |
+**target_level_to_fetch** | Option<[**OrganizationEventTargetLevel**](OrganizationEventTargetLevel.md)> | Used only to retrieve projects or environments linked to service typed events |  |
 
 ### Return type
 
@@ -66,12 +66,12 @@ Name | Type | Description  | Required | Notes
 **to_timestamp** | Option<**String**> | Display events triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  |  |
 **continue_token** | Option<**String**> | Token used to fetch the next page results The format is a timestamp with nano precision  |  |
 **step_back_token** | Option<**String**> | Token used to fetch the previous page results The format is a timestamp with nano precision  |  |
-**event_type** | Option<[**OrganizationEventType**](.md)> |  |  |
-**target_type** | Option<[**OrganizationEventTargetType**](.md)> |  |  |
+**event_type** | Option<[**OrganizationEventType**](OrganizationEventType.md)> |  |  |
+**target_type** | Option<[**OrganizationEventTargetType**](OrganizationEventTargetType.md)> |  |  |
 **target_id** | Option<**uuid::Uuid**> | The target resource id to search.   Must be specified with the corresponding `target_type`  |  |
-**sub_target_type** | Option<[**OrganizationEventSubTargetType**](.md)> |  |  |
+**sub_target_type** | Option<[**OrganizationEventSubTargetType**](OrganizationEventSubTargetType.md)> |  |  |
 **triggered_by** | Option<**String**> | Information about the owner of the event (user name / apitoken / automatic action) |  |
-**origin** | Option<[**OrganizationEventOrigin**](.md)> |  |  |
+**origin** | Option<[**OrganizationEventOrigin**](OrganizationEventOrigin.md)> |  |  |
 **service_project_id** | Option<**String**> | The project chosen when filtering on a service type |  |
 **service_environment_id** | Option<**String**> | The environment chosen when filtering on a service type |  |
 

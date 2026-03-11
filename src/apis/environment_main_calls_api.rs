@@ -102,12 +102,12 @@ pub async fn delete_environment(
     environment_id: &str,
 ) -> Result<(), Error<DeleteEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -153,13 +153,13 @@ pub async fn edit_environment(
     environment_edit_request: Option<models::EnvironmentEditRequest>,
 ) -> Result<models::Environment, Error<EditEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_edit_request = environment_edit_request;
+    let p_path_environment_id = environment_id;
+    let p_body_environment_edit_request = environment_edit_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -177,7 +177,7 @@ pub async fn edit_environment(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_edit_request);
+    req_builder = req_builder.json(&p_body_environment_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -213,12 +213,12 @@ pub async fn get_environment(
     environment_id: &str,
 ) -> Result<models::Environment, Error<GetEnvironmentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -271,12 +271,12 @@ pub async fn get_environment_status(
     environment_id: &str,
 ) -> Result<models::EnvironmentStatus, Error<GetEnvironmentStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -329,12 +329,12 @@ pub async fn get_environment_statuses(
     environment_id: &str,
 ) -> Result<models::EnvironmentStatuses, Error<GetEnvironmentStatusesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/statuses",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -387,12 +387,12 @@ pub async fn get_environment_statuses_with_stages(
     environment_id: &str,
 ) -> Result<models::EnvironmentStatusesWithStages, Error<GetEnvironmentStatusesWithStagesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/statusesWithStages",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -449,12 +449,12 @@ pub async fn list_deployment_request_by_environment_id(
     Error<ListDeploymentRequestByEnvironmentIdError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploymentQueue",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -511,12 +511,12 @@ pub async fn list_deployment_request_by_service_id(
     Error<ListDeploymentRequestByServiceIdError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_id = service_id;
+    let p_path_service_id = service_id;
 
     let uri_str = format!(
         "{}/service/{serviceId}/deploymentQueue",
         configuration.base_path,
-        serviceId = crate::apis::urlencode(p_service_id)
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -571,12 +571,12 @@ pub async fn list_services_by_environment_id(
 ) -> Result<models::ListServicesByEnvironmentId200Response, Error<ListServicesByEnvironmentIdError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/services",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

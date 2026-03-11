@@ -81,13 +81,13 @@ pub async fn create_organization_webhook(
     organization_webhook_create_request: Option<models::OrganizationWebhookCreateRequest>,
 ) -> Result<models::OrganizationWebhookCreateResponse, Error<CreateOrganizationWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_webhook_create_request = organization_webhook_create_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_webhook_create_request = organization_webhook_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -107,7 +107,7 @@ pub async fn create_organization_webhook(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_webhook_create_request);
+    req_builder = req_builder.json(&p_body_organization_webhook_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -145,14 +145,14 @@ pub async fn delete_organization_webhook(
     webhook_id: &str,
 ) -> Result<(), Error<DeleteOrganizationWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_webhook_id = webhook_id;
+    let p_path_organization_id = organization_id;
+    let p_path_webhook_id = webhook_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        webhookId = crate::apis::urlencode(p_webhook_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        webhookId = crate::apis::urlencode(p_path_webhook_id)
     );
     let mut req_builder = configuration
         .client
@@ -199,15 +199,15 @@ pub async fn edit_organization_webhook(
     organization_webhook_create_request: Option<models::OrganizationWebhookCreateRequest>,
 ) -> Result<models::OrganizationWebhookCreateResponse, Error<EditOrganizationWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_webhook_id = webhook_id;
-    let p_organization_webhook_create_request = organization_webhook_create_request;
+    let p_path_organization_id = organization_id;
+    let p_path_webhook_id = webhook_id;
+    let p_body_organization_webhook_create_request = organization_webhook_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        webhookId = crate::apis::urlencode(p_webhook_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        webhookId = crate::apis::urlencode(p_path_webhook_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -225,7 +225,7 @@ pub async fn edit_organization_webhook(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_webhook_create_request);
+    req_builder = req_builder.json(&p_body_organization_webhook_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -263,14 +263,14 @@ pub async fn get_organization_webhook(
     webhook_id: &str,
 ) -> Result<models::OrganizationWebhookResponse, Error<GetOrganizationWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_webhook_id = webhook_id;
+    let p_path_organization_id = organization_id;
+    let p_path_webhook_id = webhook_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        webhookId = crate::apis::urlencode(p_webhook_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        webhookId = crate::apis::urlencode(p_path_webhook_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -324,12 +324,12 @@ pub async fn list_organization_web_hooks(
     organization_id: &str,
 ) -> Result<models::OrganizationWebhookResponseList, Error<ListOrganizationWebHooksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -384,14 +384,14 @@ pub async fn list_webhook_event(
     webhook_id: &str,
 ) -> Result<models::WebhookEventResponseList, Error<ListWebhookEventError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_webhook_id = webhook_id;
+    let p_path_organization_id = organization_id;
+    let p_path_webhook_id = webhook_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/webhook/{webhookId}/event",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        webhookId = crate::apis::urlencode(p_webhook_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        webhookId = crate::apis::urlencode(p_path_webhook_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

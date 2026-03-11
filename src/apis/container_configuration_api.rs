@@ -62,13 +62,13 @@ pub async fn edit_container_advanced_settings(
     container_advanced_settings: Option<models::ContainerAdvancedSettings>,
 ) -> Result<models::ContainerAdvancedSettings, Error<EditContainerAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_container_advanced_settings = container_advanced_settings;
+    let p_path_container_id = container_id;
+    let p_body_container_advanced_settings = container_advanced_settings;
 
     let uri_str = format!(
         "{}/container/{containerId}/advancedSettings",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -86,7 +86,7 @@ pub async fn edit_container_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_advanced_settings);
+    req_builder = req_builder.json(&p_body_container_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -125,13 +125,13 @@ pub async fn edit_container_network(
     container_network_request: Option<models::ContainerNetworkRequest>,
 ) -> Result<models::ContainerNetwork, Error<EditContainerNetworkError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_container_network_request = container_network_request;
+    let p_path_container_id = container_id;
+    let p_body_container_network_request = container_network_request;
 
     let uri_str = format!(
         "{}/container/{containerId}/network",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -149,7 +149,7 @@ pub async fn edit_container_network(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_network_request);
+    req_builder = req_builder.json(&p_body_container_network_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -186,12 +186,12 @@ pub async fn get_container_advanced_settings(
     container_id: &str,
 ) -> Result<models::ContainerAdvancedSettings, Error<GetContainerAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/advancedSettings",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -245,12 +245,12 @@ pub async fn get_container_network(
     container_id: &str,
 ) -> Result<models::ContainerNetwork, Error<GetContainerNetworkError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/network",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

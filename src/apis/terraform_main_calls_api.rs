@@ -72,23 +72,23 @@ pub async fn delete_terraform(
     force_terraform_action: Option<models::DeleteTerraformAction>,
 ) -> Result<(), Error<DeleteTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_resources_only = resources_only;
-    let p_force_terraform_action = force_terraform_action;
+    let p_path_terraform_id = terraform_id;
+    let p_query_resources_only = resources_only;
+    let p_query_force_terraform_action = force_terraform_action;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_resources_only {
+    if let Some(ref param_value) = p_query_resources_only {
         req_builder = req_builder.query(&[("resources_only", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_force_terraform_action {
+    if let Some(ref param_value) = p_query_force_terraform_action {
         req_builder = req_builder.query(&[("force_terraform_action", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -130,13 +130,13 @@ pub async fn edit_terraform(
     terraform_request: Option<models::TerraformRequest>,
 ) -> Result<models::TerraformResponse, Error<EditTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_terraform_request = terraform_request;
+    let p_path_terraform_id = terraform_id;
+    let p_body_terraform_request = terraform_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -154,7 +154,7 @@ pub async fn edit_terraform(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_request);
+    req_builder = req_builder.json(&p_body_terraform_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -190,12 +190,12 @@ pub async fn get_terraform(
     terraform_id: &str,
 ) -> Result<models::TerraformResponse, Error<GetTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -249,12 +249,12 @@ pub async fn list_terraform_commit(
     terraform_id: &str,
 ) -> Result<models::CommitResponseList, Error<ListTerraformCommitError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/commit",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

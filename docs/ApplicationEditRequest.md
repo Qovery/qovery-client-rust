@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storage** | Option<[**Vec<models::ServiceStorageRequestStorageInner>**](ServiceStorageRequest_storage_inner.md)> |  | [optional]
+**storage** | Option<[**Vec<models::ServiceStorageRequestStorageInner>**](ServiceStorageRequestStorageInner.md)> |  | [optional]
 **name** | Option<**String**> | name is case insensitive | [optional]
 **description** | Option<**String**> | give a description to this application | [optional]
 **git_repository** | Option<[**models::ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md)> |  | [optional]

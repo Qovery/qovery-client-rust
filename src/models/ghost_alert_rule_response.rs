@@ -21,8 +21,14 @@ pub struct GhostAlertRuleResponse {
     pub name: String,
     #[serde(rename = "state")]
     pub state: models::AlertRuleState,
-    #[serde(rename = "target", skip_serializing_if = "Option::is_none")]
-    pub target: Option<models::GhostAlertRuleResponseAllOfTarget>,
+    /// May be null if target info couldn't be extracted from Prometheus
+    #[serde(
+        rename = "target",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub target: Option<Option<models::AlertTarget>>,
     /// When the ghost alert started firing
     #[serde(
         rename = "starts_at",

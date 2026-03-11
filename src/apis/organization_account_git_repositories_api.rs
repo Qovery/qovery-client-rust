@@ -75,17 +75,17 @@ pub async fn get_organization_bitbucket_repositories(
     git_token_id: Option<&str>,
 ) -> Result<models::GitRepositoryResponseList, Error<GetOrganizationBitbucketRepositoriesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/bitbucket/repository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -143,21 +143,21 @@ pub async fn get_organization_bitbucket_repository_branches(
     Error<GetOrganizationBitbucketRepositoryBranchesError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_name = name;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_name = name;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/bitbucket/repository/branch",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -210,12 +210,12 @@ pub async fn get_organization_git_provider_account(
     organization_id: &str,
 ) -> Result<models::GitAuthProviderResponseList, Error<GetOrganizationGitProviderAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/gitAuthProvider",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -270,17 +270,17 @@ pub async fn get_organization_github_repositories(
     git_token_id: Option<&str>,
 ) -> Result<models::GitRepositoryResponseList, Error<GetOrganizationGithubRepositoriesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/github/repository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -338,21 +338,21 @@ pub async fn get_organization_github_repository_branches(
     Error<GetOrganizationGithubRepositoryBranchesError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_name = name;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_name = name;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/github/repository/branch",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -406,17 +406,17 @@ pub async fn get_organization_gitlab_repositories(
     git_token_id: Option<&str>,
 ) -> Result<models::GitRepositoryResponseList, Error<GetOrganizationGitlabRepositoriesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/gitlab/repository",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -474,21 +474,21 @@ pub async fn get_organization_gitlab_repository_branches(
     Error<GetOrganizationGitlabRepositoryBranchesError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_name = name;
-    let p_git_token_id = git_token_id;
+    let p_path_organization_id = organization_id;
+    let p_query_name = name;
+    let p_query_git_token_id = git_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/account/gitlab/repository/branch",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_name {
+    if let Some(ref param_value) = p_query_name {
         req_builder = req_builder.query(&[("name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_git_token_id {
+    if let Some(ref param_value) = p_query_git_token_id {
         req_builder = req_builder.query(&[("gitTokenId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

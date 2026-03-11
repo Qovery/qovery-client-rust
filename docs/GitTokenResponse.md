@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **name** | **String** |  | 
 **description** | Option<**String**> |  | [optional]
 **r#type** | [**models::GitProviderEnum**](GitProviderEnum.md) |  | 
-**expired_at** | Option<[**String**](string.md)> |  | [optional]
+**expired_at** | Option<[**String**](String.md)> |  | [optional]
 **workspace** | Option<**String**> | Mandatory only for BITBUCKET git provider | [optional]
 **associated_services_count** | **f64** | The number of services using this git token | 
 **git_api_url** | **String** |  | 

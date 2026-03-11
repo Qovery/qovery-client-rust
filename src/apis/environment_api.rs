@@ -73,13 +73,13 @@ pub async fn check_container_image(
     container_image_check_request: Option<models::ContainerImageCheckRequest>,
 ) -> Result<serde_json::Value, Error<CheckContainerImageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_container_image_check_request = container_image_check_request;
+    let p_path_environment_id = environment_id;
+    let p_body_container_image_check_request = container_image_check_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/checkContainerImage",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -99,7 +99,7 @@ pub async fn check_container_image(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_image_check_request);
+    req_builder = req_builder.json(&p_body_container_image_check_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -136,13 +136,13 @@ pub async fn check_dockerfile(
     dockerfile_check_request: Option<models::DockerfileCheckRequest>,
 ) -> Result<models::DockerfileCheckResponse, Error<CheckDockerfileError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_dockerfile_check_request = dockerfile_check_request;
+    let p_path_environment_id = environment_id;
+    let p_body_dockerfile_check_request = dockerfile_check_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/checkDockerfile",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -162,7 +162,7 @@ pub async fn check_dockerfile(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_dockerfile_check_request);
+    req_builder = req_builder.json(&p_body_dockerfile_check_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -199,13 +199,13 @@ pub async fn check_git_file(
     git_file_check_request: Option<models::GitFileCheckRequest>,
 ) -> Result<serde_json::Value, Error<CheckGitFileError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_git_file_check_request = git_file_check_request;
+    let p_path_environment_id = environment_id;
+    let p_body_git_file_check_request = git_file_check_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/checkGitFile",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -225,7 +225,7 @@ pub async fn check_git_file(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_git_file_check_request);
+    req_builder = req_builder.json(&p_body_git_file_check_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -262,13 +262,13 @@ pub async fn check_helm_repository(
     helm_check_request: Option<models::HelmCheckRequest>,
 ) -> Result<serde_json::Value, Error<CheckHelmRepositoryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_helm_check_request = helm_check_request;
+    let p_path_environment_id = environment_id;
+    let p_body_helm_check_request = helm_check_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/checkHelmRepository",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -288,7 +288,7 @@ pub async fn check_helm_repository(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_check_request);
+    req_builder = req_builder.json(&p_body_helm_check_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -325,12 +325,12 @@ pub async fn list_environment_services_links(
     environment_id: &str,
 ) -> Result<models::LinkResponseList, Error<ListEnvironmentServicesLinksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/link",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

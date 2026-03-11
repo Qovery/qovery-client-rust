@@ -91,12 +91,12 @@ pub async fn delete_application(
     application_id: &str,
 ) -> Result<(), Error<DeleteApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration
         .client
@@ -142,13 +142,13 @@ pub async fn edit_application(
     application_edit_request: Option<models::ApplicationEditRequest>,
 ) -> Result<models::Application, Error<EditApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_application_edit_request = application_edit_request;
+    let p_path_application_id = application_id;
+    let p_body_application_edit_request = application_edit_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -166,7 +166,7 @@ pub async fn edit_application(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_edit_request);
+    req_builder = req_builder.json(&p_body_application_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -202,12 +202,12 @@ pub async fn get_application(
     application_id: &str,
 ) -> Result<models::Application, Error<GetApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -260,12 +260,12 @@ pub async fn get_application_status(
     application_id: &str,
 ) -> Result<models::Status, Error<GetApplicationStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/status",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -321,21 +321,21 @@ pub async fn list_application_commit(
     git_commit_id: Option<&str>,
 ) -> Result<models::CommitResponseList, Error<ListApplicationCommitError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_start_id = start_id;
-    let p_git_commit_id = git_commit_id;
+    let p_path_application_id = application_id;
+    let p_query_start_id = start_id;
+    let p_query_git_commit_id = git_commit_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/commit",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_start_id {
+    if let Some(ref param_value) = p_query_start_id {
         req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_git_commit_id {
+    if let Some(ref param_value) = p_query_git_commit_id {
         req_builder = req_builder.query(&[("gitCommitId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -387,12 +387,12 @@ pub async fn list_application_contributor(
     application_id: &str,
 ) -> Result<models::UserResponseList, Error<ListApplicationContributorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/contributor",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -446,12 +446,12 @@ pub async fn list_application_links(
     application_id: &str,
 ) -> Result<models::LinkResponseList, Error<ListApplicationLinksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/link",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

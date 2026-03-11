@@ -48,49 +48,49 @@ pub async fn get_organization_event_targets(
     target_level_to_fetch: Option<models::OrganizationEventTargetLevel>,
 ) -> Result<models::OrganizationEventTargetResponseList, Error<GetOrganizationEventTargetsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_from_timestamp = from_timestamp;
-    let p_to_timestamp = to_timestamp;
-    let p_event_type = event_type;
-    let p_target_type = target_type;
-    let p_triggered_by = triggered_by;
-    let p_origin = origin;
-    let p_project_id = project_id;
-    let p_environment_id = environment_id;
-    let p_target_level_to_fetch = target_level_to_fetch;
+    let p_path_organization_id = organization_id;
+    let p_query_from_timestamp = from_timestamp;
+    let p_query_to_timestamp = to_timestamp;
+    let p_query_event_type = event_type;
+    let p_query_target_type = target_type;
+    let p_query_triggered_by = triggered_by;
+    let p_query_origin = origin;
+    let p_query_project_id = project_id;
+    let p_query_environment_id = environment_id;
+    let p_query_target_level_to_fetch = target_level_to_fetch;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/targets",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_from_timestamp {
+    if let Some(ref param_value) = p_query_from_timestamp {
         req_builder = req_builder.query(&[("fromTimestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_to_timestamp {
+    if let Some(ref param_value) = p_query_to_timestamp {
         req_builder = req_builder.query(&[("toTimestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_event_type {
+    if let Some(ref param_value) = p_query_event_type {
         req_builder = req_builder.query(&[("eventType", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_target_type {
+    if let Some(ref param_value) = p_query_target_type {
         req_builder = req_builder.query(&[("targetType", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_triggered_by {
+    if let Some(ref param_value) = p_query_triggered_by {
         req_builder = req_builder.query(&[("triggeredBy", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_origin {
+    if let Some(ref param_value) = p_query_origin {
         req_builder = req_builder.query(&[("origin", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_project_id {
+    if let Some(ref param_value) = p_query_project_id {
         req_builder = req_builder.query(&[("projectId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_environment_id {
+    if let Some(ref param_value) = p_query_environment_id {
         req_builder = req_builder.query(&[("environmentId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_target_level_to_fetch {
+    if let Some(ref param_value) = p_query_target_level_to_fetch {
         req_builder = req_builder.query(&[("targetLevelToFetch", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -156,65 +156,65 @@ pub async fn get_organization_events(
     service_environment_id: Option<&str>,
 ) -> Result<models::OrganizationEventResponseList, Error<GetOrganizationEventsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_page_size = page_size;
-    let p_from_timestamp = from_timestamp;
-    let p_to_timestamp = to_timestamp;
-    let p_continue_token = continue_token;
-    let p_step_back_token = step_back_token;
-    let p_event_type = event_type;
-    let p_target_type = target_type;
-    let p_target_id = target_id;
-    let p_sub_target_type = sub_target_type;
-    let p_triggered_by = triggered_by;
-    let p_origin = origin;
-    let p_service_project_id = service_project_id;
-    let p_service_environment_id = service_environment_id;
+    let p_path_organization_id = organization_id;
+    let p_query_page_size = page_size;
+    let p_query_from_timestamp = from_timestamp;
+    let p_query_to_timestamp = to_timestamp;
+    let p_query_continue_token = continue_token;
+    let p_query_step_back_token = step_back_token;
+    let p_query_event_type = event_type;
+    let p_query_target_type = target_type;
+    let p_query_target_id = target_id;
+    let p_query_sub_target_type = sub_target_type;
+    let p_query_triggered_by = triggered_by;
+    let p_query_origin = origin;
+    let p_query_service_project_id = service_project_id;
+    let p_query_service_environment_id = service_environment_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/events",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_from_timestamp {
+    if let Some(ref param_value) = p_query_from_timestamp {
         req_builder = req_builder.query(&[("fromTimestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_to_timestamp {
+    if let Some(ref param_value) = p_query_to_timestamp {
         req_builder = req_builder.query(&[("toTimestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_continue_token {
+    if let Some(ref param_value) = p_query_continue_token {
         req_builder = req_builder.query(&[("continueToken", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_step_back_token {
+    if let Some(ref param_value) = p_query_step_back_token {
         req_builder = req_builder.query(&[("stepBackToken", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_event_type {
+    if let Some(ref param_value) = p_query_event_type {
         req_builder = req_builder.query(&[("eventType", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_target_type {
+    if let Some(ref param_value) = p_query_target_type {
         req_builder = req_builder.query(&[("targetType", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_target_id {
+    if let Some(ref param_value) = p_query_target_id {
         req_builder = req_builder.query(&[("targetId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sub_target_type {
+    if let Some(ref param_value) = p_query_sub_target_type {
         req_builder = req_builder.query(&[("subTargetType", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_triggered_by {
+    if let Some(ref param_value) = p_query_triggered_by {
         req_builder = req_builder.query(&[("triggeredBy", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_origin {
+    if let Some(ref param_value) = p_query_origin {
         req_builder = req_builder.query(&[("origin", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_service_project_id {
+    if let Some(ref param_value) = p_query_service_project_id {
         req_builder = req_builder.query(&[("serviceProjectId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_service_environment_id {
+    if let Some(ref param_value) = p_query_service_environment_id {
         req_builder = req_builder.query(&[("serviceEnvironmentId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

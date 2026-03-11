@@ -84,13 +84,13 @@ pub async fn create_environment_environment_variable(
     environment_variable_request: Option<models::EnvironmentVariableRequest>,
 ) -> Result<models::EnvironmentVariable, Error<CreateEnvironmentEnvironmentVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_variable_request = environment_variable_request;
+    let p_path_environment_id = environment_id;
+    let p_body_environment_variable_request = environment_variable_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -110,7 +110,7 @@ pub async fn create_environment_environment_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_variable_request);
+    req_builder = req_builder.json(&p_body_environment_variable_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -150,15 +150,15 @@ pub async fn create_environment_environment_variable_alias(
     key: Option<models::Key>,
 ) -> Result<models::EnvironmentVariable, Error<CreateEnvironmentEnvironmentVariableAliasError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_variable_id = environment_variable_id;
-    let p_key = key;
+    let p_path_environment_id = environment_id;
+    let p_path_environment_variable_id = environment_variable_id;
+    let p_body_key = key;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable/{environmentVariableId}/alias",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        environmentVariableId = crate::apis::urlencode(p_environment_variable_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        environmentVariableId = crate::apis::urlencode(p_path_environment_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -178,7 +178,7 @@ pub async fn create_environment_environment_variable_alias(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_key);
+    req_builder = req_builder.json(&p_body_key);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -218,15 +218,15 @@ pub async fn create_environment_environment_variable_override(
     value: Option<models::Value>,
 ) -> Result<models::EnvironmentVariable, Error<CreateEnvironmentEnvironmentVariableOverrideError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_variable_id = environment_variable_id;
-    let p_value = value;
+    let p_path_environment_id = environment_id;
+    let p_path_environment_variable_id = environment_variable_id;
+    let p_body_value = value;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable/{environmentVariableId}/override",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        environmentVariableId = crate::apis::urlencode(p_environment_variable_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        environmentVariableId = crate::apis::urlencode(p_path_environment_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -246,7 +246,7 @@ pub async fn create_environment_environment_variable_override(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_value);
+    req_builder = req_builder.json(&p_body_value);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -285,14 +285,14 @@ pub async fn delete_environment_environment_variable(
     environment_variable_id: &str,
 ) -> Result<(), Error<DeleteEnvironmentEnvironmentVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_variable_id = environment_variable_id;
+    let p_path_environment_id = environment_id;
+    let p_path_environment_variable_id = environment_variable_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable/{environmentVariableId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        environmentVariableId = crate::apis::urlencode(p_environment_variable_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        environmentVariableId = crate::apis::urlencode(p_path_environment_variable_id)
     );
     let mut req_builder = configuration
         .client
@@ -340,15 +340,15 @@ pub async fn edit_environment_environment_variable(
     environment_variable_edit_request: models::EnvironmentVariableEditRequest,
 ) -> Result<models::EnvironmentVariable, Error<EditEnvironmentEnvironmentVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_environment_variable_id = environment_variable_id;
-    let p_environment_variable_edit_request = environment_variable_edit_request;
+    let p_path_environment_id = environment_id;
+    let p_path_environment_variable_id = environment_variable_id;
+    let p_body_environment_variable_edit_request = environment_variable_edit_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable/{environmentVariableId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        environmentVariableId = crate::apis::urlencode(p_environment_variable_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        environmentVariableId = crate::apis::urlencode(p_path_environment_variable_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -366,7 +366,7 @@ pub async fn edit_environment_environment_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_variable_edit_request);
+    req_builder = req_builder.json(&p_body_environment_variable_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -404,12 +404,12 @@ pub async fn list_environment_environment_variable(
 ) -> Result<models::EnvironmentVariableResponseList, Error<ListEnvironmentEnvironmentVariableError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/environmentVariable",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | [**models::HelmDefaultValuesRequestAllOfSource**](HelmDefaultValuesRequest_allOf_source.md) |  | 
+**source** | [**models::HelmDefaultValuesRequestAllOfSource**](HelmDefaultValuesRequestAllOfSource.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

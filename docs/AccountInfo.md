@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**id** | Option<**uuid::Uuid**> |  | [optional]
 **created_at** | Option<**String**> |  | [optional]
 **nickname** | Option<**String**> |  | [optional]
 **first_name** | Option<**String**> |  | [optional]

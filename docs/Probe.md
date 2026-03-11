@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | Option<[**models::ProbeType**](Probe_type.md)> |  | [optional]
+**r#type** | Option<[**models::ProbeType**](ProbeType.md)> |  | [optional]
 **initial_delay_seconds** | Option<**i32**> |  | [optional][default to 30]
 **period_seconds** | Option<**i32**> |  | [optional][default to 10]
 **timeout_seconds** | Option<**i32**> |  | [optional][default to 5]

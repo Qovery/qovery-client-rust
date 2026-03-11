@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **port_type** | **String** |  | 
 **name** | Option<**String**> |  | [optional]
 **internal_port** | **i32** | The listening port of your service. | 

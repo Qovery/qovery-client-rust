@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | **String** |  | 
 **url** | **String** | URL of the container registry | 
 **kind** | [**models::ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | 

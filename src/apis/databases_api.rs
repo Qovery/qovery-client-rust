@@ -73,13 +73,13 @@ pub async fn clone_database(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::Database, Error<CloneDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_database_id = database_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/database/{databaseId}/clone",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration
         .client
@@ -99,7 +99,7 @@ pub async fn clone_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -136,13 +136,13 @@ pub async fn create_database(
     database_request: Option<models::DatabaseRequest>,
 ) -> Result<models::Database, Error<CreateDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_database_request = database_request;
+    let p_path_environment_id = environment_id;
+    let p_body_database_request = database_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/database",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -162,7 +162,7 @@ pub async fn create_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_database_request);
+    req_builder = req_builder.json(&p_body_database_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -199,12 +199,12 @@ pub async fn get_environment_database_status(
     environment_id: &str,
 ) -> Result<models::ReferenceObjectStatusResponseList, Error<GetEnvironmentDatabaseStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/database/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -257,12 +257,12 @@ pub async fn list_database(
     environment_id: &str,
 ) -> Result<models::DatabaseResponseList, Error<ListDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/database",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -315,12 +315,12 @@ pub async fn list_environment_database_config(
     environment_id: &str,
 ) -> Result<models::DatabaseConfigurationResponseList, Error<ListEnvironmentDatabaseConfigError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/databaseConfiguration",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

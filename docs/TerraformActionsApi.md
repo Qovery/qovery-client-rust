@@ -82,7 +82,7 @@ Delete the resources of the terraform but keep Qovery configuration
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
-**force_terraform_action** | Option<[**DeleteTerraformAction**](.md)> | Force a specific action to be executed by Terraform during uninstall. |  |
+**force_terraform_action** | Option<[**DeleteTerraformAction**](DeleteTerraformAction.md)> | Force a specific action to be executed by Terraform during uninstall. |  |
 **body** | Option<**serde_json::Value**> |  |  |
 
 ### Return type

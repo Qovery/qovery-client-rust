@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | [**models::DeploymentHistoryEnvironmentV2Identifier**](DeploymentHistoryEnvironmentV2_identifier.md) |  | 
+**identifier** | [**models::DeploymentHistoryEnvironmentV2Identifier**](DeploymentHistoryEnvironmentV2Identifier.md) |  | 
 **auditing_data** | [**models::DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **status** | [**models::StateEnum**](StateEnum.md) |  | 
 **trigger_action** | [**models::DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 

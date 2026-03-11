@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional]
 **mode** | [**models::EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
-**cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**cluster_id** | **uuid::Uuid** |  | 
 **auto_stop** | Option<**bool**> |  | [optional][default to false]
 **timezone** | **String** |  | 
 **start_time** | **String** |  | 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | **String** |  | 
 **cloud_provider** | [**models::CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **is_demo** | **bool** |  | 

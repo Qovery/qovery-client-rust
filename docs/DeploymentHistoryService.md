@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identifier** | [**models::DeploymentHistoryServiceIdentifier**](DeploymentHistoryService_identifier.md) |  | 
+**identifier** | [**models::DeploymentHistoryServiceIdentifier**](DeploymentHistoryServiceIdentifier.md) |  | 
 **status** | [**models::StateEnum**](StateEnum.md) |  | 
 **auditing_data** | [**models::DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **details** | [**models::DeploymentHistoryServiceDetails**](DeploymentHistoryServiceDetails.md) |  | 

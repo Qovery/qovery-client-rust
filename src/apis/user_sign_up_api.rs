@@ -40,7 +40,7 @@ pub async fn create_user_sign_up(
     sign_up_request: Option<models::SignUpRequest>,
 ) -> Result<(), Error<CreateUserSignUpError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sign_up_request = sign_up_request;
+    let p_body_sign_up_request = sign_up_request;
 
     let uri_str = format!("{}/admin/userSignUp", configuration.base_path);
     let mut req_builder = configuration
@@ -61,7 +61,7 @@ pub async fn create_user_sign_up(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_sign_up_request);
+    req_builder = req_builder.json(&p_body_sign_up_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

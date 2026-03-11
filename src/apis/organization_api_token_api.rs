@@ -52,13 +52,13 @@ pub async fn create_organization_api_token(
     organization_api_token_create_request: Option<models::OrganizationApiTokenCreateRequest>,
 ) -> Result<models::OrganizationApiTokenCreate, Error<CreateOrganizationApiTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_api_token_create_request = organization_api_token_create_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_api_token_create_request = organization_api_token_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/apiToken",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -78,7 +78,7 @@ pub async fn create_organization_api_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_api_token_create_request);
+    req_builder = req_builder.json(&p_body_organization_api_token_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -116,14 +116,14 @@ pub async fn delete_organization_api_token(
     api_token_id: &str,
 ) -> Result<(), Error<DeleteOrganizationApiTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_api_token_id = api_token_id;
+    let p_path_organization_id = organization_id;
+    let p_path_api_token_id = api_token_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/apiToken/{apiTokenId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        apiTokenId = crate::apis::urlencode(p_api_token_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        apiTokenId = crate::apis::urlencode(p_path_api_token_id)
     );
     let mut req_builder = configuration
         .client
@@ -168,12 +168,12 @@ pub async fn list_organization_api_tokens(
     organization_id: &str,
 ) -> Result<models::OrganizationApiTokenResponseList, Error<ListOrganizationApiTokensError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/apiToken",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

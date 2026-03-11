@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cluster_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**cluster_id** | Option<**uuid::Uuid**> |  | [optional]
 **cluster_name** | Option<**String**> |  | [optional]
-**project_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**project_id** | Option<**uuid::Uuid**> |  | [optional]
 **project_name** | Option<**String**> |  | [optional]
-**environment_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**environment_id** | Option<**uuid::Uuid**> |  | [optional]
 **environment_name** | Option<**String**> |  | [optional]
-**item_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**item_id** | **uuid::Uuid** |  | 
 **item_name** | **String** |  | 
 **item_type** | [**models::AnnotationsGroupAssociatedItemType**](AnnotationsGroupAssociatedItemType.md) |  | 
 

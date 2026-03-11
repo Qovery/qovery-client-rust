@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
 **cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
-**delete_mode** | Option<[**ClusterDeleteMode**](.md)> |  |  |
+**delete_mode** | Option<[**ClusterDeleteMode**](ClusterDeleteMode.md)> |  |  |
 
 ### Return type
 

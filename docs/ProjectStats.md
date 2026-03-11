@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **service_total_number** | Option<**f64**> |  | [optional]
 **environment_total_number** | Option<**f64**> |  | [optional]
 

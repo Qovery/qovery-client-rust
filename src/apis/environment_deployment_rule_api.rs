@@ -41,15 +41,15 @@ pub async fn edit_environment_deployment_rule(
     environment_deployment_rule_edit_request: Option<models::EnvironmentDeploymentRuleEditRequest>,
 ) -> Result<models::EnvironmentDeploymentRule, Error<EditEnvironmentDeploymentRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_deployment_rule_id = deployment_rule_id;
-    let p_environment_deployment_rule_edit_request = environment_deployment_rule_edit_request;
+    let p_path_environment_id = environment_id;
+    let p_path_deployment_rule_id = deployment_rule_id;
+    let p_body_environment_deployment_rule_edit_request = environment_deployment_rule_edit_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploymentRule/{deploymentRuleId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        deploymentRuleId = crate::apis::urlencode(p_deployment_rule_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        deploymentRuleId = crate::apis::urlencode(p_path_deployment_rule_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -67,7 +67,7 @@ pub async fn edit_environment_deployment_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_environment_deployment_rule_edit_request);
+    req_builder = req_builder.json(&p_body_environment_deployment_rule_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -104,12 +104,12 @@ pub async fn get_environment_deployment_rule(
     environment_id: &str,
 ) -> Result<models::EnvironmentDeploymentRule, Error<GetEnvironmentDeploymentRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploymentRule",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -65,13 +65,13 @@ pub async fn create_terraform_deployment_restriction(
     Error<CreateTerraformDeploymentRestrictionError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_terraform_deployment_restriction_request = terraform_deployment_restriction_request;
+    let p_path_terraform_id = terraform_id;
+    let p_body_terraform_deployment_restriction_request = terraform_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploymentRestriction",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
@@ -91,7 +91,7 @@ pub async fn create_terraform_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_terraform_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -130,14 +130,14 @@ pub async fn delete_terraform_deployment_restriction(
     deployment_restriction_id: &str,
 ) -> Result<(), Error<DeleteTerraformDeploymentRestrictionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
+    let p_path_terraform_id = terraform_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration
         .client
@@ -188,15 +188,15 @@ pub async fn edit_terraform_deployment_restriction(
     Error<EditTerraformDeploymentRestrictionError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_deployment_restriction_id = deployment_restriction_id;
-    let p_terraform_deployment_restriction_request = terraform_deployment_restriction_request;
+    let p_path_terraform_id = terraform_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+    let p_body_terraform_deployment_restriction_request = terraform_deployment_restriction_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploymentRestriction/{deploymentRestrictionId}",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id),
-        deploymentRestrictionId = crate::apis::urlencode(p_deployment_restriction_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -214,7 +214,7 @@ pub async fn edit_terraform_deployment_restriction(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_deployment_restriction_request);
+    req_builder = req_builder.json(&p_body_terraform_deployment_restriction_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -255,12 +255,12 @@ pub async fn get_terraform_deployment_restrictions(
     Error<GetTerraformDeploymentRestrictionsError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploymentRestriction",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

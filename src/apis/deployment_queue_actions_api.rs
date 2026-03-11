@@ -31,13 +31,13 @@ pub async fn cancel_deployment_request(
     body: Option<serde_json::Value>,
 ) -> Result<(), Error<CancelDeploymentRequestError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_request_id = deployment_request_id;
-    let p_body = body;
+    let p_path_deployment_request_id = deployment_request_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/deploymentQueue/{deploymentRequestId}/cancelDeployment",
         configuration.base_path,
-        deploymentRequestId = crate::apis::urlencode(p_deployment_request_id)
+        deploymentRequestId = crate::apis::urlencode(p_path_deployment_request_id)
     );
     let mut req_builder = configuration
         .client
@@ -57,7 +57,7 @@ pub async fn cancel_deployment_request(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

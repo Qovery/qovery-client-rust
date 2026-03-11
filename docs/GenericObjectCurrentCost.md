@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | **String** |  | 
 **consumed_time_in_seconds** | **i32** |  | 
 **cost** | [**models::Cost**](Cost.md) |  | 

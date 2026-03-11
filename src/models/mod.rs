@@ -614,8 +614,6 @@ pub mod get_cluster_token_by_cluster_id_200_response_status;
 pub use self::get_cluster_token_by_cluster_id_200_response_status::GetClusterTokenByClusterId200ResponseStatus;
 pub mod ghost_alert_rule_response;
 pub use self::ghost_alert_rule_response::GhostAlertRuleResponse;
-pub mod ghost_alert_rule_response_all_of_target;
-pub use self::ghost_alert_rule_response_all_of_target::GhostAlertRuleResponseAllOfTarget;
 pub mod git_auth_provider;
 pub use self::git_auth_provider::GitAuthProvider;
 pub mod git_auth_provider_response_list;

@@ -113,15 +113,16 @@ pub async fn attach_service_to_deployment_stage(
     >,
 ) -> Result<models::DeploymentStageResponseList, Error<AttachServiceToDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
-    let p_service_id = service_id;
-    let p_attach_service_to_deployment_stage_request = attach_service_to_deployment_stage_request;
+    let p_path_deployment_stage_id = deployment_stage_id;
+    let p_path_service_id = service_id;
+    let p_body_attach_service_to_deployment_stage_request =
+        attach_service_to_deployment_stage_request;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}/service/{serviceId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id),
-        serviceId = crate::apis::urlencode(p_service_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id),
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -139,7 +140,7 @@ pub async fn attach_service_to_deployment_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_attach_service_to_deployment_stage_request);
+    req_builder = req_builder.json(&p_body_attach_service_to_deployment_stage_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -177,13 +178,13 @@ pub async fn create_environment_deployment_stage(
     deployment_stage_request: Option<models::DeploymentStageRequest>,
 ) -> Result<models::DeploymentStageResponse, Error<CreateEnvironmentDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_deployment_stage_request = deployment_stage_request;
+    let p_path_environment_id = environment_id;
+    let p_body_deployment_stage_request = deployment_stage_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploymentStage",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -203,7 +204,7 @@ pub async fn create_environment_deployment_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_deployment_stage_request);
+    req_builder = req_builder.json(&p_body_deployment_stage_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -240,12 +241,12 @@ pub async fn delete_deployment_stage(
     deployment_stage_id: &str,
 ) -> Result<(), Error<DeleteDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
+    let p_path_deployment_stage_id = deployment_stage_id;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id)
     );
     let mut req_builder = configuration
         .client
@@ -290,13 +291,13 @@ pub async fn edit_deployment_stage(
     deployment_stage_request: Option<models::DeploymentStageRequest>,
 ) -> Result<models::DeploymentStageResponse, Error<EditDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
-    let p_deployment_stage_request = deployment_stage_request;
+    let p_path_deployment_stage_id = deployment_stage_id;
+    let p_body_deployment_stage_request = deployment_stage_request;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -314,7 +315,7 @@ pub async fn edit_deployment_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_deployment_stage_request);
+    req_builder = req_builder.json(&p_body_deployment_stage_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -350,12 +351,12 @@ pub async fn get_deployment_stage(
     deployment_stage_id: &str,
 ) -> Result<models::DeploymentStageResponse, Error<GetDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
+    let p_path_deployment_stage_id = deployment_stage_id;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -408,12 +409,12 @@ pub async fn get_service_deployment_stage(
     service_id: &str,
 ) -> Result<models::DeploymentStageResponse, Error<GetServiceDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service_id = service_id;
+    let p_path_service_id = service_id;
 
     let uri_str = format!(
         "{}/service/{serviceId}/deploymentStage",
         configuration.base_path,
-        serviceId = crate::apis::urlencode(p_service_id)
+        serviceId = crate::apis::urlencode(p_path_service_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -466,12 +467,12 @@ pub async fn list_environment_deployment_stage(
     environment_id: &str,
 ) -> Result<models::DeploymentStageResponseList, Error<ListEnvironmentDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/deploymentStage",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -526,14 +527,14 @@ pub async fn move_after_deployment_stage(
     stage_id: &str,
 ) -> Result<models::DeploymentStageResponseList, Error<MoveAfterDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
-    let p_stage_id = stage_id;
+    let p_path_deployment_stage_id = deployment_stage_id;
+    let p_path_stage_id = stage_id;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}/moveAfter/{stageId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id),
-        stageId = crate::apis::urlencode(p_stage_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id),
+        stageId = crate::apis::urlencode(p_path_stage_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -587,14 +588,14 @@ pub async fn move_before_deployment_stage(
     stage_id: &str,
 ) -> Result<models::DeploymentStageResponseList, Error<MoveBeforeDeploymentStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_stage_id = deployment_stage_id;
-    let p_stage_id = stage_id;
+    let p_path_deployment_stage_id = deployment_stage_id;
+    let p_path_stage_id = stage_id;
 
     let uri_str = format!(
         "{}/deploymentStage/{deploymentStageId}/moveBefore/{stageId}",
         configuration.base_path,
-        deploymentStageId = crate::apis::urlencode(p_deployment_stage_id),
-        stageId = crate::apis::urlencode(p_stage_id)
+        deploymentStageId = crate::apis::urlencode(p_path_deployment_stage_id),
+        stageId = crate::apis::urlencode(p_path_stage_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 

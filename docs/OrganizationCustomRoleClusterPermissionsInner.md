@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cluster_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**cluster_id** | Option<**uuid::Uuid**> |  | [optional]
 **cluster_name** | Option<**String**> |  | [optional]
 **permission** | Option<[**models::OrganizationCustomRoleClusterPermission**](OrganizationCustomRoleClusterPermission.md)> |  | [optional]
 

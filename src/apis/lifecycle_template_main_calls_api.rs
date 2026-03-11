@@ -39,14 +39,14 @@ pub async fn get_environment_lifecycle_template(
     lifecycle_template_id: &str,
 ) -> Result<models::LifecycleTemplateResponse, Error<GetEnvironmentLifecycleTemplateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_lifecycle_template_id = lifecycle_template_id;
+    let p_path_environment_id = environment_id;
+    let p_path_lifecycle_template_id = lifecycle_template_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId}",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id),
-        lifecycleTemplateId = crate::apis::urlencode(p_lifecycle_template_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id),
+        lifecycleTemplateId = crate::apis::urlencode(p_path_lifecycle_template_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -100,12 +100,12 @@ pub async fn list_environment_lifecycle_templates(
     environment_id: &str,
 ) -> Result<models::LifecycleTemplateListResponse, Error<ListEnvironmentLifecycleTemplatesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/lifecycleTemplate",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organization_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**organization_id** | **uuid::Uuid** |  | 
 **name** | **String** |  | 
 **description** | **String** |  | 
 **r#type** | [**models::AlertReceiverType**](AlertReceiverType.md) |  | 

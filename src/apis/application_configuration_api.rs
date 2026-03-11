@@ -62,13 +62,13 @@ pub async fn edit_advanced_settings(
     application_advanced_settings: Option<models::ApplicationAdvancedSettings>,
 ) -> Result<models::ApplicationAdvancedSettings, Error<EditAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_application_advanced_settings = application_advanced_settings;
+    let p_path_application_id = application_id;
+    let p_body_application_advanced_settings = application_advanced_settings;
 
     let uri_str = format!(
         "{}/application/{applicationId}/advancedSettings",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -86,7 +86,7 @@ pub async fn edit_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_advanced_settings);
+    req_builder = req_builder.json(&p_body_application_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -124,13 +124,13 @@ pub async fn edit_application_network(
     application_network_request: Option<models::ApplicationNetworkRequest>,
 ) -> Result<models::ApplicationNetwork, Error<EditApplicationNetworkError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
-    let p_application_network_request = application_network_request;
+    let p_path_application_id = application_id;
+    let p_body_application_network_request = application_network_request;
 
     let uri_str = format!(
         "{}/application/{applicationId}/network",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -148,7 +148,7 @@ pub async fn edit_application_network(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_application_network_request);
+    req_builder = req_builder.json(&p_body_application_network_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -185,12 +185,12 @@ pub async fn get_advanced_settings(
     application_id: &str,
 ) -> Result<models::ApplicationAdvancedSettings, Error<GetAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/advancedSettings",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -244,12 +244,12 @@ pub async fn get_application_network(
     application_id: &str,
 ) -> Result<models::ApplicationNetwork, Error<GetApplicationNetworkError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_application_id = application_id;
+    let p_path_application_id = application_id;
 
     let uri_str = format!(
         "{}/application/{applicationId}/network",
         configuration.base_path,
-        applicationId = crate::apis::urlencode(p_application_id)
+        applicationId = crate::apis::urlencode(p_path_application_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

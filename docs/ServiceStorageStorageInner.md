@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **r#type** | [**models::StorageTypeEnum**](StorageTypeEnum.md) |  | 
 **size** | **i32** | unit is GB | 
 **mount_point** | **String** |  | 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_id** | [**uuid::Uuid**](uuid::Uuid.md) | ID of the associated service | 
+**service_id** | **uuid::Uuid** | ID of the associated service | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **url** | **String** | URL to access the service | 
 **internal_port** | **i32** | The port from which the service is reachable from within the cluster | 

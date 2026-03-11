@@ -40,13 +40,13 @@ pub async fn edit_terraform_advanced_settings(
     terraform_advanced_settings: Option<models::TerraformAdvancedSettings>,
 ) -> Result<models::TerraformAdvancedSettings, Error<EditTerraformAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_terraform_advanced_settings = terraform_advanced_settings;
+    let p_path_terraform_id = terraform_id;
+    let p_body_terraform_advanced_settings = terraform_advanced_settings;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/advancedSettings",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -64,7 +64,7 @@ pub async fn edit_terraform_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_advanced_settings);
+    req_builder = req_builder.json(&p_body_terraform_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -101,12 +101,12 @@ pub async fn get_terraform_advanced_settings(
     terraform_id: &str,
 ) -> Result<models::TerraformAdvancedSettings, Error<GetTerraformAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/advancedSettings",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

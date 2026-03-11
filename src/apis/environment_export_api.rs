@@ -29,17 +29,17 @@ pub async fn export_environment_configuration_into_terraform(
     export_secrets: Option<bool>,
 ) -> Result<reqwest::Response, Error<ExportEnvironmentConfigurationIntoTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_export_secrets = export_secrets;
+    let p_path_environment_id = environment_id;
+    let p_query_export_secrets = export_secrets;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/terraformExport",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_export_secrets {
+    if let Some(ref param_value) = p_query_export_secrets {
         req_builder = req_builder.query(&[("exportSecrets", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

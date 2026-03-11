@@ -49,14 +49,14 @@ pub async fn get_organization_enterprise_connection(
     connection_name: &str,
 ) -> Result<models::EnterpriseConnectionDto, Error<GetOrganizationEnterpriseConnectionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_connection_name = connection_name;
+    let p_path_organization_id = organization_id;
+    let p_path_connection_name = connection_name;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/enterpriseconnection/{connectionName}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        connectionName = crate::apis::urlencode(p_connection_name)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        connectionName = crate::apis::urlencode(p_path_connection_name)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -113,12 +113,12 @@ pub async fn list_organization_enterprise_connections(
     Error<ListOrganizationEnterpriseConnectionsError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/enterpriseconnection",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -174,15 +174,15 @@ pub async fn update_organization_enterprise_connection(
     enterprise_connection_dto: Option<models::EnterpriseConnectionDto>,
 ) -> Result<models::EnterpriseConnectionDto, Error<UpdateOrganizationEnterpriseConnectionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_connection_name = connection_name;
-    let p_enterprise_connection_dto = enterprise_connection_dto;
+    let p_path_organization_id = organization_id;
+    let p_path_connection_name = connection_name;
+    let p_body_enterprise_connection_dto = enterprise_connection_dto;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/enterpriseconnection/{connectionName}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        connectionName = crate::apis::urlencode(p_connection_name)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        connectionName = crate::apis::urlencode(p_path_connection_name)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -200,7 +200,7 @@ pub async fn update_organization_enterprise_connection(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_enterprise_connection_dto);
+    req_builder = req_builder.json(&p_body_enterprise_connection_dto);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

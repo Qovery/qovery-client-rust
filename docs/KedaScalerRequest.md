@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **scaler_type** | **String** |  | 
 **enabled** | Option<**bool**> |  | [optional]
 **role** | [**models::KedaScalerRole**](KedaScalerRole.md) |  | 
-**config_json** | Option<[**serde_json::Value**](.md)> |  | [optional]
+**config_json** | Option<**serde_json::Value**> |  | [optional]
 **config_yaml** | Option<**String**> |  | [optional]
 **trigger_authentication** | Option<[**models::KedaTriggerAuthenticationRequest**](KedaTriggerAuthenticationRequest.md)> |  | [optional]
 

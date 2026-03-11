@@ -84,13 +84,13 @@ pub async fn auto_deploy_job_environments(
     organization_job_auto_deploy_request: Option<models::OrganizationJobAutoDeployRequest>,
 ) -> Result<models::Status, Error<AutoDeployJobEnvironmentsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_job_auto_deploy_request = organization_job_auto_deploy_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_job_auto_deploy_request = organization_job_auto_deploy_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/job/deploy",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -110,7 +110,7 @@ pub async fn auto_deploy_job_environments(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_job_auto_deploy_request);
+    req_builder = req_builder.json(&p_body_organization_job_auto_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -148,13 +148,13 @@ pub async fn clone_job(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::JobResponse, Error<CloneJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_job_id = job_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/job/{jobId}/clone",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -174,7 +174,7 @@ pub async fn clone_job(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -211,13 +211,13 @@ pub async fn create_job(
     job_request: Option<models::JobRequest>,
 ) -> Result<models::JobResponse, Error<CreateJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_job_request = job_request;
+    let p_path_environment_id = environment_id;
+    let p_body_job_request = job_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/job",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -237,7 +237,7 @@ pub async fn create_job(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_request);
+    req_builder = req_builder.json(&p_body_job_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -326,12 +326,12 @@ pub async fn get_environment_job_status(
     environment_id: &str,
 ) -> Result<models::ReferenceObjectStatusResponseList, Error<GetEnvironmentJobStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/job/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -385,17 +385,17 @@ pub async fn list_jobs(
     to_update: Option<bool>,
 ) -> Result<models::JobResponseList, Error<ListJobsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_to_update = to_update;
+    let p_path_environment_id = environment_id;
+    let p_query_to_update = to_update;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/job",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_to_update {
+    if let Some(ref param_value) = p_query_to_update {
         req_builder = req_builder.query(&[("toUpdate", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

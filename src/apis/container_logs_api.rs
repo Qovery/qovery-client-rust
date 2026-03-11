@@ -29,12 +29,12 @@ pub async fn list_container_log(
     container_id: &str,
 ) -> Result<models::LogResponseList, Error<ListContainerLogError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/log",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

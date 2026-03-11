@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **String** |  | 
+**kind** | **Kind** |  (enum: AKS) | 
 **cluster_name** | **String** |  | 
 **cluster_oidc_issuer** | **String** |  | 
 

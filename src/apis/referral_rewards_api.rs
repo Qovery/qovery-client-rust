@@ -84,7 +84,7 @@ pub async fn post_account_reward_claim(
     reward_claim: Option<models::RewardClaim>,
 ) -> Result<(), Error<PostAccountRewardClaimError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_reward_claim = reward_claim;
+    let p_body_reward_claim = reward_claim;
 
     let uri_str = format!("{}/account/rewardClaim", configuration.base_path);
     let mut req_builder = configuration
@@ -105,7 +105,7 @@ pub async fn post_account_reward_claim(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_reward_claim);
+    req_builder = req_builder.json(&p_body_reward_claim);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -184,13 +184,13 @@ pub async fn add_credit_card(
     credit_card_request: Option<models::CreditCardRequest>,
 ) -> Result<models::CreditCard, Error<AddCreditCardError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credit_card_request = credit_card_request;
+    let p_path_organization_id = organization_id;
+    let p_body_credit_card_request = credit_card_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/creditCard",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -210,7 +210,7 @@ pub async fn add_credit_card(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_credit_card_request);
+    req_builder = req_builder.json(&p_body_credit_card_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -247,13 +247,13 @@ pub async fn add_credit_code(
     organization_credit_code_request: Option<models::OrganizationCreditCodeRequest>,
 ) -> Result<(), Error<AddCreditCodeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_credit_code_request = organization_credit_code_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_credit_code_request = organization_credit_code_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/creditCode",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -273,7 +273,7 @@ pub async fn add_credit_code(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_credit_code_request);
+    req_builder = req_builder.json(&p_body_organization_credit_code_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -299,13 +299,13 @@ pub async fn change_plan(
     organization_change_plan_request: Option<models::OrganizationChangePlanRequest>,
 ) -> Result<models::Organization, Error<ChangePlanError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_change_plan_request = organization_change_plan_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_change_plan_request = organization_change_plan_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/changePlan",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -325,7 +325,7 @@ pub async fn change_plan(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_change_plan_request);
+    req_builder = req_builder.json(&p_body_organization_change_plan_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -362,14 +362,14 @@ pub async fn delete_credit_card(
     credit_card_id: &str,
 ) -> Result<(), Error<DeleteCreditCardError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credit_card_id = credit_card_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credit_card_id = credit_card_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/creditCard/{creditCardId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        creditCardId = crate::apis::urlencode(p_credit_card_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        creditCardId = crate::apis::urlencode(p_path_credit_card_id)
     );
     let mut req_builder = configuration
         .client
@@ -414,13 +414,13 @@ pub async fn edit_organization_billing_info(
     billing_info_request: Option<models::BillingInfoRequest>,
 ) -> Result<models::BillingInfo, Error<EditOrganizationBillingInfoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_billing_info_request = billing_info_request;
+    let p_path_organization_id = organization_id;
+    let p_body_billing_info_request = billing_info_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/billingInfo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -438,7 +438,7 @@ pub async fn edit_organization_billing_info(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_billing_info_request);
+    req_builder = req_builder.json(&p_body_billing_info_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -478,13 +478,14 @@ pub async fn generate_billing_usage_report(
 ) -> Result<models::OrganizationBillingUsageReportResponse, Error<GenerateBillingUsageReportError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_billing_usage_report_request = organization_billing_usage_report_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_billing_usage_report_request =
+        organization_billing_usage_report_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/billingUsageReport",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -504,7 +505,7 @@ pub async fn generate_billing_usage_report(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_billing_usage_report_request);
+    req_builder = req_builder.json(&p_body_organization_billing_usage_report_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -542,14 +543,14 @@ pub async fn get_cluster_current_cost(
     cluster_id: &str,
 ) -> Result<models::CostRange, Error<GetClusterCurrentCostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/currentCost",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -603,12 +604,12 @@ pub async fn get_organization_billing_external_id(
     organization_id: &str,
 ) -> Result<models::BillingExternalId, Error<GetOrganizationBillingExternalIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/billingExternalId",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -662,12 +663,12 @@ pub async fn get_organization_billing_info(
     organization_id: &str,
 ) -> Result<models::BillingInfo, Error<GetOrganizationBillingInfoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/billingInfo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -721,12 +722,12 @@ pub async fn get_organization_billing_status(
     organization_id: &str,
 ) -> Result<models::BillingStatus, Error<GetOrganizationBillingStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/billingStatus",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -779,12 +780,12 @@ pub async fn get_organization_current_cost(
     organization_id: &str,
 ) -> Result<models::OrganizationCurrentCost, Error<GetOrganizationCurrentCostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/currentCost",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -838,14 +839,14 @@ pub async fn get_organization_invoice(
     invoice_id: &str,
 ) -> Result<models::Invoice, Error<GetOrganizationInvoiceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invoice_id = invoice_id;
+    let p_path_organization_id = organization_id;
+    let p_path_invoice_id = invoice_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/invoice/{invoiceId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        invoiceId = crate::apis::urlencode(p_invoice_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        invoiceId = crate::apis::urlencode(p_path_invoice_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -900,14 +901,14 @@ pub async fn get_organization_invoice_pdf(
     invoice_id: &str,
 ) -> Result<models::Link, Error<GetOrganizationInvoicePdfError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_invoice_id = invoice_id;
+    let p_path_organization_id = organization_id;
+    let p_path_invoice_id = invoice_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/invoice/{invoiceId}/download",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        invoiceId = crate::apis::urlencode(p_invoice_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        invoiceId = crate::apis::urlencode(p_path_invoice_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -960,12 +961,12 @@ pub async fn list_organization_credit_cards(
     organization_id: &str,
 ) -> Result<models::CreditCardResponseList, Error<ListOrganizationCreditCardsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/creditCard",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1018,12 +1019,12 @@ pub async fn list_organization_invoice(
     organization_id: &str,
 ) -> Result<models::InvoiceResponseList, Error<ListOrganizationInvoiceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/invoice",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1076,12 +1077,12 @@ pub async fn organization_download_all_invoices(
     organization_id: &str,
 ) -> Result<(), Error<OrganizationDownloadAllInvoicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/downloadInvoices",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client

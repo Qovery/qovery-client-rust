@@ -18,238 +18,236 @@ pub struct ClusterAdvancedSettings {
         rename = "aws.cloudwatch.eks_logs_retention_days",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_cloudwatch_period_eks_logs_retention_days: Option<i32>,
+    pub aws_cloudwatch_eks_logs_retention_days: Option<i32>,
     /// Enable flow logs for on the VPC and store them in an S3 bucket
     #[serde(
         rename = "aws.vpc.enable_s3_flow_logs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_vpc_period_enable_s3_flow_logs: Option<bool>,
+    pub aws_vpc_enable_s3_flow_logs: Option<bool>,
     /// Set the number of retention days for flow logs. Disable with value \"0\"
     #[serde(
         rename = "aws.vpc.flow_logs_retention_days",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_vpc_period_flow_logs_retention_days: Option<i32>,
+    pub aws_vpc_flow_logs_retention_days: Option<i32>,
     /// Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits.
     #[serde(
         rename = "aws.vpc.enable_nat_gateway_secondary_eip",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_vpc_period_enable_nat_gateway_secondary_eip: Option<bool>,
+    pub aws_vpc_enable_nat_gateway_secondary_eip: Option<bool>,
     /// For how long in week loki is going to keep logs of your applications
     #[serde(
         rename = "loki.log_retention_in_week",
         skip_serializing_if = "Option::is_none"
     )]
-    pub loki_period_log_retention_in_week: Option<i32>,
+    pub loki_log_retention_in_week: Option<i32>,
     /// Configure the number of seconds before cleaning images in the registry
     #[serde(
         rename = "registry.image_retention_time",
         skip_serializing_if = "Option::is_none"
     )]
-    pub registry_period_image_retention_time: Option<i32>,
+    pub registry_image_retention_time: Option<i32>,
     /// Add additional tags on the cluster dedicated registry
     #[serde(
         rename = "cloud_provider.container_registry.tags",
         skip_serializing_if = "Option::is_none"
     )]
-    pub cloud_provider_period_container_registry_period_tags:
-        Option<std::collections::HashMap<String, String>>,
+    pub cloud_provider_container_registry_tags: Option<std::collections::HashMap<String, String>>,
     /// Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application's public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports.
     #[serde(
         rename = "aws.eks.enable_alb_controller",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_eks_period_enable_alb_controller: Option<bool>,
+    pub aws_eks_enable_alb_controller: Option<bool>,
     /// Select the size of the main load_balancer (only effective for Scaleway)
     #[serde(rename = "load_balancer.size", skip_serializing_if = "Option::is_none")]
-    pub load_balancer_period_size: Option<String>,
+    pub load_balancer_size: Option<String>,
     /// Deny public access to any PostgreSQL database
     #[serde(
         rename = "database.postgresql.deny_any_access",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_postgresql_period_deny_any_access: Option<bool>,
+    pub database_postgresql_deny_any_access: Option<bool>,
     /// List of CIDRs allowed to access the PostgreSQL database
     #[serde(
         rename = "database.postgresql.allowed_cidrs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_postgresql_period_allowed_cidrs: Option<Vec<String>>,
+    pub database_postgresql_allowed_cidrs: Option<Vec<String>>,
     /// Deny public access to any MySql database
     #[serde(
         rename = "database.mysql.deny_any_access",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_mysql_period_deny_any_access: Option<bool>,
+    pub database_mysql_deny_any_access: Option<bool>,
     /// List of CIDRs allowed to access the MySql database
     #[serde(
         rename = "database.mysql.allowed_cidrs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_mysql_period_allowed_cidrs: Option<Vec<String>>,
+    pub database_mysql_allowed_cidrs: Option<Vec<String>>,
     /// Deny public access to any MongoDB/DocumentDB database
     #[serde(
         rename = "database.mongodb.deny_any_access",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_mongodb_period_deny_any_access: Option<bool>,
+    pub database_mongodb_deny_any_access: Option<bool>,
     /// List of CIDRs allowed to access the MongoDB/DocumentDB database
     #[serde(
         rename = "database.mongodb.allowed_cidrs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_mongodb_period_allowed_cidrs: Option<Vec<String>>,
+    pub database_mongodb_allowed_cidrs: Option<Vec<String>>,
     /// Deny public access to any Redis database
     #[serde(
         rename = "database.redis.deny_any_access",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_redis_period_deny_any_access: Option<bool>,
+    pub database_redis_deny_any_access: Option<bool>,
     /// List of CIDRs allowed to access the Redis database
     #[serde(
         rename = "database.redis.allowed_cidrs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub database_period_redis_period_allowed_cidrs: Option<Vec<String>>,
+    pub database_redis_allowed_cidrs: Option<Vec<String>>,
     /// AWS IAM group name with cluster access
     #[serde(
         rename = "aws.iam.admin_group",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_iam_period_admin_group: Option<String>,
+    pub aws_iam_admin_group: Option<String>,
     /// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
     #[serde(
         rename = "aws.eks.ec2.metadata_imds",
         skip_serializing_if = "Option::is_none"
     )]
-    pub aws_period_eks_period_ec2_period_metadata_imds:
-        Option<AwsPeriodEksPeriodEc2PeriodMetadataImds>,
+    pub aws_eks_ec2_metadata_imds: Option<AwsEksEc2MetadataImds>,
     /// Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
     #[serde(rename = "aws.eks.ec2.ami", skip_serializing_if = "Option::is_none")]
-    pub aws_period_eks_period_ec2_period_ami: Option<String>,
+    pub aws_eks_ec2_ami: Option<String>,
     #[serde(
         rename = "pleco.resources_ttl",
         skip_serializing_if = "Option::is_none"
     )]
-    pub pleco_period_resources_ttl: Option<i32>,
+    pub pleco_resources_ttl: Option<i32>,
     #[serde(
         rename = "registry.mirroring_mode",
         skip_serializing_if = "Option::is_none"
     )]
-    pub registry_period_mirroring_mode: Option<models::RegistryMirroringModeEnum>,
+    pub registry_mirroring_mode: Option<models::RegistryMirroringModeEnum>,
     /// vcpu request in millicores
     #[serde(
         rename = "nginx.vcpu.request_in_milli_cpu",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_vcpu_period_request_in_milli_cpu: Option<i32>,
+    pub nginx_vcpu_request_in_milli_cpu: Option<i32>,
     /// vcpu limit in millicores
     #[serde(
         rename = "nginx.vcpu.limit_in_milli_cpu",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_vcpu_period_limit_in_milli_cpu: Option<i32>,
+    pub nginx_vcpu_limit_in_milli_cpu: Option<i32>,
     /// memory request in MiB
     #[serde(
         rename = "nginx.memory.request_in_mib",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_memory_period_request_in_mib: Option<i32>,
+    pub nginx_memory_request_in_mib: Option<i32>,
     /// memory limit in MiB
     #[serde(
         rename = "nginx.memory.limit_in_mib",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_memory_period_limit_in_mib: Option<i32>,
+    pub nginx_memory_limit_in_mib: Option<i32>,
     /// hpa cpu threshold in percentage
     #[serde(
         rename = "nginx.hpa.cpu_utilization_percentage_threshold",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_hpa_period_cpu_utilization_percentage_threshold: Option<i32>,
+    pub nginx_hpa_cpu_utilization_percentage_threshold: Option<i32>,
     /// hpa minimum number of instances
     #[serde(
         rename = "nginx.hpa.min_number_instances",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_hpa_period_min_number_instances: Option<i32>,
+    pub nginx_hpa_min_number_instances: Option<i32>,
     /// hpa maximum number of instances
     #[serde(
         rename = "nginx.hpa.max_number_instances",
         skip_serializing_if = "Option::is_none"
     )]
-    pub nginx_period_hpa_period_max_number_instances: Option<i32>,
+    pub nginx_hpa_max_number_instances: Option<i32>,
     /// storage class name to use to provision pvc
     #[serde(
         rename = "storageclass.fast_ssd",
         skip_serializing_if = "Option::is_none"
     )]
-    pub storageclass_period_fast_ssd: Option<String>,
+    pub storageclass_fast_ssd: Option<String>,
     /// To limit public access from the internet to your Kubernetes cluster endpoint. You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs.
     #[serde(
         rename = "qovery.static_ip_mode",
         skip_serializing_if = "Option::is_none"
     )]
-    pub qovery_period_static_ip_mode: Option<bool>,
+    pub qovery_static_ip_mode: Option<bool>,
     /// Set custom sources to public access endpoint. Use CIDR notation to specify an IP address range  (for example, ['203.0.113.5/32','203.0.100/32'])
     #[serde(
         rename = "k8s.api.allowed_public_access_cidrs",
         skip_serializing_if = "Option::is_none"
     )]
-    pub k8s_period_api_period_allowed_public_access_cidrs: Option<Vec<String>>,
+    pub k8s_api_allowed_public_access_cidrs: Option<Vec<String>>,
 }
 
 impl ClusterAdvancedSettings {
     pub fn new() -> ClusterAdvancedSettings {
         ClusterAdvancedSettings {
-            aws_period_cloudwatch_period_eks_logs_retention_days: None,
-            aws_period_vpc_period_enable_s3_flow_logs: None,
-            aws_period_vpc_period_flow_logs_retention_days: None,
-            aws_period_vpc_period_enable_nat_gateway_secondary_eip: None,
-            loki_period_log_retention_in_week: None,
-            registry_period_image_retention_time: None,
-            cloud_provider_period_container_registry_period_tags: None,
-            aws_period_eks_period_enable_alb_controller: None,
-            load_balancer_period_size: None,
-            database_period_postgresql_period_deny_any_access: None,
-            database_period_postgresql_period_allowed_cidrs: None,
-            database_period_mysql_period_deny_any_access: None,
-            database_period_mysql_period_allowed_cidrs: None,
-            database_period_mongodb_period_deny_any_access: None,
-            database_period_mongodb_period_allowed_cidrs: None,
-            database_period_redis_period_deny_any_access: None,
-            database_period_redis_period_allowed_cidrs: None,
-            aws_period_iam_period_admin_group: None,
-            aws_period_eks_period_ec2_period_metadata_imds: None,
-            aws_period_eks_period_ec2_period_ami: None,
-            pleco_period_resources_ttl: None,
-            registry_period_mirroring_mode: None,
-            nginx_period_vcpu_period_request_in_milli_cpu: None,
-            nginx_period_vcpu_period_limit_in_milli_cpu: None,
-            nginx_period_memory_period_request_in_mib: None,
-            nginx_period_memory_period_limit_in_mib: None,
-            nginx_period_hpa_period_cpu_utilization_percentage_threshold: None,
-            nginx_period_hpa_period_min_number_instances: None,
-            nginx_period_hpa_period_max_number_instances: None,
-            storageclass_period_fast_ssd: None,
-            qovery_period_static_ip_mode: None,
-            k8s_period_api_period_allowed_public_access_cidrs: None,
+            aws_cloudwatch_eks_logs_retention_days: None,
+            aws_vpc_enable_s3_flow_logs: None,
+            aws_vpc_flow_logs_retention_days: None,
+            aws_vpc_enable_nat_gateway_secondary_eip: None,
+            loki_log_retention_in_week: None,
+            registry_image_retention_time: None,
+            cloud_provider_container_registry_tags: None,
+            aws_eks_enable_alb_controller: None,
+            load_balancer_size: None,
+            database_postgresql_deny_any_access: None,
+            database_postgresql_allowed_cidrs: None,
+            database_mysql_deny_any_access: None,
+            database_mysql_allowed_cidrs: None,
+            database_mongodb_deny_any_access: None,
+            database_mongodb_allowed_cidrs: None,
+            database_redis_deny_any_access: None,
+            database_redis_allowed_cidrs: None,
+            aws_iam_admin_group: None,
+            aws_eks_ec2_metadata_imds: None,
+            aws_eks_ec2_ami: None,
+            pleco_resources_ttl: None,
+            registry_mirroring_mode: None,
+            nginx_vcpu_request_in_milli_cpu: None,
+            nginx_vcpu_limit_in_milli_cpu: None,
+            nginx_memory_request_in_mib: None,
+            nginx_memory_limit_in_mib: None,
+            nginx_hpa_cpu_utilization_percentage_threshold: None,
+            nginx_hpa_min_number_instances: None,
+            nginx_hpa_max_number_instances: None,
+            storageclass_fast_ssd: None,
+            qovery_static_ip_mode: None,
+            k8s_api_allowed_public_access_cidrs: None,
         }
     }
 }
 /// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum AwsPeriodEksPeriodEc2PeriodMetadataImds {
+pub enum AwsEksEc2MetadataImds {
     #[serde(rename = "optional")]
     Optional,
     #[serde(rename = "required")]
     Required,
 }
 
-impl Default for AwsPeriodEksPeriodEc2PeriodMetadataImds {
-    fn default() -> AwsPeriodEksPeriodEc2PeriodMetadataImds {
+impl Default for AwsEksEc2MetadataImds {
+    fn default() -> AwsEksEc2MetadataImds {
         Self::Optional
     }
 }

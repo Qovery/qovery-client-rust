@@ -180,7 +180,7 @@ Import environment variables in a defined scope, with a defined visibility.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **service_id** | **uuid::Uuid** | service id | [required] |
-**service_type** | [**ServiceTypeForVariableEnum**](.md) | service type | [required] |
+**service_type** | [**ServiceTypeForVariableEnum**](ServiceTypeForVariableEnum.md) | service type | [required] |
 **variable_import_request** | Option<[**VariableImportRequest**](VariableImportRequest.md)> |  |  |
 
 ### Return type
@@ -212,7 +212,7 @@ Returns a list of variables. The result can be filtered by using the query param
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **parent_id** | **uuid::Uuid** | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope. | [required] |
-**scope** | [**ApiVariableScopeEnum**](.md) | the type of the parent_id (application, project, environment etc..). | [required] |
+**scope** | [**ApiVariableScopeEnum**](ApiVariableScopeEnum.md) | the type of the parent_id (application, project, environment etc..). | [required] |
 **is_secret** | Option<**bool**> |  |  |
 
 ### Return type

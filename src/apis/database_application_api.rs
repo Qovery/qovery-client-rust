@@ -38,12 +38,12 @@ pub async fn list_database_application(
     database_id: &str,
 ) -> Result<models::ApplicationResponseList, Error<ListDatabaseApplicationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
+    let p_path_database_id = database_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/application",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id)
+        databaseId = crate::apis::urlencode(p_path_database_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -97,14 +97,14 @@ pub async fn remove_application_from_database(
     target_application_id: &str,
 ) -> Result<(), Error<RemoveApplicationFromDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_database_id = database_id;
-    let p_target_application_id = target_application_id;
+    let p_path_database_id = database_id;
+    let p_path_target_application_id = target_application_id;
 
     let uri_str = format!(
         "{}/database/{databaseId}/application/{targetApplicationId}",
         configuration.base_path,
-        databaseId = crate::apis::urlencode(p_database_id),
-        targetApplicationId = crate::apis::urlencode(p_target_application_id)
+        databaseId = crate::apis::urlencode(p_path_database_id),
+        targetApplicationId = crate::apis::urlencode(p_path_target_application_id)
     );
     let mut req_builder = configuration
         .client

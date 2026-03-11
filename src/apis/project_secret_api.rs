@@ -84,13 +84,13 @@ pub async fn create_project_secret(
     secret_request: Option<models::SecretRequest>,
 ) -> Result<models::Secret, Error<CreateProjectSecretError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_secret_request = secret_request;
+    let p_path_project_id = project_id;
+    let p_body_secret_request = secret_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration
         .client
@@ -110,7 +110,7 @@ pub async fn create_project_secret(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_secret_request);
+    req_builder = req_builder.json(&p_body_secret_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -149,15 +149,15 @@ pub async fn create_project_secret_alias(
     key: Option<models::Key>,
 ) -> Result<models::Secret, Error<CreateProjectSecretAliasError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_secret_id = secret_id;
-    let p_key = key;
+    let p_path_project_id = project_id;
+    let p_path_secret_id = secret_id;
+    let p_body_key = key;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret/{secretId}/alias",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        secretId = crate::apis::urlencode(p_secret_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        secretId = crate::apis::urlencode(p_path_secret_id)
     );
     let mut req_builder = configuration
         .client
@@ -177,7 +177,7 @@ pub async fn create_project_secret_alias(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_key);
+    req_builder = req_builder.json(&p_body_key);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -216,15 +216,15 @@ pub async fn create_project_secret_override(
     value: Option<models::Value>,
 ) -> Result<models::Secret, Error<CreateProjectSecretOverrideError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_secret_id = secret_id;
-    let p_value = value;
+    let p_path_project_id = project_id;
+    let p_path_secret_id = secret_id;
+    let p_body_value = value;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret/{secretId}/override",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        secretId = crate::apis::urlencode(p_secret_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        secretId = crate::apis::urlencode(p_path_secret_id)
     );
     let mut req_builder = configuration
         .client
@@ -244,7 +244,7 @@ pub async fn create_project_secret_override(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_value);
+    req_builder = req_builder.json(&p_body_value);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -282,14 +282,14 @@ pub async fn delete_project_secret(
     secret_id: &str,
 ) -> Result<(), Error<DeleteProjectSecretError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_secret_id = secret_id;
+    let p_path_project_id = project_id;
+    let p_path_secret_id = secret_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret/{secretId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        secretId = crate::apis::urlencode(p_secret_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        secretId = crate::apis::urlencode(p_path_secret_id)
     );
     let mut req_builder = configuration
         .client
@@ -336,15 +336,15 @@ pub async fn edit_project_secret(
     secret_edit_request: models::SecretEditRequest,
 ) -> Result<models::Secret, Error<EditProjectSecretError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_secret_id = secret_id;
-    let p_secret_edit_request = secret_edit_request;
+    let p_path_project_id = project_id;
+    let p_path_secret_id = secret_id;
+    let p_body_secret_edit_request = secret_edit_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret/{secretId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        secretId = crate::apis::urlencode(p_secret_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        secretId = crate::apis::urlencode(p_path_secret_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -362,7 +362,7 @@ pub async fn edit_project_secret(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_secret_edit_request);
+    req_builder = req_builder.json(&p_body_secret_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -398,12 +398,12 @@ pub async fn list_project_secrets(
     project_id: &str,
 ) -> Result<models::SecretResponseList, Error<ListProjectSecretsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/secret",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

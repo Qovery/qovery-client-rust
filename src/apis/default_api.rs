@@ -32,12 +32,12 @@ pub async fn get_cluster_token_by_cluster_id(
     cluster_id: &str,
 ) -> Result<models::GetClusterTokenByClusterId200Response, Error<GetClusterTokenByClusterIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/token",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -90,13 +90,15 @@ pub async fn get_deployment_status_by_deployment_request_id(
     deployment_request_id: &str,
 ) -> Result<models::EnvDeploymentStatus, Error<GetDeploymentStatusByDeploymentRequestIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_deployment_request_id = deployment_request_id;
+    let p_query_deployment_request_id = deployment_request_id;
 
     let uri_str = format!("{}/environment/deploymentStatus", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder =
-        req_builder.query(&[("deploymentRequestId", &p_deployment_request_id.to_string())]);
+    req_builder = req_builder.query(&[(
+        "deploymentRequestId",
+        &p_query_deployment_request_id.to_string(),
+    )]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

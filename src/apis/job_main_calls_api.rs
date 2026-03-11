@@ -71,12 +71,12 @@ pub async fn delete_job(
     job_id: &str,
 ) -> Result<(), Error<DeleteJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration
         .client
@@ -122,13 +122,13 @@ pub async fn edit_job(
     job_request: Option<models::JobRequest>,
 ) -> Result<models::JobResponse, Error<EditJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_job_request = job_request;
+    let p_path_job_id = job_id;
+    let p_body_job_request = job_request;
 
     let uri_str = format!(
         "{}/job/{jobId}",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -146,7 +146,7 @@ pub async fn edit_job(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_request);
+    req_builder = req_builder.json(&p_body_job_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -182,12 +182,12 @@ pub async fn get_job(
     job_id: &str,
 ) -> Result<models::JobResponse, Error<GetJobError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -240,12 +240,12 @@ pub async fn get_job_status(
     job_id: &str,
 ) -> Result<models::Status, Error<GetJobStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/status",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -301,21 +301,21 @@ pub async fn list_job_commit(
     git_commit_id: Option<&str>,
 ) -> Result<models::CommitResponseList, Error<ListJobCommitError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_start_id = start_id;
-    let p_git_commit_id = git_commit_id;
+    let p_path_job_id = job_id;
+    let p_query_start_id = start_id;
+    let p_query_git_commit_id = git_commit_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/commit",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_start_id {
+    if let Some(ref param_value) = p_query_start_id {
         req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_git_commit_id {
+    if let Some(ref param_value) = p_query_git_commit_id {
         req_builder = req_builder.query(&[("gitCommitId", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

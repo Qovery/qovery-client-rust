@@ -55,13 +55,13 @@ pub async fn deploy_terraform(
     terraform_deploy_request: Option<models::TerraformDeployRequest>,
 ) -> Result<models::Status, Error<DeployTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_terraform_deploy_request = terraform_deploy_request;
+    let p_path_terraform_id = terraform_id;
+    let p_body_terraform_deploy_request = terraform_deploy_request;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/deploy",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
@@ -81,7 +81,7 @@ pub async fn deploy_terraform(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_terraform_deploy_request);
+    req_builder = req_builder.json(&p_body_terraform_deploy_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -117,12 +117,12 @@ pub async fn redeploy_terraform(
     terraform_id: &str,
 ) -> Result<models::Status, Error<RedeployTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
+    let p_path_terraform_id = terraform_id;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/redeploy",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
@@ -180,20 +180,20 @@ pub async fn uninstall_terraform(
     body: Option<serde_json::Value>,
 ) -> Result<models::Status, Error<UninstallTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terraform_id = terraform_id;
-    let p_force_terraform_action = force_terraform_action;
-    let p_body = body;
+    let p_path_terraform_id = terraform_id;
+    let p_query_force_terraform_action = force_terraform_action;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/terraform/{terraformId}/uninstall",
         configuration.base_path,
-        terraformId = crate::apis::urlencode(p_terraform_id)
+        terraformId = crate::apis::urlencode(p_path_terraform_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_force_terraform_action {
+    if let Some(ref param_value) = p_query_force_terraform_action {
         req_builder = req_builder.query(&[("force_terraform_action", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -210,7 +210,7 @@ pub async fn uninstall_terraform(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

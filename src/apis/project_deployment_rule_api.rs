@@ -83,13 +83,13 @@ pub async fn create_deployment_rule(
     project_deployment_rule_request: Option<models::ProjectDeploymentRuleRequest>,
 ) -> Result<models::ProjectDeploymentRule, Error<CreateDeploymentRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_project_deployment_rule_request = project_deployment_rule_request;
+    let p_path_project_id = project_id;
+    let p_body_project_deployment_rule_request = project_deployment_rule_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration
         .client
@@ -109,7 +109,7 @@ pub async fn create_deployment_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_project_deployment_rule_request);
+    req_builder = req_builder.json(&p_body_project_deployment_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -147,14 +147,14 @@ pub async fn delete_project_deployment_rule(
     deployment_rule_id: &str,
 ) -> Result<(), Error<DeleteProjectDeploymentRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_deployment_rule_id = deployment_rule_id;
+    let p_path_project_id = project_id;
+    let p_path_deployment_rule_id = deployment_rule_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule/{deploymentRuleId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        deploymentRuleId = crate::apis::urlencode(p_deployment_rule_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        deploymentRuleId = crate::apis::urlencode(p_path_deployment_rule_id)
     );
     let mut req_builder = configuration
         .client
@@ -201,15 +201,15 @@ pub async fn edit_project_deployemtn_rule(
     project_deployment_rule_request: Option<models::ProjectDeploymentRuleRequest>,
 ) -> Result<models::ProjectDeploymentRule, Error<EditProjectDeployemtnRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_deployment_rule_id = deployment_rule_id;
-    let p_project_deployment_rule_request = project_deployment_rule_request;
+    let p_path_project_id = project_id;
+    let p_path_deployment_rule_id = deployment_rule_id;
+    let p_body_project_deployment_rule_request = project_deployment_rule_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule/{deploymentRuleId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        deploymentRuleId = crate::apis::urlencode(p_deployment_rule_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        deploymentRuleId = crate::apis::urlencode(p_path_deployment_rule_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -227,7 +227,7 @@ pub async fn edit_project_deployemtn_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_project_deployment_rule_request);
+    req_builder = req_builder.json(&p_body_project_deployment_rule_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -265,14 +265,14 @@ pub async fn get_project_deployment_rule(
     deployment_rule_id: &str,
 ) -> Result<models::ProjectDeploymentRule, Error<GetProjectDeploymentRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_deployment_rule_id = deployment_rule_id;
+    let p_path_project_id = project_id;
+    let p_path_deployment_rule_id = deployment_rule_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule/{deploymentRuleId}",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id),
-        deploymentRuleId = crate::apis::urlencode(p_deployment_rule_id)
+        projectId = crate::apis::urlencode(p_path_project_id),
+        deploymentRuleId = crate::apis::urlencode(p_path_deployment_rule_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -326,12 +326,12 @@ pub async fn list_project_deployment_rules(
     project_id: &str,
 ) -> Result<models::ProjectDeploymentRuleResponseList, Error<ListProjectDeploymentRulesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
+    let p_path_project_id = project_id;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -388,14 +388,14 @@ pub async fn update_deployment_rules_priority_order(
     >,
 ) -> Result<(), Error<UpdateDeploymentRulesPriorityOrderError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_project_id = project_id;
-    let p_project_deployment_rules_priority_order_request =
+    let p_path_project_id = project_id;
+    let p_body_project_deployment_rules_priority_order_request =
         project_deployment_rules_priority_order_request;
 
     let uri_str = format!(
         "{}/project/{projectId}/deploymentRule/order",
         configuration.base_path,
-        projectId = crate::apis::urlencode(p_project_id)
+        projectId = crate::apis::urlencode(p_path_project_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -413,7 +413,7 @@ pub async fn update_deployment_rules_priority_order(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_project_deployment_rules_priority_order_request);
+    req_builder = req_builder.json(&p_body_project_deployment_rules_priority_order_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

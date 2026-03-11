@@ -91,13 +91,13 @@ pub async fn create_container_registry(
     container_registry_request: Option<models::ContainerRegistryRequest>,
 ) -> Result<models::ContainerRegistryResponse, Error<CreateContainerRegistryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_request = container_registry_request;
+    let p_path_organization_id = organization_id;
+    let p_body_container_registry_request = container_registry_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -117,7 +117,7 @@ pub async fn create_container_registry(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_registry_request);
+    req_builder = req_builder.json(&p_body_container_registry_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -154,14 +154,14 @@ pub async fn delete_container_registry(
     container_registry_id: &str,
 ) -> Result<(), Error<DeleteContainerRegistryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry/{containerRegistryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        containerRegistryId = crate::apis::urlencode(p_container_registry_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        containerRegistryId = crate::apis::urlencode(p_path_container_registry_id)
     );
     let mut req_builder = configuration
         .client
@@ -207,15 +207,15 @@ pub async fn edit_container_registry(
     container_registry_request: Option<models::ContainerRegistryRequest>,
 ) -> Result<models::ContainerRegistryResponse, Error<EditContainerRegistryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
-    let p_container_registry_request = container_registry_request;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
+    let p_body_container_registry_request = container_registry_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry/{containerRegistryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        containerRegistryId = crate::apis::urlencode(p_container_registry_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        containerRegistryId = crate::apis::urlencode(p_path_container_registry_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -233,7 +233,7 @@ pub async fn edit_container_registry(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_registry_request);
+    req_builder = req_builder.json(&p_body_container_registry_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -270,14 +270,14 @@ pub async fn get_container_registry(
     container_registry_id: &str,
 ) -> Result<models::ContainerRegistryResponse, Error<GetContainerRegistryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry/{containerRegistryId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        containerRegistryId = crate::apis::urlencode(p_container_registry_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        containerRegistryId = crate::apis::urlencode(p_path_container_registry_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -333,23 +333,23 @@ pub async fn get_container_versions(
     search: Option<&str>,
 ) -> Result<models::ContainerVersionResponseList, Error<GetContainerVersionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_container_registry_id = container_registry_id;
-    let p_image_name = image_name;
-    let p_search = search;
+    let p_path_organization_id = organization_id;
+    let p_path_container_registry_id = container_registry_id;
+    let p_query_image_name = image_name;
+    let p_query_search = search;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry/{containerRegistryId}/images",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        containerRegistryId = crate::apis::urlencode(p_container_registry_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        containerRegistryId = crate::apis::urlencode(p_path_container_registry_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_image_name {
+    if let Some(ref param_value) = p_query_image_name {
         req_builder = req_builder.query(&[("imageName", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_search {
+    if let Some(ref param_value) = p_query_search {
         req_builder = req_builder.query(&[("search", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -456,12 +456,12 @@ pub async fn list_container_registry(
     organization_id: &str,
 ) -> Result<models::ContainerRegistryResponseList, Error<ListContainerRegistryError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/containerRegistry",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

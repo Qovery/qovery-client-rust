@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
-**cluster_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
+**cluster_id** | **uuid::Uuid** |  | 
 **argocd_url** | **String** |  | 
 **argocd_token** | **String** | Always returned as REDACTED | 
 **last_checked_at** | Option<**String**> |  | [optional]

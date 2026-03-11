@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**registry_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**registry_id** | Option<**uuid::Uuid**> |  | [optional]
 **image_name** | **String** |  | 
 **tag** | **String** |  | 
 

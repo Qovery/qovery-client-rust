@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**service_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**service_id** | **uuid::Uuid** |  | 
 **mode** | [**models::AutoscalingMode**](AutoscalingMode.md) |  | 
 **polling_interval_seconds** | **i32** |  | 
 **cooldown_period_seconds** | **i32** |  | 

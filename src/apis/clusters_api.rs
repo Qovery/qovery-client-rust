@@ -288,13 +288,13 @@ pub async fn create_cluster(
     cluster_request: Option<models::ClusterRequest>,
 ) -> Result<models::Cluster, Error<CreateClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_request = cluster_request;
+    let p_path_organization_id = organization_id;
+    let p_body_cluster_request = cluster_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -314,7 +314,7 @@ pub async fn create_cluster(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_request);
+    req_builder = req_builder.json(&p_body_cluster_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -352,21 +352,21 @@ pub async fn delete_cluster(
     delete_mode: Option<models::ClusterDeleteMode>,
 ) -> Result<(), Error<DeleteClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_delete_mode = delete_mode;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_query_delete_mode = delete_mode;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_delete_mode {
+    if let Some(ref param_value) = p_query_delete_mode {
         req_builder = req_builder.query(&[("deleteMode", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -410,21 +410,21 @@ pub async fn deploy_cluster(
     dry_run: Option<bool>,
 ) -> Result<models::ClusterStatus, Error<DeployClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_dry_run = dry_run;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_query_dry_run = dry_run;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/deploy",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_dry_run {
+    if let Some(ref param_value) = p_query_dry_run {
         req_builder = req_builder.query(&[("dry_run", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -478,15 +478,15 @@ pub async fn edit_cluster(
     cluster_request: Option<models::ClusterRequest>,
 ) -> Result<models::Cluster, Error<EditClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_cluster_request = cluster_request;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_request = cluster_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -504,7 +504,7 @@ pub async fn edit_cluster(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_request);
+    req_builder = req_builder.json(&p_body_cluster_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -543,15 +543,15 @@ pub async fn edit_cluster_advanced_settings(
     cluster_advanced_settings: Option<models::ClusterAdvancedSettings>,
 ) -> Result<models::ClusterAdvancedSettings, Error<EditClusterAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_cluster_advanced_settings = cluster_advanced_settings;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_advanced_settings = cluster_advanced_settings;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/advancedSettings",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -569,7 +569,7 @@ pub async fn edit_cluster_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_advanced_settings);
+    req_builder = req_builder.json(&p_body_cluster_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -607,15 +607,15 @@ pub async fn edit_cluster_kubeconfig(
     body: Option<&str>,
 ) -> Result<(), Error<EditClusterKubeconfigError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_body = body;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_body = body;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/kubeconfig",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -633,7 +633,7 @@ pub async fn edit_cluster_kubeconfig(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body);
+    req_builder = req_builder.json(&p_body_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -661,15 +661,15 @@ pub async fn edit_routing_table(
     cluster_routing_table_request: Option<models::ClusterRoutingTableRequest>,
 ) -> Result<models::ClusterRoutingTable, Error<EditRoutingTableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_cluster_routing_table_request = cluster_routing_table_request;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_routing_table_request = cluster_routing_table_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/routingTable",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -687,7 +687,7 @@ pub async fn edit_routing_table(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_routing_table_request);
+    req_builder = req_builder.json(&p_body_cluster_routing_table_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -725,14 +725,14 @@ pub async fn get_cluster_advanced_settings(
     cluster_id: &str,
 ) -> Result<models::ClusterAdvancedSettings, Error<GetClusterAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/advancedSettings",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -787,19 +787,19 @@ pub async fn get_cluster_kubeconfig(
     with_token_from_cli: Option<bool>,
 ) -> Result<String, Error<GetClusterKubeconfigError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_with_token_from_cli = with_token_from_cli;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_query_with_token_from_cli = with_token_from_cli;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/kubeconfig",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_with_token_from_cli {
+    if let Some(ref param_value) = p_query_with_token_from_cli {
         req_builder = req_builder.query(&[("with_token_from_cli", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -857,29 +857,29 @@ pub async fn get_cluster_kubernetes_events(
     reporting_component: Option<&str>,
 ) -> Result<models::GetClusterKubernetesEvents200Response, Error<GetClusterKubernetesEventsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_from_date_time = from_date_time;
-    let p_to_date_time = to_date_time;
-    let p_node_name = node_name;
-    let p_pod_name = pod_name;
-    let p_reporting_component = reporting_component;
+    let p_path_cluster_id = cluster_id;
+    let p_query_from_date_time = from_date_time;
+    let p_query_to_date_time = to_date_time;
+    let p_query_node_name = node_name;
+    let p_query_pod_name = pod_name;
+    let p_query_reporting_component = reporting_component;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/events",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("from_date_time", &p_from_date_time.to_string())]);
-    req_builder = req_builder.query(&[("to_date_time", &p_to_date_time.to_string())]);
-    if let Some(ref param_value) = p_node_name {
+    req_builder = req_builder.query(&[("from_date_time", &p_query_from_date_time.to_string())]);
+    req_builder = req_builder.query(&[("to_date_time", &p_query_to_date_time.to_string())]);
+    if let Some(ref param_value) = p_query_node_name {
         req_builder = req_builder.query(&[("node_name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pod_name {
+    if let Some(ref param_value) = p_query_pod_name {
         req_builder = req_builder.query(&[("pod_name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_reporting_component {
+    if let Some(ref param_value) = p_query_reporting_component {
         req_builder = req_builder.query(&[("reporting_component", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -942,49 +942,49 @@ pub async fn get_cluster_logs(
     time: Option<&str>,
 ) -> Result<models::ClusterLogsResponse, Error<GetClusterLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_endpoint = endpoint;
-    let p_query = query;
-    let p_start = start;
-    let p_end = end;
-    let p_limit = limit;
-    let p_since = since;
-    let p_step = step;
-    let p_interval = interval;
-    let p_direction = direction;
-    let p_time = time;
+    let p_path_cluster_id = cluster_id;
+    let p_query_endpoint = endpoint;
+    let p_query_query = query;
+    let p_query_start = start;
+    let p_query_end = end;
+    let p_query_limit = limit;
+    let p_query_since = since;
+    let p_query_step = step;
+    let p_query_interval = interval;
+    let p_query_direction = direction;
+    let p_query_time = time;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/logs",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("endpoint", &p_endpoint.to_string())]);
-    req_builder = req_builder.query(&[("query", &p_query.to_string())]);
-    if let Some(ref param_value) = p_start {
+    req_builder = req_builder.query(&[("endpoint", &p_query_endpoint.to_string())]);
+    req_builder = req_builder.query(&[("query", &p_query_query.to_string())]);
+    if let Some(ref param_value) = p_query_start {
         req_builder = req_builder.query(&[("start", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_end {
+    if let Some(ref param_value) = p_query_end {
         req_builder = req_builder.query(&[("end", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_limit {
+    if let Some(ref param_value) = p_query_limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_since {
+    if let Some(ref param_value) = p_query_since {
         req_builder = req_builder.query(&[("since", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_step {
+    if let Some(ref param_value) = p_query_step {
         req_builder = req_builder.query(&[("step", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_interval {
+    if let Some(ref param_value) = p_query_interval {
         req_builder = req_builder.query(&[("interval", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_direction {
+    if let Some(ref param_value) = p_query_direction {
         req_builder = req_builder.query(&[("direction", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_time {
+    if let Some(ref param_value) = p_query_time {
         req_builder = req_builder.query(&[("time", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1053,73 +1053,73 @@ pub async fn get_cluster_metrics(
     range: Option<&str>,
 ) -> Result<models::ClusterMetricsResponse, Error<GetClusterMetricsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_endpoint = endpoint;
-    let p_query = query;
-    let p_start = start;
-    let p_end = end;
-    let p_step = step;
-    let p_time = time;
-    let p_timeout = timeout;
-    let p_dedup = dedup;
-    let p_partial_response = partial_response;
-    let p_max_source_resolution = max_source_resolution;
-    let p_engine = engine;
-    let p_analyze = analyze;
-    let p_board_short_name = board_short_name;
-    let p_metric_short_name = metric_short_name;
-    let p_trace_id = trace_id;
-    let p_range = range;
+    let p_path_cluster_id = cluster_id;
+    let p_query_endpoint = endpoint;
+    let p_query_query = query;
+    let p_query_start = start;
+    let p_query_end = end;
+    let p_query_step = step;
+    let p_query_time = time;
+    let p_query_timeout = timeout;
+    let p_query_dedup = dedup;
+    let p_query_partial_response = partial_response;
+    let p_query_max_source_resolution = max_source_resolution;
+    let p_query_engine = engine;
+    let p_query_analyze = analyze;
+    let p_query_board_short_name = board_short_name;
+    let p_query_metric_short_name = metric_short_name;
+    let p_query_trace_id = trace_id;
+    let p_query_range = range;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/metrics",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("endpoint", &p_endpoint.to_string())]);
-    req_builder = req_builder.query(&[("query", &p_query.to_string())]);
-    if let Some(ref param_value) = p_start {
+    req_builder = req_builder.query(&[("endpoint", &p_query_endpoint.to_string())]);
+    req_builder = req_builder.query(&[("query", &p_query_query.to_string())]);
+    if let Some(ref param_value) = p_query_start {
         req_builder = req_builder.query(&[("start", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_end {
+    if let Some(ref param_value) = p_query_end {
         req_builder = req_builder.query(&[("end", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_step {
+    if let Some(ref param_value) = p_query_step {
         req_builder = req_builder.query(&[("step", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_time {
+    if let Some(ref param_value) = p_query_time {
         req_builder = req_builder.query(&[("time", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_timeout {
+    if let Some(ref param_value) = p_query_timeout {
         req_builder = req_builder.query(&[("timeout", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_dedup {
+    if let Some(ref param_value) = p_query_dedup {
         req_builder = req_builder.query(&[("dedup", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_partial_response {
+    if let Some(ref param_value) = p_query_partial_response {
         req_builder = req_builder.query(&[("partial_response", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_max_source_resolution {
+    if let Some(ref param_value) = p_query_max_source_resolution {
         req_builder = req_builder.query(&[("max_source_resolution", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_engine {
+    if let Some(ref param_value) = p_query_engine {
         req_builder = req_builder.query(&[("engine", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_analyze {
+    if let Some(ref param_value) = p_query_analyze {
         req_builder = req_builder.query(&[("analyze", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_board_short_name {
+    if let Some(ref param_value) = p_query_board_short_name {
         req_builder = req_builder.query(&[("board_short_name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_metric_short_name {
+    if let Some(ref param_value) = p_query_metric_short_name {
         req_builder = req_builder.query(&[("metric_short_name", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_trace_id {
+    if let Some(ref param_value) = p_query_trace_id {
         req_builder = req_builder.query(&[("trace_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_range {
+    if let Some(ref param_value) = p_query_range {
         req_builder = req_builder.query(&[("range", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1172,14 +1172,14 @@ pub async fn get_cluster_readiness_status(
     cluster_id: &str,
 ) -> Result<models::ClusterReadinessStatus, Error<GetClusterReadinessStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/isReady",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1233,14 +1233,14 @@ pub async fn get_cluster_status(
     cluster_id: &str,
 ) -> Result<models::ClusterStatus, Error<GetClusterStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/status",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1346,14 +1346,14 @@ pub async fn get_installation_helm_values(
     cluster_id: &str,
 ) -> Result<String, Error<GetInstallationHelmValuesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/installationHelmValues",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1407,14 +1407,14 @@ pub async fn get_organization_cloud_provider_info(
     cluster_id: &str,
 ) -> Result<models::ClusterCloudProviderInfo, Error<GetOrganizationCloudProviderInfoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1469,12 +1469,12 @@ pub async fn get_organization_cluster_status(
     organization_id: &str,
 ) -> Result<models::ClusterStatusResponseList, Error<GetOrganizationClusterStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/status",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1529,14 +1529,14 @@ pub async fn get_routing_table(
     cluster_id: &str,
 ) -> Result<models::ClusterRoutingTable, Error<GetRoutingTableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/routingTable",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1591,14 +1591,14 @@ pub async fn list_cluster_logs(
     cluster_id: &str,
 ) -> Result<models::ClusterLogsResponseList, Error<ListClusterLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/logs",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1651,12 +1651,12 @@ pub async fn list_organization_cluster(
     organization_id: &str,
 ) -> Result<models::ClusterResponseList, Error<ListOrganizationClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1711,13 +1711,13 @@ pub async fn lock_cluster(
     cluster_lock_request: Option<models::ClusterLockRequest>,
 ) -> Result<models::ClusterLock, Error<LockClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
-    let p_cluster_lock_request = cluster_lock_request;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_lock_request = cluster_lock_request;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/lock",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -1737,7 +1737,7 @@ pub async fn lock_cluster(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_lock_request);
+    req_builder = req_builder.json(&p_body_cluster_lock_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1775,15 +1775,15 @@ pub async fn specify_cluster_cloud_provider_info(
     cluster_cloud_provider_info_request: Option<models::ClusterCloudProviderInfoRequest>,
 ) -> Result<models::ClusterCloudProviderInfo, Error<SpecifyClusterCloudProviderInfoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_cluster_cloud_provider_info_request = cluster_cloud_provider_info_request;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_cloud_provider_info_request = cluster_cloud_provider_info_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -1803,7 +1803,7 @@ pub async fn specify_cluster_cloud_provider_info(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_cloud_provider_info_request);
+    req_builder = req_builder.json(&p_body_cluster_cloud_provider_info_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1842,14 +1842,14 @@ pub async fn stop_cluster(
     cluster_id: &str,
 ) -> Result<models::ClusterStatus, Error<StopClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/stop",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -1905,12 +1905,12 @@ pub async fn unlock_cluster(
     cluster_id: &str,
 ) -> Result<(), Error<UnlockClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/lock",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client
@@ -1959,16 +1959,16 @@ pub async fn update_karpenter_private_fargate_subnet_ids(
     >,
 ) -> Result<(), Error<UpdateKarpenterPrivateFargateSubnetIdsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_cluster_id = cluster_id;
-    let p_cluster_karpenter_private_subnet_ids_put_request =
+    let p_path_organization_id = organization_id;
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_karpenter_private_subnet_ids_put_request =
         cluster_karpenter_private_subnet_ids_put_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -1986,7 +1986,7 @@ pub async fn update_karpenter_private_fargate_subnet_ids(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_cluster_karpenter_private_subnet_ids_put_request);
+    req_builder = req_builder.json(&p_body_cluster_karpenter_private_subnet_ids_put_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2013,12 +2013,12 @@ pub async fn upgrade_cluster(
     cluster_id: &str,
 ) -> Result<models::ClusterStatus, Error<UpgradeClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_cluster_id = cluster_id;
+    let p_path_cluster_id = cluster_id;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/upgrade",
         configuration.base_path,
-        clusterId = crate::apis::urlencode(p_cluster_id)
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
     );
     let mut req_builder = configuration
         .client

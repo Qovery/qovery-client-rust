@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deployment_request_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
-**service_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**deployment_request_id** | **uuid::Uuid** |  | 
+**service_id** | **uuid::Uuid** |  | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **name** | **String** |  | 
 

@@ -71,12 +71,12 @@ pub async fn delete_container(
     container_id: &str,
 ) -> Result<(), Error<DeleteContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration
         .client
@@ -122,13 +122,13 @@ pub async fn edit_container(
     container_request: Option<models::ContainerRequest>,
 ) -> Result<models::ContainerResponse, Error<EditContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
-    let p_container_request = container_request;
+    let p_path_container_id = container_id;
+    let p_body_container_request = container_request;
 
     let uri_str = format!(
         "{}/container/{containerId}",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -146,7 +146,7 @@ pub async fn edit_container(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_container_request);
+    req_builder = req_builder.json(&p_body_container_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -182,12 +182,12 @@ pub async fn get_container(
     container_id: &str,
 ) -> Result<models::ContainerResponse, Error<GetContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -240,12 +240,12 @@ pub async fn get_container_status(
     container_id: &str,
 ) -> Result<models::Status, Error<GetContainerStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/status",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -299,12 +299,12 @@ pub async fn list_container_links(
     container_id: &str,
 ) -> Result<models::LinkResponseList, Error<ListContainerLinksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_container_id = container_id;
+    let p_path_container_id = container_id;
 
     let uri_str = format!(
         "{}/container/{containerId}/link",
         configuration.base_path,
-        containerId = crate::apis::urlencode(p_container_id)
+        containerId = crate::apis::urlencode(p_path_container_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

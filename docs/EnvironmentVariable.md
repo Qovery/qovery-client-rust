@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **key** | **String** | key is case sensitive. | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **aliased_variable** | Option<[**models::EnvironmentVariableAlias**](EnvironmentVariableAlias.md)> |  | [optional]
 **scope** | [**models::ApiVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **variable_type** | [**models::ApiVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
-**service_id** | Option<[**uuid::Uuid**](uuid::Uuid.md)> |  | [optional]
+**service_id** | Option<**uuid::Uuid**> |  | [optional]
 **service_name** | Option<**String**> |  | [optional]
 **service_type** | Option<[**models::LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md)> |  | [optional]
 **owned_by** | Option<**String**> | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional]

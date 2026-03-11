@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | [readonly]
+**id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
-**storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorage_storage_inner.md)> |  | [optional]
+**storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorageStorageInner.md)> |  | [optional]
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **git_repository** | Option<[**models::ApplicationGitRepository**](ApplicationGitRepository.md)> |  | [optional]
 **maximum_cpu** | Option<**i32**> | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | [optional]

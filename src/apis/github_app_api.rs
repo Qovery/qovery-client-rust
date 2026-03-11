@@ -40,13 +40,13 @@ pub async fn organization_github_app_connect(
     organization_github_app_connect_request: Option<models::OrganizationGithubAppConnectRequest>,
 ) -> Result<(), Error<OrganizationGithubAppConnectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_github_app_connect_request = organization_github_app_connect_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_github_app_connect_request = organization_github_app_connect_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/github/connect",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -66,7 +66,7 @@ pub async fn organization_github_app_connect(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_github_app_connect_request);
+    req_builder = req_builder.json(&p_body_organization_github_app_connect_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -92,19 +92,19 @@ pub async fn organization_github_app_disconnect(
     force: Option<bool>,
 ) -> Result<(), Error<OrganizationGithubAppDisconnectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_force = force;
+    let p_path_organization_id = organization_id;
+    let p_query_force = force;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/github/disconnect",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_force {
+    if let Some(ref param_value) = p_query_force {
         req_builder = req_builder.query(&[("force", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

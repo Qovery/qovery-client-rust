@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
-**service_id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**service_id** | **uuid::Uuid** |  | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **execution_id** | Option<**String**> |  | [optional]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**uuid::Uuid**](uuid::Uuid.md) |  | 
+**id** | **uuid::Uuid** |  | 
 **name** | Option<**String**> |  | [optional]
 **internal_port** | **i32** | The listening port of your service. | 
 **external_port** | Option<**i32**> | The exposed port for your service. This is optional. If not set a default port will be used. | [optional]

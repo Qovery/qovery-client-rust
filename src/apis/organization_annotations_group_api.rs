@@ -85,14 +85,14 @@ pub async fn create_organization_annotations_group(
     Error<CreateOrganizationAnnotationsGroupError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_annotations_group_create_request =
+    let p_path_organization_id = organization_id;
+    let p_body_organization_annotations_group_create_request =
         organization_annotations_group_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -112,7 +112,7 @@ pub async fn create_organization_annotations_group(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_annotations_group_create_request);
+    req_builder = req_builder.json(&p_body_organization_annotations_group_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -151,14 +151,14 @@ pub async fn delete_organization_annotations_group(
     annotations_group_id: &str,
 ) -> Result<(), Error<DeleteOrganizationAnnotationsGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_annotations_group_id = annotations_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_annotations_group_id = annotations_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups/{annotationsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        annotationsGroupId = crate::apis::urlencode(p_annotations_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        annotationsGroupId = crate::apis::urlencode(p_path_annotations_group_id)
     );
     let mut req_builder = configuration
         .client
@@ -211,16 +211,16 @@ pub async fn edit_organization_annotations_group(
     Error<EditOrganizationAnnotationsGroupError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_annotations_group_id = annotations_group_id;
-    let p_organization_annotations_group_create_request =
+    let p_path_organization_id = organization_id;
+    let p_path_annotations_group_id = annotations_group_id;
+    let p_body_organization_annotations_group_create_request =
         organization_annotations_group_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups/{annotationsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        annotationsGroupId = crate::apis::urlencode(p_annotations_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        annotationsGroupId = crate::apis::urlencode(p_path_annotations_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -238,7 +238,7 @@ pub async fn edit_organization_annotations_group(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_annotations_group_create_request);
+    req_builder = req_builder.json(&p_body_organization_annotations_group_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -278,14 +278,14 @@ pub async fn get_organization_annotations_group(
 ) -> Result<models::OrganizationAnnotationsGroupResponse, Error<GetOrganizationAnnotationsGroupError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_annotations_group_id = annotations_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_annotations_group_id = annotations_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups/{annotationsGroupId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        annotationsGroupId = crate::apis::urlencode(p_annotations_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        annotationsGroupId = crate::apis::urlencode(p_path_annotations_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -344,14 +344,14 @@ pub async fn get_organization_annotations_group_associated_items(
     Error<GetOrganizationAnnotationsGroupAssociatedItemsError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_annotations_group_id = annotations_group_id;
+    let p_path_organization_id = organization_id;
+    let p_path_annotations_group_id = annotations_group_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups/{annotationsGroupId}/associatedItems",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        annotationsGroupId = crate::apis::urlencode(p_annotations_group_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        annotationsGroupId = crate::apis::urlencode(p_path_annotations_group_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -409,12 +409,12 @@ pub async fn list_organization_annotations_group(
     Error<ListOrganizationAnnotationsGroupError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/annotationsGroups",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

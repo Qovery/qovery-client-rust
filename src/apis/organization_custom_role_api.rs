@@ -71,13 +71,13 @@ pub async fn create_organization_custom_role(
     organization_custom_role_create_request: Option<models::OrganizationCustomRoleCreateRequest>,
 ) -> Result<models::OrganizationCustomRole, Error<CreateOrganizationCustomRoleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_organization_custom_role_create_request = organization_custom_role_create_request;
+    let p_path_organization_id = organization_id;
+    let p_body_organization_custom_role_create_request = organization_custom_role_create_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/customRole",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -97,7 +97,7 @@ pub async fn create_organization_custom_role(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_custom_role_create_request);
+    req_builder = req_builder.json(&p_body_organization_custom_role_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -135,14 +135,14 @@ pub async fn delete_organization_custom_role(
     custom_role_id: &str,
 ) -> Result<(), Error<DeleteOrganizationCustomRoleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_custom_role_id = custom_role_id;
+    let p_path_organization_id = organization_id;
+    let p_path_custom_role_id = custom_role_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/customRole/{customRoleId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        customRoleId = crate::apis::urlencode(p_custom_role_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        customRoleId = crate::apis::urlencode(p_path_custom_role_id)
     );
     let mut req_builder = configuration
         .client
@@ -189,15 +189,15 @@ pub async fn edit_organization_custom_role(
     organization_custom_role_update_request: Option<models::OrganizationCustomRoleUpdateRequest>,
 ) -> Result<models::OrganizationCustomRole, Error<EditOrganizationCustomRoleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_custom_role_id = custom_role_id;
-    let p_organization_custom_role_update_request = organization_custom_role_update_request;
+    let p_path_organization_id = organization_id;
+    let p_path_custom_role_id = custom_role_id;
+    let p_body_organization_custom_role_update_request = organization_custom_role_update_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/customRole/{customRoleId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        customRoleId = crate::apis::urlencode(p_custom_role_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        customRoleId = crate::apis::urlencode(p_path_custom_role_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -215,7 +215,7 @@ pub async fn edit_organization_custom_role(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_organization_custom_role_update_request);
+    req_builder = req_builder.json(&p_body_organization_custom_role_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -253,14 +253,14 @@ pub async fn get_organization_custom_role(
     custom_role_id: &str,
 ) -> Result<models::OrganizationCustomRole, Error<GetOrganizationCustomRoleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_custom_role_id = custom_role_id;
+    let p_path_organization_id = organization_id;
+    let p_path_custom_role_id = custom_role_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/customRole/{customRoleId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        customRoleId = crate::apis::urlencode(p_custom_role_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        customRoleId = crate::apis::urlencode(p_path_custom_role_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -314,12 +314,12 @@ pub async fn list_organization_custom_roles(
     organization_id: &str,
 ) -> Result<models::OrganizationCustomRoleList, Error<ListOrganizationCustomRolesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/customRole",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

@@ -92,7 +92,7 @@ pub async fn create_alert_receiver(
     alert_receiver_creation_request: Option<models::AlertReceiverCreationRequest>,
 ) -> Result<models::AlertReceiverResponse, Error<CreateAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_creation_request = alert_receiver_creation_request;
+    let p_body_alert_receiver_creation_request = alert_receiver_creation_request;
 
     let uri_str = format!("{}/alert-receivers", configuration.base_path);
     let mut req_builder = configuration
@@ -113,7 +113,7 @@ pub async fn create_alert_receiver(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_receiver_creation_request);
+    req_builder = req_builder.json(&p_body_alert_receiver_creation_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -150,12 +150,12 @@ pub async fn delete_alert_receiver(
     alert_receiver_id: &str,
 ) -> Result<(), Error<DeleteAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_id = alert_receiver_id;
+    let p_path_alert_receiver_id = alert_receiver_id;
 
     let uri_str = format!(
         "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
-        alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
+        alertReceiverId = crate::apis::urlencode(p_path_alert_receiver_id)
     );
     let mut req_builder = configuration
         .client
@@ -201,13 +201,13 @@ pub async fn edit_alert_receiver(
     alert_receiver_edit_request: Option<models::AlertReceiverEditRequest>,
 ) -> Result<models::AlertReceiverResponse, Error<EditAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_id = alert_receiver_id;
-    let p_alert_receiver_edit_request = alert_receiver_edit_request;
+    let p_path_alert_receiver_id = alert_receiver_id;
+    let p_body_alert_receiver_edit_request = alert_receiver_edit_request;
 
     let uri_str = format!(
         "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
-        alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
+        alertReceiverId = crate::apis::urlencode(p_path_alert_receiver_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -225,7 +225,7 @@ pub async fn edit_alert_receiver(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_receiver_edit_request);
+    req_builder = req_builder.json(&p_body_alert_receiver_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -262,12 +262,12 @@ pub async fn get_alert_receiver(
     alert_receiver_id: &str,
 ) -> Result<models::AlertReceiverResponse, Error<GetAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_id = alert_receiver_id;
+    let p_path_alert_receiver_id = alert_receiver_id;
 
     let uri_str = format!(
         "{}/alert-receivers/{alertReceiverId}",
         configuration.base_path,
-        alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
+        alertReceiverId = crate::apis::urlencode(p_path_alert_receiver_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -321,12 +321,12 @@ pub async fn get_alert_receivers(
     organization_id: &str,
 ) -> Result<models::AlertReceiverList, Error<GetAlertReceiversError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/alert-receivers",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -381,13 +381,13 @@ pub async fn validate_existing_alert_receiver(
     alert_receiver_validation_request: Option<models::AlertReceiverValidationRequest>,
 ) -> Result<(), Error<ValidateExistingAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_id = alert_receiver_id;
-    let p_alert_receiver_validation_request = alert_receiver_validation_request;
+    let p_path_alert_receiver_id = alert_receiver_id;
+    let p_body_alert_receiver_validation_request = alert_receiver_validation_request;
 
     let uri_str = format!(
         "{}/alert-receivers/{alertReceiverId}/validate",
         configuration.base_path,
-        alertReceiverId = crate::apis::urlencode(p_alert_receiver_id)
+        alertReceiverId = crate::apis::urlencode(p_path_alert_receiver_id)
     );
     let mut req_builder = configuration
         .client
@@ -407,7 +407,7 @@ pub async fn validate_existing_alert_receiver(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_receiver_validation_request);
+    req_builder = req_builder.json(&p_body_alert_receiver_validation_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -436,7 +436,8 @@ pub async fn validate_new_alert_receiver(
     >,
 ) -> Result<(), Error<ValidateNewAlertReceiverError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_alert_receiver_creation_validation_request = alert_receiver_creation_validation_request;
+    let p_body_alert_receiver_creation_validation_request =
+        alert_receiver_creation_validation_request;
 
     let uri_str = format!("{}/alert-receivers/validate", configuration.base_path);
     let mut req_builder = configuration
@@ -457,7 +458,7 @@ pub async fn validate_new_alert_receiver(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_alert_receiver_creation_validation_request);
+    req_builder = req_builder.json(&p_body_alert_receiver_creation_validation_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

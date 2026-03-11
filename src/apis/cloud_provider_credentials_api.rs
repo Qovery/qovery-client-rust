@@ -284,13 +284,13 @@ pub async fn create_aws_credentials(
     aws_credentials_request: Option<models::AwsCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<CreateAwsCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_aws_credentials_request = aws_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_body_aws_credentials_request = aws_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/aws/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -310,7 +310,7 @@ pub async fn create_aws_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_aws_credentials_request);
+    req_builder = req_builder.json(&p_body_aws_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -347,13 +347,13 @@ pub async fn create_azure_credentials(
     azure_credentials_request: Option<models::AzureCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<CreateAzureCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_azure_credentials_request = azure_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_body_azure_credentials_request = azure_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/azure/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -373,7 +373,7 @@ pub async fn create_azure_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_azure_credentials_request);
+    req_builder = req_builder.json(&p_body_azure_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -410,13 +410,13 @@ pub async fn create_gcp_credentials(
     gcp_credentials_request: Option<models::GcpCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<CreateGcpCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_gcp_credentials_request = gcp_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_body_gcp_credentials_request = gcp_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gcp/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -436,7 +436,7 @@ pub async fn create_gcp_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_gcp_credentials_request);
+    req_builder = req_builder.json(&p_body_gcp_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -473,13 +473,13 @@ pub async fn create_on_premise_credentials(
     on_premise_credentials_request: Option<models::OnPremiseCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<CreateOnPremiseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_on_premise_credentials_request = on_premise_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_body_on_premise_credentials_request = on_premise_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/onPremise/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -499,7 +499,7 @@ pub async fn create_on_premise_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_on_premise_credentials_request);
+    req_builder = req_builder.json(&p_body_on_premise_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -536,13 +536,13 @@ pub async fn create_scaleway_credentials(
     scaleway_credentials_request: Option<models::ScalewayCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<CreateScalewayCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_scaleway_credentials_request = scaleway_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_body_scaleway_credentials_request = scaleway_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/scaleway/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -562,7 +562,7 @@ pub async fn create_scaleway_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_scaleway_credentials_request);
+    req_builder = req_builder.json(&p_body_scaleway_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -599,14 +599,14 @@ pub async fn delete_aws_credentials(
     organization_id: &str,
 ) -> Result<(), Error<DeleteAwsCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_credentials_id = credentials_id;
-    let p_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/aws/credentials/{credentialsId}",
         configuration.base_path,
-        credentialsId = crate::apis::urlencode(p_credentials_id),
-        organizationId = crate::apis::urlencode(p_organization_id)
+        credentialsId = crate::apis::urlencode(p_path_credentials_id),
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -651,14 +651,14 @@ pub async fn delete_azure_credentials(
     credentials_id: &str,
 ) -> Result<(), Error<DeleteAzureCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/azure/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration
         .client
@@ -703,14 +703,14 @@ pub async fn delete_gcp_credentials(
     organization_id: &str,
 ) -> Result<(), Error<DeleteGcpCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_credentials_id = credentials_id;
-    let p_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gcp/credentials/{credentialsId}",
         configuration.base_path,
-        credentialsId = crate::apis::urlencode(p_credentials_id),
-        organizationId = crate::apis::urlencode(p_organization_id)
+        credentialsId = crate::apis::urlencode(p_path_credentials_id),
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -755,14 +755,14 @@ pub async fn delete_on_premise_credentials(
     organization_id: &str,
 ) -> Result<(), Error<DeleteOnPremiseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_credentials_id = credentials_id;
-    let p_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/onPremise/credentials/{credentialsId}",
         configuration.base_path,
-        credentialsId = crate::apis::urlencode(p_credentials_id),
-        organizationId = crate::apis::urlencode(p_organization_id)
+        credentialsId = crate::apis::urlencode(p_path_credentials_id),
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -807,14 +807,14 @@ pub async fn delete_scaleway_credentials(
     organization_id: &str,
 ) -> Result<(), Error<DeleteScalewayCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_credentials_id = credentials_id;
-    let p_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/scaleway/credentials/{credentialsId}",
         configuration.base_path,
-        credentialsId = crate::apis::urlencode(p_credentials_id),
-        organizationId = crate::apis::urlencode(p_organization_id)
+        credentialsId = crate::apis::urlencode(p_path_credentials_id),
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -860,15 +860,15 @@ pub async fn edit_aws_credentials(
     aws_credentials_request: Option<models::AwsCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<EditAwsCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
-    let p_aws_credentials_request = aws_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_body_aws_credentials_request = aws_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/aws/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -886,7 +886,7 @@ pub async fn edit_aws_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_aws_credentials_request);
+    req_builder = req_builder.json(&p_body_aws_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -924,15 +924,15 @@ pub async fn edit_azure_credentials(
     azure_credentials_request: Option<models::AzureCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<EditAzureCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
-    let p_azure_credentials_request = azure_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_body_azure_credentials_request = azure_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/azure/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -950,7 +950,7 @@ pub async fn edit_azure_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_azure_credentials_request);
+    req_builder = req_builder.json(&p_body_azure_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -988,15 +988,15 @@ pub async fn edit_gcp_credentials(
     gcp_credentials_request: Option<models::GcpCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<EditGcpCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
-    let p_gcp_credentials_request = gcp_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_body_gcp_credentials_request = gcp_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gcp/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -1014,7 +1014,7 @@ pub async fn edit_gcp_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_gcp_credentials_request);
+    req_builder = req_builder.json(&p_body_gcp_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1052,15 +1052,15 @@ pub async fn edit_on_premise_credentials(
     on_premise_credentials_request: Option<models::OnPremiseCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<EditOnPremiseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
-    let p_on_premise_credentials_request = on_premise_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_body_on_premise_credentials_request = on_premise_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/onPremise/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -1078,7 +1078,7 @@ pub async fn edit_on_premise_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_on_premise_credentials_request);
+    req_builder = req_builder.json(&p_body_on_premise_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1116,15 +1116,15 @@ pub async fn edit_scaleway_credentials(
     scaleway_credentials_request: Option<models::ScalewayCredentialsRequest>,
 ) -> Result<models::ClusterCredentials, Error<EditScalewayCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
-    let p_scaleway_credentials_request = scaleway_credentials_request;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
+    let p_body_scaleway_credentials_request = scaleway_credentials_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/scaleway/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -1142,7 +1142,7 @@ pub async fn edit_scaleway_credentials(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_scaleway_credentials_request);
+    req_builder = req_builder.json(&p_body_scaleway_credentials_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1179,14 +1179,14 @@ pub async fn get_aws_credentials(
     credentials_id: &str,
 ) -> Result<models::ClusterCredentials, Error<GetAwsCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/aws/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1240,14 +1240,14 @@ pub async fn get_azure_credentials(
     credentials_id: &str,
 ) -> Result<models::ClusterCredentials, Error<GetAzureCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/azure/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1301,14 +1301,14 @@ pub async fn get_gcp_credentials(
     credentials_id: &str,
 ) -> Result<models::ClusterCredentials, Error<GetGcpCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gcp/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1362,14 +1362,14 @@ pub async fn get_on_premise_credentials(
     credentials_id: &str,
 ) -> Result<models::ClusterCredentials, Error<GetOnPremiseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/onPremise/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1423,14 +1423,14 @@ pub async fn get_scaleway_credentials(
     credentials_id: &str,
 ) -> Result<models::ClusterCredentials, Error<GetScalewayCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_credentials_id = credentials_id;
+    let p_path_organization_id = organization_id;
+    let p_path_credentials_id = credentials_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/scaleway/credentials/{credentialsId}",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id),
-        credentialsId = crate::apis::urlencode(p_credentials_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id),
+        credentialsId = crate::apis::urlencode(p_path_credentials_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1483,12 +1483,12 @@ pub async fn list_aws_credentials(
     organization_id: &str,
 ) -> Result<models::ClusterCredentialsResponseList, Error<ListAwsCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/aws/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1541,12 +1541,12 @@ pub async fn list_azure_credentials(
     organization_id: &str,
 ) -> Result<models::ClusterCredentialsResponseList, Error<ListAzureCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/azure/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1599,12 +1599,12 @@ pub async fn list_gcp_credentials(
     organization_id: &str,
 ) -> Result<models::ClusterCredentialsResponseList, Error<ListGcpCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/gcp/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1657,12 +1657,12 @@ pub async fn list_on_premise_credentials(
     organization_id: &str,
 ) -> Result<models::ClusterCredentialsResponseList, Error<ListOnPremiseCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/onPremise/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1715,12 +1715,12 @@ pub async fn list_scaleway_credentials(
     organization_id: &str,
 ) -> Result<models::ClusterCredentialsResponseList, Error<ListScalewayCredentialsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/scaleway/credentials",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

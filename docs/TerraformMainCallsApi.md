@@ -24,7 +24,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
 **resources_only** | Option<**bool**> | When true, only resources are deleted and Qovery configuration is kept. |  |[default to false]
-**force_terraform_action** | Option<[**DeleteTerraformAction**](.md)> | Force a specific action to be executed by Terraform during deletion. |  |
+**force_terraform_action** | Option<[**DeleteTerraformAction**](DeleteTerraformAction.md)> | Force a specific action to be executed by Terraform during deletion. |  |
 
 ### Return type
 

@@ -35,7 +35,7 @@ pub async fn edit_account_information(
     account_info_edit_request: Option<models::AccountInfoEditRequest>,
 ) -> Result<models::AccountInfo, Error<EditAccountInformationError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_account_info_edit_request = account_info_edit_request;
+    let p_body_account_info_edit_request = account_info_edit_request;
 
     let uri_str = format!("{}/account", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -54,7 +54,7 @@ pub async fn edit_account_information(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_account_info_edit_request);
+    req_builder = req_builder.json(&p_body_account_info_edit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

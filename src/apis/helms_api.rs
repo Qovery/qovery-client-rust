@@ -82,13 +82,13 @@ pub async fn clone_helm(
     clone_service_request: Option<models::CloneServiceRequest>,
 ) -> Result<models::HelmResponse, Error<CloneHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_helm_id = helm_id;
-    let p_clone_service_request = clone_service_request;
+    let p_path_helm_id = helm_id;
+    let p_body_clone_service_request = clone_service_request;
 
     let uri_str = format!(
         "{}/helm/{helmId}/clone",
         configuration.base_path,
-        helmId = crate::apis::urlencode(p_helm_id)
+        helmId = crate::apis::urlencode(p_path_helm_id)
     );
     let mut req_builder = configuration
         .client
@@ -108,7 +108,7 @@ pub async fn clone_helm(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_clone_service_request);
+    req_builder = req_builder.json(&p_body_clone_service_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -145,13 +145,13 @@ pub async fn create_helm(
     helm_request: Option<models::HelmRequest>,
 ) -> Result<models::HelmResponse, Error<CreateHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_helm_request = helm_request;
+    let p_path_environment_id = environment_id;
+    let p_body_helm_request = helm_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/helm",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -171,7 +171,7 @@ pub async fn create_helm(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_request);
+    req_builder = req_builder.json(&p_body_helm_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -208,13 +208,13 @@ pub async fn create_helm_default_values(
     helm_default_values_request: Option<models::HelmDefaultValuesRequest>,
 ) -> Result<String, Error<CreateHelmDefaultValuesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
-    let p_helm_default_values_request = helm_default_values_request;
+    let p_path_environment_id = environment_id;
+    let p_body_helm_default_values_request = helm_default_values_request;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/helmDefaultValues",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration
         .client
@@ -234,7 +234,7 @@ pub async fn create_helm_default_values(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_helm_default_values_request);
+    req_builder = req_builder.json(&p_body_helm_default_values_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -322,12 +322,12 @@ pub async fn get_environment_helm_status(
     environment_id: &str,
 ) -> Result<models::ReferenceObjectStatusResponseList, Error<GetEnvironmentHelmStatusError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/helm/status",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -380,12 +380,12 @@ pub async fn list_helms(
     environment_id: &str,
 ) -> Result<models::HelmResponseList, Error<ListHelmsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_environment_id = environment_id;
+    let p_path_environment_id = environment_id;
 
     let uri_str = format!(
         "{}/environment/{environmentId}/helm",
         configuration.base_path,
-        environmentId = crate::apis::urlencode(p_environment_id)
+        environmentId = crate::apis::urlencode(p_path_environment_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

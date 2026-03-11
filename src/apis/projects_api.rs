@@ -51,13 +51,13 @@ pub async fn create_project(
     project_request: Option<models::ProjectRequest>,
 ) -> Result<models::Project, Error<CreateProjectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
-    let p_project_request = project_request;
+    let p_path_organization_id = organization_id;
+    let p_body_project_request = project_request;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/project",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration
         .client
@@ -77,7 +77,7 @@ pub async fn create_project(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_project_request);
+    req_builder = req_builder.json(&p_body_project_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -114,12 +114,12 @@ pub async fn get_organization_project_stats(
     organization_id: &str,
 ) -> Result<models::ProjectStatsResponseList, Error<GetOrganizationProjectStatsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/project/stats",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -172,12 +172,12 @@ pub async fn list_project(
     organization_id: &str,
 ) -> Result<models::ProjectResponseList, Error<ListProjectError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_organization_id = organization_id;
+    let p_path_organization_id = organization_id;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/project",
         configuration.base_path,
-        organizationId = crate::apis::urlencode(p_organization_id)
+        organizationId = crate::apis::urlencode(p_path_organization_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

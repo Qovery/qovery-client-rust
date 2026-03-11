@@ -41,13 +41,13 @@ pub async fn edit_job_advanced_settings(
     job_advanced_settings: Option<models::JobAdvancedSettings>,
 ) -> Result<models::JobAdvancedSettings, Error<EditJobAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
-    let p_job_advanced_settings = job_advanced_settings;
+    let p_path_job_id = job_id;
+    let p_body_job_advanced_settings = job_advanced_settings;
 
     let uri_str = format!(
         "{}/job/{jobId}/advancedSettings",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -65,7 +65,7 @@ pub async fn edit_job_advanced_settings(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_job_advanced_settings);
+    req_builder = req_builder.json(&p_body_job_advanced_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -102,12 +102,12 @@ pub async fn get_job_advanced_settings(
     job_id: &str,
 ) -> Result<models::JobAdvancedSettings, Error<GetJobAdvancedSettingsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_job_id = job_id;
+    let p_path_job_id = job_id;
 
     let uri_str = format!(
         "{}/job/{jobId}/advancedSettings",
         configuration.base_path,
-        jobId = crate::apis::urlencode(p_job_id)
+        jobId = crate::apis::urlencode(p_path_job_id)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

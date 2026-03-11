@@ -302,14 +302,14 @@ pub async fn list_aws_managed_database_instance_type(
     Error<ListAwsManagedDatabaseInstanceTypeError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_region = region;
-    let p_database_type = database_type;
+    let p_path_region = region;
+    let p_path_database_type = database_type;
 
     let uri_str = format!(
         "{}/aws/managedDatabase/instanceType/{region}/{databaseType}",
         configuration.base_path,
-        region = crate::apis::urlencode(p_region),
-        databaseType = crate::apis::urlencode(p_database_type)
+        region = crate::apis::urlencode(p_path_region),
+        databaseType = crate::apis::urlencode(p_path_database_type)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -466,25 +466,25 @@ pub async fn list_awseks_instance_type(
     gpu: Option<&str>,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListAwseksInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_region = region;
-    let p_only_meets_resource_reqs = only_meets_resource_reqs;
-    let p_with_gpu = with_gpu;
-    let p_gpu = gpu;
+    let p_path_region = region;
+    let p_query_only_meets_resource_reqs = only_meets_resource_reqs;
+    let p_query_with_gpu = with_gpu;
+    let p_query_gpu = gpu;
 
     let uri_str = format!(
         "{}/aws/eks/instanceType/{region}",
         configuration.base_path,
-        region = crate::apis::urlencode(p_region)
+        region = crate::apis::urlencode(p_path_region)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_only_meets_resource_reqs {
+    if let Some(ref param_value) = p_query_only_meets_resource_reqs {
         req_builder = req_builder.query(&[("only_meets_resource_reqs", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_with_gpu {
+    if let Some(ref param_value) = p_query_with_gpu {
         req_builder = req_builder.query(&[("with_gpu", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_gpu {
+    if let Some(ref param_value) = p_query_gpu {
         req_builder = req_builder.query(&[("gpu", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -539,25 +539,25 @@ pub async fn list_azure_aks_instance_type(
     gpu: Option<&str>,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListAzureAksInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_region = region;
-    let p_only_meets_resource_reqs = only_meets_resource_reqs;
-    let p_with_gpu = with_gpu;
-    let p_gpu = gpu;
+    let p_path_region = region;
+    let p_query_only_meets_resource_reqs = only_meets_resource_reqs;
+    let p_query_with_gpu = with_gpu;
+    let p_query_gpu = gpu;
 
     let uri_str = format!(
         "{}/azure/aks/instanceType/{region}",
         configuration.base_path,
-        region = crate::apis::urlencode(p_region)
+        region = crate::apis::urlencode(p_path_region)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_only_meets_resource_reqs {
+    if let Some(ref param_value) = p_query_only_meets_resource_reqs {
         req_builder = req_builder.query(&[("only_meets_resource_reqs", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_with_gpu {
+    if let Some(ref param_value) = p_query_with_gpu {
         req_builder = req_builder.query(&[("with_gpu", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_gpu {
+    if let Some(ref param_value) = p_query_gpu {
         req_builder = req_builder.query(&[("gpu", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -809,12 +809,12 @@ pub async fn list_gcp_gke_instance_type(
     region: &str,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListGcpGkeInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_region = region;
+    let p_path_region = region;
 
     let uri_str = format!(
         "{}/gcp/instanceType/{region}",
         configuration.base_path,
-        region = crate::apis::urlencode(p_region)
+        region = crate::apis::urlencode(p_path_region)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1017,12 +1017,12 @@ pub async fn list_scaleway_kapsule_instance_type(
     zone: &str,
 ) -> Result<models::ClusterInstanceTypeResponseList, Error<ListScalewayKapsuleInstanceTypeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_zone = zone;
+    let p_path_zone = zone;
 
     let uri_str = format!(
         "{}/scaleway/instanceType/{zone}",
         configuration.base_path,
-        zone = crate::apis::urlencode(p_zone)
+        zone = crate::apis::urlencode(p_path_zone)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
