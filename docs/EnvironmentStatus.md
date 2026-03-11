@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **origin** | Option<[**models::EnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md)> |  | [optional]
 **triggered_by** | Option<**String**> |  | [optional]
 **deployment_status** | Option<[**models::EnvironmentDeploymentStatusEnum**](EnvironmentDeploymentStatusEnum.md)> |  | [optional]
+**deployment_request_id** | Option<**uuid::Uuid**> |  | [optional]
+**metrics** | Option<[**Vec<models::StageStepMetrics>**](StageStepMetrics.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

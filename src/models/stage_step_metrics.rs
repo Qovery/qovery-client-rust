@@ -13,7 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StageStepMetrics {
-    /// The total duration in seconds of the stage deployment or null if the deployment is not completed
+    #[serde(rename = "stage_id", skip_serializing_if = "Option::is_none")]
+    pub stage_id: Option<uuid::Uuid>,
+    /// The total duration in seconds of the stage deployment or null if the deployment is not completed.
     #[serde(
         rename = "total_duration_sec",
         default,
@@ -29,6 +31,7 @@ pub struct StageStepMetrics {
 impl StageStepMetrics {
     pub fn new() -> StageStepMetrics {
         StageStepMetrics {
+            stage_id: None,
             total_duration_sec: None,
             details: None,
         }

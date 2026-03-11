@@ -4,6 +4,7 @@
 
 | Name | Value |
 |---- | -----|
+| Total | TOTAL |
 | Queueing | QUEUEING |
 | ProvisionBuilder | PROVISION_BUILDER |
 

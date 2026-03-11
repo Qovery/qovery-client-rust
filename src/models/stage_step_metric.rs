@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StageStepMetric {
+    #[serde(rename = "stage_id", skip_serializing_if = "Option::is_none")]
+    pub stage_id: Option<uuid::Uuid>,
     #[serde(rename = "step_name", skip_serializing_if = "Option::is_none")]
     pub step_name: Option<models::StageStepMetricNameEnum>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
@@ -25,6 +27,7 @@ pub struct StageStepMetric {
 impl StageStepMetric {
     pub fn new() -> StageStepMetric {
         StageStepMetric {
+            stage_id: None,
             step_name: None,
             status: None,
             duration_sec: None,

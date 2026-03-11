@@ -11,10 +11,12 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// StageStepMetricNameEnum : The name of the deployment step at the stage level: - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
-/// The name of the deployment step at the stage level: - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
+/// StageStepMetricNameEnum : The name of the deployment step at the stage level: - TOTAL: The total duration of the stage deployment. - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
+/// The name of the deployment step at the stage level: - TOTAL: The total duration of the stage deployment. - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum StageStepMetricNameEnum {
+    #[serde(rename = "TOTAL")]
+    Total,
     #[serde(rename = "QUEUEING")]
     Queueing,
     #[serde(rename = "PROVISION_BUILDER")]
@@ -24,6 +26,7 @@ pub enum StageStepMetricNameEnum {
 impl std::fmt::Display for StageStepMetricNameEnum {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::Total => write!(f, "TOTAL"),
             Self::Queueing => write!(f, "QUEUEING"),
             Self::ProvisionBuilder => write!(f, "PROVISION_BUILDER"),
         }
@@ -32,6 +35,6 @@ impl std::fmt::Display for StageStepMetricNameEnum {
 
 impl Default for StageStepMetricNameEnum {
     fn default() -> StageStepMetricNameEnum {
-        Self::Queueing
+        Self::Total
     }
 }

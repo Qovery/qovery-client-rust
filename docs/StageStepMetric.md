@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**stage_id** | Option<**uuid::Uuid**> |  | [optional]
 **step_name** | Option<[**models::StageStepMetricNameEnum**](StageStepMetricNameEnum.md)> |  | [optional]
 **status** | Option<[**models::StepMetricStatusEnum**](StepMetricStatusEnum.md)> |  | [optional]
 **duration_sec** | Option<**i32**> | The duration of the step in seconds. | [optional]

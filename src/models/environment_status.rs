@@ -56,6 +56,20 @@ pub struct EnvironmentStatus {
     pub triggered_by: Option<Option<String>>,
     #[serde(rename = "deployment_status", skip_serializing_if = "Option::is_none")]
     pub deployment_status: Option<models::EnvironmentDeploymentStatusEnum>,
+    #[serde(
+        rename = "deployment_request_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub deployment_request_id: Option<Option<uuid::Uuid>>,
+    #[serde(
+        rename = "metrics",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub metrics: Option<Option<Vec<models::StageStepMetrics>>>,
 }
 
 impl EnvironmentStatus {
@@ -74,6 +88,8 @@ impl EnvironmentStatus {
             origin: None,
             triggered_by: None,
             deployment_status: None,
+            deployment_request_id: None,
+            metrics: None,
         }
     }
 }
