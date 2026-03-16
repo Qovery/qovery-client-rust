@@ -21,6 +21,12 @@ pub struct KarpenterGpuNodePoolOverride {
     pub requirements: Option<Vec<models::KarpenterNodePoolRequirement>>,
     #[serde(rename = "disk_size_in_gib", skip_serializing_if = "Option::is_none")]
     pub disk_size_in_gib: Option<i32>,
+    /// Unit is operation/seconds. The disk IOPS to be used for the GPU node pool configuration
+    #[serde(rename = "disk_iops", skip_serializing_if = "Option::is_none")]
+    pub disk_iops: Option<i32>,
+    /// Unit is in MB/s. The disk throughput to be used for the GPU node pool configuration
+    #[serde(rename = "disk_throughput", skip_serializing_if = "Option::is_none")]
+    pub disk_throughput: Option<i32>,
     #[serde(rename = "spot_enabled", skip_serializing_if = "Option::is_none")]
     pub spot_enabled: Option<bool>,
     /// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
@@ -35,6 +41,8 @@ impl KarpenterGpuNodePoolOverride {
             limits: None,
             requirements: None,
             disk_size_in_gib: None,
+            disk_iops: None,
+            disk_throughput: None,
             spot_enabled: None,
             consolidate_after: None,
         }

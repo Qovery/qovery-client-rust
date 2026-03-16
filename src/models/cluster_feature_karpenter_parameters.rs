@@ -17,8 +17,10 @@ pub struct ClusterFeatureKarpenterParameters {
     pub spot_enabled: bool,
     #[serde(rename = "disk_size_in_gib")]
     pub disk_size_in_gib: i32,
+    /// Unit is operation/seconds. The disk IOPS to be used for the node configuration
     #[serde(rename = "disk_iops", skip_serializing_if = "Option::is_none")]
     pub disk_iops: Option<i32>,
+    /// Unit is in MB/s. The disk throughput to be used for the node configuration
     #[serde(rename = "disk_throughput", skip_serializing_if = "Option::is_none")]
     pub disk_throughput: Option<i32>,
     #[serde(rename = "default_service_architecture")]
