@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DockerfileFragmentFile {
     /// Fragment type discriminator
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     pub r#type: Type,
     /// Absolute path to the fragment file.
     #[serde(rename = "path")]

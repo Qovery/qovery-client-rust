@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DockerfileFragmentInline {
     /// Fragment type discriminator
-    #[serde(rename = "type")]
+    #[serde(rename = "type", default)]
     pub r#type: Type,
     /// Dockerfile commands to inject (max 8KB).
     #[serde(rename = "content")]
