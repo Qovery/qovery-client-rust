@@ -170,6 +170,22 @@ pub struct ContainerAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub network_ingress_extra_headers: Option<String>,
+    /// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_request_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_request_timeout_seconds: Option<Option<i32>>,
+    /// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_connection_idle_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_connection_idle_timeout_seconds: Option<Option<i32>>,
     /// Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
     #[serde(
         rename = "network.ingress.basic_auth_env_var",
@@ -246,6 +262,8 @@ impl ContainerAdvancedSettings {
             network_ingress_whitelist_source_range: None,
             network_ingress_denylist_source_range: None,
             network_ingress_extra_headers: None,
+            network_gateway_api_http_request_timeout_seconds: None,
+            network_gateway_api_http_connection_idle_timeout_seconds: None,
             network_ingress_basic_auth_env_var: None,
             network_ingress_enable_sticky_session: None,
             security_service_account_name: None,

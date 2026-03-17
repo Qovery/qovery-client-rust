@@ -38,6 +38,8 @@ Name | Type | Description | Notes
 **network_ingress_grpc_send_timeout_seconds** | Option<**i32**> | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional]
 **network_ingress_grpc_read_timeout_seconds** | Option<**i32**> | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional]
 **network_ingress_extra_headers** | Option<**String**> | Allows to define response headers | [optional]
+**network_gateway_api_http_request_timeout_seconds** | Option<**i32**> | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional]
+**network_gateway_api_http_connection_idle_timeout_seconds** | Option<**i32**> | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional]
 **hpa_cpu_average_utilization_percent** | Option<**i32**> | Percentage value of cpu usage at which point pods should scale up. | [optional]
 **hpa_memory_average_utilization_percent** | Option<**i32**> | Percentage value of memory usage at which point pods should scale up. | [optional]
 **security_service_account_name** | Option<**String**> | Allows you to set an existing Kubernetes service account name  | [optional]

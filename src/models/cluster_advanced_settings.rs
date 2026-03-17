@@ -161,6 +161,22 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub nginx_memory_limit_in_mib: Option<i32>,
+    /// Sets the default request timeout (in seconds) applied to Gateway API routes when the service does not override it.
+    #[serde(
+        rename = "envoy.gateway_api.http_request_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_http_request_timeout_seconds: Option<Option<i32>>,
+    /// Sets the default idle connection timeout (in seconds) applied to Gateway API routes when the service does not override it.
+    #[serde(
+        rename = "envoy.gateway_api.http_connection_idle_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_http_connection_idle_timeout_seconds: Option<Option<i32>>,
     /// hpa cpu threshold in percentage
     #[serde(
         rename = "nginx.hpa.cpu_utilization_percentage_threshold",
@@ -228,6 +244,8 @@ impl ClusterAdvancedSettings {
             nginx_vcpu_limit_in_milli_cpu: None,
             nginx_memory_request_in_mib: None,
             nginx_memory_limit_in_mib: None,
+            envoy_gateway_api_http_request_timeout_seconds: None,
+            envoy_gateway_api_http_connection_idle_timeout_seconds: None,
             nginx_hpa_cpu_utilization_percentage_threshold: None,
             nginx_hpa_min_number_instances: None,
             nginx_hpa_max_number_instances: None,

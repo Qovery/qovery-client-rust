@@ -30,6 +30,8 @@ Name | Type | Description | Notes
 **nginx_vcpu_limit_in_milli_cpu** | Option<**i32**> | vcpu limit in millicores | [optional]
 **nginx_memory_request_in_mib** | Option<**i32**> | memory request in MiB | [optional]
 **nginx_memory_limit_in_mib** | Option<**i32**> | memory limit in MiB | [optional]
+**envoy_gateway_api_http_request_timeout_seconds** | Option<**i32**> | Sets the default request timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional]
+**envoy_gateway_api_http_connection_idle_timeout_seconds** | Option<**i32**> | Sets the default idle connection timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional]
 **nginx_hpa_cpu_utilization_percentage_threshold** | Option<**i32**> | hpa cpu threshold in percentage | [optional]
 **nginx_hpa_min_number_instances** | Option<**i32**> | hpa minimum number of instances | [optional]
 **nginx_hpa_max_number_instances** | Option<**i32**> | hpa maximum number of instances | [optional]

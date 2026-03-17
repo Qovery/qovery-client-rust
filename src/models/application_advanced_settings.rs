@@ -211,6 +211,22 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub network_ingress_extra_headers: Option<String>,
+    /// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_request_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_request_timeout_seconds: Option<Option<i32>>,
+    /// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_connection_idle_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_connection_idle_timeout_seconds: Option<Option<i32>>,
     /// Percentage value of cpu usage at which point pods should scale up.
     #[serde(
         rename = "hpa.cpu.average_utilization_percent",
@@ -282,6 +298,8 @@ impl ApplicationAdvancedSettings {
             network_ingress_grpc_send_timeout_seconds: None,
             network_ingress_grpc_read_timeout_seconds: None,
             network_ingress_extra_headers: None,
+            network_gateway_api_http_request_timeout_seconds: None,
+            network_gateway_api_http_connection_idle_timeout_seconds: None,
             hpa_cpu_average_utilization_percent: None,
             hpa_memory_average_utilization_percent: None,
             security_service_account_name: None,

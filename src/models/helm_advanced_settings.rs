@@ -146,6 +146,22 @@ pub struct HelmAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub network_ingress_enable_sticky_session: Option<bool>,
+    /// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_request_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_request_timeout_seconds: Option<Option<i32>>,
+    /// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+    #[serde(
+        rename = "network.gateway_api.http_connection_idle_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub network_gateway_api_http_connection_idle_timeout_seconds: Option<Option<i32>>,
 }
 
 impl HelmAdvancedSettings {
@@ -174,6 +190,8 @@ impl HelmAdvancedSettings {
             network_ingress_extra_headers: None,
             network_ingress_basic_auth_env_var: None,
             network_ingress_enable_sticky_session: None,
+            network_gateway_api_http_request_timeout_seconds: None,
+            network_gateway_api_http_connection_idle_timeout_seconds: None,
         }
     }
 }
