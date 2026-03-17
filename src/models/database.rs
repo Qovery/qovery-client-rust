@@ -75,7 +75,10 @@ pub struct Database {
         skip_serializing_if = "Option::is_none"
     )]
     pub disk_type: Option<Option<DiskType>>,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_database"
+    )]
     pub service_type: models::ServiceTypeEnum,
 }
 
