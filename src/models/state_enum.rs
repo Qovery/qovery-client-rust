@@ -62,6 +62,8 @@ pub enum StateEnum {
     StopError,
     #[serde(rename = "STOP_QUEUED")]
     StopQueued,
+    #[serde(rename = "UNAVAILABLE")]
+    Unavailable,
     #[serde(rename = "WAITING_DELETING")]
     WaitingDeleting,
     #[serde(rename = "WAITING_RESTARTING")]
@@ -99,6 +101,7 @@ impl std::fmt::Display for StateEnum {
             Self::Stopping => write!(f, "STOPPING"),
             Self::StopError => write!(f, "STOP_ERROR"),
             Self::StopQueued => write!(f, "STOP_QUEUED"),
+            Self::Unavailable => write!(f, "UNAVAILABLE"),
             Self::WaitingDeleting => write!(f, "WAITING_DELETING"),
             Self::WaitingRestarting => write!(f, "WAITING_RESTARTING"),
             Self::WaitingRunning => write!(f, "WAITING_RUNNING"),

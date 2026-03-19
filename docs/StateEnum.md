@@ -28,6 +28,7 @@
 | Stopping | STOPPING |
 | StopError | STOP_ERROR |
 | StopQueued | STOP_QUEUED |
+| Unavailable | UNAVAILABLE |
 | WaitingDeleting | WAITING_DELETING |
 | WaitingRestarting | WAITING_RESTARTING |
 | WaitingRunning | WAITING_RUNNING |
