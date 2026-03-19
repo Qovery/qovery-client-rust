@@ -29,6 +29,14 @@ pub struct DeploymentHistoryServiceDetailsOneOf2 {
     pub schedule: Option<models::DeploymentHistoryServiceDetailsOneOf2Schedule>,
     #[serde(rename = "job_type")]
     pub job_type: JobType,
+    /// The build pod name prefix. Only set for jobs with a git source (Docker build). Null for container-source jobs.
+    #[serde(
+        rename = "build_pod_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_pod_name: Option<Option<String>>,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf2 {
@@ -44,6 +52,7 @@ impl DeploymentHistoryServiceDetailsOneOf2 {
             commit: None,
             schedule: None,
             job_type,
+            build_pod_name: None,
         }
     }
 }

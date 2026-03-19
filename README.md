@@ -284,6 +284,7 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**stop_selected_services**](docs/EnvironmentActionsApi.md#stop_selected_services) | **POST** /environment/{environmentId}/service/stop | Stop services
 *EnvironmentActionsApi* | [**uninstall_environment**](docs/EnvironmentActionsApi.md#uninstall_environment) | **POST** /environment/{environmentId}/uninstall | Uninstall environment
 *EnvironmentActionsApi* | [**uninstall_selected_services**](docs/EnvironmentActionsApi.md#uninstall_selected_services) | **POST** /environment/{environmentId}/service/uninstall | Uninstall services
+*EnvironmentDeploymentHistoryApi* | [**generate_deployment_build_usage_report**](docs/EnvironmentDeploymentHistoryApi.md#generate_deployment_build_usage_report) | **POST** /environment/{environmentId}/deploymentBuildUsageReport | Generate a Grafana snapshot report showing build runner pod usage for a specific deployment
 *EnvironmentDeploymentHistoryApi* | [**list_environment_deployment_history**](docs/EnvironmentDeploymentHistoryApi.md#list_environment_deployment_history) | **GET** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentHistoryApi* | [**list_environment_deployment_history_v2**](docs/EnvironmentDeploymentHistoryApi.md#list_environment_deployment_history_v2) | **GET** /environment/{environmentId}/deploymentHistoryV2 | List environment deployments
 *EnvironmentDeploymentRuleApi* | [**edit_environment_deployment_rule**](docs/EnvironmentDeploymentRuleApi.md#edit_environment_deployment_rule) | **PUT** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
@@ -748,6 +749,8 @@ Class | Method | HTTP request | Description
  - [DeployAllRequestHelmsInner](docs/DeployAllRequestHelmsInner.md)
  - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
  - [DeployRequest](docs/DeployRequest.md)
+ - [DeploymentBuildUsageReportRequest](docs/DeploymentBuildUsageReportRequest.md)
+ - [DeploymentBuildUsageReportResponse](docs/DeploymentBuildUsageReportResponse.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
  - [DeploymentHistoryActionStatus](docs/DeploymentHistoryActionStatus.md)
  - [DeploymentHistoryApplication](docs/DeploymentHistoryApplication.md)

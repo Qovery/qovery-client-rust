@@ -16,11 +16,20 @@ use serde::{Deserialize, Serialize};
 pub struct DeploymentHistoryServiceDetailsOneOf {
     #[serde(rename = "commit", deserialize_with = "Option::deserialize")]
     pub commit: Option<models::Commit>,
+    /// The build pod name prefix for monitoring build runner usage. Format build-{execution_id}-0
+    #[serde(rename = "build_pod_name")]
+    pub build_pod_name: String,
 }
 
 impl DeploymentHistoryServiceDetailsOneOf {
     /// ApplicationDeploymentHistoryData
-    pub fn new(commit: Option<models::Commit>) -> DeploymentHistoryServiceDetailsOneOf {
-        DeploymentHistoryServiceDetailsOneOf { commit }
+    pub fn new(
+        commit: Option<models::Commit>,
+        build_pod_name: String,
+    ) -> DeploymentHistoryServiceDetailsOneOf {
+        DeploymentHistoryServiceDetailsOneOf {
+            commit,
+            build_pod_name,
+        }
     }
 }

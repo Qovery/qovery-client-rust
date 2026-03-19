@@ -1,11 +1,11 @@
-# DeploymentHistoryServiceDetailsOneOf
+# DeploymentBuildUsageReportRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**commit** | Option<[**models::Commit**](Commit.md)> |  | 
-**build_pod_name** | **String** | The build pod name prefix for monitoring build runner usage. Format build-{execution_id}-0 | 
+**execution_id** | **String** | The deployment execution ID (format environment_id-version) | 
+**report_expiration_in_seconds** | **i32** | The number of seconds the report will be publicly available | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

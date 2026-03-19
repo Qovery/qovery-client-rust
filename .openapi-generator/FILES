@@ -253,6 +253,8 @@ docs/DeployAllRequestContainersInner.md
 docs/DeployAllRequestHelmsInner.md
 docs/DeployAllRequestJobsInner.md
 docs/DeployRequest.md
+docs/DeploymentBuildUsageReportRequest.md
+docs/DeploymentBuildUsageReportResponse.md
 docs/DeploymentHistory.md
 docs/DeploymentHistoryActionStatus.md
 docs/DeploymentHistoryApplication.md
@@ -1091,6 +1093,8 @@ src/models/deploy_all_request_containers_inner.rs
 src/models/deploy_all_request_helms_inner.rs
 src/models/deploy_all_request_jobs_inner.rs
 src/models/deploy_request.rs
+src/models/deployment_build_usage_report_request.rs
+src/models/deployment_build_usage_report_response.rs
 src/models/deployment_history.rs
 src/models/deployment_history_action_status.rs
 src/models/deployment_history_application.rs
