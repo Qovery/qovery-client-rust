@@ -37,6 +37,12 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub deployment_antiaffinity_pod: Option<DeploymentAntiaffinityPod>,
+    /// Define how you want pods to be spread across availability zones: * `Disabled` no topology spread constraints are applied * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint) * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+    #[serde(
+        rename = "deployment.topology_spread.zone",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub deployment_topology_spread_zone: Option<DeploymentTopologySpreadZone>,
     /// Allows you to run a command after the application is started. The command should be a shell command or script.
     #[serde(
         rename = "deployment.lifecycle.post_start_exec_command",
@@ -268,6 +274,7 @@ impl ApplicationAdvancedSettings {
             deployment_termination_grace_period_seconds: None,
             deployment_affinity_node_required: None,
             deployment_antiaffinity_pod: None,
+            deployment_topology_spread_zone: None,
             deployment_lifecycle_post_start_exec_command: None,
             deployment_lifecycle_pre_stop_exec_command: None,
             deployment_update_strategy_type: None,
@@ -320,6 +327,22 @@ pub enum DeploymentAntiaffinityPod {
 impl Default for DeploymentAntiaffinityPod {
     fn default() -> DeploymentAntiaffinityPod {
         Self::Preferred
+    }
+}
+/// Define how you want pods to be spread across availability zones: * `Disabled` no topology spread constraints are applied * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint) * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum DeploymentTopologySpreadZone {
+    #[serde(rename = "Disabled")]
+    Disabled,
+    #[serde(rename = "ScheduleAnyway")]
+    ScheduleAnyway,
+    #[serde(rename = "DoNotSchedule")]
+    DoNotSchedule,
+}
+
+impl Default for DeploymentTopologySpreadZone {
+    fn default() -> DeploymentTopologySpreadZone {
+        Self::Disabled
     }
 }
 /// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
