@@ -23,6 +23,8 @@ pub enum OrganizationAnnotationsGroupScopeEnum {
     Services,
     #[serde(rename = "INGRESS")]
     Ingress,
+    #[serde(rename = "GATEWAY_API_ROUTES")]
+    GatewayApiRoutes,
     #[serde(rename = "HPA")]
     Hpa,
     #[serde(rename = "PODS")]
@@ -42,6 +44,7 @@ impl std::fmt::Display for OrganizationAnnotationsGroupScopeEnum {
             Self::StatefulSets => write!(f, "STATEFUL_SETS"),
             Self::Services => write!(f, "SERVICES"),
             Self::Ingress => write!(f, "INGRESS"),
+            Self::GatewayApiRoutes => write!(f, "GATEWAY_API_ROUTES"),
             Self::Hpa => write!(f, "HPA"),
             Self::Pods => write!(f, "PODS"),
             Self::Secrets => write!(f, "SECRETS"),

@@ -8,6 +8,7 @@
 | StatefulSets | STATEFUL_SETS |
 | Services | SERVICES |
 | Ingress | INGRESS |
+| GatewayApiRoutes | GATEWAY_API_ROUTES |
 | Hpa | HPA |
 | Pods | PODS |
 | Secrets | SECRETS |
