@@ -24,11 +24,13 @@ Method | HTTP request | Description
 [**get_organization_cluster_status**](ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**get_routing_table**](ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 [**list_cluster_logs**](ClustersApi.md#list_cluster_logs) | **GET** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
+[**list_eks_anywhere_commits**](ClustersApi.md#list_eks_anywhere_commits) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 [**list_organization_cluster**](ClustersApi.md#list_organization_cluster) | **GET** /organization/{organizationId}/cluster | List organization clusters
 [**lock_cluster**](ClustersApi.md#lock_cluster) | **POST** /cluster/{clusterId}/lock | Lock Cluster
 [**specify_cluster_cloud_provider_info**](ClustersApi.md#specify_cluster_cloud_provider_info) | **POST** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 [**stop_cluster**](ClustersApi.md#stop_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 [**unlock_cluster**](ClustersApi.md#unlock_cluster) | **DELETE** /cluster/{clusterId}/lock | Unlock Cluster
+[**update_eks_anywhere_commit**](ClustersApi.md#update_eks_anywhere_commit) | **PUT** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
 [**update_karpenter_private_fargate_subnet_ids**](ClustersApi.md#update_karpenter_private_fargate_subnet_ids) | **PUT** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 [**upgrade_cluster**](ClustersApi.md#upgrade_cluster) | **POST** /cluster/{clusterId}/upgrade | Upgrade a cluster
 
@@ -666,6 +668,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## list_eks_anywhere_commits
+
+> models::CommitResponseList list_eks_anywhere_commits(organization_id, cluster_id)
+List EKS Anywhere commits
+
+Returns list of the last commits made on the repository linked to the EKS Anywhere cluster, filtered by the targeted YAML file when supported by provider.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+
+### Return type
+
+[**models::CommitResponseList**](CommitResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## list_organization_cluster
 
 > models::ClusterResponseList list_organization_cluster(organization_id)
@@ -812,6 +845,38 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_eks_anywhere_commit
+
+> models::EksAnywhereCommitResponse update_eks_anywhere_commit(organization_id, cluster_id, eks_anywhere_commit_request)
+Update selected EKS Anywhere commit
+
+Persist selected commit for an EKS Anywhere cluster.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**eks_anywhere_commit_request** | [**EksAnywhereCommitRequest**](EksAnywhereCommitRequest.md) |  | [required] |
+
+### Return type
+
+[**models::EksAnywhereCommitResponse**](EksAnywhereCommitResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

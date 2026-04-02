@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **String** | EKS Anywhere git repository URL | 
 **branch** | Option<**String**> | Name of the branch to use. This is optional. If not specified, the default branch of the repository is used.  | [optional]
+**commit_id** | Option<**String**> | Optional git commit SHA to pin EKS Anywhere configuration on a specific revision. If omitted, the latest commit from the selected branch is used.  | [optional]
 **git_token_id** | **uuid::Uuid** | Qovery git token id used to access the repository | 
 **provider** | Option<[**models::GitProviderEnum**](GitProviderEnum.md)> |  | [optional]
 

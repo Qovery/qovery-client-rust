@@ -19,6 +19,9 @@ pub struct ClusterEksAnywhereGitRepository {
     /// Name of the branch to use. This is optional. If not specified, the default branch of the repository is used.
     #[serde(rename = "branch", skip_serializing_if = "Option::is_none")]
     pub branch: Option<String>,
+    /// Optional git commit SHA to pin EKS Anywhere configuration on a specific revision. If omitted, the latest commit from the selected branch is used.
+    #[serde(rename = "commit_id", skip_serializing_if = "Option::is_none")]
+    pub commit_id: Option<String>,
     /// Qovery git token id used to access the repository
     #[serde(rename = "git_token_id")]
     pub git_token_id: uuid::Uuid,
@@ -31,6 +34,7 @@ impl ClusterEksAnywhereGitRepository {
         ClusterEksAnywhereGitRepository {
             url,
             branch: None,
+            commit_id: None,
             git_token_id,
             provider: None,
         }

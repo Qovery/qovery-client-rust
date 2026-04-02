@@ -176,11 +176,13 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_organization_cluster_status**](docs/ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersApi* | [**get_routing_table**](docs/ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 *ClustersApi* | [**list_cluster_logs**](docs/ClustersApi.md#list_cluster_logs) | **GET** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
+*ClustersApi* | [**list_eks_anywhere_commits**](docs/ClustersApi.md#list_eks_anywhere_commits) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 *ClustersApi* | [**list_organization_cluster**](docs/ClustersApi.md#list_organization_cluster) | **GET** /organization/{organizationId}/cluster | List organization clusters
 *ClustersApi* | [**lock_cluster**](docs/ClustersApi.md#lock_cluster) | **POST** /cluster/{clusterId}/lock | Lock Cluster
 *ClustersApi* | [**specify_cluster_cloud_provider_info**](docs/ClustersApi.md#specify_cluster_cloud_provider_info) | **POST** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersApi* | [**stop_cluster**](docs/ClustersApi.md#stop_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersApi* | [**unlock_cluster**](docs/ClustersApi.md#unlock_cluster) | **DELETE** /cluster/{clusterId}/lock | Unlock Cluster
+*ClustersApi* | [**update_eks_anywhere_commit**](docs/ClustersApi.md#update_eks_anywhere_commit) | **PUT** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
 *ClustersApi* | [**update_karpenter_private_fargate_subnet_ids**](docs/ClustersApi.md#update_karpenter_private_fargate_subnet_ids) | **PUT** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 *ClustersApi* | [**upgrade_cluster**](docs/ClustersApi.md#upgrade_cluster) | **POST** /cluster/{clusterId}/upgrade | Upgrade a cluster
 *ContainerActionsApi* | [**deploy_container**](docs/ContainerActionsApi.md#deploy_container) | **POST** /container/{containerId}/deploy | Deploy container
@@ -791,6 +793,8 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [DockerfileFragmentFile](docs/DockerfileFragmentFile.md)
  - [DockerfileFragmentInline](docs/DockerfileFragmentInline.md)
+ - [EksAnywhereCommitRequest](docs/EksAnywhereCommitRequest.md)
+ - [EksAnywhereCommitResponse](docs/EksAnywhereCommitResponse.md)
  - [EksInfrastructureOutputs](docs/EksInfrastructureOutputs.md)
  - [EmailAlertReceiverCreationRequest](docs/EmailAlertReceiverCreationRequest.md)
  - [EmailAlertReceiverEditRequest](docs/EmailAlertReceiverEditRequest.md)
