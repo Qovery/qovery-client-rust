@@ -122,6 +122,9 @@ docs/ClusterCredentialsResponseList.md
 docs/ClusterDeleteMode.md
 docs/ClusterDeploymentStatusEnum.md
 docs/ClusterEksAnywhereGitRepository.md
+docs/ClusterEnvironmentResponse.md
+docs/ClusterEnvironmentResponseList.md
+docs/ClusterEnvironmentServiceResponse.md
 docs/ClusterFeatureAwsExistingVpc.md
 docs/ClusterFeatureAwsExistingVpcResponse.md
 docs/ClusterFeatureBooleanResponse.md
@@ -981,6 +984,9 @@ src/models/cluster_credentials_response_list.rs
 src/models/cluster_delete_mode.rs
 src/models/cluster_deployment_status_enum.rs
 src/models/cluster_eks_anywhere_git_repository.rs
+src/models/cluster_environment_response.rs
+src/models/cluster_environment_response_list.rs
+src/models/cluster_environment_service_response.rs
 src/models/cluster_feature_aws_existing_vpc.rs
 src/models/cluster_feature_aws_existing_vpc_response.rs
 src/models/cluster_feature_boolean_response.rs

@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**get_cluster_readiness_status**](ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**get_cluster_status**](ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**get_default_cluster_advanced_settings**](ClustersApi.md#get_default_cluster_advanced_settings) | **GET** /defaultClusterAdvancedSettings | List default cluster advanced settings
+[**get_environments_by_cluster_id**](ClustersApi.md#get_environments_by_cluster_id) | **GET** /cluster/{clusterId}/environments | List environments services by cluster id
 [**get_installation_helm_values**](ClustersApi.md#get_installation_helm_values) | **GET** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 [**get_organization_cloud_provider_info**](ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**get_organization_cluster_status**](ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
@@ -505,6 +506,34 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**models::ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_environments_by_cluster_id
+
+> models::ClusterEnvironmentResponseList get_environments_by_cluster_id(cluster_id)
+List environments services by cluster id
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **String** |  | [required] |
+
+### Return type
+
+[**models::ClusterEnvironmentResponseList**](ClusterEnvironmentResponseList.md)
 
 ### Authorization
 

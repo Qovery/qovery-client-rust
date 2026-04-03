@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_cluster_readiness_status**](docs/ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**get_cluster_status**](docs/ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersApi* | [**get_default_cluster_advanced_settings**](docs/ClustersApi.md#get_default_cluster_advanced_settings) | **GET** /defaultClusterAdvancedSettings | List default cluster advanced settings
+*ClustersApi* | [**get_environments_by_cluster_id**](docs/ClustersApi.md#get_environments_by_cluster_id) | **GET** /cluster/{clusterId}/environments | List environments services by cluster id
 *ClustersApi* | [**get_installation_helm_values**](docs/ClustersApi.md#get_installation_helm_values) | **GET** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 *ClustersApi* | [**get_organization_cloud_provider_info**](docs/ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 *ClustersApi* | [**get_organization_cluster_status**](docs/ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
@@ -637,6 +638,9 @@ Class | Method | HTTP request | Description
  - [ClusterDeleteMode](docs/ClusterDeleteMode.md)
  - [ClusterDeploymentStatusEnum](docs/ClusterDeploymentStatusEnum.md)
  - [ClusterEksAnywhereGitRepository](docs/ClusterEksAnywhereGitRepository.md)
+ - [ClusterEnvironmentResponse](docs/ClusterEnvironmentResponse.md)
+ - [ClusterEnvironmentResponseList](docs/ClusterEnvironmentResponseList.md)
+ - [ClusterEnvironmentServiceResponse](docs/ClusterEnvironmentServiceResponse.md)
  - [ClusterFeatureAwsExistingVpc](docs/ClusterFeatureAwsExistingVpc.md)
  - [ClusterFeatureAwsExistingVpcResponse](docs/ClusterFeatureAwsExistingVpcResponse.md)
  - [ClusterFeatureBooleanResponse](docs/ClusterFeatureBooleanResponse.md)
