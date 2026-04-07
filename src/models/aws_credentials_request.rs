@@ -12,14 +12,20 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(untagged)]
+#[serde(tag = "type")]
 pub enum AwsCredentialsRequest {
-    AwsRoleCredentialsRequest(models::AwsRoleCredentialsRequest),
-    AwsStaticCredentialsRequest(models::AwsStaticCredentialsRequest),
+    #[serde(rename = "AWS_ROLE")]
+    AwsRole(models::AwsRoleCredentialsRequest),
+    #[serde(rename = "AWS_STATIC")]
+    AwsStatic(models::AwsStaticCredentialsRequest),
+    #[serde(rename = "EKS_ANYWHERE_VSPHERE_ROLE")]
+    EksAnywhereVsphereRole(models::EksAnywhereVsphereRoleCredentialsRequest),
+    #[serde(rename = "EKS_ANYWHERE_VSPHERE_STATIC")]
+    EksAnywhereVsphereStatic(models::EksAnywhereVsphereStaticCredentialsRequest),
 }
 
 impl Default for AwsCredentialsRequest {
     fn default() -> Self {
-        Self::AwsRoleCredentialsRequest(Default::default())
+        Self::AwsRole(Default::default())
     }
 }

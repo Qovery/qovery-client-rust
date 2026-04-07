@@ -22,6 +22,8 @@ pub enum ClusterCredentials {
     Other(models::GenericClusterCredentials),
     #[serde(rename = "AWS_ROLE")]
     AwsRole(models::AwsRoleClusterCredentials),
+    #[serde(rename = "EKS_ANYWHERE_VSPHERE")]
+    EksAnywhereVsphere(models::EksAnywhereVsphereClusterCredentials),
     #[serde(rename = "AZURE")]
     Azure(models::AzureStaticClusterCredentials),
     #[serde(rename = "GCP")]

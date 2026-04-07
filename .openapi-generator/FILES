@@ -302,6 +302,9 @@ docs/DockerfileFragmentFile.md
 docs/DockerfileFragmentInline.md
 docs/EksAnywhereCommitRequest.md
 docs/EksAnywhereCommitResponse.md
+docs/EksAnywhereVsphereClusterCredentials.md
+docs/EksAnywhereVsphereRoleCredentialsRequest.md
+docs/EksAnywhereVsphereStaticCredentialsRequest.md
 docs/EksInfrastructureOutputs.md
 docs/EmailAlertReceiverCreationRequest.md
 docs/EmailAlertReceiverEditRequest.md
@@ -1145,6 +1148,9 @@ src/models/dockerfile_fragment_file.rs
 src/models/dockerfile_fragment_inline.rs
 src/models/eks_anywhere_commit_request.rs
 src/models/eks_anywhere_commit_response.rs
+src/models/eks_anywhere_vsphere_cluster_credentials.rs
+src/models/eks_anywhere_vsphere_role_credentials_request.rs
+src/models/eks_anywhere_vsphere_static_credentials_request.rs
 src/models/eks_infrastructure_outputs.rs
 src/models/email_alert_receiver_creation_request.rs
 src/models/email_alert_receiver_edit_request.rs

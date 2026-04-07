@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**r#type** | **Type** |  (enum: AWS_STATIC) | 
 **name** | **String** |  | 
 **access_key_id** | **String** |  | 
 **secret_access_key** | **String** |  | 

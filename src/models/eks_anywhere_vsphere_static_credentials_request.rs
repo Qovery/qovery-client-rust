@@ -12,27 +12,35 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct AwsStaticCredentialsRequest {
+pub struct EksAnywhereVsphereStaticCredentialsRequest {
     #[serde(rename = "type")]
     pub r#type: Type,
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "vsphere_user")]
+    pub vsphere_user: String,
+    #[serde(rename = "vsphere_password")]
+    pub vsphere_password: String,
     #[serde(rename = "access_key_id")]
     pub access_key_id: String,
     #[serde(rename = "secret_access_key")]
     pub secret_access_key: String,
 }
 
-impl AwsStaticCredentialsRequest {
+impl EksAnywhereVsphereStaticCredentialsRequest {
     pub fn new(
         r#type: Type,
         name: String,
+        vsphere_user: String,
+        vsphere_password: String,
         access_key_id: String,
         secret_access_key: String,
-    ) -> AwsStaticCredentialsRequest {
-        AwsStaticCredentialsRequest {
+    ) -> EksAnywhereVsphereStaticCredentialsRequest {
+        EksAnywhereVsphereStaticCredentialsRequest {
             r#type,
             name,
+            vsphere_user,
+            vsphere_password,
             access_key_id,
             secret_access_key,
         }
@@ -41,12 +49,12 @@ impl AwsStaticCredentialsRequest {
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Type {
-    #[serde(rename = "AWS_STATIC")]
-    AwsStatic,
+    #[serde(rename = "EKS_ANYWHERE_VSPHERE_STATIC")]
+    EksAnywhereVsphereStatic,
 }
 
 impl Default for Type {
     fn default() -> Type {
-        Self::AwsStatic
+        Self::EksAnywhereVsphereStatic
     }
 }

@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AwsRoleCredentialsRequest {
+    #[serde(rename = "type")]
+    pub r#type: Type,
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "role_arn")]
@@ -20,7 +22,23 @@ pub struct AwsRoleCredentialsRequest {
 }
 
 impl AwsRoleCredentialsRequest {
-    pub fn new(name: String, role_arn: String) -> AwsRoleCredentialsRequest {
-        AwsRoleCredentialsRequest { name, role_arn }
+    pub fn new(r#type: Type, name: String, role_arn: String) -> AwsRoleCredentialsRequest {
+        AwsRoleCredentialsRequest {
+            r#type,
+            name,
+            role_arn,
+        }
+    }
+}
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Type {
+    #[serde(rename = "AWS_ROLE")]
+    AwsRole,
+}
+
+impl Default for Type {
+    fn default() -> Type {
+        Self::AwsRole
     }
 }
