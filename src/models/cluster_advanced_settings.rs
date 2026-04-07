@@ -61,6 +61,30 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub aws_eks_enable_alb_controller: Option<bool>,
+    /// Enable the AWS EFS CSI driver EKS add-on to provision EFS-backed persistent volumes on the cluster.
+    #[serde(
+        rename = "aws.eks.enable_efs_addon",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_eks_enable_efs_addon: Option<bool>,
+    /// EFS throughput mode. \"elastic\" scales automatically (pay-per-use), \"bursting\" uses burst credits based on file system size, \"provisioned\" requires a fixed throughput value.
+    #[serde(
+        rename = "aws.eks.efs.throughput_mode",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_eks_efs_throughput_mode: Option<AwsEksEfsThroughputMode>,
+    /// EFS performance mode. \"generalPurpose\" offers lowest latency (recommended). \"maxIO\" provides higher aggregate throughput for highly parallelized workloads. Cannot be changed after creation.
+    #[serde(
+        rename = "aws.eks.efs.performance_mode",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_eks_efs_performance_mode: Option<AwsEksEfsPerformanceMode>,
+    /// Lifecycle policy to transition files to Infrequent Access (IA) storage after the specified period. IA storage costs less but has a per-read charge. Empty string disables the policy.
+    #[serde(
+        rename = "aws.eks.efs.transition_to_ia",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_eks_efs_transition_to_ia: Option<AwsEksEfsTransitionToIa>,
     /// Select the size of the main load_balancer (only effective for Scaleway)
     #[serde(rename = "load_balancer.size", skip_serializing_if = "Option::is_none")]
     pub load_balancer_size: Option<String>,
@@ -226,6 +250,10 @@ impl ClusterAdvancedSettings {
             registry_image_retention_time: None,
             cloud_provider_container_registry_tags: None,
             aws_eks_enable_alb_controller: None,
+            aws_eks_enable_efs_addon: None,
+            aws_eks_efs_throughput_mode: None,
+            aws_eks_efs_performance_mode: None,
+            aws_eks_efs_transition_to_ia: None,
             load_balancer_size: None,
             database_postgresql_deny_any_access: None,
             database_postgresql_allowed_cidrs: None,
@@ -253,6 +281,60 @@ impl ClusterAdvancedSettings {
             qovery_static_ip_mode: None,
             k8s_api_allowed_public_access_cidrs: None,
         }
+    }
+}
+/// EFS throughput mode. \"elastic\" scales automatically (pay-per-use), \"bursting\" uses burst credits based on file system size, \"provisioned\" requires a fixed throughput value.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum AwsEksEfsThroughputMode {
+    #[serde(rename = "bursting")]
+    Bursting,
+    #[serde(rename = "elastic")]
+    Elastic,
+    #[serde(rename = "provisioned")]
+    Provisioned,
+}
+
+impl Default for AwsEksEfsThroughputMode {
+    fn default() -> AwsEksEfsThroughputMode {
+        Self::Bursting
+    }
+}
+/// EFS performance mode. \"generalPurpose\" offers lowest latency (recommended). \"maxIO\" provides higher aggregate throughput for highly parallelized workloads. Cannot be changed after creation.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum AwsEksEfsPerformanceMode {
+    #[serde(rename = "generalPurpose")]
+    GeneralPurpose,
+    #[serde(rename = "maxIO")]
+    MaxIo,
+}
+
+impl Default for AwsEksEfsPerformanceMode {
+    fn default() -> AwsEksEfsPerformanceMode {
+        Self::GeneralPurpose
+    }
+}
+/// Lifecycle policy to transition files to Infrequent Access (IA) storage after the specified period. IA storage costs less but has a per-read charge. Empty string disables the policy.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum AwsEksEfsTransitionToIa {
+    #[serde(rename = "AFTER_1_DAY")]
+    After1Day,
+    #[serde(rename = "AFTER_7_DAYS")]
+    After7Days,
+    #[serde(rename = "AFTER_14_DAYS")]
+    After14Days,
+    #[serde(rename = "AFTER_30_DAYS")]
+    After30Days,
+    #[serde(rename = "AFTER_60_DAYS")]
+    After60Days,
+    #[serde(rename = "AFTER_90_DAYS")]
+    After90Days,
+    #[serde(rename = "")]
+    Empty,
+}
+
+impl Default for AwsEksEfsTransitionToIa {
+    fn default() -> AwsEksEfsTransitionToIa {
+        Self::After1Day
     }
 }
 /// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
