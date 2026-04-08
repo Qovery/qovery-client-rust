@@ -166,9 +166,13 @@ pub async fn delete_organization_api_token(
 pub async fn list_organization_api_tokens(
     configuration: &configuration::Configuration,
     organization_id: &str,
+    name: Option<&str>,
+    creator_name: Option<&str>,
 ) -> Result<models::OrganizationApiTokenResponseList, Error<ListOrganizationApiTokensError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
+    let p_query_name = name;
+    let p_query_creator_name = creator_name;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/apiToken",
@@ -177,6 +181,12 @@ pub async fn list_organization_api_tokens(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_name {
+        req_builder = req_builder.query(&[("name", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_creator_name {
+        req_builder = req_builder.query(&[("creatorName", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

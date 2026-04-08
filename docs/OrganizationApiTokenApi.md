@@ -74,7 +74,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_organization_api_tokens
 
-> models::OrganizationApiTokenResponseList list_organization_api_tokens(organization_id)
+> models::OrganizationApiTokenResponseList list_organization_api_tokens(organization_id, name, creator_name)
 List organization api tokens
 
 List organization api tokens
@@ -85,6 +85,8 @@ List organization api tokens
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**name** | Option<**String**> | Name of the token to filter results by. |  |
+**creator_name** | Option<**String**> | Name of the token creator to filter results by. |  |
 
 ### Return type
 
