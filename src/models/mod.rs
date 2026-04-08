@@ -840,6 +840,8 @@ pub mod job_type_enum;
 pub use self::job_type_enum::JobTypeEnum;
 pub mod kapsule_infrastructure_outputs;
 pub use self::kapsule_infrastructure_outputs::KapsuleInfrastructureOutputs;
+pub mod karpenter_cronjob_node_pool_override;
+pub use self::karpenter_cronjob_node_pool_override::KarpenterCronjobNodePoolOverride;
 pub mod karpenter_default_node_pool_override;
 pub use self::karpenter_default_node_pool_override::KarpenterDefaultNodePoolOverride;
 pub mod karpenter_gpu_node_pool_override;

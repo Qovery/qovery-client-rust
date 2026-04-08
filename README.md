@@ -958,6 +958,7 @@ Class | Method | HTTP request | Description
  - [JobSourceDockerResponse](docs/JobSourceDockerResponse.md)
  - [JobTypeEnum](docs/JobTypeEnum.md)
  - [KapsuleInfrastructureOutputs](docs/KapsuleInfrastructureOutputs.md)
+ - [KarpenterCronjobNodePoolOverride](docs/KarpenterCronjobNodePoolOverride.md)
  - [KarpenterDefaultNodePoolOverride](docs/KarpenterDefaultNodePoolOverride.md)
  - [KarpenterGpuNodePoolOverride](docs/KarpenterGpuNodePoolOverride.md)
  - [KarpenterNodePool](docs/KarpenterNodePool.md)

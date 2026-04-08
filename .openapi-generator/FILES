@@ -489,6 +489,7 @@ docs/JobSourceDockerResponse.md
 docs/JobTypeEnum.md
 docs/JobsApi.md
 docs/KapsuleInfrastructureOutputs.md
+docs/KarpenterCronjobNodePoolOverride.md
 docs/KarpenterDefaultNodePoolOverride.md
 docs/KarpenterGpuNodePoolOverride.md
 docs/KarpenterNodePool.md
@@ -1307,6 +1308,7 @@ src/models/job_schedule_event.rs
 src/models/job_source_docker_response.rs
 src/models/job_type_enum.rs
 src/models/kapsule_infrastructure_outputs.rs
+src/models/karpenter_cronjob_node_pool_override.rs
 src/models/karpenter_default_node_pool_override.rs
 src/models/karpenter_gpu_node_pool_override.rs
 src/models/karpenter_node_pool.rs

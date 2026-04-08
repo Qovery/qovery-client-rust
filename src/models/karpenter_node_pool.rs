@@ -21,6 +21,8 @@ pub struct KarpenterNodePool {
     pub default_override: Option<models::KarpenterDefaultNodePoolOverride>,
     #[serde(rename = "gpu_override", skip_serializing_if = "Option::is_none")]
     pub gpu_override: Option<models::KarpenterGpuNodePoolOverride>,
+    #[serde(rename = "cronjob_override", skip_serializing_if = "Option::is_none")]
+    pub cronjob_override: Option<models::KarpenterCronjobNodePoolOverride>,
 }
 
 impl KarpenterNodePool {
@@ -30,6 +32,7 @@ impl KarpenterNodePool {
             stable_override: None,
             default_override: None,
             gpu_override: None,
+            cronjob_override: None,
         }
     }
 }
