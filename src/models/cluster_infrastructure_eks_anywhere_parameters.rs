@@ -18,6 +18,8 @@ pub struct ClusterInfrastructureEksAnywhereParameters {
     /// Path to the EKS Anywhere cluster YAML file in the git repository
     #[serde(rename = "yaml_file_path")]
     pub yaml_file_path: String,
+    #[serde(rename = "cluster_backup", skip_serializing_if = "Option::is_none")]
+    pub cluster_backup: Option<models::ClusterInfrastructureEksAnywhereBackupParameters>,
 }
 
 impl ClusterInfrastructureEksAnywhereParameters {
@@ -28,6 +30,7 @@ impl ClusterInfrastructureEksAnywhereParameters {
         ClusterInfrastructureEksAnywhereParameters {
             git_repository,
             yaml_file_path,
+            cluster_backup: None,
         }
     }
 }
