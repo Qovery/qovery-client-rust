@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_cluster_readiness_status**](docs/ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**get_cluster_status**](docs/ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersApi* | [**get_default_cluster_advanced_settings**](docs/ClustersApi.md#get_default_cluster_advanced_settings) | **GET** /defaultClusterAdvancedSettings | List default cluster advanced settings
+*ClustersApi* | [**get_eks_anywhere_cluster_jwt**](docs/ClustersApi.md#get_eks_anywhere_cluster_jwt) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt | Get latest EKS Anywhere cluster JWT
 *ClustersApi* | [**get_environments_by_cluster_id**](docs/ClustersApi.md#get_environments_by_cluster_id) | **GET** /cluster/{clusterId}/environments | List environments services by cluster id
 *ClustersApi* | [**get_installation_helm_values**](docs/ClustersApi.md#get_installation_helm_values) | **GET** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 *ClustersApi* | [**get_organization_cloud_provider_info**](docs/ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
@@ -799,6 +800,7 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [DockerfileFragmentFile](docs/DockerfileFragmentFile.md)
  - [DockerfileFragmentInline](docs/DockerfileFragmentInline.md)
+ - [EksAnywhereClusterJwtResponse](docs/EksAnywhereClusterJwtResponse.md)
  - [EksAnywhereCommitRequest](docs/EksAnywhereCommitRequest.md)
  - [EksAnywhereCommitResponse](docs/EksAnywhereCommitResponse.md)
  - [EksAnywhereVsphereClusterCredentials](docs/EksAnywhereVsphereClusterCredentials.md)

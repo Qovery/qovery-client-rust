@@ -522,6 +522,8 @@ pub mod dockerfile_fragment_file;
 pub use self::dockerfile_fragment_file::DockerfileFragmentFile;
 pub mod dockerfile_fragment_inline;
 pub use self::dockerfile_fragment_inline::DockerfileFragmentInline;
+pub mod eks_anywhere_cluster_jwt_response;
+pub use self::eks_anywhere_cluster_jwt_response::EksAnywhereClusterJwtResponse;
 pub mod eks_anywhere_commit_request;
 pub use self::eks_anywhere_commit_request::EksAnywhereCommitRequest;
 pub mod eks_anywhere_commit_response;
