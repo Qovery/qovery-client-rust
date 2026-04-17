@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct EnvironmentOverviewResponse {
+pub struct EnvironmentOverviewResponseDeprecated {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     #[serde(rename = "created_at")]
@@ -23,37 +23,31 @@ pub struct EnvironmentOverviewResponse {
     pub name: String,
     #[serde(rename = "mode")]
     pub mode: models::EnvironmentModeEnum,
-    #[serde(rename = "cluster")]
-    pub cluster: models::ClusterOverviewResponse,
-    #[serde(rename = "services_overview")]
-    pub services_overview: models::ServicesOverviewResponse,
-    #[serde(
-        rename = "deployment_status",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub deployment_status: Option<Option<models::EnvironmentStatus>>,
+    #[serde(rename = "cluster", skip_serializing_if = "Option::is_none")]
+    pub cluster: Option<models::ClusterOverviewResponse>,
+    #[serde(rename = "service_count")]
+    pub service_count: i32,
+    #[serde(rename = "deployment_status", skip_serializing_if = "Option::is_none")]
+    pub deployment_status: Option<models::EnvironmentStatus>,
 }
 
-impl EnvironmentOverviewResponse {
+impl EnvironmentOverviewResponseDeprecated {
     pub fn new(
         id: uuid::Uuid,
         created_at: String,
         updated_at: String,
         name: String,
         mode: models::EnvironmentModeEnum,
-        cluster: models::ClusterOverviewResponse,
-        services_overview: models::ServicesOverviewResponse,
-    ) -> EnvironmentOverviewResponse {
-        EnvironmentOverviewResponse {
+        service_count: i32,
+    ) -> EnvironmentOverviewResponseDeprecated {
+        EnvironmentOverviewResponseDeprecated {
             id,
             created_at,
             updated_at,
             name,
             mode,
-            cluster,
-            services_overview,
+            cluster: None,
+            service_count,
             deployment_status: None,
         }
     }

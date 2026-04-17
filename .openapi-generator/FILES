@@ -341,7 +341,9 @@ docs/EnvironmentLogsMessage.md
 docs/EnvironmentMainCallsApi.md
 docs/EnvironmentModeEnum.md
 docs/EnvironmentOverviewResponse.md
+docs/EnvironmentOverviewResponseDeprecated.md
 docs/EnvironmentOverviewResponseList.md
+docs/EnvironmentOverviewResponseListDeprecated.md
 docs/EnvironmentResponseList.md
 docs/EnvironmentSecretApi.md
 docs/EnvironmentServiceIdsAllRequest.md
@@ -707,6 +709,7 @@ docs/ServiceSubActionEnum.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/ServiceTypeForVariableEnum.md
+docs/ServicesOverviewResponse.md
 docs/SignUp.md
 docs/SignUpRequest.md
 docs/SlackAlertReceiverCreationRequest.md
@@ -1184,7 +1187,9 @@ src/models/environment_logs_error_underlying_error.rs
 src/models/environment_logs_message.rs
 src/models/environment_mode_enum.rs
 src/models/environment_overview_response.rs
+src/models/environment_overview_response_deprecated.rs
 src/models/environment_overview_response_list.rs
+src/models/environment_overview_response_list_deprecated.rs
 src/models/environment_response_list.rs
 src/models/environment_service_ids_all_request.rs
 src/models/environment_stats.rs
@@ -1510,6 +1515,7 @@ src/models/service_sub_action_enum.rs
 src/models/service_total_number.rs
 src/models/service_type_enum.rs
 src/models/service_type_for_variable_enum.rs
+src/models/services_overview_response.rs
 src/models/sign_up.rs
 src/models/sign_up_request.rs
 src/models/slack_alert_receiver_creation_request.rs
