@@ -96,6 +96,8 @@ pub mod argo_cd_credentials_request;
 pub use self::argo_cd_credentials_request::ArgoCdCredentialsRequest;
 pub mod argo_cd_credentials_response;
 pub use self::argo_cd_credentials_response::ArgoCdCredentialsResponse;
+pub mod argocd_app_response;
+pub use self::argocd_app_response::ArgocdAppResponse;
 pub mod attach_service_to_deployment_stage_request;
 pub use self::attach_service_to_deployment_stage_request::AttachServiceToDeploymentStageRequest;
 pub mod autoscaling_mode;

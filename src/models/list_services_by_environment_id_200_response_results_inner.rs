@@ -26,6 +26,8 @@ pub enum ListServicesByEnvironmentId200ResponseResultsInner {
     Job(models::JobResponse),
     #[serde(rename = "TERRAFORM")]
     Terraform(models::TerraformResponse),
+    #[serde(rename = "ARGOCD_APP")]
+    ArgocdApp(models::ArgocdAppResponse),
 }
 
 impl Default for ListServicesByEnvironmentId200ResponseResultsInner {

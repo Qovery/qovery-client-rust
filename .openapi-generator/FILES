@@ -66,6 +66,7 @@ docs/ArgoCdApi.md
 docs/ArgoCdConnectionCheckResponse.md
 docs/ArgoCdCredentialsRequest.md
 docs/ArgoCdCredentialsResponse.md
+docs/ArgocdAppResponse.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutoscalingMode.md
 docs/AvailableContainerRegistryResponse.md
@@ -940,6 +941,7 @@ src/models/application_response_list.rs
 src/models/argo_cd_connection_check_response.rs
 src/models/argo_cd_credentials_request.rs
 src/models/argo_cd_credentials_response.rs
+src/models/argocd_app_response.rs
 src/models/attach_service_to_deployment_stage_request.rs
 src/models/autoscaling_mode.rs
 src/models/available_container_registry_response.rs
