@@ -23,7 +23,10 @@ pub struct ArgocdAppResponse {
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "service_type")]
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_argocd_app"
+    )]
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "namespace")]
     pub namespace: String,

@@ -69,3 +69,6 @@ pub fn service_type_terraform() -> ServiceTypeEnum {
 pub fn service_type_job() -> ServiceTypeEnum {
     ServiceTypeEnum::Job
 }
+pub fn service_type_argocd_app() -> ServiceTypeEnum {
+    ServiceTypeEnum::ArgocdApp
+}
