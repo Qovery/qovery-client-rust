@@ -43,6 +43,108 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub loki_log_retention_in_week: Option<i32>,
+    /// Loki deployment topology. \"single_binary\" runs Loki as one pod; \"simple_scalable\" splits it into separate write, read, and backend components for larger clusters.
+    #[serde(
+        rename = "loki.deployment_mode",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_deployment_mode: Option<LokiDeploymentMode>,
+    /// CPU request (in milli-CPU) for the Loki pod when running in single_binary mode.
+    #[serde(
+        rename = "loki.single_binary.cpu_request_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_single_binary_cpu_request_m: Option<i32>,
+    /// CPU limit (in milli-CPU) for the Loki pod when running in single_binary mode.
+    #[serde(
+        rename = "loki.single_binary.cpu_limit_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_single_binary_cpu_limit_m: Option<i32>,
+    /// Memory request (in MiB) for the Loki pod when running in single_binary mode.
+    #[serde(
+        rename = "loki.single_binary.memory_request_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_single_binary_memory_request_mib: Option<i32>,
+    /// Memory limit (in MiB) for the Loki pod when running in single_binary mode.
+    #[serde(
+        rename = "loki.single_binary.memory_limit_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_single_binary_memory_limit_mib: Option<i32>,
+    /// CPU request (in milli-CPU) for the Loki write component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.write.cpu_request_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_write_cpu_request_m: Option<i32>,
+    /// CPU limit (in milli-CPU) for the Loki write component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.write.cpu_limit_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_write_cpu_limit_m: Option<i32>,
+    /// Memory request (in MiB) for the Loki write component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.write.memory_request_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_write_memory_request_mib: Option<i32>,
+    /// Memory limit (in MiB) for the Loki write component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.write.memory_limit_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_write_memory_limit_mib: Option<i32>,
+    /// CPU request (in milli-CPU) for the Loki read component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.read.cpu_request_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_read_cpu_request_m: Option<i32>,
+    /// CPU limit (in milli-CPU) for the Loki read component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.read.cpu_limit_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_read_cpu_limit_m: Option<i32>,
+    /// Memory request (in MiB) for the Loki read component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.read.memory_request_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_read_memory_request_mib: Option<i32>,
+    /// Memory limit (in MiB) for the Loki read component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.read.memory_limit_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_read_memory_limit_mib: Option<i32>,
+    /// CPU request (in milli-CPU) for the Loki backend component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.backend.cpu_request_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_backend_cpu_request_m: Option<i32>,
+    /// CPU limit (in milli-CPU) for the Loki backend component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.backend.cpu_limit_m",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_backend_cpu_limit_m: Option<i32>,
+    /// Memory request (in MiB) for the Loki backend component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.backend.memory_request_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_backend_memory_request_mib: Option<i32>,
+    /// Memory limit (in MiB) for the Loki backend component when running in simple_scalable mode.
+    #[serde(
+        rename = "loki.backend.memory_limit_mib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub loki_backend_memory_limit_mib: Option<i32>,
     /// Configure the number of seconds before cleaning images in the registry
     #[serde(
         rename = "registry.image_retention_time",
@@ -247,6 +349,23 @@ impl ClusterAdvancedSettings {
             aws_vpc_flow_logs_retention_days: None,
             aws_vpc_enable_nat_gateway_secondary_eip: None,
             loki_log_retention_in_week: None,
+            loki_deployment_mode: None,
+            loki_single_binary_cpu_request_m: None,
+            loki_single_binary_cpu_limit_m: None,
+            loki_single_binary_memory_request_mib: None,
+            loki_single_binary_memory_limit_mib: None,
+            loki_write_cpu_request_m: None,
+            loki_write_cpu_limit_m: None,
+            loki_write_memory_request_mib: None,
+            loki_write_memory_limit_mib: None,
+            loki_read_cpu_request_m: None,
+            loki_read_cpu_limit_m: None,
+            loki_read_memory_request_mib: None,
+            loki_read_memory_limit_mib: None,
+            loki_backend_cpu_request_m: None,
+            loki_backend_cpu_limit_m: None,
+            loki_backend_memory_request_mib: None,
+            loki_backend_memory_limit_mib: None,
             registry_image_retention_time: None,
             cloud_provider_container_registry_tags: None,
             aws_eks_enable_alb_controller: None,
@@ -281,6 +400,20 @@ impl ClusterAdvancedSettings {
             qovery_static_ip_mode: None,
             k8s_api_allowed_public_access_cidrs: None,
         }
+    }
+}
+/// Loki deployment topology. \"single_binary\" runs Loki as one pod; \"simple_scalable\" splits it into separate write, read, and backend components for larger clusters.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum LokiDeploymentMode {
+    #[serde(rename = "single_binary")]
+    SingleBinary,
+    #[serde(rename = "simple_scalable")]
+    SimpleScalable,
+}
+
+impl Default for LokiDeploymentMode {
+    fn default() -> LokiDeploymentMode {
+        Self::SingleBinary
     }
 }
 /// EFS throughput mode. \"elastic\" scales automatically (pay-per-use), \"bursting\" uses burst credits based on file system size, \"provisioned\" requires a fixed throughput value.
