@@ -39,6 +39,13 @@ pub struct VariableEditRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub enable_interpolation_in_file: Option<Option<bool>>,
+    #[serde(
+        rename = "secret_manager_access_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub secret_manager_access_id: Option<Option<uuid::Uuid>>,
 }
 
 impl VariableEditRequest {
@@ -48,6 +55,7 @@ impl VariableEditRequest {
             value: None,
             description: None,
             enable_interpolation_in_file: None,
+            secret_manager_access_id: None,
         }
     }
 }

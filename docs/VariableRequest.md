@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **variable_parent_id** | **uuid::Uuid** | based on the selected scope, it contains the ID of the service, environment or project where the variable is attached | 
 **description** | Option<**String**> | optional variable description (255 characters maximum) | [optional]
 **enable_interpolation_in_file** | Option<**bool**> |  | [optional]
+**secret_manager_access_id** | Option<**uuid::Uuid**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
