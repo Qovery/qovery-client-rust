@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **infrastructure_charts_parameters** | Option<[**models::ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md)> |  | [optional]
 **keda** | Option<[**models::ClusterKeda**](ClusterKeda.md)> |  | [optional]
 **labels_groups** | Option<[**Vec<models::ClusterLabelsGroup>**](ClusterLabelsGroup.md)> |  | [optional]
+**secret_manager_accesses** | Option<[**Vec<models::SecretManagerAccessResponse>**](SecretManagerAccessResponse.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

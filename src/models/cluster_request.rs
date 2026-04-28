@@ -64,6 +64,11 @@ pub struct ClusterRequest {
     pub keda: Option<models::ClusterKeda>,
     #[serde(rename = "labels_groups", skip_serializing_if = "Option::is_none")]
     pub labels_groups: Option<Vec<models::ClusterLabelsGroup>>,
+    #[serde(
+        rename = "secret_manager_accesses",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub secret_manager_accesses: Option<Vec<models::SecretManagerAccessRequest>>,
 }
 
 impl ClusterRequest {
@@ -92,6 +97,7 @@ impl ClusterRequest {
             infrastructure_charts_parameters: None,
             keda: None,
             labels_groups: None,
+            secret_manager_accesses: None,
         }
     }
 }
