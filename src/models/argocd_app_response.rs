@@ -30,6 +30,38 @@ pub struct ArgocdAppResponse {
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "namespace")]
     pub namespace: String,
+    #[serde(rename = "environment_id")]
+    pub environment_id: uuid::Uuid,
+    #[serde(rename = "cluster_id")]
+    pub cluster_id: uuid::Uuid,
+    #[serde(
+        rename = "last_synced_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub last_synced_at: Option<Option<String>>,
+    #[serde(
+        rename = "manifest_revision",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub manifest_revision: Option<Option<String>>,
+    #[serde(
+        rename = "source_repo_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_repo_url: Option<Option<String>>,
+    #[serde(
+        rename = "source_target_revision",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_target_revision: Option<Option<String>>,
 }
 
 impl ArgocdAppResponse {
@@ -40,6 +72,8 @@ impl ArgocdAppResponse {
         name: String,
         service_type: models::ServiceTypeEnum,
         namespace: String,
+        environment_id: uuid::Uuid,
+        cluster_id: uuid::Uuid,
     ) -> ArgocdAppResponse {
         ArgocdAppResponse {
             id,
@@ -48,6 +82,12 @@ impl ArgocdAppResponse {
             name,
             service_type,
             namespace,
+            environment_id,
+            cluster_id,
+            last_synced_at: None,
+            manifest_revision: None,
+            source_repo_url: None,
+            source_target_revision: None,
         }
     }
 }

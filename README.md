@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**list_application**](docs/ApplicationsApi.md#list_application) | **GET** /environment/{environmentId}/application | List applications
 *ArgoCdApi* | [**check_argo_cd_connection**](docs/ArgoCdApi.md#check_argo_cd_connection) | **POST** /cluster/{clusterId}/argoCdConfig/check | Check ArgoCD connection
 *ArgoCdApi* | [**delete_argo_cd_credentials**](docs/ArgoCdApi.md#delete_argo_cd_credentials) | **DELETE** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
+*ArgoCdApi* | [**get_argo_cd_app**](docs/ArgoCdApi.md#get_argo_cd_app) | **GET** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 *ArgoCdApi* | [**get_argo_cd_credentials**](docs/ArgoCdApi.md#get_argo_cd_credentials) | **GET** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 *ArgoCdApi* | [**save_argo_cd_credentials**](docs/ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
 *BackupsApi* | [**add_backup_database**](docs/BackupsApi.md#add_backup_database) | **POST** /database/{databaseId}/backup | Add a backup to the Database 
