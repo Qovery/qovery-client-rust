@@ -13,9 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ArgoCdConnectionCheckResponse {
-    /// Connection result
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: models::ArgoCdConnectionStatusEnum,
     /// Number of ArgoCD applications visible with the provided token. Present only when status is \"connected\".
     #[serde(rename = "app_count", skip_serializing_if = "Option::is_none")]
     pub app_count: Option<i32>,
@@ -25,26 +24,12 @@ pub struct ArgoCdConnectionCheckResponse {
 }
 
 impl ArgoCdConnectionCheckResponse {
-    pub fn new(status: Status) -> ArgoCdConnectionCheckResponse {
+    pub fn new(status: models::ArgoCdConnectionStatusEnum) -> ArgoCdConnectionCheckResponse {
         ArgoCdConnectionCheckResponse {
             status,
             app_count: None,
             reason: None,
         }
-    }
-}
-/// Connection result
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
-    #[serde(rename = "connected")]
-    Connected,
-    #[serde(rename = "error")]
-    Error,
-}
-
-impl Default for Status {
-    fn default() -> Status {
-        Self::Connected
     }
 }
 /// Failure reason. Present only when status is \"error\".

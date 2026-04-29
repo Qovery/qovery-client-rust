@@ -54,10 +54,31 @@ pub enum GetArgoCdCredentialsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`list_argo_cd_destination_cluster_mappings`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListArgoCdDestinationClusterMappingsError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`save_argo_cd_credentials`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SaveArgoCdCredentialsError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`save_argo_cd_destination_cluster_mapping`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum SaveArgoCdDestinationClusterMappingError {
     Status400(),
     Status401(),
     Status403(),
@@ -296,6 +317,69 @@ pub async fn get_argo_cd_credentials(
     }
 }
 
+/// Returns one entry per ArgoCD agent cluster that has credentials configured. Each entry lists linked clusters and unlinked clusters. Requires VIEWER role.
+pub async fn list_argo_cd_destination_cluster_mappings(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+) -> Result<
+    models::ArgoCdInstanceMappingResponseList,
+    Error<ListArgoCdDestinationClusterMappingsError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/argoCdDestinationClusterMapping",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ArgoCdInstanceMappingResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ArgoCdInstanceMappingResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListArgoCdDestinationClusterMappingsError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
 /// Save or update the ArgoCD URL and authentication token for a cluster. Requires ADMIN role.
 pub async fn save_argo_cd_credentials(
     configuration: &configuration::Configuration,
@@ -352,6 +436,75 @@ pub async fn save_argo_cd_credentials(
     } else {
         let content = resp.text().await?;
         let entity: Option<SaveArgoCdCredentialsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Map an ArgoCD destination cluster URL to a Qovery cluster for a given agent cluster. If a mapping for the same (agentClusterId, argocdClusterUrl) already exists, it is updated. Requires ADMIN role on the agent cluster.
+pub async fn save_argo_cd_destination_cluster_mapping(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    argo_cd_destination_cluster_mapping_request: models::ArgoCdDestinationClusterMappingRequest,
+) -> Result<
+    models::ArgoCdDestinationClusterMappingResponse,
+    Error<SaveArgoCdDestinationClusterMappingError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_body_argo_cd_destination_cluster_mapping_request =
+        argo_cd_destination_cluster_mapping_request;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/argoCdDestinationClusterMapping",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_argo_cd_destination_cluster_mapping_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ArgoCdDestinationClusterMappingResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ArgoCdDestinationClusterMappingResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<SaveArgoCdDestinationClusterMappingError> =
+            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

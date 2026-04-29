@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **Status** | Connection result (enum: connected, error) | 
+**status** | [**models::ArgoCdConnectionStatusEnum**](ArgoCdConnectionStatusEnum.md) |  | 
 **app_count** | Option<**i32**> | Number of ArgoCD applications visible with the provided token. Present only when status is \"connected\". | [optional]
 **reason** | Option<**Reason**> | Failure reason. Present only when status is \"error\". (enum: authentication_failed, unreachable, insufficient_permissions) | [optional]
 

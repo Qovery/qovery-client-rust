@@ -94,7 +94,9 @@ Class | Method | HTTP request | Description
 *ArgoCdApi* | [**delete_argo_cd_credentials**](docs/ArgoCdApi.md#delete_argo_cd_credentials) | **DELETE** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
 *ArgoCdApi* | [**get_argo_cd_app**](docs/ArgoCdApi.md#get_argo_cd_app) | **GET** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 *ArgoCdApi* | [**get_argo_cd_credentials**](docs/ArgoCdApi.md#get_argo_cd_credentials) | **GET** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
+*ArgoCdApi* | [**list_argo_cd_destination_cluster_mappings**](docs/ArgoCdApi.md#list_argo_cd_destination_cluster_mappings) | **GET** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 *ArgoCdApi* | [**save_argo_cd_credentials**](docs/ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
+*ArgoCdApi* | [**save_argo_cd_destination_cluster_mapping**](docs/ArgoCdApi.md#save_argo_cd_destination_cluster_mapping) | **POST** /organization/{organizationId}/argoCdDestinationClusterMapping | Save an ArgoCD destination cluster mapping
 *BackupsApi* | [**add_backup_database**](docs/BackupsApi.md#add_backup_database) | **POST** /database/{databaseId}/backup | Add a backup to the Database 
 *BackupsApi* | [**list_database_backup**](docs/BackupsApi.md#list_database_backup) | **GET** /database/{databaseId}/backup | List database  backups
 *BackupsApi* | [**remove_database_backup**](docs/BackupsApi.md#remove_database_backup) | **DELETE** /database/{databaseId}/backup/{backupId} | Remove database  backup
@@ -586,8 +588,15 @@ Class | Method | HTTP request | Description
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [ApplicationResponseList](docs/ApplicationResponseList.md)
  - [ArgoCdConnectionCheckResponse](docs/ArgoCdConnectionCheckResponse.md)
+ - [ArgoCdConnectionStatusEnum](docs/ArgoCdConnectionStatusEnum.md)
  - [ArgoCdCredentialsRequest](docs/ArgoCdCredentialsRequest.md)
  - [ArgoCdCredentialsResponse](docs/ArgoCdCredentialsResponse.md)
+ - [ArgoCdDestinationClusterMappingRequest](docs/ArgoCdDestinationClusterMappingRequest.md)
+ - [ArgoCdDestinationClusterMappingResponse](docs/ArgoCdDestinationClusterMappingResponse.md)
+ - [ArgoCdInstanceMappingResponse](docs/ArgoCdInstanceMappingResponse.md)
+ - [ArgoCdInstanceMappingResponseList](docs/ArgoCdInstanceMappingResponseList.md)
+ - [ArgoCdLinkedClusterDetails](docs/ArgoCdLinkedClusterDetails.md)
+ - [ArgoCdUnlinkedClusterDetails](docs/ArgoCdUnlinkedClusterDetails.md)
  - [ArgocdAppResponse](docs/ArgocdAppResponse.md)
  - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutomaticallyConfiguredAuthDto](docs/AutomaticallyConfiguredAuthDto.md)

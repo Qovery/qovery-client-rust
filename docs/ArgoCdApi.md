@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**delete_argo_cd_credentials**](ArgoCdApi.md#delete_argo_cd_credentials) | **DELETE** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
 [**get_argo_cd_app**](ArgoCdApi.md#get_argo_cd_app) | **GET** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 [**get_argo_cd_credentials**](ArgoCdApi.md#get_argo_cd_credentials) | **GET** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
+[**list_argo_cd_destination_cluster_mappings**](ArgoCdApi.md#list_argo_cd_destination_cluster_mappings) | **GET** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 [**save_argo_cd_credentials**](ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
+[**save_argo_cd_destination_cluster_mapping**](ArgoCdApi.md#save_argo_cd_destination_cluster_mapping) | **POST** /organization/{organizationId}/argoCdDestinationClusterMapping | Save an ArgoCD destination cluster mapping
 
 
 
@@ -131,6 +133,36 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## list_argo_cd_destination_cluster_mappings
+
+> models::ArgoCdInstanceMappingResponseList list_argo_cd_destination_cluster_mappings(organization_id)
+List ArgoCD instance mappings for an organization
+
+Returns one entry per ArgoCD agent cluster that has credentials configured. Each entry lists linked clusters and unlinked clusters. Requires VIEWER role. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+
+### Return type
+
+[**models::ArgoCdInstanceMappingResponseList**](ArgoCdInstanceMappingResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## save_argo_cd_credentials
 
 > models::ArgoCdCredentialsResponse save_argo_cd_credentials(cluster_id, argo_cd_credentials_request)
@@ -149,6 +181,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ArgoCdCredentialsResponse**](ArgoCdCredentialsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## save_argo_cd_destination_cluster_mapping
+
+> models::ArgoCdDestinationClusterMappingResponse save_argo_cd_destination_cluster_mapping(organization_id, argo_cd_destination_cluster_mapping_request)
+Save an ArgoCD destination cluster mapping
+
+Map an ArgoCD destination cluster URL to a Qovery cluster for a given agent cluster. If a mapping for the same (agentClusterId, argocdClusterUrl) already exists, it is updated. Requires ADMIN role on the agent cluster. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**argo_cd_destination_cluster_mapping_request** | [**ArgoCdDestinationClusterMappingRequest**](ArgoCdDestinationClusterMappingRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ArgoCdDestinationClusterMappingResponse**](ArgoCdDestinationClusterMappingResponse.md)
 
 ### Authorization
 

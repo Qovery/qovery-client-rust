@@ -1,0 +1,13 @@
+# ArgoCdDestinationClusterMappingResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**agent_cluster_id** | **uuid::Uuid** |  | 
+**argocd_cluster_url** | **String** |  | 
+**cluster_id** | Option<**uuid::Uuid**> |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
