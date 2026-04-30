@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **agent_cluster_id** | **uuid::Uuid** | ID of the Qovery cluster where the ArgoCD instance is running | 
+**agent_cluster_name** | **String** | Display name of the Qovery cluster where the ArgoCD instance is running | 
+**agent_cluster_cloud_provider** | [**models::CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **credentials_id** | **uuid::Uuid** | ID of the stored ArgoCD credentials for this instance | 
 **argocd_url** | **String** | URL of the ArgoCD instance | 
 **status** | [**models::ArgoCdConnectionStatusEnum**](ArgoCdConnectionStatusEnum.md) |  | 

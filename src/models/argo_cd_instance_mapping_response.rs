@@ -16,6 +16,11 @@ pub struct ArgoCdInstanceMappingResponse {
     /// ID of the Qovery cluster where the ArgoCD instance is running
     #[serde(rename = "agent_cluster_id")]
     pub agent_cluster_id: uuid::Uuid,
+    /// Display name of the Qovery cluster where the ArgoCD instance is running
+    #[serde(rename = "agent_cluster_name")]
+    pub agent_cluster_name: String,
+    #[serde(rename = "agent_cluster_cloud_provider")]
+    pub agent_cluster_cloud_provider: models::CloudVendorEnum,
     /// ID of the stored ArgoCD credentials for this instance
     #[serde(rename = "credentials_id")]
     pub credentials_id: uuid::Uuid,
@@ -38,6 +43,8 @@ pub struct ArgoCdInstanceMappingResponse {
 impl ArgoCdInstanceMappingResponse {
     pub fn new(
         agent_cluster_id: uuid::Uuid,
+        agent_cluster_name: String,
+        agent_cluster_cloud_provider: models::CloudVendorEnum,
         credentials_id: uuid::Uuid,
         argocd_url: String,
         status: models::ArgoCdConnectionStatusEnum,
@@ -47,6 +54,8 @@ impl ArgoCdInstanceMappingResponse {
     ) -> ArgoCdInstanceMappingResponse {
         ArgoCdInstanceMappingResponse {
             agent_cluster_id,
+            agent_cluster_name,
+            agent_cluster_cloud_provider,
             credentials_id,
             argocd_url,
             status,
