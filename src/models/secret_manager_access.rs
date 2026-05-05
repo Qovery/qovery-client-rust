@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct SecretManagerAccessResponse {
+pub struct SecretManagerAccess {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     #[serde(rename = "name")]
@@ -27,7 +27,7 @@ pub struct SecretManagerAccessResponse {
     pub authentication: models::SecretManagerAuthenticationDto,
 }
 
-impl SecretManagerAccessResponse {
+impl SecretManagerAccess {
     pub fn new(
         id: uuid::Uuid,
         name: String,
@@ -35,8 +35,8 @@ impl SecretManagerAccessResponse {
         updated_at: String,
         endpoint: models::SecretManagerEndpointConfigurationDto,
         authentication: models::SecretManagerAuthenticationDto,
-    ) -> SecretManagerAccessResponse {
-        SecretManagerAccessResponse {
+    ) -> SecretManagerAccess {
+        SecretManagerAccess {
             id,
             name,
             created_at,

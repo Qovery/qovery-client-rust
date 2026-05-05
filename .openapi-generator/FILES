@@ -696,8 +696,8 @@ docs/ScalewayCredentialsRequest.md
 docs/Secret.md
 docs/SecretAlias.md
 docs/SecretEditRequest.md
+docs/SecretManagerAccess.md
 docs/SecretManagerAccessRequest.md
-docs/SecretManagerAccessResponse.md
 docs/SecretManagerAuthenticationDto.md
 docs/SecretManagerEndpointConfigurationDto.md
 docs/SecretOverride.md
@@ -1521,8 +1521,8 @@ src/models/scaleway_credentials_request.rs
 src/models/secret.rs
 src/models/secret_alias.rs
 src/models/secret_edit_request.rs
+src/models/secret_manager_access.rs
 src/models/secret_manager_access_request.rs
-src/models/secret_manager_access_response.rs
 src/models/secret_manager_authentication_dto.rs
 src/models/secret_manager_endpoint_configuration_dto.rs
 src/models/secret_override.rs

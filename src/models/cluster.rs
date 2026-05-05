@@ -101,7 +101,7 @@ pub struct Cluster {
         rename = "secret_manager_accesses",
         skip_serializing_if = "Option::is_none"
     )]
-    pub secret_manager_accesses: Option<Vec<models::SecretManagerAccessResponse>>,
+    pub secret_manager_accesses: Option<Vec<models::SecretManagerAccess>>,
 }
 
 impl Cluster {

@@ -1,4 +1,4 @@
-# SecretManagerAccessResponse
+# SecretManagerAccess
 
 ## Properties
 
