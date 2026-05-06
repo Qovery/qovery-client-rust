@@ -303,6 +303,38 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub envoy_gateway_api_http_connection_idle_timeout_seconds: Option<Option<i32>>,
+    /// Sets the default number of retry attempts applied to Gateway API routes when the service does not override it.
+    #[serde(
+        rename = "envoy.gateway_api.retry.num_retries",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_retry_num_retries: Option<Option<i32>>,
+    /// Default comma-separated retry triggers applied to Gateway API routes when the service does not override them.
+    #[serde(
+        rename = "envoy.gateway_api.retry.retry_on",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_retry_retry_on: Option<Option<String>>,
+    /// Default comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes.
+    #[serde(
+        rename = "envoy.gateway_api.retry.http_status_codes",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_retry_http_status_codes: Option<Option<String>>,
+    /// Sets the default timeout (in seconds) applied to each retry attempt when the service does not override it.
+    #[serde(
+        rename = "envoy.gateway_api.retry.per_try_timeout_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub envoy_gateway_api_retry_per_try_timeout_seconds: Option<Option<i32>>,
     /// hpa cpu threshold in percentage
     #[serde(
         rename = "nginx.hpa.cpu_utilization_percentage_threshold",
@@ -393,6 +425,10 @@ impl ClusterAdvancedSettings {
             nginx_memory_limit_in_mib: None,
             envoy_gateway_api_http_request_timeout_seconds: None,
             envoy_gateway_api_http_connection_idle_timeout_seconds: None,
+            envoy_gateway_api_retry_num_retries: None,
+            envoy_gateway_api_retry_retry_on: None,
+            envoy_gateway_api_retry_http_status_codes: None,
+            envoy_gateway_api_retry_per_try_timeout_seconds: None,
             nginx_hpa_cpu_utilization_percentage_threshold: None,
             nginx_hpa_min_number_instances: None,
             nginx_hpa_max_number_instances: None,

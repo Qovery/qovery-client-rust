@@ -29,6 +29,10 @@ Name | Type | Description | Notes
 **network_ingress_enable_sticky_session** | Option<**bool**> | Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional]
 **network_gateway_api_http_request_timeout_seconds** | Option<**i32**> | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional]
 **network_gateway_api_http_connection_idle_timeout_seconds** | Option<**i32**> | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional]
+**network_gateway_api_retry_num_retries** | Option<**i32**> | Sets the number of retry attempts for requests proxied through the Gateway API route. | [optional]
+**network_gateway_api_retry_retry_on** | Option<**String**> | Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes) for requests proxied through the Gateway API route. | [optional]
+**network_gateway_api_retry_http_status_codes** | Option<**String**> | Comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes. | [optional]
+**network_gateway_api_retry_per_try_timeout_seconds** | Option<**i32**> | Sets the timeout (in seconds) applied to each retry attempt for requests proxied through the Gateway API route. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
