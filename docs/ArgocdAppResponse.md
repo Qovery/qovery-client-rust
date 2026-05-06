@@ -10,8 +10,10 @@ Name | Type | Description | Notes
 **name** | **String** | name is case insensitive | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **namespace** | **String** |  | 
+**environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **environment_id** | **uuid::Uuid** |  | 
 **cluster_id** | **uuid::Uuid** |  | 
+**icon_uri** | **String** | Icon URI representing the ArgoCD service. | [default to app://qovery-console/argocd]
 **last_synced_at** | Option<**String**> |  | [optional]
 **manifest_revision** | Option<**String**> |  | [optional]
 **source_repo_url** | Option<**String**> |  | [optional]

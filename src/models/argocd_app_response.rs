@@ -30,10 +30,15 @@ pub struct ArgocdAppResponse {
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "namespace")]
     pub namespace: String,
+    #[serde(rename = "environment")]
+    pub environment: models::ReferenceObject,
     #[serde(rename = "environment_id")]
     pub environment_id: uuid::Uuid,
     #[serde(rename = "cluster_id")]
     pub cluster_id: uuid::Uuid,
+    /// Icon URI representing the ArgoCD service.
+    #[serde(rename = "icon_uri")]
+    pub icon_uri: String,
     #[serde(
         rename = "last_synced_at",
         default,
@@ -72,8 +77,10 @@ impl ArgocdAppResponse {
         name: String,
         service_type: models::ServiceTypeEnum,
         namespace: String,
+        environment: models::ReferenceObject,
         environment_id: uuid::Uuid,
         cluster_id: uuid::Uuid,
+        icon_uri: String,
     ) -> ArgocdAppResponse {
         ArgocdAppResponse {
             id,
@@ -82,8 +89,10 @@ impl ArgocdAppResponse {
             name,
             service_type,
             namespace,
+            environment,
             environment_id,
             cluster_id,
+            icon_uri,
             last_synced_at: None,
             manifest_revision: None,
             source_repo_url: None,
