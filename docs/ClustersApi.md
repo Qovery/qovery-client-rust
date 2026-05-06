@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**deploy_cluster**](ClustersApi.md#deploy_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**edit_cluster**](ClustersApi.md#edit_cluster) | **PUT** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
 [**edit_cluster_advanced_settings**](ClustersApi.md#edit_cluster_advanced_settings) | **PUT** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+[**edit_cluster_dns_provider**](ClustersApi.md#edit_cluster_dns_provider) | **PUT** /cluster/{clusterId}/dnsProvider | Edit cluster DNS provider
 [**edit_cluster_kubeconfig**](ClustersApi.md#edit_cluster_kubeconfig) | **PUT** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 [**edit_routing_table**](ClustersApi.md#edit_routing_table) | **PUT** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**get_cluster_advanced_settings**](ClustersApi.md#get_cluster_advanced_settings) | **GET** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+[**get_cluster_dns_provider**](ClustersApi.md#get_cluster_dns_provider) | **GET** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 [**get_cluster_kubeconfig**](ClustersApi.md#get_cluster_kubeconfig) | **GET** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**get_cluster_kubernetes_events**](ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 [**get_cluster_logs**](ClustersApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
@@ -191,6 +193,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## edit_cluster_dns_provider
+
+> models::ClusterDnsProviderResponse edit_cluster_dns_provider(cluster_id, cluster_dns_provider_request)
+Edit cluster DNS provider
+
+Update the DNS provider associated with a cluster. Requires an Enterprise plan. Cloudflare api_token and Route53 STATIC credentials aws_secret_access_key must be provided on every edit. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**cluster_dns_provider_request** | [**ClusterDnsProviderRequest**](ClusterDnsProviderRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ClusterDnsProviderResponse**](ClusterDnsProviderResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## edit_cluster_kubeconfig
 
 > edit_cluster_kubeconfig(organization_id, cluster_id, body)
@@ -271,6 +304,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_cluster_dns_provider
+
+> models::ClusterDnsProviderResponse get_cluster_dns_provider(cluster_id)
+Get cluster DNS provider
+
+Retrieve the DNS provider currently associated with a cluster. Requires VIEWER role.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+
+### Return type
+
+[**models::ClusterDnsProviderResponse**](ClusterDnsProviderResponse.md)
 
 ### Authorization
 
