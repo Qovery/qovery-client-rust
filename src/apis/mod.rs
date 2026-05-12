@@ -196,6 +196,7 @@ pub mod project_main_calls_api;
 pub mod project_secret_api;
 pub mod projects_api;
 pub mod referral_rewards_api;
+pub mod secret_manager_access_api;
 pub mod service_main_calls_api;
 pub mod service_status_api;
 pub mod terraform_actions_api;

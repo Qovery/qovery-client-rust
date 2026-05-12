@@ -381,6 +381,8 @@ docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsApi.md
+docs/ExternalSecretAssociatedServiceResponse.md
+docs/ExternalSecretAssociatedServiceResponseList.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -679,6 +681,7 @@ docs/ProjectSecretApi.md
 docs/ProjectStats.md
 docs/ProjectStatsResponseList.md
 docs/ProjectsApi.md
+docs/ProviderSecrets.md
 docs/QoveryDnsProviderRequest.md
 docs/QoveryDnsProviderResponse.md
 docs/QueuedDeploymentRequestForService.md
@@ -709,6 +712,7 @@ docs/Secret.md
 docs/SecretAlias.md
 docs/SecretEditRequest.md
 docs/SecretManagerAccess.md
+docs/SecretManagerAccessApi.md
 docs/SecretManagerAccessRequest.md
 docs/SecretManagerAuthenticationDto.md
 docs/SecretManagerEndpointConfigurationDto.md
@@ -912,6 +916,7 @@ src/apis/project_main_calls_api.rs
 src/apis/project_secret_api.rs
 src/apis/projects_api.rs
 src/apis/referral_rewards_api.rs
+src/apis/secret_manager_access_api.rs
 src/apis/service_main_calls_api.rs
 src/apis/service_status_api.rs
 src/apis/terraform_actions_api.rs
@@ -1255,6 +1260,8 @@ src/models/environment_variable_edit_request.rs
 src/models/environment_variable_override.rs
 src/models/environment_variable_request.rs
 src/models/environment_variable_response_list.rs
+src/models/external_secret_associated_service_response.rs
+src/models/external_secret_associated_service_response_list.rs
 src/models/gcp_credentials_request.rs
 src/models/gcp_json_credentials_auth_dto.rs
 src/models/gcp_secret_manager_endpoint_dto.rs
@@ -1519,6 +1526,7 @@ src/models/project_request.rs
 src/models/project_response_list.rs
 src/models/project_stats.rs
 src/models/project_stats_response_list.rs
+src/models/provider_secrets.rs
 src/models/qovery_dns_provider_request.rs
 src/models/qovery_dns_provider_response.rs
 src/models/queued_deployment_request_for_service.rs
