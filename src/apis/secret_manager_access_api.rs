@@ -45,7 +45,7 @@ pub async fn list_secret_manager_access_external_secrets(
     let p_path_secret_manager_access_id = secret_manager_access_id;
 
     let uri_str = format!(
-        "{}/api/secretManagerAccess/{secretManagerAccessId}/associatedServices",
+        "{}/secretManagerAccess/{secretManagerAccessId}/associatedServices",
         configuration.base_path,
         secretManagerAccessId = crate::apis::urlencode(p_path_secret_manager_access_id)
     );
@@ -107,7 +107,7 @@ pub async fn list_upstream_secrets_from_secret_provider(
     let p_query_name_prefix = name_prefix;
 
     let uri_str = format!(
-        "{}/api/secretManagerAccess/{secretManagerAccessId}/secrets",
+        "{}/secretManagerAccess/{secretManagerAccessId}/secrets",
         configuration.base_path,
         secretManagerAccessId = crate::apis::urlencode(p_path_secret_manager_access_id)
     );
