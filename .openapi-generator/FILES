@@ -73,7 +73,10 @@ docs/ArgoCdInstanceMappingResponse.md
 docs/ArgoCdInstanceMappingResponseList.md
 docs/ArgoCdLinkedClusterDetails.md
 docs/ArgoCdUnlinkedClusterDetails.md
+docs/ArgocdAppManifestResponse.md
+docs/ArgocdAppManifestResponseManifestMetadata.md
 docs/ArgocdAppResponse.md
+docs/ArgocdManagedResource.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutomaticallyConfiguredAuthDto.md
 docs/AutoscalingMode.md
@@ -985,7 +988,10 @@ src/models/argo_cd_instance_mapping_response.rs
 src/models/argo_cd_instance_mapping_response_list.rs
 src/models/argo_cd_linked_cluster_details.rs
 src/models/argo_cd_unlinked_cluster_details.rs
+src/models/argocd_app_manifest_response.rs
+src/models/argocd_app_manifest_response_manifest_metadata.rs
 src/models/argocd_app_response.rs
+src/models/argocd_managed_resource.rs
 src/models/attach_service_to_deployment_stage_request.rs
 src/models/automatically_configured_auth_dto.rs
 src/models/autoscaling_mode.rs
