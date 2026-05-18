@@ -24,6 +24,8 @@ pub enum ClusterFeatureResponseValueObject {
     GcpUserProvidedNetwork(models::ClusterFeatureGcpExistingVpcResponse),
     #[serde(rename = "KARPENTER")]
     Karpenter(models::ClusterFeatureKarpenterParametersResponse),
+    #[serde(rename = "NAT_GATEWAY")]
+    NatGateway(models::ClusterFeatureNatGatewayParametersResponse),
 }
 
 impl Default for ClusterFeatureResponseValueObject {

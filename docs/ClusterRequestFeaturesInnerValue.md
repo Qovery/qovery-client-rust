@@ -7,6 +7,7 @@
 | ClusterFeatureAwsExistingVpc |  |
 | ClusterFeatureGcpExistingVpc |  |
 | ClusterFeatureKarpenterParameters |  |
+| ClusterFeatureNatGatewayParameters |  |
 | String |  |
 | bool |  |
 
