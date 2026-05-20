@@ -16,8 +16,7 @@ Name | Type | Description | Notes
 **icon_uri** | **String** | Icon URI representing the ArgoCD service. | [default to app://qovery-console/argocd]
 **last_synced_at** | Option<**String**> |  | [optional]
 **manifest_revision** | Option<**String**> |  | [optional]
-**source_repo_url** | Option<**String**> |  | [optional]
-**source_target_revision** | Option<**String**> |  | [optional]
+**git_repository** | Option<[**models::ApplicationGitRepository**](ApplicationGitRepository.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

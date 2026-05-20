@@ -54,19 +54,12 @@ pub struct ArgocdAppResponse {
     )]
     pub manifest_revision: Option<Option<String>>,
     #[serde(
-        rename = "source_repo_url",
+        rename = "git_repository",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub source_repo_url: Option<Option<String>>,
-    #[serde(
-        rename = "source_target_revision",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub source_target_revision: Option<Option<String>>,
+    pub git_repository: Option<Option<models::ApplicationGitRepository>>,
 }
 
 impl ArgocdAppResponse {
@@ -95,8 +88,7 @@ impl ArgocdAppResponse {
             icon_uri,
             last_synced_at: None,
             manifest_revision: None,
-            source_repo_url: None,
-            source_target_revision: None,
+            git_repository: None,
         }
     }
 }
