@@ -554,6 +554,8 @@ pub mod deployment_history_status_enum;
 pub use self::deployment_history_status_enum::DeploymentHistoryStatusEnum;
 pub mod deployment_history_trigger_action;
 pub use self::deployment_history_trigger_action::DeploymentHistoryTriggerAction;
+pub mod deployment_infra_reason;
+pub use self::deployment_infra_reason::DeploymentInfraReason;
 pub mod deployment_restriction_mode_enum;
 pub use self::deployment_restriction_mode_enum::DeploymentRestrictionModeEnum;
 pub mod deployment_restriction_type_enum;

@@ -13,12 +13,12 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ClusterStatus {
-    #[serde(rename = "cluster_id", skip_serializing_if = "Option::is_none")]
-    pub cluster_id: Option<uuid::Uuid>,
-    #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<models::ClusterStateEnum>,
-    #[serde(rename = "is_deployed", skip_serializing_if = "Option::is_none")]
-    pub is_deployed: Option<bool>,
+    #[serde(rename = "cluster_id")]
+    pub cluster_id: uuid::Uuid,
+    #[serde(rename = "status")]
+    pub status: models::ClusterStateEnum,
+    #[serde(rename = "is_deployed")]
+    pub is_deployed: bool,
     #[serde(
         rename = "next_k8s_available_version",
         default,
@@ -26,27 +26,47 @@ pub struct ClusterStatus {
         skip_serializing_if = "Option::is_none"
     )]
     pub next_k8s_available_version: Option<Option<String>>,
-    #[serde(rename = "last_execution_id", skip_serializing_if = "Option::is_none")]
-    pub last_execution_id: Option<String>,
-    #[serde(rename = "cluster_lock", skip_serializing_if = "Option::is_none")]
-    pub cluster_lock: Option<models::ClusterLock>,
     #[serde(
-        rename = "last_deployment_date",
+        rename = "last_execution_id",
+        default,
+        with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub last_deployment_date: Option<String>,
+    pub last_execution_id: Option<Option<String>>,
+    #[serde(
+        rename = "cluster_lock",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cluster_lock: Option<Option<models::ClusterLock>>,
+    #[serde(
+        rename = "last_deployment_date",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub last_deployment_date: Option<Option<String>>,
+    #[serde(rename = "reason")]
+    pub reason: models::DeploymentInfraReason,
 }
 
 impl ClusterStatus {
-    pub fn new() -> ClusterStatus {
+    pub fn new(
+        cluster_id: uuid::Uuid,
+        status: models::ClusterStateEnum,
+        is_deployed: bool,
+        reason: models::DeploymentInfraReason,
+    ) -> ClusterStatus {
         ClusterStatus {
-            cluster_id: None,
-            status: None,
-            is_deployed: None,
+            cluster_id,
+            status,
+            is_deployed,
             next_k8s_available_version: None,
             last_execution_id: None,
             cluster_lock: None,
             last_deployment_date: None,
+            reason,
         }
     }
 }
