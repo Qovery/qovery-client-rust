@@ -34,6 +34,17 @@ pub enum DeleteArgoCdCredentialsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`delete_argo_cd_destination_cluster_mapping`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DeleteArgoCdDestinationClusterMappingError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_argo_cd_app`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -202,6 +213,64 @@ pub async fn delete_argo_cd_credentials(
     } else {
         let content = resp.text().await?;
         let entity: Option<DeleteArgoCdCredentialsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Remove the mapping between an ArgoCD destination cluster URL and a Qovery cluster. Requires ADMIN role on the agent cluster.
+pub async fn delete_argo_cd_destination_cluster_mapping(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    agent_cluster_id: &str,
+    argocd_cluster_url: &str,
+) -> Result<(), Error<DeleteArgoCdDestinationClusterMappingError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_query_agent_cluster_id = agent_cluster_id;
+    let p_query_argocd_cluster_url = argocd_cluster_url;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/argoCdDestinationClusterMapping",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::DELETE, &uri_str);
+
+    req_builder = req_builder.query(&[("agentClusterId", &p_query_agent_cluster_id.to_string())]);
+    req_builder =
+        req_builder.query(&[("argocdClusterUrl", &p_query_argocd_cluster_url.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DeleteArgoCdDestinationClusterMappingError> =
+            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
