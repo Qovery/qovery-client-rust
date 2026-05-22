@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mode** | **Mode** |  (enum: GCP_JSON_CREDENTIALS) | 
-**json_credentials** | Option<**String**> |  | [optional]
+**json_credentials** | Option<**String**> | The json must be base64 encoded | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

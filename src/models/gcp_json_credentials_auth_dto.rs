@@ -15,6 +15,7 @@ use serde::{Deserialize, Serialize};
 pub struct GcpJsonCredentialsAuthDto {
     #[serde(rename = "mode")]
     pub mode: Mode,
+    /// The json must be base64 encoded
     #[serde(
         rename = "json_credentials",
         default,
