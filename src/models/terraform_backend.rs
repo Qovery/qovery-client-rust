@@ -18,7 +18,6 @@ use serde::{Deserialize, Serialize};
 pub enum TerraformBackend {
     TerraformBackendOneOf(models::TerraformBackendOneOf),
     TerraformBackendOneOf1(models::TerraformBackendOneOf1),
-    TerraformBackendOneOf2(models::TerraformBackendOneOf2),
 }
 
 impl Default for TerraformBackend {

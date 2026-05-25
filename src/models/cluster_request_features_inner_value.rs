@@ -19,7 +19,6 @@ pub enum ClusterRequestFeaturesInnerValue {
     ClusterFeatureAwsExistingVpc(models::ClusterFeatureAwsExistingVpc),
     ClusterFeatureGcpExistingVpc(models::ClusterFeatureGcpExistingVpc),
     ClusterFeatureKarpenterParameters(models::ClusterFeatureKarpenterParameters),
-    ClusterFeatureNatGatewayParameters(models::ClusterFeatureNatGatewayParameters),
 }
 
 impl Default for ClusterRequestFeaturesInnerValue {

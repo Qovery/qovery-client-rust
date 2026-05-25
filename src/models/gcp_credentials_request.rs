@@ -15,7 +15,6 @@ use serde::{Deserialize, Serialize};
 pub struct GcpCredentialsRequest {
     #[serde(rename = "name")]
     pub name: String,
-    /// The json must be base64 encoded
     #[serde(rename = "gcp_credentials")]
     pub gcp_credentials: String,
 }

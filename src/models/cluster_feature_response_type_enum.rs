@@ -24,8 +24,6 @@ pub enum ClusterFeatureResponseTypeEnum {
     GcpUserProvidedNetwork,
     #[serde(rename = "KARPENTER")]
     Karpenter,
-    #[serde(rename = "NAT_GATEWAY")]
-    NatGateway,
 }
 
 impl std::fmt::Display for ClusterFeatureResponseTypeEnum {
@@ -36,7 +34,6 @@ impl std::fmt::Display for ClusterFeatureResponseTypeEnum {
             Self::AwsUserProvidedNetwork => write!(f, "AWS_USER_PROVIDED_NETWORK"),
             Self::GcpUserProvidedNetwork => write!(f, "GCP_USER_PROVIDED_NETWORK"),
             Self::Karpenter => write!(f, "KARPENTER"),
-            Self::NatGateway => write!(f, "NAT_GATEWAY"),
         }
     }
 }

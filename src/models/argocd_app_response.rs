@@ -28,38 +28,13 @@ pub struct ArgocdAppResponse {
         default = "models::service_type_enum::service_type_argocd_app"
     )]
     pub service_type: models::ServiceTypeEnum,
-    #[serde(rename = "namespace")]
-    pub namespace: String,
-    #[serde(rename = "environment")]
-    pub environment: models::ReferenceObject,
-    #[serde(rename = "environment_id")]
-    pub environment_id: uuid::Uuid,
-    #[serde(rename = "cluster_id")]
-    pub cluster_id: uuid::Uuid,
-    /// Icon URI representing the ArgoCD service.
-    #[serde(rename = "icon_uri")]
-    pub icon_uri: String,
     #[serde(
-        rename = "last_synced_at",
+        rename = "namespace",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub last_synced_at: Option<Option<String>>,
-    #[serde(
-        rename = "manifest_revision",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub manifest_revision: Option<Option<String>>,
-    #[serde(
-        rename = "git_repository",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub git_repository: Option<Option<models::ApplicationGitRepository>>,
+    pub namespace: Option<Option<String>>,
 }
 
 impl ArgocdAppResponse {
@@ -69,11 +44,6 @@ impl ArgocdAppResponse {
         created_at: String,
         name: String,
         service_type: models::ServiceTypeEnum,
-        namespace: String,
-        environment: models::ReferenceObject,
-        environment_id: uuid::Uuid,
-        cluster_id: uuid::Uuid,
-        icon_uri: String,
     ) -> ArgocdAppResponse {
         ArgocdAppResponse {
             id,
@@ -81,14 +51,7 @@ impl ArgocdAppResponse {
             updated_at: None,
             name,
             service_type,
-            namespace,
-            environment,
-            environment_id,
-            cluster_id,
-            icon_uri,
-            last_synced_at: None,
-            manifest_revision: None,
-            git_repository: None,
+            namespace: None,
         }
     }
 }
