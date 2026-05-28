@@ -17,7 +17,7 @@ pub struct GcpSecretManagerEndpointDto {
     pub mode: Mode,
     #[serde(rename = "region")]
     pub region: String,
-    #[serde(rename = "projectId")]
+    #[serde(rename = "project_id")]
     pub project_id: String,
 }
 
