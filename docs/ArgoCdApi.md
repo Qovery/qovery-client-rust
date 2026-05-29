@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**delete_argo_cd_destination_cluster_mapping**](ArgoCdApi.md#delete_argo_cd_destination_cluster_mapping) | **DELETE** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 [**get_argo_cd_app**](ArgoCdApi.md#get_argo_cd_app) | **GET** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 [**get_argo_cd_app_manifest**](ArgoCdApi.md#get_argo_cd_app_manifest) | **GET** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
+[**get_argo_cd_associated_services**](ArgoCdApi.md#get_argo_cd_associated_services) | **GET** /cluster/{clusterId}/argocdApps/associatedServices | Get ArgoCD associated services for a cluster
 [**get_argo_cd_credentials**](ArgoCdApi.md#get_argo_cd_credentials) | **GET** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 [**list_argo_cd_destination_cluster_mappings**](ArgoCdApi.md#list_argo_cd_destination_cluster_mappings) | **GET** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 [**save_argo_cd_credentials**](ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
@@ -152,6 +153,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ArgocdAppManifestResponse**](ArgocdAppManifestResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_argo_cd_associated_services
+
+> models::ArgocdAssociatedServicesResponseList get_argo_cd_associated_services(cluster_id)
+Get ArgoCD associated services for a cluster
+
+List the ArgoCD discovered apps for a cluster, mapped to their project, environment, and service context. Requires VIEWER role.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+
+### Return type
+
+[**models::ArgocdAssociatedServicesResponseList**](ArgocdAssociatedServicesResponseList.md)
 
 ### Authorization
 

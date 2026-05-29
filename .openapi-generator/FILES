@@ -76,6 +76,9 @@ docs/ArgoCdUnlinkedClusterDetails.md
 docs/ArgocdAppManifestResponse.md
 docs/ArgocdAppManifestResponseManifestMetadata.md
 docs/ArgocdAppResponse.md
+docs/ArgocdAssociatedServiceType.md
+docs/ArgocdAssociatedServicesResponse.md
+docs/ArgocdAssociatedServicesResponseList.md
 docs/ArgocdManagedResource.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutomaticallyConfiguredAuthDto.md
@@ -999,6 +1002,9 @@ src/models/argo_cd_unlinked_cluster_details.rs
 src/models/argocd_app_manifest_response.rs
 src/models/argocd_app_manifest_response_manifest_metadata.rs
 src/models/argocd_app_response.rs
+src/models/argocd_associated_service_type.rs
+src/models/argocd_associated_services_response.rs
+src/models/argocd_associated_services_response_list.rs
 src/models/argocd_managed_resource.rs
 src/models/attach_service_to_deployment_stage_request.rs
 src/models/automatically_configured_auth_dto.rs

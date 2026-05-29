@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
 *ArgoCdApi* | [**delete_argo_cd_destination_cluster_mapping**](docs/ArgoCdApi.md#delete_argo_cd_destination_cluster_mapping) | **DELETE** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 *ArgoCdApi* | [**get_argo_cd_app**](docs/ArgoCdApi.md#get_argo_cd_app) | **GET** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 *ArgoCdApi* | [**get_argo_cd_app_manifest**](docs/ArgoCdApi.md#get_argo_cd_app_manifest) | **GET** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
+*ArgoCdApi* | [**get_argo_cd_associated_services**](docs/ArgoCdApi.md#get_argo_cd_associated_services) | **GET** /cluster/{clusterId}/argocdApps/associatedServices | Get ArgoCD associated services for a cluster
 *ArgoCdApi* | [**get_argo_cd_credentials**](docs/ArgoCdApi.md#get_argo_cd_credentials) | **GET** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 *ArgoCdApi* | [**list_argo_cd_destination_cluster_mappings**](docs/ArgoCdApi.md#list_argo_cd_destination_cluster_mappings) | **GET** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 *ArgoCdApi* | [**save_argo_cd_credentials**](docs/ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
@@ -606,6 +607,9 @@ Class | Method | HTTP request | Description
  - [ArgocdAppManifestResponse](docs/ArgocdAppManifestResponse.md)
  - [ArgocdAppManifestResponseManifestMetadata](docs/ArgocdAppManifestResponseManifestMetadata.md)
  - [ArgocdAppResponse](docs/ArgocdAppResponse.md)
+ - [ArgocdAssociatedServiceType](docs/ArgocdAssociatedServiceType.md)
+ - [ArgocdAssociatedServicesResponse](docs/ArgocdAssociatedServicesResponse.md)
+ - [ArgocdAssociatedServicesResponseList](docs/ArgocdAssociatedServicesResponseList.md)
  - [ArgocdManagedResource](docs/ArgocdManagedResource.md)
  - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutomaticallyConfiguredAuthDto](docs/AutomaticallyConfiguredAuthDto.md)
