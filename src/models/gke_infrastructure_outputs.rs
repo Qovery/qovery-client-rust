@@ -19,6 +19,14 @@ pub struct GkeInfrastructureOutputs {
     pub cluster_name: String,
     #[serde(rename = "cluster_self_link")]
     pub cluster_self_link: String,
+    #[serde(
+        rename = "external_secrets_automatic_authentication",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub external_secrets_automatic_authentication:
+        Option<Option<models::GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication>>,
 }
 
 impl GkeInfrastructureOutputs {
@@ -31,6 +39,7 @@ impl GkeInfrastructureOutputs {
             kind,
             cluster_name,
             cluster_self_link,
+            external_secrets_automatic_authentication: None,
         }
     }
 }

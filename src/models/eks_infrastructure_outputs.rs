@@ -23,6 +23,14 @@ pub struct EksInfrastructureOutputs {
     pub cluster_oidc_issuer: String,
     #[serde(rename = "vpc_id")]
     pub vpc_id: String,
+    #[serde(
+        rename = "external_secrets_automatic_authentication",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub external_secrets_automatic_authentication:
+        Option<Option<models::EksInfrastructureOutputsExternalSecretsAutomaticAuthentication>>,
 }
 
 impl EksInfrastructureOutputs {
@@ -39,6 +47,7 @@ impl EksInfrastructureOutputs {
             cluster_arn,
             cluster_oidc_issuer,
             vpc_id,
+            external_secrets_automatic_authentication: None,
         }
     }
 }
