@@ -21,6 +21,9 @@ pub struct ClusterRegion {
     pub country: String,
     #[serde(rename = "city")]
     pub city: String,
+    /// Whether ARM instance types are available in this region
+    #[serde(rename = "arm_supported", skip_serializing_if = "Option::is_none")]
+    pub arm_supported: Option<bool>,
     /// List of availability zones supported by this region
     #[serde(rename = "zones", skip_serializing_if = "Option::is_none")]
     pub zones: Option<Vec<String>>,
@@ -33,6 +36,7 @@ impl ClusterRegion {
             country_code,
             country,
             city,
+            arm_supported: None,
             zones: None,
         }
     }
