@@ -399,7 +399,10 @@ docs/ExternalSecretAssociatedServiceResponseList.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
+docs/GcpServiceAccountKeyCredentialsRequest.md
 docs/GcpStaticClusterCredentials.md
+docs/GcpWorkloadIdentityFederationClusterCredentials.md
+docs/GcpWorkloadIdentityFederationCredentialsRequest.md
 docs/GenericClusterCredentials.md
 docs/GenericObjectCurrentCost.md
 docs/GetClusterKubernetesEvents200Response.md
@@ -1292,7 +1295,10 @@ src/models/external_secret_associated_service_response_list.rs
 src/models/gcp_credentials_request.rs
 src/models/gcp_json_credentials_auth_dto.rs
 src/models/gcp_secret_manager_endpoint_dto.rs
+src/models/gcp_service_account_key_credentials_request.rs
 src/models/gcp_static_cluster_credentials.rs
+src/models/gcp_workload_identity_federation_cluster_credentials.rs
+src/models/gcp_workload_identity_federation_credentials_request.rs
 src/models/generic_cluster_credentials.rs
 src/models/generic_object_current_cost.rs
 src/models/get_cluster_kubernetes_events_200_response.rs

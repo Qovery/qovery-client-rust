@@ -28,6 +28,8 @@ pub enum ClusterCredentials {
     Azure(models::AzureStaticClusterCredentials),
     #[serde(rename = "GCP")]
     Gcp(models::GcpStaticClusterCredentials),
+    #[serde(rename = "GCP_WORKLOAD_IDENTITY_FEDERATION")]
+    GcpWorkloadIdentityFederation(models::GcpWorkloadIdentityFederationClusterCredentials),
 }
 
 impl Default for ClusterCredentials {

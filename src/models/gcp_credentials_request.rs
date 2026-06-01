@@ -11,20 +11,31 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct GcpCredentialsRequest {
-    #[serde(rename = "name")]
-    pub name: String,
-    /// The json must be base64 encoded
-    #[serde(rename = "gcp_credentials")]
-    pub gcp_credentials: String,
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GcpCredentialsRequest {
+    GcpServiceAccountKeyCredentialsRequest(models::GcpServiceAccountKeyCredentialsRequest),
+    GcpWorkloadIdentityFederationCredentialsRequest(
+        models::GcpWorkloadIdentityFederationCredentialsRequest,
+    ),
 }
 
-impl GcpCredentialsRequest {
-    pub fn new(name: String, gcp_credentials: String) -> GcpCredentialsRequest {
-        GcpCredentialsRequest {
-            name,
-            gcp_credentials,
-        }
+impl Default for GcpCredentialsRequest {
+    fn default() -> Self {
+        Self::GcpServiceAccountKeyCredentialsRequest(Default::default())
+    }
+}
+/// Optional explicit credential type.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum CredentialType {
+    #[serde(rename = "WORKLOAD_IDENTITY_FEDERATION")]
+    WorkloadIdentityFederation,
+    #[serde(rename = "WIF")]
+    Wif,
+}
+
+impl Default for CredentialType {
+    fn default() -> CredentialType {
+        Self::WorkloadIdentityFederation
     }
 }
