@@ -129,6 +129,7 @@ pub mod applications_api;
 pub mod argo_cd_api;
 pub mod backups_api;
 pub mod billing_api;
+pub mod blueprint_main_calls_api;
 pub mod cloud_provider_api;
 pub mod cloud_provider_credentials_api;
 pub mod clusters_api;

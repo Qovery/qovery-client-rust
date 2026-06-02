@@ -113,6 +113,10 @@ docs/BillingExternalId.md
 docs/BillingInfo.md
 docs/BillingInfoRequest.md
 docs/BillingStatus.md
+docs/BlueprintCatalogResponse.md
+docs/BlueprintItem.md
+docs/BlueprintMainCallsApi.md
+docs/BlueprintMajorVersion.md
 docs/Budget.md
 docs/BuildModeEnum.md
 docs/CancelEnvironmentDeploymentRequest.md
@@ -864,6 +868,7 @@ src/apis/applications_api.rs
 src/apis/argo_cd_api.rs
 src/apis/backups_api.rs
 src/apis/billing_api.rs
+src/apis/blueprint_main_calls_api.rs
 src/apis/cloud_provider_api.rs
 src/apis/cloud_provider_credentials_api.rs
 src/apis/clusters_api.rs
@@ -1040,6 +1045,9 @@ src/models/billing_external_id.rs
 src/models/billing_info.rs
 src/models/billing_info_request.rs
 src/models/billing_status.rs
+src/models/blueprint_catalog_response.rs
+src/models/blueprint_item.rs
+src/models/blueprint_major_version.rs
 src/models/budget.rs
 src/models/build_mode_enum.rs
 src/models/cancel_environment_deployment_request.rs

@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**list_organization_credit_cards**](docs/BillingApi.md#list_organization_credit_cards) | **GET** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**list_organization_invoice**](docs/BillingApi.md#list_organization_invoice) | **GET** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**organization_download_all_invoices**](docs/BillingApi.md#organization_download_all_invoices) | **POST** /organization/{organizationId}/downloadInvoices | Download all invoices
+*BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *CloudProviderApi* | [**list_aws_features**](docs/CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**list_aws_instance_type**](docs/CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
 *CloudProviderApi* | [**list_aws_managed_database_instance_type**](docs/CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
@@ -642,6 +643,9 @@ Class | Method | HTTP request | Description
  - [BillingInfo](docs/BillingInfo.md)
  - [BillingInfoRequest](docs/BillingInfoRequest.md)
  - [BillingStatus](docs/BillingStatus.md)
+ - [BlueprintCatalogResponse](docs/BlueprintCatalogResponse.md)
+ - [BlueprintItem](docs/BlueprintItem.md)
+ - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
