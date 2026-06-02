@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**list_organization_credit_cards**](docs/BillingApi.md#list_organization_credit_cards) | **GET** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**list_organization_invoice**](docs/BillingApi.md#list_organization_invoice) | **GET** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**organization_download_all_invoices**](docs/BillingApi.md#organization_download_all_invoices) | **POST** /organization/{organizationId}/downloadInvoices | Download all invoices
+*BlueprintCatalogApi* | [**get_blueprint_catalog_service_readme**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_readme) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
 *BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *CloudProviderApi* | [**list_aws_features**](docs/CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**list_aws_instance_type**](docs/CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
