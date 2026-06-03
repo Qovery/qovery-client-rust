@@ -23,12 +23,8 @@ pub struct GcpWorkloadIdentityFederationClusterCredentials {
     pub project_id: String,
     #[serde(rename = "service_account_email")]
     pub service_account_email: String,
-    #[serde(rename = "workload_identity_project_number")]
-    pub workload_identity_project_number: String,
-    #[serde(rename = "workload_identity_pool_id")]
-    pub workload_identity_pool_id: String,
-    #[serde(rename = "workload_identity_provider_id")]
-    pub workload_identity_provider_id: String,
+    #[serde(rename = "workload_identity_provider_resource")]
+    pub workload_identity_provider_resource: String,
     #[serde(rename = "token_lifetime_seconds")]
     pub token_lifetime_seconds: i32,
 }
@@ -40,9 +36,7 @@ impl GcpWorkloadIdentityFederationClusterCredentials {
         object_type: ObjectType,
         project_id: String,
         service_account_email: String,
-        workload_identity_project_number: String,
-        workload_identity_pool_id: String,
-        workload_identity_provider_id: String,
+        workload_identity_provider_resource: String,
         token_lifetime_seconds: i32,
     ) -> GcpWorkloadIdentityFederationClusterCredentials {
         GcpWorkloadIdentityFederationClusterCredentials {
@@ -51,9 +45,7 @@ impl GcpWorkloadIdentityFederationClusterCredentials {
             object_type,
             project_id,
             service_account_email,
-            workload_identity_project_number,
-            workload_identity_pool_id,
-            workload_identity_provider_id,
+            workload_identity_provider_resource,
             token_lifetime_seconds,
         }
     }

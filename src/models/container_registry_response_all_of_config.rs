@@ -44,20 +44,10 @@ pub struct ContainerRegistryResponseAllOfConfig {
     )]
     pub service_account_email: Option<String>,
     #[serde(
-        rename = "workload_identity_project_number",
+        rename = "workload_identity_provider_resource",
         skip_serializing_if = "Option::is_none"
     )]
-    pub workload_identity_project_number: Option<String>,
-    #[serde(
-        rename = "workload_identity_pool_id",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub workload_identity_pool_id: Option<String>,
-    #[serde(
-        rename = "workload_identity_provider_id",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub workload_identity_provider_id: Option<String>,
+    pub workload_identity_provider_resource: Option<String>,
     #[serde(
         rename = "token_lifetime_seconds",
         skip_serializing_if = "Option::is_none"
@@ -94,9 +84,7 @@ impl ContainerRegistryResponseAllOfConfig {
             gcp_credentials_type: None,
             project_id: None,
             service_account_email: None,
-            workload_identity_project_number: None,
-            workload_identity_pool_id: None,
-            workload_identity_provider_id: None,
+            workload_identity_provider_resource: None,
             token_lifetime_seconds: None,
             azure_tenant_id: None,
             azure_subscription_id: None,

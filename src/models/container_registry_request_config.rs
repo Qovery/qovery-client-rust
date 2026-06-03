@@ -61,22 +61,10 @@ pub struct ContainerRegistryRequestConfig {
     pub service_account_email: Option<String>,
     /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
     #[serde(
-        rename = "workload_identity_project_number",
+        rename = "workload_identity_provider_resource",
         skip_serializing_if = "Option::is_none"
     )]
-    pub workload_identity_project_number: Option<String>,
-    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
-    #[serde(
-        rename = "workload_identity_pool_id",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub workload_identity_pool_id: Option<String>,
-    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
-    #[serde(
-        rename = "workload_identity_provider_id",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub workload_identity_provider_id: Option<String>,
+    pub workload_identity_provider_resource: Option<String>,
     /// Optional if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
     #[serde(
         rename = "token_lifetime_seconds",
@@ -117,9 +105,7 @@ impl ContainerRegistryRequestConfig {
             gcp_credentials_type: None,
             project_id: None,
             service_account_email: None,
-            workload_identity_project_number: None,
-            workload_identity_pool_id: None,
-            workload_identity_provider_id: None,
+            workload_identity_provider_resource: None,
             token_lifetime_seconds: None,
             username: None,
             password: None,
