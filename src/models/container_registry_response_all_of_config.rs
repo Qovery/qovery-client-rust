@@ -31,6 +31,38 @@ pub struct ContainerRegistryResponseAllOfConfig {
     pub access_key_id: Option<String>,
     #[serde(rename = "role_arn", skip_serializing_if = "Option::is_none")]
     pub role_arn: Option<String>,
+    #[serde(
+        rename = "gcp_credentials_type",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub gcp_credentials_type: Option<GcpCredentialsType>,
+    #[serde(rename = "project_id", skip_serializing_if = "Option::is_none")]
+    pub project_id: Option<String>,
+    #[serde(
+        rename = "service_account_email",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub service_account_email: Option<String>,
+    #[serde(
+        rename = "workload_identity_project_number",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_project_number: Option<String>,
+    #[serde(
+        rename = "workload_identity_pool_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_pool_id: Option<String>,
+    #[serde(
+        rename = "workload_identity_provider_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_provider_id: Option<String>,
+    #[serde(
+        rename = "token_lifetime_seconds",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub token_lifetime_seconds: Option<i32>,
     #[serde(rename = "azure_tenant_id", skip_serializing_if = "Option::is_none")]
     pub azure_tenant_id: Option<String>,
     #[serde(
@@ -59,10 +91,29 @@ impl ContainerRegistryResponseAllOfConfig {
             scaleway_project_id: None,
             access_key_id: None,
             role_arn: None,
+            gcp_credentials_type: None,
+            project_id: None,
+            service_account_email: None,
+            workload_identity_project_number: None,
+            workload_identity_pool_id: None,
+            workload_identity_provider_id: None,
+            token_lifetime_seconds: None,
             azure_tenant_id: None,
             azure_subscription_id: None,
             azure_application_id: None,
             azure_application_object_id: None,
         }
+    }
+}
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum GcpCredentialsType {
+    #[serde(rename = "workload_identity_federation")]
+    WorkloadIdentityFederation,
+}
+
+impl Default for GcpCredentialsType {
+    fn default() -> GcpCredentialsType {
+        Self::WorkloadIdentityFederation
     }
 }

@@ -41,9 +41,48 @@ pub struct ContainerRegistryRequestConfig {
         skip_serializing_if = "Option::is_none"
     )]
     pub scaleway_project_id: Option<String>,
-    /// Required if kind is `GCP_ARTIFACT_REGISTRY`
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY`. For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type.
     #[serde(rename = "json_credentials", skip_serializing_if = "Option::is_none")]
     pub json_credentials: Option<String>,
+    /// For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type.
+    #[serde(
+        rename = "gcp_credentials_type",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub gcp_credentials_type: Option<GcpCredentialsType>,
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(rename = "project_id", skip_serializing_if = "Option::is_none")]
+    pub project_id: Option<String>,
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(
+        rename = "service_account_email",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub service_account_email: Option<String>,
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(
+        rename = "workload_identity_project_number",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_project_number: Option<String>,
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(
+        rename = "workload_identity_pool_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_pool_id: Option<String>,
+    /// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(
+        rename = "workload_identity_provider_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub workload_identity_provider_id: Option<String>,
+    /// Optional if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+    #[serde(
+        rename = "token_lifetime_seconds",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub token_lifetime_seconds: Option<i32>,
     /// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
     #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
@@ -75,11 +114,30 @@ impl ContainerRegistryRequestConfig {
             scaleway_secret_key: None,
             scaleway_project_id: None,
             json_credentials: None,
+            gcp_credentials_type: None,
+            project_id: None,
+            service_account_email: None,
+            workload_identity_project_number: None,
+            workload_identity_pool_id: None,
+            workload_identity_provider_id: None,
+            token_lifetime_seconds: None,
             username: None,
             password: None,
             role_arn: None,
             azure_tenant_id: None,
             azure_subscription_id: None,
         }
+    }
+}
+/// For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum GcpCredentialsType {
+    #[serde(rename = "workload_identity_federation")]
+    WorkloadIdentityFederation,
+}
+
+impl Default for GcpCredentialsType {
+    fn default() -> GcpCredentialsType {
+        Self::WorkloadIdentityFederation
     }
 }
