@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **build_cpu_max_in_milli** | Option<**i32**> | define the max cpu resources (in milli) | [optional]
 **build_ram_max_in_gib** | Option<**i32**> | define the max ram resources (in gib) | [optional]
 **build_disable_buildkit_cache** | Option<**bool**> | disable buildkit registry cache during build | [optional]
+**build_skip_git_submodules** | Option<**bool**> | skip git submodules update when cloning the repository | [optional]
 **network_ingress_proxy_body_size_mb** | Option<**i32**> |  | [optional]
 **network_ingress_force_ssl_redirect** | Option<**bool**> | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional]
 **network_ingress_enable_cors** | Option<**bool**> |  | [optional]

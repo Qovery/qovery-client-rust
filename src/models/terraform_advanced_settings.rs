@@ -36,6 +36,12 @@ pub struct TerraformAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_ephemeral_storage_in_gib: Option<i32>,
+    /// skip git submodules update when cloning the repository
+    #[serde(
+        rename = "build.skip_git_submodules",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_skip_git_submodules: Option<bool>,
     /// define how long in seconds an application is supposed to be stopped gracefully
     #[serde(
         rename = "deployment.termination_grace_period_seconds",
@@ -69,6 +75,7 @@ impl TerraformAdvancedSettings {
             build_cpu_max_in_milli: None,
             build_ram_max_in_gib: None,
             build_ephemeral_storage_in_gib: None,
+            build_skip_git_submodules: None,
             deployment_termination_grace_period_seconds: None,
             deployment_affinity_node_required: None,
             security_service_account_name: None,

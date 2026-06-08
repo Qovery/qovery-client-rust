@@ -96,6 +96,12 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_disable_buildkit_cache: Option<bool>,
+    /// skip git submodules update when cloning the repository
+    #[serde(
+        rename = "build.skip_git_submodules",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_skip_git_submodules: Option<bool>,
     #[serde(
         rename = "network.ingress.proxy_body_size_mb",
         skip_serializing_if = "Option::is_none"
@@ -316,6 +322,7 @@ impl ApplicationAdvancedSettings {
             build_cpu_max_in_milli: None,
             build_ram_max_in_gib: None,
             build_disable_buildkit_cache: None,
+            build_skip_git_submodules: None,
             network_ingress_proxy_body_size_mb: None,
             network_ingress_force_ssl_redirect: None,
             network_ingress_enable_cors: None,

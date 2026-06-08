@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **values_override** | [**models::HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **icon_uri** | **String** | Icon URI representing the helm service. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**blueprint_id** | Option<**uuid::Uuid**> | The blueprint ID the service has been created from  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

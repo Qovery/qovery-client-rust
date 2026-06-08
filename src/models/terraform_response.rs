@@ -68,6 +68,14 @@ pub struct TerraformResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub dockerfile_fragment: Option<Option<models::TerraformResponseAllOfDockerfileFragment>>,
+    /// The blueprint ID the service has been created from
+    #[serde(
+        rename = "blueprintId",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub blueprint_id: Option<Option<uuid::Uuid>>,
 }
 
 impl TerraformResponse {
@@ -110,6 +118,7 @@ impl TerraformResponse {
             use_cluster_credentials,
             action_extra_arguments,
             dockerfile_fragment: None,
+            blueprint_id: None,
         }
     }
 }

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **use_cluster_credentials** | **bool** |  | 
 **action_extra_arguments** | [**std::collections::HashMap<String, Vec<String>>**](Vec.md) | The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands | 
 **dockerfile_fragment** | Option<[**models::TerraformResponseAllOfDockerfileFragment**](TerraformResponseAllOfDockerfileFragment.md)> |  | [optional]
+**blueprint_id** | Option<**uuid::Uuid**> | The blueprint ID the service has been created from  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -37,6 +37,12 @@ pub struct JobAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_disable_buildkit_cache: Option<bool>,
+    /// skip git submodules update when cloning the repository
+    #[serde(
+        rename = "build.skip_git_submodules",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_skip_git_submodules: Option<bool>,
     /// define how long in seconds an application is supposed to be stopped gracefully
     #[serde(
         rename = "deployment.termination_grace_period_seconds",
@@ -98,6 +104,7 @@ impl JobAdvancedSettings {
             build_cpu_max_in_milli: None,
             build_ram_max_in_gib: None,
             build_disable_buildkit_cache: None,
+            build_skip_git_submodules: None,
             deployment_termination_grace_period_seconds: None,
             deployment_affinity_node_required: None,
             job_delete_ttl_seconds_after_finished: None,
