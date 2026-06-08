@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **allow_cluster_wide_resources** | Option<**bool**> | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional][default to false]
 **values_override** | [**models::HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
 **icon_uri** | Option<**String**> | Icon URI representing the helm service. | [optional]
+**blueprint_id** | Option<**uuid::Uuid**> | The blueprint ID the service has been created from   | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

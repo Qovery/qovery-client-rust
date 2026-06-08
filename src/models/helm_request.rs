@@ -50,6 +50,14 @@ pub struct HelmRequest {
     /// Icon URI representing the helm service.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
+    /// The blueprint ID the service has been created from  
+    #[serde(
+        rename = "blueprintId",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub blueprint_id: Option<Option<uuid::Uuid>>,
 }
 
 impl HelmRequest {
@@ -72,6 +80,7 @@ impl HelmRequest {
             allow_cluster_wide_resources: None,
             values_override,
             icon_uri: None,
+            blueprint_id: None,
         }
     }
 }

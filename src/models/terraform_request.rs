@@ -53,6 +53,14 @@ pub struct TerraformRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub dockerfile_fragment: Option<Option<models::TerraformRequestDockerfileFragment>>,
+    /// The blueprint ID the service has been created from  
+    #[serde(
+        rename = "blueprintId",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub blueprint_id: Option<Option<uuid::Uuid>>,
 }
 
 impl TerraformRequest {
@@ -82,6 +90,7 @@ impl TerraformRequest {
             use_cluster_credentials: None,
             action_extra_arguments: None,
             dockerfile_fragment: None,
+            blueprint_id: None,
         }
     }
 }
