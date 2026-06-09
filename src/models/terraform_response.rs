@@ -70,7 +70,7 @@ pub struct TerraformResponse {
     pub dockerfile_fragment: Option<Option<models::TerraformResponseAllOfDockerfileFragment>>,
     /// The blueprint ID the service has been created from
     #[serde(
-        rename = "blueprintId",
+        rename = "blueprint_id",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"

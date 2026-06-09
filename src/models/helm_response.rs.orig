@@ -53,7 +53,7 @@ pub struct HelmResponse {
     #[serde(rename = "service_type")]
     pub service_type: models::ServiceTypeEnum,
     /// The blueprint ID the service has been created from 
-    #[serde(rename = "blueprintId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "blueprint_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub blueprint_id: Option<Option<uuid::Uuid>>,
 }
 

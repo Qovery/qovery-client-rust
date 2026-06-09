@@ -50,9 +50,9 @@ pub struct HelmRequest {
     /// Icon URI representing the helm service.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
-    /// The blueprint ID the service has been created from  
+    /// The blueprint ID the service has been created from
     #[serde(
-        rename = "blueprintId",
+        rename = "blueprint_id",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
