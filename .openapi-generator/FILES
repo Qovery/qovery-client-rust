@@ -115,9 +115,12 @@ docs/BillingInfoRequest.md
 docs/BillingStatus.md
 docs/BlueprintCatalogApi.md
 docs/BlueprintCatalogResponse.md
+docs/BlueprintCreateRequest.md
 docs/BlueprintItem.md
 docs/BlueprintMainCallsApi.md
 docs/BlueprintMajorVersion.md
+docs/BlueprintResponse.md
+docs/BlueprintVariableRequest.md
 docs/Budget.md
 docs/BuildModeEnum.md
 docs/CancelEnvironmentDeploymentRequest.md
@@ -1048,8 +1051,11 @@ src/models/billing_info.rs
 src/models/billing_info_request.rs
 src/models/billing_status.rs
 src/models/blueprint_catalog_response.rs
+src/models/blueprint_create_request.rs
 src/models/blueprint_item.rs
 src/models/blueprint_major_version.rs
+src/models/blueprint_response.rs
+src/models/blueprint_variable_request.rs
 src/models/budget.rs
 src/models/build_mode_enum.rs
 src/models/cancel_environment_deployment_request.rs
