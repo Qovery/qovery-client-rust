@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**list_organization_credit_cards**](docs/BillingApi.md#list_organization_credit_cards) | **GET** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**list_organization_invoice**](docs/BillingApi.md#list_organization_invoice) | **GET** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**organization_download_all_invoices**](docs/BillingApi.md#organization_download_all_invoices) | **POST** /organization/{organizationId}/downloadInvoices | Download all invoices
+*BlueprintCatalogApi* | [**get_blueprint_catalog_service_manifest**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_manifest) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest | Get the input fields to display for a blueprint catalog service
 *BlueprintCatalogApi* | [**get_blueprint_catalog_service_readme**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_readme) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
 *BlueprintMainCallsApi* | [**create_blueprint**](docs/BlueprintMainCallsApi.md#create_blueprint) | **POST** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
@@ -649,6 +650,9 @@ Class | Method | HTTP request | Description
  - [BlueprintCreateRequest](docs/BlueprintCreateRequest.md)
  - [BlueprintItem](docs/BlueprintItem.md)
  - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
+ - [BlueprintManifestContextVariableField](docs/BlueprintManifestContextVariableField.md)
+ - [BlueprintManifestFieldType](docs/BlueprintManifestFieldType.md)
+ - [BlueprintManifestVariableField](docs/BlueprintManifestVariableField.md)
  - [BlueprintResponse](docs/BlueprintResponse.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
@@ -912,6 +916,8 @@ Class | Method | HTTP request | Description
  - [GcpWorkloadIdentityFederationCredentialsRequest](docs/GcpWorkloadIdentityFederationCredentialsRequest.md)
  - [GenericClusterCredentials](docs/GenericClusterCredentials.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
+ - [GetBlueprintCatalogServiceManifest200Response](docs/GetBlueprintCatalogServiceManifest200Response.md)
+ - [GetBlueprintCatalogServiceManifest200ResponseResultsInner](docs/GetBlueprintCatalogServiceManifest200ResponseResultsInner.md)
  - [GetClusterKubernetesEvents200Response](docs/GetClusterKubernetesEvents200Response.md)
  - [GetClusterKubernetesEvents200ResponseResultsInner](docs/GetClusterKubernetesEvents200ResponseResultsInner.md)
  - [GetClusterTokenByClusterId200Response](docs/GetClusterTokenByClusterId200Response.md)
