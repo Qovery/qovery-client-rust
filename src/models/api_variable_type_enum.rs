@@ -11,8 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ApiVariableTypeEnum : type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET)
-/// type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET)
+/// ApiVariableTypeEnum : type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET, FILE_EXTERNAL_SECRET)
+/// type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET, FILE_EXTERNAL_SECRET)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ApiVariableTypeEnum {
     #[serde(rename = "VALUE")]
@@ -27,6 +27,8 @@ pub enum ApiVariableTypeEnum {
     File,
     #[serde(rename = "EXTERNAL_SECRET")]
     ExternalSecret,
+    #[serde(rename = "FILE_EXTERNAL_SECRET")]
+    FileExternalSecret,
 }
 
 impl std::fmt::Display for ApiVariableTypeEnum {
@@ -38,6 +40,7 @@ impl std::fmt::Display for ApiVariableTypeEnum {
             Self::BuiltIn => write!(f, "BUILT_IN"),
             Self::File => write!(f, "FILE"),
             Self::ExternalSecret => write!(f, "EXTERNAL_SECRET"),
+            Self::FileExternalSecret => write!(f, "FILE_EXTERNAL_SECRET"),
         }
     }
 }
