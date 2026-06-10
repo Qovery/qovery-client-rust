@@ -969,11 +969,13 @@ pub async fn get_cluster_kubeconfig(
     organization_id: &str,
     cluster_id: &str,
     with_token_from_cli: Option<bool>,
+    read_only: Option<bool>,
 ) -> Result<String, Error<GetClusterKubeconfigError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
     let p_path_cluster_id = cluster_id;
     let p_query_with_token_from_cli = with_token_from_cli;
+    let p_query_read_only = read_only;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}/kubeconfig",
@@ -985,6 +987,9 @@ pub async fn get_cluster_kubeconfig(
 
     if let Some(ref param_value) = p_query_with_token_from_cli {
         req_builder = req_builder.query(&[("with_token_from_cli", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_read_only {
+        req_builder = req_builder.query(&[("read_only", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

@@ -349,7 +349,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_cluster_kubeconfig
 
-> String get_cluster_kubeconfig(organization_id, cluster_id, with_token_from_cli)
+> String get_cluster_kubeconfig(organization_id, cluster_id, with_token_from_cli, read_only)
 Get cluster kubeconfig
 
 ### Parameters
@@ -360,6 +360,7 @@ Name | Type | Description  | Required | Notes
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
 **cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
 **with_token_from_cli** | Option<**bool**> | If true, the user auth part will have an exec command with qovery cli |  |
+**read_only** | Option<**bool**> | If true, the kubeconfig exec plugin will request a read-only token backed by a Kubernetes ServiceAccount with the view ClusterRole |  |
 
 ### Return type
 

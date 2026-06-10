@@ -30,9 +30,11 @@ pub enum GetDeploymentStatusByDeploymentRequestIdError {
 pub async fn get_cluster_token_by_cluster_id(
     configuration: &configuration::Configuration,
     cluster_id: &str,
+    read_only: Option<bool>,
 ) -> Result<models::GetClusterTokenByClusterId200Response, Error<GetClusterTokenByClusterIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_cluster_id = cluster_id;
+    let p_query_read_only = read_only;
 
     let uri_str = format!(
         "{}/cluster/{clusterId}/token",
@@ -41,6 +43,9 @@ pub async fn get_cluster_token_by_cluster_id(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_read_only {
+        req_builder = req_builder.query(&[("read_only", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
