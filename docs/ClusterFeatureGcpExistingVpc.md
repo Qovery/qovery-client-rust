@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ip_range_services_name** | Option<**String**> |  | [optional]
 **ip_range_pods_name** | Option<**String**> |  | [optional]
 **additional_ip_range_pods_names** | Option<**Vec<String>**> |  | [optional]
+**private_nodes** | Option<**bool**> |  | [optional][default to false]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

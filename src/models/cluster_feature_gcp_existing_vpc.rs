@@ -48,6 +48,8 @@ pub struct ClusterFeatureGcpExistingVpc {
         skip_serializing_if = "Option::is_none"
     )]
     pub additional_ip_range_pods_names: Option<Vec<String>>,
+    #[serde(rename = "private_nodes", skip_serializing_if = "Option::is_none")]
+    pub private_nodes: Option<bool>,
 }
 
 impl ClusterFeatureGcpExistingVpc {
@@ -59,6 +61,7 @@ impl ClusterFeatureGcpExistingVpc {
             ip_range_services_name: None,
             ip_range_pods_name: None,
             additional_ip_range_pods_names: None,
+            private_nodes: None,
         }
     }
 }
