@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## get_blueprint_catalog_service_manifest
 
-> models::GetBlueprintCatalogServiceManifest200Response get_blueprint_catalog_service_manifest(organization_id, provider, service_family, service_version)
+> models::GetBlueprintCatalogServiceManifest200Response get_blueprint_catalog_service_manifest(organization_id, provider, service_family, service_version, environment_id)
 Get the input fields to display for a blueprint catalog service
 
 Returns the list of form fields the console must display to deploy the selected blueprint, derived from the blueprint's qbm.yml manifest. Includes editable variables (overridable=true) and auto-sourced context variables (overridable=false, with a source).
@@ -25,6 +25,7 @@ Name | Type | Description  | Required | Notes
 **provider** | **String** | Cloud provider (e.g. aws, gcp, azure) | [required] |
 **service_family** | **String** | Service family (e.g. mysql, postgresql) | [required] |
 **service_version** | **String** | Service version (e.g. 8, 14) | [required] |
+**environment_id** | **uuid::Uuid** | Environment ID used to resolve context variables | [required] |
 
 ### Return type
 
@@ -44,7 +45,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_blueprint_catalog_service_readme
 
-> String get_blueprint_catalog_service_readme(organization_id, provider, service_family, service_version)
+> models::BlueprintReadmeResponse get_blueprint_catalog_service_readme(organization_id, provider, service_family, service_version)
 Get the README of a blueprint catalog service
 
 ### Parameters
@@ -59,7 +60,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-**String**
+[**models::BlueprintReadmeResponse**](BlueprintReadmeResponse.md)
 
 ### Authorization
 
@@ -68,7 +69,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/markdown, text/plain
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

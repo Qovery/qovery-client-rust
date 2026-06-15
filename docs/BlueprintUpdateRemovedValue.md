@@ -1,13 +1,10 @@
-# BlueprintManifestContextVariableField
+# BlueprintUpdateRemovedValue
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **Kind** |  (enum: contextVariable) | 
 **name** | **String** |  | 
-**source** | Option<**String**> | Origin of the auto-sourced value (e.g. cluster.region) | [optional]
-**value** | Option<**String**> | Resolved value of the context variable at the time of the request | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

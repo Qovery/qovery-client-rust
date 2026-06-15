@@ -26,6 +26,14 @@ pub struct BlueprintManifestContextVariableField {
         skip_serializing_if = "Option::is_none"
     )]
     pub source: Option<Option<String>>,
+    /// Resolved value of the context variable at the time of the request
+    #[serde(
+        rename = "value",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub value: Option<Option<String>>,
 }
 
 impl BlueprintManifestContextVariableField {
@@ -35,6 +43,7 @@ impl BlueprintManifestContextVariableField {
             kind,
             name,
             source: None,
+            value: None,
         }
     }
 }

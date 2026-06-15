@@ -44,6 +44,7 @@ pub async fn get_blueprint_catalog_service_manifest(
     provider: &str,
     service_family: &str,
     service_version: &str,
+    environment_id: &str,
 ) -> Result<
     models::GetBlueprintCatalogServiceManifest200Response,
     Error<GetBlueprintCatalogServiceManifestError>,
@@ -53,10 +54,12 @@ pub async fn get_blueprint_catalog_service_manifest(
     let p_path_provider = provider;
     let p_path_service_family = service_family;
     let p_path_service_version = service_version;
+    let p_query_environment_id = environment_id;
 
     let uri_str = format!("{}/organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest", configuration.base_path, organizationId=crate::apis::urlencode(p_path_organization_id), provider=crate::apis::urlencode(p_path_provider), serviceFamily=crate::apis::urlencode(p_path_service_family), serviceVersion=crate::apis::urlencode(p_path_service_version));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    req_builder = req_builder.query(&[("environmentId", &p_query_environment_id.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -108,7 +111,7 @@ pub async fn get_blueprint_catalog_service_readme(
     provider: &str,
     service_family: &str,
     service_version: &str,
-) -> Result<String, Error<GetBlueprintCatalogServiceReadmeError>> {
+) -> Result<models::BlueprintReadmeResponse, Error<GetBlueprintCatalogServiceReadmeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
     let p_path_provider = provider;
@@ -148,8 +151,8 @@ pub async fn get_blueprint_catalog_service_readme(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Ok(content),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `String`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BlueprintReadmeResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BlueprintReadmeResponse`")))),
         }
     } else {
         let content = resp.text().await?;

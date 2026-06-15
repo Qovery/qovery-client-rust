@@ -12,21 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct BlueprintVariableRequest {
+pub struct BlueprintUpdateRemovedValue {
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "value")]
-    pub value: String,
-    #[serde(rename = "is_secret", skip_serializing_if = "Option::is_none")]
-    pub is_secret: Option<bool>,
 }
 
-impl BlueprintVariableRequest {
-    pub fn new(name: String, value: String) -> BlueprintVariableRequest {
-        BlueprintVariableRequest {
-            name,
-            value,
-            is_secret: None,
-        }
+impl BlueprintUpdateRemovedValue {
+    pub fn new(name: String) -> BlueprintUpdateRemovedValue {
+        BlueprintUpdateRemovedValue { name }
     }
 }

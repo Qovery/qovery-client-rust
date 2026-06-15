@@ -1,13 +1,13 @@
-# BlueprintManifestContextVariableField
+# BlueprintUpdateUpdatedValue
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **Kind** |  (enum: contextVariable) | 
 **name** | **String** |  | 
-**source** | Option<**String**> | Origin of the auto-sourced value (e.g. cluster.region) | [optional]
-**value** | Option<**String**> | Resolved value of the context variable at the time of the request | [optional]
+**current_default_value** | Option<**String**> |  | [optional]
+**new_default_value** | Option<**String**> |  | [optional]
+**current_value** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

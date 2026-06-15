@@ -121,8 +121,10 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**organization_download_all_invoices**](docs/BillingApi.md#organization_download_all_invoices) | **POST** /organization/{organizationId}/downloadInvoices | Download all invoices
 *BlueprintCatalogApi* | [**get_blueprint_catalog_service_manifest**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_manifest) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest | Get the input fields to display for a blueprint catalog service
 *BlueprintCatalogApi* | [**get_blueprint_catalog_service_readme**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_readme) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
+*BlueprintMainCallsApi* | [**check_blueprint_update**](docs/BlueprintMainCallsApi.md#check_blueprint_update) | **GET** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
 *BlueprintMainCallsApi* | [**create_blueprint**](docs/BlueprintMainCallsApi.md#create_blueprint) | **POST** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+*BlueprintMainCallsApi* | [**preview_blueprint_update**](docs/BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *CloudProviderApi* | [**list_aws_features**](docs/CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**list_aws_instance_type**](docs/CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
 *CloudProviderApi* | [**list_aws_managed_database_instance_type**](docs/CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
@@ -653,7 +655,15 @@ Class | Method | HTTP request | Description
  - [BlueprintManifestContextVariableField](docs/BlueprintManifestContextVariableField.md)
  - [BlueprintManifestFieldType](docs/BlueprintManifestFieldType.md)
  - [BlueprintManifestVariableField](docs/BlueprintManifestVariableField.md)
+ - [BlueprintReadmeResponse](docs/BlueprintReadmeResponse.md)
  - [BlueprintResponse](docs/BlueprintResponse.md)
+ - [BlueprintUpdateNewOptionalValue](docs/BlueprintUpdateNewOptionalValue.md)
+ - [BlueprintUpdateNewRequiredValue](docs/BlueprintUpdateNewRequiredValue.md)
+ - [BlueprintUpdatePreviewRequest](docs/BlueprintUpdatePreviewRequest.md)
+ - [BlueprintUpdatePreviewResponse](docs/BlueprintUpdatePreviewResponse.md)
+ - [BlueprintUpdateRemovedValue](docs/BlueprintUpdateRemovedValue.md)
+ - [BlueprintUpdateResponse](docs/BlueprintUpdateResponse.md)
+ - [BlueprintUpdateUpdatedValue](docs/BlueprintUpdateUpdatedValue.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)

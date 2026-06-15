@@ -16,11 +16,11 @@ pub struct BlueprintResponse {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     /// URL to the blueprint catalog entry
-    #[serde(rename = "catalogUrl")]
+    #[serde(rename = "catalog_url")]
     pub catalog_url: String,
     #[serde(rename = "tag")]
     pub tag: String,
-    #[serde(rename = "environmentId")]
+    #[serde(rename = "environment_id")]
     pub environment_id: uuid::Uuid,
 }
 

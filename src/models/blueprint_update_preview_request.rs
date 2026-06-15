@@ -12,19 +12,24 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct BlueprintCreateRequest {
+pub struct BlueprintUpdatePreviewRequest {
     /// Display name for the service
     #[serde(rename = "name")]
     pub name: String,
-    /// Catalog tag identifying the blueprint version
+    /// Catalog tag identifying the target blueprint version
     #[serde(rename = "tag")]
     pub tag: String,
     /// Icon URL for the service
     #[serde(rename = "icon")]
     pub icon: String,
-    /// Variable overrides for the blueprint
-    #[serde(rename = "variables", skip_serializing_if = "Option::is_none")]
-    pub variables: Option<Vec<models::BlueprintVariableRequest>>,
+    /// Variable overrides to apply in the preview
+    #[serde(
+        rename = "variables",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub variables: Option<Option<Vec<models::BlueprintVariableRequest>>>,
     /// Partial spec overrides merged on top of the blueprint manifest
     #[serde(
         rename = "spec_overrides",
@@ -35,9 +40,9 @@ pub struct BlueprintCreateRequest {
     pub spec_overrides: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
 }
 
-impl BlueprintCreateRequest {
-    pub fn new(name: String, tag: String, icon: String) -> BlueprintCreateRequest {
-        BlueprintCreateRequest {
+impl BlueprintUpdatePreviewRequest {
+    pub fn new(name: String, tag: String, icon: String) -> BlueprintUpdatePreviewRequest {
+        BlueprintUpdatePreviewRequest {
             name,
             tag,
             icon,

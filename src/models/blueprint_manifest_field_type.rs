@@ -16,6 +16,30 @@ use serde::{Deserialize, Serialize};
 pub struct BlueprintManifestFieldType {
     #[serde(rename = "type")]
     pub r#type: Type,
+    /// Regex pattern, only present for string fields
+    #[serde(
+        rename = "pattern",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub pattern: Option<Option<String>>,
+    /// Minimum length, only present for string fields
+    #[serde(
+        rename = "min_length",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub min_length: Option<Option<i64>>,
+    /// Maximum length, only present for string fields
+    #[serde(
+        rename = "max_length",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub max_length: Option<Option<i64>>,
     /// Lower bound, only present for number fields
     #[serde(
         rename = "min",
@@ -39,6 +63,9 @@ impl BlueprintManifestFieldType {
     pub fn new(r#type: Type) -> BlueprintManifestFieldType {
         BlueprintManifestFieldType {
             r#type,
+            pattern: None,
+            min_length: None,
+            max_length: None,
             min: None,
             max: None,
         }
