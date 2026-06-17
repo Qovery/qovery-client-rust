@@ -125,6 +125,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsApi* | [**create_blueprint**](docs/BlueprintMainCallsApi.md#create_blueprint) | **POST** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *BlueprintMainCallsApi* | [**preview_blueprint_update**](docs/BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
+*BlueprintMainCallsApi* | [**update_blueprint**](docs/BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
 *CloudProviderApi* | [**list_aws_features**](docs/CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**list_aws_instance_type**](docs/CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
 *CloudProviderApi* | [**list_aws_managed_database_instance_type**](docs/CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
@@ -662,8 +663,10 @@ Class | Method | HTTP request | Description
  - [BlueprintUpdatePreviewRequest](docs/BlueprintUpdatePreviewRequest.md)
  - [BlueprintUpdatePreviewResponse](docs/BlueprintUpdatePreviewResponse.md)
  - [BlueprintUpdateRemovedValue](docs/BlueprintUpdateRemovedValue.md)
+ - [BlueprintUpdateRequest](docs/BlueprintUpdateRequest.md)
  - [BlueprintUpdateResponse](docs/BlueprintUpdateResponse.md)
  - [BlueprintUpdateUpdatedValue](docs/BlueprintUpdateUpdatedValue.md)
+ - [BlueprintUpdateVariableValue](docs/BlueprintUpdateVariableValue.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)

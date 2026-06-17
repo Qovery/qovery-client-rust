@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct BlueprintUpdatePreviewRequest {
+pub struct BlueprintUpdateRequest {
     /// Display name for the service
     #[serde(rename = "name")]
     pub name: String,
@@ -35,9 +35,9 @@ pub struct BlueprintUpdatePreviewRequest {
     pub spec_overrides: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
 }
 
-impl BlueprintUpdatePreviewRequest {
-    pub fn new(name: String, tag: String, icon: String) -> BlueprintUpdatePreviewRequest {
-        BlueprintUpdatePreviewRequest {
+impl BlueprintUpdateRequest {
+    pub fn new(name: String, tag: String, icon: String) -> BlueprintUpdateRequest {
+        BlueprintUpdateRequest {
             name,
             tag,
             icon,

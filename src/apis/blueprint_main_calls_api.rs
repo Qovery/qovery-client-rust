@@ -61,6 +61,17 @@ pub enum PreviewBlueprintUpdateError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`update_blueprint`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UpdateBlueprintError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// Returns the update availability for a deployed blueprint service, including the latest tag, and a diff of variables that are new, changed, or removed.
 pub async fn check_blueprint_update(
     configuration: &configuration::Configuration,
@@ -248,7 +259,7 @@ pub async fn get_blueprint_catalog(
     }
 }
 
-/// Dry-runs a blueprint update by applying the given variables and spec overrides without persisting any changes. Returns a preview ID and the resolved service type.
+/// Dry-runs a blueprint update without persisting any changes. Returns a preview ID and the resolved service type. Both `variables` and `spec_overrides` follow RFC 7396 patch semantics.
 pub async fn preview_blueprint_update(
     configuration: &configuration::Configuration,
     blueprint_id: &str,
@@ -304,6 +315,70 @@ pub async fn preview_blueprint_update(
     } else {
         let content = resp.text().await?;
         let entity: Option<PreviewBlueprintUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Persists new values for a deployed blueprint service. Intended to be called after reviewing the diff returned by GET /blueprint/{blueprintId}/update. `variables` and `spec_overrides` follow JSON Merge Patch (RFC 7396) semantics: non-null value on a key upserts it, null value removes it, absent keys are left untouched, and passing null for the whole field leaves all existing values unchanged. **Note:** `name`, `tag`, and `icon` are required on every call.
+pub async fn update_blueprint(
+    configuration: &configuration::Configuration,
+    blueprint_id: &str,
+    blueprint_update_request: models::BlueprintUpdateRequest,
+) -> Result<models::BlueprintResponse, Error<UpdateBlueprintError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_blueprint_id = blueprint_id;
+    let p_body_blueprint_update_request = blueprint_update_request;
+
+    let uri_str = format!(
+        "{}/blueprint/{blueprintId}",
+        configuration.base_path,
+        blueprintId = crate::apis::urlencode(p_path_blueprint_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_blueprint_update_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BlueprintResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BlueprintResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<UpdateBlueprintError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

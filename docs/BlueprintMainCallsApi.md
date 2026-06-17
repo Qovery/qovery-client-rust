@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_blueprint**](BlueprintMainCallsApi.md#create_blueprint) | **POST** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 [**get_blueprint_catalog**](BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 [**preview_blueprint_update**](BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
+[**update_blueprint**](BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
 
 
 
@@ -108,7 +109,7 @@ Name | Type | Description  | Required | Notes
 > models::BlueprintUpdatePreviewResponse preview_blueprint_update(blueprint_id, blueprint_update_preview_request)
 Preview a blueprint update
 
-Dry-runs a blueprint update by applying the given variables and spec overrides without persisting any changes. Returns a preview ID and the resolved service type.
+Dry-runs a blueprint update without persisting any changes. Returns a preview ID and the resolved service type. Both `variables` and `spec_overrides` follow RFC 7396 patch semantics.
 
 ### Parameters
 
@@ -121,6 +122,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::BlueprintUpdatePreviewResponse**](BlueprintUpdatePreviewResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_blueprint
+
+> models::BlueprintResponse update_blueprint(blueprint_id, blueprint_update_request)
+Update a blueprint service
+
+Persists new values for a deployed blueprint service. Intended to be called after reviewing the diff returned by GET /blueprint/{blueprintId}/update. `variables` and `spec_overrides` follow JSON Merge Patch (RFC 7396) semantics: non-null value on a key upserts it, null value removes it, absent keys are left untouched, and passing null for the whole field leaves all existing values unchanged. **Note:** `name`, `tag`, and `icon` are required on every call.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
+**blueprint_update_request** | [**BlueprintUpdateRequest**](BlueprintUpdateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::BlueprintResponse**](BlueprintResponse.md)
 
 ### Authorization
 

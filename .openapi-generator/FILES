@@ -129,8 +129,10 @@ docs/BlueprintUpdateNewRequiredValue.md
 docs/BlueprintUpdatePreviewRequest.md
 docs/BlueprintUpdatePreviewResponse.md
 docs/BlueprintUpdateRemovedValue.md
+docs/BlueprintUpdateRequest.md
 docs/BlueprintUpdateResponse.md
 docs/BlueprintUpdateUpdatedValue.md
+docs/BlueprintUpdateVariableValue.md
 docs/BlueprintVariableRequest.md
 docs/Budget.md
 docs/BuildModeEnum.md
@@ -1077,8 +1079,10 @@ src/models/blueprint_update_new_required_value.rs
 src/models/blueprint_update_preview_request.rs
 src/models/blueprint_update_preview_response.rs
 src/models/blueprint_update_removed_value.rs
+src/models/blueprint_update_request.rs
 src/models/blueprint_update_response.rs
 src/models/blueprint_update_updated_value.rs
+src/models/blueprint_update_variable_value.rs
 src/models/blueprint_variable_request.rs
 src/models/budget.rs
 src/models/build_mode_enum.rs

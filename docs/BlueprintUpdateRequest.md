@@ -1,4 +1,4 @@
-# BlueprintUpdatePreviewRequest
+# BlueprintUpdateRequest
 
 ## Properties
 
