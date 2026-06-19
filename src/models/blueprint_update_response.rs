@@ -32,6 +32,8 @@ pub struct BlueprintUpdateResponse {
     /// Variables that no longer exist in the latest version
     #[serde(rename = "removed_values")]
     pub removed_values: Vec<models::BlueprintUpdateRemovedValue>,
+    #[serde(rename = "engine_diff")]
+    pub engine_diff: models::BlueprintUpdateEngineDiff,
 }
 
 impl BlueprintUpdateResponse {
@@ -43,6 +45,7 @@ impl BlueprintUpdateResponse {
         now_required_values: Vec<models::BlueprintUpdateNewRequiredValue>,
         updated_values: Vec<models::BlueprintUpdateUpdatedValue>,
         removed_values: Vec<models::BlueprintUpdateRemovedValue>,
+        engine_diff: models::BlueprintUpdateEngineDiff,
     ) -> BlueprintUpdateResponse {
         BlueprintUpdateResponse {
             is_up_to_date,
@@ -52,6 +55,7 @@ impl BlueprintUpdateResponse {
             now_required_values,
             updated_values,
             removed_values,
+            engine_diff,
         }
     }
 }

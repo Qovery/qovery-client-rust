@@ -13,14 +13,14 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "kind")]
-pub enum GetBlueprintCatalogServiceManifest200ResponseResultsInner {
+pub enum BlueprintManifestResponseResultsInner {
     #[serde(rename = "variable")]
     Variable(models::BlueprintManifestVariableField),
     #[serde(rename = "contextVariable")]
     ContextVariable(models::BlueprintManifestContextVariableField),
 }
 
-impl Default for GetBlueprintCatalogServiceManifest200ResponseResultsInner {
+impl Default for BlueprintManifestResponseResultsInner {
     fn default() -> Self {
         Self::Variable(Default::default())
     }

@@ -1,4 +1,4 @@
-# GetBlueprintCatalogServiceManifest200ResponseResultsInner
+# BlueprintManifestEngineSpec
 
 ## Enum Variants
 

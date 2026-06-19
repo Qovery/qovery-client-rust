@@ -263,11 +263,11 @@ pub async fn get_blueprint_catalog(
 pub async fn preview_blueprint_update(
     configuration: &configuration::Configuration,
     blueprint_id: &str,
-    blueprint_update_preview_request: models::BlueprintUpdatePreviewRequest,
+    blueprint_update_request: models::BlueprintUpdateRequest,
 ) -> Result<models::BlueprintUpdatePreviewResponse, Error<PreviewBlueprintUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_blueprint_id = blueprint_id;
-    let p_body_blueprint_update_preview_request = blueprint_update_preview_request;
+    let p_body_blueprint_update_request = blueprint_update_request;
 
     let uri_str = format!(
         "{}/blueprint/{blueprintId}/update/preview",
@@ -292,7 +292,7 @@ pub async fn preview_blueprint_update(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body_blueprint_update_preview_request);
+    req_builder = req_builder.json(&p_body_blueprint_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

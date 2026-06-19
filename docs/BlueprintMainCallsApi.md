@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## preview_blueprint_update
 
-> models::BlueprintUpdatePreviewResponse preview_blueprint_update(blueprint_id, blueprint_update_preview_request)
+> models::BlueprintUpdatePreviewResponse preview_blueprint_update(blueprint_id, blueprint_update_request)
 Preview a blueprint update
 
 Dry-runs a blueprint update without persisting any changes. Returns a preview ID and the resolved service type. Both `variables` and `spec_overrides` follow RFC 7396 patch semantics.
@@ -117,7 +117,7 @@ Dry-runs a blueprint update without persisting any changes. Returns a preview ID
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
-**blueprint_update_preview_request** | [**BlueprintUpdatePreviewRequest**](BlueprintUpdatePreviewRequest.md) |  | [required] |
+**blueprint_update_request** | [**BlueprintUpdateRequest**](BlueprintUpdateRequest.md) |  | [required] |
 
 ### Return type
 
