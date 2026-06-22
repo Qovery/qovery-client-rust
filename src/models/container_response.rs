@@ -62,6 +62,12 @@ pub struct ContainerResponse {
     pub memory: i32,
     #[serde(rename = "gpu")]
     pub gpu: i32,
+    /// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
+    #[serde(
+        rename = "ephemeral_storage_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ephemeral_storage_in_gib: Option<i32>,
     /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
     #[serde(rename = "min_running_instances")]
     pub min_running_instances: i32,
@@ -136,6 +142,7 @@ impl ContainerResponse {
             cpu,
             memory,
             gpu,
+            ephemeral_storage_in_gib: None,
             min_running_instances,
             max_running_instances,
             healthchecks,

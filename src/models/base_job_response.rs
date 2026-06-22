@@ -43,6 +43,12 @@ pub struct BaseJobResponse {
     pub memory: i32,
     #[serde(rename = "gpu")]
     pub gpu: i32,
+    /// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
+    #[serde(
+        rename = "ephemeral_storage_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ephemeral_storage_in_gib: Option<i32>,
     /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
     #[serde(rename = "max_nb_restart", skip_serializing_if = "Option::is_none")]
     pub max_nb_restart: Option<i32>,
@@ -108,6 +114,7 @@ impl BaseJobResponse {
             cpu,
             memory,
             gpu,
+            ephemeral_storage_in_gib: None,
             max_nb_restart: None,
             max_duration_seconds: None,
             auto_preview,

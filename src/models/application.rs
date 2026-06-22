@@ -57,6 +57,12 @@ pub struct Application {
     pub memory: Option<i32>,
     #[serde(rename = "gpu", skip_serializing_if = "Option::is_none")]
     pub gpu: Option<i32>,
+    /// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
+    #[serde(
+        rename = "ephemeral_storage_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ephemeral_storage_in_gib: Option<i32>,
     /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
     #[serde(
         rename = "min_running_instances",
@@ -135,6 +141,7 @@ impl Application {
             cpu: None,
             memory: None,
             gpu: None,
+            ephemeral_storage_in_gib: None,
             min_running_instances: None,
             max_running_instances: None,
             healthchecks,
