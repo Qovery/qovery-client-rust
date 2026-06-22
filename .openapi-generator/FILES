@@ -136,6 +136,7 @@ docs/BlueprintManifestVariableField.md
 docs/BlueprintManifestVersionBlock.md
 docs/BlueprintReadmeResponse.md
 docs/BlueprintResponse.md
+docs/BlueprintSpecOverrides.md
 docs/BlueprintUpdateEngineDiff.md
 docs/BlueprintUpdateNewOptionalValue.md
 docs/BlueprintUpdateNewRequiredValue.md
@@ -1096,6 +1097,7 @@ src/models/blueprint_manifest_variable_field.rs
 src/models/blueprint_manifest_version_block.rs
 src/models/blueprint_readme_response.rs
 src/models/blueprint_response.rs
+src/models/blueprint_spec_overrides.rs
 src/models/blueprint_update_engine_diff.rs
 src/models/blueprint_update_new_optional_value.rs
 src/models/blueprint_update_new_required_value.rs

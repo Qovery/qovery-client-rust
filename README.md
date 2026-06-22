@@ -670,6 +670,7 @@ Class | Method | HTTP request | Description
  - [BlueprintManifestVersionBlock](docs/BlueprintManifestVersionBlock.md)
  - [BlueprintReadmeResponse](docs/BlueprintReadmeResponse.md)
  - [BlueprintResponse](docs/BlueprintResponse.md)
+ - [BlueprintSpecOverrides](docs/BlueprintSpecOverrides.md)
  - [BlueprintUpdateEngineDiff](docs/BlueprintUpdateEngineDiff.md)
  - [BlueprintUpdateNewOptionalValue](docs/BlueprintUpdateNewOptionalValue.md)
  - [BlueprintUpdateNewRequiredValue](docs/BlueprintUpdateNewRequiredValue.md)

@@ -25,14 +25,14 @@ pub struct BlueprintUpdateRequest {
     /// RFC 7396 patch map keyed by variable name. Non-null value upserts the variable; null value removes it. Absent keys are left untouched. Omitting the field entirely is equivalent to an empty map — no variables are modified.
     #[serde(rename = "variables", skip_serializing_if = "Option::is_none")]
     pub variables: Option<std::collections::HashMap<String, models::BlueprintUpdateVariableValue>>,
-    /// JSON Merge Patch (RFC 7396) applied to the stored spec_overrides. Keys with a non-null value are upserted; keys with a null value are removed. Pass null or omit the field to leave all existing overrides unchanged.
+    /// JSON Merge Patch (RFC 7396) applied to the stored spec_overrides (see `BlueprintSpecOverrides` for the list of valid fields). A non-null field value upserts the override; a null value removes it. Pass null or omit the field entirely to leave all existing overrides unchanged.
     #[serde(
         rename = "spec_overrides",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub spec_overrides: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    pub spec_overrides: Option<Option<models::BlueprintSpecOverrides>>,
 }
 
 impl BlueprintUpdateRequest {

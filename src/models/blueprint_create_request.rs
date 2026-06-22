@@ -25,14 +25,8 @@ pub struct BlueprintCreateRequest {
     /// Variable overrides for the blueprint
     #[serde(rename = "variables", skip_serializing_if = "Option::is_none")]
     pub variables: Option<Vec<models::BlueprintVariableRequest>>,
-    /// Partial spec overrides merged on top of the blueprint manifest
-    #[serde(
-        rename = "spec_overrides",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub spec_overrides: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    #[serde(rename = "spec_overrides", skip_serializing_if = "Option::is_none")]
+    pub spec_overrides: Option<models::BlueprintSpecOverrides>,
 }
 
 impl BlueprintCreateRequest {

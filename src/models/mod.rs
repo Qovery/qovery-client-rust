@@ -228,6 +228,8 @@ pub mod blueprint_readme_response;
 pub use self::blueprint_readme_response::BlueprintReadmeResponse;
 pub mod blueprint_response;
 pub use self::blueprint_response::BlueprintResponse;
+pub mod blueprint_spec_overrides;
+pub use self::blueprint_spec_overrides::BlueprintSpecOverrides;
 pub mod blueprint_update_engine_diff;
 pub use self::blueprint_update_engine_diff::BlueprintUpdateEngineDiff;
 pub mod blueprint_update_new_optional_value;
