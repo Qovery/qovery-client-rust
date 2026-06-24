@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**edit_cluster_kubeconfig**](ClustersApi.md#edit_cluster_kubeconfig) | **PUT** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 [**edit_routing_table**](ClustersApi.md#edit_routing_table) | **PUT** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**get_cluster_advanced_settings**](ClustersApi.md#get_cluster_advanced_settings) | **GET** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+[**get_cluster_analysis**](ClustersApi.md#get_cluster_analysis) | **GET** /clusters/{clusterId}/analysis/{analysisId} | Get cluster analysis
 [**get_cluster_dns_provider**](ClustersApi.md#get_cluster_dns_provider) | **GET** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 [**get_cluster_kubeconfig**](ClustersApi.md#get_cluster_kubeconfig) | **GET** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**get_cluster_kubernetes_events**](ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
@@ -27,11 +28,14 @@ Method | HTTP request | Description
 [**get_organization_cloud_provider_info**](ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**get_organization_cluster_status**](ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**get_routing_table**](ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
+[**list_cluster_analyses**](ClustersApi.md#list_cluster_analyses) | **GET** /clusters/{clusterId}/analysis | List cluster analyses
+[**list_cluster_analysis_logs**](ClustersApi.md#list_cluster_analysis_logs) | **GET** /clusters/{clusterId}/analysis/{analysisId}/logs | List cluster analysis logs
 [**list_cluster_logs**](ClustersApi.md#list_cluster_logs) | **GET** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
 [**list_eks_anywhere_commits**](ClustersApi.md#list_eks_anywhere_commits) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 [**list_organization_cluster**](ClustersApi.md#list_organization_cluster) | **GET** /organization/{organizationId}/cluster | List organization clusters
 [**lock_cluster**](ClustersApi.md#lock_cluster) | **POST** /cluster/{clusterId}/lock | Lock Cluster
 [**specify_cluster_cloud_provider_info**](ClustersApi.md#specify_cluster_cloud_provider_info) | **POST** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+[**start_cluster_analysis**](ClustersApi.md#start_cluster_analysis) | **POST** /clusters/{clusterId}/analysis | Start cluster analysis
 [**stop_cluster**](ClustersApi.md#stop_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 [**unlock_cluster**](ClustersApi.md#unlock_cluster) | **DELETE** /cluster/{clusterId}/lock | Unlock Cluster
 [**update_eks_anywhere_commit**](ClustersApi.md#update_eks_anywhere_commit) | **PUT** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
@@ -304,6 +308,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_cluster_analysis
+
+> models::ClusterAnalysisResponse get_cluster_analysis(cluster_id, analysis_id)
+Get cluster analysis
+
+Returns metadata and status for one cluster analysis execution.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**analysis_id** | **uuid::Uuid** | Cluster analysis ID | [required] |
+
+### Return type
+
+[**models::ClusterAnalysisResponse**](ClusterAnalysisResponse.md)
 
 ### Authorization
 
@@ -762,6 +797,67 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## list_cluster_analyses
+
+> models::ClusterAnalysisResponseList list_cluster_analyses(cluster_id)
+List cluster analyses
+
+Lists previous analysis executions for the cluster.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+
+### Return type
+
+[**models::ClusterAnalysisResponseList**](ClusterAnalysisResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_cluster_analysis_logs
+
+> models::ClusterAnalysisLogResponseList list_cluster_analysis_logs(cluster_id, analysis_id)
+List cluster analysis logs
+
+Returns the persisted cluster analysis report/log lines in order.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**analysis_id** | **uuid::Uuid** | Cluster analysis ID | [required] |
+
+### Return type
+
+[**models::ClusterAnalysisLogResponseList**](ClusterAnalysisLogResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## list_cluster_logs
 
 > models::ClusterLogsResponseList list_cluster_logs(organization_id, cluster_id)
@@ -900,6 +996,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ClusterCloudProviderInfo**](ClusterCloudProviderInfo.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## start_cluster_analysis
+
+> models::ClusterAnalysisResponse start_cluster_analysis(cluster_id, cluster_analysis_request)
+Start cluster analysis
+
+Starts a read-only analysis for the cluster. The result and logs can be retrieved later from the cluster analysis endpoints.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**cluster_analysis_request** | [**ClusterAnalysisRequest**](ClusterAnalysisRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ClusterAnalysisResponse**](ClusterAnalysisResponse.md)
 
 ### Authorization
 

@@ -109,6 +109,16 @@ pub enum GetClusterAdvancedSettingsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_cluster_analysis`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetClusterAnalysisError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_cluster_dns_provider`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -240,6 +250,26 @@ pub enum GetRoutingTableError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`list_cluster_analyses`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListClusterAnalysesError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_cluster_analysis_logs`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListClusterAnalysisLogsError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_cluster_logs`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -288,6 +318,18 @@ pub enum SpecifyClusterCloudProviderInfoError {
     Status401(),
     Status403(),
     Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`start_cluster_analysis`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum StartClusterAnalysisError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
     UnknownValue(serde_json::Value),
 }
 
@@ -897,6 +939,68 @@ pub async fn get_cluster_advanced_settings(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetClusterAdvancedSettingsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns metadata and status for one cluster analysis execution.
+pub async fn get_cluster_analysis(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+    analysis_id: &str,
+) -> Result<models::ClusterAnalysisResponse, Error<GetClusterAnalysisError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_analysis_id = analysis_id;
+
+    let uri_str = format!(
+        "{}/clusters/{clusterId}/analysis/{analysisId}",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id),
+        analysisId = crate::apis::urlencode(p_path_analysis_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterAnalysisResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterAnalysisResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetClusterAnalysisError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -1893,6 +1997,127 @@ pub async fn get_routing_table(
     }
 }
 
+/// Lists previous analysis executions for the cluster.
+pub async fn list_cluster_analyses(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+) -> Result<models::ClusterAnalysisResponseList, Error<ListClusterAnalysesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+
+    let uri_str = format!(
+        "{}/clusters/{clusterId}/analysis",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterAnalysisResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterAnalysisResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListClusterAnalysesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns the persisted cluster analysis report/log lines in order.
+pub async fn list_cluster_analysis_logs(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+    analysis_id: &str,
+) -> Result<models::ClusterAnalysisLogResponseList, Error<ListClusterAnalysisLogsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_analysis_id = analysis_id;
+
+    let uri_str = format!(
+        "{}/clusters/{clusterId}/analysis/{analysisId}/logs",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id),
+        analysisId = crate::apis::urlencode(p_path_analysis_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterAnalysisLogResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterAnalysisLogResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListClusterAnalysisLogsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
 /// List Cluster Logs
 pub async fn list_cluster_logs(
     configuration: &configuration::Configuration,
@@ -2198,6 +2423,70 @@ pub async fn specify_cluster_cloud_provider_info(
         let content = resp.text().await?;
         let entity: Option<SpecifyClusterCloudProviderInfoError> =
             serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Starts a read-only analysis for the cluster. The result and logs can be retrieved later from the cluster analysis endpoints.
+pub async fn start_cluster_analysis(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+    cluster_analysis_request: models::ClusterAnalysisRequest,
+) -> Result<models::ClusterAnalysisResponse, Error<StartClusterAnalysisError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_analysis_request = cluster_analysis_request;
+
+    let uri_str = format!(
+        "{}/clusters/{clusterId}/analysis",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_cluster_analysis_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterAnalysisResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterAnalysisResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<StartClusterAnalysisError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

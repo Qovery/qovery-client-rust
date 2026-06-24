@@ -178,6 +178,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**edit_cluster_kubeconfig**](docs/ClustersApi.md#edit_cluster_kubeconfig) | **PUT** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 *ClustersApi* | [**edit_routing_table**](docs/ClustersApi.md#edit_routing_table) | **PUT** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 *ClustersApi* | [**get_cluster_advanced_settings**](docs/ClustersApi.md#get_cluster_advanced_settings) | **GET** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+*ClustersApi* | [**get_cluster_analysis**](docs/ClustersApi.md#get_cluster_analysis) | **GET** /clusters/{clusterId}/analysis/{analysisId} | Get cluster analysis
 *ClustersApi* | [**get_cluster_dns_provider**](docs/ClustersApi.md#get_cluster_dns_provider) | **GET** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 *ClustersApi* | [**get_cluster_kubeconfig**](docs/ClustersApi.md#get_cluster_kubeconfig) | **GET** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 *ClustersApi* | [**get_cluster_kubernetes_events**](docs/ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
@@ -192,11 +193,14 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_organization_cloud_provider_info**](docs/ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 *ClustersApi* | [**get_organization_cluster_status**](docs/ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersApi* | [**get_routing_table**](docs/ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
+*ClustersApi* | [**list_cluster_analyses**](docs/ClustersApi.md#list_cluster_analyses) | **GET** /clusters/{clusterId}/analysis | List cluster analyses
+*ClustersApi* | [**list_cluster_analysis_logs**](docs/ClustersApi.md#list_cluster_analysis_logs) | **GET** /clusters/{clusterId}/analysis/{analysisId}/logs | List cluster analysis logs
 *ClustersApi* | [**list_cluster_logs**](docs/ClustersApi.md#list_cluster_logs) | **GET** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
 *ClustersApi* | [**list_eks_anywhere_commits**](docs/ClustersApi.md#list_eks_anywhere_commits) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 *ClustersApi* | [**list_organization_cluster**](docs/ClustersApi.md#list_organization_cluster) | **GET** /organization/{organizationId}/cluster | List organization clusters
 *ClustersApi* | [**lock_cluster**](docs/ClustersApi.md#lock_cluster) | **POST** /cluster/{clusterId}/lock | Lock Cluster
 *ClustersApi* | [**specify_cluster_cloud_provider_info**](docs/ClustersApi.md#specify_cluster_cloud_provider_info) | **POST** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+*ClustersApi* | [**start_cluster_analysis**](docs/ClustersApi.md#start_cluster_analysis) | **POST** /clusters/{clusterId}/analysis | Start cluster analysis
 *ClustersApi* | [**stop_cluster**](docs/ClustersApi.md#stop_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersApi* | [**unlock_cluster**](docs/ClustersApi.md#unlock_cluster) | **DELETE** /cluster/{clusterId}/lock | Unlock Cluster
 *ClustersApi* | [**update_eks_anywhere_commit**](docs/ClustersApi.md#update_eks_anywhere_commit) | **PUT** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
@@ -701,6 +705,14 @@ Class | Method | HTTP request | Description
  - [CloudflareDnsProviderResponse](docs/CloudflareDnsProviderResponse.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
+ - [ClusterAnalysisKind](docs/ClusterAnalysisKind.md)
+ - [ClusterAnalysisLogResponse](docs/ClusterAnalysisLogResponse.md)
+ - [ClusterAnalysisLogResponseList](docs/ClusterAnalysisLogResponseList.md)
+ - [ClusterAnalysisOutputFormat](docs/ClusterAnalysisOutputFormat.md)
+ - [ClusterAnalysisRequest](docs/ClusterAnalysisRequest.md)
+ - [ClusterAnalysisResponse](docs/ClusterAnalysisResponse.md)
+ - [ClusterAnalysisResponseList](docs/ClusterAnalysisResponseList.md)
+ - [ClusterAnalysisStatus](docs/ClusterAnalysisStatus.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
  - [ClusterCloudProviderInfoCredentials](docs/ClusterCloudProviderInfoCredentials.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
