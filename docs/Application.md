@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **memory** | Option<**i32**> | unit is MB. 1024 MB = 1GB | [optional]
 **gpu** | Option<**i32**> |  | [optional][default to 0]
 **ephemeral_storage_in_gib** | Option<**i32**> | Ephemeral storage of the service in GiB. When omitted, the platform default is used. | [optional]
+**cpu_architecture** | Option<[**models::CpuArchitectureEnum**](CpuArchitectureEnum.md)> | CPU architecture this service runs on. If null, the cluster default architecture is used. | [optional]
 **min_running_instances** | Option<**i32**> | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional][default to 1]
 **max_running_instances** | Option<**i32**> | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional][default to 1]
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 

@@ -54,6 +54,14 @@ pub struct JobRequest {
     pub port: Option<Option<i32>>,
     #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
     pub source: Option<models::JobRequestAllOfSource>,
+    /// CPU architecture to run this service on. If null, the cluster default architecture is used.
+    #[serde(
+        rename = "cpu_architecture",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cpu_architecture: Option<Option<models::CpuArchitectureEnum>>,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
     #[serde(rename = "schedule", skip_serializing_if = "Option::is_none")]
@@ -89,6 +97,7 @@ impl JobRequest {
             auto_preview: None,
             port: None,
             source: None,
+            cpu_architecture: None,
             healthchecks,
             schedule: None,
             auto_deploy: None,

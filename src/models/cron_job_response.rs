@@ -49,6 +49,14 @@ pub struct CronJobResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub ephemeral_storage_in_gib: Option<i32>,
+    /// CPU architecture this service runs on. If null, the cluster default architecture is used.
+    #[serde(
+        rename = "cpu_architecture",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cpu_architecture: Option<Option<models::CpuArchitectureEnum>>,
     /// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
     #[serde(rename = "max_nb_restart", skip_serializing_if = "Option::is_none")]
     pub max_nb_restart: Option<i32>,
@@ -128,6 +136,7 @@ impl CronJobResponse {
             memory,
             gpu,
             ephemeral_storage_in_gib: None,
+            cpu_architecture: None,
             max_nb_restart: None,
             max_duration_seconds: None,
             auto_preview,

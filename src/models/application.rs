@@ -63,6 +63,14 @@ pub struct Application {
         skip_serializing_if = "Option::is_none"
     )]
     pub ephemeral_storage_in_gib: Option<i32>,
+    /// CPU architecture this service runs on. If null, the cluster default architecture is used.
+    #[serde(
+        rename = "cpu_architecture",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cpu_architecture: Option<Option<models::CpuArchitectureEnum>>,
     /// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
     #[serde(
         rename = "min_running_instances",
@@ -142,6 +150,7 @@ impl Application {
             memory: None,
             gpu: None,
             ephemeral_storage_in_gib: None,
+            cpu_architecture: None,
             min_running_instances: None,
             max_running_instances: None,
             healthchecks,

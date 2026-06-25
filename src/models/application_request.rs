@@ -99,6 +99,14 @@ pub struct ApplicationRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub docker_target_build_stage: Option<Option<String>>,
+    /// CPU architecture to run this service on. If null, the cluster default architecture is used.
+    #[serde(
+        rename = "cpu_architecture",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub cpu_architecture: Option<Option<models::CpuArchitectureEnum>>,
     #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
 }
@@ -132,6 +140,7 @@ impl ApplicationRequest {
             labels_groups: None,
             icon_uri: None,
             docker_target_build_stage: None,
+            cpu_architecture: None,
             autoscaling: None,
         }
     }
