@@ -128,6 +128,16 @@ pub enum GetOrganizationGitTokenError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_organization_onboarding`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetOrganizationOnboardingError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_environments_by_organization_id`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -195,6 +205,17 @@ pub enum ListTfVarsFilesFromGitRepoError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ParseTerraformVariablesFromGitRepoError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`update_organization_onboarding`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UpdateOrganizationOnboardingError {
     Status400(),
     Status401(),
     Status403(),
@@ -862,6 +883,65 @@ pub async fn get_organization_git_token(
     }
 }
 
+/// Returns the onboarding status for the given organization and the use cases selected by the owner at sign-up.
+pub async fn get_organization_onboarding(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+) -> Result<models::OrganizationOnboardingResponse, Error<GetOrganizationOnboardingError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/onboarding",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationOnboardingResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationOnboardingResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetOrganizationOnboardingError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
 pub async fn list_environments_by_organization_id(
     configuration: &configuration::Configuration,
     organization_id: &str,
@@ -1348,6 +1428,70 @@ pub async fn parse_terraform_variables_from_git_repo(
         let content = resp.text().await?;
         let entity: Option<ParseTerraformVariablesFromGitRepoError> =
             serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Updates the onboarding status for the calling user's organization. Only the authenticated user's own sign-up record is updated.
+pub async fn update_organization_onboarding(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    organization_onboarding_patch_request: models::OrganizationOnboardingPatchRequest,
+) -> Result<models::OrganizationOnboardingResponse, Error<UpdateOrganizationOnboardingError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_body_organization_onboarding_patch_request = organization_onboarding_patch_request;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/onboarding",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_organization_onboarding_patch_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationOnboardingResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationOnboardingResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<UpdateOrganizationOnboardingError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

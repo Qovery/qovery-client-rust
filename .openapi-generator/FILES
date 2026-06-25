@@ -705,6 +705,9 @@ docs/OrganizationLabelsGroupCreateRequest.md
 docs/OrganizationLabelsGroupEnrichedResponse.md
 docs/OrganizationLabelsGroupResponse.md
 docs/OrganizationMainCallsApi.md
+docs/OrganizationOnboardingPatchRequest.md
+docs/OrganizationOnboardingResponse.md
+docs/OrganizationOnboardingStatusEnum.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
 docs/OrganizationWebhookApi.md
@@ -1615,6 +1618,9 @@ src/models/organization_labels_group_associated_items_response_list_results_inne
 src/models/organization_labels_group_create_request.rs
 src/models/organization_labels_group_enriched_response.rs
 src/models/organization_labels_group_response.rs
+src/models/organization_onboarding_patch_request.rs
+src/models/organization_onboarding_response.rs
+src/models/organization_onboarding_status_enum.rs
 src/models/organization_request.rs
 src/models/organization_response_list.rs
 src/models/organization_webhook_create_request.rs

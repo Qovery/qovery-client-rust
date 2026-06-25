@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**get_helm_repository_associated_services**](OrganizationMainCallsApi.md#get_helm_repository_associated_services) | **GET** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 [**get_organization**](OrganizationMainCallsApi.md#get_organization) | **GET** /organization/{organizationId} | Get organization by ID
 [**get_organization_git_token**](OrganizationMainCallsApi.md#get_organization_git_token) | **GET** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
+[**get_organization_onboarding**](OrganizationMainCallsApi.md#get_organization_onboarding) | **GET** /organization/{organizationId}/onboarding | Get the onboarding status of an organization
 [**list_environments_by_organization_id**](OrganizationMainCallsApi.md#list_environments_by_organization_id) | **GET** /organization/{organizationId}/environments | List Environments By OrganizationId
 [**list_organization**](OrganizationMainCallsApi.md#list_organization) | **GET** /organization | List user organizations
 [**list_organization_available_roles**](OrganizationMainCallsApi.md#list_organization_available_roles) | **GET** /organization/{organizationId}/availableRole | List organization available roles
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**list_services_by_organization_id**](OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
 [**list_tf_vars_files_from_git_repo**](OrganizationMainCallsApi.md#list_tf_vars_files_from_git_repo) | **POST** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 [**parse_terraform_variables_from_git_repo**](OrganizationMainCallsApi.md#parse_terraform_variables_from_git_repo) | **POST** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
+[**update_organization_onboarding**](OrganizationMainCallsApi.md#update_organization_onboarding) | **POST** /organization/{organizationId}/onboarding | Update the onboarding status of an organization
 
 
 
@@ -357,6 +359,36 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_organization_onboarding
+
+> models::OrganizationOnboardingResponse get_organization_onboarding(organization_id)
+Get the onboarding status of an organization
+
+Returns the onboarding status for the given organization and the use cases selected by the owner at sign-up.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+
+### Return type
+
+[**models::OrganizationOnboardingResponse**](OrganizationOnboardingResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## list_environments_by_organization_id
 
 > models::ListEnvironmentsByOrganizationId200Response list_environments_by_organization_id(organization_id)
@@ -576,6 +608,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ParseTerraformVariablesFromGitRepo200Response**](parseTerraformVariablesFromGitRepo_200_response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_organization_onboarding
+
+> models::OrganizationOnboardingResponse update_organization_onboarding(organization_id, organization_onboarding_patch_request)
+Update the onboarding status of an organization
+
+Updates the onboarding status for the calling user's organization. Only the authenticated user's own sign-up record is updated.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**organization_onboarding_patch_request** | [**OrganizationOnboardingPatchRequest**](OrganizationOnboardingPatchRequest.md) |  | [required] |
+
+### Return type
+
+[**models::OrganizationOnboardingResponse**](OrganizationOnboardingResponse.md)
 
 ### Authorization
 

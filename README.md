@@ -481,6 +481,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**get_helm_repository_associated_services**](docs/OrganizationMainCallsApi.md#get_helm_repository_associated_services) | **GET** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 *OrganizationMainCallsApi* | [**get_organization**](docs/OrganizationMainCallsApi.md#get_organization) | **GET** /organization/{organizationId} | Get organization by ID
 *OrganizationMainCallsApi* | [**get_organization_git_token**](docs/OrganizationMainCallsApi.md#get_organization_git_token) | **GET** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
+*OrganizationMainCallsApi* | [**get_organization_onboarding**](docs/OrganizationMainCallsApi.md#get_organization_onboarding) | **GET** /organization/{organizationId}/onboarding | Get the onboarding status of an organization
 *OrganizationMainCallsApi* | [**list_environments_by_organization_id**](docs/OrganizationMainCallsApi.md#list_environments_by_organization_id) | **GET** /organization/{organizationId}/environments | List Environments By OrganizationId
 *OrganizationMainCallsApi* | [**list_organization**](docs/OrganizationMainCallsApi.md#list_organization) | **GET** /organization | List user organizations
 *OrganizationMainCallsApi* | [**list_organization_available_roles**](docs/OrganizationMainCallsApi.md#list_organization_available_roles) | **GET** /organization/{organizationId}/availableRole | List organization available roles
@@ -489,6 +490,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**list_services_by_organization_id**](docs/OrganizationMainCallsApi.md#list_services_by_organization_id) | **GET** /organization/{organizationId}/services | List Services By OrganizationId
 *OrganizationMainCallsApi* | [**list_tf_vars_files_from_git_repo**](docs/OrganizationMainCallsApi.md#list_tf_vars_files_from_git_repo) | **POST** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 *OrganizationMainCallsApi* | [**parse_terraform_variables_from_git_repo**](docs/OrganizationMainCallsApi.md#parse_terraform_variables_from_git_repo) | **POST** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
+*OrganizationMainCallsApi* | [**update_organization_onboarding**](docs/OrganizationMainCallsApi.md#update_organization_onboarding) | **POST** /organization/{organizationId}/onboarding | Update the onboarding status of an organization
 *OrganizationWebhookApi* | [**create_organization_webhook**](docs/OrganizationWebhookApi.md#create_organization_webhook) | **POST** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookApi* | [**delete_organization_webhook**](docs/OrganizationWebhookApi.md#delete_organization_webhook) | **DELETE** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookApi* | [**edit_organization_webhook**](docs/OrganizationWebhookApi.md#edit_organization_webhook) | **PUT** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
@@ -1183,6 +1185,9 @@ Class | Method | HTTP request | Description
  - [OrganizationLabelsGroupCreateRequest](docs/OrganizationLabelsGroupCreateRequest.md)
  - [OrganizationLabelsGroupEnrichedResponse](docs/OrganizationLabelsGroupEnrichedResponse.md)
  - [OrganizationLabelsGroupResponse](docs/OrganizationLabelsGroupResponse.md)
+ - [OrganizationOnboardingPatchRequest](docs/OrganizationOnboardingPatchRequest.md)
+ - [OrganizationOnboardingResponse](docs/OrganizationOnboardingResponse.md)
+ - [OrganizationOnboardingStatusEnum](docs/OrganizationOnboardingStatusEnum.md)
  - [OrganizationRequest](docs/OrganizationRequest.md)
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OrganizationWebhookCreateRequest](docs/OrganizationWebhookCreateRequest.md)
