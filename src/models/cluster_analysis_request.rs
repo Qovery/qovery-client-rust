@@ -25,14 +25,9 @@ pub struct ClusterAnalysisRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub prometheus_url: Option<Option<String>>,
-    /// Optional history duration in hours for COST_RECOMMENDATION analysis.
-    #[serde(
-        rename = "history_duration_hours",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub history_duration_hours: Option<Option<i32>>,
+    /// Optional allowlisted KRR arguments for COST_RECOMMENDATION analysis. The engine validates and rejects unsupported or unsafe KRR flags.
+    #[serde(rename = "cmd_args", skip_serializing_if = "Option::is_none")]
+    pub cmd_args: Option<Vec<String>>,
     /// Optional target Kubernetes version for DEPRECATED_API_CHECK analysis.
     #[serde(
         rename = "target_kubernetes_version",
@@ -52,7 +47,7 @@ impl ClusterAnalysisRequest {
             kind,
             output_format,
             prometheus_url: None,
-            history_duration_hours: None,
+            cmd_args: None,
             target_kubernetes_version: None,
         }
     }
