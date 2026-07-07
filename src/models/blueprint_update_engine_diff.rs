@@ -15,13 +15,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BlueprintUpdateEngineDiff {
     #[serde(rename = "updated_values")]
-    pub updated_values: Vec<models::BlueprintUpdateUpdatedValue>,
+    pub updated_values: Vec<models::BlueprintUpdateEngineFieldChange>,
 }
 
 impl BlueprintUpdateEngineDiff {
     /// Catalog engine-block deltas between the current and latest blueprint tag.
     pub fn new(
-        updated_values: Vec<models::BlueprintUpdateUpdatedValue>,
+        updated_values: Vec<models::BlueprintUpdateEngineFieldChange>,
     ) -> BlueprintUpdateEngineDiff {
         BlueprintUpdateEngineDiff { updated_values }
     }

@@ -22,13 +22,32 @@ pub struct BlueprintUpdateNewOptionalValue {
         skip_serializing_if = "Option::is_none"
     )]
     pub default_value: Option<Option<String>>,
+    #[serde(rename = "type")]
+    pub r#type: models::BlueprintManifestFieldType,
+    /// Values the user may choose from. Null = unrestricted.
+    #[serde(
+        rename = "allowed_values",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub allowed_values: Option<Option<Vec<String>>>,
+    #[serde(rename = "is_secret")]
+    pub is_secret: bool,
 }
 
 impl BlueprintUpdateNewOptionalValue {
-    pub fn new(name: String) -> BlueprintUpdateNewOptionalValue {
+    pub fn new(
+        name: String,
+        r#type: models::BlueprintManifestFieldType,
+        is_secret: bool,
+    ) -> BlueprintUpdateNewOptionalValue {
         BlueprintUpdateNewOptionalValue {
             name,
             default_value: None,
+            r#type,
+            allowed_values: None,
+            is_secret,
         }
     }
 }

@@ -11,8 +11,9 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// BlueprintUpdateEngineFieldChange : A single engine-block field delta (e.g. version, cpu, ram). Not a manifest variable, so it carries no field type or constraints.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct BlueprintUpdateUpdatedValue {
+pub struct BlueprintUpdateEngineFieldChange {
     #[serde(rename = "name")]
     pub name: String,
     #[serde(
@@ -36,34 +37,16 @@ pub struct BlueprintUpdateUpdatedValue {
         skip_serializing_if = "Option::is_none"
     )]
     pub current_value: Option<Option<String>>,
-    #[serde(rename = "type")]
-    pub r#type: models::BlueprintManifestFieldType,
-    /// Values the user may choose from. Null = unrestricted.
-    #[serde(
-        rename = "allowed_values",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub allowed_values: Option<Option<Vec<String>>>,
-    #[serde(rename = "is_secret")]
-    pub is_secret: bool,
 }
 
-impl BlueprintUpdateUpdatedValue {
-    pub fn new(
-        name: String,
-        r#type: models::BlueprintManifestFieldType,
-        is_secret: bool,
-    ) -> BlueprintUpdateUpdatedValue {
-        BlueprintUpdateUpdatedValue {
+impl BlueprintUpdateEngineFieldChange {
+    /// A single engine-block field delta (e.g. version, cpu, ram). Not a manifest variable, so it carries no field type or constraints.
+    pub fn new(name: String) -> BlueprintUpdateEngineFieldChange {
+        BlueprintUpdateEngineFieldChange {
             name,
             current_default_value: None,
             new_default_value: None,
             current_value: None,
-            r#type,
-            allowed_values: None,
-            is_secret,
         }
     }
 }

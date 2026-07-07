@@ -232,6 +232,8 @@ pub mod blueprint_spec_overrides;
 pub use self::blueprint_spec_overrides::BlueprintSpecOverrides;
 pub mod blueprint_update_engine_diff;
 pub use self::blueprint_update_engine_diff::BlueprintUpdateEngineDiff;
+pub mod blueprint_update_engine_field_change;
+pub use self::blueprint_update_engine_field_change::BlueprintUpdateEngineFieldChange;
 pub mod blueprint_update_new_optional_value;
 pub use self::blueprint_update_new_optional_value::BlueprintUpdateNewOptionalValue;
 pub mod blueprint_update_new_required_value;

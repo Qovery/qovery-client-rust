@@ -15,10 +15,31 @@ use serde::{Deserialize, Serialize};
 pub struct BlueprintUpdateNewRequiredValue {
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "type")]
+    pub r#type: models::BlueprintManifestFieldType,
+    /// Values the user may choose from. Null = unrestricted.
+    #[serde(
+        rename = "allowed_values",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub allowed_values: Option<Option<Vec<String>>>,
+    #[serde(rename = "is_secret")]
+    pub is_secret: bool,
 }
 
 impl BlueprintUpdateNewRequiredValue {
-    pub fn new(name: String) -> BlueprintUpdateNewRequiredValue {
-        BlueprintUpdateNewRequiredValue { name }
+    pub fn new(
+        name: String,
+        r#type: models::BlueprintManifestFieldType,
+        is_secret: bool,
+    ) -> BlueprintUpdateNewRequiredValue {
+        BlueprintUpdateNewRequiredValue {
+            name,
+            r#type,
+            allowed_values: None,
+            is_secret,
+        }
     }
 }
