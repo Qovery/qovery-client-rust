@@ -33,6 +33,7 @@ pub enum CreateBlueprintError {
     Status401(),
     Status403(),
     Status404(),
+    Status409(),
     Status422(),
     Status502(),
     UnknownValue(serde_json::Value),

@@ -34,6 +34,9 @@ pub struct BlueprintUpdateResponse {
     pub removed_values: Vec<models::BlueprintUpdateRemovedValue>,
     #[serde(rename = "engine_diff")]
     pub engine_diff: models::BlueprintUpdateEngineDiff,
+    /// Major versions of the same blueprint newer than the service's current one (e.g. service on aws/postgres/16 while 17 and 18 exist). Empty when already on the latest major or when the current version is non-numeric.
+    #[serde(rename = "new_major_versions")]
+    pub new_major_versions: Vec<models::BlueprintUpdateNewMajorVersion>,
 }
 
 impl BlueprintUpdateResponse {
@@ -46,6 +49,7 @@ impl BlueprintUpdateResponse {
         updated_values: Vec<models::BlueprintUpdateUpdatedValue>,
         removed_values: Vec<models::BlueprintUpdateRemovedValue>,
         engine_diff: models::BlueprintUpdateEngineDiff,
+        new_major_versions: Vec<models::BlueprintUpdateNewMajorVersion>,
     ) -> BlueprintUpdateResponse {
         BlueprintUpdateResponse {
             is_up_to_date,
@@ -56,6 +60,7 @@ impl BlueprintUpdateResponse {
             updated_values,
             removed_values,
             engine_diff,
+            new_major_versions,
         }
     }
 }

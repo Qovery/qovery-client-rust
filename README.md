@@ -679,6 +679,7 @@ Class | Method | HTTP request | Description
  - [BlueprintSpecOverrides](docs/BlueprintSpecOverrides.md)
  - [BlueprintUpdateEngineDiff](docs/BlueprintUpdateEngineDiff.md)
  - [BlueprintUpdateEngineFieldChange](docs/BlueprintUpdateEngineFieldChange.md)
+ - [BlueprintUpdateNewMajorVersion](docs/BlueprintUpdateNewMajorVersion.md)
  - [BlueprintUpdateNewOptionalValue](docs/BlueprintUpdateNewOptionalValue.md)
  - [BlueprintUpdateNewRequiredValue](docs/BlueprintUpdateNewRequiredValue.md)
  - [BlueprintUpdatePreviewResponse](docs/BlueprintUpdatePreviewResponse.md)

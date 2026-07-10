@@ -139,6 +139,7 @@ docs/BlueprintResponse.md
 docs/BlueprintSpecOverrides.md
 docs/BlueprintUpdateEngineDiff.md
 docs/BlueprintUpdateEngineFieldChange.md
+docs/BlueprintUpdateNewMajorVersion.md
 docs/BlueprintUpdateNewOptionalValue.md
 docs/BlueprintUpdateNewRequiredValue.md
 docs/BlueprintUpdatePreviewResponse.md
@@ -1112,6 +1113,7 @@ src/models/blueprint_response.rs
 src/models/blueprint_spec_overrides.rs
 src/models/blueprint_update_engine_diff.rs
 src/models/blueprint_update_engine_field_change.rs
+src/models/blueprint_update_new_major_version.rs
 src/models/blueprint_update_new_optional_value.rs
 src/models/blueprint_update_new_required_value.rs
 src/models/blueprint_update_preview_response.rs
