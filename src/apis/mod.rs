@@ -192,6 +192,7 @@ pub mod organization_event_api;
 pub mod organization_labels_group_api;
 pub mod organization_main_calls_api;
 pub mod organization_webhook_api;
+pub mod platform_configuration_api;
 pub mod project_deployment_rule_api;
 pub mod project_environment_variable_api;
 pub mod project_main_calls_api;
