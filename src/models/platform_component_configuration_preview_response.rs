@@ -18,7 +18,7 @@ pub struct PlatformComponentConfigurationPreviewResponse {
     #[serde(rename = "componentKey")]
     pub component_key: String,
     #[serde(rename = "fields")]
-    pub fields: Vec<models::PlatformComponentConfigurationFieldResponse>,
+    pub fields: Vec<models::FieldSchemaResponse>,
     #[serde(rename = "requirements")]
     pub requirements: Vec<models::PlatformComponentInputRequirementResponse>,
     #[serde(rename = "componentBindings")]
@@ -31,7 +31,7 @@ impl PlatformComponentConfigurationPreviewResponse {
     pub fn new(
         cluster_id: uuid::Uuid,
         component_key: String,
-        fields: Vec<models::PlatformComponentConfigurationFieldResponse>,
+        fields: Vec<models::FieldSchemaResponse>,
         requirements: Vec<models::PlatformComponentInputRequirementResponse>,
         component_bindings: Vec<models::PlatformComponentOutputBindingResponse>,
         violations: Vec<models::PlatformComponentConfigurationViolationResponse>,

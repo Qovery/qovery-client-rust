@@ -11,14 +11,23 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// PlatformComponentInputRequirementResponse : A catalog field the cluster must provide for the selected configuration: the shared field descriptor extended with its resolution scope and readiness.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlatformComponentInputRequirementResponse {
     #[serde(rename = "key")]
     pub key: String,
+    /// Field type understood by the Console, such as string, number, or bool
     #[serde(rename = "type")]
     pub r#type: String,
-    #[serde(rename = "scope")]
-    pub scope: models::PlatformComponentConfigurationInputScope,
+    #[serde(rename = "required")]
+    pub required: bool,
+    #[serde(
+        rename = "defaultValue",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub default_value: Option<Option<String>>,
     #[serde(rename = "label")]
     pub label: String,
     #[serde(
@@ -28,36 +37,38 @@ pub struct PlatformComponentInputRequirementResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub description: Option<Option<String>>,
-    #[serde(rename = "required")]
-    pub required: bool,
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
     #[serde(rename = "constraints")]
-    pub constraints: models::PlatformComponentConfigurationConstraintsResponse,
+    pub constraints: models::FieldSchemaConstraintsResponse,
+    #[serde(rename = "scope")]
+    pub scope: models::PlatformComponentConfigurationInputScope,
     #[serde(rename = "status")]
     pub status: models::PlatformComponentConfigurationRequirementStatus,
 }
 
 impl PlatformComponentInputRequirementResponse {
+    /// A catalog field the cluster must provide for the selected configuration: the shared field descriptor extended with its resolution scope and readiness.
     pub fn new(
         key: String,
         r#type: String,
-        scope: models::PlatformComponentConfigurationInputScope,
-        label: String,
         required: bool,
+        label: String,
         sensitive: bool,
-        constraints: models::PlatformComponentConfigurationConstraintsResponse,
+        constraints: models::FieldSchemaConstraintsResponse,
+        scope: models::PlatformComponentConfigurationInputScope,
         status: models::PlatformComponentConfigurationRequirementStatus,
     ) -> PlatformComponentInputRequirementResponse {
         PlatformComponentInputRequirementResponse {
             key,
             r#type,
-            scope,
+            required,
+            default_value: None,
             label,
             description: None,
-            required,
             sensitive,
             constraints,
+            scope,
             status,
         }
     }

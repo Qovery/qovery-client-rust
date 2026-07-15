@@ -443,6 +443,8 @@ docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsApi.md
 docs/ExternalSecretAssociatedServiceResponse.md
 docs/ExternalSecretAssociatedServiceResponseList.md
+docs/FieldSchemaConstraintsResponse.md
+docs/FieldSchemaResponse.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -728,8 +730,6 @@ docs/ParseTerraformVariablesFromGitRepo200Response.md
 docs/PlanEnum.md
 docs/PlatformCloudVendor.md
 docs/PlatformClusterMode.md
-docs/PlatformComponentConfigurationConstraintsResponse.md
-docs/PlatformComponentConfigurationFieldResponse.md
 docs/PlatformComponentConfigurationInputScope.md
 docs/PlatformComponentConfigurationPreviewRequest.md
 docs/PlatformComponentConfigurationPreviewResponse.md
@@ -1412,6 +1412,8 @@ src/models/environment_variable_request.rs
 src/models/environment_variable_response_list.rs
 src/models/external_secret_associated_service_response.rs
 src/models/external_secret_associated_service_response_list.rs
+src/models/field_schema_constraints_response.rs
+src/models/field_schema_response.rs
 src/models/gcp_credentials_request.rs
 src/models/gcp_json_credentials_auth_dto.rs
 src/models/gcp_secret_manager_endpoint_dto.rs
@@ -1667,8 +1669,6 @@ src/models/parse_terraform_variables_from_git_repo_200_response.rs
 src/models/plan_enum.rs
 src/models/platform_cloud_vendor.rs
 src/models/platform_cluster_mode.rs
-src/models/platform_component_configuration_constraints_response.rs
-src/models/platform_component_configuration_field_response.rs
 src/models/platform_component_configuration_input_scope.rs
 src/models/platform_component_configuration_preview_request.rs
 src/models/platform_component_configuration_preview_response.rs

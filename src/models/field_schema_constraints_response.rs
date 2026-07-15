@@ -11,8 +11,9 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// FieldSchemaConstraintsResponse : Validation constraints attached to a catalog field descriptor.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct PlatformComponentConfigurationConstraintsResponse {
+pub struct FieldSchemaConstraintsResponse {
     #[serde(
         rename = "allowedValues",
         default,
@@ -57,9 +58,10 @@ pub struct PlatformComponentConfigurationConstraintsResponse {
     pub pattern: Option<Option<String>>,
 }
 
-impl PlatformComponentConfigurationConstraintsResponse {
-    pub fn new() -> PlatformComponentConfigurationConstraintsResponse {
-        PlatformComponentConfigurationConstraintsResponse {
+impl FieldSchemaConstraintsResponse {
+    /// Validation constraints attached to a catalog field descriptor.
+    pub fn new() -> FieldSchemaConstraintsResponse {
+        FieldSchemaConstraintsResponse {
             allowed_values: None,
             min: None,
             max: None,

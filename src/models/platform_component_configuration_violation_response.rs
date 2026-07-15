@@ -13,10 +13,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlatformComponentConfigurationViolationResponse {
+    /// Stable machine-readable violation code.
     #[serde(rename = "code")]
     pub code: String,
+    /// Path of the offending field. Convention: profile configuration fields use the bare field key (e.g. `storage`); cluster-provided inputs are prefixed with `clusterInputs.` (e.g. `clusterInputs.s3BucketName`). Consumers match violations to form fields using these exact paths.
     #[serde(rename = "fieldPath")]
     pub field_path: String,
+    /// Customer-facing message describing how to fix the violation.
     #[serde(rename = "message")]
     pub message: String,
 }

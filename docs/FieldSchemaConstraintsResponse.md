@@ -1,4 +1,4 @@
-# PlatformComponentConfigurationConstraintsResponse
+# FieldSchemaConstraintsResponse
 
 ## Properties
 

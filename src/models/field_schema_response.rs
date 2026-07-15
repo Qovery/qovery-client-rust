@@ -11,8 +11,9 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// FieldSchemaResponse : Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct PlatformComponentConfigurationFieldResponse {
+pub struct FieldSchemaResponse {
     #[serde(rename = "key")]
     pub key: String,
     /// Field type understood by the Console, such as string, number, or bool
@@ -39,19 +40,20 @@ pub struct PlatformComponentConfigurationFieldResponse {
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
     #[serde(rename = "constraints")]
-    pub constraints: models::PlatformComponentConfigurationConstraintsResponse,
+    pub constraints: models::FieldSchemaConstraintsResponse,
 }
 
-impl PlatformComponentConfigurationFieldResponse {
+impl FieldSchemaResponse {
+    /// Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
     pub fn new(
         key: String,
         r#type: String,
         required: bool,
         label: String,
         sensitive: bool,
-        constraints: models::PlatformComponentConfigurationConstraintsResponse,
-    ) -> PlatformComponentConfigurationFieldResponse {
-        PlatformComponentConfigurationFieldResponse {
+        constraints: models::FieldSchemaConstraintsResponse,
+    ) -> FieldSchemaResponse {
+        FieldSchemaResponse {
             key,
             r#type,
             required,

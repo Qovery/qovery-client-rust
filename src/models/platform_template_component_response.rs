@@ -25,14 +25,14 @@ pub struct PlatformTemplateComponentResponse {
     )]
     pub description: Option<Option<String>>,
     #[serde(rename = "fields")]
-    pub fields: Vec<models::PlatformComponentConfigurationFieldResponse>,
+    pub fields: Vec<models::FieldSchemaResponse>,
 }
 
 impl PlatformTemplateComponentResponse {
     pub fn new(
         key: String,
         kind: models::PlatformTemplateComponentKind,
-        fields: Vec<models::PlatformComponentConfigurationFieldResponse>,
+        fields: Vec<models::FieldSchemaResponse>,
     ) -> PlatformTemplateComponentResponse {
         PlatformTemplateComponentResponse {
             key,

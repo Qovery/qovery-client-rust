@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cluster_id** | **uuid::Uuid** |  | 
 **component_key** | **String** |  | 
-**fields** | [**Vec<models::PlatformComponentConfigurationFieldResponse>**](PlatformComponentConfigurationFieldResponse.md) |  | 
+**fields** | [**Vec<models::FieldSchemaResponse>**](FieldSchemaResponse.md) |  | 
 **requirements** | [**Vec<models::PlatformComponentInputRequirementResponse>**](PlatformComponentInputRequirementResponse.md) |  | 
 **component_bindings** | [**Vec<models::PlatformComponentOutputBindingResponse>**](PlatformComponentOutputBindingResponse.md) |  | 
 **violations** | [**Vec<models::PlatformComponentConfigurationViolationResponse>**](PlatformComponentConfigurationViolationResponse.md) |  | 
