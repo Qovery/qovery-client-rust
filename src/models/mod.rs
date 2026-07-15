@@ -1362,6 +1362,8 @@ pub mod qovery_dns_provider_request;
 pub use self::qovery_dns_provider_request::QoveryDnsProviderRequest;
 pub mod qovery_dns_provider_response;
 pub use self::qovery_dns_provider_response::QoveryDnsProviderResponse;
+pub mod qovery_ips_response;
+pub use self::qovery_ips_response::QoveryIpsResponse;
 pub mod queued_deployment_request_for_service;
 pub use self::queued_deployment_request_for_service::QueuedDeploymentRequestForService;
 pub mod queued_deployment_request_for_service_auditing_data;

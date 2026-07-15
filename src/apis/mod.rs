@@ -172,6 +172,7 @@ pub mod helm_deployment_restriction_api;
 pub mod helm_main_calls_api;
 pub mod helm_repositories_api;
 pub mod helms_api;
+pub mod ips_api;
 pub mod job_actions_api;
 pub mod job_configuration_api;
 pub mod job_deployment_history_api;

@@ -549,6 +549,7 @@ docs/InviteStatusEnum.md
 docs/Invoice.md
 docs/InvoiceResponseList.md
 docs/InvoiceStatusEnum.md
+docs/IpsApi.md
 docs/JobActionsApi.md
 docs/JobAdvancedSettings.md
 docs/JobConfigurationApi.md
@@ -770,6 +771,7 @@ docs/ProjectsApi.md
 docs/ProviderSecrets.md
 docs/QoveryDnsProviderRequest.md
 docs/QoveryDnsProviderResponse.md
+docs/QoveryIpsResponse.md
 docs/QueuedDeploymentRequestForService.md
 docs/QueuedDeploymentRequestForServiceAuditingData.md
 docs/QueuedDeploymentRequestForServiceIdentifier.md
@@ -977,6 +979,7 @@ src/apis/helm_deployment_restriction_api.rs
 src/apis/helm_main_calls_api.rs
 src/apis/helm_repositories_api.rs
 src/apis/helms_api.rs
+src/apis/ips_api.rs
 src/apis/job_actions_api.rs
 src/apis/job_configuration_api.rs
 src/apis/job_deployment_history_api.rs
@@ -1701,6 +1704,7 @@ src/models/project_stats_response_list.rs
 src/models/provider_secrets.rs
 src/models/qovery_dns_provider_request.rs
 src/models/qovery_dns_provider_response.rs
+src/models/qovery_ips_response.rs
 src/models/queued_deployment_request_for_service.rs
 src/models/queued_deployment_request_for_service_auditing_data.rs
 src/models/queued_deployment_request_for_service_identifier.rs
