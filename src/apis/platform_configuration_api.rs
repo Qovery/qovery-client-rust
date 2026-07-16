@@ -29,6 +29,7 @@ pub enum GetClusterPlatformBindingError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListPlatformTemplatesError {
+    Status400(),
     Status401(),
     Status403(),
     Status500(),
@@ -123,13 +124,17 @@ pub async fn get_cluster_platform_binding(
     }
 }
 
-/// Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render.
+/// Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render. When clusterMode and cloudProvider are supplied together, component field constraints are narrowed to the effective choices for that cluster context.
 pub async fn list_platform_templates(
     configuration: &configuration::Configuration,
     organization_id: &str,
+    cluster_mode: Option<models::PlatformClusterMode>,
+    cloud_provider: Option<models::PlatformCloudVendor>,
 ) -> Result<models::PlatformTemplateCatalogResponse, Error<ListPlatformTemplatesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
+    let p_query_cluster_mode = cluster_mode;
+    let p_query_cloud_provider = cloud_provider;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/platformTemplate",
@@ -138,6 +143,12 @@ pub async fn list_platform_templates(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_cluster_mode {
+        req_builder = req_builder.query(&[("clusterMode", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_cloud_provider {
+        req_builder = req_builder.query(&[("cloudProvider", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

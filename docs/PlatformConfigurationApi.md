@@ -44,10 +44,10 @@ Name | Type | Description  | Required | Notes
 
 ## list_platform_templates
 
-> models::PlatformTemplateCatalogResponse list_platform_templates(organization_id)
+> models::PlatformTemplateCatalogResponse list_platform_templates(organization_id, cluster_mode, cloud_provider)
 List platform templates
 
-Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render.
+Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render. When clusterMode and cloudProvider are supplied together, component field constraints are narrowed to the effective choices for that cluster context.
 
 ### Parameters
 
@@ -55,6 +55,8 @@ Returns the published platform templates available to the organization. Each tem
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**cluster_mode** | Option<[**PlatformClusterMode**](PlatformClusterMode.md)> | Cluster management mode. Must be supplied together with cloudProvider. |  |
+**cloud_provider** | Option<[**PlatformCloudVendor**](PlatformCloudVendor.md)> | Cluster cloud provider. Must be supplied together with clusterMode. |  |
 
 ### Return type
 
