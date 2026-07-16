@@ -31,6 +31,11 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoApi* | [**edit_account_information**](docs/AccountInfoApi.md#edit_account_information) | **PUT** /account | Edit account information
 *AccountInfoApi* | [**get_account_information**](docs/AccountInfoApi.md#get_account_information) | **GET** /account | Get Account information
+*AgenticWorkflowsApi* | [**create_agentic_workflow**](docs/AgenticWorkflowsApi.md#create_agentic_workflow) | **POST** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
+*AgenticWorkflowsApi* | [**delete_agentic_workflow**](docs/AgenticWorkflowsApi.md#delete_agentic_workflow) | **DELETE** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
+*AgenticWorkflowsApi* | [**edit_agentic_workflow**](docs/AgenticWorkflowsApi.md#edit_agentic_workflow) | **PUT** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
+*AgenticWorkflowsApi* | [**get_agentic_workflow**](docs/AgenticWorkflowsApi.md#get_agentic_workflow) | **GET** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
+*AgenticWorkflowsApi* | [**list_agentic_workflows**](docs/AgenticWorkflowsApi.md#list_agentic_workflows) | **GET** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 *AlertReceiversApi* | [**create_alert_receiver**](docs/AlertReceiversApi.md#create_alert_receiver) | **POST** /alert-receivers | Create alert receiver
 *AlertReceiversApi* | [**delete_alert_receiver**](docs/AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /alert-receivers/{alertReceiverId} | Delete alert receiver
 *AlertReceiversApi* | [**edit_alert_receiver**](docs/AlertReceiversApi.md#edit_alert_receiver) | **PUT** /alert-receivers/{alertReceiverId} | Update alert receiver
@@ -568,6 +573,15 @@ Class | Method | HTTP request | Description
 
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
+ - [AgenticWorkflowConnector](docs/AgenticWorkflowConnector.md)
+ - [AgenticWorkflowHeader](docs/AgenticWorkflowHeader.md)
+ - [AgenticWorkflowModel](docs/AgenticWorkflowModel.md)
+ - [AgenticWorkflowOutput](docs/AgenticWorkflowOutput.md)
+ - [AgenticWorkflowProjectRepository](docs/AgenticWorkflowProjectRepository.md)
+ - [AgenticWorkflowRequest](docs/AgenticWorkflowRequest.md)
+ - [AgenticWorkflowResponse](docs/AgenticWorkflowResponse.md)
+ - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
+ - [AgenticWorkflowWebhook](docs/AgenticWorkflowWebhook.md)
  - [AksInfrastructureOutputs](docs/AksInfrastructureOutputs.md)
  - [AlertPresentation](docs/AlertPresentation.md)
  - [AlertPresentationResponse](docs/AlertPresentationResponse.md)
