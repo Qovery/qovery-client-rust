@@ -49,6 +49,18 @@ pub enum ResolvePlatformComponentConfigurationError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`resolve_platform_template_component_configuration`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ResolvePlatformTemplateComponentConfigurationError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`update_cluster_platform_binding`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -253,6 +265,83 @@ pub async fn resolve_platform_component_configuration(
     } else {
         let content = resp.text().await?;
         let entity: Option<ResolvePlatformComponentConfigurationError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Resolves the fields and runtime requirements to display for a component using an explicit cluster context and the values currently entered in the Console. This operation is read-only and does not require an existing cluster or platform binding.
+pub async fn resolve_platform_template_component_configuration(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    template_key: &str,
+    template_version: &str,
+    component_key: &str,
+    cluster_mode: models::PlatformClusterMode,
+    cloud_provider: models::PlatformCloudVendor,
+    platform_component_configuration_preview_request: models::PlatformComponentConfigurationPreviewRequest,
+) -> Result<
+    models::PlatformComponentConfigurationResolutionResponse,
+    Error<ResolvePlatformTemplateComponentConfigurationError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_path_template_key = template_key;
+    let p_path_template_version = template_version;
+    let p_path_component_key = component_key;
+    let p_query_cluster_mode = cluster_mode;
+    let p_query_cloud_provider = cloud_provider;
+    let p_body_platform_component_configuration_preview_request =
+        platform_component_configuration_preview_request;
+
+    let uri_str = format!("{}/organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve", configuration.base_path, organizationId=crate::apis::urlencode(p_path_organization_id), templateKey=crate::apis::urlencode(p_path_template_key), templateVersion=crate::apis::urlencode(p_path_template_version), componentKey=crate::apis::urlencode(p_path_component_key));
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    req_builder = req_builder.query(&[("clusterMode", &p_query_cluster_mode.to_string())]);
+    req_builder = req_builder.query(&[("cloudProvider", &p_query_cloud_provider.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_platform_component_configuration_preview_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PlatformComponentConfigurationResolutionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PlatformComponentConfigurationResolutionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ResolvePlatformTemplateComponentConfigurationError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,

@@ -506,6 +506,7 @@ Class | Method | HTTP request | Description
 *PlatformConfigurationApi* | [**get_cluster_platform_binding**](docs/PlatformConfigurationApi.md#get_cluster_platform_binding) | **GET** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
 *PlatformConfigurationApi* | [**list_platform_templates**](docs/PlatformConfigurationApi.md#list_platform_templates) | **GET** /organization/{organizationId}/platformTemplate | List platform templates
 *PlatformConfigurationApi* | [**resolve_platform_component_configuration**](docs/PlatformConfigurationApi.md#resolve_platform_component_configuration) | **POST** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
+*PlatformConfigurationApi* | [**resolve_platform_template_component_configuration**](docs/PlatformConfigurationApi.md#resolve_platform_template_component_configuration) | **POST** /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve | Resolve a platform component configuration before cluster creation
 *PlatformConfigurationApi* | [**update_cluster_platform_binding**](docs/PlatformConfigurationApi.md#update_cluster_platform_binding) | **PUT** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
 *ProjectDeploymentRuleApi* | [**create_deployment_rule**](docs/ProjectDeploymentRuleApi.md#create_deployment_rule) | **POST** /project/{projectId}/deploymentRule | Create a deployment rule
 *ProjectDeploymentRuleApi* | [**delete_project_deployment_rule**](docs/ProjectDeploymentRuleApi.md#delete_project_deployment_rule) | **DELETE** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
@@ -1231,6 +1232,7 @@ Class | Method | HTTP request | Description
  - [PlatformComponentConfigurationPreviewRequest](docs/PlatformComponentConfigurationPreviewRequest.md)
  - [PlatformComponentConfigurationPreviewResponse](docs/PlatformComponentConfigurationPreviewResponse.md)
  - [PlatformComponentConfigurationRequirementStatus](docs/PlatformComponentConfigurationRequirementStatus.md)
+ - [PlatformComponentConfigurationResolutionResponse](docs/PlatformComponentConfigurationResolutionResponse.md)
  - [PlatformComponentConfigurationViolationResponse](docs/PlatformComponentConfigurationViolationResponse.md)
  - [PlatformComponentInputRequirementResponse](docs/PlatformComponentInputRequirementResponse.md)
  - [PlatformComponentOutputBindingResponse](docs/PlatformComponentOutputBindingResponse.md)

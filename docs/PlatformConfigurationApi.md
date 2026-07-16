@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_cluster_platform_binding**](PlatformConfigurationApi.md#get_cluster_platform_binding) | **GET** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
 [**list_platform_templates**](PlatformConfigurationApi.md#list_platform_templates) | **GET** /organization/{organizationId}/platformTemplate | List platform templates
 [**resolve_platform_component_configuration**](PlatformConfigurationApi.md#resolve_platform_component_configuration) | **POST** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
+[**resolve_platform_template_component_configuration**](PlatformConfigurationApi.md#resolve_platform_template_component_configuration) | **POST** /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve | Resolve a platform component configuration before cluster creation
 [**update_cluster_platform_binding**](PlatformConfigurationApi.md#update_cluster_platform_binding) | **PUT** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
 
 
@@ -94,6 +95,42 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::PlatformComponentConfigurationPreviewResponse**](PlatformComponentConfigurationPreviewResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## resolve_platform_template_component_configuration
+
+> models::PlatformComponentConfigurationResolutionResponse resolve_platform_template_component_configuration(organization_id, template_key, template_version, component_key, cluster_mode, cloud_provider, platform_component_configuration_preview_request)
+Resolve a platform component configuration before cluster creation
+
+Resolves the fields and runtime requirements to display for a component using an explicit cluster context and the values currently entered in the Console. This operation is read-only and does not require an existing cluster or platform binding.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**template_key** | **String** | Platform template key | [required] |
+**template_version** | **String** | Platform template version | [required] |
+**component_key** | **String** | Platform component key | [required] |
+**cluster_mode** | [**PlatformClusterMode**](PlatformClusterMode.md) | Cluster management mode used to resolve component applicability | [required] |
+**cloud_provider** | [**PlatformCloudVendor**](PlatformCloudVendor.md) | Cluster cloud provider used to resolve component applicability | [required] |
+**platform_component_configuration_preview_request** | [**PlatformComponentConfigurationPreviewRequest**](PlatformComponentConfigurationPreviewRequest.md) |  | [required] |
+
+### Return type
+
+[**models::PlatformComponentConfigurationResolutionResponse**](PlatformComponentConfigurationResolutionResponse.md)
 
 ### Authorization
 
