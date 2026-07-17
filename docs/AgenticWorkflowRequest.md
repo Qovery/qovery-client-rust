@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional][default to ]
-**whitelist_hosts** | Option<**Vec<String>**> | Hosts the agentic workflow is allowed to reach | [optional][default to []]
+**ip_allowlist** | Option<**Vec<String>**> | CIDR ranges the incoming webhook request's source IP is checked against | [optional][default to []]
 **model_settings** | Option<**String**> |  | [optional][default to ]
 **docker_fragment** | Option<**String**> |  | [optional][default to ]
 **enabled** | Option<**bool**> |  | [optional][default to true]

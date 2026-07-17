@@ -15,12 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct AgenticWorkflowWebhook {
     #[serde(rename = "url")]
     pub url: String,
-    #[serde(rename = "secret")]
-    pub secret: String,
 }
 
 impl AgenticWorkflowWebhook {
-    pub fn new(url: String, secret: String) -> AgenticWorkflowWebhook {
-        AgenticWorkflowWebhook { url, secret }
+    pub fn new(url: String) -> AgenticWorkflowWebhook {
+        AgenticWorkflowWebhook { url }
     }
 }

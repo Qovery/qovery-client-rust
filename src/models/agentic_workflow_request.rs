@@ -18,9 +18,9 @@ pub struct AgenticWorkflowRequest {
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// Hosts the agentic workflow is allowed to reach
-    #[serde(rename = "whitelist_hosts", skip_serializing_if = "Option::is_none")]
-    pub whitelist_hosts: Option<Vec<String>>,
+    /// CIDR ranges the incoming webhook request's source IP is checked against
+    #[serde(rename = "ip_allowlist", skip_serializing_if = "Option::is_none")]
+    pub ip_allowlist: Option<Vec<String>>,
     #[serde(rename = "model_settings", skip_serializing_if = "Option::is_none")]
     pub model_settings: Option<String>,
     #[serde(rename = "docker_fragment", skip_serializing_if = "Option::is_none")]
@@ -45,7 +45,7 @@ impl AgenticWorkflowRequest {
         AgenticWorkflowRequest {
             name,
             description: None,
-            whitelist_hosts: None,
+            ip_allowlist: None,
             model_settings: None,
             docker_fragment: None,
             enabled: None,

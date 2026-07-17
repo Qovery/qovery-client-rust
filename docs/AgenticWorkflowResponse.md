@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **name** | **String** | name is case insensitive | 
 **description** | **String** |  | 
-**whitelist_hosts** | **Vec<String>** | Hosts the agentic workflow is allowed to reach | 
+**ip_allowlist** | **Vec<String>** | CIDR ranges the incoming webhook request's source IP is checked against | 
 **model_settings** | **String** |  | 
 **docker_fragment** | **String** |  | 
 **enabled** | **bool** |  | 

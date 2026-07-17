@@ -24,9 +24,9 @@ pub struct AgenticWorkflowResponse {
     pub name: String,
     #[serde(rename = "description")]
     pub description: String,
-    /// Hosts the agentic workflow is allowed to reach
-    #[serde(rename = "whitelist_hosts")]
-    pub whitelist_hosts: Vec<String>,
+    /// CIDR ranges the incoming webhook request's source IP is checked against
+    #[serde(rename = "ip_allowlist")]
+    pub ip_allowlist: Vec<String>,
     #[serde(rename = "model_settings")]
     pub model_settings: String,
     #[serde(rename = "docker_fragment")]
@@ -51,7 +51,7 @@ impl AgenticWorkflowResponse {
         created_at: String,
         name: String,
         description: String,
-        whitelist_hosts: Vec<String>,
+        ip_allowlist: Vec<String>,
         model_settings: String,
         docker_fragment: String,
         enabled: bool,
@@ -67,7 +67,7 @@ impl AgenticWorkflowResponse {
             updated_at: None,
             name,
             description,
-            whitelist_hosts,
+            ip_allowlist,
             model_settings,
             docker_fragment,
             enabled,
