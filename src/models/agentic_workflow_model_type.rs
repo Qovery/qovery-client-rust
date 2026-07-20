@@ -13,14 +13,14 @@ use serde::{Deserialize, Serialize};
 
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum AgenticWorkflowModel {
+pub enum AgenticWorkflowModelType {
     #[serde(rename = "CLAUDE")]
     Claude,
     #[serde(rename = "BEDROCK")]
     Bedrock,
 }
 
-impl std::fmt::Display for AgenticWorkflowModel {
+impl std::fmt::Display for AgenticWorkflowModelType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Claude => write!(f, "CLAUDE"),
@@ -29,8 +29,8 @@ impl std::fmt::Display for AgenticWorkflowModel {
     }
 }
 
-impl Default for AgenticWorkflowModel {
-    fn default() -> AgenticWorkflowModel {
+impl Default for AgenticWorkflowModelType {
+    fn default() -> AgenticWorkflowModelType {
         Self::Claude
     }
 }

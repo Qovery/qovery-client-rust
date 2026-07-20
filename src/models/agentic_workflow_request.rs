@@ -19,25 +19,31 @@ pub struct AgenticWorkflowRequest {
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     /// CIDR ranges the incoming webhook request's source IP is checked against
-    #[serde(rename = "ip_allowlist", skip_serializing_if = "Option::is_none")]
-    pub ip_allowlist: Option<Vec<String>>,
-    #[serde(rename = "model_settings", skip_serializing_if = "Option::is_none")]
-    pub model_settings: Option<String>,
+    #[serde(
+        rename = "webhook_ip_allowlist",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub webhook_ip_allowlist: Option<Vec<String>>,
     #[serde(rename = "docker_fragment", skip_serializing_if = "Option::is_none")]
     pub docker_fragment: Option<String>,
     #[serde(rename = "enabled", skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
-    #[serde(rename = "mcp_connectors", skip_serializing_if = "Option::is_none")]
-    pub mcp_connectors: Option<Vec<models::AgenticWorkflowConnector>>,
+    /// Raw JSON blob describing the MCP servers configured for this workflow
+    #[serde(rename = "mcp", skip_serializing_if = "Option::is_none")]
+    pub mcp: Option<String>,
     #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
     pub outputs: Option<Vec<models::AgenticWorkflowOutput>>,
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
-    pub model: Option<models::AgenticWorkflowModel>,
+    pub model: Option<models::AgenticWorkflowModelRequest>,
     #[serde(
         rename = "project_repositories",
         skip_serializing_if = "Option::is_none"
     )]
     pub project_repositories: Option<Vec<models::AgenticWorkflowProjectRepository>>,
+    #[serde(rename = "agent_prompt", skip_serializing_if = "Option::is_none")]
+    pub agent_prompt: Option<String>,
+    #[serde(rename = "governance", skip_serializing_if = "Option::is_none")]
+    pub governance: Option<models::AgenticWorkflowGovernance>,
 }
 
 impl AgenticWorkflowRequest {
@@ -45,14 +51,15 @@ impl AgenticWorkflowRequest {
         AgenticWorkflowRequest {
             name,
             description: None,
-            ip_allowlist: None,
-            model_settings: None,
+            webhook_ip_allowlist: None,
             docker_fragment: None,
             enabled: None,
-            mcp_connectors: None,
+            mcp: None,
             outputs: None,
             model: None,
             project_repositories: None,
+            agent_prompt: None,
+            governance: None,
         }
     }
 }

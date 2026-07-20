@@ -17,8 +17,6 @@ pub struct AgenticWorkflowProjectRepository {
     pub url: String,
     #[serde(rename = "branch")]
     pub branch: String,
-    #[serde(rename = "root_path")]
-    pub root_path: String,
     #[serde(rename = "git_token_id")]
     pub git_token_id: uuid::Uuid,
 }
@@ -27,13 +25,11 @@ impl AgenticWorkflowProjectRepository {
     pub fn new(
         url: String,
         branch: String,
-        root_path: String,
         git_token_id: uuid::Uuid,
     ) -> AgenticWorkflowProjectRepository {
         AgenticWorkflowProjectRepository {
             url,
             branch,
-            root_path,
             git_token_id,
         }
     }

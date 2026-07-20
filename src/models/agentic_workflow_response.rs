@@ -25,22 +25,25 @@ pub struct AgenticWorkflowResponse {
     #[serde(rename = "description")]
     pub description: String,
     /// CIDR ranges the incoming webhook request's source IP is checked against
-    #[serde(rename = "ip_allowlist")]
-    pub ip_allowlist: Vec<String>,
-    #[serde(rename = "model_settings")]
-    pub model_settings: String,
+    #[serde(rename = "webhook_ip_allowlist")]
+    pub webhook_ip_allowlist: Vec<String>,
     #[serde(rename = "docker_fragment")]
     pub docker_fragment: String,
     #[serde(rename = "enabled")]
     pub enabled: bool,
-    #[serde(rename = "mcp_connectors")]
-    pub mcp_connectors: Vec<models::AgenticWorkflowConnector>,
+    /// Raw JSON blob describing the MCP servers configured for this workflow
+    #[serde(rename = "mcp")]
+    pub mcp: String,
     #[serde(rename = "outputs")]
     pub outputs: Vec<models::AgenticWorkflowOutput>,
     #[serde(rename = "model")]
-    pub model: models::AgenticWorkflowModel,
+    pub model: models::AgenticWorkflowModelResponse,
     #[serde(rename = "project_repositories")]
     pub project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
+    #[serde(rename = "agent_prompt")]
+    pub agent_prompt: String,
+    #[serde(rename = "governance")]
+    pub governance: models::AgenticWorkflowGovernance,
     #[serde(rename = "webhook")]
     pub webhook: models::AgenticWorkflowWebhook,
 }
@@ -51,14 +54,15 @@ impl AgenticWorkflowResponse {
         created_at: String,
         name: String,
         description: String,
-        ip_allowlist: Vec<String>,
-        model_settings: String,
+        webhook_ip_allowlist: Vec<String>,
         docker_fragment: String,
         enabled: bool,
-        mcp_connectors: Vec<models::AgenticWorkflowConnector>,
+        mcp: String,
         outputs: Vec<models::AgenticWorkflowOutput>,
-        model: models::AgenticWorkflowModel,
+        model: models::AgenticWorkflowModelResponse,
         project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
+        agent_prompt: String,
+        governance: models::AgenticWorkflowGovernance,
         webhook: models::AgenticWorkflowWebhook,
     ) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
@@ -67,14 +71,15 @@ impl AgenticWorkflowResponse {
             updated_at: None,
             name,
             description,
-            ip_allowlist,
-            model_settings,
+            webhook_ip_allowlist,
             docker_fragment,
             enabled,
-            mcp_connectors,
+            mcp,
             outputs,
             model,
             project_repositories,
+            agent_prompt,
+            governance,
             webhook,
         }
     }
