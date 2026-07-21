@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_up_to_date** | **bool** |  | 
+**current_tag** | **String** |  | 
 **latest_tag** | **String** |  | 
 **new_required_values** | [**Vec<models::BlueprintUpdateNewRequiredValue>**](BlueprintUpdateNewRequiredValue.md) | Variables added in the latest version that are required with no default | 
 **new_optional_values** | [**Vec<models::BlueprintUpdateNewOptionalValue>**](BlueprintUpdateNewOptionalValue.md) | Variables added in the latest version that have a default value | 

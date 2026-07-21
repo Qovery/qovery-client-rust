@@ -15,6 +15,8 @@ use serde::{Deserialize, Serialize};
 pub struct BlueprintUpdateResponse {
     #[serde(rename = "is_up_to_date")]
     pub is_up_to_date: bool,
+    #[serde(rename = "current_tag")]
+    pub current_tag: String,
     #[serde(rename = "latest_tag")]
     pub latest_tag: String,
     /// Variables added in the latest version that are required with no default
@@ -42,6 +44,7 @@ pub struct BlueprintUpdateResponse {
 impl BlueprintUpdateResponse {
     pub fn new(
         is_up_to_date: bool,
+        current_tag: String,
         latest_tag: String,
         new_required_values: Vec<models::BlueprintUpdateNewRequiredValue>,
         new_optional_values: Vec<models::BlueprintUpdateNewOptionalValue>,
@@ -53,6 +56,7 @@ impl BlueprintUpdateResponse {
     ) -> BlueprintUpdateResponse {
         BlueprintUpdateResponse {
             is_up_to_date,
+            current_tag,
             latest_tag,
             new_required_values,
             new_optional_values,
