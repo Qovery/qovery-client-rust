@@ -212,6 +212,8 @@ pub mod blueprint_catalog_response;
 pub use self::blueprint_catalog_response::BlueprintCatalogResponse;
 pub mod blueprint_create_request;
 pub use self::blueprint_create_request::BlueprintCreateRequest;
+pub mod blueprint_deployment_ack_response;
+pub use self::blueprint_deployment_ack_response::BlueprintDeploymentAckResponse;
 pub mod blueprint_item;
 pub use self::blueprint_item::BlueprintItem;
 pub mod blueprint_major_version;

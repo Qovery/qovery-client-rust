@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**check_blueprint_update**](BlueprintMainCallsApi.md#check_blueprint_update) | **GET** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
 [**create_blueprint**](BlueprintMainCallsApi.md#create_blueprint) | **POST** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
+[**deploy_blueprint**](BlueprintMainCallsApi.md#deploy_blueprint) | **POST** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 [**get_blueprint_catalog**](BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 [**preview_blueprint_update**](BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**update_blueprint**](BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
@@ -69,6 +70,36 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## deploy_blueprint
+
+> models::BlueprintDeploymentAckResponse deploy_blueprint(blueprint_id)
+Deploy (apply) the current blueprint spec
+
+Deploys the blueprint's currently saved settings to its service. Call this after saving changes with PATCH /blueprint/{blueprintId} (and, optionally, previewing them) to roll them out. No request body: it deploys whatever is currently saved on the blueprint.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
+
+### Return type
+
+[**models::BlueprintDeploymentAckResponse**](BlueprintDeploymentAckResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
