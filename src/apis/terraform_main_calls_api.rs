@@ -69,11 +69,13 @@ pub async fn delete_terraform(
     configuration: &configuration::Configuration,
     terraform_id: &str,
     resources_only: Option<bool>,
+    skip_reconcile: Option<bool>,
     force_terraform_action: Option<models::DeleteTerraformAction>,
 ) -> Result<(), Error<DeleteTerraformError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_terraform_id = terraform_id;
     let p_query_resources_only = resources_only;
+    let p_query_skip_reconcile = skip_reconcile;
     let p_query_force_terraform_action = force_terraform_action;
 
     let uri_str = format!(
@@ -87,6 +89,9 @@ pub async fn delete_terraform(
 
     if let Some(ref param_value) = p_query_resources_only {
         req_builder = req_builder.query(&[("resources_only", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_force_terraform_action {
         req_builder = req_builder.query(&[("force_terraform_action", &param_value.to_string())]);

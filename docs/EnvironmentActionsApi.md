@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_selected_services
 
-> delete_selected_services(environment_id, environment_service_ids_all_request)
+> delete_selected_services(environment_id, skip_reconcile, environment_service_ids_all_request)
 Delete services
 
 Delete selected services
@@ -123,6 +123,7 @@ Delete selected services
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 **environment_service_ids_all_request** | Option<[**EnvironmentServiceIdsAllRequest**](EnvironmentServiceIdsAllRequest.md)> |  |  |
 
 ### Return type

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## delete_terraform
 
-> delete_terraform(terraform_id, resources_only, force_terraform_action)
+> delete_terraform(terraform_id, resources_only, skip_reconcile, force_terraform_action)
 Delete Terraform
 
 ### Parameters
@@ -24,6 +24,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **terraform_id** | **uuid::Uuid** | Terraform ID | [required] |
 **resources_only** | Option<**bool**> | When true, only resources are deleted and Qovery configuration is kept. |  |[default to false]
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 **force_terraform_action** | Option<[**DeleteTerraformAction**](DeleteTerraformAction.md)> | Force a specific action to be executed by Terraform during deletion. |  |
 
 ### Return type

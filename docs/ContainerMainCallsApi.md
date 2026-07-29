@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## delete_container
 
-> delete_container(container_id)
+> delete_container(container_id, skip_reconcile)
 Delete container
 
 To delete the container you must have the admin permission
@@ -25,6 +25,7 @@ To delete the container you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **container_id** | **uuid::Uuid** | Container ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

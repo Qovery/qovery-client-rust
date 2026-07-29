@@ -89,9 +89,11 @@ pub enum ListHelmLinksError {
 pub async fn delete_helm(
     configuration: &configuration::Configuration,
     helm_id: &str,
+    skip_reconcile: Option<bool>,
 ) -> Result<(), Error<DeleteHelmError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_helm_id = helm_id;
+    let p_query_skip_reconcile = skip_reconcile;
 
     let uri_str = format!(
         "{}/helm/{helmId}",
@@ -102,6 +104,9 @@ pub async fn delete_helm(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

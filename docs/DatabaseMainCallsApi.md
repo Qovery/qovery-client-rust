@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## delete_database
 
-> delete_database(database_id)
+> delete_database(database_id, skip_reconcile)
 Delete a database 
 
 To delete a database you must have the admin permission
@@ -27,6 +27,7 @@ To delete a database you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **database_id** | **uuid::Uuid** | Database ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

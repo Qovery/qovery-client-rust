@@ -90,9 +90,11 @@ pub enum ListDatabaseVersionError {
 pub async fn delete_database(
     configuration: &configuration::Configuration,
     database_id: &str,
+    skip_reconcile: Option<bool>,
 ) -> Result<(), Error<DeleteDatabaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_database_id = database_id;
+    let p_query_skip_reconcile = skip_reconcile;
 
     let uri_str = format!(
         "{}/database/{databaseId}",
@@ -103,6 +105,9 @@ pub async fn delete_database(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

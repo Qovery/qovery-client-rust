@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## delete_helm
 
-> delete_helm(helm_id)
+> delete_helm(helm_id, skip_reconcile)
 Delete helm
 
 To delete the helm you must have the admin permission
@@ -27,6 +27,7 @@ To delete the helm you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **helm_id** | **uuid::Uuid** | Helm ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

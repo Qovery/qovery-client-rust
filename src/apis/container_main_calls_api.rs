@@ -69,9 +69,11 @@ pub enum ListContainerLinksError {
 pub async fn delete_container(
     configuration: &configuration::Configuration,
     container_id: &str,
+    skip_reconcile: Option<bool>,
 ) -> Result<(), Error<DeleteContainerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_container_id = container_id;
+    let p_query_skip_reconcile = skip_reconcile;
 
     let uri_str = format!(
         "{}/container/{containerId}",
@@ -82,6 +84,9 @@ pub async fn delete_container(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

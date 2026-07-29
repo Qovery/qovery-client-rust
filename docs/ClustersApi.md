@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_cluster
 
-> delete_cluster(organization_id, cluster_id, delete_mode)
+> delete_cluster(organization_id, cluster_id, delete_mode, skip_reconcile)
 Delete a cluster
 
 ### Parameters
@@ -86,6 +86,7 @@ Name | Type | Description  | Required | Notes
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
 **cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
 **delete_mode** | Option<[**ClusterDeleteMode**](ClusterDeleteMode.md)> |  |  |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy Terraform/Helm apply and tear down best-effort, tolerating already-absent resources. Not allowed with deleteMode=DELETE_QOVERY_CONFIG. |  |[default to false]
 
 ### Return type
 

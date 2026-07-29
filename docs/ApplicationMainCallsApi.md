@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## delete_application
 
-> delete_application(application_id)
+> delete_application(application_id, skip_reconcile)
 Delete application
 
 To delete the application you must have the admin permission
@@ -27,6 +27,7 @@ To delete the application you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **application_id** | **uuid::Uuid** | Application ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## delete_job
 
-> delete_job(job_id)
+> delete_job(job_id, skip_reconcile)
 Delete job
 
 To delete the job you must have the admin permission
@@ -25,6 +25,7 @@ To delete the job you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **uuid::Uuid** | Job ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

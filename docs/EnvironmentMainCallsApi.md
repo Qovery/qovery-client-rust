@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## delete_environment
 
-> delete_environment(environment_id)
+> delete_environment(environment_id, skip_reconcile)
 Delete an environment
 
 To delete an environment you must have the admin permission
@@ -29,6 +29,7 @@ To delete an environment you must have the admin permission
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**skip_reconcile** | Option<**bool**> | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. |  |[default to false]
 
 ### Return type
 

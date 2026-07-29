@@ -455,11 +455,13 @@ pub async fn delete_cluster(
     organization_id: &str,
     cluster_id: &str,
     delete_mode: Option<models::ClusterDeleteMode>,
+    skip_reconcile: Option<bool>,
 ) -> Result<(), Error<DeleteClusterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
     let p_path_cluster_id = cluster_id;
     let p_query_delete_mode = delete_mode;
+    let p_query_skip_reconcile = skip_reconcile;
 
     let uri_str = format!(
         "{}/organization/{organizationId}/cluster/{clusterId}",
@@ -473,6 +475,9 @@ pub async fn delete_cluster(
 
     if let Some(ref param_value) = p_query_delete_mode {
         req_builder = req_builder.query(&[("deleteMode", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

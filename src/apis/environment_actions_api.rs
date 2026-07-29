@@ -341,10 +341,12 @@ pub async fn clone_environment(
 pub async fn delete_selected_services(
     configuration: &configuration::Configuration,
     environment_id: &str,
+    skip_reconcile: Option<bool>,
     environment_service_ids_all_request: Option<models::EnvironmentServiceIdsAllRequest>,
 ) -> Result<(), Error<DeleteSelectedServicesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_environment_id = environment_id;
+    let p_query_skip_reconcile = skip_reconcile;
     let p_body_environment_service_ids_all_request = environment_service_ids_all_request;
 
     let uri_str = format!(
@@ -356,6 +358,9 @@ pub async fn delete_selected_services(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_query_skip_reconcile {
+        req_builder = req_builder.query(&[("skipReconcile", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
