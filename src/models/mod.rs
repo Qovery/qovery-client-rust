@@ -282,6 +282,8 @@ pub mod budget;
 pub use self::budget::Budget;
 pub mod build_mode_enum;
 pub use self::build_mode_enum::BuildModeEnum;
+pub mod cancel_agentic_workflow_deployment_request;
+pub use self::cancel_agentic_workflow_deployment_request::CancelAgenticWorkflowDeploymentRequest;
 pub mod cancel_environment_deployment_request;
 pub use self::cancel_environment_deployment_request::CancelEnvironmentDeploymentRequest;
 pub mod checked_custom_domain_response;
