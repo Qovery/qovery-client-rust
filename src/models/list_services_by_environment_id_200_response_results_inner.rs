@@ -28,6 +28,8 @@ pub enum ListServicesByEnvironmentId200ResponseResultsInner {
     Terraform(models::TerraformResponse),
     #[serde(rename = "ARGOCD_APP")]
     ArgocdApp(models::ArgocdAppResponse),
+    #[serde(rename = "AGENTIC_WORKFLOW")]
+    AgenticWorkflow(models::AgenticWorkflowResponse),
 }
 
 impl Default for ListServicesByEnvironmentId200ResponseResultsInner {

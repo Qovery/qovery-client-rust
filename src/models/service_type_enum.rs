@@ -29,6 +29,8 @@ pub enum ServiceTypeEnum {
     Terraform,
     #[serde(rename = "ARGOCD_APP")]
     ArgocdApp,
+    #[serde(rename = "AGENTIC_WORKFLOW")]
+    AgenticWorkflow,
 }
 
 impl std::fmt::Display for ServiceTypeEnum {
@@ -41,6 +43,7 @@ impl std::fmt::Display for ServiceTypeEnum {
             Self::Helm => write!(f, "HELM"),
             Self::Terraform => write!(f, "TERRAFORM"),
             Self::ArgocdApp => write!(f, "ARGOCD_APP"),
+            Self::AgenticWorkflow => write!(f, "AGENTIC_WORKFLOW"),
         }
     }
 }
@@ -71,4 +74,7 @@ pub fn service_type_job() -> ServiceTypeEnum {
 }
 pub fn service_type_argocd_app() -> ServiceTypeEnum {
     ServiceTypeEnum::ArgocdApp
+}
+pub fn service_type_agentic_workflow() -> ServiceTypeEnum {
+    ServiceTypeEnum::AgenticWorkflow
 }

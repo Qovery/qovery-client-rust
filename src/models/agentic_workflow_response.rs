@@ -19,9 +19,17 @@ pub struct AgenticWorkflowResponse {
     pub created_at: String,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
+    #[serde(
+        rename = "service_type",
+        default = "models::service_type_enum::service_type_agentic_workflow"
+    )]
+    pub service_type: models::ServiceTypeEnum,
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
+    /// URL-friendly identifier derived from the name
+    #[serde(rename = "slug")]
+    pub slug: String,
     #[serde(rename = "description")]
     pub description: String,
     /// CIDR ranges the incoming webhook request's source IP is checked against
@@ -52,7 +60,9 @@ impl AgenticWorkflowResponse {
     pub fn new(
         id: uuid::Uuid,
         created_at: String,
+        service_type: models::ServiceTypeEnum,
         name: String,
+        slug: String,
         description: String,
         webhook_ip_allowlist: Vec<String>,
         docker_fragment: String,
@@ -69,7 +79,9 @@ impl AgenticWorkflowResponse {
             id,
             created_at,
             updated_at: None,
+            service_type,
             name,
+            slug,
             description,
             webhook_ip_allowlist,
             docker_fragment,
