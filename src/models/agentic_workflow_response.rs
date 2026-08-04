@@ -24,8 +24,8 @@ pub struct AgenticWorkflowResponse {
         default = "models::service_type_enum::service_type_agentic_workflow"
     )]
     pub service_type: models::ServiceTypeEnum,
-    #[serde(rename = "environment_id")]
-    pub environment_id: uuid::Uuid,
+    #[serde(rename = "environment")]
+    pub environment: models::ReferenceObject,
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
@@ -63,7 +63,7 @@ impl AgenticWorkflowResponse {
         id: uuid::Uuid,
         created_at: String,
         service_type: models::ServiceTypeEnum,
-        environment_id: uuid::Uuid,
+        environment: models::ReferenceObject,
         name: String,
         slug: String,
         description: String,
@@ -83,7 +83,7 @@ impl AgenticWorkflowResponse {
             created_at,
             updated_at: None,
             service_type,
-            environment_id,
+            environment,
             name,
             slug,
             description,

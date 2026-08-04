@@ -21,8 +21,8 @@ pub struct AgenticWorkflowResponse {
     pub updated_at: Option<String>,
     #[serde(rename = "service_type")]
     pub service_type: models::ServiceTypeEnum,
-    #[serde(rename = "environment_id")]
-    pub environment_id: uuid::Uuid,
+    #[serde(rename = "environment")]
+    pub environment: models::ReferenceObject,
     /// name is case insensitive
     #[serde(rename = "name")]
     pub name: String,
@@ -56,13 +56,13 @@ pub struct AgenticWorkflowResponse {
 }
 
 impl AgenticWorkflowResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, service_type: models::ServiceTypeEnum, environment_id: uuid::Uuid, name: String, slug: String, description: String, webhook_ip_allowlist: Vec<String>, docker_fragment: String, enabled: bool, mcp: String, outputs: Vec<models::AgenticWorkflowOutput>, model: models::AgenticWorkflowModelResponse, project_repositories: Vec<models::AgenticWorkflowProjectRepository>, agent_prompt: String, governance: models::AgenticWorkflowGovernance, webhook: models::AgenticWorkflowWebhook) -> AgenticWorkflowResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, service_type: models::ServiceTypeEnum, environment: models::ReferenceObject, name: String, slug: String, description: String, webhook_ip_allowlist: Vec<String>, docker_fragment: String, enabled: bool, mcp: String, outputs: Vec<models::AgenticWorkflowOutput>, model: models::AgenticWorkflowModelResponse, project_repositories: Vec<models::AgenticWorkflowProjectRepository>, agent_prompt: String, governance: models::AgenticWorkflowGovernance, webhook: models::AgenticWorkflowWebhook) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
             id,
             created_at,
             updated_at: None,
             service_type,
-            environment_id,
+            environment,
             name,
             slug,
             description,
