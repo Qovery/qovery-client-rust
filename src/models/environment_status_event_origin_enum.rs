@@ -25,6 +25,8 @@ pub enum EnvironmentStatusEventOriginEnum {
     Git,
     #[serde(rename = "QOVERY_INTERNAL")]
     QoveryInternal,
+    #[serde(rename = "SKILL")]
+    Skill,
     #[serde(rename = "TERRAFORM_PROVIDER")]
     TerraformProvider,
 }
@@ -37,6 +39,7 @@ impl std::fmt::Display for EnvironmentStatusEventOriginEnum {
             Self::Console => write!(f, "CONSOLE"),
             Self::Git => write!(f, "GIT"),
             Self::QoveryInternal => write!(f, "QOVERY_INTERNAL"),
+            Self::Skill => write!(f, "SKILL"),
             Self::TerraformProvider => write!(f, "TERRAFORM_PROVIDER"),
         }
     }

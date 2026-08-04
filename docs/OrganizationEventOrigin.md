@@ -9,6 +9,7 @@
 | Console | CONSOLE |
 | Git | GIT |
 | QoveryInternal | QOVERY_INTERNAL |
+| Skill | SKILL |
 | TerraformProvider | TERRAFORM_PROVIDER |
 
 
