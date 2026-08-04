@@ -1,7 +1,7 @@
 /*
  * Qovery API
  *
- * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
+ * - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development. 
  *
  * The version of the OpenAPI document: 1.0.4
  * Contact: support+api+documentation@qovery.com
@@ -19,10 +19,7 @@ pub struct AgenticWorkflowResponse {
     pub created_at: String,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
-    #[serde(
-        rename = "service_type",
-        default = "models::service_type_enum::service_type_agentic_workflow"
-    )]
+    #[serde(rename = "service_type")]
     pub service_type: models::ServiceTypeEnum,
     #[serde(rename = "environment_id")]
     pub environment_id: uuid::Uuid,
@@ -59,25 +56,7 @@ pub struct AgenticWorkflowResponse {
 }
 
 impl AgenticWorkflowResponse {
-    pub fn new(
-        id: uuid::Uuid,
-        created_at: String,
-        service_type: models::ServiceTypeEnum,
-        environment_id: uuid::Uuid,
-        name: String,
-        slug: String,
-        description: String,
-        webhook_ip_allowlist: Vec<String>,
-        docker_fragment: String,
-        enabled: bool,
-        mcp: String,
-        outputs: Vec<models::AgenticWorkflowOutput>,
-        model: models::AgenticWorkflowModelResponse,
-        project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
-        agent_prompt: String,
-        governance: models::AgenticWorkflowGovernance,
-        webhook: models::AgenticWorkflowWebhook,
-    ) -> AgenticWorkflowResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, service_type: models::ServiceTypeEnum, environment_id: uuid::Uuid, name: String, slug: String, description: String, webhook_ip_allowlist: Vec<String>, docker_fragment: String, enabled: bool, mcp: String, outputs: Vec<models::AgenticWorkflowOutput>, model: models::AgenticWorkflowModelResponse, project_repositories: Vec<models::AgenticWorkflowProjectRepository>, agent_prompt: String, governance: models::AgenticWorkflowGovernance, webhook: models::AgenticWorkflowWebhook) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
             id,
             created_at,
@@ -100,3 +79,4 @@ impl AgenticWorkflowResponse {
         }
     }
 }
+

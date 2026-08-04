@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**environment_id** | **uuid::Uuid** |  | 
 **name** | **String** | name is case insensitive | 
 **slug** | **String** | URL-friendly identifier derived from the name | 
 **description** | **String** |  | 
