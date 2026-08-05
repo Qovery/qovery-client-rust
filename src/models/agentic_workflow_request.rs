@@ -44,6 +44,8 @@ pub struct AgenticWorkflowRequest {
     pub agent_prompt: Option<String>,
     #[serde(rename = "governance", skip_serializing_if = "Option::is_none")]
     pub governance: Option<models::AgenticWorkflowGovernance>,
+    #[serde(rename = "resources", skip_serializing_if = "Option::is_none")]
+    pub resources: Option<models::AgenticWorkflowResources>,
 }
 
 impl AgenticWorkflowRequest {
@@ -60,6 +62,7 @@ impl AgenticWorkflowRequest {
             project_repositories: None,
             agent_prompt: None,
             governance: None,
+            resources: None,
         }
     }
 }

@@ -18,6 +18,8 @@ pub mod agentic_workflow_project_repository;
 pub use self::agentic_workflow_project_repository::AgenticWorkflowProjectRepository;
 pub mod agentic_workflow_request;
 pub use self::agentic_workflow_request::AgenticWorkflowRequest;
+pub mod agentic_workflow_resources;
+pub use self::agentic_workflow_resources::AgenticWorkflowResources;
 pub mod agentic_workflow_response;
 pub use self::agentic_workflow_response::AgenticWorkflowResponse;
 pub mod agentic_workflow_response_list;

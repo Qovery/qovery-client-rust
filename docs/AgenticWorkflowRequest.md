@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **project_repositories** | Option<[**Vec<models::AgenticWorkflowProjectRepository>**](AgenticWorkflowProjectRepository.md)> |  | [optional][default to []]
 **agent_prompt** | Option<**String**> |  | [optional][default to ]
 **governance** | Option<[**models::AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md)> |  | [optional]
+**resources** | Option<[**models::AgenticWorkflowResources**](AgenticWorkflowResources.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

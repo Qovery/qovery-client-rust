@@ -21,7 +21,9 @@ Name | Type | Description | Notes
 **project_repositories** | [**Vec<models::AgenticWorkflowProjectRepository>**](AgenticWorkflowProjectRepository.md) |  | 
 **agent_prompt** | **String** |  | 
 **governance** | [**models::AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
+**resources** | [**models::AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **webhook** | [**models::AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**icon_uri** | Option<**String**> | Icon URI representing the agentic workflow. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

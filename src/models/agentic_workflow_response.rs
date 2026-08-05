@@ -54,8 +54,13 @@ pub struct AgenticWorkflowResponse {
     pub agent_prompt: String,
     #[serde(rename = "governance")]
     pub governance: models::AgenticWorkflowGovernance,
+    #[serde(rename = "resources")]
+    pub resources: models::AgenticWorkflowResources,
     #[serde(rename = "webhook")]
     pub webhook: models::AgenticWorkflowWebhook,
+    /// Icon URI representing the agentic workflow.
+    #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
+    pub icon_uri: Option<String>,
 }
 
 impl AgenticWorkflowResponse {
@@ -76,6 +81,7 @@ impl AgenticWorkflowResponse {
         project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
         agent_prompt: String,
         governance: models::AgenticWorkflowGovernance,
+        resources: models::AgenticWorkflowResources,
         webhook: models::AgenticWorkflowWebhook,
     ) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
@@ -96,7 +102,9 @@ impl AgenticWorkflowResponse {
             project_repositories,
             agent_prompt,
             governance,
+            resources,
             webhook,
+            icon_uri: None,
         }
     }
 }

@@ -17,20 +17,22 @@ pub struct AgenticWorkflowProjectRepository {
     pub url: String,
     #[serde(rename = "branch")]
     pub branch: String,
-    #[serde(rename = "git_token_id")]
-    pub git_token_id: uuid::Uuid,
+    /// Qovery git token id used to clone the repository. Omit it (or send null) for a public repository, which is cloned without credentials.
+    #[serde(
+        rename = "git_token_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git_token_id: Option<Option<uuid::Uuid>>,
 }
 
 impl AgenticWorkflowProjectRepository {
-    pub fn new(
-        url: String,
-        branch: String,
-        git_token_id: uuid::Uuid,
-    ) -> AgenticWorkflowProjectRepository {
+    pub fn new(url: String, branch: String) -> AgenticWorkflowProjectRepository {
         AgenticWorkflowProjectRepository {
             url,
             branch,
-            git_token_id,
+            git_token_id: None,
         }
     }
 }
