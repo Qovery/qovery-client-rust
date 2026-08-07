@@ -185,6 +185,7 @@ pub mod jobs_api;
 pub mod lifecycle_template_main_calls_api;
 pub mod members_api;
 pub mod organization_account_git_repositories_api;
+pub mod organization_agent_api_token_api;
 pub mod organization_annotations_group_api;
 pub mod organization_api_token_api;
 pub mod organization_cluster_lock_api;

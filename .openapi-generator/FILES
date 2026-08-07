@@ -668,6 +668,11 @@ docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesApi.md
+docs/OrganizationAgentApiToken.md
+docs/OrganizationAgentApiTokenApi.md
+docs/OrganizationAgentApiTokenCreate.md
+docs/OrganizationAgentApiTokenCreateRequest.md
+docs/OrganizationAgentApiTokenResponseList.md
 docs/OrganizationAllOfOrganizationPlan.md
 docs/OrganizationAnnotationsGroupApi.md
 docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md
@@ -1009,6 +1014,7 @@ src/apis/lifecycle_template_main_calls_api.rs
 src/apis/members_api.rs
 src/apis/mod.rs
 src/apis/organization_account_git_repositories_api.rs
+src/apis/organization_agent_api_token_api.rs
 src/apis/organization_annotations_group_api.rs
 src/apis/organization_api_token_api.rs
 src/apis/organization_cluster_lock_api.rs
@@ -1632,6 +1638,10 @@ src/models/mod.rs
 src/models/observability_resource_profile.rs
 src/models/on_premise_credentials_request.rs
 src/models/organization.rs
+src/models/organization_agent_api_token.rs
+src/models/organization_agent_api_token_create.rs
+src/models/organization_agent_api_token_create_request.rs
+src/models/organization_agent_api_token_response_list.rs
 src/models/organization_all_of_organization_plan.rs
 src/models/organization_annotations_group_associated_items_response_list.rs
 src/models/organization_annotations_group_associated_items_response_list_results_inner.rs
