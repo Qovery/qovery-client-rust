@@ -1,4 +1,4 @@
-# OrganizationAgentApiToken
+# OrganizationPolicyApiToken
 
 ## Properties
 

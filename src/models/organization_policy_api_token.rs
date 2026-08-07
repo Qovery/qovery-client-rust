@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct OrganizationAgentApiToken {
+pub struct OrganizationPolicyApiToken {
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
     #[serde(rename = "created_at")]
@@ -42,9 +42,9 @@ pub struct OrganizationAgentApiToken {
     pub expires_at: Option<Option<String>>,
 }
 
-impl OrganizationAgentApiToken {
-    pub fn new(id: uuid::Uuid, created_at: String) -> OrganizationAgentApiToken {
-        OrganizationAgentApiToken {
+impl OrganizationPolicyApiToken {
+    pub fn new(id: uuid::Uuid, created_at: String) -> OrganizationPolicyApiToken {
+        OrganizationPolicyApiToken {
             id,
             created_at,
             updated_at: None,

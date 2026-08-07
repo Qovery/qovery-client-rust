@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct OrganizationAgentApiTokenCreateRequest {
+pub struct OrganizationPolicyApiTokenCreateRequest {
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
@@ -29,9 +29,9 @@ pub struct OrganizationAgentApiTokenCreateRequest {
     pub expires_at: Option<Option<String>>,
 }
 
-impl OrganizationAgentApiTokenCreateRequest {
-    pub fn new(name: String, opa_policy: String) -> OrganizationAgentApiTokenCreateRequest {
-        OrganizationAgentApiTokenCreateRequest {
+impl OrganizationPolicyApiTokenCreateRequest {
+    pub fn new(name: String, opa_policy: String) -> OrganizationPolicyApiTokenCreateRequest {
+        OrganizationPolicyApiTokenCreateRequest {
             name,
             description: None,
             opa_policy,

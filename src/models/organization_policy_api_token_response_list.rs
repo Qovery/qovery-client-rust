@@ -12,13 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct OrganizationAgentApiTokenResponseList {
+pub struct OrganizationPolicyApiTokenResponseList {
     #[serde(rename = "results", skip_serializing_if = "Option::is_none")]
-    pub results: Option<Vec<models::OrganizationAgentApiToken>>,
+    pub results: Option<Vec<models::OrganizationPolicyApiToken>>,
 }
 
-impl OrganizationAgentApiTokenResponseList {
-    pub fn new() -> OrganizationAgentApiTokenResponseList {
-        OrganizationAgentApiTokenResponseList { results: None }
+impl OrganizationPolicyApiTokenResponseList {
+    pub fn new() -> OrganizationPolicyApiTokenResponseList {
+        OrganizationPolicyApiTokenResponseList { results: None }
     }
 }

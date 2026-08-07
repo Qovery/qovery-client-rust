@@ -1,10 +1,10 @@
-# OrganizationAgentApiTokenResponseList
+# OrganizationPolicyApiTokenResponseList
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | Option<[**Vec<models::OrganizationAgentApiToken>**](OrganizationAgentApiToken.md)> |  | [optional]
+**results** | Option<[**Vec<models::OrganizationPolicyApiToken>**](OrganizationPolicyApiToken.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

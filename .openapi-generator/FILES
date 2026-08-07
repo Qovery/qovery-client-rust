@@ -668,11 +668,6 @@ docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesApi.md
-docs/OrganizationAgentApiToken.md
-docs/OrganizationAgentApiTokenApi.md
-docs/OrganizationAgentApiTokenCreate.md
-docs/OrganizationAgentApiTokenCreateRequest.md
-docs/OrganizationAgentApiTokenResponseList.md
 docs/OrganizationAllOfOrganizationPlan.md
 docs/OrganizationAnnotationsGroupApi.md
 docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md
@@ -736,6 +731,11 @@ docs/OrganizationMainCallsApi.md
 docs/OrganizationOnboardingPatchRequest.md
 docs/OrganizationOnboardingResponse.md
 docs/OrganizationOnboardingStatusEnum.md
+docs/OrganizationPolicyApiToken.md
+docs/OrganizationPolicyApiTokenApi.md
+docs/OrganizationPolicyApiTokenCreate.md
+docs/OrganizationPolicyApiTokenCreateRequest.md
+docs/OrganizationPolicyApiTokenResponseList.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
 docs/OrganizationWebhookApi.md
@@ -1014,7 +1014,6 @@ src/apis/lifecycle_template_main_calls_api.rs
 src/apis/members_api.rs
 src/apis/mod.rs
 src/apis/organization_account_git_repositories_api.rs
-src/apis/organization_agent_api_token_api.rs
 src/apis/organization_annotations_group_api.rs
 src/apis/organization_api_token_api.rs
 src/apis/organization_cluster_lock_api.rs
@@ -1023,6 +1022,7 @@ src/apis/organization_enterprise_connection_api.rs
 src/apis/organization_event_api.rs
 src/apis/organization_labels_group_api.rs
 src/apis/organization_main_calls_api.rs
+src/apis/organization_policy_api_token_api.rs
 src/apis/organization_webhook_api.rs
 src/apis/platform_configuration_api.rs
 src/apis/project_deployment_rule_api.rs
@@ -1638,10 +1638,6 @@ src/models/mod.rs
 src/models/observability_resource_profile.rs
 src/models/on_premise_credentials_request.rs
 src/models/organization.rs
-src/models/organization_agent_api_token.rs
-src/models/organization_agent_api_token_create.rs
-src/models/organization_agent_api_token_create_request.rs
-src/models/organization_agent_api_token_response_list.rs
 src/models/organization_all_of_organization_plan.rs
 src/models/organization_annotations_group_associated_items_response_list.rs
 src/models/organization_annotations_group_associated_items_response_list_results_inner.rs
@@ -1697,6 +1693,10 @@ src/models/organization_labels_group_response.rs
 src/models/organization_onboarding_patch_request.rs
 src/models/organization_onboarding_response.rs
 src/models/organization_onboarding_status_enum.rs
+src/models/organization_policy_api_token.rs
+src/models/organization_policy_api_token_create.rs
+src/models/organization_policy_api_token_create_request.rs
+src/models/organization_policy_api_token_response_list.rs
 src/models/organization_request.rs
 src/models/organization_response_list.rs
 src/models/organization_webhook_create_request.rs

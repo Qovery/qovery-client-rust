@@ -13,10 +13,10 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
-/// struct for typed errors of method [`create_organization_agent_api_token`]
+/// struct for typed errors of method [`create_organization_policy_api_token`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum CreateOrganizationAgentApiTokenError {
+pub enum CreateOrganizationPolicyApiTokenError {
     Status400(),
     Status401(),
     Status403(),
@@ -25,41 +25,42 @@ pub enum CreateOrganizationAgentApiTokenError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`delete_organization_agent_api_token`]
+/// struct for typed errors of method [`delete_organization_policy_api_token`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum DeleteOrganizationAgentApiTokenError {
+pub enum DeleteOrganizationPolicyApiTokenError {
     Status401(),
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_organization_agent_api_tokens`]
+/// struct for typed errors of method [`list_organization_policy_api_tokens`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum ListOrganizationAgentApiTokensError {
+pub enum ListOrganizationPolicyApiTokensError {
     Status401(),
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
 }
 
-/// Create an agent api token, intended for autonomous agents calling the Qovery API.  Unlike a regular api token, an agent api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.  The generated token value is returned only in this response and cannot be retrieved afterwards.
-pub async fn create_organization_agent_api_token(
+/// Create a policy api token, intended for autonomous agents calling the Qovery API.  Unlike a regular api token, a policy api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.  The generated token value is returned only in this response and cannot be retrieved afterwards.
+pub async fn create_organization_policy_api_token(
     configuration: &configuration::Configuration,
     organization_id: &str,
-    organization_agent_api_token_create_request: Option<
-        models::OrganizationAgentApiTokenCreateRequest,
+    organization_policy_api_token_create_request: Option<
+        models::OrganizationPolicyApiTokenCreateRequest,
     >,
-) -> Result<models::OrganizationAgentApiTokenCreate, Error<CreateOrganizationAgentApiTokenError>> {
+) -> Result<models::OrganizationPolicyApiTokenCreate, Error<CreateOrganizationPolicyApiTokenError>>
+{
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
-    let p_body_organization_agent_api_token_create_request =
-        organization_agent_api_token_create_request;
+    let p_body_organization_policy_api_token_create_request =
+        organization_policy_api_token_create_request;
 
     let uri_str = format!(
-        "{}/organization/{organizationId}/agentApiToken",
+        "{}/organization/{organizationId}/policyApiToken",
         configuration.base_path,
         organizationId = crate::apis::urlencode(p_path_organization_id)
     );
@@ -81,7 +82,7 @@ pub async fn create_organization_agent_api_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body_organization_agent_api_token_create_request);
+    req_builder = req_builder.json(&p_body_organization_policy_api_token_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -98,12 +99,12 @@ pub async fn create_organization_agent_api_token(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationAgentApiTokenCreate`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationAgentApiTokenCreate`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationPolicyApiTokenCreate`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationPolicyApiTokenCreate`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<CreateOrganizationAgentApiTokenError> =
+        let entity: Option<CreateOrganizationPolicyApiTokenError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
@@ -113,21 +114,21 @@ pub async fn create_organization_agent_api_token(
     }
 }
 
-/// Delete organization agent api token
-pub async fn delete_organization_agent_api_token(
+/// Delete organization policy api token
+pub async fn delete_organization_policy_api_token(
     configuration: &configuration::Configuration,
     organization_id: &str,
-    agent_api_token_id: &str,
-) -> Result<(), Error<DeleteOrganizationAgentApiTokenError>> {
+    policy_api_token_id: &str,
+) -> Result<(), Error<DeleteOrganizationPolicyApiTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
-    let p_path_agent_api_token_id = agent_api_token_id;
+    let p_path_policy_api_token_id = policy_api_token_id;
 
     let uri_str = format!(
-        "{}/organization/{organizationId}/agentApiToken/{agentApiTokenId}",
+        "{}/organization/{organizationId}/policyApiToken/{policyApiTokenId}",
         configuration.base_path,
         organizationId = crate::apis::urlencode(p_path_organization_id),
-        agentApiTokenId = crate::apis::urlencode(p_path_agent_api_token_id)
+        policyApiTokenId = crate::apis::urlencode(p_path_policy_api_token_id)
     );
     let mut req_builder = configuration
         .client
@@ -157,7 +158,7 @@ pub async fn delete_organization_agent_api_token(
         Ok(())
     } else {
         let content = resp.text().await?;
-        let entity: Option<DeleteOrganizationAgentApiTokenError> =
+        let entity: Option<DeleteOrganizationPolicyApiTokenError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
@@ -167,17 +168,19 @@ pub async fn delete_organization_agent_api_token(
     }
 }
 
-/// List the agent api tokens of the organization, each with the Open Policy Agent (rego) policy it carries. The token value itself is never returned here, it is only shown once at creation.
-pub async fn list_organization_agent_api_tokens(
+/// List the policy api tokens of the organization, each with the Open Policy Agent (rego) policy it carries. The token value itself is never returned here, it is only shown once at creation.
+pub async fn list_organization_policy_api_tokens(
     configuration: &configuration::Configuration,
     organization_id: &str,
-) -> Result<models::OrganizationAgentApiTokenResponseList, Error<ListOrganizationAgentApiTokensError>>
-{
+) -> Result<
+    models::OrganizationPolicyApiTokenResponseList,
+    Error<ListOrganizationPolicyApiTokensError>,
+> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_organization_id = organization_id;
 
     let uri_str = format!(
-        "{}/organization/{organizationId}/agentApiToken",
+        "{}/organization/{organizationId}/policyApiToken",
         configuration.base_path,
         organizationId = crate::apis::urlencode(p_path_organization_id)
     );
@@ -213,12 +216,12 @@ pub async fn list_organization_agent_api_tokens(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationAgentApiTokenResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationAgentApiTokenResponseList`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationPolicyApiTokenResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationPolicyApiTokenResponseList`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<ListOrganizationAgentApiTokensError> =
+        let entity: Option<ListOrganizationPolicyApiTokensError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
