@@ -25,6 +25,8 @@ pub struct DeploymentStageWithServicesStatuses {
     pub helms: Option<Vec<models::Status>>,
     #[serde(rename = "terraforms", skip_serializing_if = "Option::is_none")]
     pub terraforms: Option<Vec<models::Status>>,
+    #[serde(rename = "agentic_workflows", skip_serializing_if = "Option::is_none")]
+    pub agentic_workflows: Option<Vec<models::Status>>,
     #[serde(rename = "stage", skip_serializing_if = "Option::is_none")]
     pub stage: Option<models::Stage>,
 }
@@ -38,6 +40,7 @@ impl DeploymentStageWithServicesStatuses {
             databases: None,
             helms: None,
             terraforms: None,
+            agentic_workflows: None,
             stage: None,
         }
     }

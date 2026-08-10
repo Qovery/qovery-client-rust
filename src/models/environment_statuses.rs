@@ -27,6 +27,8 @@ pub struct EnvironmentStatuses {
     pub helms: Vec<models::Status>,
     #[serde(rename = "terraforms")]
     pub terraforms: Vec<models::Status>,
+    #[serde(rename = "agentic_workflows", skip_serializing_if = "Option::is_none")]
+    pub agentic_workflows: Option<Vec<models::Status>>,
 }
 
 impl EnvironmentStatuses {
@@ -47,6 +49,7 @@ impl EnvironmentStatuses {
             databases,
             helms,
             terraforms,
+            agentic_workflows: None,
         }
     }
 }
