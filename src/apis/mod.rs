@@ -183,6 +183,7 @@ pub mod job_main_calls_api;
 pub mod job_secret_api;
 pub mod jobs_api;
 pub mod lifecycle_template_main_calls_api;
+pub mod mcp_servers_api;
 pub mod members_api;
 pub mod organization_account_git_repositories_api;
 pub mod organization_annotations_group_api;

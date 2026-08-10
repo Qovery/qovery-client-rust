@@ -658,6 +658,10 @@ docs/ManagedDatabaseInstanceTypeResponse.md
 docs/ManagedDatabaseInstanceTypeResponseList.md
 docs/ManagedDatabaseTypeResponse.md
 docs/ManagedDatabaseTypeResponseList.md
+docs/McpServerRequest.md
+docs/McpServerResponse.md
+docs/McpServerResponseList.md
+docs/McpServersApi.md
 docs/Member.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
@@ -1011,6 +1015,7 @@ src/apis/job_main_calls_api.rs
 src/apis/job_secret_api.rs
 src/apis/jobs_api.rs
 src/apis/lifecycle_template_main_calls_api.rs
+src/apis/mcp_servers_api.rs
 src/apis/members_api.rs
 src/apis/mod.rs
 src/apis/organization_account_git_repositories_api.rs
@@ -1629,6 +1634,9 @@ src/models/managed_database_instance_type_response.rs
 src/models/managed_database_instance_type_response_list.rs
 src/models/managed_database_type_response.rs
 src/models/managed_database_type_response_list.rs
+src/models/mcp_server_request.rs
+src/models/mcp_server_response.rs
+src/models/mcp_server_response_list.rs
 src/models/member.rs
 src/models/member_response_list.rs
 src/models/member_role_update_request.rs

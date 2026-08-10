@@ -436,6 +436,11 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**list_jobs**](docs/JobsApi.md#list_jobs) | **GET** /environment/{environmentId}/job | List jobs
 *LifecycleTemplateMainCallsApi* | [**get_environment_lifecycle_template**](docs/LifecycleTemplateMainCallsApi.md#get_environment_lifecycle_template) | **GET** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsApi* | [**list_environment_lifecycle_templates**](docs/LifecycleTemplateMainCallsApi.md#list_environment_lifecycle_templates) | **GET** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
+*McpServersApi* | [**create_mcp_server**](docs/McpServersApi.md#create_mcp_server) | **POST** /organization/{organizationId}/mcpServer | Create an MCP server
+*McpServersApi* | [**delete_mcp_server**](docs/McpServersApi.md#delete_mcp_server) | **DELETE** /mcpServer/{mcpServerId} | Delete an MCP server
+*McpServersApi* | [**edit_mcp_server**](docs/McpServersApi.md#edit_mcp_server) | **PUT** /mcpServer/{mcpServerId} | Edit an MCP server
+*McpServersApi* | [**get_mcp_server**](docs/McpServersApi.md#get_mcp_server) | **GET** /mcpServer/{mcpServerId} | Get an MCP server
+*McpServersApi* | [**list_mcp_servers**](docs/McpServersApi.md#list_mcp_servers) | **GET** /organization/{organizationId}/mcpServer | List organization MCP servers
 *MembersApi* | [**delete_invite_member**](docs/MembersApi.md#delete_invite_member) | **DELETE** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 *MembersApi* | [**delete_member**](docs/MembersApi.md#delete_member) | **DELETE** /organization/{organizationId}/member | Remove a member
 *MembersApi* | [**edit_organization_member_role**](docs/MembersApi.md#edit_organization_member_role) | **PUT** /organization/{organizationId}/member | Edit an organization member role
@@ -1162,6 +1167,9 @@ Class | Method | HTTP request | Description
  - [ManagedDatabaseInstanceTypeResponseList](docs/ManagedDatabaseInstanceTypeResponseList.md)
  - [ManagedDatabaseTypeResponse](docs/ManagedDatabaseTypeResponse.md)
  - [ManagedDatabaseTypeResponseList](docs/ManagedDatabaseTypeResponseList.md)
+ - [McpServerRequest](docs/McpServerRequest.md)
+ - [McpServerResponse](docs/McpServerResponse.md)
+ - [McpServerResponseList](docs/McpServerResponseList.md)
  - [Member](docs/Member.md)
  - [MemberResponseList](docs/MemberResponseList.md)
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
