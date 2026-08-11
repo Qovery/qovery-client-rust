@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**delete_agentic_workflow**](AgenticWorkflowsApi.md#delete_agentic_workflow) | **DELETE** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
 [**edit_agentic_workflow**](AgenticWorkflowsApi.md#edit_agentic_workflow) | **PUT** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**get_agentic_workflow**](AgenticWorkflowsApi.md#get_agentic_workflow) | **GET** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
+[**list_agentic_workflow_deployment_history_v2**](AgenticWorkflowsApi.md#list_agentic_workflow_deployment_history_v2) | **GET** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
 [**list_agentic_workflows**](AgenticWorkflowsApi.md#list_agentic_workflows) | **GET** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 
 
@@ -147,6 +148,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::AgenticWorkflowResponse**](AgenticWorkflowResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_agentic_workflow_deployment_history_v2
+
+> models::DeploymentHistoryServicePaginatedResponseListV2 list_agentic_workflow_deployment_history_v2(agentic_workflow_id, page_size)
+List agentic workflow deployments
+
+Returns the 20 last agentic workflow deployments
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**agentic_workflow_id** | **uuid::Uuid** |  | [required] |
+**page_size** | Option<**f64**> | The number of deployments to return in the current page |  |[default to 20]
+
+### Return type
+
+[**models::DeploymentHistoryServicePaginatedResponseListV2**](DeploymentHistoryServicePaginatedResponseListV2.md)
 
 ### Authorization
 
