@@ -37,6 +37,14 @@ pub struct Environment {
     pub cluster_id: uuid::Uuid,
     #[serde(rename = "cluster_name", skip_serializing_if = "Option::is_none")]
     pub cluster_name: Option<String>,
+    /// Date after which the environment is automatically deleted. Null when the environment never expires, which is the case for every environment except the throwaway ones created for a single agentic workflow run.
+    #[serde(
+        rename = "expires_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub expires_at: Option<Option<String>>,
 }
 
 impl Environment {
@@ -62,6 +70,7 @@ impl Environment {
             mode,
             cluster_id,
             cluster_name: None,
+            expires_at: None,
         }
     }
 }

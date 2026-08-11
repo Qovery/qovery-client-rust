@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **mode** | [**models::EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **cluster_id** | **uuid::Uuid** |  | 
 **cluster_name** | Option<**String**> |  | [optional]
+**expires_at** | Option<**String**> | Date after which the environment is automatically deleted. Null when the environment never expires, which is the case for every environment except the throwaway ones created for a single agentic workflow run. | [optional][readonly]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
