@@ -15,6 +15,8 @@ use serde::{Deserialize, Serialize};
 /// Type of the organization event
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum OrganizationEventTargetType {
+    #[serde(rename = "AGENTIC_WORKFLOW")]
+    AgenticWorkflow,
     #[serde(rename = "APPLICATION")]
     Application,
     #[serde(rename = "CLUSTER")]
@@ -50,6 +52,7 @@ pub enum OrganizationEventTargetType {
 impl std::fmt::Display for OrganizationEventTargetType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::AgenticWorkflow => write!(f, "AGENTIC_WORKFLOW"),
             Self::Application => write!(f, "APPLICATION"),
             Self::Cluster => write!(f, "CLUSTER"),
             Self::Container => write!(f, "CONTAINER"),
@@ -71,6 +74,6 @@ impl std::fmt::Display for OrganizationEventTargetType {
 
 impl Default for OrganizationEventTargetType {
     fn default() -> OrganizationEventTargetType {
-        Self::Application
+        Self::AgenticWorkflow
     }
 }

@@ -4,6 +4,7 @@
 
 | Name | Value |
 |---- | -----|
+| AgenticWorkflow | AGENTIC_WORKFLOW |
 | Application | APPLICATION |
 | Cluster | CLUSTER |
 | Container | CONTAINER |
