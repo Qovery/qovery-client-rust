@@ -30,6 +30,8 @@ pub enum ApiVariableScopeEnum {
     Helm,
     #[serde(rename = "TERRAFORM")]
     Terraform,
+    #[serde(rename = "AGENTIC_WORKFLOW")]
+    AgenticWorkflow,
 }
 
 impl std::fmt::Display for ApiVariableScopeEnum {
@@ -43,6 +45,7 @@ impl std::fmt::Display for ApiVariableScopeEnum {
             Self::Job => write!(f, "JOB"),
             Self::Helm => write!(f, "HELM"),
             Self::Terraform => write!(f, "TERRAFORM"),
+            Self::AgenticWorkflow => write!(f, "AGENTIC_WORKFLOW"),
         }
     }
 }
