@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_cluster_operator_bootstrap**](ClusterOperatorApi.md#get_cluster_operator_bootstrap) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 [**get_cluster_operator_status**](ClusterOperatorApi.md#get_cluster_operator_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
 [**list_cluster_operator_fleet**](ClusterOperatorApi.md#list_cluster_operator_fleet) | **GET** /admin/operator/clusters | List the Qovery Operator fleet
+[**update_cluster_operator**](ClusterOperatorApi.md#update_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 
 
 
@@ -126,6 +127,38 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_cluster_operator
+
+> models::ClusterOperatorUpdateResponse update_cluster_operator(organization_id, cluster_id, cluster_operator_update_request)
+Update the Qovery Operator on a cluster
+
+Queues an Engine v2 execution containing only the Qovery Operator Helm release. The chart version is required; the optional image version overrides the image target selected by q-core. The current Operator must be attached, connected, and protocol-compatible. A successful response means that the execution was accepted, not that Helm has completed. Cluster administrator permission is required.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+**cluster_operator_update_request** | [**ClusterOperatorUpdateRequest**](ClusterOperatorUpdateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::ClusterOperatorUpdateResponse**](ClusterOperatorUpdateResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

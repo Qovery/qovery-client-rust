@@ -181,6 +181,7 @@ Class | Method | HTTP request | Description
 *ClusterOperatorApi* | [**get_cluster_operator_bootstrap**](docs/ClusterOperatorApi.md#get_cluster_operator_bootstrap) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 *ClusterOperatorApi* | [**get_cluster_operator_status**](docs/ClusterOperatorApi.md#get_cluster_operator_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
 *ClusterOperatorApi* | [**list_cluster_operator_fleet**](docs/ClusterOperatorApi.md#list_cluster_operator_fleet) | **GET** /admin/operator/clusters | List the Qovery Operator fleet
+*ClusterOperatorApi* | [**update_cluster_operator**](docs/ClusterOperatorApi.md#update_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 *ClustersApi* | [**create_cluster**](docs/ClustersApi.md#create_cluster) | **POST** /organization/{organizationId}/cluster | Create a cluster
 *ClustersApi* | [**delete_cluster**](docs/ClustersApi.md#delete_cluster) | **DELETE** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersApi* | [**deploy_cluster**](docs/ClustersApi.md#deploy_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
@@ -822,6 +823,8 @@ Class | Method | HTTP request | Description
  - [ClusterOperatorFleetInventoryResponseList](docs/ClusterOperatorFleetInventoryResponseList.md)
  - [ClusterOperatorFleetStatus](docs/ClusterOperatorFleetStatus.md)
  - [ClusterOperatorStatusResponse](docs/ClusterOperatorStatusResponse.md)
+ - [ClusterOperatorUpdateRequest](docs/ClusterOperatorUpdateRequest.md)
+ - [ClusterOperatorUpdateResponse](docs/ClusterOperatorUpdateResponse.md)
  - [ClusterOverviewResponse](docs/ClusterOverviewResponse.md)
  - [ClusterPlatformBindingLayerResponse](docs/ClusterPlatformBindingLayerResponse.md)
  - [ClusterPlatformBindingRequest](docs/ClusterPlatformBindingRequest.md)
