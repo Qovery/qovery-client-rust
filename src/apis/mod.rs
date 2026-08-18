@@ -134,6 +134,7 @@ pub mod blueprint_catalog_api;
 pub mod blueprint_main_calls_api;
 pub mod cloud_provider_api;
 pub mod cloud_provider_credentials_api;
+pub mod cluster_operator_api;
 pub mod clusters_api;
 pub mod container_actions_api;
 pub mod container_configuration_api;

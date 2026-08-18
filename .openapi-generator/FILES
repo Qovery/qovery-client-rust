@@ -254,6 +254,12 @@ docs/ClusterLogsMessage.md
 docs/ClusterLogsResponse.md
 docs/ClusterLogsResponseList.md
 docs/ClusterMetricsResponse.md
+docs/ClusterOperatorApi.md
+docs/ClusterOperatorBootstrapResponse.md
+docs/ClusterOperatorFleetInventoryResponse.md
+docs/ClusterOperatorFleetInventoryResponseList.md
+docs/ClusterOperatorFleetStatus.md
+docs/ClusterOperatorStatusResponse.md
 docs/ClusterOverviewResponse.md
 docs/ClusterPlatformBindingLayerResponse.md
 docs/ClusterPlatformBindingRequest.md
@@ -814,6 +820,7 @@ docs/ReferenceObjectStatusResponseList.md
 docs/Referral.md
 docs/ReferralRewardsApi.md
 docs/RegistryMirroringModeEnum.md
+docs/ReportedClusterOperatorIdentity.md
 docs/RewardClaim.md
 docs/Route53DnsProviderRequest.md
 docs/Route53DnsProviderResponse.md
@@ -832,6 +839,7 @@ docs/SecretManagerEndpointConfigurationDto.md
 docs/SecretOverride.md
 docs/SecretRequest.md
 docs/SecretResponseList.md
+docs/SelfManagedClusterKind.md
 docs/Service.md
 docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
@@ -965,6 +973,7 @@ src/apis/blueprint_catalog_api.rs
 src/apis/blueprint_main_calls_api.rs
 src/apis/cloud_provider_api.rs
 src/apis/cloud_provider_credentials_api.rs
+src/apis/cluster_operator_api.rs
 src/apis/clusters_api.rs
 src/apis/configuration.rs
 src/apis/container_actions_api.rs
@@ -1279,6 +1288,11 @@ src/models/cluster_logs_message.rs
 src/models/cluster_logs_response.rs
 src/models/cluster_logs_response_list.rs
 src/models/cluster_metrics_response.rs
+src/models/cluster_operator_bootstrap_response.rs
+src/models/cluster_operator_fleet_inventory_response.rs
+src/models/cluster_operator_fleet_inventory_response_list.rs
+src/models/cluster_operator_fleet_status.rs
+src/models/cluster_operator_status_response.rs
 src/models/cluster_overview_response.rs
 src/models/cluster_platform_binding_layer_response.rs
 src/models/cluster_platform_binding_request.rs
@@ -1771,6 +1785,7 @@ src/models/reference_object_status.rs
 src/models/reference_object_status_response_list.rs
 src/models/referral.rs
 src/models/registry_mirroring_mode_enum.rs
+src/models/reported_cluster_operator_identity.rs
 src/models/reward_claim.rs
 src/models/route53_dns_provider_request.rs
 src/models/route53_dns_provider_response.rs
@@ -1788,6 +1803,7 @@ src/models/secret_manager_endpoint_configuration_dto.rs
 src/models/secret_override.rs
 src/models/secret_request.rs
 src/models/secret_response_list.rs
+src/models/self_managed_cluster_kind.rs
 src/models/service.rs
 src/models/service_action_enum.rs
 src/models/service_action_status_enum.rs
