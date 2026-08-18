@@ -56,9 +56,11 @@
 | Shell | SHELL |
 | PortForward | PORT_FORWARD |
 | RemoteDebug | REMOTE_DEBUG |
+| Mcp | MCP |
 | Import | IMPORT |
 | Lock | LOCK |
 | Unlock | UNLOCK |
+| Rejected | REJECTED |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

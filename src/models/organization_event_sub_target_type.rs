@@ -17,16 +17,24 @@ use serde::{Deserialize, Serialize};
 pub enum OrganizationEventSubTargetType {
     #[serde(rename = "ADVANCED_SETTINGS")]
     AdvancedSettings,
+    #[serde(rename = "ALERT_RECEIVER")]
+    AlertReceiver,
     #[serde(rename = "ALERT_RULE")]
     AlertRule,
     #[serde(rename = "ANNOTATIONS_GROUP")]
     AnnotationsGroup,
     #[serde(rename = "API_TOKEN")]
     ApiToken,
+    #[serde(rename = "ARGOCD_CLUSTER_MAPPING")]
+    ArgocdClusterMapping,
+    #[serde(rename = "ARGOCD_CONFIGURATION")]
+    ArgocdConfiguration,
     #[serde(rename = "BILLING_INFO")]
     BillingInfo,
     #[serde(rename = "BILLING_USAGE_REPORT")]
     BillingUsageReport,
+    #[serde(rename = "BLUEPRINT_MIGRATION")]
+    BlueprintMigration,
     #[serde(rename = "CLOUD_PROVIDER_CREDENTIALS")]
     CloudProviderCredentials,
     #[serde(rename = "CLUSTER_CREDENTIALS")]
@@ -47,6 +55,8 @@ pub enum OrganizationEventSubTargetType {
     DeploymentRule,
     #[serde(rename = "DEPLOYMENT_STAGE")]
     DeploymentStage,
+    #[serde(rename = "DNS_PROVIDER")]
+    DnsProvider,
     #[serde(rename = "GITHUB_APP")]
     GithubApp,
     #[serde(rename = "GIT_REPOSITORY")]
@@ -55,16 +65,22 @@ pub enum OrganizationEventSubTargetType {
     GitToken,
     #[serde(rename = "INVITATION")]
     Invitation,
+    #[serde(rename = "JWT_TOKEN_FORGED")]
+    JwtTokenForged,
     #[serde(rename = "KUBERNETES_CONFIGURATION")]
     KubernetesConfiguration,
     #[serde(rename = "KUBERNETES_CREDENTIALS")]
     KubernetesCredentials,
     #[serde(rename = "LABELS_GROUP")]
     LabelsGroup,
+    #[serde(rename = "MCP_SERVER")]
+    McpServer,
     #[serde(rename = "MEMBER_ROLE")]
     MemberRole,
     #[serde(rename = "PLAN")]
     Plan,
+    #[serde(rename = "POLICY_API_TOKEN")]
+    PolicyApiToken,
     #[serde(rename = "REMOTE_ACCESS")]
     RemoteAccess,
     #[serde(rename = "SECRET")]
@@ -73,6 +89,8 @@ pub enum OrganizationEventSubTargetType {
     Sso,
     #[serde(rename = "TERRAFORM")]
     Terraform,
+    #[serde(rename = "TOOL_CALL")]
+    ToolCall,
     #[serde(rename = "TRANSFER_OWNERSHIP")]
     TransferOwnership,
     #[serde(rename = "VARIABLE")]
@@ -83,11 +101,15 @@ impl std::fmt::Display for OrganizationEventSubTargetType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::AdvancedSettings => write!(f, "ADVANCED_SETTINGS"),
+            Self::AlertReceiver => write!(f, "ALERT_RECEIVER"),
             Self::AlertRule => write!(f, "ALERT_RULE"),
             Self::AnnotationsGroup => write!(f, "ANNOTATIONS_GROUP"),
             Self::ApiToken => write!(f, "API_TOKEN"),
+            Self::ArgocdClusterMapping => write!(f, "ARGOCD_CLUSTER_MAPPING"),
+            Self::ArgocdConfiguration => write!(f, "ARGOCD_CONFIGURATION"),
             Self::BillingInfo => write!(f, "BILLING_INFO"),
             Self::BillingUsageReport => write!(f, "BILLING_USAGE_REPORT"),
+            Self::BlueprintMigration => write!(f, "BLUEPRINT_MIGRATION"),
             Self::CloudProviderCredentials => write!(f, "CLOUD_PROVIDER_CREDENTIALS"),
             Self::ClusterCredentials => write!(f, "CLUSTER_CREDENTIALS"),
             Self::ClusterRoutingTable => write!(f, "CLUSTER_ROUTING_TABLE"),
@@ -98,19 +120,24 @@ impl std::fmt::Display for OrganizationEventSubTargetType {
             Self::CustomRole => write!(f, "CUSTOM_ROLE"),
             Self::DeploymentRule => write!(f, "DEPLOYMENT_RULE"),
             Self::DeploymentStage => write!(f, "DEPLOYMENT_STAGE"),
+            Self::DnsProvider => write!(f, "DNS_PROVIDER"),
             Self::GithubApp => write!(f, "GITHUB_APP"),
             Self::GitRepository => write!(f, "GIT_REPOSITORY"),
             Self::GitToken => write!(f, "GIT_TOKEN"),
             Self::Invitation => write!(f, "INVITATION"),
+            Self::JwtTokenForged => write!(f, "JWT_TOKEN_FORGED"),
             Self::KubernetesConfiguration => write!(f, "KUBERNETES_CONFIGURATION"),
             Self::KubernetesCredentials => write!(f, "KUBERNETES_CREDENTIALS"),
             Self::LabelsGroup => write!(f, "LABELS_GROUP"),
+            Self::McpServer => write!(f, "MCP_SERVER"),
             Self::MemberRole => write!(f, "MEMBER_ROLE"),
             Self::Plan => write!(f, "PLAN"),
+            Self::PolicyApiToken => write!(f, "POLICY_API_TOKEN"),
             Self::RemoteAccess => write!(f, "REMOTE_ACCESS"),
             Self::Secret => write!(f, "SECRET"),
             Self::Sso => write!(f, "SSO"),
             Self::Terraform => write!(f, "TERRAFORM"),
+            Self::ToolCall => write!(f, "TOOL_CALL"),
             Self::TransferOwnership => write!(f, "TRANSFER_OWNERSHIP"),
             Self::Variable => write!(f, "VARIABLE"),
         }

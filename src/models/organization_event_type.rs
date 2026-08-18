@@ -119,12 +119,16 @@ pub enum OrganizationEventType {
     PortForward,
     #[serde(rename = "REMOTE_DEBUG")]
     RemoteDebug,
+    #[serde(rename = "MCP")]
+    Mcp,
     #[serde(rename = "IMPORT")]
     Import,
     #[serde(rename = "LOCK")]
     Lock,
     #[serde(rename = "UNLOCK")]
     Unlock,
+    #[serde(rename = "REJECTED")]
+    Rejected,
 }
 
 impl std::fmt::Display for OrganizationEventType {
@@ -182,9 +186,11 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Shell => write!(f, "SHELL"),
             Self::PortForward => write!(f, "PORT_FORWARD"),
             Self::RemoteDebug => write!(f, "REMOTE_DEBUG"),
+            Self::Mcp => write!(f, "MCP"),
             Self::Import => write!(f, "IMPORT"),
             Self::Lock => write!(f, "LOCK"),
             Self::Unlock => write!(f, "UNLOCK"),
+            Self::Rejected => write!(f, "REJECTED"),
         }
     }
 }
