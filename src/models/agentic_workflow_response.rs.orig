@@ -41,6 +41,9 @@ pub struct AgenticWorkflowResponse {
     /// Raw JSON blob describing the MCP servers configured for this workflow
     #[serde(rename = "mcp")]
     pub mcp: String,
+    /// Organization MCP servers used by this workflow
+    #[serde(rename = "mcp_server_ids")]
+    pub mcp_server_ids: Vec<uuid::Uuid>,
     #[serde(rename = "outputs")]
     pub outputs: Vec<models::AgenticWorkflowOutput>,
     #[serde(rename = "model")]
@@ -61,7 +64,7 @@ pub struct AgenticWorkflowResponse {
 }
 
 impl AgenticWorkflowResponse {
-    pub fn new(id: uuid::Uuid, created_at: String, service_type: models::ServiceTypeEnum, environment: models::ReferenceObject, name: String, slug: String, description: String, webhook_ip_allowlist: Vec<String>, docker_fragment: String, enabled: bool, mcp: String, outputs: Vec<models::AgenticWorkflowOutput>, model: models::AgenticWorkflowModelResponse, project_repositories: Vec<models::AgenticWorkflowProjectRepository>, agent_prompt: String, governance: models::AgenticWorkflowGovernance, resources: models::AgenticWorkflowResources, webhook: models::AgenticWorkflowWebhook) -> AgenticWorkflowResponse {
+    pub fn new(id: uuid::Uuid, created_at: String, service_type: models::ServiceTypeEnum, environment: models::ReferenceObject, name: String, slug: String, description: String, webhook_ip_allowlist: Vec<String>, docker_fragment: String, enabled: bool, mcp: String, mcp_server_ids: Vec<uuid::Uuid>, outputs: Vec<models::AgenticWorkflowOutput>, model: models::AgenticWorkflowModelResponse, project_repositories: Vec<models::AgenticWorkflowProjectRepository>, agent_prompt: String, governance: models::AgenticWorkflowGovernance, resources: models::AgenticWorkflowResources, webhook: models::AgenticWorkflowWebhook) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
             id,
             created_at,
@@ -75,6 +78,7 @@ impl AgenticWorkflowResponse {
             docker_fragment,
             enabled,
             mcp,
+            mcp_server_ids,
             outputs,
             model,
             project_repositories,

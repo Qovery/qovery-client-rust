@@ -31,6 +31,9 @@ pub struct AgenticWorkflowRequest {
     /// Raw JSON blob describing the MCP servers configured for this workflow
     #[serde(rename = "mcp", skip_serializing_if = "Option::is_none")]
     pub mcp: Option<String>,
+    /// Organization MCP servers used by this workflow
+    #[serde(rename = "mcp_server_ids", skip_serializing_if = "Option::is_none")]
+    pub mcp_server_ids: Option<Vec<uuid::Uuid>>,
     #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
     pub outputs: Option<Vec<models::AgenticWorkflowOutput>>,
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
@@ -57,6 +60,7 @@ impl AgenticWorkflowRequest {
             docker_fragment: None,
             enabled: None,
             mcp: None,
+            mcp_server_ids: None,
             outputs: None,
             model: None,
             project_repositories: None,

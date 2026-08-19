@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **docker_fragment** | Option<**String**> |  | [optional][default to ]
 **enabled** | Option<**bool**> |  | [optional][default to true]
 **mcp** | Option<**String**> | Raw JSON blob describing the MCP servers configured for this workflow | [optional][default to ]
+**mcp_server_ids** | Option<**HashSet<uuid::Uuid>**> | Organization MCP servers used by this workflow | [optional][default to []]
 **outputs** | Option<[**Vec<models::AgenticWorkflowOutput>**](AgenticWorkflowOutput.md)> |  | [optional][default to []]
 **model** | Option<[**models::AgenticWorkflowModelRequest**](AgenticWorkflowModelRequest.md)> |  | [optional]
 **project_repositories** | Option<[**Vec<models::AgenticWorkflowProjectRepository>**](AgenticWorkflowProjectRepository.md)> |  | [optional][default to []]

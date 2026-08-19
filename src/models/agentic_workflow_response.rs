@@ -44,6 +44,9 @@ pub struct AgenticWorkflowResponse {
     /// Raw JSON blob describing the MCP servers configured for this workflow
     #[serde(rename = "mcp")]
     pub mcp: String,
+    /// Organization MCP servers used by this workflow
+    #[serde(rename = "mcp_server_ids")]
+    pub mcp_server_ids: Vec<uuid::Uuid>,
     #[serde(rename = "outputs")]
     pub outputs: Vec<models::AgenticWorkflowOutput>,
     #[serde(rename = "model")]
@@ -76,6 +79,7 @@ impl AgenticWorkflowResponse {
         docker_fragment: String,
         enabled: bool,
         mcp: String,
+        mcp_server_ids: Vec<uuid::Uuid>,
         outputs: Vec<models::AgenticWorkflowOutput>,
         model: models::AgenticWorkflowModelResponse,
         project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
@@ -97,6 +101,7 @@ impl AgenticWorkflowResponse {
             docker_fragment,
             enabled,
             mcp,
+            mcp_server_ids,
             outputs,
             model,
             project_repositories,
