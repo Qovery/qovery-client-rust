@@ -20,6 +20,14 @@ pub struct OrganizationPolicyApiTokenCreateRequest {
     /// Open Policy Agent (rego) rule definitions, without a `package` declaration: Qovery prepends a per-token package so that one token's rules cannot authorize another's. The policy must define an `allow` rule, and the request is denied unless it evaluates to true.
     #[serde(rename = "opa_policy")]
     pub opa_policy: String,
+    /// the roleId provided by the \"List organization custom roles\" endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two. Omit it, or send null, for organization-admin.
+    #[serde(
+        rename = "role_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub role_id: Option<Option<uuid::Uuid>>,
     #[serde(
         rename = "expires_at",
         default,
@@ -35,6 +43,7 @@ impl OrganizationPolicyApiTokenCreateRequest {
             name,
             description: None,
             opa_policy,
+            role_id: None,
             expires_at: None,
         }
     }
