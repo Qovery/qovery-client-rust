@@ -17,6 +17,14 @@ pub struct KarpenterStableNodePoolOverride {
     pub consolidation: Option<models::KarpenterNodePoolConsolidation>,
     #[serde(rename = "limits", skip_serializing_if = "Option::is_none")]
     pub limits: Option<models::KarpenterNodePoolLimits>,
+    /// Whether this node pool runs on spot instances. `null` or absent means the pool inherits the deprecated top-level `spot_enabled`: on write that value applies to this pool, on read only a deviating value is surfaced.
+    #[serde(
+        rename = "spot_enabled",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub spot_enabled: Option<Option<bool>>,
     /// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
     #[serde(rename = "consolidate_after", skip_serializing_if = "Option::is_none")]
     pub consolidate_after: Option<String>,
@@ -27,6 +35,7 @@ impl KarpenterStableNodePoolOverride {
         KarpenterStableNodePoolOverride {
             consolidation: None,
             limits: None,
+            spot_enabled: None,
             consolidate_after: None,
         }
     }
