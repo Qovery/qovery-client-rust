@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **docker_fragment** | **String** |  | 
 **enabled** | **bool** |  | 
 **mcp** | **String** | Raw JSON blob describing the MCP servers configured for this workflow | 
-**mcp_server_ids** | **HashSet<uuid::Uuid>** | Organization MCP servers used by this workflow | 
+**mcp_server_ids** | **Vec<uuid::Uuid>** | Organization MCP servers used by this workflow | 
 **outputs** | [**Vec<models::AgenticWorkflowOutput>**](AgenticWorkflowOutput.md) |  | 
 **model** | [**models::AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
 **project_repositories** | [**Vec<models::AgenticWorkflowProjectRepository>**](AgenticWorkflowProjectRepository.md) |  | 
