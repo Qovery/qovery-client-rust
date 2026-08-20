@@ -570,8 +570,6 @@ pub mod credential_cluster;
 pub use self::credential_cluster::CredentialCluster;
 pub mod credentials;
 pub use self::credentials::Credentials;
-pub mod credentials_request;
-pub use self::credentials_request::CredentialsRequest;
 pub mod credit_card;
 pub use self::credit_card::CreditCard;
 pub mod credit_card_request;

@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_database**](DatabaseMainCallsApi.md#delete_database) | **DELETE** /database/{databaseId} | Delete a database 
 [**edit_database**](DatabaseMainCallsApi.md#edit_database) | **PUT** /database/{databaseId} | Edit a database 
-[**edit_database_credentials**](DatabaseMainCallsApi.md#edit_database_credentials) | **PUT** /database/{databaseId}/masterCredentials | Edit database  master credentials
 [**get_database**](DatabaseMainCallsApi.md#get_database) | **GET** /database/{databaseId} | Get database by ID
 [**get_database_master_credentials**](DatabaseMainCallsApi.md#get_database_master_credentials) | **GET** /database/{databaseId}/masterCredentials | Get master credentials of the database
 [**get_database_status**](DatabaseMainCallsApi.md#get_database_status) | **GET** /database/{databaseId}/status | Get database status
@@ -63,35 +62,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::Database**](Database.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## edit_database_credentials
-
-> models::Credentials edit_database_credentials(database_id, credentials_request)
-Edit database  master credentials
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**database_id** | **uuid::Uuid** | Database ID | [required] |
-**credentials_request** | Option<[**CredentialsRequest**](CredentialsRequest.md)> |  |  |
-
-### Return type
-
-[**models::Credentials**](Credentials.md)
 
 ### Authorization
 

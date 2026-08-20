@@ -281,7 +281,6 @@ Class | Method | HTTP request | Description
 *DatabaseDeploymentHistoryApi* | [**list_database_deployment_history_v2**](docs/DatabaseDeploymentHistoryApi.md#list_database_deployment_history_v2) | **GET** /database/{databaseId}/deploymentHistoryV2 | List database deploys
 *DatabaseMainCallsApi* | [**delete_database**](docs/DatabaseMainCallsApi.md#delete_database) | **DELETE** /database/{databaseId} | Delete a database 
 *DatabaseMainCallsApi* | [**edit_database**](docs/DatabaseMainCallsApi.md#edit_database) | **PUT** /database/{databaseId} | Edit a database 
-*DatabaseMainCallsApi* | [**edit_database_credentials**](docs/DatabaseMainCallsApi.md#edit_database_credentials) | **PUT** /database/{databaseId}/masterCredentials | Edit database  master credentials
 *DatabaseMainCallsApi* | [**get_database**](docs/DatabaseMainCallsApi.md#get_database) | **GET** /database/{databaseId} | Get database by ID
 *DatabaseMainCallsApi* | [**get_database_master_credentials**](docs/DatabaseMainCallsApi.md#get_database_master_credentials) | **GET** /database/{databaseId}/masterCredentials | Get master credentials of the database
 *DatabaseMainCallsApi* | [**get_database_status**](docs/DatabaseMainCallsApi.md#get_database_status) | **GET** /database/{databaseId}/status | Get database status
@@ -874,7 +873,6 @@ Class | Method | HTTP request | Description
  - [CreateEnvironmentRequest](docs/CreateEnvironmentRequest.md)
  - [CredentialCluster](docs/CredentialCluster.md)
  - [Credentials](docs/Credentials.md)
- - [CredentialsRequest](docs/CredentialsRequest.md)
  - [CreditCard](docs/CreditCard.md)
  - [CreditCardRequest](docs/CreditCardRequest.md)
  - [CreditCardResponseList](docs/CreditCardResponseList.md)

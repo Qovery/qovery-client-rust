@@ -322,7 +322,6 @@ docs/CreateEnvironmentModeEnum.md
 docs/CreateEnvironmentRequest.md
 docs/CredentialCluster.md
 docs/Credentials.md
-docs/CredentialsRequest.md
 docs/CreditCard.md
 docs/CreditCardRequest.md
 docs/CreditCardResponseList.md
@@ -1346,7 +1345,6 @@ src/models/create_environment_mode_enum.rs
 src/models/create_environment_request.rs
 src/models/credential_cluster.rs
 src/models/credentials.rs
-src/models/credentials_request.rs
 src/models/credit_card.rs
 src/models/credit_card_request.rs
 src/models/credit_card_response_list.rs
