@@ -16,9 +16,9 @@ use serde::{Deserialize, Serialize};
 pub struct FieldSchemaResponse {
     #[serde(rename = "key")]
     pub key: String,
-    /// Field type understood by the Console, such as string, number, or bool
+    /// Field type understood by the Console.
     #[serde(rename = "type")]
-    pub r#type: String,
+    pub r#type: Type,
     #[serde(rename = "required")]
     pub required: bool,
     #[serde(
@@ -47,7 +47,7 @@ impl FieldSchemaResponse {
     /// Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
     pub fn new(
         key: String,
-        r#type: String,
+        r#type: Type,
         required: bool,
         label: String,
         sensitive: bool,
@@ -63,5 +63,21 @@ impl FieldSchemaResponse {
             sensitive,
             constraints,
         }
+    }
+}
+/// Field type understood by the Console.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Type {
+    #[serde(rename = "string")]
+    String,
+    #[serde(rename = "number")]
+    Number,
+    #[serde(rename = "bool")]
+    Bool,
+}
+
+impl Default for Type {
+    fn default() -> Type {
+        Self::String
     }
 }

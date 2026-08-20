@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** |  | 
-**r#type** | **String** | Field type understood by the Console, such as string, number, or bool | 
+**r#type** | **Type** | Field type understood by the Console. (enum: string, number, bool) | 
 **required** | **bool** |  | 
 **default_value** | Option<**String**> |  | [optional]
 **label** | **String** |  | 
