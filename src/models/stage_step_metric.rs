@@ -22,6 +22,14 @@ pub struct StageStepMetric {
     /// The duration of the step in seconds.
     #[serde(rename = "duration_sec", skip_serializing_if = "Option::is_none")]
     pub duration_sec: Option<i32>,
+    /// The time at which the step started. Present while the step is ongoing and may be retained after completion.
+    #[serde(
+        rename = "started_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub started_at: Option<Option<String>>,
 }
 
 impl StageStepMetric {
@@ -31,6 +39,7 @@ impl StageStepMetric {
             step_name: None,
             status: None,
             duration_sec: None,
+            started_at: None,
         }
     }
 }

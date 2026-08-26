@@ -11,10 +11,12 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// StepMetricStatusEnum : The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
-/// The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
+/// StepMetricStatusEnum : The lifecycle status of the step: - ONGOING: The step is currently running. - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
+/// The lifecycle status of the step: - ONGOING: The step is currently running. - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum StepMetricStatusEnum {
+    #[serde(rename = "ONGOING")]
+    Ongoing,
     #[serde(rename = "SUCCESS")]
     Success,
     #[serde(rename = "ERROR")]
@@ -28,6 +30,7 @@ pub enum StepMetricStatusEnum {
 impl std::fmt::Display for StepMetricStatusEnum {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::Ongoing => write!(f, "ONGOING"),
             Self::Success => write!(f, "SUCCESS"),
             Self::Error => write!(f, "ERROR"),
             Self::Cancel => write!(f, "CANCEL"),
@@ -38,6 +41,6 @@ impl std::fmt::Display for StepMetricStatusEnum {
 
 impl Default for StepMetricStatusEnum {
     fn default() -> StepMetricStatusEnum {
-        Self::Success
+        Self::Ongoing
     }
 }
