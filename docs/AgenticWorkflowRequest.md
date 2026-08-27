@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **agent_prompt** | Option<**String**> |  | [optional][default to ]
 **governance** | Option<[**models::AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md)> |  | [optional]
 **resources** | Option<[**models::AgenticWorkflowResources**](AgenticWorkflowResources.md)> |  | [optional]
+**schedule** | Option<[**models::AgenticWorkflowScheduleRequest**](AgenticWorkflowScheduleRequest.md)> | Cron schedule firing runs of this workflow, on top of the webhook every workflow already has. Omit it, or send null, for a webhook-only workflow. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

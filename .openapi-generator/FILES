@@ -17,6 +17,8 @@ docs/AgenticWorkflowRequest.md
 docs/AgenticWorkflowResources.md
 docs/AgenticWorkflowResponse.md
 docs/AgenticWorkflowResponseList.md
+docs/AgenticWorkflowScheduleRequest.md
+docs/AgenticWorkflowScheduleResponse.md
 docs/AgenticWorkflowWebhook.md
 docs/AgenticWorkflowsApi.md
 docs/AksInfrastructureOutputs.md
@@ -1072,6 +1074,8 @@ src/models/agentic_workflow_request.rs
 src/models/agentic_workflow_resources.rs
 src/models/agentic_workflow_response.rs
 src/models/agentic_workflow_response_list.rs
+src/models/agentic_workflow_schedule_request.rs
+src/models/agentic_workflow_schedule_response.rs
 src/models/agentic_workflow_webhook.rs
 src/models/aks_infrastructure_outputs.rs
 src/models/alert_presentation.rs

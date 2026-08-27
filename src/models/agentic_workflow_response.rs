@@ -61,6 +61,9 @@ pub struct AgenticWorkflowResponse {
     pub resources: models::AgenticWorkflowResources,
     #[serde(rename = "webhook")]
     pub webhook: models::AgenticWorkflowWebhook,
+    /// Cron schedule firing runs of this workflow. Null when the workflow is webhook-only.
+    #[serde(rename = "schedule", deserialize_with = "Option::deserialize")]
+    pub schedule: Option<models::AgenticWorkflowScheduleResponse>,
     /// Icon URI representing the agentic workflow.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
@@ -87,6 +90,7 @@ impl AgenticWorkflowResponse {
         governance: models::AgenticWorkflowGovernance,
         resources: models::AgenticWorkflowResources,
         webhook: models::AgenticWorkflowWebhook,
+        schedule: Option<models::AgenticWorkflowScheduleResponse>,
     ) -> AgenticWorkflowResponse {
         AgenticWorkflowResponse {
             id,
@@ -109,6 +113,7 @@ impl AgenticWorkflowResponse {
             governance,
             resources,
             webhook,
+            schedule,
             icon_uri: None,
         }
     }

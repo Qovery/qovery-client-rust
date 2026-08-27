@@ -600,6 +600,8 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowResources](docs/AgenticWorkflowResources.md)
  - [AgenticWorkflowResponse](docs/AgenticWorkflowResponse.md)
  - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
+ - [AgenticWorkflowScheduleRequest](docs/AgenticWorkflowScheduleRequest.md)
+ - [AgenticWorkflowScheduleResponse](docs/AgenticWorkflowScheduleResponse.md)
  - [AgenticWorkflowWebhook](docs/AgenticWorkflowWebhook.md)
  - [AksInfrastructureOutputs](docs/AksInfrastructureOutputs.md)
  - [AlertPresentation](docs/AlertPresentation.md)
