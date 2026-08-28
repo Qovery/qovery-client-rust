@@ -6,6 +6,7 @@ README.md
 docs/AccountInfo.md
 docs/AccountInfoApi.md
 docs/AccountInfoEditRequest.md
+docs/AgenticWorkflowExecutionMode.md
 docs/AgenticWorkflowGovernance.md
 docs/AgenticWorkflowHeader.md
 docs/AgenticWorkflowModelRequest.md
@@ -1063,6 +1064,7 @@ src/apis/variable_main_calls_api.rs
 src/lib.rs
 src/models/account_info.rs
 src/models/account_info_edit_request.rs
+src/models/agentic_workflow_execution_mode.rs
 src/models/agentic_workflow_governance.rs
 src/models/agentic_workflow_header.rs
 src/models/agentic_workflow_model_request.rs

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **governance** | Option<[**models::AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md)> |  | [optional]
 **resources** | Option<[**models::AgenticWorkflowResources**](AgenticWorkflowResources.md)> |  | [optional]
 **schedule** | Option<[**models::AgenticWorkflowScheduleRequest**](AgenticWorkflowScheduleRequest.md)> | Cron schedule firing runs of this workflow, on top of the webhook every workflow already has. Omit it, or send null, for a webhook-only workflow. | [optional]
+**execution_mode** | Option<[**models::AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

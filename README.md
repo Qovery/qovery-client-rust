@@ -589,6 +589,7 @@ Class | Method | HTTP request | Description
 
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
+ - [AgenticWorkflowExecutionMode](docs/AgenticWorkflowExecutionMode.md)
  - [AgenticWorkflowGovernance](docs/AgenticWorkflowGovernance.md)
  - [AgenticWorkflowHeader](docs/AgenticWorkflowHeader.md)
  - [AgenticWorkflowModelRequest](docs/AgenticWorkflowModelRequest.md)

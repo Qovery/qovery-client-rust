@@ -2,6 +2,8 @@ pub mod account_info;
 pub use self::account_info::AccountInfo;
 pub mod account_info_edit_request;
 pub use self::account_info_edit_request::AccountInfoEditRequest;
+pub mod agentic_workflow_execution_mode;
+pub use self::agentic_workflow_execution_mode::AgenticWorkflowExecutionMode;
 pub mod agentic_workflow_governance;
 pub use self::agentic_workflow_governance::AgenticWorkflowGovernance;
 pub mod agentic_workflow_header;

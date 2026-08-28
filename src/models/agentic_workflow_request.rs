@@ -57,6 +57,8 @@ pub struct AgenticWorkflowRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub schedule: Option<Option<models::AgenticWorkflowScheduleRequest>>,
+    #[serde(rename = "execution_mode", skip_serializing_if = "Option::is_none")]
+    pub execution_mode: Option<models::AgenticWorkflowExecutionMode>,
 }
 
 impl AgenticWorkflowRequest {
@@ -76,6 +78,7 @@ impl AgenticWorkflowRequest {
             governance: None,
             resources: None,
             schedule: None,
+            execution_mode: None,
         }
     }
 }
