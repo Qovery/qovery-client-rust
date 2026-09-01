@@ -21,7 +21,7 @@ List external secrets used by a secret manager access
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**secret_manager_access_id** | **uuid::Uuid** | Secret Manager Access ID | [required] |
+**secret_manager_access_id** | **uuid::Uuid** | Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access  | [required] |
 
 ### Return type
 
@@ -51,7 +51,7 @@ List upstream secrets from secret provider
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**secret_manager_access_id** | **uuid::Uuid** | Secret Manager Access ID | [required] |
+**secret_manager_access_id** | **uuid::Uuid** | Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access  | [required] |
 **name_prefix** | Option<**String**> |  |  |
 
 ### Return type
