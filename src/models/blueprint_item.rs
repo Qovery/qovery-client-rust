@@ -15,6 +15,9 @@ use serde::{Deserialize, Serialize};
 pub struct BlueprintItem {
     #[serde(rename = "name")]
     pub name: String,
+    /// Customer-facing name for the blueprint.
+    #[serde(rename = "displayName")]
+    pub display_name: String,
     #[serde(rename = "kind")]
     pub kind: String,
     #[serde(rename = "description")]
@@ -23,6 +26,9 @@ pub struct BlueprintItem {
     pub icon: String,
     #[serde(rename = "categories")]
     pub categories: Vec<String>,
+    /// Customer-facing category used to group blueprints in the service catalog.
+    #[serde(rename = "primaryCategory")]
+    pub primary_category: String,
     #[serde(rename = "provider")]
     pub provider: String,
     #[serde(rename = "serviceFamily")]
@@ -34,20 +40,24 @@ pub struct BlueprintItem {
 impl BlueprintItem {
     pub fn new(
         name: String,
+        display_name: String,
         kind: String,
         description: String,
         icon: String,
         categories: Vec<String>,
+        primary_category: String,
         provider: String,
         service_family: String,
         major_versions: Vec<models::BlueprintMajorVersion>,
     ) -> BlueprintItem {
         BlueprintItem {
             name,
+            display_name,
             kind,
             description,
             icon,
             categories,
+            primary_category,
             provider,
             service_family,
             major_versions,
