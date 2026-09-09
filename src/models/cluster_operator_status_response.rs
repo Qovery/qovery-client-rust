@@ -36,13 +36,6 @@ pub struct ClusterOperatorStatusResponse {
     )]
     pub operator_version: Option<Option<String>>,
     #[serde(
-        rename = "controller_version",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub controller_version: Option<Option<String>>,
-    #[serde(
         rename = "request_schema_version",
         default,
         with = "::serde_with::rust::double_option",
@@ -97,7 +90,6 @@ impl ClusterOperatorStatusResponse {
             operator_connected,
             last_heartbeat: None,
             operator_version: None,
-            controller_version: None,
             request_schema_version: None,
             desired_image_version: None,
             desired_chart_version: None,
