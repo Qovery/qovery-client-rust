@@ -206,6 +206,11 @@ docs/ClusterCloudProviderInfoRequest.md
 docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
 docs/ClusterDeleteMode.md
+docs/ClusterDeploymentHistory.md
+docs/ClusterDeploymentHistoryApi.md
+docs/ClusterDeploymentHistoryAuditingData.md
+docs/ClusterDeploymentHistoryIdentifier.md
+docs/ClusterDeploymentHistoryPaginatedResponseListV2.md
 docs/ClusterDeploymentStatusEnum.md
 docs/ClusterDnsProviderRequest.md
 docs/ClusterDnsProviderRequestProvider.md
@@ -980,6 +985,7 @@ src/apis/blueprint_catalog_api.rs
 src/apis/blueprint_main_calls_api.rs
 src/apis/cloud_provider_api.rs
 src/apis/cloud_provider_credentials_api.rs
+src/apis/cluster_deployment_history_api.rs
 src/apis/cluster_operator_api.rs
 src/apis/clusters_api.rs
 src/apis/configuration.rs
@@ -1247,6 +1253,10 @@ src/models/cluster_cloud_provider_info_request.rs
 src/models/cluster_credentials.rs
 src/models/cluster_credentials_response_list.rs
 src/models/cluster_delete_mode.rs
+src/models/cluster_deployment_history.rs
+src/models/cluster_deployment_history_auditing_data.rs
+src/models/cluster_deployment_history_identifier.rs
+src/models/cluster_deployment_history_paginated_response_list_v2.rs
 src/models/cluster_deployment_status_enum.rs
 src/models/cluster_dns_provider_request.rs
 src/models/cluster_dns_provider_request_provider.rs

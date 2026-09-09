@@ -179,6 +179,8 @@ Class | Method | HTTP request | Description
 *CloudProviderCredentialsApi* | [**list_gcp_credentials**](docs/CloudProviderCredentialsApi.md#list_gcp_credentials) | **GET** /organization/{organizationId}/gcp/credentials | List GCP credentials
 *CloudProviderCredentialsApi* | [**list_on_premise_credentials**](docs/CloudProviderCredentialsApi.md#list_on_premise_credentials) | **GET** /organization/{organizationId}/onPremise/credentials | List OnPremise credentials
 *CloudProviderCredentialsApi* | [**list_scaleway_credentials**](docs/CloudProviderCredentialsApi.md#list_scaleway_credentials) | **GET** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
+*ClusterDeploymentHistoryApi* | [**list_cluster_deployment_history_v2**](docs/ClusterDeploymentHistoryApi.md#list_cluster_deployment_history_v2) | **GET** /organization/{organizationId}/cluster/{clusterId}/deploymentHistoryV2 | List cluster deployments
+*ClusterDeploymentHistoryApi* | [**list_cluster_deployment_logs**](docs/ClusterDeploymentHistoryApi.md#list_cluster_deployment_logs) | **GET** /organization/{organizationId}/cluster/{clusterId}/deployment/{deploymentId}/logs | List logs for a specific cluster deployment
 *ClusterOperatorApi* | [**attach_cluster_operator**](docs/ClusterOperatorApi.md#attach_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/attach | Attach a cluster to the Qovery Operator execution path
 *ClusterOperatorApi* | [**get_cluster_operator_bootstrap**](docs/ClusterOperatorApi.md#get_cluster_operator_bootstrap) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 *ClusterOperatorApi* | [**get_cluster_operator_status**](docs/ClusterOperatorApi.md#get_cluster_operator_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
@@ -771,6 +773,10 @@ Class | Method | HTTP request | Description
  - [ClusterCredentials](docs/ClusterCredentials.md)
  - [ClusterCredentialsResponseList](docs/ClusterCredentialsResponseList.md)
  - [ClusterDeleteMode](docs/ClusterDeleteMode.md)
+ - [ClusterDeploymentHistory](docs/ClusterDeploymentHistory.md)
+ - [ClusterDeploymentHistoryAuditingData](docs/ClusterDeploymentHistoryAuditingData.md)
+ - [ClusterDeploymentHistoryIdentifier](docs/ClusterDeploymentHistoryIdentifier.md)
+ - [ClusterDeploymentHistoryPaginatedResponseListV2](docs/ClusterDeploymentHistoryPaginatedResponseListV2.md)
  - [ClusterDeploymentStatusEnum](docs/ClusterDeploymentStatusEnum.md)
  - [ClusterDnsProviderRequest](docs/ClusterDnsProviderRequest.md)
  - [ClusterDnsProviderRequestProvider](docs/ClusterDnsProviderRequestProvider.md)

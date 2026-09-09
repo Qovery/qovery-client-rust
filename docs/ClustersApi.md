@@ -864,7 +864,7 @@ Name | Type | Description  | Required | Notes
 > models::ClusterLogsResponseList list_cluster_logs(organization_id, cluster_id)
 List Cluster Logs
 
-List Cluster Logs
+List Cluster Logs. Deprecated: use listClusterDeploymentLogs instead to fetch the logs of a specific cluster deployment.
 
 ### Parameters
 

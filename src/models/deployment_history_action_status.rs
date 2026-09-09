@@ -28,6 +28,8 @@ pub enum DeploymentHistoryActionStatus {
     Canceling,
     #[serde(rename = "NEVER")]
     Never,
+    #[serde(rename = "EXECUTING")]
+    Executing,
 }
 
 impl std::fmt::Display for DeploymentHistoryActionStatus {
@@ -40,6 +42,7 @@ impl std::fmt::Display for DeploymentHistoryActionStatus {
             Self::Canceled => write!(f, "CANCELED"),
             Self::Canceling => write!(f, "CANCELING"),
             Self::Never => write!(f, "NEVER"),
+            Self::Executing => write!(f, "EXECUTING"),
         }
     }
 }

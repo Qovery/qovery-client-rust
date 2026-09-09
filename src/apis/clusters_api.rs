@@ -2123,7 +2123,8 @@ pub async fn list_cluster_analysis_logs(
     }
 }
 
-/// List Cluster Logs
+/// List Cluster Logs. Deprecated: use listClusterDeploymentLogs instead to fetch the logs of a specific cluster deployment.
+#[deprecated]
 pub async fn list_cluster_logs(
     configuration: &configuration::Configuration,
     organization_id: &str,
