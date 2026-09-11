@@ -41,7 +41,7 @@ pub struct AgenticWorkflowResponse {
     /// Raw JSON blob describing the MCP servers configured for this workflow
     #[serde(rename = "mcp")]
     pub mcp: String,
-    /// Organization MCP servers used by this workflow
+    /// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
     #[serde(rename = "mcp_server_ids")]
     pub mcp_server_ids: Vec<uuid::Uuid>,
     #[serde(rename = "outputs")]

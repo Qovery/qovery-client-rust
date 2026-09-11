@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct McpServerRequest {
-    /// Unique MCP server name within the organization
+    /// MCP server name, unique per scope owner within the organization
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
@@ -24,6 +24,9 @@ pub struct McpServerRequest {
     /// HTTP headers sent to the MCP server. Header values are encrypted and never returned by the API.
     #[serde(rename = "headers", skip_serializing_if = "Option::is_none")]
     pub headers: Option<std::collections::HashMap<String, String>>,
+    /// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER connector requires CREATE_PROJECT. On edit, omitting it leaves the connector's scope unchanged, and stating a scope that differs from the connector's is refused with 400.
+    #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
+    pub scope: Option<models::McpServerScope>,
 }
 
 impl McpServerRequest {
@@ -33,6 +36,7 @@ impl McpServerRequest {
             description: None,
             url,
             headers: None,
+            scope: None,
         }
     }
 }

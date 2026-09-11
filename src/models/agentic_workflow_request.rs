@@ -31,7 +31,7 @@ pub struct AgenticWorkflowRequest {
     /// Raw JSON blob describing the MCP servers configured for this workflow
     #[serde(rename = "mcp", skip_serializing_if = "Option::is_none")]
     pub mcp: Option<String>,
-    /// Organization MCP servers used by this workflow
+    /// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
     #[serde(rename = "mcp_server_ids", skip_serializing_if = "Option::is_none")]
     pub mcp_server_ids: Option<Vec<uuid::Uuid>>,
     #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]

@@ -1206,6 +1206,8 @@ pub mod mcp_server_response;
 pub use self::mcp_server_response::McpServerResponse;
 pub mod mcp_server_response_list;
 pub use self::mcp_server_response_list::McpServerResponseList;
+pub mod mcp_server_scope;
+pub use self::mcp_server_scope::McpServerScope;
 pub mod member;
 pub use self::member::Member;
 pub mod member_response_list;

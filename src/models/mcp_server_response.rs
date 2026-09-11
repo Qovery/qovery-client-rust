@@ -29,6 +29,27 @@ pub struct McpServerResponse {
     /// Names of the configured HTTP headers. Header values are never returned.
     #[serde(rename = "header_names")]
     pub header_names: Vec<String>,
+    #[serde(rename = "scope")]
+    pub scope: models::McpServerScope,
+    /// Identity of the owning member. Null for an ORGANIZATION connector.
+    #[serde(
+        rename = "owner_user_sub",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub owner_user_sub: Option<Option<String>>,
+    /// Display name of the owning member. Null for an ORGANIZATION connector.
+    #[serde(
+        rename = "owner_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub owner_name: Option<Option<String>>,
+    /// Whether the member making this request may attach the connector to an agentic workflow. Computed per caller: an organization admin sees every USER connector but can attach none of them, so a picker must use this rather than scope alone.
+    #[serde(rename = "attachable")]
+    pub attachable: bool,
 }
 
 impl McpServerResponse {
@@ -40,6 +61,8 @@ impl McpServerResponse {
         description: String,
         url: String,
         header_names: Vec<String>,
+        scope: models::McpServerScope,
+        attachable: bool,
     ) -> McpServerResponse {
         McpServerResponse {
             id,
@@ -49,6 +72,10 @@ impl McpServerResponse {
             description,
             url,
             header_names,
+            scope,
+            owner_user_sub: None,
+            owner_name: None,
+            attachable,
         }
     }
 }

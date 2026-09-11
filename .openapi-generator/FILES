@@ -679,6 +679,7 @@ docs/ManagedDatabaseTypeResponseList.md
 docs/McpServerRequest.md
 docs/McpServerResponse.md
 docs/McpServerResponseList.md
+docs/McpServerScope.md
 docs/McpServersApi.md
 docs/Member.md
 docs/MemberResponseList.md
@@ -1675,6 +1676,7 @@ src/models/managed_database_type_response_list.rs
 src/models/mcp_server_request.rs
 src/models/mcp_server_response.rs
 src/models/mcp_server_response_list.rs
+src/models/mcp_server_scope.rs
 src/models/member.rs
 src/models/member_response_list.rs
 src/models/member_role_update_request.rs
