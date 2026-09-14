@@ -1,4 +1,4 @@
-# FieldSchemaResponse
+# ArrayItemResponse
 
 ## Enum Variants
 

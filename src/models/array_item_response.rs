@@ -11,19 +11,17 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// FieldSchemaResponse : Generic catalog field descriptor matching the shared q-core field response. Scalar fields retain their existing shape; objects and arrays describe nested configuration without flattening its values. Blueprint keeps its existing BlueprintManifestVariableField response contract through a dedicated adapter.
+/// ArrayItemResponse : Descriptor for an array element. Elements are scalars or objects; an object's fields can themselves contain arrays.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "type")]
-pub enum FieldSchemaResponse {
+pub enum ArrayItemResponse {
     #[serde(rename = "string")]
-    String(models::ScalarFieldSchemaResponse),
+    String(models::ScalarArrayItemResponse),
     #[serde(rename = "object")]
-    Object(models::ObjectFieldSchemaResponse),
-    #[serde(rename = "array")]
-    Array(models::ArrayFieldSchemaResponse),
+    Object(models::ObjectArrayItemResponse),
 }
 
-impl Default for FieldSchemaResponse {
+impl Default for ArrayItemResponse {
     fn default() -> Self {
         Self::String(Default::default())
     }

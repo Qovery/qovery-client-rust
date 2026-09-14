@@ -96,6 +96,8 @@ docs/ArgocdAssociatedServiceType.md
 docs/ArgocdAssociatedServicesResponse.md
 docs/ArgocdAssociatedServicesResponseList.md
 docs/ArgocdManagedResource.md
+docs/ArrayFieldSchemaResponse.md
+docs/ArrayItemResponse.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutomaticallyConfiguredAuthDto.md
 docs/AutoscalingMode.md
@@ -291,6 +293,7 @@ docs/ClusterStateEnum.md
 docs/ClusterStatus.md
 docs/ClusterStatusResponseList.md
 docs/ClustersApi.md
+docs/CollectionConstraintsResponse.md
 docs/Commit.md
 docs/CommitResponseList.md
 docs/CompanySizeEnum.md
@@ -687,6 +690,8 @@ docs/MemberRoleUpdateRequest.md
 docs/MembersApi.md
 docs/MetricsConfigurationManagedByQovery.md
 docs/MetricsParameters.md
+docs/ObjectArrayItemResponse.md
+docs/ObjectFieldSchemaResponse.md
 docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
@@ -839,6 +844,8 @@ docs/Route53DnsProviderRequest.md
 docs/Route53DnsProviderResponse.md
 docs/Route53StaticCredentialsRequest.md
 docs/Route53StaticCredentialsResponse.md
+docs/ScalarArrayItemResponse.md
+docs/ScalarFieldSchemaResponse.md
 docs/ScalewayClusterCredentials.md
 docs/ScalewayCredentialsRequest.md
 docs/Secret.md
@@ -1150,6 +1157,8 @@ src/models/argocd_associated_service_type.rs
 src/models/argocd_associated_services_response.rs
 src/models/argocd_associated_services_response_list.rs
 src/models/argocd_managed_resource.rs
+src/models/array_field_schema_response.rs
+src/models/array_item_response.rs
 src/models/attach_service_to_deployment_stage_request.rs
 src/models/automatically_configured_auth_dto.rs
 src/models/autoscaling_mode.rs
@@ -1336,6 +1345,7 @@ src/models/cluster_routing_table_results_inner.rs
 src/models/cluster_state_enum.rs
 src/models/cluster_status.rs
 src/models/cluster_status_response_list.rs
+src/models/collection_constraints_response.rs
 src/models/commit.rs
 src/models/commit_response_list.rs
 src/models/company_size_enum.rs
@@ -1683,6 +1693,8 @@ src/models/member_role_update_request.rs
 src/models/metrics_configuration_managed_by_qovery.rs
 src/models/metrics_parameters.rs
 src/models/mod.rs
+src/models/object_array_item_response.rs
+src/models/object_field_schema_response.rs
 src/models/observability_resource_profile.rs
 src/models/on_premise_credentials_request.rs
 src/models/organization.rs
@@ -1817,6 +1829,8 @@ src/models/route53_dns_provider_request.rs
 src/models/route53_dns_provider_response.rs
 src/models/route53_static_credentials_request.rs
 src/models/route53_static_credentials_response.rs
+src/models/scalar_array_item_response.rs
+src/models/scalar_field_schema_response.rs
 src/models/scaleway_cluster_credentials.rs
 src/models/scaleway_credentials_request.rs
 src/models/secret.rs

@@ -11,9 +11,9 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// PlatformComponentInputRequirementResponse : A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors.
+/// ScalarFieldSchemaResponse : Scalar catalog field descriptor, also used for platform cluster input requirements. FieldSchemaResponse is the union of scalar, object and array descriptors.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct PlatformComponentInputRequirementResponse {
+pub struct ScalarFieldSchemaResponse {
     #[serde(rename = "key")]
     pub key: String,
     /// Field type understood by the Console.
@@ -41,14 +41,10 @@ pub struct PlatformComponentInputRequirementResponse {
     pub sensitive: bool,
     #[serde(rename = "constraints")]
     pub constraints: models::FieldSchemaConstraintsResponse,
-    #[serde(rename = "scope")]
-    pub scope: models::PlatformComponentConfigurationInputScope,
-    #[serde(rename = "status")]
-    pub status: models::PlatformComponentConfigurationRequirementStatus,
 }
 
-impl PlatformComponentInputRequirementResponse {
-    /// A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors.
+impl ScalarFieldSchemaResponse {
+    /// Scalar catalog field descriptor, also used for platform cluster input requirements. FieldSchemaResponse is the union of scalar, object and array descriptors.
     pub fn new(
         key: String,
         r#type: Type,
@@ -56,10 +52,8 @@ impl PlatformComponentInputRequirementResponse {
         label: String,
         sensitive: bool,
         constraints: models::FieldSchemaConstraintsResponse,
-        scope: models::PlatformComponentConfigurationInputScope,
-        status: models::PlatformComponentConfigurationRequirementStatus,
-    ) -> PlatformComponentInputRequirementResponse {
-        PlatformComponentInputRequirementResponse {
+    ) -> ScalarFieldSchemaResponse {
+        ScalarFieldSchemaResponse {
             key,
             r#type,
             required,
@@ -68,8 +62,6 @@ impl PlatformComponentInputRequirementResponse {
             description: None,
             sensitive,
             constraints,
-            scope,
-            status,
         }
     }
 }
