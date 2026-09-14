@@ -850,6 +850,8 @@ pub mod field_schema_constraints_response;
 pub use self::field_schema_constraints_response::FieldSchemaConstraintsResponse;
 pub mod field_schema_response;
 pub use self::field_schema_response::FieldSchemaResponse;
+pub mod field_template_response;
+pub use self::field_template_response::FieldTemplateResponse;
 pub mod gcp_credentials_request;
 pub use self::gcp_credentials_request::GcpCredentialsRequest;
 pub mod gcp_json_credentials_auth_dto;

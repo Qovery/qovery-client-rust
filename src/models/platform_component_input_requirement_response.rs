@@ -41,6 +41,12 @@ pub struct PlatformComponentInputRequirementResponse {
     pub sensitive: bool,
     #[serde(rename = "constraints")]
     pub constraints: models::FieldSchemaConstraintsResponse,
+    /// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
+    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
+    /// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
+    #[serde(rename = "templates", skip_serializing_if = "Option::is_none")]
+    pub templates: Option<Vec<models::FieldTemplateResponse>>,
     #[serde(rename = "scope")]
     pub scope: models::PlatformComponentConfigurationInputScope,
     #[serde(rename = "status")]
@@ -68,6 +74,8 @@ impl PlatformComponentInputRequirementResponse {
             description: None,
             sensitive,
             constraints,
+            format: None,
+            templates: None,
             scope,
             status,
         }

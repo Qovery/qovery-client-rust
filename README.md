@@ -1018,6 +1018,7 @@ Class | Method | HTTP request | Description
  - [ExternalSecretAssociatedServiceResponseList](docs/ExternalSecretAssociatedServiceResponseList.md)
  - [FieldSchemaConstraintsResponse](docs/FieldSchemaConstraintsResponse.md)
  - [FieldSchemaResponse](docs/FieldSchemaResponse.md)
+ - [FieldTemplateResponse](docs/FieldTemplateResponse.md)
  - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
  - [GcpJsonCredentialsAuthDto](docs/GcpJsonCredentialsAuthDto.md)
  - [GcpSecretManagerEndpointDto](docs/GcpSecretManagerEndpointDto.md)
