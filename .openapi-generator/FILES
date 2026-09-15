@@ -822,6 +822,7 @@ docs/ProviderSecrets.md
 docs/QoveryDnsProviderRequest.md
 docs/QoveryDnsProviderResponse.md
 docs/QoveryIpsResponse.md
+docs/QoveryMcpServerRequest.md
 docs/QueuedDeploymentRequestForService.md
 docs/QueuedDeploymentRequestForServiceAuditingData.md
 docs/QueuedDeploymentRequestForServiceIdentifier.md
@@ -1809,6 +1810,7 @@ src/models/provider_secrets.rs
 src/models/qovery_dns_provider_request.rs
 src/models/qovery_dns_provider_response.rs
 src/models/qovery_ips_response.rs
+src/models/qovery_mcp_server_request.rs
 src/models/queued_deployment_request_for_service.rs
 src/models/queued_deployment_request_for_service_auditing_data.rs
 src/models/queued_deployment_request_for_service_identifier.rs

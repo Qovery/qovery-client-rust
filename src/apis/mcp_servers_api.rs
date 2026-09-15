@@ -25,6 +25,17 @@ pub enum CreateMcpServerError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`create_qovery_mcp_server`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreateQoveryMcpServerError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status409(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`delete_mcp_server`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -123,6 +134,70 @@ pub async fn create_mcp_server(
     } else {
         let content = resp.text().await?;
         let entity: Option<CreateMcpServerError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Create a connector to Qovery's own MCP server in READ-ONLY mode. Scope is always `ORGANIZATION`; this endpoint accepts no scope parameter.  During the request, an organization API token is generated, bound to the Viewer role, and stored as the encrypted `Authorization` connector header. The token is never returned in the response; `header_names` will contain `Authorization`.  The generated token is visible and revocable in the organization's API token list. Deleting the connector does not revoke the generated token; revoke it separately from the API token list.  **403 — Access forbidden:** Requires the `MANAGE_INFRASTRUCTURE` permission. Viewer and Billing callers cannot mint API tokens and are rejected with 403.  Only one Qovery MCP connector is allowed per organization; a second call returns 409.
+pub async fn create_qovery_mcp_server(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    qovery_mcp_server_request: Option<models::QoveryMcpServerRequest>,
+) -> Result<models::McpServerResponse, Error<CreateQoveryMcpServerError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_body_qovery_mcp_server_request = qovery_mcp_server_request;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/mcpServer/qovery",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_qovery_mcp_server_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::McpServerResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::McpServerResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CreateQoveryMcpServerError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

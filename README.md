@@ -447,6 +447,7 @@ Class | Method | HTTP request | Description
 *LifecycleTemplateMainCallsApi* | [**get_environment_lifecycle_template**](docs/LifecycleTemplateMainCallsApi.md#get_environment_lifecycle_template) | **GET** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsApi* | [**list_environment_lifecycle_templates**](docs/LifecycleTemplateMainCallsApi.md#list_environment_lifecycle_templates) | **GET** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 *McpServersApi* | [**create_mcp_server**](docs/McpServersApi.md#create_mcp_server) | **POST** /organization/{organizationId}/mcpServer | Create an MCP server
+*McpServersApi* | [**create_qovery_mcp_server**](docs/McpServersApi.md#create_qovery_mcp_server) | **POST** /organization/{organizationId}/mcpServer/qovery | Create a read-only Qovery MCP connector
 *McpServersApi* | [**delete_mcp_server**](docs/McpServersApi.md#delete_mcp_server) | **DELETE** /mcpServer/{mcpServerId} | Delete an MCP server
 *McpServersApi* | [**edit_mcp_server**](docs/McpServersApi.md#edit_mcp_server) | **PUT** /mcpServer/{mcpServerId} | Edit an MCP server
 *McpServersApi* | [**get_mcp_server**](docs/McpServersApi.md#get_mcp_server) | **GET** /mcpServer/{mcpServerId} | Get an MCP server
@@ -1320,6 +1321,7 @@ Class | Method | HTTP request | Description
  - [QoveryDnsProviderRequest](docs/QoveryDnsProviderRequest.md)
  - [QoveryDnsProviderResponse](docs/QoveryDnsProviderResponse.md)
  - [QoveryIpsResponse](docs/QoveryIpsResponse.md)
+ - [QoveryMcpServerRequest](docs/QoveryMcpServerRequest.md)
  - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
  - [QueuedDeploymentRequestForServiceAuditingData](docs/QueuedDeploymentRequestForServiceAuditingData.md)
  - [QueuedDeploymentRequestForServiceIdentifier](docs/QueuedDeploymentRequestForServiceIdentifier.md)
