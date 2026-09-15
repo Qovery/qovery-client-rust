@@ -1396,6 +1396,8 @@ pub mod platform_component_input_requirement_response;
 pub use self::platform_component_input_requirement_response::PlatformComponentInputRequirementResponse;
 pub mod platform_component_output_binding_response;
 pub use self::platform_component_output_binding_response::PlatformComponentOutputBindingResponse;
+pub mod platform_configuration_section_response;
+pub use self::platform_configuration_section_response::PlatformConfigurationSectionResponse;
 pub mod platform_layer_resolution_status;
 pub use self::platform_layer_resolution_status::PlatformLayerResolutionStatus;
 pub mod platform_template_catalog_response;

@@ -26,6 +26,12 @@ pub struct PlatformTemplateComponentResponse {
     pub description: Option<Option<String>>,
     #[serde(rename = "fields")]
     pub fields: Vec<models::FieldSchemaResponse>,
+    /// Additional configuration sections displayed under this component. Its own configuration and cluster inputs remain available. Omitted or empty keeps the existing editor behavior; fields always remain declared on their owner.
+    #[serde(
+        rename = "configurationSections",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub configuration_sections: Option<Vec<models::PlatformConfigurationSectionResponse>>,
 }
 
 impl PlatformTemplateComponentResponse {
@@ -39,6 +45,7 @@ impl PlatformTemplateComponentResponse {
             kind,
             description: None,
             fields,
+            configuration_sections: None,
         }
     }
 }

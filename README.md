@@ -1292,6 +1292,7 @@ Class | Method | HTTP request | Description
  - [PlatformComponentConfigurationViolationResponse](docs/PlatformComponentConfigurationViolationResponse.md)
  - [PlatformComponentInputRequirementResponse](docs/PlatformComponentInputRequirementResponse.md)
  - [PlatformComponentOutputBindingResponse](docs/PlatformComponentOutputBindingResponse.md)
+ - [PlatformConfigurationSectionResponse](docs/PlatformConfigurationSectionResponse.md)
  - [PlatformLayerResolutionStatus](docs/PlatformLayerResolutionStatus.md)
  - [PlatformTemplateCatalogResponse](docs/PlatformTemplateCatalogResponse.md)
  - [PlatformTemplateComponentKind](docs/PlatformTemplateComponentKind.md)

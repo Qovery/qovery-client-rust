@@ -788,6 +788,7 @@ docs/PlatformComponentConfigurationViolationResponse.md
 docs/PlatformComponentInputRequirementResponse.md
 docs/PlatformComponentOutputBindingResponse.md
 docs/PlatformConfigurationApi.md
+docs/PlatformConfigurationSectionResponse.md
 docs/PlatformLayerResolutionStatus.md
 docs/PlatformTemplateCatalogResponse.md
 docs/PlatformTemplateComponentKind.md
@@ -1781,6 +1782,7 @@ src/models/platform_component_configuration_resolution_response.rs
 src/models/platform_component_configuration_violation_response.rs
 src/models/platform_component_input_requirement_response.rs
 src/models/platform_component_output_binding_response.rs
+src/models/platform_configuration_section_response.rs
 src/models/platform_layer_resolution_status.rs
 src/models/platform_template_catalog_response.rs
 src/models/platform_template_component_kind.rs
