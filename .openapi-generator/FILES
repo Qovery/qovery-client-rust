@@ -9,6 +9,7 @@ docs/AccountInfoEditRequest.md
 docs/AgenticWorkflowExecutionMode.md
 docs/AgenticWorkflowGovernance.md
 docs/AgenticWorkflowHeader.md
+docs/AgenticWorkflowMcpServer.md
 docs/AgenticWorkflowModelRequest.md
 docs/AgenticWorkflowModelResponse.md
 docs/AgenticWorkflowModelType.md
@@ -1087,6 +1088,7 @@ src/models/account_info_edit_request.rs
 src/models/agentic_workflow_execution_mode.rs
 src/models/agentic_workflow_governance.rs
 src/models/agentic_workflow_header.rs
+src/models/agentic_workflow_mcp_server.rs
 src/models/agentic_workflow_model_request.rs
 src/models/agentic_workflow_model_response.rs
 src/models/agentic_workflow_model_type.rs

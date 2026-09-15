@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **enabled** | Option<**bool**> |  | [optional][default to true]
 **mcp** | Option<**String**> | Raw JSON blob describing the MCP servers configured for this workflow | [optional][default to ]
 **mcp_server_ids** | Option<**Vec<uuid::Uuid>**> | MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving. | [optional][default to []]
+**mcp_servers** | Option<[**Vec<models::AgenticWorkflowMcpServer>**](AgenticWorkflowMcpServer.md)> | MCP connectors attached to this workflow. A required connector must be present during creation, but may be removed during a later settings update. | [optional]
+**context_service_ids** | Option<**Vec<uuid::Uuid>**> | Qovery services explicitly provided as context to this workflow. | [optional][default to []]
 **outputs** | Option<[**Vec<models::AgenticWorkflowOutput>**](AgenticWorkflowOutput.md)> |  | [optional][default to []]
 **model** | Option<[**models::AgenticWorkflowModelRequest**](AgenticWorkflowModelRequest.md)> |  | [optional]
 **project_repositories** | Option<[**Vec<models::AgenticWorkflowProjectRepository>**](AgenticWorkflowProjectRepository.md)> |  | [optional][default to []]

@@ -34,6 +34,15 @@ pub struct AgenticWorkflowRequest {
     /// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
     #[serde(rename = "mcp_server_ids", skip_serializing_if = "Option::is_none")]
     pub mcp_server_ids: Option<Vec<uuid::Uuid>>,
+    /// MCP connectors attached to this workflow. A required connector must be present during creation, but may be removed during a later settings update.
+    #[serde(rename = "mcp_servers", skip_serializing_if = "Option::is_none")]
+    pub mcp_servers: Option<Vec<models::AgenticWorkflowMcpServer>>,
+    /// Qovery services explicitly provided as context to this workflow.
+    #[serde(
+        rename = "context_service_ids",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub context_service_ids: Option<Vec<uuid::Uuid>>,
     #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
     pub outputs: Option<Vec<models::AgenticWorkflowOutput>>,
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
@@ -71,6 +80,8 @@ impl AgenticWorkflowRequest {
             enabled: None,
             mcp: None,
             mcp_server_ids: None,
+            mcp_servers: None,
+            context_service_ids: None,
             outputs: None,
             model: None,
             project_repositories: None,

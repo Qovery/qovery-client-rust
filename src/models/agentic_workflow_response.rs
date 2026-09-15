@@ -47,6 +47,12 @@ pub struct AgenticWorkflowResponse {
     /// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
     #[serde(rename = "mcp_server_ids")]
     pub mcp_server_ids: Vec<uuid::Uuid>,
+    /// MCP connectors attached to this workflow, including their configuration metadata.
+    #[serde(rename = "mcp_servers")]
+    pub mcp_servers: Vec<models::AgenticWorkflowMcpServer>,
+    /// Qovery services explicitly provided as context to this workflow.
+    #[serde(rename = "context_service_ids")]
+    pub context_service_ids: Vec<uuid::Uuid>,
     #[serde(rename = "outputs")]
     pub outputs: Vec<models::AgenticWorkflowOutput>,
     #[serde(rename = "model")]
@@ -85,6 +91,8 @@ impl AgenticWorkflowResponse {
         enabled: bool,
         mcp: String,
         mcp_server_ids: Vec<uuid::Uuid>,
+        mcp_servers: Vec<models::AgenticWorkflowMcpServer>,
+        context_service_ids: Vec<uuid::Uuid>,
         outputs: Vec<models::AgenticWorkflowOutput>,
         model: models::AgenticWorkflowModelResponse,
         project_repositories: Vec<models::AgenticWorkflowProjectRepository>,
@@ -109,6 +117,8 @@ impl AgenticWorkflowResponse {
             enabled,
             mcp,
             mcp_server_ids,
+            mcp_servers,
+            context_service_ids,
             outputs,
             model,
             project_repositories,

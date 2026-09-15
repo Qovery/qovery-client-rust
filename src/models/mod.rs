@@ -8,6 +8,8 @@ pub mod agentic_workflow_governance;
 pub use self::agentic_workflow_governance::AgenticWorkflowGovernance;
 pub mod agentic_workflow_header;
 pub use self::agentic_workflow_header::AgenticWorkflowHeader;
+pub mod agentic_workflow_mcp_server;
+pub use self::agentic_workflow_mcp_server::AgenticWorkflowMcpServer;
 pub mod agentic_workflow_model_request;
 pub use self::agentic_workflow_model_request::AgenticWorkflowModelRequest;
 pub mod agentic_workflow_model_response;
