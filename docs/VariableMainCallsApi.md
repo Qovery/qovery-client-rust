@@ -141,7 +141,7 @@ Name | Type | Description  | Required | Notes
 > models::VariableResponse edit_variable(variable_id, variable_edit_request)
 Edit a variable
 
-- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, you can't edit the value 
+- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) 
 
 ### Parameters
 

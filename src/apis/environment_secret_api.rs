@@ -21,6 +21,7 @@ pub enum CreateEnvironmentSecretError {
     Status401(),
     Status403(),
     Status404(),
+    Status409(),
     UnknownValue(serde_json::Value),
 }
 
@@ -77,7 +78,7 @@ pub enum ListEnvironmentSecretsError {
     UnknownValue(serde_json::Value),
 }
 
-/// - Add a secret to the environment.   - If the secret key already exists, then it will be replaced by the new one.   - If the secret value points toward an existing secret key, it will be considered as an alias.
+/// - Add a secret to the environment.   - If the secret key already exists in this scope, the request is rejected with a 409 conflict.   - A value matching the key of an existing secret is stored as a plain string, not as an alias. To create an alias, use POST /variable/{variableId}/alias on the secret to target.
 pub async fn create_environment_secret(
     configuration: &configuration::Configuration,
     environment_id: &str,
@@ -329,7 +330,7 @@ pub async fn delete_environment_secret(
     }
 }
 
-/// - You can't edit a BUILT_IN secret - For an override, you can't edit the key - For an alias, you can't edit the value - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+/// - You can't edit a BUILT_IN secret - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 pub async fn edit_environment_secret(
     configuration: &configuration::Configuration,
     environment_id: &str,

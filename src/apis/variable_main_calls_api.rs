@@ -324,7 +324,7 @@ pub async fn delete_variable(
     }
 }
 
-/// - You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, you can't edit the value
+/// - You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not)
 pub async fn edit_variable(
     configuration: &configuration::Configuration,
     variable_id: &str,

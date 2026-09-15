@@ -18,7 +18,7 @@ Method | HTTP request | Description
 > models::EnvironmentVariable create_project_environment_variable(project_id, environment_variable_request)
 Add an environment variable to the project
 
-- Add an environment variable to the project.   - If the environment variable key already exists, then it will be replaced by the new one.   - If the environment variable value points toward an existing environment variable key, it will be considered as an alias. 
+- Add an environment variable to the project.   - If the environment variable key already exists in this scope, the request is rejected with a 409 conflict.   - A value matching the key of an existing variable is stored as a plain string, not as an alias. To create an alias, use POST /variable/{variableId}/alias on the variable to target. 
 
 ### Parameters
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 > models::EnvironmentVariable edit_project_environment_variable(project_id, environment_variable_id, environment_variable_edit_request)
 Edit an environment variable belonging to the project
 
-- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, you can't edit the value - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION) 
+- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION) 
 
 ### Parameters
 

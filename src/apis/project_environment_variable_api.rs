@@ -21,6 +21,7 @@ pub enum CreateProjectEnvironmentVariableError {
     Status401(),
     Status403(),
     Status404(),
+    Status409(),
     UnknownValue(serde_json::Value),
 }
 
@@ -77,7 +78,7 @@ pub enum ListProjectEnvironmentVariableError {
     UnknownValue(serde_json::Value),
 }
 
-/// - Add an environment variable to the project.   - If the environment variable key already exists, then it will be replaced by the new one.   - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
+/// - Add an environment variable to the project.   - If the environment variable key already exists in this scope, the request is rejected with a 409 conflict.   - A value matching the key of an existing variable is stored as a plain string, not as an alias. To create an alias, use POST /variable/{variableId}/alias on the variable to target.
 pub async fn create_project_environment_variable(
     configuration: &configuration::Configuration,
     project_id: &str,
@@ -332,7 +333,7 @@ pub async fn delete_project_environment_variable(
     }
 }
 
-/// - You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, you can't edit the value - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+/// - You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 pub async fn edit_project_environment_variable(
     configuration: &configuration::Configuration,
     project_id: &str,

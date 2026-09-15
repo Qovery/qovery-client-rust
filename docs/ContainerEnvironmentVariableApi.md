@@ -145,7 +145,7 @@ Name | Type | Description  | Required | Notes
 > models::EnvironmentVariable edit_container_environment_variable(container_id, environment_variable_id, environment_variable_edit_request)
 Edit an environment variable belonging to the container
 
-- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, you can't edit the value - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER) 
+- You can't edit a BUILT_IN variable - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER) 
 
 ### Parameters
 

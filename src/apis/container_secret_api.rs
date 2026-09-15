@@ -329,7 +329,7 @@ pub async fn delete_container_secret(
     }
 }
 
-/// - You can't edit a BUILT_IN secret - For an override, you can't edit the key - For an alias, you can't edit the value - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
+/// - You can't edit a BUILT_IN secret - For an override, you can't edit the key - For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not) - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
 pub async fn edit_container_secret(
     configuration: &configuration::Configuration,
     container_id: &str,
