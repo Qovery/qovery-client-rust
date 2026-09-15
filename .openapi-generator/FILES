@@ -675,6 +675,12 @@ docs/ListServicesByEnvironmentId200Response.md
 docs/ListServicesByEnvironmentId200ResponseResultsInner.md
 docs/ListServicesByOrganizationId200Response.md
 docs/ListTfVarsFilesFromGitRepo200Response.md
+docs/LlmProviderRequest.md
+docs/LlmProviderResponse.md
+docs/LlmProviderResponseList.md
+docs/LlmProviderScope.md
+docs/LlmProviderType.md
+docs/LlmProvidersApi.md
 docs/Log.md
 docs/LogResponseList.md
 docs/ManagedDatabaseInstanceTypeResponse.md
@@ -1049,6 +1055,7 @@ src/apis/job_main_calls_api.rs
 src/apis/job_secret_api.rs
 src/apis/jobs_api.rs
 src/apis/lifecycle_template_main_calls_api.rs
+src/apis/llm_providers_api.rs
 src/apis/mcp_servers_api.rs
 src/apis/members_api.rs
 src/apis/mod.rs
@@ -1683,6 +1690,11 @@ src/models/list_services_by_environment_id_200_response.rs
 src/models/list_services_by_environment_id_200_response_results_inner.rs
 src/models/list_services_by_organization_id_200_response.rs
 src/models/list_tf_vars_files_from_git_repo_200_response.rs
+src/models/llm_provider_request.rs
+src/models/llm_provider_response.rs
+src/models/llm_provider_response_list.rs
+src/models/llm_provider_scope.rs
+src/models/llm_provider_type.rs
 src/models/log.rs
 src/models/log_response_list.rs
 src/models/managed_database_instance_type_response.rs

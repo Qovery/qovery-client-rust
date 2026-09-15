@@ -444,6 +444,11 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**get_default_job_advanced_settings**](docs/JobsApi.md#get_default_job_advanced_settings) | **GET** /defaultJobAdvancedSettings | List default job advanced settings
 *JobsApi* | [**get_environment_job_status**](docs/JobsApi.md#get_environment_job_status) | **GET** /environment/{environmentId}/job/status | List all environment job statuses
 *JobsApi* | [**list_jobs**](docs/JobsApi.md#list_jobs) | **GET** /environment/{environmentId}/job | List jobs
+*LlmProvidersApi* | [**create_llm_provider**](docs/LlmProvidersApi.md#create_llm_provider) | **POST** /organization/{organizationId}/llmProvider | Create an LLM provider
+*LlmProvidersApi* | [**delete_llm_provider**](docs/LlmProvidersApi.md#delete_llm_provider) | **DELETE** /llmProvider/{llmProviderId} | Delete an LLM provider
+*LlmProvidersApi* | [**edit_llm_provider**](docs/LlmProvidersApi.md#edit_llm_provider) | **PUT** /llmProvider/{llmProviderId} | Edit an LLM provider
+*LlmProvidersApi* | [**get_llm_provider**](docs/LlmProvidersApi.md#get_llm_provider) | **GET** /llmProvider/{llmProviderId} | Get an LLM provider
+*LlmProvidersApi* | [**list_llm_providers**](docs/LlmProvidersApi.md#list_llm_providers) | **GET** /organization/{organizationId}/llmProvider | List organization LLM providers
 *LifecycleTemplateMainCallsApi* | [**get_environment_lifecycle_template**](docs/LifecycleTemplateMainCallsApi.md#get_environment_lifecycle_template) | **GET** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsApi* | [**list_environment_lifecycle_templates**](docs/LifecycleTemplateMainCallsApi.md#list_environment_lifecycle_templates) | **GET** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 *McpServersApi* | [**create_mcp_server**](docs/McpServersApi.md#create_mcp_server) | **POST** /organization/{organizationId}/mcpServer | Create an MCP server
@@ -1193,6 +1198,11 @@ Class | Method | HTTP request | Description
  - [ListServicesByEnvironmentId200ResponseResultsInner](docs/ListServicesByEnvironmentId200ResponseResultsInner.md)
  - [ListServicesByOrganizationId200Response](docs/ListServicesByOrganizationId200Response.md)
  - [ListTfVarsFilesFromGitRepo200Response](docs/ListTfVarsFilesFromGitRepo200Response.md)
+ - [LlmProviderRequest](docs/LlmProviderRequest.md)
+ - [LlmProviderResponse](docs/LlmProviderResponse.md)
+ - [LlmProviderResponseList](docs/LlmProviderResponseList.md)
+ - [LlmProviderScope](docs/LlmProviderScope.md)
+ - [LlmProviderType](docs/LlmProviderType.md)
  - [Log](docs/Log.md)
  - [LogResponseList](docs/LogResponseList.md)
  - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)
