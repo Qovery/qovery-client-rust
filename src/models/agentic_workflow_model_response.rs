@@ -17,6 +17,14 @@ pub struct AgenticWorkflowModelResponse {
     pub r#type: models::AgenticWorkflowModelType,
     #[serde(rename = "settings")]
     pub settings: String,
+    /// The LLM provider the workflow takes its credential from, or null when it carries its own `api_key`. Unlike `api_key` this is returned: it names a credential rather than carrying one.
+    #[serde(
+        rename = "llm_provider_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub llm_provider_id: Option<Option<uuid::Uuid>>,
 }
 
 impl AgenticWorkflowModelResponse {
@@ -24,6 +32,10 @@ impl AgenticWorkflowModelResponse {
         r#type: models::AgenticWorkflowModelType,
         settings: String,
     ) -> AgenticWorkflowModelResponse {
-        AgenticWorkflowModelResponse { r#type, settings }
+        AgenticWorkflowModelResponse {
+            r#type,
+            settings,
+            llm_provider_id: None,
+        }
     }
 }

@@ -20,6 +20,14 @@ pub struct AgenticWorkflowModelRequest {
     pub api_key: Option<String>,
     #[serde(rename = "settings", skip_serializing_if = "Option::is_none")]
     pub settings: Option<String>,
+    /// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`.
+    #[serde(
+        rename = "llm_provider_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub llm_provider_id: Option<Option<uuid::Uuid>>,
 }
 
 impl AgenticWorkflowModelRequest {
@@ -28,6 +36,7 @@ impl AgenticWorkflowModelRequest {
             r#type,
             api_key: None,
             settings: None,
+            llm_provider_id: None,
         }
     }
 }
