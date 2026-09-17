@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deploy_blueprint**](BlueprintMainCallsApi.md#deploy_blueprint) | **POST** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 [**get_blueprint**](BlueprintMainCallsApi.md#get_blueprint) | **GET** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**get_blueprint_catalog**](BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+[**get_blueprint_variables**](BlueprintMainCallsApi.md#get_blueprint_variables) | **GET** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 [**preview_blueprint_update**](BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**update_blueprint**](BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
 
@@ -186,6 +187,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::BlueprintCatalogResponse**](BlueprintCatalogResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_blueprint_variables
+
+> Vec<models::BlueprintConfigurationVariable> get_blueprint_variables(blueprint_id)
+Get persisted blueprint variables
+
+Returns the persisted variables for a blueprint. Secret variables are identified by `is_secret` and never include their value.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
+
+### Return type
+
+[**Vec<models::BlueprintConfigurationVariable>**](BlueprintConfigurationVariable.md)
 
 ### Authorization
 

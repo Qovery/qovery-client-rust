@@ -224,6 +224,8 @@ pub mod billing_status;
 pub use self::billing_status::BillingStatus;
 pub mod blueprint_catalog_response;
 pub use self::blueprint_catalog_response::BlueprintCatalogResponse;
+pub mod blueprint_configuration_variable;
+pub use self::blueprint_configuration_variable::BlueprintConfigurationVariable;
 pub mod blueprint_create_request;
 pub use self::blueprint_create_request::BlueprintCreateRequest;
 pub mod blueprint_creation_response;
