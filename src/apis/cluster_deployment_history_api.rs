@@ -33,7 +33,7 @@ pub enum ListClusterDeploymentLogsError {
     UnknownValue(serde_json::Value),
 }
 
-/// List previous and current cluster deployments. It returns actual deployments only: dry-runs and stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
+/// List previous and current cluster deployment operations. It returns applied deployments and dry-runs; stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
 pub async fn list_cluster_deployment_history_v2(
     configuration: &configuration::Configuration,
     organization_id: &str,

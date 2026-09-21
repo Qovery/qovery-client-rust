@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > models::ClusterDeploymentHistoryPaginatedResponseListV2 list_cluster_deployment_history_v2(organization_id, cluster_id, page_size)
 List cluster deployments
 
-List previous and current cluster deployments. It returns actual deployments only: dry-runs and stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
+List previous and current cluster deployment operations. It returns applied deployments and dry-runs; stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
 
 ### Parameters
 

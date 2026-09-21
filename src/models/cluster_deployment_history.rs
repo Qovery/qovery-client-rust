@@ -23,6 +23,8 @@ pub struct ClusterDeploymentHistory {
     pub action_status: models::DeploymentHistoryActionStatus,
     #[serde(rename = "trigger_action")]
     pub trigger_action: models::DeploymentHistoryTriggerAction,
+    #[serde(rename = "is_dry_run")]
+    pub is_dry_run: bool,
     #[serde(rename = "reason")]
     pub reason: Reason,
     #[serde(
@@ -41,6 +43,7 @@ impl ClusterDeploymentHistory {
         status: models::StateEnum,
         action_status: models::DeploymentHistoryActionStatus,
         trigger_action: models::DeploymentHistoryTriggerAction,
+        is_dry_run: bool,
         reason: Reason,
     ) -> ClusterDeploymentHistory {
         ClusterDeploymentHistory {
@@ -49,6 +52,7 @@ impl ClusterDeploymentHistory {
             status,
             action_status,
             trigger_action,
+            is_dry_run,
             reason,
             total_duration: None,
         }

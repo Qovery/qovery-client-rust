@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **status** | [**models::StateEnum**](StateEnum.md) |  | 
 **action_status** | [**models::DeploymentHistoryActionStatus**](DeploymentHistoryActionStatus.md) |  | 
 **trigger_action** | [**models::DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 
+**is_dry_run** | **bool** |  | 
 **reason** | **Reason** |  (enum: UNSPECIFIED, MAINTENANCE) | 
 **total_duration** | Option<**String**> |  | [optional]
 
