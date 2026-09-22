@@ -26,6 +26,14 @@ pub struct PlatformTemplateSummaryResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub description: Option<Option<String>>,
+    /// Mandatory bootstrap component and its configurable fields, when declared by the template.
+    #[serde(
+        rename = "bootstrapComponent",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub bootstrap_component: Option<Option<models::PlatformTemplateComponentResponse>>,
     #[serde(rename = "layers")]
     pub layers: Vec<models::PlatformTemplateLayerResponse>,
 }
@@ -42,6 +50,7 @@ impl PlatformTemplateSummaryResponse {
             version,
             status,
             description: None,
+            bootstrap_component: None,
             layers,
         }
     }

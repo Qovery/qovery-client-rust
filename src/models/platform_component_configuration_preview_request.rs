@@ -16,6 +16,12 @@ pub struct PlatformComponentConfigurationPreviewRequest {
     /// Configuration values keyed by their catalog field name
     #[serde(rename = "profileConfig", skip_serializing_if = "Option::is_none")]
     pub profile_config: Option<std::collections::HashMap<String, serde_json::Value>>,
+    /// For an existing cluster, validate profileConfig as a complete draft instead of merging it with saved values. Omitted keys are reset to their catalog defaults. Template previews already use a complete draft and ignore this flag.
+    #[serde(
+        rename = "replaceProfileConfig",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub replace_profile_config: Option<bool>,
     #[serde(rename = "clusterInputs", skip_serializing_if = "Option::is_none")]
     pub cluster_inputs: Option<std::collections::HashMap<String, String>>,
     /// String values keyed first by component key and then by input key
@@ -28,6 +34,7 @@ impl PlatformComponentConfigurationPreviewRequest {
     pub fn new() -> PlatformComponentConfigurationPreviewRequest {
         PlatformComponentConfigurationPreviewRequest {
             profile_config: None,
+            replace_profile_config: None,
             cluster_inputs: None,
             component_outputs: None,
         }
