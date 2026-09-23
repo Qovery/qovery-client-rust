@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**edit_agentic_workflow**](AgenticWorkflowsApi.md#edit_agentic_workflow) | **PUT** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**get_agentic_workflow**](AgenticWorkflowsApi.md#get_agentic_workflow) | **GET** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 [**list_agentic_workflow_deployment_history_v2**](AgenticWorkflowsApi.md#list_agentic_workflow_deployment_history_v2) | **GET** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
+[**list_agentic_workflow_run_history**](AgenticWorkflowsApi.md#list_agentic_workflow_run_history) | **GET** /agenticWorkflow/{agenticWorkflowId}/runHistory | List agentic workflow runs
 [**list_agentic_workflows**](AgenticWorkflowsApi.md#list_agentic_workflows) | **GET** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 
 
@@ -210,6 +211,38 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::DeploymentHistoryServicePaginatedResponseListV2**](DeploymentHistoryServicePaginatedResponseListV2.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_agentic_workflow_run_history
+
+> models::AgenticWorkflowRunPaginatedResponseList list_agentic_workflow_run_history(agentic_workflow_id, page, page_size)
+List agentic workflow runs
+
+Returns the runs recorded for this agentic workflow, newest first: sorted by created_at descending, then by id descending. Runs are added as they are triggered, so a run added between two requests shifts the runs after it towards later pages. agenticWorkflowId is matched against source_workflow_id, the workflow a run was requested for. A CLONE_ENVIRONMENT run is listed under that workflow, not under the clone that executed it. There is no lineage resolution either, so a clone's own ID returns no runs at all. Only runs that were launched appear here. A trigger that failed before launching, such as one turned away by the rate limiter, leaves no run. Runs that predate this endpoint are not backfilled.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**agentic_workflow_id** | **uuid::Uuid** |  | [required] |
+**page** | Option<**i32**> | Page number, starting at 1. Increment this value to retrieve subsequent pages of run history, keeping pageSize unchanged. |  |[default to 1]
+**page_size** | Option<**i32**> | The number of runs to return in the current page. Must be between 1 and 100. |  |[default to 20]
+
+### Return type
+
+[**models::AgenticWorkflowRunPaginatedResponseList**](AgenticWorkflowRunPaginatedResponseList.md)
 
 ### Authorization
 

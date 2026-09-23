@@ -38,6 +38,7 @@ Class | Method | HTTP request | Description
 *AgenticWorkflowsApi* | [**edit_agentic_workflow**](docs/AgenticWorkflowsApi.md#edit_agentic_workflow) | **PUT** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 *AgenticWorkflowsApi* | [**get_agentic_workflow**](docs/AgenticWorkflowsApi.md#get_agentic_workflow) | **GET** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 *AgenticWorkflowsApi* | [**list_agentic_workflow_deployment_history_v2**](docs/AgenticWorkflowsApi.md#list_agentic_workflow_deployment_history_v2) | **GET** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
+*AgenticWorkflowsApi* | [**list_agentic_workflow_run_history**](docs/AgenticWorkflowsApi.md#list_agentic_workflow_run_history) | **GET** /agenticWorkflow/{agenticWorkflowId}/runHistory | List agentic workflow runs
 *AgenticWorkflowsApi* | [**list_agentic_workflows**](docs/AgenticWorkflowsApi.md#list_agentic_workflows) | **GET** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 *AlertReceiversApi* | [**create_alert_receiver**](docs/AlertReceiversApi.md#create_alert_receiver) | **POST** /alert-receivers | Create alert receiver
 *AlertReceiversApi* | [**delete_alert_receiver**](docs/AlertReceiversApi.md#delete_alert_receiver) | **DELETE** /alert-receivers/{alertReceiverId} | Delete alert receiver
@@ -614,6 +615,9 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowResources](docs/AgenticWorkflowResources.md)
  - [AgenticWorkflowResponse](docs/AgenticWorkflowResponse.md)
  - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
+ - [AgenticWorkflowRun](docs/AgenticWorkflowRun.md)
+ - [AgenticWorkflowRunPaginatedResponseList](docs/AgenticWorkflowRunPaginatedResponseList.md)
+ - [AgenticWorkflowRunTrigger](docs/AgenticWorkflowRunTrigger.md)
  - [AgenticWorkflowScheduleRequest](docs/AgenticWorkflowScheduleRequest.md)
  - [AgenticWorkflowScheduleResponse](docs/AgenticWorkflowScheduleResponse.md)
  - [AgenticWorkflowWebhook](docs/AgenticWorkflowWebhook.md)
