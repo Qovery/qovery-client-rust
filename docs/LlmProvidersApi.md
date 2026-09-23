@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_llm_provider**](LlmProvidersApi.md#delete_llm_provider) | **DELETE** /llmProvider/{llmProviderId} | Delete an LLM provider
 [**edit_llm_provider**](LlmProvidersApi.md#edit_llm_provider) | **PUT** /llmProvider/{llmProviderId} | Edit an LLM provider
 [**get_llm_provider**](LlmProvidersApi.md#get_llm_provider) | **GET** /llmProvider/{llmProviderId} | Get an LLM provider
+[**list_llm_provider_models**](LlmProvidersApi.md#list_llm_provider_models) | **GET** /llmProvider/{llmProviderId}/models | List the models of an LLM provider
 [**list_llm_providers**](LlmProvidersApi.md#list_llm_providers) | **GET** /organization/{organizationId}/llmProvider | List organization LLM providers
 
 
@@ -121,6 +122,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::LlmProviderResponse**](LlmProviderResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_llm_provider_models
+
+> models::LlmProviderModelResponseList list_llm_provider_models(llm_provider_id)
+List the models of an LLM provider
+
+List the models the provider's stored credential can reach, fetched live from the provider. CLAUDE lists Anthropic models; BEDROCK lists Anthropic inference profiles in us-east-1. The credential is never returned. A USER provider can only be listed by its owner.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**llm_provider_id** | **uuid::Uuid** | LLM Provider ID | [required] |
+
+### Return type
+
+[**models::LlmProviderModelResponseList**](LlmProviderModelResponseList.md)
 
 ### Authorization
 

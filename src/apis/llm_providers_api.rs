@@ -57,6 +57,19 @@ pub enum GetLlmProviderError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`list_llm_provider_models`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListLlmProviderModelsError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status502(),
+    Status504(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_llm_providers`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -294,6 +307,65 @@ pub async fn get_llm_provider(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetLlmProviderError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// List the models the provider's stored credential can reach, fetched live from the provider. CLAUDE lists Anthropic models; BEDROCK lists Anthropic inference profiles in us-east-1. The credential is never returned. A USER provider can only be listed by its owner.
+pub async fn list_llm_provider_models(
+    configuration: &configuration::Configuration,
+    llm_provider_id: &str,
+) -> Result<models::LlmProviderModelResponseList, Error<ListLlmProviderModelsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_llm_provider_id = llm_provider_id;
+
+    let uri_str = format!(
+        "{}/llmProvider/{llmProviderId}/models",
+        configuration.base_path,
+        llmProviderId = crate::apis::urlencode(p_path_llm_provider_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::LlmProviderModelResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::LlmProviderModelResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListLlmProviderModelsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

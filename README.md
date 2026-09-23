@@ -450,6 +450,7 @@ Class | Method | HTTP request | Description
 *LlmProvidersApi* | [**delete_llm_provider**](docs/LlmProvidersApi.md#delete_llm_provider) | **DELETE** /llmProvider/{llmProviderId} | Delete an LLM provider
 *LlmProvidersApi* | [**edit_llm_provider**](docs/LlmProvidersApi.md#edit_llm_provider) | **PUT** /llmProvider/{llmProviderId} | Edit an LLM provider
 *LlmProvidersApi* | [**get_llm_provider**](docs/LlmProvidersApi.md#get_llm_provider) | **GET** /llmProvider/{llmProviderId} | Get an LLM provider
+*LlmProvidersApi* | [**list_llm_provider_models**](docs/LlmProvidersApi.md#list_llm_provider_models) | **GET** /llmProvider/{llmProviderId}/models | List the models of an LLM provider
 *LlmProvidersApi* | [**list_llm_providers**](docs/LlmProvidersApi.md#list_llm_providers) | **GET** /organization/{organizationId}/llmProvider | List organization LLM providers
 *LifecycleTemplateMainCallsApi* | [**get_environment_lifecycle_template**](docs/LifecycleTemplateMainCallsApi.md#get_environment_lifecycle_template) | **GET** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsApi* | [**list_environment_lifecycle_templates**](docs/LifecycleTemplateMainCallsApi.md#list_environment_lifecycle_templates) | **GET** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
@@ -1205,6 +1206,8 @@ Class | Method | HTTP request | Description
  - [ListServicesByEnvironmentId200ResponseResultsInner](docs/ListServicesByEnvironmentId200ResponseResultsInner.md)
  - [ListServicesByOrganizationId200Response](docs/ListServicesByOrganizationId200Response.md)
  - [ListTfVarsFilesFromGitRepo200Response](docs/ListTfVarsFilesFromGitRepo200Response.md)
+ - [LlmProviderModelResponse](docs/LlmProviderModelResponse.md)
+ - [LlmProviderModelResponseList](docs/LlmProviderModelResponseList.md)
  - [LlmProviderRequest](docs/LlmProviderRequest.md)
  - [LlmProviderResponse](docs/LlmProviderResponse.md)
  - [LlmProviderResponseList](docs/LlmProviderResponseList.md)
