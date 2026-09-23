@@ -104,6 +104,8 @@ pub struct ApplicationEditRequest {
     pub cpu_architecture: Option<Option<models::CpuArchitectureEnum>>,
     #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
 }
 
 impl ApplicationEditRequest {
@@ -133,6 +135,7 @@ impl ApplicationEditRequest {
             docker_target_build_stage: None,
             cpu_architecture: None,
             autoscaling: None,
+            build_settings: None,
         }
     }
 }

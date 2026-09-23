@@ -43,6 +43,12 @@ pub struct JobAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_skip_git_submodules: Option<bool>,
+    /// Ephemeral storage for the build (in GiB)
+    #[serde(
+        rename = "build.ephemeral_storage_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_ephemeral_storage_in_gib: Option<i32>,
     /// define how long in seconds an application is supposed to be stopped gracefully
     #[serde(
         rename = "deployment.termination_grace_period_seconds",
@@ -105,6 +111,7 @@ impl JobAdvancedSettings {
             build_ram_max_in_gib: None,
             build_disable_buildkit_cache: None,
             build_skip_git_submodules: None,
+            build_ephemeral_storage_in_gib: None,
             deployment_termination_grace_period_seconds: None,
             deployment_affinity_node_required: None,
             job_delete_ttl_seconds_after_finished: None,

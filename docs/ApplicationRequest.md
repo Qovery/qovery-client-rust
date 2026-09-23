@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **docker_target_build_stage** | Option<**String**> | The target build stage in the Dockerfile to build | [optional]
 **cpu_architecture** | Option<[**models::CpuArchitectureEnum**](CpuArchitectureEnum.md)> | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional]
 **autoscaling** | Option<[**models::KedaAutoscalingRequest**](KedaAutoscalingRequest.md)> |  | [optional]
+**build_settings** | Option<[**models::BuildSettings**](BuildSettings.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

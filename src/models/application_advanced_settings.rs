@@ -102,6 +102,12 @@ pub struct ApplicationAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_skip_git_submodules: Option<bool>,
+    /// Ephemeral storage for the build (in GiB)
+    #[serde(
+        rename = "build.ephemeral_storage_in_gib",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub build_ephemeral_storage_in_gib: Option<i32>,
     #[serde(
         rename = "network.ingress.proxy_body_size_mb",
         skip_serializing_if = "Option::is_none"
@@ -323,6 +329,7 @@ impl ApplicationAdvancedSettings {
             build_ram_max_in_gib: None,
             build_disable_buildkit_cache: None,
             build_skip_git_submodules: None,
+            build_ephemeral_storage_in_gib: None,
             network_ingress_proxy_body_size_mb: None,
             network_ingress_force_ssl_redirect: None,
             network_ingress_enable_cors: None,

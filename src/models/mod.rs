@@ -304,6 +304,8 @@ pub mod budget;
 pub use self::budget::Budget;
 pub mod build_mode_enum;
 pub use self::build_mode_enum::BuildModeEnum;
+pub mod build_settings;
+pub use self::build_settings::BuildSettings;
 pub mod cancel_agentic_workflow_deployment_request;
 pub use self::cancel_agentic_workflow_deployment_request::CancelAgenticWorkflowDeploymentRequest;
 pub mod cancel_environment_deployment_request;

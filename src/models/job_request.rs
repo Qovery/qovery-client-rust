@@ -81,6 +81,8 @@ pub struct JobRequest {
     /// Icon URI representing the job.
     #[serde(rename = "icon_uri", skip_serializing_if = "Option::is_none")]
     pub icon_uri: Option<String>,
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
 }
 
 impl JobRequest {
@@ -104,6 +106,7 @@ impl JobRequest {
             annotations_groups: None,
             labels_groups: None,
             icon_uri: None,
+            build_settings: None,
         }
     }
 }

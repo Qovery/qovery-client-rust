@@ -61,6 +61,8 @@ pub struct TerraformRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub blueprint_id: Option<Option<uuid::Uuid>>,
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
 }
 
 impl TerraformRequest {
@@ -91,6 +93,7 @@ impl TerraformRequest {
             action_extra_arguments: None,
             dockerfile_fragment: None,
             blueprint_id: None,
+            build_settings: None,
         }
     }
 }

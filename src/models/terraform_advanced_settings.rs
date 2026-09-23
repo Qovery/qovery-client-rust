@@ -31,6 +31,7 @@ pub struct TerraformAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_ram_max_in_gib: Option<i32>,
+    /// Ephemeral storage for the build (in GiB)
     #[serde(
         rename = "build.ephemeral_storage_in_gib",
         skip_serializing_if = "Option::is_none"
