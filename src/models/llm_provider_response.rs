@@ -46,6 +46,14 @@ pub struct LlmProviderResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub owner_name: Option<Option<String>>,
+    /// AWS region of a BEDROCK provider. Null when unset or for CLAUDE.
+    #[serde(
+        rename = "region",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub region: Option<Option<String>>,
 }
 
 impl LlmProviderResponse {
@@ -70,6 +78,7 @@ impl LlmProviderResponse {
             scope,
             owner_user_sub: None,
             owner_name: None,
+            region: None,
         }
     }
 }

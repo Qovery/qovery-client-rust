@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **scope** | [**models::LlmProviderScope**](LlmProviderScope.md) |  | 
 **owner_user_sub** | Option<**String**> | Identity of the owning member. Null for an ORGANIZATION provider. | [optional]
 **owner_name** | Option<**String**> | Display name of the owning member. Null for an ORGANIZATION provider. | [optional]
+**region** | Option<**String**> | AWS region of a BEDROCK provider. Null when unset or for CLAUDE. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

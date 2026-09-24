@@ -26,6 +26,14 @@ pub struct LlmProviderRequest {
     /// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER provider requires CREATE_PROJECT. On edit, omitting it leaves the provider's scope unchanged, and stating a scope that differs from the provider's is refused with 400.
     #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
     pub scope: Option<models::LlmProviderScope>,
+    /// On edit, omitting it or sending null clears the stored region. This differs from credential, where a blank value keeps the stored one. AWS region the Bedrock client calls, for example us-east-1 or eu-west-1; model availability differs by region. Only allowed for a BEDROCK provider. Any sent string, blank included, must match the pattern. Null keeps the engine default region.
+    #[serde(
+        rename = "region",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub region: Option<Option<String>>,
 }
 
 impl LlmProviderRequest {
@@ -36,6 +44,7 @@ impl LlmProviderRequest {
             r#type,
             credential: None,
             scope: None,
+            region: None,
         }
     }
 }
