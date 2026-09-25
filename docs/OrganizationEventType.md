@@ -61,6 +61,7 @@
 | Lock | LOCK |
 | Unlock | UNLOCK |
 | PolicyFailed | POLICY_FAILED |
+| AccessDenied | ACCESS_DENIED |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
