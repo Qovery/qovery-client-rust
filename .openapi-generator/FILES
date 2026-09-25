@@ -804,6 +804,7 @@ docs/PlatformComponentOutputBindingResponse.md
 docs/PlatformConfigurationApi.md
 docs/PlatformConfigurationSectionResponse.md
 docs/PlatformLayerResolutionStatus.md
+docs/PlatformSelection.md
 docs/PlatformTemplateCatalogResponse.md
 docs/PlatformTemplateComponentKind.md
 docs/PlatformTemplateComponentResponse.md
@@ -876,7 +877,11 @@ docs/SecretManagerEndpointConfigurationDto.md
 docs/SecretOverride.md
 docs/SecretRequest.md
 docs/SecretResponseList.md
+docs/SelfManagedClusterCredentials.md
 docs/SelfManagedClusterKind.md
+docs/SelfManagedClusterRegistryResponse.md
+docs/SelfManagedClusterRequest.md
+docs/SelfManagedClusterResponse.md
 docs/Service.md
 docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
@@ -1812,6 +1817,7 @@ src/models/platform_component_input_requirement_response.rs
 src/models/platform_component_output_binding_response.rs
 src/models/platform_configuration_section_response.rs
 src/models/platform_layer_resolution_status.rs
+src/models/platform_selection.rs
 src/models/platform_template_catalog_response.rs
 src/models/platform_template_component_kind.rs
 src/models/platform_template_component_response.rs
@@ -1877,7 +1883,11 @@ src/models/secret_manager_endpoint_configuration_dto.rs
 src/models/secret_override.rs
 src/models/secret_request.rs
 src/models/secret_response_list.rs
+src/models/self_managed_cluster_credentials.rs
 src/models/self_managed_cluster_kind.rs
+src/models/self_managed_cluster_registry_response.rs
+src/models/self_managed_cluster_request.rs
+src/models/self_managed_cluster_response.rs
 src/models/service.rs
 src/models/service_action_enum.rs
 src/models/service_action_status_enum.rs

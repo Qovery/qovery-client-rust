@@ -24,6 +24,20 @@ pub enum CreateClusterError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`create_self_managed_cluster`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreateSelfManagedClusterError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    Status500(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`delete_cluster`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -442,6 +456,70 @@ pub async fn create_cluster(
     } else {
         let content = resp.text().await?;
         let entity: Option<CreateClusterError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Creates a self-managed cluster on an existing AWS cloud credential of the organization. The organization's plan must include self-managed clusters, otherwise the call answers 403. The credential only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which Qovery calls to check the credential whatever the cluster region; features that call other AWS services with the credential, such as managed databases or Terraform services using the cluster credentials, need more. The credential, including its ECR access in the cluster region, and the platform configuration are checked before anything is created. One transaction then writes the cluster, its Qovery DNS and build providers, its default ECR registry derived from the credential, its initial deployment status, its platform configuration and its Qovery Operator enrollment. Only the AWS provider is supported. Install the Operator next with the cluster's Operator bootstrap.
+pub async fn create_self_managed_cluster(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    self_managed_cluster_request: models::SelfManagedClusterRequest,
+) -> Result<models::SelfManagedClusterResponse, Error<CreateSelfManagedClusterError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_body_self_managed_cluster_request = self_managed_cluster_request;
+
+    let uri_str = format!(
+        "{}/v1/organization/{organizationId}/selfManagedCluster",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_self_managed_cluster_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::SelfManagedClusterResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::SelfManagedClusterResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CreateSelfManagedClusterError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

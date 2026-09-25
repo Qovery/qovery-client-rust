@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_cluster**](ClustersApi.md#create_cluster) | **POST** /organization/{organizationId}/cluster | Create a cluster
+[**create_self_managed_cluster**](ClustersApi.md#create_self_managed_cluster) | **POST** /v1/organization/{organizationId}/selfManagedCluster | Create a self-managed cluster run by the Qovery Operator
 [**delete_cluster**](ClustersApi.md#delete_cluster) | **DELETE** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 [**deploy_cluster**](ClustersApi.md#deploy_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**edit_cluster**](ClustersApi.md#edit_cluster) | **PUT** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
@@ -60,6 +61,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::Cluster**](Cluster.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## create_self_managed_cluster
+
+> models::SelfManagedClusterResponse create_self_managed_cluster(organization_id, self_managed_cluster_request)
+Create a self-managed cluster run by the Qovery Operator
+
+Creates a self-managed cluster on an existing AWS cloud credential of the organization. The organization's plan must include self-managed clusters, otherwise the call answers 403. The credential only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which Qovery calls to check the credential whatever the cluster region; features that call other AWS services with the credential, such as managed databases or Terraform services using the cluster credentials, need more. The credential, including its ECR access in the cluster region, and the platform configuration are checked before anything is created. One transaction then writes the cluster, its Qovery DNS and build providers, its default ECR registry derived from the credential, its initial deployment status, its platform configuration and its Qovery Operator enrollment. Only the AWS provider is supported. Install the Operator next with the cluster's Operator bootstrap.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**self_managed_cluster_request** | [**SelfManagedClusterRequest**](SelfManagedClusterRequest.md) |  | [required] |
+
+### Return type
+
+[**models::SelfManagedClusterResponse**](SelfManagedClusterResponse.md)
 
 ### Authorization
 

@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *ClusterOperatorApi* | [**list_cluster_operator_fleet**](docs/ClusterOperatorApi.md#list_cluster_operator_fleet) | **GET** /admin/operator/clusters | List the Qovery Operator fleet
 *ClusterOperatorApi* | [**update_cluster_operator**](docs/ClusterOperatorApi.md#update_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 *ClustersApi* | [**create_cluster**](docs/ClustersApi.md#create_cluster) | **POST** /organization/{organizationId}/cluster | Create a cluster
+*ClustersApi* | [**create_self_managed_cluster**](docs/ClustersApi.md#create_self_managed_cluster) | **POST** /v1/organization/{organizationId}/selfManagedCluster | Create a self-managed cluster run by the Qovery Operator
 *ClustersApi* | [**delete_cluster**](docs/ClustersApi.md#delete_cluster) | **DELETE** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersApi* | [**deploy_cluster**](docs/ClustersApi.md#deploy_cluster) | **POST** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 *ClustersApi* | [**edit_cluster**](docs/ClustersApi.md#edit_cluster) | **PUT** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
@@ -1315,6 +1316,7 @@ Class | Method | HTTP request | Description
  - [PlatformComponentOutputBindingResponse](docs/PlatformComponentOutputBindingResponse.md)
  - [PlatformConfigurationSectionResponse](docs/PlatformConfigurationSectionResponse.md)
  - [PlatformLayerResolutionStatus](docs/PlatformLayerResolutionStatus.md)
+ - [PlatformSelection](docs/PlatformSelection.md)
  - [PlatformTemplateCatalogResponse](docs/PlatformTemplateCatalogResponse.md)
  - [PlatformTemplateComponentKind](docs/PlatformTemplateComponentKind.md)
  - [PlatformTemplateComponentResponse](docs/PlatformTemplateComponentResponse.md)
@@ -1380,7 +1382,11 @@ Class | Method | HTTP request | Description
  - [SecretOverride](docs/SecretOverride.md)
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponseList](docs/SecretResponseList.md)
+ - [SelfManagedClusterCredentials](docs/SelfManagedClusterCredentials.md)
  - [SelfManagedClusterKind](docs/SelfManagedClusterKind.md)
+ - [SelfManagedClusterRegistryResponse](docs/SelfManagedClusterRegistryResponse.md)
+ - [SelfManagedClusterRequest](docs/SelfManagedClusterRequest.md)
+ - [SelfManagedClusterResponse](docs/SelfManagedClusterResponse.md)
  - [Service](docs/Service.md)
  - [ServiceActionEnum](docs/ServiceActionEnum.md)
  - [ServiceActionStatusEnum](docs/ServiceActionStatusEnum.md)
