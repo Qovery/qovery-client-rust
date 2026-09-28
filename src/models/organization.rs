@@ -77,6 +77,12 @@ pub struct Organization {
         skip_serializing_if = "Option::is_none"
     )]
     pub billing_deployment_restriction: Option<Option<String>>,
+    /// Indicates if the organization uses SAML or OIDC
+    #[serde(
+        rename = "has_enterprise_connection",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub has_enterprise_connection: Option<bool>,
     #[serde(rename = "organization_plan", skip_serializing_if = "Option::is_none")]
     pub organization_plan: Option<models::OrganizationAllOfOrganizationPlan>,
 }
@@ -102,6 +108,7 @@ impl Organization {
             admin_emails: None,
             owner: None,
             billing_deployment_restriction: None,
+            has_enterprise_connection: None,
             organization_plan: None,
         }
     }
