@@ -25,6 +25,18 @@ pub enum GetClusterPlatformBindingError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_cluster_platform_configuration`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetClusterPlatformConfigurationError {
+    Status401(),
+    Status403(),
+    Status404(),
+    Status500(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_platform_templates`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -32,6 +44,19 @@ pub enum ListPlatformTemplatesError {
     Status400(),
     Status401(),
     Status403(),
+    Status500(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`resolve_cluster_platform_component_configuration`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ResolveClusterPlatformComponentConfigurationError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
     Status500(),
     Status503(),
     UnknownValue(serde_json::Value),
@@ -74,7 +99,22 @@ pub enum UpdateClusterPlatformBindingError {
     UnknownValue(serde_json::Value),
 }
 
-/// Returns the platform template selected for the cluster, its layer resolution, and the currently stored component configuration.
+/// struct for typed errors of method [`update_cluster_platform_configuration`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum UpdateClusterPlatformConfigurationError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    Status500(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
+/// Returns the platform template selected for the cluster, its layer resolution, and the currently stored component configuration. Deprecated: use getClusterPlatformConfiguration instead.
+#[deprecated]
 pub async fn get_cluster_platform_binding(
     configuration: &configuration::Configuration,
     organization_id: &str,
@@ -128,6 +168,67 @@ pub async fn get_cluster_platform_binding(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetClusterPlatformBindingError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns the platform selection of the cluster (template release, layer selections and component configuration), its cluster inputs and the resolution of each layer. Sensitive managedConfig values are returned as `\"<redacted>\"`. Cluster inputs are identifiers, never secrets, and are returned as stored.
+pub async fn get_cluster_platform_configuration(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+) -> Result<models::ClusterPlatformConfigurationResponse, Error<GetClusterPlatformConfigurationError>>
+{
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+
+    let uri_str = format!(
+        "{}/v1/cluster/{clusterId}/platformConfiguration",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterPlatformConfigurationResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterPlatformConfigurationResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetClusterPlatformConfigurationError> =
+            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -205,7 +306,80 @@ pub async fn list_platform_templates(
     }
 }
 
-/// Resolves the fields and runtime requirements to display for a component using the cluster context and the values currently entered in the Console. This operation is read-only.
+/// Resolves the fields and runtime requirements of a component from the cluster context, its stored platform configuration (the default template release when it has none) and the draft values of the request. This operation is read-only.
+pub async fn resolve_cluster_platform_component_configuration(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+    component_key: &str,
+    platform_component_configuration_preview_request: models::PlatformComponentConfigurationPreviewRequest,
+) -> Result<
+    models::PlatformComponentConfigurationPreviewResponse,
+    Error<ResolveClusterPlatformComponentConfigurationError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_path_component_key = component_key;
+    let p_body_platform_component_configuration_preview_request =
+        platform_component_configuration_preview_request;
+
+    let uri_str = format!(
+        "{}/v1/cluster/{clusterId}/platformConfiguration/component/{componentKey}/resolve",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id),
+        componentKey = crate::apis::urlencode(p_path_component_key)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_platform_component_configuration_preview_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::PlatformComponentConfigurationPreviewResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::PlatformComponentConfigurationPreviewResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ResolveClusterPlatformComponentConfigurationError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Resolves the fields and runtime requirements to display for a component using the cluster context and the values currently entered in the Console. This operation is read-only. Deprecated: use resolveClusterPlatformComponentConfiguration instead.
+#[deprecated]
 pub async fn resolve_platform_component_configuration(
     configuration: &configuration::Configuration,
     organization_id: &str,
@@ -351,7 +525,8 @@ pub async fn resolve_platform_template_component_configuration(
     }
 }
 
-/// Selects a platform template and stores layer selections, component profile values, and customer-provided runtime inputs for the cluster.
+/// Selects a platform template and stores layer selections, component profile values, and customer-provided runtime inputs for the cluster. Deprecated: use updateClusterPlatformConfiguration instead.
+#[deprecated]
 pub async fn update_cluster_platform_binding(
     configuration: &configuration::Configuration,
     organization_id: &str,
@@ -408,6 +583,72 @@ pub async fn update_cluster_platform_binding(
     } else {
         let content = resp.text().await?;
         let entity: Option<UpdateClusterPlatformBindingError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Replaces the whole platform configuration of the cluster, its platform selection and its cluster inputs, after validating it against the template release. Saving does not deploy it. `\"<redacted>\"` is not a keep-existing value: never send it back.
+pub async fn update_cluster_platform_configuration(
+    configuration: &configuration::Configuration,
+    cluster_id: &str,
+    cluster_platform_configuration_request: models::ClusterPlatformConfigurationRequest,
+) -> Result<
+    models::ClusterPlatformConfigurationResponse,
+    Error<UpdateClusterPlatformConfigurationError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_cluster_id = cluster_id;
+    let p_body_cluster_platform_configuration_request = cluster_platform_configuration_request;
+
+    let uri_str = format!(
+        "{}/v1/cluster/{clusterId}/platformConfiguration",
+        configuration.base_path,
+        clusterId = crate::apis::urlencode(p_path_cluster_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_cluster_platform_configuration_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterPlatformConfigurationResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterPlatformConfigurationResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<UpdateClusterPlatformConfigurationError> =
+            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
