@@ -32,6 +32,8 @@ pub mod agentic_workflow_run;
 pub use self::agentic_workflow_run::AgenticWorkflowRun;
 pub mod agentic_workflow_run_paginated_response_list;
 pub use self::agentic_workflow_run_paginated_response_list::AgenticWorkflowRunPaginatedResponseList;
+pub mod agentic_workflow_run_status;
+pub use self::agentic_workflow_run_status::AgenticWorkflowRunStatus;
 pub mod agentic_workflow_run_trigger;
 pub use self::agentic_workflow_run_trigger::AgenticWorkflowRunTrigger;
 pub mod agentic_workflow_schedule_request;

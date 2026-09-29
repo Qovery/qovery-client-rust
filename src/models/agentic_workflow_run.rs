@@ -31,6 +31,17 @@ pub struct AgenticWorkflowRun {
     /// Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown.
     #[serde(rename = "recorded_at", deserialize_with = "Option::deserialize")]
     pub recorded_at: Option<String>,
+    #[serde(rename = "status")]
+    pub status: models::AgenticWorkflowRunStatus,
+    /// Time the run entered RUNNING. Separate from recorded_at. Null until that transition is observed, and null for a run that reached a terminal status without it being observed.
+    #[serde(rename = "started_at", deserialize_with = "Option::deserialize")]
+    pub started_at: Option<String>,
+    /// Time the run reached a terminal status. Null until then.
+    #[serde(rename = "finished_at", deserialize_with = "Option::deserialize")]
+    pub finished_at: Option<String>,
+    /// finished_at minus started_at, in milliseconds. Derived, not stored. Null unless both timestamps are set.
+    #[serde(rename = "duration_ms", deserialize_with = "Option::deserialize")]
+    pub duration_ms: Option<i64>,
 }
 
 impl AgenticWorkflowRun {
@@ -42,6 +53,10 @@ impl AgenticWorkflowRun {
         prompt: Option<String>,
         created_at: String,
         recorded_at: Option<String>,
+        status: models::AgenticWorkflowRunStatus,
+        started_at: Option<String>,
+        finished_at: Option<String>,
+        duration_ms: Option<i64>,
     ) -> AgenticWorkflowRun {
         AgenticWorkflowRun {
             id,
@@ -50,6 +65,10 @@ impl AgenticWorkflowRun {
             prompt,
             created_at,
             recorded_at,
+            status,
+            started_at,
+            finished_at,
+            duration_ms,
         }
     }
 }

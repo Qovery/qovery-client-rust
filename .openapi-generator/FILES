@@ -21,6 +21,7 @@ docs/AgenticWorkflowResponse.md
 docs/AgenticWorkflowResponseList.md
 docs/AgenticWorkflowRun.md
 docs/AgenticWorkflowRunPaginatedResponseList.md
+docs/AgenticWorkflowRunStatus.md
 docs/AgenticWorkflowRunTrigger.md
 docs/AgenticWorkflowScheduleRequest.md
 docs/AgenticWorkflowScheduleResponse.md
@@ -1121,6 +1122,7 @@ src/models/agentic_workflow_response.rs
 src/models/agentic_workflow_response_list.rs
 src/models/agentic_workflow_run.rs
 src/models/agentic_workflow_run_paginated_response_list.rs
+src/models/agentic_workflow_run_status.rs
 src/models/agentic_workflow_run_trigger.rs
 src/models/agentic_workflow_schedule_request.rs
 src/models/agentic_workflow_schedule_response.rs
