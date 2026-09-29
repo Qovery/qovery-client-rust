@@ -25,6 +25,9 @@ pub struct AgenticWorkflowRun {
     /// Agent prompt captured when the run was requested. It is a snapshot, so later edits to the workflow do not change it. Null when the workflow had no prompt.
     #[serde(rename = "prompt", deserialize_with = "Option::deserialize")]
     pub prompt: Option<String>,
+    /// Body of the event that triggered the run, as it was received: the webhook request body for a WEBHOOK run, empty for a SCHEDULE or MANUAL run. Request headers are never stored. The value is unredacted and supplied by the caller of the webhook, so treat it as untrusted text. Null when the run has no stored payload.
+    #[serde(rename = "payload", deserialize_with = "Option::deserialize")]
+    pub payload: Option<String>,
     /// Time the run was requested.
     #[serde(rename = "created_at")]
     pub created_at: String,
@@ -51,6 +54,7 @@ impl AgenticWorkflowRun {
         source_workflow_id: uuid::Uuid,
         trigger: models::AgenticWorkflowRunTrigger,
         prompt: Option<String>,
+        payload: Option<String>,
         created_at: String,
         recorded_at: Option<String>,
         status: models::AgenticWorkflowRunStatus,
@@ -63,6 +67,7 @@ impl AgenticWorkflowRun {
             source_workflow_id,
             trigger,
             prompt,
+            payload,
             created_at,
             recorded_at,
             status,

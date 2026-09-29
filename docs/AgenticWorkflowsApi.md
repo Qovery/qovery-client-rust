@@ -111,7 +111,7 @@ Name | Type | Description  | Required | Notes
 > models::Status deploy_agentic_workflow(agentic_workflow_id)
 Deploy an agentic workflow
 
-Deploy the agentic workflow service so its configuration can be tested. Routine runs of the workflow are triggered by its webhook or its schedule, not by this endpoint.
+Deploy the agentic workflow service so its configuration can be tested. Routine runs of the workflow are triggered by its webhook or its schedule, not by this endpoint. Each deploy is recorded in the run history as a MANUAL run before it is queued: if the run cannot be recorded, the deploy is not queued and the call fails with a 500 that is safe to retry.
 
 ### Parameters
 

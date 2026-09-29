@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **source_workflow_id** | **uuid::Uuid** | ID of the workflow the run was requested for. A CLONE_ENVIRONMENT run executes as a fresh clone carrying its own ID, which run history does not report, so this is never the ID of the workflow that actually executed. | 
 **trigger** | [**models::AgenticWorkflowRunTrigger**](AgenticWorkflowRunTrigger.md) |  | 
 **prompt** | Option<**String**> | Agent prompt captured when the run was requested. It is a snapshot, so later edits to the workflow do not change it. Null when the workflow had no prompt. | 
+**payload** | Option<**String**> | Body of the event that triggered the run, as it was received: the webhook request body for a WEBHOOK run, empty for a SCHEDULE or MANUAL run. Request headers are never stored. The value is unredacted and supplied by the caller of the webhook, so treat it as untrusted text. Null when the run has no stored payload. | 
 **created_at** | **String** | Time the run was requested. | 
 **recorded_at** | Option<**String**> | Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown. | 
 **status** | [**models::AgenticWorkflowRunStatus**](AgenticWorkflowRunStatus.md) |  | 
