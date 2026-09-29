@@ -11,14 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RegistryMirroringModeEnum : Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository
-/// Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository
+/// RegistryMirroringModeEnum : Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository - Disabled: Only available on Scaleway Kapsule. Images are not copied into the cluster registry: pods pull them directly from the service container registry, with its credentials. Registries with temporary credentials (AWS ECR, Azure, GCP Artifact Registry) are still mirrored. Images built by Qovery still go to the cluster registry.
+/// Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository - Disabled: Only available on Scaleway Kapsule. Images are not copied into the cluster registry: pods pull them directly from the service container registry, with its credentials. Registries with temporary credentials (AWS ECR, Azure, GCP Artifact Registry) are still mirrored. Images built by Qovery still go to the cluster registry.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum RegistryMirroringModeEnum {
     #[serde(rename = "Cluster")]
     Cluster,
     #[serde(rename = "Service")]
     Service,
+    #[serde(rename = "Disabled")]
+    Disabled,
 }
 
 impl std::fmt::Display for RegistryMirroringModeEnum {
@@ -26,6 +28,7 @@ impl std::fmt::Display for RegistryMirroringModeEnum {
         match self {
             Self::Cluster => write!(f, "Cluster"),
             Self::Service => write!(f, "Service"),
+            Self::Disabled => write!(f, "Disabled"),
         }
     }
 }
