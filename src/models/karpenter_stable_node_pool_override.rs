@@ -11,10 +11,13 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
+/// KarpenterStableNodePoolOverride : The optional `drift_blocking` setting defines one recurring UTC window during which Karpenter drift disruptions are blocked on the stable node pool. When omitted on creation or disabled, drift behavior is unchanged; omitting it on update preserves the existing setting. When enabled, `days` must contain all seven weekdays and `duration` must be between PT1M and PT23H, leaving at least one hour each day when drift is permitted.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KarpenterStableNodePoolOverride {
     #[serde(rename = "consolidation", skip_serializing_if = "Option::is_none")]
     pub consolidation: Option<models::KarpenterNodePoolConsolidation>,
+    #[serde(rename = "drift_blocking", skip_serializing_if = "Option::is_none")]
+    pub drift_blocking: Option<models::KarpenterNodePoolConsolidation>,
     #[serde(rename = "limits", skip_serializing_if = "Option::is_none")]
     pub limits: Option<models::KarpenterNodePoolLimits>,
     /// Whether this node pool runs on spot instances. `null` or absent means the pool inherits the deprecated top-level `spot_enabled`: on write that value applies to this pool, on read only a deviating value is surfaced.
@@ -31,9 +34,11 @@ pub struct KarpenterStableNodePoolOverride {
 }
 
 impl KarpenterStableNodePoolOverride {
+    /// The optional `drift_blocking` setting defines one recurring UTC window during which Karpenter drift disruptions are blocked on the stable node pool. When omitted on creation or disabled, drift behavior is unchanged; omitting it on update preserves the existing setting. When enabled, `days` must contain all seven weekdays and `duration` must be between PT1M and PT23H, leaving at least one hour each day when drift is permitted.
     pub fn new() -> KarpenterStableNodePoolOverride {
         KarpenterStableNodePoolOverride {
             consolidation: None,
+            drift_blocking: None,
             limits: None,
             spot_enabled: None,
             consolidate_after: None,
