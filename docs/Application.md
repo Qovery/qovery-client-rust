@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
 **storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorageStorageInner.md)> |  | [optional]
+**warnings** | Option<[**Vec<models::ServiceEditWarning>**](ServiceEditWarning.md)> | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional]
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **git_repository** | Option<[**models::ApplicationGitRepository**](ApplicationGitRepository.md)> |  | [optional]
 **maximum_cpu** | Option<**i32**> | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | [optional]

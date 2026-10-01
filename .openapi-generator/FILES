@@ -890,6 +890,9 @@ docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
 docs/ServiceAnnotationRequest.md
 docs/ServiceDeploymentStatusEnum.md
+docs/ServiceEditWarning.md
+docs/ServiceEditWarningCodeEnum.md
+docs/ServiceEditWarnings.md
 docs/ServiceLabelRequest.md
 docs/ServiceLightResponse.md
 docs/ServiceMainCallsApi.md
@@ -1899,6 +1902,9 @@ src/models/service_action_enum.rs
 src/models/service_action_status_enum.rs
 src/models/service_annotation_request.rs
 src/models/service_deployment_status_enum.rs
+src/models/service_edit_warning.rs
+src/models/service_edit_warning_code_enum.rs
+src/models/service_edit_warnings.rs
 src/models/service_label_request.rs
 src/models/service_light_response.rs
 src/models/service_port.rs

@@ -19,6 +19,9 @@ pub struct HelmResponse {
     pub created_at: String,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
+    /// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
+    #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
+    pub warnings: Option<Vec<models::ServiceEditWarning>>,
     #[serde(rename = "environment")]
     pub environment: models::ReferenceObject,
     /// name is case insensitive
@@ -84,6 +87,7 @@ impl HelmResponse {
             id,
             created_at,
             updated_at: None,
+            warnings: None,
             environment,
             name,
             description: None,

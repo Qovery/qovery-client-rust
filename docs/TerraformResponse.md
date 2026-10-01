@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
+**warnings** | Option<[**Vec<models::ServiceEditWarning>**](ServiceEditWarning.md)> | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional]
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional]
 **timeout_sec** | **i32** |  | [default to 600]

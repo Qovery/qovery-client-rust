@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **uuid::Uuid** |  | [readonly]
 **created_at** | **String** |  | [readonly]
 **updated_at** | Option<**String**> |  | [optional][readonly]
+**warnings** | Option<[**Vec<models::ServiceEditWarning>**](ServiceEditWarning.md)> | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional]
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **maximum_cpu** | **i32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | 
 **maximum_memory** | **i32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB | 

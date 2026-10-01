@@ -21,6 +21,9 @@ pub struct Application {
     pub updated_at: Option<String>,
     #[serde(rename = "storage", skip_serializing_if = "Option::is_none")]
     pub storage: Option<Vec<models::ServiceStorageStorageInner>>,
+    /// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved. 
+    #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
+    pub warnings: Option<Vec<models::ServiceEditWarning>>,
     #[serde(rename = "environment")]
     pub environment: models::ReferenceObject,
     #[serde(rename = "git_repository", skip_serializing_if = "Option::is_none")]
@@ -102,6 +105,7 @@ impl Application {
             created_at,
             updated_at: None,
             storage: None,
+            warnings: None,
             environment,
             git_repository: None,
             maximum_cpu: None,

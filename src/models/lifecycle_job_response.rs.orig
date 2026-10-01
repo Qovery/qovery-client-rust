@@ -19,6 +19,9 @@ pub struct LifecycleJobResponse {
     pub created_at: String,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
+    /// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved. 
+    #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
+    pub warnings: Option<Vec<models::ServiceEditWarning>>,
     #[serde(rename = "environment")]
     pub environment: models::ReferenceObject,
     /// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -89,6 +92,7 @@ impl LifecycleJobResponse {
             id,
             created_at,
             updated_at: None,
+            warnings: None,
             environment,
             maximum_cpu,
             maximum_memory,
