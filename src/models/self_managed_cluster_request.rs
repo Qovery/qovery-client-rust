@@ -24,7 +24,7 @@ pub struct SelfManagedClusterRequest {
     #[serde(rename = "credentials")]
     pub credentials: models::SelfManagedClusterCredentials,
     #[serde(rename = "platform")]
-    pub platform: models::PlatformSelection,
+    pub platform: models::SelfManagedClusterPlatformSelection,
     /// String values keyed first by component key and then by input key
     #[serde(rename = "clusterInputs", skip_serializing_if = "Option::is_none")]
     pub cluster_inputs:
@@ -37,7 +37,7 @@ impl SelfManagedClusterRequest {
         provider: Provider,
         region: String,
         credentials: models::SelfManagedClusterCredentials,
-        platform: models::PlatformSelection,
+        platform: models::SelfManagedClusterPlatformSelection,
     ) -> SelfManagedClusterRequest {
         SelfManagedClusterRequest {
             name,

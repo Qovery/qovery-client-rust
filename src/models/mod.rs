@@ -1568,6 +1568,8 @@ pub mod self_managed_cluster_credentials;
 pub use self::self_managed_cluster_credentials::SelfManagedClusterCredentials;
 pub mod self_managed_cluster_kind;
 pub use self::self_managed_cluster_kind::SelfManagedClusterKind;
+pub mod self_managed_cluster_platform_selection;
+pub use self::self_managed_cluster_platform_selection::SelfManagedClusterPlatformSelection;
 pub mod self_managed_cluster_registry_response;
 pub use self::self_managed_cluster_registry_response::SelfManagedClusterRegistryResponse;
 pub mod self_managed_cluster_request;
