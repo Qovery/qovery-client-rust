@@ -32,7 +32,7 @@ pub enum SyncServiceGitWebhookError {
     Status401(),
     Status403(),
     Status404(),
-    Status422(),
+    Status424(),
     Status429(),
     UnknownValue(serde_json::Value),
 }
