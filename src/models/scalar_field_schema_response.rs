@@ -39,6 +39,9 @@ pub struct ScalarFieldSchemaResponse {
     pub description: Option<Option<String>>,
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
+    /// Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only.
+    #[serde(rename = "readOnly", skip_serializing_if = "Option::is_none")]
+    pub read_only: Option<bool>,
     #[serde(rename = "constraints")]
     pub constraints: models::FieldSchemaConstraintsResponse,
     /// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
@@ -67,6 +70,7 @@ impl ScalarFieldSchemaResponse {
             label,
             description: None,
             sensitive,
+            read_only: None,
             constraints,
             format: None,
             templates: None,

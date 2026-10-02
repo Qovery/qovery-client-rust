@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// PlatformComponentInputRequirementResponse : A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors.
+/// PlatformComponentInputRequirementResponse : A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors and are never read-only.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlatformComponentInputRequirementResponse {
     #[serde(rename = "key")]
@@ -39,6 +39,9 @@ pub struct PlatformComponentInputRequirementResponse {
     pub description: Option<Option<String>>,
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
+    /// Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only.
+    #[serde(rename = "readOnly", skip_serializing_if = "Option::is_none")]
+    pub read_only: Option<bool>,
     #[serde(rename = "constraints")]
     pub constraints: models::FieldSchemaConstraintsResponse,
     /// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
@@ -54,7 +57,7 @@ pub struct PlatformComponentInputRequirementResponse {
 }
 
 impl PlatformComponentInputRequirementResponse {
-    /// A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors.
+    /// A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors and are never read-only.
     pub fn new(
         key: String,
         r#type: Type,
@@ -73,6 +76,7 @@ impl PlatformComponentInputRequirementResponse {
             label,
             description: None,
             sensitive,
+            read_only: None,
             constraints,
             format: None,
             templates: None,

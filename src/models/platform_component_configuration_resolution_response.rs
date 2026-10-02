@@ -24,6 +24,9 @@ pub struct PlatformComponentConfigurationResolutionResponse {
     pub component_bindings: Vec<models::PlatformComponentOutputBindingResponse>,
     #[serde(rename = "violations")]
     pub violations: Vec<models::PlatformComponentConfigurationViolationResponse>,
+    /// Value of each read-only field in fields, keyed by field key, with no other entry; `{}` when no field is read-only. Values are encoded as strings, like defaultValue, and `null` means that no value is set, such as no CPU limit. A value is the configuration computed for this draft, not proof of what runs on the cluster.
+    #[serde(rename = "resolvedValues")]
+    pub resolved_values: std::collections::HashMap<String, String>,
 }
 
 impl PlatformComponentConfigurationResolutionResponse {
@@ -34,6 +37,7 @@ impl PlatformComponentConfigurationResolutionResponse {
         requirements: Vec<models::PlatformComponentInputRequirementResponse>,
         component_bindings: Vec<models::PlatformComponentOutputBindingResponse>,
         violations: Vec<models::PlatformComponentConfigurationViolationResponse>,
+        resolved_values: std::collections::HashMap<String, String>,
     ) -> PlatformComponentConfigurationResolutionResponse {
         PlatformComponentConfigurationResolutionResponse {
             component_key,
@@ -41,6 +45,7 @@ impl PlatformComponentConfigurationResolutionResponse {
             requirements,
             component_bindings,
             violations,
+            resolved_values,
         }
     }
 }
