@@ -140,6 +140,7 @@ docs/BlueprintCatalogResponse.md
 docs/BlueprintConfigurationVariable.md
 docs/BlueprintCreateRequest.md
 docs/BlueprintCreationResponse.md
+docs/BlueprintDatabaseResponse.md
 docs/BlueprintDeploymentAckResponse.md
 docs/BlueprintDeploymentStatusResponse.md
 docs/BlueprintDetailsResponse.md
@@ -362,6 +363,7 @@ docs/DatabaseConfiguration.md
 docs/DatabaseConfigurationResponseList.md
 docs/DatabaseDeploymentHistoryApi.md
 docs/DatabaseEditRequest.md
+docs/DatabaseEndpointsResponse.md
 docs/DatabaseMainCallsApi.md
 docs/DatabaseModeEnum.md
 docs/DatabaseRequest.md
@@ -1237,6 +1239,7 @@ src/models/blueprint_catalog_response.rs
 src/models/blueprint_configuration_variable.rs
 src/models/blueprint_create_request.rs
 src/models/blueprint_creation_response.rs
+src/models/blueprint_database_response.rs
 src/models/blueprint_deployment_ack_response.rs
 src/models/blueprint_deployment_status_response.rs
 src/models/blueprint_details_response.rs
@@ -1442,6 +1445,7 @@ src/models/database_accessibility_enum.rs
 src/models/database_configuration.rs
 src/models/database_configuration_response_list.rs
 src/models/database_edit_request.rs
+src/models/database_endpoints_response.rs
 src/models/database_mode_enum.rs
 src/models/database_request.rs
 src/models/database_response_list.rs

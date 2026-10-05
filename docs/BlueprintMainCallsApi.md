@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deploy_blueprint**](BlueprintMainCallsApi.md#deploy_blueprint) | **POST** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 [**get_blueprint**](BlueprintMainCallsApi.md#get_blueprint) | **GET** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**get_blueprint_catalog**](BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+[**get_blueprint_database**](BlueprintMainCallsApi.md#get_blueprint_database) | **GET** /blueprint/{blueprintId}/database | Get the database a blueprint manages
 [**get_blueprint_variables**](BlueprintMainCallsApi.md#get_blueprint_variables) | **GET** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 [**preview_blueprint_update**](BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**update_blueprint**](BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
@@ -187,6 +188,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::BlueprintCatalogResponse**](BlueprintCatalogResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_blueprint_database
+
+> models::BlueprintDatabaseResponse get_blueprint_database(blueprint_id)
+Get the database a blueprint manages
+
+Returns the kind of database a blueprint manages and its endpoint, read from the `DB_ADDRESS` and `DB_PORT` outputs of its terraform service. `endpoint` is null until a deploy has reported it. Port-forward dials this endpoint to reach a blueprint database.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
+
+### Return type
+
+[**models::BlueprintDatabaseResponse**](BlueprintDatabaseResponse.md)
 
 ### Authorization
 
