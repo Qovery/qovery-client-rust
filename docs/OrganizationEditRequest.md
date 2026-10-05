@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **name** | **String** | name is case insensitive | 
 **description** | Option<**String**> |  | [optional]
 **website_url** | Option<**String**> |  | [optional]
-**repository** | Option<**String**> |  | [optional]
 **logo_url** | Option<**String**> |  | [optional]
 **icon_url** | Option<**String**> |  | [optional]
 **admin_emails** | Option<**Vec<String>**> |  | [optional]

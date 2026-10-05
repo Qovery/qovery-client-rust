@@ -1,30 +1,32 @@
-# \ContainerLogsApi
+# \OrganizationApi
 
 All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_container_log**](ContainerLogsApi.md#list_container_log) | **GET** /container/{containerId}/log | List logs
+[**track_skill_call**](OrganizationApi.md#track_skill_call) | **POST** /organization/{organizationId}/skill-tracking | Track a skill call
 
 
 
-## list_container_log
+## track_skill_call
 
-> models::LogResponseList list_container_log(container_id)
-List logs
+> track_skill_call(organization_id, skill_tracking_request, user_agent)
+Track a skill call
 
-This will list the last 1000 logs of the container
+Track a skill call
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**container_id** | **uuid::Uuid** | Container ID | [required] |
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**skill_tracking_request** | [**SkillTrackingRequest**](SkillTrackingRequest.md) |  | [required] |
+**user_agent** | Option<**String**> |  |  |
 
 ### Return type
 
-[**models::LogResponseList**](LogResponseList.md)
+ (empty response body)
 
 ### Authorization
 
@@ -32,8 +34,8 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

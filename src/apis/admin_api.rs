@@ -12,11 +12,21 @@ use super::{configuration, ContentType, Error};
 use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
+use tokio::fs::File as TokioFile;
+use tokio_util::codec::{BytesCodec, FramedRead};
 
-/// struct for typed errors of method [`add_backup_database`]
+/// struct for typed errors of method [`get_public_service_version`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum AddBackupDatabaseError {
+pub enum GetPublicServiceVersionError {
+    Status400(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_user_sign_ups`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListUserSignUpsError {
     Status400(),
     Status401(),
     Status403(),
@@ -24,44 +34,137 @@ pub enum AddBackupDatabaseError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_database_backup`]
+/// struct for typed errors of method [`store_cli_demo_debug_logs`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum ListDatabaseBackupError {
+pub enum StoreCliDemoDebugLogsError {
+    Status400(),
     Status401(),
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`remove_database_backup`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum RemoveDatabaseBackupError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
-pub async fn add_backup_database(
+/// Get the version of an engine related service. Worker service types are unavailable through this route.
+pub async fn get_public_service_version(
     configuration: &configuration::Configuration,
-    database_id: &str,
-    backup_request: Option<models::BackupRequest>,
-) -> Result<models::Backup, Error<AddBackupDatabaseError>> {
+    service_type: &str,
+) -> Result<models::EngineVersionResponse, Error<GetPublicServiceVersionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_database_id = database_id;
-    let p_body_backup_request = backup_request;
+    let p_query_service_type = service_type;
 
-    let uri_str = format!(
-        "{}/database/{databaseId}/backup",
-        configuration.base_path,
-        databaseId = crate::apis::urlencode(p_path_database_id)
-    );
+    let uri_str = format!("{}/engine/serviceVersion", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("serviceType", &p_query_service_type.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EngineVersionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EngineVersionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetPublicServiceVersionError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Search user signups as a Qovery administrator.
+pub async fn list_user_sign_ups(
+    configuration: &configuration::Configuration,
+    search: &str,
+) -> Result<models::UserSignUpResponseList, Error<ListUserSignUpsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_search = search;
+
+    let uri_str = format!("{}/admin/listUserSignUp", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("search", &p_query_search.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UserSignUpResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UserSignUpResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListUserSignUpsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Store CLI demo debug logs for an organization and cluster.
+pub async fn store_cli_demo_debug_logs(
+    configuration: &configuration::Configuration,
+    organization: &str,
+    cluster_name: &str,
+    body: Option<std::path::PathBuf>,
+) -> Result<(), Error<StoreCliDemoDebugLogsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_organization = organization;
+    let p_query_cluster_name = cluster_name;
+    let p_body_body = body;
+
+    let uri_str = format!("{}/admin/demoDebugLog", configuration.base_path);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    req_builder = req_builder.query(&[("organization", &p_query_organization.to_string())]);
+    req_builder = req_builder.query(&[("clusterName", &p_query_cluster_name.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -76,134 +179,11 @@ pub async fn add_backup_database(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body_backup_request);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Backup`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Backup`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<AddBackupDatabaseError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
+    if let Some(param_value) = p_body_body {
+        let file = TokioFile::open(param_value).await?;
+        let stream = FramedRead::new(file, BytesCodec::new());
+        req_builder = req_builder.body(reqwest::Body::wrap_stream(stream));
     }
-}
-
-/// By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
-pub async fn list_database_backup(
-    configuration: &configuration::Configuration,
-    database_id: &str,
-    start_id: Option<&str>,
-) -> Result<models::BackupPaginatedResponseList, Error<ListDatabaseBackupError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_database_id = database_id;
-    let p_query_start_id = start_id;
-
-    let uri_str = format!(
-        "{}/database/{databaseId}/backup",
-        configuration.base_path,
-        databaseId = crate::apis::urlencode(p_path_database_id)
-    );
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_query_start_id {
-        req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BackupPaginatedResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BackupPaginatedResponseList`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListDatabaseBackupError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-pub async fn remove_database_backup(
-    configuration: &configuration::Configuration,
-    database_id: &str,
-    backup_id: &str,
-) -> Result<(), Error<RemoveDatabaseBackupError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_database_id = database_id;
-    let p_path_backup_id = backup_id;
-
-    let uri_str = format!(
-        "{}/database/{databaseId}/backup/{backupId}",
-        configuration.base_path,
-        databaseId = crate::apis::urlencode(p_path_database_id),
-        backupId = crate::apis::urlencode(p_path_backup_id)
-    );
-    let mut req_builder = configuration
-        .client
-        .request(reqwest::Method::DELETE, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -214,7 +194,7 @@ pub async fn remove_database_backup(
         Ok(())
     } else {
         let content = resp.text().await?;
-        let entity: Option<RemoveDatabaseBackupError> = serde_json::from_str(&content).ok();
+        let entity: Option<StoreCliDemoDebugLogsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

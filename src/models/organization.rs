@@ -39,13 +39,6 @@ pub struct Organization {
     )]
     pub website_url: Option<Option<String>>,
     #[serde(
-        rename = "repository",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub repository: Option<Option<String>>,
-    #[serde(
         rename = "logo_url",
         default,
         with = "::serde_with::rust::double_option",
@@ -102,7 +95,6 @@ impl Organization {
             description: None,
             plan,
             website_url: None,
-            repository: None,
             logo_url: None,
             icon_url: None,
             admin_emails: None,

@@ -20,12 +20,12 @@ Method | HTTP request | Description
 [**get_cluster_kubernetes_events**](ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 [**get_cluster_logs**](ClustersApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 [**get_cluster_metrics**](ClustersApi.md#get_cluster_metrics) | **GET** /cluster/{clusterId}/metrics | Fetch cluster metrics
-[**get_cluster_readiness_status**](ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**get_cluster_status**](ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**get_default_cluster_advanced_settings**](ClustersApi.md#get_default_cluster_advanced_settings) | **GET** /defaultClusterAdvancedSettings | List default cluster advanced settings
 [**get_eks_anywhere_cluster_jwt**](ClustersApi.md#get_eks_anywhere_cluster_jwt) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt | Get latest EKS Anywhere cluster JWT
 [**get_environments_by_cluster_id**](ClustersApi.md#get_environments_by_cluster_id) | **GET** /cluster/{clusterId}/environments | List environments services by cluster id
 [**get_installation_helm_values**](ClustersApi.md#get_installation_helm_values) | **GET** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
+[**get_latest_cluster_failure_context**](ClustersApi.md#get_latest_cluster_failure_context) | **GET** /cluster/{clusterId}/clusterFailureContext/latest | Get the latest cluster failure context
 [**get_organization_cloud_provider_info**](ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**get_organization_cluster_status**](ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**get_routing_table**](ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
@@ -567,35 +567,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_cluster_readiness_status
-
-> models::ClusterReadinessStatus get_cluster_readiness_status(organization_id, cluster_id)
-Know if a cluster is ready to be deployed or not
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
-
-### Return type
-
-[**models::ClusterReadinessStatus**](ClusterReadinessStatus.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## get_cluster_status
 
 > models::ClusterStatus get_cluster_status(organization_id, cluster_id)
@@ -736,6 +707,36 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/x-yaml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_latest_cluster_failure_context
+
+> models::ClusterFailureContextResponse get_latest_cluster_failure_context(cluster_id)
+Get the latest cluster failure context
+
+Get the latest cluster failure context
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**cluster_id** | **uuid::Uuid** | Cluster ID | [required] |
+
+### Return type
+
+[**models::ClusterFailureContextResponse**](ClusterFailureContextResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

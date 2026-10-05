@@ -5,8 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list_aws_features**](CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
-[**list_aws_instance_type**](CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
-[**list_aws_managed_database_instance_type**](CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+[**list_aws_managed_database_instance_type**](CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{dbType} | List AWS available managed database instance types
 [**list_aws_managed_database_type**](CloudProviderApi.md#list_aws_managed_database_type) | **GET** /aws/managedDatabase/type | List AWS available managed database types
 [**list_aws_regions**](CloudProviderApi.md#list_aws_regions) | **GET** /aws/region | List AWS regions
 [**list_awseks_instance_type**](CloudProviderApi.md#list_awseks_instance_type) | **GET** /aws/eks/instanceType/{region} | List AWS EKS available instance types
@@ -15,13 +14,13 @@ Method | HTTP request | Description
 [**list_azure_regions**](CloudProviderApi.md#list_azure_regions) | **GET** /azure/region | List Azure regions
 [**list_cloud_provider**](CloudProviderApi.md#list_cloud_provider) | **GET** /cloudProvider | List Cloud providers available
 [**list_gcp_features**](CloudProviderApi.md#list_gcp_features) | **GET** /gcp/clusterFeature | List GCP features available
-[**list_gcp_gke_instance_type**](CloudProviderApi.md#list_gcp_gke_instance_type) | **GET** /gcp/instanceType/{region} | List GCP GKE available instance types
 [**list_gcp_regions**](CloudProviderApi.md#list_gcp_regions) | **GET** /gcp/region | List GCP regions
+[**list_on_premise_cluster_features**](CloudProviderApi.md#list_on_premise_cluster_features) | **GET** /onPremise/clusterFeature | List on-premise cluster features
+[**list_on_premise_instance_types**](CloudProviderApi.md#list_on_premise_instance_types) | **GET** /onPremise/eks/instanceType/{region} | List on-premise instance types
+[**list_on_premise_regions**](CloudProviderApi.md#list_on_premise_regions) | **GET** /onPremise/region | List on-premise regions
 [**list_scaleway_features**](CloudProviderApi.md#list_scaleway_features) | **GET** /scaleway/clusterFeature | List Scaleway features available
-[**list_scaleway_instance_type**](CloudProviderApi.md#list_scaleway_instance_type) | **GET** /scaleway/instanceType | List Scaleway available instance types
 [**list_scaleway_kapsule_instance_type**](CloudProviderApi.md#list_scaleway_kapsule_instance_type) | **GET** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 [**list_scaleway_regions**](CloudProviderApi.md#list_scaleway_regions) | **GET** /scaleway/region | List Scaleway regions
-[**list_scw_managed_database_type**](CloudProviderApi.md#list_scw_managed_database_type) | **GET** /scaleway/managedDatabase/type | List Scaleway available managed database types
 
 
 
@@ -50,34 +49,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_aws_instance_type
-
-> models::ClusterInstanceTypeResponseList list_aws_instance_type()
-List AWS available instance types
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**models::ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## list_aws_managed_database_instance_type
 
-> models::ManagedDatabaseInstanceTypeResponseList list_aws_managed_database_instance_type(region, database_type)
+> models::ManagedDatabaseInstanceTypeResponseList list_aws_managed_database_instance_type(region, db_type)
+List AWS available managed database instance types
+
 List AWS available managed database instance types
 
 ### Parameters
@@ -86,7 +62,7 @@ List AWS available managed database instance types
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **region** | **String** | region name | [required] |
-**database_type** | **String** | Database type | [required] |
+**db_type** | **String** | Managed database type | [required] |
 
 ### Return type
 
@@ -316,10 +292,64 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_gcp_gke_instance_type
+## list_gcp_regions
 
-> models::ClusterInstanceTypeResponseList list_gcp_gke_instance_type(region)
-List GCP GKE available instance types
+> models::ClusterRegionResponseList list_gcp_regions()
+List GCP regions
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::ClusterRegionResponseList**](ClusterRegionResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_on_premise_cluster_features
+
+> models::ClusterFeatureResponseList list_on_premise_cluster_features()
+List on-premise cluster features
+
+List on-premise cluster features
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::ClusterFeatureResponseList**](ClusterFeatureResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_on_premise_instance_types
+
+> models::ClusterInstanceTypeResponseList list_on_premise_instance_types(region)
+List on-premise instance types
+
+List on-premise instance types
 
 ### Parameters
 
@@ -344,10 +374,12 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_gcp_regions
+## list_on_premise_regions
 
-> models::ClusterRegionResponseList list_gcp_regions()
-List GCP regions
+> models::ClusterRegionResponseList list_on_premise_regions()
+List on-premise regions
+
+List on-premise regions
 
 ### Parameters
 
@@ -394,34 +426,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_scaleway_instance_type
-
-> models::ClusterInstanceTypeResponseList list_scaleway_instance_type()
-List Scaleway available instance types
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**models::ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## list_scaleway_kapsule_instance_type
 
 > models::ClusterInstanceTypeResponseList list_scaleway_kapsule_instance_type(zone)
+List Scaleway Kapsule available instance types
+
 List Scaleway Kapsule available instance types
 
 ### Parameters
@@ -459,31 +468,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**models::ClusterRegionResponseList**](ClusterRegionResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## list_scw_managed_database_type
-
-> models::ManagedDatabaseTypeResponseList list_scw_managed_database_type()
-List Scaleway available managed database types
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**models::ManagedDatabaseTypeResponseList**](ManagedDatabaseTypeResponseList.md)
 
 ### Authorization
 

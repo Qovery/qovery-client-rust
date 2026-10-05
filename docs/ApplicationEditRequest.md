@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **cpu_architecture** | Option<[**models::CpuArchitectureEnum**](CpuArchitectureEnum.md)> | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional]
 **autoscaling** | Option<[**models::KedaAutoscalingRequest**](KedaAutoscalingRequest.md)> |  | [optional]
 **build_settings** | Option<[**models::BuildSettings**](BuildSettings.md)> |  | [optional]
+**startup_timeout** | Option<**i32**> |  | [optional][default to 30]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -55,10 +55,10 @@ pub enum EditCustomDomainError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_custom_domain_status`]
+/// struct for typed errors of method [`get_application_custom_domain`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetCustomDomainStatusError {
+pub enum GetApplicationCustomDomainError {
     Status401(),
     Status403(),
     Status404(),
@@ -316,17 +316,18 @@ pub async fn edit_custom_domain(
     }
 }
 
-pub async fn get_custom_domain_status(
+/// Get a custom domain attached to an application.
+pub async fn get_application_custom_domain(
     configuration: &configuration::Configuration,
     application_id: &str,
     custom_domain_id: &str,
-) -> Result<models::CustomDomain, Error<GetCustomDomainStatusError>> {
+) -> Result<models::CustomDomain, Error<GetApplicationCustomDomainError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_application_id = application_id;
     let p_path_custom_domain_id = custom_domain_id;
 
     let uri_str = format!(
-        "{}/application/{applicationId}/customDomain/{customDomainId}/status",
+        "{}/application/{applicationId}/customDomain/{customDomainId}",
         configuration.base_path,
         applicationId = crate::apis::urlencode(p_path_application_id),
         customDomainId = crate::apis::urlencode(p_path_custom_domain_id)
@@ -368,7 +369,7 @@ pub async fn get_custom_domain_status(
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<GetCustomDomainStatusError> = serde_json::from_str(&content).ok();
+        let entity: Option<GetApplicationCustomDomainError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

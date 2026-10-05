@@ -21,8 +21,11 @@ pub struct Log {
     pub message: String,
     #[serde(rename = "pod_name", skip_serializing_if = "Option::is_none")]
     pub pod_name: Option<String>,
-    #[serde(rename = "version", skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    #[serde(
+        rename = "application_commit_id",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub application_commit_id: Option<String>,
 }
 
 impl Log {
@@ -32,7 +35,7 @@ impl Log {
             created_at,
             message,
             pod_name: None,
-            version: None,
+            application_commit_id: None,
         }
     }
 }

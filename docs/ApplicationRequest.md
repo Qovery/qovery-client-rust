@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **storage** | Option<[**Vec<models::ServiceStorageRequestStorageInner>**](ServiceStorageRequestStorageInner.md)> |  | [optional]
 **ports** | Option<[**Vec<models::ServicePortRequestPortsInner>**](ServicePortRequestPortsInner.md)> |  | [optional]
 **name** | **String** | name is case insensitive | 
-**description** | Option<**String**> | give a description to this application | [optional]
+**description** | Option<**String**> | give a description to this application | [optional][default to ]
 **git_repository** | [**models::ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **build_mode** | Option<[**models::BuildModeEnum**](BuildModeEnum.md)> |  | [optional]
 **dockerfile_path** | Option<**String**> | The path of the associated Dockerfile. Only if you are using build_mode = DOCKER | [optional]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **min_running_instances** | Option<**i32**> | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional][default to 1]
 **max_running_instances** | Option<**i32**> | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional][default to 1]
 **healthchecks** | [**models::Healthcheck**](Healthcheck.md) |  | 
-**auto_preview** | Option<**bool**> | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  | [optional][default to true]
+**auto_preview** | Option<**bool**> | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  | [optional]
 **arguments** | Option<**Vec<String>**> |  | [optional]
 **entrypoint** | Option<**String**> | optional entrypoint when launching container | [optional]
 **auto_deploy** | Option<**bool**> | Specify if the application will be automatically updated after receiving a new commit. | [optional]
@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **cpu_architecture** | Option<[**models::CpuArchitectureEnum**](CpuArchitectureEnum.md)> | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional]
 **autoscaling** | Option<[**models::KedaAutoscalingRequest**](KedaAutoscalingRequest.md)> |  | [optional]
 **build_settings** | Option<[**models::BuildSettings**](BuildSettings.md)> |  | [optional]
+**startup_timeout** | Option<**i32**> |  | [optional][default to 30]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

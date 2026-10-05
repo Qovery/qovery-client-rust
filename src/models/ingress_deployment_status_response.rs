@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct IngressDeploymentStatusResponse {
-    #[serde(rename = "routerId", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "router_id", skip_serializing_if = "Option::is_none")]
     pub router_id: Option<uuid::Uuid>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::StateEnum>,

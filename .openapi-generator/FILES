@@ -6,6 +6,7 @@ README.md
 docs/AccountInfo.md
 docs/AccountInfoApi.md
 docs/AccountInfoEditRequest.md
+docs/AdminApi.md
 docs/AgenticWorkflowExecutionMode.md
 docs/AgenticWorkflowGovernance.md
 docs/AgenticWorkflowHeader.md
@@ -75,7 +76,6 @@ docs/ApplicationEditRequest.md
 docs/ApplicationEnvironmentVariableApi.md
 docs/ApplicationGitRepository.md
 docs/ApplicationGitRepositoryRequest.md
-docs/ApplicationLogsApi.md
 docs/ApplicationMainCallsApi.md
 docs/ApplicationNetwork.md
 docs/ApplicationNetworkRequest.md
@@ -125,7 +125,6 @@ docs/Backup.md
 docs/BackupPaginatedResponseList.md
 docs/BackupRequest.md
 docs/BackupResponseList.md
-docs/BackupsApi.md
 docs/Base.md
 docs/BaseJobResponse.md
 docs/BaseJobResponseAllOfSource.md
@@ -229,6 +228,7 @@ docs/ClusterEksAnywhereGitRepository.md
 docs/ClusterEnvironmentResponse.md
 docs/ClusterEnvironmentResponseList.md
 docs/ClusterEnvironmentServiceResponse.md
+docs/ClusterFailureContextResponse.md
 docs/ClusterFeatureAwsExistingVpc.md
 docs/ClusterFeatureAwsExistingVpcResponse.md
 docs/ClusterFeatureBooleanResponse.md
@@ -314,7 +314,6 @@ docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryApi.md
 docs/ContainerEnvironmentVariableApi.md
 docs/ContainerImageCheckRequest.md
-docs/ContainerLogsApi.md
 docs/ContainerMainCallsApi.md
 docs/ContainerNetwork.md
 docs/ContainerNetworkRequest.md
@@ -359,7 +358,6 @@ docs/CustomDomainStatusEnum.md
 docs/Database.md
 docs/DatabaseAccessibilityEnum.md
 docs/DatabaseActionsApi.md
-docs/DatabaseApplicationApi.md
 docs/DatabaseConfiguration.md
 docs/DatabaseConfigurationResponseList.md
 docs/DatabaseDeploymentHistoryApi.md
@@ -436,7 +434,11 @@ docs/EksInfrastructureOutputsExternalSecretsAutomaticAuthentication.md
 docs/EmailAlertReceiverCreationRequest.md
 docs/EmailAlertReceiverEditRequest.md
 docs/EmailAlertReceiverResponse.md
+docs/EngineVersionResponse.md
+docs/EnterpriseConnectionAccess.md
+docs/EnterpriseConnectionAccessList.md
 docs/EnterpriseConnectionDto.md
+docs/EnterpriseConnectionMemberAccessUpdateRequest.md
 docs/EnterpriseConnectionResponseList.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
@@ -491,6 +493,8 @@ docs/ExternalSecretAssociatedServiceResponseList.md
 docs/FieldSchemaConstraintsResponse.md
 docs/FieldSchemaResponse.md
 docs/FieldTemplateResponse.md
+docs/GatewayConditionEntryResponse.md
+docs/GatewayStatusResponse.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -703,6 +707,7 @@ docs/McpServerResponseList.md
 docs/McpServerScope.md
 docs/McpServersApi.md
 docs/Member.md
+docs/MemberAccessRoleUpdated.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
 docs/MembersApi.md
@@ -722,6 +727,7 @@ docs/OrganizationAnnotationsGroupCreateRequest.md
 docs/OrganizationAnnotationsGroupEnrichedResponse.md
 docs/OrganizationAnnotationsGroupResponse.md
 docs/OrganizationAnnotationsGroupScopeEnum.md
+docs/OrganizationApi.md
 docs/OrganizationApiToken.md
 docs/OrganizationApiTokenApi.md
 docs/OrganizationApiTokenCreate.md
@@ -809,6 +815,7 @@ docs/PlatformConfigurationSectionResponse.md
 docs/PlatformLayerResolutionStatus.md
 docs/PlatformSelection.md
 docs/PlatformTemplateCatalogResponse.md
+docs/PlatformTemplateComponentDependencyResponse.md
 docs/PlatformTemplateComponentKind.md
 docs/PlatformTemplateComponentResponse.md
 docs/PlatformTemplateLayerResponse.md
@@ -915,6 +922,7 @@ docs/ServiceTypeForVariableEnum.md
 docs/ServicesOverviewResponse.md
 docs/SignUp.md
 docs/SignUpRequest.md
+docs/SkillTrackingRequest.md
 docs/SlackAlertReceiverCreationRequest.md
 docs/SlackAlertReceiverEditRequest.md
 docs/SlackAlertReceiverResponse.md
@@ -947,7 +955,6 @@ docs/TerraformDeploymentRestrictionResponseList.md
 docs/TerraformEngineEnum.md
 docs/TerraformFilesSource.md
 docs/TerraformFilesSourceGit.md
-docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
 docs/TerraformMainCallsApi.md
@@ -956,9 +963,9 @@ docs/TerraformRequest.md
 docs/TerraformRequestDockerfileFragment.md
 docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
+docs/TerraformResourceAttribute.md
 docs/TerraformResourceResponse.md
 docs/TerraformResourcesApi.md
-docs/TerraformResourcesRequest.md
 docs/TerraformResourcesResponse.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfDockerfileFragment.md
@@ -981,6 +988,8 @@ docs/TypeOfUseEnum.md
 docs/User.md
 docs/UserResponseList.md
 docs/UserSignUpApi.md
+docs/UserSignUpResponse.md
+docs/UserSignUpResponseList.md
 docs/Value.md
 docs/VariableAlias.md
 docs/VariableAliasRequest.md
@@ -1000,8 +1009,10 @@ docs/VersionResponseList.md
 docs/WebhookEventResponse.md
 docs/WebhookEventResponseList.md
 docs/WeekdayEnum.md
+docs/WidePermissionsDto.md
 git_push.sh
 src/apis/account_info_api.rs
+src/apis/admin_api.rs
 src/apis/agentic_workflows_api.rs
 src/apis/alert_receivers_api.rs
 src/apis/alert_rules_api.rs
@@ -1011,12 +1022,10 @@ src/apis/application_custom_domain_api.rs
 src/apis/application_deployment_history_api.rs
 src/apis/application_deployment_restriction_api.rs
 src/apis/application_environment_variable_api.rs
-src/apis/application_logs_api.rs
 src/apis/application_main_calls_api.rs
 src/apis/application_secret_api.rs
 src/apis/applications_api.rs
 src/apis/argo_cd_api.rs
-src/apis/backups_api.rs
 src/apis/billing_api.rs
 src/apis/blueprint_catalog_api.rs
 src/apis/blueprint_main_calls_api.rs
@@ -1031,13 +1040,11 @@ src/apis/container_configuration_api.rs
 src/apis/container_custom_domain_api.rs
 src/apis/container_deployment_history_api.rs
 src/apis/container_environment_variable_api.rs
-src/apis/container_logs_api.rs
 src/apis/container_main_calls_api.rs
 src/apis/container_registries_api.rs
 src/apis/container_secret_api.rs
 src/apis/containers_api.rs
 src/apis/database_actions_api.rs
-src/apis/database_application_api.rs
 src/apis/database_deployment_history_api.rs
 src/apis/database_main_calls_api.rs
 src/apis/databases_api.rs
@@ -1080,6 +1087,7 @@ src/apis/members_api.rs
 src/apis/mod.rs
 src/apis/organization_account_git_repositories_api.rs
 src/apis/organization_annotations_group_api.rs
+src/apis/organization_api.rs
 src/apis/organization_api_token_api.rs
 src/apis/organization_cluster_lock_api.rs
 src/apis/organization_custom_role_api.rs
@@ -1313,6 +1321,7 @@ src/models/cluster_eks_anywhere_git_repository.rs
 src/models/cluster_environment_response.rs
 src/models/cluster_environment_response_list.rs
 src/models/cluster_environment_service_response.rs
+src/models/cluster_failure_context_response.rs
 src/models/cluster_feature_aws_existing_vpc.rs
 src/models/cluster_feature_aws_existing_vpc_response.rs
 src/models/cluster_feature_boolean_response.rs
@@ -1500,7 +1509,11 @@ src/models/eks_infrastructure_outputs_external_secrets_automatic_authentication.
 src/models/email_alert_receiver_creation_request.rs
 src/models/email_alert_receiver_edit_request.rs
 src/models/email_alert_receiver_response.rs
+src/models/engine_version_response.rs
+src/models/enterprise_connection_access.rs
+src/models/enterprise_connection_access_list.rs
 src/models/enterprise_connection_dto.rs
+src/models/enterprise_connection_member_access_update_request.rs
 src/models/enterprise_connection_response_list.rs
 src/models/env_deployment_status.rs
 src/models/environment.rs
@@ -1545,6 +1558,8 @@ src/models/external_secret_associated_service_response_list.rs
 src/models/field_schema_constraints_response.rs
 src/models/field_schema_response.rs
 src/models/field_template_response.rs
+src/models/gateway_condition_entry_response.rs
+src/models/gateway_status_response.rs
 src/models/gcp_credentials_request.rs
 src/models/gcp_json_credentials_auth_dto.rs
 src/models/gcp_secret_manager_endpoint_dto.rs
@@ -1735,6 +1750,7 @@ src/models/mcp_server_response.rs
 src/models/mcp_server_response_list.rs
 src/models/mcp_server_scope.rs
 src/models/member.rs
+src/models/member_access_role_updated.rs
 src/models/member_response_list.rs
 src/models/member_role_update_request.rs
 src/models/metrics_configuration_managed_by_qovery.rs
@@ -1829,6 +1845,7 @@ src/models/platform_configuration_section_response.rs
 src/models/platform_layer_resolution_status.rs
 src/models/platform_selection.rs
 src/models/platform_template_catalog_response.rs
+src/models/platform_template_component_dependency_response.rs
 src/models/platform_template_component_kind.rs
 src/models/platform_template_component_response.rs
 src/models/platform_template_layer_response.rs
@@ -1926,6 +1943,7 @@ src/models/service_type_for_variable_enum.rs
 src/models/services_overview_response.rs
 src/models/sign_up.rs
 src/models/sign_up_request.rs
+src/models/skill_tracking_request.rs
 src/models/slack_alert_receiver_creation_request.rs
 src/models/slack_alert_receiver_edit_request.rs
 src/models/slack_alert_receiver_response.rs
@@ -1954,7 +1972,6 @@ src/models/terraform_deployment_restriction_response_list.rs
 src/models/terraform_engine_enum.rs
 src/models/terraform_files_source.rs
 src/models/terraform_files_source_git.rs
-src/models/terraform_files_source_request.rs
 src/models/terraform_git_repository_request.rs
 src/models/terraform_job_resources_response.rs
 src/models/terraform_provider_version.rs
@@ -1962,8 +1979,8 @@ src/models/terraform_request.rs
 src/models/terraform_request_dockerfile_fragment.rs
 src/models/terraform_request_job_resources.rs
 src/models/terraform_request_terraform_files_source.rs
+src/models/terraform_resource_attribute.rs
 src/models/terraform_resource_response.rs
-src/models/terraform_resources_request.rs
 src/models/terraform_resources_response.rs
 src/models/terraform_response.rs
 src/models/terraform_response_all_of_dockerfile_fragment.rs
@@ -1984,6 +2001,8 @@ src/models/transfer_ownership_request.rs
 src/models/type_of_use_enum.rs
 src/models/user.rs
 src/models/user_response_list.rs
+src/models/user_sign_up_response.rs
+src/models/user_sign_up_response_list.rs
 src/models/value.rs
 src/models/variable_alias.rs
 src/models/variable_alias_request.rs
@@ -2002,3 +2021,4 @@ src/models/version_response_list.rs
 src/models/webhook_event_response.rs
 src/models/webhook_event_response_list.rs
 src/models/weekday_enum.rs
+src/models/wide_permissions_dto.rs

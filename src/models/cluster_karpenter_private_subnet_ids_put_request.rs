@@ -13,29 +13,24 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ClusterKarpenterPrivateSubnetIdsPutRequest {
-    #[serde(
-        rename = "eks_karpenter_fargate_subnets_zone_a_ids",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub eks_karpenter_fargate_subnets_zone_a_ids: Option<Vec<String>>,
-    #[serde(
-        rename = "eks_karpenter_fargate_subnets_zone_b_ids",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub eks_karpenter_fargate_subnets_zone_b_ids: Option<Vec<String>>,
-    #[serde(
-        rename = "eks_karpenter_fargate_subnets_zone_c_ids",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub eks_karpenter_fargate_subnets_zone_c_ids: Option<Vec<String>>,
+    #[serde(rename = "eks_private_subnets_zone_a_ids")]
+    pub eks_private_subnets_zone_a_ids: Vec<String>,
+    #[serde(rename = "eks_private_subnets_zone_b_ids")]
+    pub eks_private_subnets_zone_b_ids: Vec<String>,
+    #[serde(rename = "eks_private_subnets_zone_c_ids")]
+    pub eks_private_subnets_zone_c_ids: Vec<String>,
 }
 
 impl ClusterKarpenterPrivateSubnetIdsPutRequest {
-    pub fn new() -> ClusterKarpenterPrivateSubnetIdsPutRequest {
+    pub fn new(
+        eks_private_subnets_zone_a_ids: Vec<String>,
+        eks_private_subnets_zone_b_ids: Vec<String>,
+        eks_private_subnets_zone_c_ids: Vec<String>,
+    ) -> ClusterKarpenterPrivateSubnetIdsPutRequest {
         ClusterKarpenterPrivateSubnetIdsPutRequest {
-            eks_karpenter_fargate_subnets_zone_a_ids: None,
-            eks_karpenter_fargate_subnets_zone_b_ids: None,
-            eks_karpenter_fargate_subnets_zone_c_ids: None,
+            eks_private_subnets_zone_a_ids,
+            eks_private_subnets_zone_b_ids,
+            eks_private_subnets_zone_c_ids,
         }
     }
 }

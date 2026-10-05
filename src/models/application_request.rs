@@ -21,13 +21,8 @@ pub struct ApplicationRequest {
     #[serde(rename = "name")]
     pub name: String,
     /// give a description to this application
-    #[serde(
-        rename = "description",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub description: Option<Option<String>>,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
     #[serde(rename = "git_repository")]
     pub git_repository: models::ApplicationGitRepositoryRequest,
     #[serde(rename = "build_mode", skip_serializing_if = "Option::is_none")]
@@ -69,8 +64,13 @@ pub struct ApplicationRequest {
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
     /// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
-    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
-    pub auto_preview: Option<bool>,
+    #[serde(
+        rename = "auto_preview",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_preview: Option<Option<bool>>,
     #[serde(rename = "arguments", skip_serializing_if = "Option::is_none")]
     pub arguments: Option<Vec<String>>,
     /// optional entrypoint when launching container
@@ -111,6 +111,8 @@ pub struct ApplicationRequest {
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
     #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
     pub build_settings: Option<models::BuildSettings>,
+    #[serde(rename = "startup_timeout", skip_serializing_if = "Option::is_none")]
+    pub startup_timeout: Option<i32>,
 }
 
 impl ApplicationRequest {
@@ -145,6 +147,7 @@ impl ApplicationRequest {
             cpu_architecture: None,
             autoscaling: None,
             build_settings: None,
+            startup_timeout: None,
         }
     }
 }

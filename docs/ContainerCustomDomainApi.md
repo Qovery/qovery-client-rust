@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**create_container_custom_domain**](ContainerCustomDomainApi.md#create_container_custom_domain) | **POST** /container/{containerId}/customDomain | Add custom domain to the container.
 [**delete_container_custom_domain**](ContainerCustomDomainApi.md#delete_container_custom_domain) | **DELETE** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**edit_container_custom_domain**](ContainerCustomDomainApi.md#edit_container_custom_domain) | **PUT** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
-[**get_container_custom_domain_status**](ContainerCustomDomainApi.md#get_container_custom_domain_status) | **GET** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
+[**get_container_custom_domain**](ContainerCustomDomainApi.md#get_container_custom_domain) | **GET** /container/{containerId}/customDomain/{customDomainId} | Get a container custom domain
 [**list_container_custom_domain**](ContainerCustomDomainApi.md#list_container_custom_domain) | **GET** /container/{containerId}/customDomain | List container custom domains
 
 
@@ -135,10 +135,12 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_container_custom_domain_status
+## get_container_custom_domain
 
-> models::CustomDomain get_container_custom_domain_status(container_id, custom_domain_id)
-Get Custom Domain status
+> models::CustomDomain get_container_custom_domain(container_id, custom_domain_id)
+Get a container custom domain
+
+Get a custom domain attached to a container.
 
 ### Parameters
 

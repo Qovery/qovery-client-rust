@@ -15,18 +15,28 @@ use serde::{Deserialize, Serialize};
 pub struct TerraformRequest {
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "description")]
-    pub description: String,
-    #[serde(rename = "auto_deploy_config")]
-    pub auto_deploy_config: models::TerraformAutoDeployConfig,
+    #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(rename = "auto_deploy_config", skip_serializing_if = "Option::is_none")]
+    pub auto_deploy_config: Option<models::TerraformAutoDeployConfig>,
+    /// Legacy alternative to auto_deploy_config.
+    #[serde(rename = "auto_deploy", skip_serializing_if = "Option::is_none")]
+    pub auto_deploy: Option<bool>,
+    #[serde(
+        rename = "auto_preview",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub auto_preview: Option<Option<bool>>,
     #[serde(rename = "terraform_files_source")]
     pub terraform_files_source: models::TerraformRequestTerraformFilesSource,
     #[serde(rename = "terraform_variables_source")]
     pub terraform_variables_source: models::TerraformVariablesSourceRequest,
-    #[serde(rename = "backend")]
-    pub backend: models::TerraformBackend,
-    #[serde(rename = "engine")]
-    pub engine: models::TerraformEngineEnum,
+    #[serde(rename = "backend", skip_serializing_if = "Option::is_none")]
+    pub backend: Option<models::TerraformBackend>,
+    #[serde(rename = "engine", skip_serializing_if = "Option::is_none")]
+    pub engine: Option<models::TerraformEngineEnum>,
     #[serde(rename = "provider_version")]
     pub provider_version: models::TerraformProviderVersion,
     #[serde(rename = "timeout_sec", skip_serializing_if = "Option::is_none")]
@@ -68,23 +78,21 @@ pub struct TerraformRequest {
 impl TerraformRequest {
     pub fn new(
         name: String,
-        description: String,
-        auto_deploy_config: models::TerraformAutoDeployConfig,
         terraform_files_source: models::TerraformRequestTerraformFilesSource,
         terraform_variables_source: models::TerraformVariablesSourceRequest,
-        backend: models::TerraformBackend,
-        engine: models::TerraformEngineEnum,
         provider_version: models::TerraformProviderVersion,
         job_resources: models::TerraformRequestJobResources,
     ) -> TerraformRequest {
         TerraformRequest {
             name,
-            description,
-            auto_deploy_config,
+            description: None,
+            auto_deploy_config: None,
+            auto_deploy: None,
+            auto_preview: None,
             terraform_files_source,
             terraform_variables_source,
-            backend,
-            engine,
+            backend: None,
+            engine: None,
             provider_version,
             timeout_sec: None,
             icon_uri: None,

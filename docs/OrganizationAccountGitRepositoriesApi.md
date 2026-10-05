@@ -4,6 +4,8 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_git_provider_repositories**](OrganizationAccountGitRepositoriesApi.md#get_git_provider_repositories) | **GET** /organization/{organizationId}/account/{gitProviderName}/repository | List repositories from a Git provider
+[**get_git_provider_repository_branches**](OrganizationAccountGitRepositoriesApi.md#get_git_provider_repository_branches) | **GET** /organization/{organizationId}/account/{gitProviderName}/repository/branch | List repository branches from a Git provider
 [**get_organization_bitbucket_repositories**](OrganizationAccountGitRepositoriesApi.md#get_organization_bitbucket_repositories) | **GET** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
 [**get_organization_bitbucket_repository_branches**](OrganizationAccountGitRepositoriesApi.md#get_organization_bitbucket_repository_branches) | **GET** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
 [**get_organization_git_provider_account**](OrganizationAccountGitRepositoriesApi.md#get_organization_git_provider_account) | **GET** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
@@ -12,6 +14,71 @@ Method | HTTP request | Description
 [**get_organization_gitlab_repositories**](OrganizationAccountGitRepositoriesApi.md#get_organization_gitlab_repositories) | **GET** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
 [**get_organization_gitlab_repository_branches**](OrganizationAccountGitRepositoriesApi.md#get_organization_gitlab_repository_branches) | **GET** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
 
+
+
+## get_git_provider_repositories
+
+> models::GitRepositoryResponseList get_git_provider_repositories(organization_id, git_provider_name, git_token_id)
+List repositories from a Git provider
+
+List repositories from a Git provider
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**git_provider_name** | **String** |  | [required] |
+**git_token_id** | Option<**uuid::Uuid**> |  |  |
+
+### Return type
+
+[**models::GitRepositoryResponseList**](GitRepositoryResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_git_provider_repository_branches
+
+> models::GitRepositoryBranchResponseList get_git_provider_repository_branches(organization_id, git_provider_name, name, git_token_id)
+List repository branches from a Git provider
+
+List repository branches from a Git provider
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**git_provider_name** | **String** |  | [required] |
+**name** | **String** |  | [required] |
+**git_token_id** | Option<**uuid::Uuid**> |  |  |
+
+### Return type
+
+[**models::GitRepositoryBranchResponseList**](GitRepositoryBranchResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_organization_bitbucket_repositories

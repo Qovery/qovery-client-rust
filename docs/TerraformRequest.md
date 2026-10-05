@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
-**description** | **String** |  | 
-**auto_deploy_config** | [**models::TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | 
+**description** | Option<**String**> |  | [optional][default to ]
+**auto_deploy_config** | Option<[**models::TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md)> |  | [optional]
+**auto_deploy** | Option<**bool**> | Legacy alternative to auto_deploy_config. | [optional]
+**auto_preview** | Option<**bool**> |  | [optional]
 **terraform_files_source** | [**models::TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **terraform_variables_source** | [**models::TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
-**backend** | [**models::TerraformBackend**](TerraformBackend.md) |  | 
-**engine** | [**models::TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
+**backend** | Option<[**models::TerraformBackend**](TerraformBackend.md)> |  | [optional]
+**engine** | Option<[**models::TerraformEngineEnum**](TerraformEngineEnum.md)> |  | [optional]
 **provider_version** | [**models::TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **timeout_sec** | Option<**i32**> |  | [optional]
 **icon_uri** | Option<**String**> |  | [optional]

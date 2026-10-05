@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **plan** | [**models::PlanEnum**](PlanEnum.md) |  | 
 **website_url** | Option<**String**> |  | [optional]
-**repository** | Option<**String**> |  | [optional]
 **logo_url** | Option<**String**> |  | [optional]
 **icon_url** | Option<**String**> |  | [optional]
 **admin_emails** | Option<**Vec<String>**> |  | [optional]

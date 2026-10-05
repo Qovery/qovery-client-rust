@@ -17,6 +17,8 @@ pub struct PlatformTemplateComponentResponse {
     pub key: String,
     #[serde(rename = "kind")]
     pub kind: models::PlatformTemplateComponentKind,
+    #[serde(rename = "dependsOn")]
+    pub depends_on: Vec<models::PlatformTemplateComponentDependencyResponse>,
     #[serde(
         rename = "description",
         default,
@@ -38,11 +40,13 @@ impl PlatformTemplateComponentResponse {
     pub fn new(
         key: String,
         kind: models::PlatformTemplateComponentKind,
+        depends_on: Vec<models::PlatformTemplateComponentDependencyResponse>,
         fields: Vec<models::FieldSchemaResponse>,
     ) -> PlatformTemplateComponentResponse {
         PlatformTemplateComponentResponse {
             key,
             kind,
+            depends_on,
             description: None,
             fields,
             configuration_sections: None,

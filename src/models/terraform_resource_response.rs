@@ -35,6 +35,8 @@ pub struct TerraformResourceResponse {
     /// All resource attributes as key-value pairs
     #[serde(rename = "attributes")]
     pub attributes: std::collections::HashMap<String, serde_json::Value>,
+    #[serde(rename = "key_attributes")]
+    pub key_attributes: Vec<models::TerraformResourceAttribute>,
     /// Timestamp when the resource was extracted from Terraform state
     #[serde(rename = "extracted_at")]
     pub extracted_at: String,
@@ -50,6 +52,7 @@ impl TerraformResourceResponse {
         provider: String,
         mode: Mode,
         attributes: std::collections::HashMap<String, serde_json::Value>,
+        key_attributes: Vec<models::TerraformResourceAttribute>,
         extracted_at: String,
     ) -> TerraformResourceResponse {
         TerraformResourceResponse {
@@ -60,6 +63,7 @@ impl TerraformResourceResponse {
             provider,
             mode,
             attributes,
+            key_attributes,
             extracted_at,
         }
     }

@@ -13,6 +13,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HelmDeployRequest {
+    #[serde(
+        rename = "id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub id: Option<Option<uuid::Uuid>>,
     /// version of the chart to deploy. Cannot be set if `git_commit_id` is defined
     #[serde(rename = "chart_version", skip_serializing_if = "Option::is_none")]
     pub chart_version: Option<String>,
@@ -30,6 +37,7 @@ pub struct HelmDeployRequest {
 impl HelmDeployRequest {
     pub fn new() -> HelmDeployRequest {
         HelmDeployRequest {
+            id: None,
             chart_version: None,
             git_commit_id: None,
             values_override_git_commit_id: None,

@@ -106,6 +106,8 @@ pub struct ApplicationEditRequest {
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
     #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
     pub build_settings: Option<models::BuildSettings>,
+    #[serde(rename = "startup_timeout", skip_serializing_if = "Option::is_none")]
+    pub startup_timeout: Option<i32>,
 }
 
 impl ApplicationEditRequest {
@@ -136,6 +138,7 @@ impl ApplicationEditRequest {
             cpu_architecture: None,
             autoscaling: None,
             build_settings: None,
+            startup_timeout: None,
         }
     }
 }

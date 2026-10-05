@@ -10,8 +10,10 @@ Method | HTTP request | Description
 [**delete_selected_services**](EnvironmentActionsApi.md#delete_selected_services) | **POST** /environment/{environmentId}/service/delete | Delete services
 [**deploy_all_services**](EnvironmentActionsApi.md#deploy_all_services) | **POST** /environment/{environmentId}/service/deploy | Deploy services
 [**deploy_environment**](EnvironmentActionsApi.md#deploy_environment) | **POST** /environment/{environmentId}/deploy | Deploy environment
+[**move_environment_to_project**](EnvironmentActionsApi.md#move_environment_to_project) | **POST** /environment/{environmentId}/moveToProject/{projectId} | Move environment to another project and start it
 [**reboot_services**](EnvironmentActionsApi.md#reboot_services) | **POST** /environment/{environmentId}/service/restart-service | Reboot services
 [**redeploy_environment**](EnvironmentActionsApi.md#redeploy_environment) | **POST** /environment/{environmentId}/redeploy | Redeploy environment
+[**restart_environment**](EnvironmentActionsApi.md#restart_environment) | **POST** /environment/{environmentId}/restart | Restart environment
 [**stop_environment**](EnvironmentActionsApi.md#stop_environment) | **POST** /environment/{environmentId}/stop | Stop environment
 [**stop_selected_services**](EnvironmentActionsApi.md#stop_selected_services) | **POST** /environment/{environmentId}/service/stop | Stop services
 [**uninstall_environment**](EnvironmentActionsApi.md#uninstall_environment) | **POST** /environment/{environmentId}/uninstall | Uninstall environment
@@ -203,6 +205,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## move_environment_to_project
+
+> move_environment_to_project(environment_id, project_id)
+Move environment to another project and start it
+
+Move environment to another project and start it
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+**project_id** | **uuid::Uuid** | Project ID | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## reboot_services
 
 > models::Status reboot_services(environment_id, reboot_services_request)
@@ -236,7 +269,7 @@ Name | Type | Description  | Required | Notes
 
 ## redeploy_environment
 
-> models::EnvironmentStatus redeploy_environment(environment_id)
+> redeploy_environment(environment_id)
 Redeploy environment
 
 ### Parameters
@@ -248,7 +281,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::EnvironmentStatus**](EnvironmentStatus.md)
+ (empty response body)
 
 ### Authorization
 
@@ -257,7 +290,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## restart_environment
+
+> restart_environment(environment_id)
+Restart environment
+
+Restart environment
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | **uuid::Uuid** | Environment ID | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

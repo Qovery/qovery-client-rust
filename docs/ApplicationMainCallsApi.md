@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**get_application**](ApplicationMainCallsApi.md#get_application) | **GET** /application/{applicationId} | Get application by ID
 [**get_application_status**](ApplicationMainCallsApi.md#get_application_status) | **GET** /application/{applicationId}/status | Get application status
 [**list_application_commit**](ApplicationMainCallsApi.md#list_application_commit) | **GET** /application/{applicationId}/commit | List last commits
-[**list_application_contributor**](ApplicationMainCallsApi.md#list_application_contributor) | **GET** /application/{applicationId}/contributor | List contributors
 [**list_application_links**](ApplicationMainCallsApi.md#list_application_links) | **GET** /application/{applicationId}/link | List all URLs of the application
 
 
@@ -151,34 +150,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::CommitResponseList**](CommitResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## list_application_contributor
-
-> models::UserResponseList list_application_contributor(application_id)
-List contributors
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**application_id** | **uuid::Uuid** | Application ID | [required] |
-
-### Return type
-
-[**models::UserResponseList**](UserResponseList.md)
 
 ### Authorization
 

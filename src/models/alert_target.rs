@@ -17,6 +17,7 @@ pub struct AlertTarget {
     pub target_type: models::AlertTargetType,
     #[serde(rename = "target_id")]
     pub target_id: uuid::Uuid,
+    /// Service details when target_type is APPLICATION, CONTAINER, JOB, CRONJOB, HELM or TERRAFORM
     #[serde(rename = "service", skip_serializing_if = "Option::is_none")]
     pub service: Option<models::ServiceLightResponse>,
 }

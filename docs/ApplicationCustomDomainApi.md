@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**create_application_custom_domain**](ApplicationCustomDomainApi.md#create_application_custom_domain) | **POST** /application/{applicationId}/customDomain | Add custom domain to the application.
 [**delete_custom_domain**](ApplicationCustomDomainApi.md#delete_custom_domain) | **DELETE** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**edit_custom_domain**](ApplicationCustomDomainApi.md#edit_custom_domain) | **PUT** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
-[**get_custom_domain_status**](ApplicationCustomDomainApi.md#get_custom_domain_status) | **GET** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
+[**get_application_custom_domain**](ApplicationCustomDomainApi.md#get_application_custom_domain) | **GET** /application/{applicationId}/customDomain/{customDomainId} | Get an application custom domain
 [**list_application_custom_domain**](ApplicationCustomDomainApi.md#list_application_custom_domain) | **GET** /application/{applicationId}/customDomain | List application custom domains
 
 
@@ -135,10 +135,12 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_custom_domain_status
+## get_application_custom_domain
 
-> models::CustomDomain get_custom_domain_status(application_id, custom_domain_id)
-Get Custom Domain status
+> models::CustomDomain get_application_custom_domain(application_id, custom_domain_id)
+Get an application custom domain
+
+Get a custom domain attached to an application.
 
 ### Parameters
 

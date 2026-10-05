@@ -32,6 +32,10 @@ pub struct TerraformResponse {
     pub timeout_sec: i32,
     #[serde(rename = "auto_deploy")]
     pub auto_deploy: bool,
+    #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
+    pub auto_preview: Option<bool>,
+    #[serde(rename = "build_settings_editable", skip_serializing_if = "Option::is_none")]
+    pub build_settings_editable: Option<bool>,
     #[serde(rename = "auto_deploy_config", skip_serializing_if = "Option::is_none")]
     pub auto_deploy_config: Option<models::TerraformAutoDeployConfig>,
     #[serde(rename = "terraform_files_source", skip_serializing_if = "Option::is_none")]
@@ -77,6 +81,8 @@ impl TerraformResponse {
             description: None,
             timeout_sec,
             auto_deploy,
+            auto_preview: None,
+            build_settings_editable: None,
             auto_deploy_config: None,
             terraform_files_source: None,
             icon_uri,

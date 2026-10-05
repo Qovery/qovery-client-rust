@@ -4,44 +4,12 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**auto_deploy_job_environments**](JobsApi.md#auto_deploy_job_environments) | **POST** /organization/{organizationId}/job/deploy | Auto deploy jobs
 [**clone_job**](JobsApi.md#clone_job) | **POST** /job/{jobId}/clone | Clone job
 [**create_job**](JobsApi.md#create_job) | **POST** /environment/{environmentId}/job | Create a job
 [**get_default_job_advanced_settings**](JobsApi.md#get_default_job_advanced_settings) | **GET** /defaultJobAdvancedSettings | List default job advanced settings
 [**get_environment_job_status**](JobsApi.md#get_environment_job_status) | **GET** /environment/{environmentId}/job/status | List all environment job statuses
 [**list_jobs**](JobsApi.md#list_jobs) | **GET** /environment/{environmentId}/job | List jobs
 
-
-
-## auto_deploy_job_environments
-
-> models::Status auto_deploy_job_environments(organization_id, organization_job_auto_deploy_request)
-Auto deploy jobs
-
-Triggers a new job deploy in each environment matching the following conditions - environment should have the auto-deploy enabled - the job should have the same image name and a different tag 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**organization_id** | **uuid::Uuid** | Organization ID | [required] |
-**organization_job_auto_deploy_request** | Option<[**OrganizationJobAutoDeployRequest**](OrganizationJobAutoDeployRequest.md)> |  |  |
-
-### Return type
-
-[**models::Status**](Status.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## clone_job

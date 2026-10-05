@@ -78,16 +78,6 @@ pub enum GenerateBillingUsageReportError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_cluster_current_cost`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetClusterCurrentCostError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`get_organization_billing_external_id`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -162,16 +152,6 @@ pub enum ListOrganizationCreditCardsError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListOrganizationInvoiceError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`organization_download_all_invoices`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum OrganizationDownloadAllInvoicesError {
     Status401(),
     Status403(),
     Status404(),
@@ -528,68 +508,6 @@ pub async fn generate_billing_usage_report(
     } else {
         let content = resp.text().await?;
         let entity: Option<GenerateBillingUsageReportError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-/// Get your cluster cost range. We are unable to give a precise cost of your infrastructure at the moment. But Qovery guarantees that the cost of your cluster will not exceed the max range.
-pub async fn get_cluster_current_cost(
-    configuration: &configuration::Configuration,
-    organization_id: &str,
-    cluster_id: &str,
-) -> Result<models::CostRange, Error<GetClusterCurrentCostError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_organization_id = organization_id;
-    let p_path_cluster_id = cluster_id;
-
-    let uri_str = format!(
-        "{}/organization/{organizationId}/cluster/{clusterId}/currentCost",
-        configuration.base_path,
-        organizationId = crate::apis::urlencode(p_path_organization_id),
-        clusterId = crate::apis::urlencode(p_path_cluster_id)
-    );
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::CostRange`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::CostRange`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetClusterCurrentCostError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -1064,56 +982,6 @@ pub async fn list_organization_invoice(
     } else {
         let content = resp.text().await?;
         let entity: Option<ListOrganizationInvoiceError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-pub async fn organization_download_all_invoices(
-    configuration: &configuration::Configuration,
-    organization_id: &str,
-) -> Result<(), Error<OrganizationDownloadAllInvoicesError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_organization_id = organization_id;
-
-    let uri_str = format!(
-        "{}/organization/{organizationId}/downloadInvoices",
-        configuration.base_path,
-        organizationId = crate::apis::urlencode(p_path_organization_id)
-    );
-    let mut req_builder = configuration
-        .client
-        .request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-
-    if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<OrganizationDownloadAllInvoicesError> =
-            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

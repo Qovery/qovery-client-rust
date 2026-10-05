@@ -69,6 +69,13 @@ pub struct ClusterRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub secret_manager_accesses: Option<Vec<models::SecretManagerAccessRequest>>,
+    #[serde(rename = "is_demo", skip_serializing_if = "Option::is_none")]
+    pub is_demo: Option<bool>,
+    #[serde(
+        rename = "wide_permissions_dto",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub wide_permissions_dto: Option<models::WidePermissionsDto>,
 }
 
 impl ClusterRequest {
@@ -98,6 +105,8 @@ impl ClusterRequest {
             keda: None,
             labels_groups: None,
             secret_manager_accesses: None,
+            is_demo: None,
+            wide_permissions_dto: None,
         }
     }
 }

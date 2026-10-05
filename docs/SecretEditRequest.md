@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | Option<**String**> |  | [optional]
 **key** | **String** |  | 
+**mount_path** | Option<**String**> |  | [optional]
 **description** | Option<**String**> | optional variable description (255 characters maximum) | [optional]
 **enable_interpolation_in_file** | Option<**bool**> |  | [optional]
 

@@ -13,18 +13,6 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
-/// struct for typed errors of method [`auto_deploy_job_environments`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum AutoDeployJobEnvironmentsError {
-    Status400(),
-    Status401(),
-    Status403(),
-    Status404(),
-    Status409(),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`clone_job`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -75,70 +63,6 @@ pub enum ListJobsError {
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
-}
-
-/// Triggers a new job deploy in each environment matching the following conditions - environment should have the auto-deploy enabled - the job should have the same image name and a different tag
-pub async fn auto_deploy_job_environments(
-    configuration: &configuration::Configuration,
-    organization_id: &str,
-    organization_job_auto_deploy_request: Option<models::OrganizationJobAutoDeployRequest>,
-) -> Result<models::Status, Error<AutoDeployJobEnvironmentsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_organization_id = organization_id;
-    let p_body_organization_job_auto_deploy_request = organization_job_auto_deploy_request;
-
-    let uri_str = format!(
-        "{}/organization/{organizationId}/job/deploy",
-        configuration.base_path,
-        organizationId = crate::apis::urlencode(p_path_organization_id)
-    );
-    let mut req_builder = configuration
-        .client
-        .request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_body_organization_job_auto_deploy_request);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Status`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Status`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<AutoDeployJobEnvironmentsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
 }
 
 /// This will create a new job with the same configuration on the targeted environment Id.

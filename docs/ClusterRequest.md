@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **cloud_provider** | [**models::CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **cloud_provider_credentials** | Option<[**models::ClusterCloudProviderInfoRequest**](ClusterCloudProviderInfoRequest.md)> |  | [optional]
 **min_running_nodes** | Option<**i32**> |  | [optional][default to 1]
-**max_running_nodes** | Option<**i32**> |  | [optional][default to 1]
+**max_running_nodes** | Option<**i32**> |  | [optional][default to 10]
 **disk_size** | Option<**i32**> | Unit is in GB. The disk size to be used for the node configuration | [optional][default to 40]
 **disk_iops** | Option<**i32**> | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional]
 **disk_throughput** | Option<**i32**> | Unit is in MB/s. The disk thoughput to be used for the node configuration | [optional]
@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **keda** | Option<[**models::ClusterKeda**](ClusterKeda.md)> |  | [optional]
 **labels_groups** | Option<[**Vec<models::ClusterLabelsGroup>**](ClusterLabelsGroup.md)> |  | [optional]
 **secret_manager_accesses** | Option<[**Vec<models::SecretManagerAccessRequest>**](SecretManagerAccessRequest.md)> |  | [optional]
+**is_demo** | Option<**bool**> |  | [optional][default to false]
+**wide_permissions_dto** | Option<[**models::WidePermissionsDto**](WidePermissionsDto.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

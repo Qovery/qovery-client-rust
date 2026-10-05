@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **storage** | Option<[**Vec<models::ServiceStorageStorageInner>**](ServiceStorageStorageInner.md)> |  | [optional]
 **image_name** | **String** | The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`  | 
 **tag** | **String** | tag of the image container | 
-**registry_id** | Option<**String**> | tag of the image container | [optional]
 **registry** | [**models::ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **maximum_cpu** | **i32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | 

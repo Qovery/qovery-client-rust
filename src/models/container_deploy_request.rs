@@ -13,13 +13,28 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContainerDeployRequest {
+    #[serde(
+        rename = "id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub id: Option<Option<uuid::Uuid>>,
     /// Image tag to deploy
-    #[serde(rename = "image_tag")]
-    pub image_tag: String,
+    #[serde(
+        rename = "image_tag",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub image_tag: Option<Option<String>>,
 }
 
 impl ContainerDeployRequest {
-    pub fn new(image_tag: String) -> ContainerDeployRequest {
-        ContainerDeployRequest { image_tag }
+    pub fn new() -> ContainerDeployRequest {
+        ContainerDeployRequest {
+            id: None,
+            image_tag: None,
+        }
     }
 }

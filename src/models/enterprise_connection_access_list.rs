@@ -12,13 +12,13 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct TerraformFilesSourceRequest {
-    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+pub struct EnterpriseConnectionAccessList {
+    #[serde(rename = "results")]
+    pub results: Vec<models::EnterpriseConnectionAccess>,
 }
 
-impl TerraformFilesSourceRequest {
-    pub fn new() -> TerraformFilesSourceRequest {
-        TerraformFilesSourceRequest { id: None }
+impl EnterpriseConnectionAccessList {
+    pub fn new(results: Vec<models::EnterpriseConnectionAccess>) -> EnterpriseConnectionAccessList {
+        EnterpriseConnectionAccessList { results }
     }
 }

@@ -31,6 +31,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoApi* | [**edit_account_information**](docs/AccountInfoApi.md#edit_account_information) | **PUT** /account | Edit account information
 *AccountInfoApi* | [**get_account_information**](docs/AccountInfoApi.md#get_account_information) | **GET** /account | Get Account information
+*AdminApi* | [**get_public_service_version**](docs/AdminApi.md#get_public_service_version) | **GET** /engine/serviceVersion | Get a service version
+*AdminApi* | [**list_user_sign_ups**](docs/AdminApi.md#list_user_sign_ups) | **GET** /admin/listUserSignUp | Search user signups
+*AdminApi* | [**store_cli_demo_debug_logs**](docs/AdminApi.md#store_cli_demo_debug_logs) | **POST** /admin/demoDebugLog | Store CLI demo debug logs
 *AgenticWorkflowsApi* | [**cancel_agentic_workflow_deployment**](docs/AgenticWorkflowsApi.md#cancel_agentic_workflow_deployment) | **POST** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 *AgenticWorkflowsApi* | [**create_agentic_workflow**](docs/AgenticWorkflowsApi.md#create_agentic_workflow) | **POST** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 *AgenticWorkflowsApi* | [**delete_agentic_workflow**](docs/AgenticWorkflowsApi.md#delete_agentic_workflow) | **DELETE** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
@@ -65,7 +68,7 @@ Class | Method | HTTP request | Description
 *ApplicationCustomDomainApi* | [**create_application_custom_domain**](docs/ApplicationCustomDomainApi.md#create_application_custom_domain) | **POST** /application/{applicationId}/customDomain | Add custom domain to the application.
 *ApplicationCustomDomainApi* | [**delete_custom_domain**](docs/ApplicationCustomDomainApi.md#delete_custom_domain) | **DELETE** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 *ApplicationCustomDomainApi* | [**edit_custom_domain**](docs/ApplicationCustomDomainApi.md#edit_custom_domain) | **PUT** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
-*ApplicationCustomDomainApi* | [**get_custom_domain_status**](docs/ApplicationCustomDomainApi.md#get_custom_domain_status) | **GET** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
+*ApplicationCustomDomainApi* | [**get_application_custom_domain**](docs/ApplicationCustomDomainApi.md#get_application_custom_domain) | **GET** /application/{applicationId}/customDomain/{customDomainId} | Get an application custom domain
 *ApplicationCustomDomainApi* | [**list_application_custom_domain**](docs/ApplicationCustomDomainApi.md#list_application_custom_domain) | **GET** /application/{applicationId}/customDomain | List application custom domains
 *ApplicationDeploymentHistoryApi* | [**list_application_deployment_history**](docs/ApplicationDeploymentHistoryApi.md#list_application_deployment_history) | **GET** /application/{applicationId}/deploymentHistory | List application deploys
 *ApplicationDeploymentHistoryApi* | [**list_application_deployment_history_v2**](docs/ApplicationDeploymentHistoryApi.md#list_application_deployment_history_v2) | **GET** /application/{applicationId}/deploymentHistoryV2 | List application deploys
@@ -80,13 +83,11 @@ Class | Method | HTTP request | Description
 *ApplicationEnvironmentVariableApi* | [**edit_application_environment_variable**](docs/ApplicationEnvironmentVariableApi.md#edit_application_environment_variable) | **PUT** /application/{applicationId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the application
 *ApplicationEnvironmentVariableApi* | [**import_environment_variable**](docs/ApplicationEnvironmentVariableApi.md#import_environment_variable) | **POST** /application/{applicationId}/environmentVariable/import | Import variables
 *ApplicationEnvironmentVariableApi* | [**list_application_environment_variable**](docs/ApplicationEnvironmentVariableApi.md#list_application_environment_variable) | **GET** /application/{applicationId}/environmentVariable | List environment variables
-*ApplicationLogsApi* | [**list_application_log**](docs/ApplicationLogsApi.md#list_application_log) | **GET** /application/{applicationId}/log | List logs
 *ApplicationMainCallsApi* | [**delete_application**](docs/ApplicationMainCallsApi.md#delete_application) | **DELETE** /application/{applicationId} | Delete application
 *ApplicationMainCallsApi* | [**edit_application**](docs/ApplicationMainCallsApi.md#edit_application) | **PUT** /application/{applicationId} | Edit application
 *ApplicationMainCallsApi* | [**get_application**](docs/ApplicationMainCallsApi.md#get_application) | **GET** /application/{applicationId} | Get application by ID
 *ApplicationMainCallsApi* | [**get_application_status**](docs/ApplicationMainCallsApi.md#get_application_status) | **GET** /application/{applicationId}/status | Get application status
 *ApplicationMainCallsApi* | [**list_application_commit**](docs/ApplicationMainCallsApi.md#list_application_commit) | **GET** /application/{applicationId}/commit | List last commits
-*ApplicationMainCallsApi* | [**list_application_contributor**](docs/ApplicationMainCallsApi.md#list_application_contributor) | **GET** /application/{applicationId}/contributor | List contributors
 *ApplicationMainCallsApi* | [**list_application_links**](docs/ApplicationMainCallsApi.md#list_application_links) | **GET** /application/{applicationId}/link | List all URLs of the application
 *ApplicationSecretApi* | [**create_application_secret**](docs/ApplicationSecretApi.md#create_application_secret) | **POST** /application/{applicationId}/secret | Add a secret to the application
 *ApplicationSecretApi* | [**create_application_secret_alias**](docs/ApplicationSecretApi.md#create_application_secret_alias) | **POST** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
@@ -109,16 +110,12 @@ Class | Method | HTTP request | Description
 *ArgoCdApi* | [**list_argo_cd_destination_cluster_mappings**](docs/ArgoCdApi.md#list_argo_cd_destination_cluster_mappings) | **GET** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 *ArgoCdApi* | [**save_argo_cd_credentials**](docs/ArgoCdApi.md#save_argo_cd_credentials) | **POST** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
 *ArgoCdApi* | [**save_argo_cd_destination_cluster_mapping**](docs/ArgoCdApi.md#save_argo_cd_destination_cluster_mapping) | **POST** /organization/{organizationId}/argoCdDestinationClusterMapping | Save an ArgoCD destination cluster mapping
-*BackupsApi* | [**add_backup_database**](docs/BackupsApi.md#add_backup_database) | **POST** /database/{databaseId}/backup | Add a backup to the Database 
-*BackupsApi* | [**list_database_backup**](docs/BackupsApi.md#list_database_backup) | **GET** /database/{databaseId}/backup | List database  backups
-*BackupsApi* | [**remove_database_backup**](docs/BackupsApi.md#remove_database_backup) | **DELETE** /database/{databaseId}/backup/{backupId} | Remove database  backup
 *BillingApi* | [**add_credit_card**](docs/BillingApi.md#add_credit_card) | **POST** /organization/{organizationId}/creditCard | Add credit card
 *BillingApi* | [**add_credit_code**](docs/BillingApi.md#add_credit_code) | **POST** /organization/{organizationId}/creditCode | Add credit code
 *BillingApi* | [**change_plan**](docs/BillingApi.md#change_plan) | **POST** /organization/{organizationId}/changePlan | Change organization plan
 *BillingApi* | [**delete_credit_card**](docs/BillingApi.md#delete_credit_card) | **DELETE** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 *BillingApi* | [**edit_organization_billing_info**](docs/BillingApi.md#edit_organization_billing_info) | **PUT** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 *BillingApi* | [**generate_billing_usage_report**](docs/BillingApi.md#generate_billing_usage_report) | **POST** /organization/{organizationId}/billingUsageReport | Generate organization billing usage report
-*BillingApi* | [**get_cluster_current_cost**](docs/BillingApi.md#get_cluster_current_cost) | **GET** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 *BillingApi* | [**get_organization_billing_external_id**](docs/BillingApi.md#get_organization_billing_external_id) | **GET** /organization/{organizationId}/billingExternalId | Get organization billing external ID
 *BillingApi* | [**get_organization_billing_info**](docs/BillingApi.md#get_organization_billing_info) | **GET** /organization/{organizationId}/billingInfo | Get organization billing info
 *BillingApi* | [**get_organization_billing_status**](docs/BillingApi.md#get_organization_billing_status) | **GET** /organization/{organizationId}/billingStatus | Get organization billing status
@@ -127,7 +124,6 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**get_organization_invoice_pdf**](docs/BillingApi.md#get_organization_invoice_pdf) | **GET** /organization/{organizationId}/invoice/{invoiceId}/download | Get invoice link
 *BillingApi* | [**list_organization_credit_cards**](docs/BillingApi.md#list_organization_credit_cards) | **GET** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**list_organization_invoice**](docs/BillingApi.md#list_organization_invoice) | **GET** /organization/{organizationId}/invoice | List organization invoices
-*BillingApi* | [**organization_download_all_invoices**](docs/BillingApi.md#organization_download_all_invoices) | **POST** /organization/{organizationId}/downloadInvoices | Download all invoices
 *BlueprintCatalogApi* | [**get_blueprint_catalog_service_manifest**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_manifest) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest | Get the input fields to display for a blueprint catalog service
 *BlueprintCatalogApi* | [**get_blueprint_catalog_service_readme**](docs/BlueprintCatalogApi.md#get_blueprint_catalog_service_readme) | **GET** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
 *BlueprintMainCallsApi* | [**check_blueprint_update**](docs/BlueprintMainCallsApi.md#check_blueprint_update) | **GET** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
@@ -140,8 +136,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsApi* | [**preview_blueprint_update**](docs/BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsApi* | [**update_blueprint**](docs/BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
 *CloudProviderApi* | [**list_aws_features**](docs/CloudProviderApi.md#list_aws_features) | **GET** /aws/clusterFeature | List AWS features available
-*CloudProviderApi* | [**list_aws_instance_type**](docs/CloudProviderApi.md#list_aws_instance_type) | **GET** /aws/instanceType | List AWS available instance types
-*CloudProviderApi* | [**list_aws_managed_database_instance_type**](docs/CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+*CloudProviderApi* | [**list_aws_managed_database_instance_type**](docs/CloudProviderApi.md#list_aws_managed_database_instance_type) | **GET** /aws/managedDatabase/instanceType/{region}/{dbType} | List AWS available managed database instance types
 *CloudProviderApi* | [**list_aws_managed_database_type**](docs/CloudProviderApi.md#list_aws_managed_database_type) | **GET** /aws/managedDatabase/type | List AWS available managed database types
 *CloudProviderApi* | [**list_aws_regions**](docs/CloudProviderApi.md#list_aws_regions) | **GET** /aws/region | List AWS regions
 *CloudProviderApi* | [**list_awseks_instance_type**](docs/CloudProviderApi.md#list_awseks_instance_type) | **GET** /aws/eks/instanceType/{region} | List AWS EKS available instance types
@@ -150,13 +145,13 @@ Class | Method | HTTP request | Description
 *CloudProviderApi* | [**list_azure_regions**](docs/CloudProviderApi.md#list_azure_regions) | **GET** /azure/region | List Azure regions
 *CloudProviderApi* | [**list_cloud_provider**](docs/CloudProviderApi.md#list_cloud_provider) | **GET** /cloudProvider | List Cloud providers available
 *CloudProviderApi* | [**list_gcp_features**](docs/CloudProviderApi.md#list_gcp_features) | **GET** /gcp/clusterFeature | List GCP features available
-*CloudProviderApi* | [**list_gcp_gke_instance_type**](docs/CloudProviderApi.md#list_gcp_gke_instance_type) | **GET** /gcp/instanceType/{region} | List GCP GKE available instance types
 *CloudProviderApi* | [**list_gcp_regions**](docs/CloudProviderApi.md#list_gcp_regions) | **GET** /gcp/region | List GCP regions
+*CloudProviderApi* | [**list_on_premise_cluster_features**](docs/CloudProviderApi.md#list_on_premise_cluster_features) | **GET** /onPremise/clusterFeature | List on-premise cluster features
+*CloudProviderApi* | [**list_on_premise_instance_types**](docs/CloudProviderApi.md#list_on_premise_instance_types) | **GET** /onPremise/eks/instanceType/{region} | List on-premise instance types
+*CloudProviderApi* | [**list_on_premise_regions**](docs/CloudProviderApi.md#list_on_premise_regions) | **GET** /onPremise/region | List on-premise regions
 *CloudProviderApi* | [**list_scaleway_features**](docs/CloudProviderApi.md#list_scaleway_features) | **GET** /scaleway/clusterFeature | List Scaleway features available
-*CloudProviderApi* | [**list_scaleway_instance_type**](docs/CloudProviderApi.md#list_scaleway_instance_type) | **GET** /scaleway/instanceType | List Scaleway available instance types
 *CloudProviderApi* | [**list_scaleway_kapsule_instance_type**](docs/CloudProviderApi.md#list_scaleway_kapsule_instance_type) | **GET** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 *CloudProviderApi* | [**list_scaleway_regions**](docs/CloudProviderApi.md#list_scaleway_regions) | **GET** /scaleway/region | List Scaleway regions
-*CloudProviderApi* | [**list_scw_managed_database_type**](docs/CloudProviderApi.md#list_scw_managed_database_type) | **GET** /scaleway/managedDatabase/type | List Scaleway available managed database types
 *CloudProviderCredentialsApi* | [**create_aws_credentials**](docs/CloudProviderCredentialsApi.md#create_aws_credentials) | **POST** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsApi* | [**create_azure_credentials**](docs/CloudProviderCredentialsApi.md#create_azure_credentials) | **POST** /organization/{organizationId}/azure/credentials | Create Azure credentials set
 *CloudProviderCredentialsApi* | [**create_gcp_credentials**](docs/CloudProviderCredentialsApi.md#create_gcp_credentials) | **POST** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
@@ -187,7 +182,6 @@ Class | Method | HTTP request | Description
 *ClusterOperatorApi* | [**attach_cluster_operator**](docs/ClusterOperatorApi.md#attach_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/attach | Attach a cluster to the Qovery Operator execution path
 *ClusterOperatorApi* | [**get_cluster_operator_bootstrap**](docs/ClusterOperatorApi.md#get_cluster_operator_bootstrap) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 *ClusterOperatorApi* | [**get_cluster_operator_status**](docs/ClusterOperatorApi.md#get_cluster_operator_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
-*ClusterOperatorApi* | [**list_cluster_operator_fleet**](docs/ClusterOperatorApi.md#list_cluster_operator_fleet) | **GET** /admin/operator/clusters | List the Qovery Operator fleet
 *ClusterOperatorApi* | [**update_cluster_operator**](docs/ClusterOperatorApi.md#update_cluster_operator) | **POST** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 *ClustersApi* | [**create_cluster**](docs/ClustersApi.md#create_cluster) | **POST** /organization/{organizationId}/cluster | Create a cluster
 *ClustersApi* | [**create_self_managed_cluster**](docs/ClustersApi.md#create_self_managed_cluster) | **POST** /v1/organization/{organizationId}/selfManagedCluster | Create a self-managed cluster run by the Qovery Operator
@@ -205,12 +199,12 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**get_cluster_kubernetes_events**](docs/ClustersApi.md#get_cluster_kubernetes_events) | **GET** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 *ClustersApi* | [**get_cluster_logs**](docs/ClustersApi.md#get_cluster_logs) | **GET** /cluster/{clusterId}/logs | Fetch cluster logs
 *ClustersApi* | [**get_cluster_metrics**](docs/ClustersApi.md#get_cluster_metrics) | **GET** /cluster/{clusterId}/metrics | Fetch cluster metrics
-*ClustersApi* | [**get_cluster_readiness_status**](docs/ClustersApi.md#get_cluster_readiness_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**get_cluster_status**](docs/ClustersApi.md#get_cluster_status) | **GET** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersApi* | [**get_default_cluster_advanced_settings**](docs/ClustersApi.md#get_default_cluster_advanced_settings) | **GET** /defaultClusterAdvancedSettings | List default cluster advanced settings
 *ClustersApi* | [**get_eks_anywhere_cluster_jwt**](docs/ClustersApi.md#get_eks_anywhere_cluster_jwt) | **GET** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt | Get latest EKS Anywhere cluster JWT
 *ClustersApi* | [**get_environments_by_cluster_id**](docs/ClustersApi.md#get_environments_by_cluster_id) | **GET** /cluster/{clusterId}/environments | List environments services by cluster id
 *ClustersApi* | [**get_installation_helm_values**](docs/ClustersApi.md#get_installation_helm_values) | **GET** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
+*ClustersApi* | [**get_latest_cluster_failure_context**](docs/ClustersApi.md#get_latest_cluster_failure_context) | **GET** /cluster/{clusterId}/clusterFailureContext/latest | Get the latest cluster failure context
 *ClustersApi* | [**get_organization_cloud_provider_info**](docs/ClustersApi.md#get_organization_cloud_provider_info) | **GET** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 *ClustersApi* | [**get_organization_cluster_status**](docs/ClustersApi.md#get_organization_cluster_status) | **GET** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersApi* | [**get_routing_table**](docs/ClustersApi.md#get_routing_table) | **GET** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
@@ -240,7 +234,7 @@ Class | Method | HTTP request | Description
 *ContainerCustomDomainApi* | [**create_container_custom_domain**](docs/ContainerCustomDomainApi.md#create_container_custom_domain) | **POST** /container/{containerId}/customDomain | Add custom domain to the container.
 *ContainerCustomDomainApi* | [**delete_container_custom_domain**](docs/ContainerCustomDomainApi.md#delete_container_custom_domain) | **DELETE** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
 *ContainerCustomDomainApi* | [**edit_container_custom_domain**](docs/ContainerCustomDomainApi.md#edit_container_custom_domain) | **PUT** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
-*ContainerCustomDomainApi* | [**get_container_custom_domain_status**](docs/ContainerCustomDomainApi.md#get_container_custom_domain_status) | **GET** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
+*ContainerCustomDomainApi* | [**get_container_custom_domain**](docs/ContainerCustomDomainApi.md#get_container_custom_domain) | **GET** /container/{containerId}/customDomain/{customDomainId} | Get a container custom domain
 *ContainerCustomDomainApi* | [**list_container_custom_domain**](docs/ContainerCustomDomainApi.md#list_container_custom_domain) | **GET** /container/{containerId}/customDomain | List container custom domains
 *ContainerDeploymentHistoryApi* | [**list_container_deployment_history**](docs/ContainerDeploymentHistoryApi.md#list_container_deployment_history) | **GET** /container/{containerId}/deploymentHistory | List container deployments
 *ContainerDeploymentHistoryApi* | [**list_container_deployment_history_v2**](docs/ContainerDeploymentHistoryApi.md#list_container_deployment_history_v2) | **GET** /container/{containerId}/deploymentHistoryV2 | List container deployments
@@ -251,7 +245,6 @@ Class | Method | HTTP request | Description
 *ContainerEnvironmentVariableApi* | [**edit_container_environment_variable**](docs/ContainerEnvironmentVariableApi.md#edit_container_environment_variable) | **PUT** /container/{containerId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the container
 *ContainerEnvironmentVariableApi* | [**import_container_environment_variable**](docs/ContainerEnvironmentVariableApi.md#import_container_environment_variable) | **POST** /container/{containerId}/environmentVariable/import | Import variables
 *ContainerEnvironmentVariableApi* | [**list_container_environment_variable**](docs/ContainerEnvironmentVariableApi.md#list_container_environment_variable) | **GET** /container/{containerId}/environmentVariable | List environment variables
-*ContainerLogsApi* | [**list_container_log**](docs/ContainerLogsApi.md#list_container_log) | **GET** /container/{containerId}/log | List logs
 *ContainerMainCallsApi* | [**delete_container**](docs/ContainerMainCallsApi.md#delete_container) | **DELETE** /container/{containerId} | Delete container
 *ContainerMainCallsApi* | [**edit_container**](docs/ContainerMainCallsApi.md#edit_container) | **PUT** /container/{containerId} | Edit container
 *ContainerMainCallsApi* | [**get_container**](docs/ContainerMainCallsApi.md#get_container) | **GET** /container/{containerId} | Get container by ID
@@ -283,8 +276,6 @@ Class | Method | HTTP request | Description
 *DatabaseActionsApi* | [**redeploy_database**](docs/DatabaseActionsApi.md#redeploy_database) | **POST** /database/{databaseId}/redeploy | Redeploy database
 *DatabaseActionsApi* | [**stop_database**](docs/DatabaseActionsApi.md#stop_database) | **POST** /database/{databaseId}/stop | Stop database
 *DatabaseActionsApi* | [**uninstall_database**](docs/DatabaseActionsApi.md#uninstall_database) | **POST** /database/{databaseId}/uninstall | Uninstall database
-*DatabaseApplicationApi* | [**list_database_application**](docs/DatabaseApplicationApi.md#list_database_application) | **GET** /database/{databaseId}/application | List applications using the database
-*DatabaseApplicationApi* | [**remove_application_from_database**](docs/DatabaseApplicationApi.md#remove_application_from_database) | **DELETE** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryApi* | [**list_database_deployment_history**](docs/DatabaseDeploymentHistoryApi.md#list_database_deployment_history) | **GET** /database/{databaseId}/deploymentHistory | List database deploys
 *DatabaseDeploymentHistoryApi* | [**list_database_deployment_history_v2**](docs/DatabaseDeploymentHistoryApi.md#list_database_deployment_history_v2) | **GET** /database/{databaseId}/deploymentHistoryV2 | List database deploys
 *DatabaseMainCallsApi* | [**delete_database**](docs/DatabaseMainCallsApi.md#delete_database) | **DELETE** /database/{databaseId} | Delete a database 
@@ -321,8 +312,10 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**delete_selected_services**](docs/EnvironmentActionsApi.md#delete_selected_services) | **POST** /environment/{environmentId}/service/delete | Delete services
 *EnvironmentActionsApi* | [**deploy_all_services**](docs/EnvironmentActionsApi.md#deploy_all_services) | **POST** /environment/{environmentId}/service/deploy | Deploy services
 *EnvironmentActionsApi* | [**deploy_environment**](docs/EnvironmentActionsApi.md#deploy_environment) | **POST** /environment/{environmentId}/deploy | Deploy environment
+*EnvironmentActionsApi* | [**move_environment_to_project**](docs/EnvironmentActionsApi.md#move_environment_to_project) | **POST** /environment/{environmentId}/moveToProject/{projectId} | Move environment to another project and start it
 *EnvironmentActionsApi* | [**reboot_services**](docs/EnvironmentActionsApi.md#reboot_services) | **POST** /environment/{environmentId}/service/restart-service | Reboot services
 *EnvironmentActionsApi* | [**redeploy_environment**](docs/EnvironmentActionsApi.md#redeploy_environment) | **POST** /environment/{environmentId}/redeploy | Redeploy environment
+*EnvironmentActionsApi* | [**restart_environment**](docs/EnvironmentActionsApi.md#restart_environment) | **POST** /environment/{environmentId}/restart | Restart environment
 *EnvironmentActionsApi* | [**stop_environment**](docs/EnvironmentActionsApi.md#stop_environment) | **POST** /environment/{environmentId}/stop | Stop environment
 *EnvironmentActionsApi* | [**stop_selected_services**](docs/EnvironmentActionsApi.md#stop_selected_services) | **POST** /environment/{environmentId}/service/stop | Stop services
 *EnvironmentActionsApi* | [**uninstall_environment**](docs/EnvironmentActionsApi.md#uninstall_environment) | **POST** /environment/{environmentId}/uninstall | Uninstall environment
@@ -333,7 +326,6 @@ Class | Method | HTTP request | Description
 *EnvironmentDeploymentRuleApi* | [**edit_environment_deployment_rule**](docs/EnvironmentDeploymentRuleApi.md#edit_environment_deployment_rule) | **PUT** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 *EnvironmentDeploymentRuleApi* | [**get_environment_deployment_rule**](docs/EnvironmentDeploymentRuleApi.md#get_environment_deployment_rule) | **GET** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentExportApi* | [**export_environment_configuration_into_terraform**](docs/EnvironmentExportApi.md#export_environment_configuration_into_terraform) | **GET** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
-*EnvironmentLogsApi* | [**list_environment_log**](docs/EnvironmentLogsApi.md#list_environment_log) | **GET** /environment/{environmentId}/log | List environment deployment logs
 *EnvironmentLogsApi* | [**list_environment_logs**](docs/EnvironmentLogsApi.md#list_environment_logs) | **GET** /environment/{environmentId}/logs | List environment deployment logs v2
 *EnvironmentMainCallsApi* | [**delete_environment**](docs/EnvironmentMainCallsApi.md#delete_environment) | **DELETE** /environment/{environmentId} | Delete an environment
 *EnvironmentMainCallsApi* | [**edit_environment**](docs/EnvironmentMainCallsApi.md#edit_environment) | **PUT** /environment/{environmentId} | Edit an environment
@@ -349,6 +341,7 @@ Class | Method | HTTP request | Description
 *EnvironmentSecretApi* | [**create_environment_secret_override**](docs/EnvironmentSecretApi.md#create_environment_secret_override) | **POST** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
 *EnvironmentSecretApi* | [**delete_environment_secret**](docs/EnvironmentSecretApi.md#delete_environment_secret) | **DELETE** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 *EnvironmentSecretApi* | [**edit_environment_secret**](docs/EnvironmentSecretApi.md#edit_environment_secret) | **PUT** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
+*EnvironmentSecretApi* | [**get_secret_by_id**](docs/EnvironmentSecretApi.md#get_secret_by_id) | **GET** /secret/{secretId} | Get a secret by ID
 *EnvironmentSecretApi* | [**list_environment_secrets**](docs/EnvironmentSecretApi.md#list_environment_secrets) | **GET** /environment/{environmentId}/secret | List environment secrets
 *EnvironmentVariableApi* | [**create_environment_environment_variable**](docs/EnvironmentVariableApi.md#create_environment_environment_variable) | **POST** /environment/{environmentId}/environmentVariable | Add an environment variable to the environment
 *EnvironmentVariableApi* | [**create_environment_environment_variable_alias**](docs/EnvironmentVariableApi.md#create_environment_environment_variable_alias) | **POST** /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the environment level
@@ -361,13 +354,6 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**get_project_environments_overview**](docs/EnvironmentsApi.md#get_project_environments_overview) | **GET** /project/{projectId}/environment/overview | List environments overview
 *EnvironmentsApi* | [**get_project_environments_status**](docs/EnvironmentsApi.md#get_project_environments_status) | **GET** /project/{projectId}/environment/status | List environments statuses
 *EnvironmentsApi* | [**list_environment**](docs/EnvironmentsApi.md#list_environment) | **GET** /project/{projectId}/environment | List environments
-*GitRepositoriesApi* | [**get_bitbucket_repositories**](docs/GitRepositoriesApi.md#get_bitbucket_repositories) | **GET** /account/bitbucket/repository | Get bitbucket repositories of the connected user
-*GitRepositoriesApi* | [**get_bitbucket_repository_branches**](docs/GitRepositoriesApi.md#get_bitbucket_repository_branches) | **GET** /account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
-*GitRepositoriesApi* | [**get_git_provider_account**](docs/GitRepositoriesApi.md#get_git_provider_account) | **GET** /account/gitAuthProvider | Get git provider accounts
-*GitRepositoriesApi* | [**get_github_repositories**](docs/GitRepositoriesApi.md#get_github_repositories) | **GET** /account/github/repository | Get github repositories of the connected user
-*GitRepositoriesApi* | [**get_github_repository_branches**](docs/GitRepositoriesApi.md#get_github_repository_branches) | **GET** /account/github/repository/branch | Get github branches of the specified repository
-*GitRepositoriesApi* | [**get_gitlab_repositories**](docs/GitRepositoriesApi.md#get_gitlab_repositories) | **GET** /account/gitlab/repository | Get gitlab repositories of the connected user
-*GitRepositoriesApi* | [**get_gitlab_repository_branches**](docs/GitRepositoriesApi.md#get_gitlab_repository_branches) | **GET** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
 *GitRepositoriesApi* | [**list_directories_from_git_repository**](docs/GitRepositoriesApi.md#list_directories_from_git_repository) | **POST** /organization/{organizationId}/listDirectoriesFromGitRepository | List directories from a git repository
 *GithubAppApi* | [**organization_github_app_connect**](docs/GithubAppApi.md#organization_github_app_connect) | **POST** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppApi* | [**organization_github_app_disconnect**](docs/GithubAppApi.md#organization_github_app_disconnect) | **DELETE** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
@@ -441,7 +427,6 @@ Class | Method | HTTP request | Description
 *JobSecretApi* | [**delete_job_secret**](docs/JobSecretApi.md#delete_job_secret) | **DELETE** /job/{jobId}/secret/{secretId} | Delete a secret from an job
 *JobSecretApi* | [**edit_job_secret**](docs/JobSecretApi.md#edit_job_secret) | **PUT** /job/{jobId}/secret/{secretId} | Edit a secret belonging to the job
 *JobSecretApi* | [**list_job_secrets**](docs/JobSecretApi.md#list_job_secrets) | **GET** /job/{jobId}/secret | List job secrets
-*JobsApi* | [**auto_deploy_job_environments**](docs/JobsApi.md#auto_deploy_job_environments) | **POST** /organization/{organizationId}/job/deploy | Auto deploy jobs
 *JobsApi* | [**clone_job**](docs/JobsApi.md#clone_job) | **POST** /job/{jobId}/clone | Clone job
 *JobsApi* | [**create_job**](docs/JobsApi.md#create_job) | **POST** /environment/{environmentId}/job | Create a job
 *JobsApi* | [**get_default_job_advanced_settings**](docs/JobsApi.md#get_default_job_advanced_settings) | **GET** /defaultJobAdvancedSettings | List default job advanced settings
@@ -470,6 +455,9 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**post_accept_invite_member**](docs/MembersApi.md#post_accept_invite_member) | **POST** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
 *MembersApi* | [**post_invite_member**](docs/MembersApi.md#post_invite_member) | **POST** /organization/{organizationId}/inviteMember | Invite someone in the organization
 *MembersApi* | [**post_organization_transfer_ownership**](docs/MembersApi.md#post_organization_transfer_ownership) | **POST** /organization/{organizationId}/transferOwnership | Transfer organization ownership to another user
+*OrganizationApi* | [**track_skill_call**](docs/OrganizationApi.md#track_skill_call) | **POST** /organization/{organizationId}/skill-tracking | Track a skill call
+*OrganizationAccountGitRepositoriesApi* | [**get_git_provider_repositories**](docs/OrganizationAccountGitRepositoriesApi.md#get_git_provider_repositories) | **GET** /organization/{organizationId}/account/{gitProviderName}/repository | List repositories from a Git provider
+*OrganizationAccountGitRepositoriesApi* | [**get_git_provider_repository_branches**](docs/OrganizationAccountGitRepositoriesApi.md#get_git_provider_repository_branches) | **GET** /organization/{organizationId}/account/{gitProviderName}/repository/branch | List repository branches from a Git provider
 *OrganizationAccountGitRepositoriesApi* | [**get_organization_bitbucket_repositories**](docs/OrganizationAccountGitRepositoriesApi.md#get_organization_bitbucket_repositories) | **GET** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
 *OrganizationAccountGitRepositoriesApi* | [**get_organization_bitbucket_repository_branches**](docs/OrganizationAccountGitRepositoriesApi.md#get_organization_bitbucket_repository_branches) | **GET** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
 *OrganizationAccountGitRepositoriesApi* | [**get_organization_git_provider_account**](docs/OrganizationAccountGitRepositoriesApi.md#get_organization_git_provider_account) | **GET** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
@@ -492,8 +480,10 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleApi* | [**edit_organization_custom_role**](docs/OrganizationCustomRoleApi.md#edit_organization_custom_role) | **PUT** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
 *OrganizationCustomRoleApi* | [**get_organization_custom_role**](docs/OrganizationCustomRoleApi.md#get_organization_custom_role) | **GET** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
 *OrganizationCustomRoleApi* | [**list_organization_custom_roles**](docs/OrganizationCustomRoleApi.md#list_organization_custom_roles) | **GET** /organization/{organizationId}/customRole | List organization custom roles
+*OrganizationEnterpriseConnectionApi* | [**get_enterprise_connection_roles**](docs/OrganizationEnterpriseConnectionApi.md#get_enterprise_connection_roles) | **GET** /account/enterpriseconnection/roles | Resolve enterprise connection roles
 *OrganizationEnterpriseConnectionApi* | [**get_organization_enterprise_connection**](docs/OrganizationEnterpriseConnectionApi.md#get_organization_enterprise_connection) | **GET** /organization/{organizationId}/enterpriseconnection/{connectionName} | Get enterprise connection
 *OrganizationEnterpriseConnectionApi* | [**list_organization_enterprise_connections**](docs/OrganizationEnterpriseConnectionApi.md#list_organization_enterprise_connections) | **GET** /organization/{organizationId}/enterpriseconnection | List enterprise connections
+*OrganizationEnterpriseConnectionApi* | [**notify_enterprise_member_access_updated**](docs/OrganizationEnterpriseConnectionApi.md#notify_enterprise_member_access_updated) | **POST** /account/enterpriseconnection/notifyMemberAccessUpdated | Notify enterprise member access changes
 *OrganizationEnterpriseConnectionApi* | [**update_organization_enterprise_connection**](docs/OrganizationEnterpriseConnectionApi.md#update_organization_enterprise_connection) | **PUT** /organization/{organizationId}/enterpriseconnection/{connectionName} | Update enterprise connection
 *OrganizationEventApi* | [**get_organization_event_targets**](docs/OrganizationEventApi.md#get_organization_event_targets) | **GET** /organization/{organizationId}/targets | Get available event targets to filter events
 *OrganizationEventApi* | [**get_organization_events**](docs/OrganizationEventApi.md#get_organization_events) | **GET** /organization/{organizationId}/events | Get all events inside the organization
@@ -809,6 +799,7 @@ Class | Method | HTTP request | Description
  - [ClusterEnvironmentResponse](docs/ClusterEnvironmentResponse.md)
  - [ClusterEnvironmentResponseList](docs/ClusterEnvironmentResponseList.md)
  - [ClusterEnvironmentServiceResponse](docs/ClusterEnvironmentServiceResponse.md)
+ - [ClusterFailureContextResponse](docs/ClusterFailureContextResponse.md)
  - [ClusterFeatureAwsExistingVpc](docs/ClusterFeatureAwsExistingVpc.md)
  - [ClusterFeatureAwsExistingVpcResponse](docs/ClusterFeatureAwsExistingVpcResponse.md)
  - [ClusterFeatureBooleanResponse](docs/ClusterFeatureBooleanResponse.md)
@@ -996,7 +987,11 @@ Class | Method | HTTP request | Description
  - [EmailAlertReceiverCreationRequest](docs/EmailAlertReceiverCreationRequest.md)
  - [EmailAlertReceiverEditRequest](docs/EmailAlertReceiverEditRequest.md)
  - [EmailAlertReceiverResponse](docs/EmailAlertReceiverResponse.md)
+ - [EngineVersionResponse](docs/EngineVersionResponse.md)
+ - [EnterpriseConnectionAccess](docs/EnterpriseConnectionAccess.md)
+ - [EnterpriseConnectionAccessList](docs/EnterpriseConnectionAccessList.md)
  - [EnterpriseConnectionDto](docs/EnterpriseConnectionDto.md)
+ - [EnterpriseConnectionMemberAccessUpdateRequest](docs/EnterpriseConnectionMemberAccessUpdateRequest.md)
  - [EnterpriseConnectionResponseList](docs/EnterpriseConnectionResponseList.md)
  - [EnvDeploymentStatus](docs/EnvDeploymentStatus.md)
  - [Environment](docs/Environment.md)
@@ -1041,6 +1036,8 @@ Class | Method | HTTP request | Description
  - [FieldSchemaConstraintsResponse](docs/FieldSchemaConstraintsResponse.md)
  - [FieldSchemaResponse](docs/FieldSchemaResponse.md)
  - [FieldTemplateResponse](docs/FieldTemplateResponse.md)
+ - [GatewayConditionEntryResponse](docs/GatewayConditionEntryResponse.md)
+ - [GatewayStatusResponse](docs/GatewayStatusResponse.md)
  - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
  - [GcpJsonCredentialsAuthDto](docs/GcpJsonCredentialsAuthDto.md)
  - [GcpSecretManagerEndpointDto](docs/GcpSecretManagerEndpointDto.md)
@@ -1231,6 +1228,7 @@ Class | Method | HTTP request | Description
  - [McpServerResponseList](docs/McpServerResponseList.md)
  - [McpServerScope](docs/McpServerScope.md)
  - [Member](docs/Member.md)
+ - [MemberAccessRoleUpdated](docs/MemberAccessRoleUpdated.md)
  - [MemberResponseList](docs/MemberResponseList.md)
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
  - [MetricsConfigurationManagedByQovery](docs/MetricsConfigurationManagedByQovery.md)
@@ -1324,6 +1322,7 @@ Class | Method | HTTP request | Description
  - [PlatformLayerResolutionStatus](docs/PlatformLayerResolutionStatus.md)
  - [PlatformSelection](docs/PlatformSelection.md)
  - [PlatformTemplateCatalogResponse](docs/PlatformTemplateCatalogResponse.md)
+ - [PlatformTemplateComponentDependencyResponse](docs/PlatformTemplateComponentDependencyResponse.md)
  - [PlatformTemplateComponentKind](docs/PlatformTemplateComponentKind.md)
  - [PlatformTemplateComponentResponse](docs/PlatformTemplateComponentResponse.md)
  - [PlatformTemplateLayerResponse](docs/PlatformTemplateLayerResponse.md)
@@ -1421,6 +1420,7 @@ Class | Method | HTTP request | Description
  - [ServicesOverviewResponse](docs/ServicesOverviewResponse.md)
  - [SignUp](docs/SignUp.md)
  - [SignUpRequest](docs/SignUpRequest.md)
+ - [SkillTrackingRequest](docs/SkillTrackingRequest.md)
  - [SlackAlertReceiverCreationRequest](docs/SlackAlertReceiverCreationRequest.md)
  - [SlackAlertReceiverEditRequest](docs/SlackAlertReceiverEditRequest.md)
  - [SlackAlertReceiverResponse](docs/SlackAlertReceiverResponse.md)
@@ -1449,7 +1449,6 @@ Class | Method | HTTP request | Description
  - [TerraformEngineEnum](docs/TerraformEngineEnum.md)
  - [TerraformFilesSource](docs/TerraformFilesSource.md)
  - [TerraformFilesSourceGit](docs/TerraformFilesSourceGit.md)
- - [TerraformFilesSourceRequest](docs/TerraformFilesSourceRequest.md)
  - [TerraformGitRepositoryRequest](docs/TerraformGitRepositoryRequest.md)
  - [TerraformJobResourcesResponse](docs/TerraformJobResourcesResponse.md)
  - [TerraformProviderVersion](docs/TerraformProviderVersion.md)
@@ -1457,8 +1456,8 @@ Class | Method | HTTP request | Description
  - [TerraformRequestDockerfileFragment](docs/TerraformRequestDockerfileFragment.md)
  - [TerraformRequestJobResources](docs/TerraformRequestJobResources.md)
  - [TerraformRequestTerraformFilesSource](docs/TerraformRequestTerraformFilesSource.md)
+ - [TerraformResourceAttribute](docs/TerraformResourceAttribute.md)
  - [TerraformResourceResponse](docs/TerraformResourceResponse.md)
- - [TerraformResourcesRequest](docs/TerraformResourcesRequest.md)
  - [TerraformResourcesResponse](docs/TerraformResourcesResponse.md)
  - [TerraformResponse](docs/TerraformResponse.md)
  - [TerraformResponseAllOfDockerfileFragment](docs/TerraformResponseAllOfDockerfileFragment.md)
@@ -1479,6 +1478,8 @@ Class | Method | HTTP request | Description
  - [TypeOfUseEnum](docs/TypeOfUseEnum.md)
  - [User](docs/User.md)
  - [UserResponseList](docs/UserResponseList.md)
+ - [UserSignUpResponse](docs/UserSignUpResponse.md)
+ - [UserSignUpResponseList](docs/UserSignUpResponseList.md)
  - [Value](docs/Value.md)
  - [VariableAlias](docs/VariableAlias.md)
  - [VariableAliasRequest](docs/VariableAliasRequest.md)
@@ -1497,6 +1498,7 @@ Class | Method | HTTP request | Description
  - [WebhookEventResponse](docs/WebhookEventResponse.md)
  - [WebhookEventResponseList](docs/WebhookEventResponseList.md)
  - [WeekdayEnum](docs/WeekdayEnum.md)
+ - [WidePermissionsDto](docs/WidePermissionsDto.md)
 
 
 To get access to the crate's generated documentation, use:

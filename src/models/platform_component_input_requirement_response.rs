@@ -11,23 +11,15 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// PlatformComponentInputRequirementResponse : A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors and are never read-only.
+/// PlatformComponentInputRequirementResponse : A scalar catalog field the cluster must provide for the selected configuration.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlatformComponentInputRequirementResponse {
     #[serde(rename = "key")]
     pub key: String,
-    /// Field type understood by the Console.
     #[serde(rename = "type")]
-    pub r#type: Type,
-    #[serde(rename = "required")]
-    pub required: bool,
-    #[serde(
-        rename = "defaultValue",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub default_value: Option<Option<String>>,
+    pub r#type: String,
+    #[serde(rename = "scope")]
+    pub scope: models::PlatformComponentConfigurationInputScope,
     #[serde(rename = "label")]
     pub label: String,
     #[serde(
@@ -37,67 +29,38 @@ pub struct PlatformComponentInputRequirementResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub description: Option<Option<String>>,
+    #[serde(rename = "required")]
+    pub required: bool,
     #[serde(rename = "sensitive")]
     pub sensitive: bool,
-    /// Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only.
-    #[serde(rename = "readOnly", skip_serializing_if = "Option::is_none")]
-    pub read_only: Option<bool>,
     #[serde(rename = "constraints")]
     pub constraints: models::FieldSchemaConstraintsResponse,
-    /// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
-    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
-    pub format: Option<String>,
-    /// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
-    #[serde(rename = "templates", skip_serializing_if = "Option::is_none")]
-    pub templates: Option<Vec<models::FieldTemplateResponse>>,
-    #[serde(rename = "scope")]
-    pub scope: models::PlatformComponentConfigurationInputScope,
     #[serde(rename = "status")]
     pub status: models::PlatformComponentConfigurationRequirementStatus,
 }
 
 impl PlatformComponentInputRequirementResponse {
-    /// A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors and are never read-only.
+    /// A scalar catalog field the cluster must provide for the selected configuration.
     pub fn new(
         key: String,
-        r#type: Type,
-        required: bool,
+        r#type: String,
+        scope: models::PlatformComponentConfigurationInputScope,
         label: String,
+        required: bool,
         sensitive: bool,
         constraints: models::FieldSchemaConstraintsResponse,
-        scope: models::PlatformComponentConfigurationInputScope,
         status: models::PlatformComponentConfigurationRequirementStatus,
     ) -> PlatformComponentInputRequirementResponse {
         PlatformComponentInputRequirementResponse {
             key,
             r#type,
-            required,
-            default_value: None,
+            scope,
             label,
             description: None,
+            required,
             sensitive,
-            read_only: None,
             constraints,
-            format: None,
-            templates: None,
-            scope,
             status,
         }
-    }
-}
-/// Field type understood by the Console.
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
-    #[serde(rename = "string")]
-    String,
-    #[serde(rename = "number")]
-    Number,
-    #[serde(rename = "bool")]
-    Bool,
-}
-
-impl Default for Type {
-    fn default() -> Type {
-        Self::String
     }
 }

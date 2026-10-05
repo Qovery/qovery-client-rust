@@ -17,6 +17,13 @@ pub struct SecretEditRequest {
     pub value: Option<String>,
     #[serde(rename = "key")]
     pub key: String,
+    #[serde(
+        rename = "mount_path",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub mount_path: Option<Option<String>>,
     /// optional variable description (255 characters maximum)
     #[serde(
         rename = "description",
@@ -39,6 +46,7 @@ impl SecretEditRequest {
         SecretEditRequest {
             value: None,
             key,
+            mount_path: None,
             description: None,
             enable_interpolation_in_file: None,
         }

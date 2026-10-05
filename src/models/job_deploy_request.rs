@@ -13,6 +13,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobDeployRequest {
+    #[serde(
+        rename = "id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub id: Option<Option<uuid::Uuid>>,
     /// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
     #[serde(rename = "image_tag", skip_serializing_if = "Option::is_none")]
     pub image_tag: Option<String>,
@@ -24,6 +31,7 @@ pub struct JobDeployRequest {
 impl JobDeployRequest {
     pub fn new() -> JobDeployRequest {
         JobDeployRequest {
+            id: None,
             image_tag: None,
             git_commit_id: None,
         }

@@ -23,16 +23,6 @@ pub enum ListAwsFeaturesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_aws_instance_type`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum ListAwsInstanceTypeError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`list_aws_managed_database_instance_type`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -123,16 +113,6 @@ pub enum ListGcpFeaturesError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_gcp_gke_instance_type`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum ListGcpGkeInstanceTypeError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`list_gcp_regions`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -143,20 +123,40 @@ pub enum ListGcpRegionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_scaleway_features`]
+/// struct for typed errors of method [`list_on_premise_cluster_features`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum ListScalewayFeaturesError {
+pub enum ListOnPremiseClusterFeaturesError {
     Status401(),
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_scaleway_instance_type`]
+/// struct for typed errors of method [`list_on_premise_instance_types`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum ListScalewayInstanceTypeError {
+pub enum ListOnPremiseInstanceTypesError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_on_premise_regions`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListOnPremiseRegionsError {
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_scaleway_features`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListScalewayFeaturesError {
     Status401(),
     Status403(),
     Status404(),
@@ -177,16 +177,6 @@ pub enum ListScalewayKapsuleInstanceTypeError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListScalewayRegionsError {
-    Status401(),
-    Status403(),
-    Status404(),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`list_scw_managed_database_type`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum ListScwManagedDatabaseTypeError {
     Status401(),
     Status403(),
     Status404(),
@@ -243,73 +233,24 @@ pub async fn list_aws_features(
     }
 }
 
-pub async fn list_aws_instance_type(
-    configuration: &configuration::Configuration,
-) -> Result<models::ClusterInstanceTypeResponseList, Error<ListAwsInstanceTypeError>> {
-    let uri_str = format!("{}/aws/instanceType", configuration.base_path);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListAwsInstanceTypeError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
+/// List AWS available managed database instance types
 pub async fn list_aws_managed_database_instance_type(
     configuration: &configuration::Configuration,
     region: &str,
-    database_type: &str,
+    db_type: &str,
 ) -> Result<
     models::ManagedDatabaseInstanceTypeResponseList,
     Error<ListAwsManagedDatabaseInstanceTypeError>,
 > {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_region = region;
-    let p_path_database_type = database_type;
+    let p_path_db_type = db_type;
 
     let uri_str = format!(
-        "{}/aws/managedDatabase/instanceType/{region}/{databaseType}",
+        "{}/aws/managedDatabase/instanceType/{region}/{dbType}",
         configuration.base_path,
         region = crate::apis::urlencode(p_path_region),
-        databaseType = crate::apis::urlencode(p_path_database_type)
+        dbType = crate::apis::urlencode(p_path_db_type)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -804,64 +745,6 @@ pub async fn list_gcp_features(
     }
 }
 
-pub async fn list_gcp_gke_instance_type(
-    configuration: &configuration::Configuration,
-    region: &str,
-) -> Result<models::ClusterInstanceTypeResponseList, Error<ListGcpGkeInstanceTypeError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_region = region;
-
-    let uri_str = format!(
-        "{}/gcp/instanceType/{region}",
-        configuration.base_path,
-        region = crate::apis::urlencode(p_path_region)
-    );
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListGcpGkeInstanceTypeError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
 pub async fn list_gcp_regions(
     configuration: &configuration::Configuration,
 ) -> Result<models::ClusterRegionResponseList, Error<ListGcpRegionsError>> {
@@ -904,6 +787,167 @@ pub async fn list_gcp_regions(
     } else {
         let content = resp.text().await?;
         let entity: Option<ListGcpRegionsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// List on-premise cluster features
+pub async fn list_on_premise_cluster_features(
+    configuration: &configuration::Configuration,
+) -> Result<models::ClusterFeatureResponseList, Error<ListOnPremiseClusterFeaturesError>> {
+    let uri_str = format!("{}/onPremise/clusterFeature", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterFeatureResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterFeatureResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListOnPremiseClusterFeaturesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// List on-premise instance types
+pub async fn list_on_premise_instance_types(
+    configuration: &configuration::Configuration,
+    region: &str,
+) -> Result<models::ClusterInstanceTypeResponseList, Error<ListOnPremiseInstanceTypesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_region = region;
+
+    let uri_str = format!(
+        "{}/onPremise/eks/instanceType/{region}",
+        configuration.base_path,
+        region = crate::apis::urlencode(p_path_region)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListOnPremiseInstanceTypesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// List on-premise regions
+pub async fn list_on_premise_regions(
+    configuration: &configuration::Configuration,
+) -> Result<models::ClusterRegionResponseList, Error<ListOnPremiseRegionsError>> {
+    let uri_str = format!("{}/onPremise/region", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterRegionResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterRegionResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListOnPremiseRegionsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -962,56 +1006,7 @@ pub async fn list_scaleway_features(
     }
 }
 
-pub async fn list_scaleway_instance_type(
-    configuration: &configuration::Configuration,
-) -> Result<models::ClusterInstanceTypeResponseList, Error<ListScalewayInstanceTypeError>> {
-    let uri_str = format!("{}/scaleway/instanceType", configuration.base_path);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ClusterInstanceTypeResponseList`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListScalewayInstanceTypeError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
+/// List Scaleway Kapsule available instance types
 pub async fn list_scaleway_kapsule_instance_type(
     configuration: &configuration::Configuration,
     zone: &str,
@@ -1113,56 +1108,6 @@ pub async fn list_scaleway_regions(
     } else {
         let content = resp.text().await?;
         let entity: Option<ListScalewayRegionsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-pub async fn list_scw_managed_database_type(
-    configuration: &configuration::Configuration,
-) -> Result<models::ManagedDatabaseTypeResponseList, Error<ListScwManagedDatabaseTypeError>> {
-    let uri_str = format!("{}/scaleway/managedDatabase/type", configuration.base_path);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.header("Authorization", value);
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ManagedDatabaseTypeResponseList`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ManagedDatabaseTypeResponseList`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListScwManagedDatabaseTypeError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

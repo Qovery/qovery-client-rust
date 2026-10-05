@@ -19,9 +19,6 @@ pub struct ContainerSource {
     /// tag of the image container
     #[serde(rename = "tag")]
     pub tag: String,
-    /// tag of the image container
-    #[serde(rename = "registry_id", skip_serializing_if = "Option::is_none")]
-    pub registry_id: Option<String>,
     #[serde(rename = "registry")]
     pub registry: models::ContainerRegistryProviderDetailsResponse,
 }
@@ -35,7 +32,6 @@ impl ContainerSource {
         ContainerSource {
             image_name,
             tag,
-            registry_id: None,
             registry,
         }
     }

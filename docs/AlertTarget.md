@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **target_type** | [**models::AlertTargetType**](AlertTargetType.md) |  | 
 **target_id** | **uuid::Uuid** |  | 
-**service** | Option<[**models::ServiceLightResponse**](ServiceLightResponse.md)> |  | [optional]
+**service** | Option<[**models::ServiceLightResponse**](ServiceLightResponse.md)> | Service details when target_type is APPLICATION, CONTAINER, JOB, CRONJOB, HELM or TERRAFORM | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,62 +1,62 @@
-# \BackupsApi
+# \AdminApi
 
 All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_backup_database**](BackupsApi.md#add_backup_database) | **POST** /database/{databaseId}/backup | Add a backup to the Database 
-[**list_database_backup**](BackupsApi.md#list_database_backup) | **GET** /database/{databaseId}/backup | List database  backups
-[**remove_database_backup**](BackupsApi.md#remove_database_backup) | **DELETE** /database/{databaseId}/backup/{backupId} | Remove database  backup
+[**get_public_service_version**](AdminApi.md#get_public_service_version) | **GET** /engine/serviceVersion | Get a service version
+[**list_user_sign_ups**](AdminApi.md#list_user_sign_ups) | **GET** /admin/listUserSignUp | Search user signups
+[**store_cli_demo_debug_logs**](AdminApi.md#store_cli_demo_debug_logs) | **POST** /admin/demoDebugLog | Store CLI demo debug logs
 
 
 
-## add_backup_database
+## get_public_service_version
 
-> models::Backup add_backup_database(database_id, backup_request)
-Add a backup to the Database 
+> models::EngineVersionResponse get_public_service_version(service_type)
+Get a service version
+
+Get the version of an engine related service. Worker service types are unavailable through this route.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**database_id** | **uuid::Uuid** | Database ID | [required] |
-**backup_request** | Option<[**BackupRequest**](BackupRequest.md)> |  |  |
+**service_type** | **String** |  | [required] |
 
 ### Return type
 
-[**models::Backup**](Backup.md)
+[**models::EngineVersionResponse**](EngineVersionResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_database_backup
+## list_user_sign_ups
 
-> models::BackupPaginatedResponseList list_database_backup(database_id, start_id)
-List database  backups
+> models::UserSignUpResponseList list_user_sign_ups(search)
+Search user signups
 
-By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
+Search user signups as a Qovery administrator.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**database_id** | **uuid::Uuid** | Database ID | [required] |
-**start_id** | Option<**uuid::Uuid**> | Starting point after which to return results |  |
+**search** | **String** |  | [required] |
 
 ### Return type
 
-[**models::BackupPaginatedResponseList**](BackupPaginatedResponseList.md)
+[**models::UserSignUpResponseList**](UserSignUpResponseList.md)
 
 ### Authorization
 
@@ -70,18 +70,21 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## remove_database_backup
+## store_cli_demo_debug_logs
 
-> remove_database_backup(database_id, backup_id)
-Remove database  backup
+> store_cli_demo_debug_logs(organization, cluster_name, body)
+Store CLI demo debug logs
+
+Store CLI demo debug logs for an organization and cluster.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**database_id** | **uuid::Uuid** | Database ID | [required] |
-**backup_id** | **uuid::Uuid** | Database Backup ID | [required] |
+**organization** | **uuid::Uuid** |  | [required] |
+**cluster_name** | **String** |  | [required] |
+**body** | Option<**std::path::PathBuf**> |  |  |
 
 ### Return type
 
@@ -93,7 +96,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/octet-stream
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

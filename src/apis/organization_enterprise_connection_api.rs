@@ -13,6 +13,17 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
+/// struct for typed errors of method [`get_enterprise_connection_roles`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetEnterpriseConnectionRolesError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_organization_enterprise_connection`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -33,6 +44,17 @@ pub enum ListOrganizationEnterpriseConnectionsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`notify_enterprise_member_access_updated`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum NotifyEnterpriseMemberAccessUpdatedError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`update_organization_enterprise_connection`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -41,6 +63,66 @@ pub enum UpdateOrganizationEnterpriseConnectionError {
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
+}
+
+/// Resolve organization access for an Auth0 post-login action.
+pub async fn get_enterprise_connection_roles(
+    configuration: &configuration::Configuration,
+    x_qovery_auth0_post_login_token: &str,
+    connection_name: &str,
+    federated_groups: &str,
+    user_sub: &str,
+) -> Result<models::EnterpriseConnectionAccessList, Error<GetEnterpriseConnectionRolesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_header_x_qovery_auth0_post_login_token = x_qovery_auth0_post_login_token;
+    let p_query_connection_name = connection_name;
+    let p_query_federated_groups = federated_groups;
+    let p_query_user_sub = user_sub;
+
+    let uri_str = format!(
+        "{}/account/enterpriseconnection/roles",
+        configuration.base_path
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("connectionName", &p_query_connection_name.to_string())]);
+    req_builder = req_builder.query(&[("federatedGroups", &p_query_federated_groups.to_string())]);
+    req_builder = req_builder.query(&[("userSub", &p_query_user_sub.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    req_builder = req_builder.header(
+        "X-Qovery-Auth0-Post-Login-Token",
+        p_header_x_qovery_auth0_post_login_token.to_string(),
+    );
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EnterpriseConnectionAccessList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EnterpriseConnectionAccessList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetEnterpriseConnectionRolesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
 }
 
 pub async fn get_organization_enterprise_connection(
@@ -158,6 +240,53 @@ pub async fn list_organization_enterprise_connections(
     } else {
         let content = resp.text().await?;
         let entity: Option<ListOrganizationEnterpriseConnectionsError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Notify q-core of member access changes from an Auth0 post-login action.
+pub async fn notify_enterprise_member_access_updated(
+    configuration: &configuration::Configuration,
+    x_qovery_auth0_post_login_token: &str,
+    enterprise_connection_member_access_update_request: models::EnterpriseConnectionMemberAccessUpdateRequest,
+) -> Result<(), Error<NotifyEnterpriseMemberAccessUpdatedError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_header_x_qovery_auth0_post_login_token = x_qovery_auth0_post_login_token;
+    let p_body_enterprise_connection_member_access_update_request =
+        enterprise_connection_member_access_update_request;
+
+    let uri_str = format!(
+        "{}/account/enterpriseconnection/notifyMemberAccessUpdated",
+        configuration.base_path
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    req_builder = req_builder.header(
+        "X-Qovery-Auth0-Post-Login-Token",
+        p_header_x_qovery_auth0_post_login_token.to_string(),
+    );
+    req_builder = req_builder.json(&p_body_enterprise_connection_member_access_update_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<NotifyEnterpriseMemberAccessUpdatedError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **timeout_sec** | **i32** |  | [default to 600]
 **auto_deploy** | **bool** |  | 
+**auto_preview** | Option<**bool**> |  | [optional]
+**build_settings_editable** | Option<**bool**> |  | [optional]
 **auto_deploy_config** | Option<[**models::TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md)> |  | [optional]
 **terraform_files_source** | Option<[**models::TerraformFilesSource**](TerraformFilesSource.md)> |  | [optional]
 **icon_uri** | **String** | Icon URI representing the terraform service. | 
