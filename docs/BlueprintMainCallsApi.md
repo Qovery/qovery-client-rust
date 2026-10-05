@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_blueprint**](BlueprintMainCallsApi.md#get_blueprint) | **GET** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**get_blueprint_catalog**](BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 [**get_blueprint_database**](BlueprintMainCallsApi.md#get_blueprint_database) | **GET** /blueprint/{blueprintId}/database | Get the database a blueprint manages
+[**get_blueprint_database_master_credentials**](BlueprintMainCallsApi.md#get_blueprint_database_master_credentials) | **GET** /blueprint/{blueprintId}/database/masterCredentials | Get master credentials of a blueprint database
 [**get_blueprint_variables**](BlueprintMainCallsApi.md#get_blueprint_variables) | **GET** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 [**preview_blueprint_update**](BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**update_blueprint**](BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
@@ -218,6 +219,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::BlueprintDatabaseResponse**](BlueprintDatabaseResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_blueprint_database_master_credentials
+
+> models::Credentials get_blueprint_database_master_credentials(blueprint_id)
+Get master credentials of a blueprint database
+
+Returns the host, port, login and password of the database a blueprint manages, read from the outputs of its terraform service. Requires the same permission as a managed database's master credentials.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**blueprint_id** | **uuid::Uuid** | Blueprint ID | [required] |
+
+### Return type
+
+[**models::Credentials**](Credentials.md)
 
 ### Authorization
 

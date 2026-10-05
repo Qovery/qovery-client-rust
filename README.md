@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsApi* | [**get_blueprint**](docs/BlueprintMainCallsApi.md#get_blueprint) | **GET** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 *BlueprintMainCallsApi* | [**get_blueprint_catalog**](docs/BlueprintMainCallsApi.md#get_blueprint_catalog) | **GET** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *BlueprintMainCallsApi* | [**get_blueprint_database**](docs/BlueprintMainCallsApi.md#get_blueprint_database) | **GET** /blueprint/{blueprintId}/database | Get the database a blueprint manages
+*BlueprintMainCallsApi* | [**get_blueprint_database_master_credentials**](docs/BlueprintMainCallsApi.md#get_blueprint_database_master_credentials) | **GET** /blueprint/{blueprintId}/database/masterCredentials | Get master credentials of a blueprint database
 *BlueprintMainCallsApi* | [**get_blueprint_variables**](docs/BlueprintMainCallsApi.md#get_blueprint_variables) | **GET** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 *BlueprintMainCallsApi* | [**preview_blueprint_update**](docs/BlueprintMainCallsApi.md#preview_blueprint_update) | **POST** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsApi* | [**update_blueprint**](docs/BlueprintMainCallsApi.md#update_blueprint) | **PATCH** /blueprint/{blueprintId} | Update a blueprint service
