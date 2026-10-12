@@ -22,6 +22,8 @@ pub enum SelfManagedClusterKind {
     GkeSelfManaged,
     #[serde(rename = "AKS_SELF_MANAGED")]
     AksSelfManaged,
+    #[serde(rename = "EKS_ANYWHERE")]
+    EksAnywhere,
     #[serde(rename = "SELF_MANAGED")]
     SelfManaged,
 }
@@ -33,6 +35,7 @@ impl std::fmt::Display for SelfManagedClusterKind {
             Self::ScwSelfManaged => write!(f, "SCW_SELF_MANAGED"),
             Self::GkeSelfManaged => write!(f, "GKE_SELF_MANAGED"),
             Self::AksSelfManaged => write!(f, "AKS_SELF_MANAGED"),
+            Self::EksAnywhere => write!(f, "EKS_ANYWHERE"),
             Self::SelfManaged => write!(f, "SELF_MANAGED"),
         }
     }

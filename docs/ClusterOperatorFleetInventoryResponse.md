@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **reported_image_version** | Option<**String**> |  | [optional]
 **desired_chart_version** | Option<**String**> |  | [optional]
 **reported_chart_version** | Option<**String**> |  | [optional]
+**reported_runtime** | [**models::ClusterOperatorRuntime**](ClusterOperatorRuntime.md) |  | 
 **status** | [**models::ClusterOperatorFleetStatus**](ClusterOperatorFleetStatus.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

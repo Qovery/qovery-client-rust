@@ -236,7 +236,7 @@ pub async fn get_cluster_operator_status(
     }
 }
 
-/// Queues an Engine v2 execution containing only the Qovery Operator Helm release. The chart version is required; the optional image version overrides the image target selected by q-core. The current Operator must be attached, connected, and protocol-compatible. A successful response means that the execution was accepted, not that Helm has completed. Cluster administrator permission is required.
+/// Queues an Engine v2 execution that updates only the Qovery Operator. The update follows the runtime reported by the Operator: a Kubernetes Operator gets a Helm upgrade of its release and requires the chart version; a Docker Operator (EKS Anywhere bastion) gets its container replaced and ignores the chart version. An Operator that has not reported its runtime cannot be updated. The optional image version overrides the image target selected by q-core. The current Operator must be connected and protocol-compatible. A successful response means that the execution was accepted, not that the update has completed. Cluster administrator permission is required.
 pub async fn update_cluster_operator(
     configuration: &configuration::Configuration,
     organization_id: &str,

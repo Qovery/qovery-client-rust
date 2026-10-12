@@ -19,21 +19,22 @@ pub struct ClusterOperatorUpdateResponse {
     /// Operator image tag resolved for this execution.
     #[serde(rename = "image_version")]
     pub image_version: String,
-    /// Operator Helm chart version resolved for this execution.
-    #[serde(rename = "chart_version")]
-    pub chart_version: String,
+    /// Operator Helm chart version resolved for this execution. Null for a Docker Operator.
+    #[serde(
+        rename = "chart_version",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub chart_version: Option<Option<String>>,
 }
 
 impl ClusterOperatorUpdateResponse {
-    pub fn new(
-        execution_id: String,
-        image_version: String,
-        chart_version: String,
-    ) -> ClusterOperatorUpdateResponse {
+    pub fn new(execution_id: String, image_version: String) -> ClusterOperatorUpdateResponse {
         ClusterOperatorUpdateResponse {
             execution_id,
             image_version,
-            chart_version,
+            chart_version: None,
         }
     }
 }

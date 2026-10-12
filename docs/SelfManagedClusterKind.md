@@ -8,6 +8,7 @@
 | ScwSelfManaged | SCW_SELF_MANAGED |
 | GkeSelfManaged | GKE_SELF_MANAGED |
 | AksSelfManaged | AKS_SELF_MANAGED |
+| EksAnywhere | EKS_ANYWHERE |
 | SelfManaged | SELF_MANAGED |
 
 

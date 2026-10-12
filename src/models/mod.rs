@@ -508,6 +508,8 @@ pub mod cluster_operator_fleet_inventory_response_list;
 pub use self::cluster_operator_fleet_inventory_response_list::ClusterOperatorFleetInventoryResponseList;
 pub mod cluster_operator_fleet_status;
 pub use self::cluster_operator_fleet_status::ClusterOperatorFleetStatus;
+pub mod cluster_operator_runtime;
+pub use self::cluster_operator_runtime::ClusterOperatorRuntime;
 pub mod cluster_operator_status_response;
 pub use self::cluster_operator_status_response::ClusterOperatorStatusResponse;
 pub mod cluster_operator_update_request;

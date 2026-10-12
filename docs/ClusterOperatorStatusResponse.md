@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **status** | [**models::ClusterOperatorFleetStatus**](ClusterOperatorFleetStatus.md) |  | 
 **reported_chart_version** | Option<**String**> | Helm chart version reported by the Operator, even without immutable identity. | [optional]
 **reported_identity** | Option<[**models::ReportedClusterOperatorIdentity**](ReportedClusterOperatorIdentity.md)> |  | [optional]
+**reported_runtime** | [**models::ClusterOperatorRuntime**](ClusterOperatorRuntime.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

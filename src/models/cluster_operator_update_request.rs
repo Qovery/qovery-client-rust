@@ -13,9 +13,14 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ClusterOperatorUpdateRequest {
-    /// Exact Qovery Operator Helm chart version to install.
-    #[serde(rename = "chart_version")]
-    pub chart_version: String,
+    /// Exact Qovery Operator Helm chart version to install. Required for a Kubernetes Operator, ignored for a Docker Operator.
+    #[serde(
+        rename = "chart_version",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub chart_version: Option<Option<String>>,
     /// Optional Operator image tag overriding the image target selected by q-core.
     #[serde(
         rename = "image_version",
@@ -27,9 +32,9 @@ pub struct ClusterOperatorUpdateRequest {
 }
 
 impl ClusterOperatorUpdateRequest {
-    pub fn new(chart_version: String) -> ClusterOperatorUpdateRequest {
+    pub fn new() -> ClusterOperatorUpdateRequest {
         ClusterOperatorUpdateRequest {
-            chart_version,
+            chart_version: None,
             image_version: None,
         }
     }

@@ -23,6 +23,9 @@ pub struct ClusterDeploymentHistory {
     pub action_status: models::DeploymentHistoryActionStatus,
     #[serde(rename = "trigger_action")]
     pub trigger_action: models::DeploymentHistoryTriggerAction,
+    /// OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for any other cluster deployment, stop, or delete. Deployments recorded before this field existed read as CLUSTER.
+    #[serde(rename = "operation")]
+    pub operation: Operation,
     #[serde(rename = "is_dry_run")]
     pub is_dry_run: bool,
     #[serde(rename = "reason")]
@@ -43,6 +46,7 @@ impl ClusterDeploymentHistory {
         status: models::StateEnum,
         action_status: models::DeploymentHistoryActionStatus,
         trigger_action: models::DeploymentHistoryTriggerAction,
+        operation: Operation,
         is_dry_run: bool,
         reason: Reason,
     ) -> ClusterDeploymentHistory {
@@ -52,10 +56,25 @@ impl ClusterDeploymentHistory {
             status,
             action_status,
             trigger_action,
+            operation,
             is_dry_run,
             reason,
             total_duration: None,
         }
+    }
+}
+/// OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for any other cluster deployment, stop, or delete. Deployments recorded before this field existed read as CLUSTER.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Operation {
+    #[serde(rename = "CLUSTER")]
+    Cluster,
+    #[serde(rename = "OPERATOR_UPDATE")]
+    OperatorUpdate,
+}
+
+impl Default for Operation {
+    fn default() -> Operation {
+        Self::Cluster
     }
 }
 ///

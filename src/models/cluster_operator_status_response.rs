@@ -75,6 +75,8 @@ pub struct ClusterOperatorStatusResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub reported_identity: Option<Option<models::ReportedClusterOperatorIdentity>>,
+    #[serde(rename = "reported_runtime")]
+    pub reported_runtime: models::ClusterOperatorRuntime,
 }
 
 impl ClusterOperatorStatusResponse {
@@ -83,6 +85,7 @@ impl ClusterOperatorStatusResponse {
         cluster_id: uuid::Uuid,
         operator_connected: bool,
         status: models::ClusterOperatorFleetStatus,
+        reported_runtime: models::ClusterOperatorRuntime,
     ) -> ClusterOperatorStatusResponse {
         ClusterOperatorStatusResponse {
             organization_id,
@@ -96,6 +99,7 @@ impl ClusterOperatorStatusResponse {
             status,
             reported_chart_version: None,
             reported_identity: None,
+            reported_runtime,
         }
     }
 }

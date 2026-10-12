@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **status** | [**models::StateEnum**](StateEnum.md) |  | 
 **action_status** | [**models::DeploymentHistoryActionStatus**](DeploymentHistoryActionStatus.md) |  | 
 **trigger_action** | [**models::DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 
+**operation** | **Operation** | OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for any other cluster deployment, stop, or delete. Deployments recorded before this field existed read as CLUSTER. (enum: CLUSTER, OPERATOR_UPDATE) | 
 **is_dry_run** | **bool** |  | 
 **reason** | **Reason** |  (enum: UNSPECIFIED, MAINTENANCE) | 
 **total_duration** | Option<**String**> |  | [optional]

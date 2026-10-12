@@ -62,6 +62,8 @@ pub struct ClusterOperatorFleetInventoryResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub reported_chart_version: Option<Option<String>>,
+    #[serde(rename = "reported_runtime")]
+    pub reported_runtime: models::ClusterOperatorRuntime,
     #[serde(rename = "status")]
     pub status: models::ClusterOperatorFleetStatus,
 }
@@ -74,6 +76,7 @@ impl ClusterOperatorFleetInventoryResponse {
         cluster_kind: models::SelfManagedClusterKind,
         attached: bool,
         connected: bool,
+        reported_runtime: models::ClusterOperatorRuntime,
         status: models::ClusterOperatorFleetStatus,
     ) -> ClusterOperatorFleetInventoryResponse {
         ClusterOperatorFleetInventoryResponse {
@@ -88,6 +91,7 @@ impl ClusterOperatorFleetInventoryResponse {
             reported_image_version: None,
             desired_chart_version: None,
             reported_chart_version: None,
+            reported_runtime,
             status,
         }
     }
