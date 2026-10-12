@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aws_cloudwatch_eks_logs_retention_days** | Option<**i32**> | Set the number of retention days for EKS Cloudwatch logs | [optional]
+**aws_cloudwatch_eks_logs_types** | Option<**Vec<AwsCloudwatchEksLogsTypes>**> | EKS control plane log types exported to CloudWatch. Defaults to all log types. Use an empty array to disable exports. Redeploy the cluster for changes to take effect. (enum: api, audit, authenticator, controllerManager, scheduler) | [optional][default to ["api","audit","authenticator","controllerManager","scheduler"]]
 **aws_vpc_enable_s3_flow_logs** | Option<**bool**> | Enable flow logs for on the VPC and store them in an S3 bucket | [optional]
 **aws_vpc_flow_logs_retention_days** | Option<**i32**> | Set the number of retention days for flow logs. Disable with value \"0\" | [optional]
 **aws_vpc_enable_nat_gateway_secondary_eip** | Option<**bool**> | Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits. | [optional]

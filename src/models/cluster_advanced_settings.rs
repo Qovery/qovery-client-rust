@@ -19,6 +19,12 @@ pub struct ClusterAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub aws_cloudwatch_eks_logs_retention_days: Option<i32>,
+    /// EKS control plane log types exported to CloudWatch. Defaults to all log types. Use an empty array to disable exports. Redeploy the cluster for changes to take effect.
+    #[serde(
+        rename = "aws.cloudwatch.eks_logs_types",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_cloudwatch_eks_logs_types: Option<Vec<AwsCloudwatchEksLogsTypes>>,
     /// Enable flow logs for on the VPC and store them in an S3 bucket
     #[serde(
         rename = "aws.vpc.enable_s3_flow_logs",
@@ -377,6 +383,7 @@ impl ClusterAdvancedSettings {
     pub fn new() -> ClusterAdvancedSettings {
         ClusterAdvancedSettings {
             aws_cloudwatch_eks_logs_retention_days: None,
+            aws_cloudwatch_eks_logs_types: None,
             aws_vpc_enable_s3_flow_logs: None,
             aws_vpc_flow_logs_retention_days: None,
             aws_vpc_enable_nat_gateway_secondary_eip: None,
@@ -436,6 +443,26 @@ impl ClusterAdvancedSettings {
             qovery_static_ip_mode: None,
             k8s_api_allowed_public_access_cidrs: None,
         }
+    }
+}
+/// EKS control plane log types exported to CloudWatch. Defaults to all log types. Use an empty array to disable exports. Redeploy the cluster for changes to take effect.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum AwsCloudwatchEksLogsTypes {
+    #[serde(rename = "api")]
+    Api,
+    #[serde(rename = "audit")]
+    Audit,
+    #[serde(rename = "authenticator")]
+    Authenticator,
+    #[serde(rename = "controllerManager")]
+    ControllerManager,
+    #[serde(rename = "scheduler")]
+    Scheduler,
+}
+
+impl Default for AwsCloudwatchEksLogsTypes {
+    fn default() -> AwsCloudwatchEksLogsTypes {
+        Self::Api
     }
 }
 /// Loki deployment topology. \"single_binary\" runs Loki as one pod; \"simple_scalable\" splits it into separate write, read, and backend components for larger clusters.
