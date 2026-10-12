@@ -19,6 +19,11 @@ pub struct ClusterCloudProviderInfoRequest {
     pub credentials: Option<models::ClusterCloudProviderInfoCredentials>,
     #[serde(rename = "region", skip_serializing_if = "Option::is_none")]
     pub region: Option<String>,
+    #[serde(
+        rename = "wide_permission_credentials",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub wide_permission_credentials: Option<models::ClusterCloudProviderInfoCredentials>,
 }
 
 impl ClusterCloudProviderInfoRequest {
@@ -27,6 +32,7 @@ impl ClusterCloudProviderInfoRequest {
             cloud_provider: None,
             credentials: None,
             region: None,
+            wide_permission_credentials: None,
         }
     }
 }
