@@ -35,6 +35,8 @@
 | TriggerForceRunDeploy | TRIGGER_FORCE_RUN_DEPLOY |
 | TriggerForceRunStop | TRIGGER_FORCE_RUN_STOP |
 | TriggerForceRunDelete | TRIGGER_FORCE_RUN_DELETE |
+| OperatorUpdate | OPERATOR_UPDATE |
+| MaintenanceOperator | MAINTENANCE_OPERATOR |
 | Deployed | DEPLOYED |
 | Stopped | STOPPED |
 | Deleted | DELETED |

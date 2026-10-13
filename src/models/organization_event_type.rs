@@ -77,6 +77,10 @@ pub enum OrganizationEventType {
     TriggerForceRunStop,
     #[serde(rename = "TRIGGER_FORCE_RUN_DELETE")]
     TriggerForceRunDelete,
+    #[serde(rename = "OPERATOR_UPDATE")]
+    OperatorUpdate,
+    #[serde(rename = "MAINTENANCE_OPERATOR")]
+    MaintenanceOperator,
     #[serde(rename = "DEPLOYED")]
     Deployed,
     #[serde(rename = "STOPPED")]
@@ -167,6 +171,8 @@ impl std::fmt::Display for OrganizationEventType {
             Self::TriggerForceRunDeploy => write!(f, "TRIGGER_FORCE_RUN_DEPLOY"),
             Self::TriggerForceRunStop => write!(f, "TRIGGER_FORCE_RUN_STOP"),
             Self::TriggerForceRunDelete => write!(f, "TRIGGER_FORCE_RUN_DELETE"),
+            Self::OperatorUpdate => write!(f, "OPERATOR_UPDATE"),
+            Self::MaintenanceOperator => write!(f, "MAINTENANCE_OPERATOR"),
             Self::Deployed => write!(f, "DEPLOYED"),
             Self::Stopped => write!(f, "STOPPED"),
             Self::Deleted => write!(f, "DELETED"),
