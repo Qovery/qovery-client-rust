@@ -102,6 +102,8 @@ pub struct Cluster {
         skip_serializing_if = "Option::is_none"
     )]
     pub secret_manager_accesses: Option<Vec<models::SecretManagerAccess>>,
+    #[serde(rename = "wide_permissions", skip_serializing_if = "Option::is_none")]
+    pub wide_permissions: Option<models::WidePermissionsResponseDto>,
 }
 
 impl Cluster {
@@ -147,6 +149,7 @@ impl Cluster {
             keda: None,
             labels_groups: None,
             secret_manager_accesses: None,
+            wide_permissions: None,
         }
     }
 }

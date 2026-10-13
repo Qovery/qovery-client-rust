@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **labels_groups** | Option<[**Vec<models::ClusterLabelsGroup>**](ClusterLabelsGroup.md)> |  | [optional]
 **secret_manager_accesses** | Option<[**Vec<models::SecretManagerAccessRequest>**](SecretManagerAccessRequest.md)> |  | [optional]
 **is_demo** | Option<**bool**> |  | [optional][default to false]
-**wide_permissions** | Option<[**models::WidePermissionsDto**](WidePermissionsDto.md)> |  | [optional]
+**wide_permissions** | Option<[**models::WidePermissionsRequestDto**](WidePermissionsRequestDto.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

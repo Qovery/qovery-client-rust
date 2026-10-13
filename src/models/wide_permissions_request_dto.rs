@@ -12,7 +12,7 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct WidePermissionsDto {
+pub struct WidePermissionsRequestDto {
     #[serde(
         rename = "using_restrictive_permissions",
         skip_serializing_if = "Option::is_none"
@@ -25,19 +25,13 @@ pub struct WidePermissionsDto {
         skip_serializing_if = "Option::is_none"
     )]
     pub wide_scope_cloud_account_id: Option<Option<uuid::Uuid>>,
-    #[serde(
-        rename = "require_wide_access_to_deploy",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub require_wide_access_to_deploy: Option<bool>,
 }
 
-impl WidePermissionsDto {
-    pub fn new() -> WidePermissionsDto {
-        WidePermissionsDto {
+impl WidePermissionsRequestDto {
+    pub fn new() -> WidePermissionsRequestDto {
+        WidePermissionsRequestDto {
             using_restrictive_permissions: None,
             wide_scope_cloud_account_id: None,
-            require_wide_access_to_deploy: None,
         }
     }
 }

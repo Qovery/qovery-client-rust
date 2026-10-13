@@ -72,7 +72,7 @@ pub struct ClusterRequest {
     #[serde(rename = "is_demo", skip_serializing_if = "Option::is_none")]
     pub is_demo: Option<bool>,
     #[serde(rename = "wide_permissions", skip_serializing_if = "Option::is_none")]
-    pub wide_permissions: Option<models::WidePermissionsDto>,
+    pub wide_permissions: Option<models::WidePermissionsRequestDto>,
 }
 
 impl ClusterRequest {

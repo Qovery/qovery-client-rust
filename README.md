@@ -1503,7 +1503,8 @@ Class | Method | HTTP request | Description
  - [WebhookEventResponse](docs/WebhookEventResponse.md)
  - [WebhookEventResponseList](docs/WebhookEventResponseList.md)
  - [WeekdayEnum](docs/WeekdayEnum.md)
- - [WidePermissionsDto](docs/WidePermissionsDto.md)
+ - [WidePermissionsRequestDto](docs/WidePermissionsRequestDto.md)
+ - [WidePermissionsResponseDto](docs/WidePermissionsResponseDto.md)
 
 
 To get access to the crate's generated documentation, use:
