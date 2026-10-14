@@ -27,6 +27,14 @@ pub struct OrganizationApiToken {
     pub role_name: Option<String>,
     #[serde(rename = "role_id", skip_serializing_if = "Option::is_none")]
     pub role_id: Option<uuid::Uuid>,
+    /// Time when token usage was last recorded. Updated periodically, so recent usage may not appear immediately. Null when no usage has been recorded.
+    #[serde(
+        rename = "last_used_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub last_used_at: Option<Option<String>>,
 }
 
 impl OrganizationApiToken {
@@ -39,6 +47,7 @@ impl OrganizationApiToken {
             description: None,
             role_name: None,
             role_id: None,
+            last_used_at: None,
         }
     }
 }

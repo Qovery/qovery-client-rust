@@ -45,6 +45,14 @@ pub struct OrganizationPolicyApiToken {
         skip_serializing_if = "Option::is_none"
     )]
     pub expires_at: Option<Option<String>>,
+    /// Time when token usage was last recorded. Updated periodically, so recent usage may not appear immediately. Null when no usage has been recorded.
+    #[serde(
+        rename = "last_used_at",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub last_used_at: Option<Option<String>>,
 }
 
 impl OrganizationPolicyApiToken {
@@ -60,6 +68,7 @@ impl OrganizationPolicyApiToken {
             opa_policy: None,
             creator_name: None,
             expires_at: None,
+            last_used_at: None,
         }
     }
 }
