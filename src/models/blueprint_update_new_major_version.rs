@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// BlueprintUpdateNewMajorVersion : A newer major version of the blueprint available for a major upgrade.
+/// BlueprintUpdateNewMajorVersion : A newer major version of the blueprint, and what moving to it would do.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BlueprintUpdateNewMajorVersion {
     /// The engine major version (e.g. \"17\").
@@ -20,14 +20,30 @@ pub struct BlueprintUpdateNewMajorVersion {
     /// Latest catalog tag for that major version.
     #[serde(rename = "latest_tag")]
     pub latest_tag: String,
+    #[serde(rename = "mode")]
+    pub mode: models::BlueprintMajorSwitchMode,
+    /// Why the move is refused. Set only when `mode` is `UNSUPPORTED`.
+    #[serde(
+        rename = "unsupported_reason",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub unsupported_reason: Option<Option<String>>,
 }
 
 impl BlueprintUpdateNewMajorVersion {
-    /// A newer major version of the blueprint available for a major upgrade.
-    pub fn new(service_version: String, latest_tag: String) -> BlueprintUpdateNewMajorVersion {
+    /// A newer major version of the blueprint, and what moving to it would do.
+    pub fn new(
+        service_version: String,
+        latest_tag: String,
+        mode: models::BlueprintMajorSwitchMode,
+    ) -> BlueprintUpdateNewMajorVersion {
         BlueprintUpdateNewMajorVersion {
             service_version,
             latest_tag,
+            mode,
+            unsupported_reason: None,
         }
     }
 }

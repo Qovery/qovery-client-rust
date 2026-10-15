@@ -146,6 +146,7 @@ docs/BlueprintDeploymentStatusResponse.md
 docs/BlueprintDetailsResponse.md
 docs/BlueprintItem.md
 docs/BlueprintMainCallsApi.md
+docs/BlueprintMajorSwitchMode.md
 docs/BlueprintMajorVersion.md
 docs/BlueprintManifestBackendConfig.md
 docs/BlueprintManifestChartConfig.md
@@ -1246,6 +1247,7 @@ src/models/blueprint_deployment_ack_response.rs
 src/models/blueprint_deployment_status_response.rs
 src/models/blueprint_details_response.rs
 src/models/blueprint_item.rs
+src/models/blueprint_major_switch_mode.rs
 src/models/blueprint_major_version.rs
 src/models/blueprint_manifest_backend_config.rs
 src/models/blueprint_manifest_chart_config.rs

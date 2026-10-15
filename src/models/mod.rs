@@ -248,6 +248,8 @@ pub mod blueprint_details_response;
 pub use self::blueprint_details_response::BlueprintDetailsResponse;
 pub mod blueprint_item;
 pub use self::blueprint_item::BlueprintItem;
+pub mod blueprint_major_switch_mode;
+pub use self::blueprint_major_switch_mode::BlueprintMajorSwitchMode;
 pub mod blueprint_major_version;
 pub use self::blueprint_major_version::BlueprintMajorVersion;
 pub mod blueprint_manifest_backend_config;

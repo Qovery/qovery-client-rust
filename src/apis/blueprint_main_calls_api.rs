@@ -124,6 +124,7 @@ pub enum PreviewBlueprintUpdateError {
     Status401(),
     Status403(),
     Status404(),
+    Status422(),
     Status502(),
     UnknownValue(serde_json::Value),
 }
@@ -136,6 +137,7 @@ pub enum UpdateBlueprintError {
     Status401(),
     Status403(),
     Status404(),
+    Status422(),
     UnknownValue(serde_json::Value),
 }
 

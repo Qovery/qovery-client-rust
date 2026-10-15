@@ -722,6 +722,7 @@ Class | Method | HTTP request | Description
  - [BlueprintDeploymentStatusResponse](docs/BlueprintDeploymentStatusResponse.md)
  - [BlueprintDetailsResponse](docs/BlueprintDetailsResponse.md)
  - [BlueprintItem](docs/BlueprintItem.md)
+ - [BlueprintMajorSwitchMode](docs/BlueprintMajorSwitchMode.md)
  - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
  - [BlueprintManifestBackendConfig](docs/BlueprintManifestBackendConfig.md)
  - [BlueprintManifestChartConfig](docs/BlueprintManifestChartConfig.md)
