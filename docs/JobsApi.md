@@ -74,14 +74,17 @@ Name | Type | Description  | Required | Notes
 
 ## get_default_job_advanced_settings
 
-> models::JobAdvancedSettings get_default_job_advanced_settings()
+> models::JobAdvancedSettings get_default_job_advanced_settings(environment_id)
 List default job advanced settings
 
 Default values for each setting is available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**environment_id** | Option<**uuid::Uuid**> | When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources). |  |
 
 ### Return type
 

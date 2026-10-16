@@ -195,14 +195,21 @@ pub async fn create_application(
 /// Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 pub async fn get_default_application_advanced_settings(
     configuration: &configuration::Configuration,
+    environment_id: Option<&str>,
 ) -> Result<models::ApplicationAdvancedSettings, Error<GetDefaultApplicationAdvancedSettingsError>>
 {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_environment_id = environment_id;
+
     let uri_str = format!(
         "{}/defaultApplicationAdvancedSettings",
         configuration.base_path
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_environment_id {
+        req_builder = req_builder.query(&[("environmentId", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
