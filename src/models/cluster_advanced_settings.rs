@@ -259,6 +259,12 @@ pub struct ClusterAdvancedSettings {
     /// Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
     #[serde(rename = "aws.eks.ec2.ami", skip_serializing_if = "Option::is_none")]
     pub aws_eks_ec2_ami: Option<String>,
+    /// Run the kubelet with `cpuManagerPolicy: static` on the private node pool (Karpenter only). Guaranteed pods with an integer CPU request get dedicated cores, so tools that size their worker count from the CPU affinity mask see the pod's CPUs instead of the whole host. Only has an effect on clusters where Qovery has enabled the private node pool, with AL2023 or Bottlerocket nodes. Ignored otherwise. Changing it replaces every node of that pool.
+    #[serde(
+        rename = "aws.eks.karpenter.private_pool.cpu_manager_policy_static",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub aws_eks_karpenter_private_pool_cpu_manager_policy_static: Option<bool>,
     #[serde(
         rename = "pleco.resources_ttl",
         skip_serializing_if = "Option::is_none"
@@ -424,6 +430,7 @@ impl ClusterAdvancedSettings {
             aws_iam_admin_group: None,
             aws_eks_ec2_metadata_imds: None,
             aws_eks_ec2_ami: None,
+            aws_eks_karpenter_private_pool_cpu_manager_policy_static: None,
             pleco_resources_ttl: None,
             registry_mirroring_mode: None,
             nginx_vcpu_request_in_milli_cpu: None,
