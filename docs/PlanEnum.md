@@ -15,6 +15,9 @@
 | Team2025 | TEAM_2025 |
 | Business2025 | BUSINESS_2025 |
 | Enterprise2025 | ENTERPRISE_2025 |
+| Starter2026 | STARTER_2026 |
+| Growth2026 | GROWTH_2026 |
+| Scale2026 | SCALE_2026 |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

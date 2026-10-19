@@ -37,6 +37,12 @@ pub enum PlanEnum {
     Business2025,
     #[serde(rename = "ENTERPRISE_2025")]
     Enterprise2025,
+    #[serde(rename = "STARTER_2026")]
+    Starter2026,
+    #[serde(rename = "GROWTH_2026")]
+    Growth2026,
+    #[serde(rename = "SCALE_2026")]
+    Scale2026,
 }
 
 impl std::fmt::Display for PlanEnum {
@@ -53,6 +59,9 @@ impl std::fmt::Display for PlanEnum {
             Self::Team2025 => write!(f, "TEAM_2025"),
             Self::Business2025 => write!(f, "BUSINESS_2025"),
             Self::Enterprise2025 => write!(f, "ENTERPRISE_2025"),
+            Self::Starter2026 => write!(f, "STARTER_2026"),
+            Self::Growth2026 => write!(f, "GROWTH_2026"),
+            Self::Scale2026 => write!(f, "SCALE_2026"),
         }
     }
 }
