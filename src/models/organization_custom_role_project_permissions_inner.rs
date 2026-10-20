@@ -21,9 +21,8 @@ pub struct OrganizationCustomRoleProjectPermissionsInner {
     #[serde(rename = "is_admin", skip_serializing_if = "Option::is_none")]
     pub is_admin: Option<bool>,
     #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
-    pub permissions: Option<
-        Vec<models::OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner>,
-    >,
+    pub permissions:
+        Option<Vec<models::OrganizationCustomRoleProjectPermissionsInnerPermissionsInner>>,
 }
 
 impl OrganizationCustomRoleProjectPermissionsInner {

@@ -1275,6 +1275,7 @@ Class | Method | HTTP request | Description
  - [OrganizationCustomRoleList](docs/OrganizationCustomRoleList.md)
  - [OrganizationCustomRoleProjectPermission](docs/OrganizationCustomRoleProjectPermission.md)
  - [OrganizationCustomRoleProjectPermissionsInner](docs/OrganizationCustomRoleProjectPermissionsInner.md)
+ - [OrganizationCustomRoleProjectPermissionsInnerPermissionsInner](docs/OrganizationCustomRoleProjectPermissionsInnerPermissionsInner.md)
  - [OrganizationCustomRoleUpdateRequest](docs/OrganizationCustomRoleUpdateRequest.md)
  - [OrganizationCustomRoleUpdateRequestClusterPermissionsInner](docs/OrganizationCustomRoleUpdateRequestClusterPermissionsInner.md)
  - [OrganizationCustomRoleUpdateRequestProjectPermissionsInner](docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md)

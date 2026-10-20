@@ -17,13 +17,24 @@ pub struct OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissions
     pub environment_type: Option<models::EnvironmentModeEnum>,
     #[serde(rename = "permission", skip_serializing_if = "Option::is_none")]
     pub permission: Option<models::OrganizationCustomRoleProjectPermission>,
+    /// Allows opening a shell on the services of this environment type, from the CLI (`qovery shell`) or the console. Cannot be `true` with `NO_ACCESS`.
+    #[serde(rename = "shell")]
+    pub shell: bool,
+    /// Allows port-forwarding to the services of this environment type (`qovery port-forward`). Cannot be `true` with `NO_ACCESS`.
+    #[serde(rename = "port_forward")]
+    pub port_forward: bool,
 }
 
 impl OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
-    pub fn new() -> OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
+    pub fn new(
+        shell: bool,
+        port_forward: bool,
+    ) -> OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
         OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
             environment_type: None,
             permission: None,
+            shell,
+            port_forward,
         }
     }
 }
