@@ -689,6 +689,7 @@ Class | Method | HTTP request | Description
  - [AvailableContainerRegistryResponseList](docs/AvailableContainerRegistryResponseList.md)
  - [AvailableHelmRepositoryResponse](docs/AvailableHelmRepositoryResponse.md)
  - [AvailableHelmRepositoryResponseList](docs/AvailableHelmRepositoryResponseList.md)
+ - [AwsAssumeRole](docs/AwsAssumeRole.md)
  - [AwsCredentialsRequest](docs/AwsCredentialsRequest.md)
  - [AwsParameterStoreEndpointDto](docs/AwsParameterStoreEndpointDto.md)
  - [AwsRoleArnAuthDto](docs/AwsRoleArnAuthDto.md)

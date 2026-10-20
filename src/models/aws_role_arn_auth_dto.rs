@@ -17,11 +17,23 @@ pub struct AwsRoleArnAuthDto {
     pub mode: Mode,
     #[serde(rename = "role_arn")]
     pub role_arn: String,
+    /// Role that External Secrets Operator assumes with sts:AssumeRole after authenticating with role_arn, typically to read secrets stored in another AWS account. The trust policy of this role must allow role_arn, and role_arn needs sts:AssumeRole on it. Only available with AWS_ROLE_ARN authentication.
+    #[serde(
+        rename = "assume_role",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub assume_role: Option<Option<models::AwsAssumeRole>>,
 }
 
 impl AwsRoleArnAuthDto {
     pub fn new(mode: Mode, role_arn: String) -> AwsRoleArnAuthDto {
-        AwsRoleArnAuthDto { mode, role_arn }
+        AwsRoleArnAuthDto {
+            mode,
+            role_arn,
+            assume_role: None,
+        }
     }
 }
 ///

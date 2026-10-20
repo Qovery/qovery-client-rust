@@ -182,6 +182,8 @@ pub mod available_helm_repository_response;
 pub use self::available_helm_repository_response::AvailableHelmRepositoryResponse;
 pub mod available_helm_repository_response_list;
 pub use self::available_helm_repository_response_list::AvailableHelmRepositoryResponseList;
+pub mod aws_assume_role;
+pub use self::aws_assume_role::AwsAssumeRole;
 pub mod aws_credentials_request;
 pub use self::aws_credentials_request::AwsCredentialsRequest;
 pub mod aws_parameter_store_endpoint_dto;

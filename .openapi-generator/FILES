@@ -110,6 +110,7 @@ docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
 docs/AvailableHelmRepositoryResponseList.md
+docs/AwsAssumeRole.md
 docs/AwsCredentialsRequest.md
 docs/AwsParameterStoreEndpointDto.md
 docs/AwsRoleArnAuthDto.md
@@ -1214,6 +1215,7 @@ src/models/available_container_registry_response.rs
 src/models/available_container_registry_response_list.rs
 src/models/available_helm_repository_response.rs
 src/models/available_helm_repository_response_list.rs
+src/models/aws_assume_role.rs
 src/models/aws_credentials_request.rs
 src/models/aws_parameter_store_endpoint_dto.rs
 src/models/aws_role_arn_auth_dto.rs
