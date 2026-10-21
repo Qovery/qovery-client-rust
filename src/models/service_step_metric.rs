@@ -31,6 +31,8 @@ pub struct ServiceStepMetric {
     /// Steps that ran inside this one. Only set on BUILD. Their time is already part of this step's duration: never add it to a total.
     #[serde(rename = "sub_steps", skip_serializing_if = "Option::is_none")]
     pub sub_steps: Option<Vec<models::ServiceSubStepMetric>>,
+    #[serde(rename = "builder_usage", skip_serializing_if = "Option::is_none")]
+    pub builder_usage: Option<models::BuilderUsage>,
 }
 
 impl ServiceStepMetric {
@@ -41,6 +43,7 @@ impl ServiceStepMetric {
             duration_sec: None,
             started_at: None,
             sub_steps: None,
+            builder_usage: None,
         }
     }
 }
