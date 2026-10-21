@@ -28,6 +28,9 @@ pub struct ServiceStepMetric {
         skip_serializing_if = "Option::is_none"
     )]
     pub started_at: Option<Option<String>>,
+    /// Steps that ran inside this one. Only set on BUILD. Their time is already part of this step's duration: never add it to a total.
+    #[serde(rename = "sub_steps", skip_serializing_if = "Option::is_none")]
+    pub sub_steps: Option<Vec<models::ServiceSubStepMetric>>,
 }
 
 impl ServiceStepMetric {
@@ -37,6 +40,7 @@ impl ServiceStepMetric {
             status: None,
             duration_sec: None,
             started_at: None,
+            sub_steps: None,
         }
     }
 }

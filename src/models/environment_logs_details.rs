@@ -23,6 +23,14 @@ pub struct EnvironmentLogsDetails {
     pub transmitter: Option<models::EnvironmentLogsDetailsTransmitter>,
     #[serde(rename = "stage", skip_serializing_if = "Option::is_none")]
     pub stage: Option<models::EnvironmentLogsDetailsStage>,
+    /// Step of the deployment this line belongs to: REGISTRY_CREATE_REPOSITORY, GIT_CLONE, PROVISION_BUILDER, BUILD, IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT, ROUTER_DEPLOYMENT or EXECUTING. It matches a step's `step_name`, or the `name` of a BUILD sub-step, in the deployment statuses. The phase (build or deploy) is `stage.step`. Absent on older deployments and on pause, delete and restart. Clients must accept values not listed here.
+    #[serde(
+        rename = "step_name",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub step_name: Option<Option<String>>,
 }
 
 impl EnvironmentLogsDetails {
@@ -33,6 +41,7 @@ impl EnvironmentLogsDetails {
             execution_id: None,
             transmitter: None,
             stage: None,
+            step_name: None,
         }
     }
 }
