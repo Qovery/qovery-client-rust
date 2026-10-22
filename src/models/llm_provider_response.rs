@@ -54,6 +54,14 @@ pub struct LlmProviderResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub region: Option<Option<String>>,
+    /// Root of the custom Anthropic-compatible API of an ANTHROPIC_COMPATIBLE provider. Null for CLAUDE and BEDROCK.
+    #[serde(
+        rename = "base_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub base_url: Option<Option<String>>,
 }
 
 impl LlmProviderResponse {
@@ -79,6 +87,7 @@ impl LlmProviderResponse {
             owner_user_sub: None,
             owner_name: None,
             region: None,
+            base_url: None,
         }
     }
 }

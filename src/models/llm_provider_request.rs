@@ -20,7 +20,7 @@ pub struct LlmProviderRequest {
     pub description: Option<String>,
     #[serde(rename = "type")]
     pub r#type: models::LlmProviderType,
-    /// The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it.
+    /// The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it. CLAUDE sends it to Anthropic as an API key. ANTHROPIC_COMPATIBLE sends it to its gateway as a bearer token only, never as an API key.
     #[serde(rename = "credential", skip_serializing_if = "Option::is_none")]
     pub credential: Option<String>,
     /// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER provider requires CREATE_PROJECT. On edit, omitting it leaves the provider's scope unchanged, and stating a scope that differs from the provider's is refused with 400.
@@ -34,6 +34,14 @@ pub struct LlmProviderRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub region: Option<Option<String>>,
+    /// Root of the custom Anthropic-compatible API. Required for an ANTHROPIC_COMPATIBLE provider and refused with 400 for CLAUDE and BEDROCK. It is an absolute HTTP or HTTPS URL with a host and an optional path prefix, and no user info, query or fragment. A port, when given, must be between 1 and 65535. Like region, an edit replaces it: omitting it or sending null is refused for ANTHROPIC_COMPATIBLE, so an edit must resend it.
+    #[serde(
+        rename = "base_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub base_url: Option<Option<String>>,
 }
 
 impl LlmProviderRequest {
@@ -45,6 +53,7 @@ impl LlmProviderRequest {
             credential: None,
             scope: None,
             region: None,
+            base_url: None,
         }
     }
 }

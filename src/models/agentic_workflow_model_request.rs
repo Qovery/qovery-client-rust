@@ -20,7 +20,7 @@ pub struct AgenticWorkflowModelRequest {
     pub api_key: Option<String>,
     #[serde(rename = "settings", skip_serializing_if = "Option::is_none")]
     pub settings: Option<String>,
-    /// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`.
+    /// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`. A provider of type ANTHROPIC_COMPATIBLE matches a workflow `type` of CLAUDE.
     #[serde(
         rename = "llm_provider_id",
         default,

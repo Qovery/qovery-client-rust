@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 > models::LlmProviderResponse edit_llm_provider(llm_provider_id, llm_provider_request)
 Edit an LLM provider
 
-Replace an LLM provider. Sending a blank credential keeps the stored one; sending a nonblank credential rotates it.
+Replace an LLM provider. Sending a blank credential keeps the stored one; sending a nonblank credential rotates it. An ANTHROPIC_COMPATIBLE provider must resend its `base_url`.
 
 ### Parameters
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 > models::LlmProviderModelResponseList list_llm_provider_models(llm_provider_id)
 List the models of an LLM provider
 
-List the models the provider's stored credential can reach, fetched live from the provider. CLAUDE lists Anthropic models; BEDROCK lists Anthropic inference profiles in us-east-1. The credential is never returned. A USER provider can only be listed by its owner.
+List the models the provider's stored credential can reach, fetched live from the provider. CLAUDE lists Anthropic models; BEDROCK lists Anthropic inference profiles in us-east-1; ANTHROPIC_COMPATIBLE lists the models of its custom gateway, whose ids can be any string, including namespaced ones such as `anthropic/claude-sonnet-4`. A model without a display name is listed under its id, and one without a creation date has a null `created_at`. Models are listed for a saved provider only, by its id. The credential is never returned. A USER provider can only be listed by its owner.
 
 ### Parameters
 

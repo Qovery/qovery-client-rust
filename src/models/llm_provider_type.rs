@@ -11,14 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// LlmProviderType : The LLM vendor this provider authenticates against. Matches the type an agentic workflow's inline model already uses.
-/// The LLM vendor this provider authenticates against. Matches the type an agentic workflow's inline model already uses.
+/// LlmProviderType : The LLM vendor this provider authenticates against. CLAUDE and BEDROCK match the type an agentic workflow's inline model already uses. ANTHROPIC_COMPATIBLE is a custom Anthropic-compatible API, such as a gateway, reached at its `base_url`; a workflow that uses it runs as a CLAUDE model.
+/// The LLM vendor this provider authenticates against. CLAUDE and BEDROCK match the type an agentic workflow's inline model already uses. ANTHROPIC_COMPATIBLE is a custom Anthropic-compatible API, such as a gateway, reached at its `base_url`; a workflow that uses it runs as a CLAUDE model.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum LlmProviderType {
     #[serde(rename = "CLAUDE")]
     Claude,
     #[serde(rename = "BEDROCK")]
     Bedrock,
+    #[serde(rename = "ANTHROPIC_COMPATIBLE")]
+    AnthropicCompatible,
 }
 
 impl std::fmt::Display for LlmProviderType {
@@ -26,6 +28,7 @@ impl std::fmt::Display for LlmProviderType {
         match self {
             Self::Claude => write!(f, "CLAUDE"),
             Self::Bedrock => write!(f, "BEDROCK"),
+            Self::AnthropicCompatible => write!(f, "ANTHROPIC_COMPATIBLE"),
         }
     }
 }

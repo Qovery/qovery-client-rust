@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Anthropic model id, or Bedrock inference profile id | 
+**id** | **String** | Anthropic model id, Bedrock inference profile id, or the model id of a custom Anthropic-compatible gateway, which can be any string | 
 **display_name** | **String** |  | 
 **created_at** | Option<**String**> |  | [optional]
 

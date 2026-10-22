@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LlmProviderModelResponse {
-    /// Anthropic model id, or Bedrock inference profile id
+    /// Anthropic model id, Bedrock inference profile id, or the model id of a custom Anthropic-compatible gateway, which can be any string
     #[serde(rename = "id")]
     pub id: String,
     #[serde(rename = "display_name")]
