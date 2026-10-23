@@ -1338,6 +1338,7 @@ Class | Method | HTTP request | Description
  - [PlatformTemplateReleaseStatus](docs/PlatformTemplateReleaseStatus.md)
  - [PlatformTemplateSummaryResponse](docs/PlatformTemplateSummaryResponse.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
+ - [PreCheckStepMetric](docs/PreCheckStepMetric.md)
  - [Probe](docs/Probe.md)
  - [ProbeType](docs/ProbeType.md)
  - [ProbeTypeExec](docs/ProbeTypeExec.md)

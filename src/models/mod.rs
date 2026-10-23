@@ -1480,6 +1480,8 @@ pub mod platform_template_summary_response;
 pub use self::platform_template_summary_response::PlatformTemplateSummaryResponse;
 pub mod port_protocol_enum;
 pub use self::port_protocol_enum::PortProtocolEnum;
+pub mod pre_check_step_metric;
+pub use self::pre_check_step_metric::PreCheckStepMetric;
 pub mod probe;
 pub use self::probe::Probe;
 pub mod probe_type;

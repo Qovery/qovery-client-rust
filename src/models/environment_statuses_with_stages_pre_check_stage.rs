@@ -17,6 +17,9 @@ pub struct EnvironmentStatusesWithStagesPreCheckStage {
     pub status: Option<models::StepMetricStatusEnum>,
     #[serde(rename = "total_duration_sec", skip_serializing_if = "Option::is_none")]
     pub total_duration_sec: Option<i32>,
+    /// One entry per check the pre-check ran, in order. Their time is already part of `total_duration_sec`: never add it to a total.
+    #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
+    pub steps: Option<Vec<models::PreCheckStepMetric>>,
 }
 
 impl EnvironmentStatusesWithStagesPreCheckStage {
@@ -24,6 +27,7 @@ impl EnvironmentStatusesWithStagesPreCheckStage {
         EnvironmentStatusesWithStagesPreCheckStage {
             status: None,
             total_duration_sec: None,
+            steps: None,
         }
     }
 }

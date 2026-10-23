@@ -829,6 +829,7 @@ docs/PlatformTemplateLayerResponse.md
 docs/PlatformTemplateReleaseStatus.md
 docs/PlatformTemplateSummaryResponse.md
 docs/PortProtocolEnum.md
+docs/PreCheckStepMetric.md
 docs/Probe.md
 docs/ProbeType.md
 docs/ProbeTypeExec.md
@@ -1868,6 +1869,7 @@ src/models/platform_template_layer_response.rs
 src/models/platform_template_release_status.rs
 src/models/platform_template_summary_response.rs
 src/models/port_protocol_enum.rs
+src/models/pre_check_step_metric.rs
 src/models/probe.rs
 src/models/probe_type.rs
 src/models/probe_type_exec.rs
