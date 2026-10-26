@@ -17,8 +17,10 @@ pub struct SelfManagedClusterRequest {
     pub name: String,
     #[serde(rename = "production", skip_serializing_if = "Option::is_none")]
     pub production: Option<bool>,
+    /// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
     #[serde(rename = "provider")]
     pub provider: Provider,
+    /// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway.
     #[serde(rename = "region")]
     pub region: String,
     #[serde(rename = "credentials")]
@@ -50,11 +52,15 @@ impl SelfManagedClusterRequest {
         }
     }
 }
-///
+/// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
     #[serde(rename = "AWS")]
     Aws,
+    #[serde(rename = "GCP")]
+    Gcp,
+    #[serde(rename = "SCW")]
+    Scw,
 }
 
 impl Default for Provider {

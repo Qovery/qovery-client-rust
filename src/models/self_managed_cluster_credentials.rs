@@ -11,16 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelfManagedClusterCredentials : AWS cloud credential of the organization that the cluster runs on. This operation only takes and returns its id.
+/// SelfManagedClusterCredentials : Cloud credential of the organization that the cluster runs on, of the same provider as the cluster. This operation only takes and returns its id.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelfManagedClusterCredentials {
-    /// Id of an existing AWS cloud credential of the organization
+    /// Id of an existing cloud credential of the organization
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
 }
 
 impl SelfManagedClusterCredentials {
-    /// AWS cloud credential of the organization that the cluster runs on. This operation only takes and returns its id.
+    /// Cloud credential of the organization that the cluster runs on, of the same provider as the cluster. This operation only takes and returns its id.
     pub fn new(id: uuid::Uuid) -> SelfManagedClusterCredentials {
         SelfManagedClusterCredentials { id }
     }
