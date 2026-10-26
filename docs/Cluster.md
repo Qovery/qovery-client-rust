@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **version** | Option<**String**> |  | [optional]
 **is_default** | Option<**bool**> |  | [optional]
 **is_demo** | Option<**bool**> | specific flag to indicate that this cluster is a demo one | [optional]
+**is_catalog_managed** | Option<**bool**> | True when the cluster's infrastructure is managed by the platform catalog, i.e. a self-managed (BYOK) cluster attached to the Qovery Operator and bound to a platform catalog profile. False otherwise. | [optional][readonly]
 **production** | Option<**bool**> | specific flag to indicate that this cluster is a production one | [optional]
 **ssh_keys** | Option<**Vec<String>**> | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional]
 **features** | Option<[**Vec<models::ClusterFeatureResponse>**](ClusterFeatureResponse.md)> |  | [optional]

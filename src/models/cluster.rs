@@ -71,6 +71,9 @@ pub struct Cluster {
     /// specific flag to indicate that this cluster is a demo one
     #[serde(rename = "is_demo", skip_serializing_if = "Option::is_none")]
     pub is_demo: Option<bool>,
+    /// True when the cluster's infrastructure is managed by the platform catalog, i.e. a self-managed (BYOK) cluster attached to the Qovery Operator and bound to a platform catalog profile. False otherwise.
+    #[serde(rename = "is_catalog_managed", skip_serializing_if = "Option::is_none")]
+    pub is_catalog_managed: Option<bool>,
     /// specific flag to indicate that this cluster is a production one
     #[serde(rename = "production", skip_serializing_if = "Option::is_none")]
     pub production: Option<bool>,
@@ -139,6 +142,7 @@ impl Cluster {
             version: None,
             is_default: None,
             is_demo: None,
+            is_catalog_managed: None,
             production: None,
             ssh_keys: None,
             features: None,
