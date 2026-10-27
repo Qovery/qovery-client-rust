@@ -39,6 +39,12 @@ pub struct Secret {
     /// Entity that created/own the variable (i.e: Qovery, Doppler)
     #[serde(rename = "owned_by", skip_serializing_if = "Option::is_none")]
     pub owned_by: Option<String>,
+    /// True when Qovery created the variable on its own, such as the alias it adds for each output of a job, Terraform service or blueprint. False for variables a user created and for built-in variables, which `variable_type` already identifies. `owned_by` does not tell these apart. It stays true after a user edits the variable. Clients that sync variables, such as the Terraform provider, can leave these variables out.
+    #[serde(
+        rename = "is_created_by_qovery",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub is_created_by_qovery: Option<bool>,
     /// optional variable description (255 characters maximum)
     #[serde(
         rename = "description",
@@ -76,6 +82,7 @@ impl Secret {
             service_name: None,
             service_type: None,
             owned_by: None,
+            is_created_by_qovery: None,
             description: None,
             enable_interpolation_in_file: None,
         }
