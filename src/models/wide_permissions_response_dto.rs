@@ -30,6 +30,13 @@ pub struct WidePermissionsResponseDto {
         skip_serializing_if = "Option::is_none"
     )]
     pub require_wide_access_to_deploy: Option<bool>,
+    #[serde(
+        rename = "slack_webhook_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub slack_webhook_url: Option<Option<String>>,
 }
 
 impl WidePermissionsResponseDto {
@@ -38,6 +45,7 @@ impl WidePermissionsResponseDto {
             using_restrictive_permissions: None,
             wide_scope_cloud_account_id: None,
             require_wide_access_to_deploy: None,
+            slack_webhook_url: None,
         }
     }
 }

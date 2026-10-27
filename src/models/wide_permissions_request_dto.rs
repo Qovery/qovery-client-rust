@@ -25,6 +25,13 @@ pub struct WidePermissionsRequestDto {
         skip_serializing_if = "Option::is_none"
     )]
     pub wide_scope_cloud_account_id: Option<Option<uuid::Uuid>>,
+    #[serde(
+        rename = "slack_webhook_url",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub slack_webhook_url: Option<Option<String>>,
 }
 
 impl WidePermissionsRequestDto {
@@ -32,6 +39,7 @@ impl WidePermissionsRequestDto {
         WidePermissionsRequestDto {
             using_restrictive_permissions: None,
             wide_scope_cloud_account_id: None,
+            slack_webhook_url: None,
         }
     }
 }
