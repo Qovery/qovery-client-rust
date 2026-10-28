@@ -31,7 +31,7 @@ pub struct ContainerAdvancedSettings {
         skip_serializing_if = "Option::is_none"
     )]
     pub deployment_affinity_node_required: Option<std::collections::HashMap<String, String>>,
-    /// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+    /// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Required` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas) * `None` sets no anti-affinity, so pods of a given service can be packed on the same node
     #[serde(
         rename = "deployment.antiaffinity.pod",
         skip_serializing_if = "Option::is_none"
@@ -317,13 +317,15 @@ impl ContainerAdvancedSettings {
         }
     }
 }
-/// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+/// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Required` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas) * `None` sets no anti-affinity, so pods of a given service can be packed on the same node
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum DeploymentAntiaffinityPod {
     #[serde(rename = "Preferred")]
     Preferred,
-    #[serde(rename = "Requirred")]
-    Requirred,
+    #[serde(rename = "Required")]
+    Required,
+    #[serde(rename = "None")]
+    None,
 }
 
 impl Default for DeploymentAntiaffinityPod {
