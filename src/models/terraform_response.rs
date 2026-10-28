@@ -39,6 +39,8 @@ pub struct TerraformResponse {
         skip_serializing_if = "Option::is_none"
     )]
     pub build_settings_editable: Option<bool>,
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
     #[serde(rename = "auto_deploy_config", skip_serializing_if = "Option::is_none")]
     pub auto_deploy_config: Option<models::TerraformAutoDeployConfig>,
     #[serde(
@@ -118,6 +120,7 @@ impl TerraformResponse {
             auto_deploy,
             auto_preview: None,
             build_settings_editable: None,
+            build_settings: None,
             auto_deploy_config: None,
             terraform_files_source: None,
             icon_uri,

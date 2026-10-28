@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **warnings** | Option<[**Vec<models::ServiceEditWarning>**](ServiceEditWarning.md)> | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional]
 **environment** | [**models::ReferenceObject**](ReferenceObject.md) |  | 
 **git_repository** | Option<[**models::ApplicationGitRepository**](ApplicationGitRepository.md)> |  | [optional]
+**build_settings** | Option<[**models::BuildSettings**](BuildSettings.md)> |  | [optional]
 **maximum_cpu** | Option<**i32**> | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu | [optional]
 **maximum_memory** | Option<**i32**> | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB | [optional]
 **maximun_gpu** | Option<**i32**> |  | [optional][default to 0]

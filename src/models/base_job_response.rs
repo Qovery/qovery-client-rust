@@ -24,6 +24,8 @@ pub struct BaseJobResponse {
     pub warnings: Option<Vec<models::ServiceEditWarning>>,
     #[serde(rename = "environment")]
     pub environment: models::ReferenceObject,
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
     /// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
     #[serde(rename = "maximum_cpu")]
     pub maximum_cpu: i32,
@@ -118,6 +120,7 @@ impl BaseJobResponse {
             updated_at: None,
             warnings: None,
             environment,
+            build_settings: None,
             maximum_cpu,
             maximum_memory,
             maximum_gpu,
