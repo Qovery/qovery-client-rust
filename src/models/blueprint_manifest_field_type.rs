@@ -40,6 +40,9 @@ pub struct BlueprintManifestFieldType {
         skip_serializing_if = "Option::is_none"
     )]
     pub max_length: Option<Option<i64>>,
+    /// Optional editor format, only present for string fields that declare one. json selects a JSON editor; the value is still sent and stored as a string, and the API rejects text that is not one valid JSON document. Unknown formats should fall back to the ordinary string editor.
+    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
     /// Lower bound, only present for number fields
     #[serde(
         rename = "min",
@@ -66,6 +69,7 @@ impl BlueprintManifestFieldType {
             pattern: None,
             min_length: None,
             max_length: None,
+            format: None,
             min: None,
             max: None,
         }
