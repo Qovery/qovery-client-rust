@@ -57,6 +57,14 @@ pub struct VariableRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub secret_manager_access_id: Option<Option<uuid::Uuid>>,
+    /// If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false.
+    #[serde(
+        rename = "override_if_exists",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub override_if_exists: Option<Option<bool>>,
 }
 
 impl VariableRequest {
@@ -77,6 +85,7 @@ impl VariableRequest {
             description: None,
             enable_interpolation_in_file: None,
             secret_manager_access_id: None,
+            override_if_exists: None,
         }
     }
 }

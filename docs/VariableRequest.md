@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **description** | Option<**String**> | optional variable description (255 characters maximum) | [optional]
 **enable_interpolation_in_file** | Option<**bool**> |  | [optional]
 **secret_manager_access_id** | Option<**uuid::Uuid**> |  | [optional]
+**override_if_exists** | Option<**bool**> | If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false. | [optional][default to false]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

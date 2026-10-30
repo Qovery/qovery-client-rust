@@ -19,7 +19,7 @@ Method | HTTP request | Description
 > models::VariableResponse create_variable(variable_request)
 Create a variable
 
-- Create a variable with the scope defined in the request body. 
+- Create a variable with the scope defined in the request body. - If a variable with the same key already exists, the call fails with 409. When that variable is at a higher scope (project or environment), set `override_if_exists` to true to create an override of it instead. 
 
 ### Parameters
 
