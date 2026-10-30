@@ -21,7 +21,7 @@ pub enum CreateVariableError {
     Status401(),
     Status403(),
     Status404(),
-    Status409(),
+    Status409(models::VariableConflictResponse),
     UnknownValue(serde_json::Value),
 }
 

@@ -494,6 +494,7 @@ docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsApi.md
+docs/ExistingVariableResponse.md
 docs/ExternalSecretAssociatedServiceResponse.md
 docs/ExternalSecretAssociatedServiceResponseList.md
 docs/FieldSchemaConstraintsResponse.md
@@ -1002,6 +1003,7 @@ docs/UserSignUpResponseList.md
 docs/Value.md
 docs/VariableAlias.md
 docs/VariableAliasRequest.md
+docs/VariableConflictResponse.md
 docs/VariableEditRequest.md
 docs/VariableImport.md
 docs/VariableImportRequest.md
@@ -1569,6 +1571,7 @@ src/models/environment_variable_edit_request.rs
 src/models/environment_variable_override.rs
 src/models/environment_variable_request.rs
 src/models/environment_variable_response_list.rs
+src/models/existing_variable_response.rs
 src/models/external_secret_associated_service_response.rs
 src/models/external_secret_associated_service_response_list.rs
 src/models/field_schema_constraints_response.rs
@@ -2025,6 +2028,7 @@ src/models/user_sign_up_response_list.rs
 src/models/value.rs
 src/models/variable_alias.rs
 src/models/variable_alias_request.rs
+src/models/variable_conflict_response.rs
 src/models/variable_edit_request.rs
 src/models/variable_import.rs
 src/models/variable_import_request.rs
