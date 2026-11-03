@@ -65,6 +65,14 @@ pub struct VariableRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub override_if_exists: Option<Option<bool>>,
+    /// Optional JSON member/index path, only supported for `EXTERNAL_SECRET` variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example `accounts.0.password`. Escape literal dots with `\\.` and backslashes with `\\\\`; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Omit or set to null to read the whole secret.
+    #[serde(
+        rename = "json_target_key",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub json_target_key: Option<Option<String>>,
 }
 
 impl VariableRequest {
@@ -86,6 +94,7 @@ impl VariableRequest {
             enable_interpolation_in_file: None,
             secret_manager_access_id: None,
             override_if_exists: None,
+            json_target_key: None,
         }
     }
 }

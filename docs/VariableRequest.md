@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **enable_interpolation_in_file** | Option<**bool**> |  | [optional]
 **secret_manager_access_id** | Option<**uuid::Uuid**> |  | [optional]
 **override_if_exists** | Option<**bool**> | If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false. | [optional][default to false]
+**json_target_key** | Option<**String**> | Optional JSON member/index path, only supported for `EXTERNAL_SECRET` variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example `accounts.0.password`. Escape literal dots with `\\.` and backslashes with `\\\\`; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Omit or set to null to read the whole secret. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
