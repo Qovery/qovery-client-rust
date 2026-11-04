@@ -27,6 +27,14 @@ pub struct Healthcheck {
         skip_serializing_if = "Option::is_none"
     )]
     pub liveness_probe: Option<Option<models::Probe>>,
+    /// Optional probe checking that the container has started. Kubernetes runs the readiness and liveness probes only once it succeeds, so a slow start does not trip the liveness probe. Omitted or null means no startup probe. Like the other probes, an edit that leaves it out removes it.
+    #[serde(
+        rename = "startup_probe",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub startup_probe: Option<Option<models::Probe>>,
 }
 
 impl Healthcheck {
@@ -34,6 +42,7 @@ impl Healthcheck {
         Healthcheck {
             readiness_probe: None,
             liveness_probe: None,
+            startup_probe: None,
         }
     }
 }
