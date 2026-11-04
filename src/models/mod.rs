@@ -1298,6 +1298,8 @@ pub mod on_premise_credentials_request;
 pub use self::on_premise_credentials_request::OnPremiseCredentialsRequest;
 pub mod organization;
 pub use self::organization::Organization;
+pub mod organization_ai_features_request;
+pub use self::organization_ai_features_request::OrganizationAiFeaturesRequest;
 pub mod organization_all_of_organization_plan;
 pub use self::organization_all_of_organization_plan::OrganizationAllOfOrganizationPlan;
 pub mod organization_annotations_group_associated_items_response_list;

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**delete_organization**](OrganizationMainCallsApi.md#delete_organization) | **DELETE** /organization/{organizationId} | Delete an organization
 [**edit_git_token**](OrganizationMainCallsApi.md#edit_git_token) | **PUT** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 [**edit_organization**](OrganizationMainCallsApi.md#edit_organization) | **PUT** /organization/{organizationId} | Edit an organization
+[**edit_organization_ai_features**](OrganizationMainCallsApi.md#edit_organization_ai_features) | **PUT** /organization/{organizationId}/aiFeatures | Edit the organization's AI features opt-in
 [**get_container_registry_associated_services**](OrganizationMainCallsApi.md#get_container_registry_associated_services) | **GET** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
 [**get_git_token_associated_services**](OrganizationMainCallsApi.md#get_git_token_associated_services) | **GET** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
 [**get_helm_repository_associated_services**](OrganizationMainCallsApi.md#get_helm_repository_associated_services) | **GET** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
@@ -190,6 +191,37 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **organization_id** | **uuid::Uuid** | Organization ID | [required] |
 **organization_edit_request** | Option<[**OrganizationEditRequest**](OrganizationEditRequest.md)> |  |  |
+
+### Return type
+
+[**models::Organization**](Organization.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## edit_organization_ai_features
+
+> models::Organization edit_organization_ai_features(organization_id, organization_ai_features_request)
+Edit the organization's AI features opt-in
+
+To edit the AI features opt-in you must have the admin permission.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**organization_ai_features_request** | Option<[**OrganizationAiFeaturesRequest**](OrganizationAiFeaturesRequest.md)> |  |  |
 
 ### Return type
 

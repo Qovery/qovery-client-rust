@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **owner** | Option<**uuid::Uuid**> | uuid of the user owning the organization | [optional]
 **billing_deployment_restriction** | Option<**String**> | If set, indicates a billing-related restriction on the organization. 'NO_CREDIT_CARD' means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction. | [optional]
 **has_enterprise_connection** | Option<**bool**> | Indicates if the organization uses SAML or OIDC | [optional]
+**ai_features_enabled_by_default** | Option<**bool**> | Initial value of `ai_features_enabled`, fixed at creation. | [optional]
+**ai_features_enabled** | Option<**bool**> | Whether the organization opted in to AI features (DevOps Copilot, build analysis). Starts at `ai_features_enabled_by_default`. | [optional]
 **organization_plan** | Option<[**models::OrganizationAllOfOrganizationPlan**](OrganizationAllOfOrganizationPlan.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

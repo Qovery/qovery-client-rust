@@ -726,6 +726,7 @@ docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesApi.md
+docs/OrganizationAiFeaturesRequest.md
 docs/OrganizationAllOfOrganizationPlan.md
 docs/OrganizationAnnotationsGroupApi.md
 docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md
@@ -1780,6 +1781,7 @@ src/models/object_field_schema_response.rs
 src/models/observability_resource_profile.rs
 src/models/on_premise_credentials_request.rs
 src/models/organization.rs
+src/models/organization_ai_features_request.rs
 src/models/organization_all_of_organization_plan.rs
 src/models/organization_annotations_group_associated_items_response_list.rs
 src/models/organization_annotations_group_associated_items_response_list_results_inner.rs

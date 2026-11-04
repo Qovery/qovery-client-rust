@@ -76,6 +76,18 @@ pub struct Organization {
         skip_serializing_if = "Option::is_none"
     )]
     pub has_enterprise_connection: Option<bool>,
+    /// Initial value of `ai_features_enabled`, fixed at creation.
+    #[serde(
+        rename = "ai_features_enabled_by_default",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ai_features_enabled_by_default: Option<bool>,
+    /// Whether the organization opted in to AI features (DevOps Copilot, build analysis). Starts at `ai_features_enabled_by_default`.
+    #[serde(
+        rename = "ai_features_enabled",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ai_features_enabled: Option<bool>,
     #[serde(rename = "organization_plan", skip_serializing_if = "Option::is_none")]
     pub organization_plan: Option<models::OrganizationAllOfOrganizationPlan>,
 }
@@ -101,6 +113,8 @@ impl Organization {
             owner: None,
             billing_deployment_restriction: None,
             has_enterprise_connection: None,
+            ai_features_enabled_by_default: None,
+            ai_features_enabled: None,
             organization_plan: None,
         }
     }
