@@ -65,6 +65,7 @@ docs/ApiVariableTypeEnum.md
 docs/Application.md
 docs/ApplicationActionsApi.md
 docs/ApplicationAdvancedSettings.md
+docs/ApplicationBuildAnalysisApi.md
 docs/ApplicationConfigurationApi.md
 docs/ApplicationCustomDomainApi.md
 docs/ApplicationDeploymentHistoryApi.md
@@ -180,6 +181,15 @@ docs/BlueprintUpdateUpdatedValue.md
 docs/BlueprintUpdateVariableValue.md
 docs/BlueprintVariableRequest.md
 docs/Budget.md
+docs/BuildAnalysisAsset.md
+docs/BuildAnalysisConfidence.md
+docs/BuildAnalysisDockerfileSource.md
+docs/BuildAnalysisFailureCode.md
+docs/BuildAnalysisResponse.md
+docs/BuildAnalysisResult.md
+docs/BuildAnalysisState.md
+docs/BuildAnalysisStatus.md
+docs/BuildAnalysisTimeSaved.md
 docs/BuildModeEnum.md
 docs/BuildSettings.md
 docs/BuilderUsage.md
@@ -611,6 +621,7 @@ docs/InvoiceStatusEnum.md
 docs/IpsApi.md
 docs/JobActionsApi.md
 docs/JobAdvancedSettings.md
+docs/JobBuildAnalysisApi.md
 docs/JobConfigurationApi.md
 docs/JobCronSchedule.md
 docs/JobDeployRequest.md
@@ -1030,6 +1041,7 @@ src/apis/agentic_workflows_api.rs
 src/apis/alert_receivers_api.rs
 src/apis/alert_rules_api.rs
 src/apis/application_actions_api.rs
+src/apis/application_build_analysis_api.rs
 src/apis/application_configuration_api.rs
 src/apis/application_custom_domain_api.rs
 src/apis/application_deployment_history_api.rs
@@ -1086,6 +1098,7 @@ src/apis/helm_repositories_api.rs
 src/apis/helms_api.rs
 src/apis/ips_api.rs
 src/apis/job_actions_api.rs
+src/apis/job_build_analysis_api.rs
 src/apis/job_configuration_api.rs
 src/apis/job_deployment_history_api.rs
 src/apis/job_deployment_restriction_api.rs
@@ -1289,6 +1302,15 @@ src/models/blueprint_update_updated_value.rs
 src/models/blueprint_update_variable_value.rs
 src/models/blueprint_variable_request.rs
 src/models/budget.rs
+src/models/build_analysis_asset.rs
+src/models/build_analysis_confidence.rs
+src/models/build_analysis_dockerfile_source.rs
+src/models/build_analysis_failure_code.rs
+src/models/build_analysis_response.rs
+src/models/build_analysis_result.rs
+src/models/build_analysis_state.rs
+src/models/build_analysis_status.rs
+src/models/build_analysis_time_saved.rs
 src/models/build_mode_enum.rs
 src/models/build_settings.rs
 src/models/builder_usage.rs
