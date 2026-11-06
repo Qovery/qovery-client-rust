@@ -4,7 +4,6 @@
 
 | Name | Value |
 |---- | -----|
-| CopilotDisabled | COPILOT_DISABLED |
 | ModelError | MODEL_ERROR |
 | Timeout | TIMEOUT |
 | InternalError | INTERNAL_ERROR |

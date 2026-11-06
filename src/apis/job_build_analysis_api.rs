@@ -23,6 +23,20 @@ pub enum GetJobBuildAnalysisError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`start_job_build_analysis`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum StartJobBuildAnalysisError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    Status422(),
+    Status503(),
+    UnknownValue(serde_json::Value),
+}
+
 /// Returns the latest build of the service that can be analysed and its latest analysis, if any. Only one analysis is kept per service.
 pub async fn get_job_build_analysis(
     configuration: &configuration::Configuration,
@@ -74,6 +88,70 @@ pub async fn get_job_build_analysis(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetJobBuildAnalysisError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Starts an AI analysis of the latest build of the service. It runs in the background and reports its progress on the websocket route `/build/analysis`. The result gives a confidence, the estimated time saved, what was reviewed, a summary, the improvements to make, a prompt for the customer's own AI agent, and a reworked Dockerfile when an improvement is a Dockerfile change. Starting an analysis replaces the previous one. It never changes the build or the image.
+pub async fn start_job_build_analysis(
+    configuration: &configuration::Configuration,
+    job_id: &str,
+    build_analysis_start_request: models::BuildAnalysisStartRequest,
+) -> Result<models::BuildAnalysisResponse, Error<StartJobBuildAnalysisError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_job_id = job_id;
+    let p_body_build_analysis_start_request = build_analysis_start_request;
+
+    let uri_str = format!(
+        "{}/job/{jobId}/buildAnalysis",
+        configuration.base_path,
+        jobId = crate::apis::urlencode(p_path_job_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_build_analysis_start_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::BuildAnalysisResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::BuildAnalysisResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<StartJobBuildAnalysisError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

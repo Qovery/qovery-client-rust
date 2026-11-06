@@ -11,16 +11,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// BuildAnalysisDockerfileSource : Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job, PASTE a Dockerfile pasted by the user.
-/// Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job, PASTE a Dockerfile pasted by the user.
+/// BuildAnalysisDockerfileSource : Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job.
+/// Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum BuildAnalysisDockerfileSource {
     #[serde(rename = "GIT")]
     Git,
     #[serde(rename = "INLINE")]
     Inline,
-    #[serde(rename = "PASTE")]
-    Paste,
 }
 
 impl std::fmt::Display for BuildAnalysisDockerfileSource {
@@ -28,7 +26,6 @@ impl std::fmt::Display for BuildAnalysisDockerfileSource {
         match self {
             Self::Git => write!(f, "GIT"),
             Self::Inline => write!(f, "INLINE"),
-            Self::Paste => write!(f, "PASTE"),
         }
     }
 }

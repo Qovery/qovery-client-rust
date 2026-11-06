@@ -328,6 +328,8 @@ pub mod build_analysis_response;
 pub use self::build_analysis_response::BuildAnalysisResponse;
 pub mod build_analysis_result;
 pub use self::build_analysis_result::BuildAnalysisResult;
+pub mod build_analysis_start_request;
+pub use self::build_analysis_start_request::BuildAnalysisStartRequest;
 pub mod build_analysis_state;
 pub use self::build_analysis_state::BuildAnalysisState;
 pub mod build_analysis_status;

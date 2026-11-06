@@ -11,12 +11,10 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// BuildAnalysisFailureCode : COPILOT_DISABLED when the organization opted out of AI features, MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
-/// COPILOT_DISABLED when the organization opted out of AI features, MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
+/// BuildAnalysisFailureCode : MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
+/// MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum BuildAnalysisFailureCode {
-    #[serde(rename = "COPILOT_DISABLED")]
-    CopilotDisabled,
     #[serde(rename = "MODEL_ERROR")]
     ModelError,
     #[serde(rename = "TIMEOUT")]
@@ -28,7 +26,6 @@ pub enum BuildAnalysisFailureCode {
 impl std::fmt::Display for BuildAnalysisFailureCode {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::CopilotDisabled => write!(f, "COPILOT_DISABLED"),
             Self::ModelError => write!(f, "MODEL_ERROR"),
             Self::Timeout => write!(f, "TIMEOUT"),
             Self::InternalError => write!(f, "INTERNAL_ERROR"),
@@ -38,6 +35,6 @@ impl std::fmt::Display for BuildAnalysisFailureCode {
 
 impl Default for BuildAnalysisFailureCode {
     fn default() -> BuildAnalysisFailureCode {
-        Self::CopilotDisabled
+        Self::ModelError
     }
 }

@@ -187,6 +187,7 @@ docs/BuildAnalysisDockerfileSource.md
 docs/BuildAnalysisFailureCode.md
 docs/BuildAnalysisResponse.md
 docs/BuildAnalysisResult.md
+docs/BuildAnalysisStartRequest.md
 docs/BuildAnalysisState.md
 docs/BuildAnalysisStatus.md
 docs/BuildAnalysisTimeSaved.md
@@ -1308,6 +1309,7 @@ src/models/build_analysis_dockerfile_source.rs
 src/models/build_analysis_failure_code.rs
 src/models/build_analysis_response.rs
 src/models/build_analysis_result.rs
+src/models/build_analysis_start_request.rs
 src/models/build_analysis_state.rs
 src/models/build_analysis_status.rs
 src/models/build_analysis_time_saved.rs

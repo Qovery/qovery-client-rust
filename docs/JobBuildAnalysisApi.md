@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_job_build_analysis**](JobBuildAnalysisApi.md#get_job_build_analysis) | **GET** /job/{jobId}/buildAnalysis | Get the build analysis of a job
+[**start_job_build_analysis**](JobBuildAnalysisApi.md#start_job_build_analysis) | **POST** /job/{jobId}/buildAnalysis | Analyse the latest build of a job
 
 
 
@@ -33,6 +34,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## start_job_build_analysis
+
+> models::BuildAnalysisResponse start_job_build_analysis(job_id, build_analysis_start_request)
+Analyse the latest build of a job
+
+Starts an AI analysis of the latest build of the service. It runs in the background and reports its progress on the websocket route `/build/analysis`. The result gives a confidence, the estimated time saved, what was reviewed, a summary, the improvements to make, a prompt for the customer's own AI agent, and a reworked Dockerfile when an improvement is a Dockerfile change. Starting an analysis replaces the previous one. It never changes the build or the image.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**job_id** | **uuid::Uuid** | Job ID | [required] |
+**build_analysis_start_request** | [**BuildAnalysisStartRequest**](BuildAnalysisStartRequest.md) |  | [required] |
+
+### Return type
+
+[**models::BuildAnalysisResponse**](BuildAnalysisResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
