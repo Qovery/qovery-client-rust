@@ -10,8 +10,10 @@ Method | HTTP request | Description
 
 ## export_environment_configuration_into_terraform
 
-> std::path::PathBuf export_environment_configuration_into_terraform(environment_id, export_secrets)
+> std::path::PathBuf export_environment_configuration_into_terraform(environment_id)
 Export full environment and its resources into Terraform manifests
+
+Secret values are never included in the export. Service secrets are preserved as empty input variables marked Redacted. Cloud, Git, registry and cluster credentials must be supplied through input variables without defaults.
 
 ### Parameters
 
@@ -19,7 +21,6 @@ Export full environment and its resources into Terraform manifests
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **environment_id** | **uuid::Uuid** | Environment ID | [required] |
-**export_secrets** | Option<**bool**> | export Secrets from configuration and include them into Terraform export |  |[default to false]
 
 ### Return type
 
