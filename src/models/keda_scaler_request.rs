@@ -19,8 +19,10 @@ pub struct KedaScalerRequest {
     pub enabled: Option<bool>,
     #[serde(rename = "role")]
     pub role: models::KedaScalerRole,
+    /// Scaler `metadata` only, as an object of string values, e.g. `{\"query\": \"...\", \"threshold\": \"10\"}`. Other trigger fields (`name`, `metricType`, `useCachedMetrics`) cannot be set here: use `config_yaml`. Exactly one of `config_json` and `config_yaml` must be set.
     #[serde(rename = "config_json", skip_serializing_if = "Option::is_none")]
     pub config_json: Option<serde_json::Value>,
+    /// Body of the KEDA trigger as YAML, without `type` (set from `scaler_type`) and `authenticationRef` (set from `trigger_authentication`). Scaler settings go under `metadata:`; `name`, `metricType` and `useCachedMetrics` can be set next to it. Exactly one of `config_json` and `config_yaml` must be set.
     #[serde(rename = "config_yaml", skip_serializing_if = "Option::is_none")]
     pub config_yaml: Option<String>,
     #[serde(
