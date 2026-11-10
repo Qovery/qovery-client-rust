@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KedaScalerRequest {
+    /// Id of an existing scaler of this policy, as returned in KedaScalerResponse. The scaler and its inline trigger authentication are then updated in place, keeping the trigger authentication name. When omitted or not matching a scaler of this policy, a new scaler is created. Existing scalers missing from the request are deleted.
+    #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
+    pub id: Option<uuid::Uuid>,
     #[serde(rename = "scaler_type")]
     pub scaler_type: String,
     #[serde(rename = "enabled", skip_serializing_if = "Option::is_none")]
@@ -35,6 +38,7 @@ pub struct KedaScalerRequest {
 impl KedaScalerRequest {
     pub fn new(scaler_type: String, role: models::KedaScalerRole) -> KedaScalerRequest {
         KedaScalerRequest {
+            id: None,
             scaler_type,
             enabled: None,
             role,

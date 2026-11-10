@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | Option<**uuid::Uuid**> | Id of an existing scaler of this policy, as returned in KedaScalerResponse. The scaler and its inline trigger authentication are then updated in place, keeping the trigger authentication name. When omitted or not matching a scaler of this policy, a new scaler is created. Existing scalers missing from the request are deleted. | [optional]
 **scaler_type** | **String** |  | 
 **enabled** | Option<**bool**> |  | [optional]
 **role** | [**models::KedaScalerRole**](KedaScalerRole.md) |  | 
