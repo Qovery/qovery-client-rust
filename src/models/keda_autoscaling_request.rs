@@ -25,6 +25,30 @@ pub struct KedaAutoscalingRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub cooldown_period_seconds: Option<i32>,
+    /// KEDA ScaledObject `initialCooldownPeriod`: seconds to wait after the ScaledObject is created before the service can scale to zero. Omitted or null leaves KEDA's default (0).
+    #[serde(
+        rename = "initial_cooldown_period_seconds",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub initial_cooldown_period_seconds: Option<Option<i32>>,
+    /// KEDA ScaledObject `idleReplicaCount`: replicas to keep while no trigger is active. Only 0 is supported by KEDA, and it must be strictly less than the service's minimum running instances. Omitted or null disables the idle state.
+    #[serde(
+        rename = "idle_replica_count",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub idle_replica_count: Option<Option<i32>>,
+    /// Raw YAML of the KEDA ScaledObject `advanced` field, e.g. `horizontalPodAutoscalerConfig.behavior` to tune how fast the HPA scales up and down. Must be a YAML mapping whose top-level keys are among `horizontalPodAutoscalerConfig`, `restoreToOriginalReplicaCount` and `scalingModifiers`. Omitted, null or blank means no advanced settings.
+    #[serde(
+        rename = "advanced_yaml",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub advanced_yaml: Option<Option<String>>,
     #[serde(rename = "scalers")]
     pub scalers: Vec<models::KedaScalerRequest>,
 }
@@ -38,6 +62,9 @@ impl KedaAutoscalingRequest {
             mode,
             polling_interval_seconds: None,
             cooldown_period_seconds: None,
+            initial_cooldown_period_seconds: None,
+            idle_replica_count: None,
+            advanced_yaml: None,
             scalers,
         }
     }
