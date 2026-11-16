@@ -58,6 +58,9 @@ pub struct AgenticWorkflowRequest {
     pub governance: Option<models::AgenticWorkflowGovernance>,
     #[serde(rename = "resources", skip_serializing_if = "Option::is_none")]
     pub resources: Option<models::AgenticWorkflowResources>,
+    /// How the webhook authenticates its callers. Omit it to keep the current configuration on edit; a new workflow then uses NONE.
+    #[serde(rename = "webhook_auth", skip_serializing_if = "Option::is_none")]
+    pub webhook_auth: Option<models::AgenticWorkflowWebhookAuthRequest>,
     /// Cron schedule firing runs of this workflow, on top of the webhook every workflow already has. Omit it, or send null, for a webhook-only workflow.
     #[serde(
         rename = "schedule",
@@ -88,6 +91,7 @@ impl AgenticWorkflowRequest {
             agent_prompt: None,
             governance: None,
             resources: None,
+            webhook_auth: None,
             schedule: None,
             execution_mode: None,
         }

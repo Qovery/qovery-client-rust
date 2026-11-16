@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **governance** | [**models::AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **resources** | [**models::AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **webhook** | [**models::AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**webhook_auth** | [**models::AgenticWorkflowWebhookAuthResponse**](AgenticWorkflowWebhookAuthResponse.md) |  | 
 **schedule** | Option<[**models::AgenticWorkflowScheduleResponse**](AgenticWorkflowScheduleResponse.md)> | Cron schedule firing runs of this workflow. Null when the workflow is webhook-only. | 
 **execution_mode** | [**models::AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | 
 **icon_uri** | Option<**String**> | Icon URI representing the agentic workflow. | [optional]

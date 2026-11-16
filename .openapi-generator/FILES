@@ -27,6 +27,9 @@ docs/AgenticWorkflowRunTrigger.md
 docs/AgenticWorkflowScheduleRequest.md
 docs/AgenticWorkflowScheduleResponse.md
 docs/AgenticWorkflowWebhook.md
+docs/AgenticWorkflowWebhookAuthMode.md
+docs/AgenticWorkflowWebhookAuthRequest.md
+docs/AgenticWorkflowWebhookAuthResponse.md
 docs/AgenticWorkflowsApi.md
 docs/AksInfrastructureOutputs.md
 docs/AlertPresentation.md
@@ -1166,6 +1169,9 @@ src/models/agentic_workflow_run_trigger.rs
 src/models/agentic_workflow_schedule_request.rs
 src/models/agentic_workflow_schedule_response.rs
 src/models/agentic_workflow_webhook.rs
+src/models/agentic_workflow_webhook_auth_mode.rs
+src/models/agentic_workflow_webhook_auth_request.rs
+src/models/agentic_workflow_webhook_auth_response.rs
 src/models/aks_infrastructure_outputs.rs
 src/models/alert_presentation.rs
 src/models/alert_presentation_response.rs
