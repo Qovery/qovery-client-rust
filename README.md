@@ -481,6 +481,7 @@ Class | Method | HTTP request | Description
 *OrganizationApiTokenApi* | [**delete_organization_api_token**](docs/OrganizationApiTokenApi.md#delete_organization_api_token) | **DELETE** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
 *OrganizationApiTokenApi* | [**list_organization_api_tokens**](docs/OrganizationApiTokenApi.md#list_organization_api_tokens) | **GET** /organization/{organizationId}/apiToken | List organization api tokens
 *OrganizationClusterLockApi* | [**list_cluster_lock**](docs/OrganizationClusterLockApi.md#list_cluster_lock) | **GET** /organization/{organizationId}/lock | List locked Cluster by organization
+*OrganizationCustomDomainApi* | [**list_organization_custom_domain**](docs/OrganizationCustomDomainApi.md#list_organization_custom_domain) | **GET** /organization/{organizationId}/customDomain | List organization custom domains
 *OrganizationCustomRoleApi* | [**create_organization_custom_role**](docs/OrganizationCustomRoleApi.md#create_organization_custom_role) | **POST** /organization/{organizationId}/customRole | Create an organization custom role
 *OrganizationCustomRoleApi* | [**delete_organization_custom_role**](docs/OrganizationCustomRoleApi.md#delete_organization_custom_role) | **DELETE** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
 *OrganizationCustomRoleApi* | [**edit_organization_custom_role**](docs/OrganizationCustomRoleApi.md#edit_organization_custom_role) | **PUT** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
@@ -937,8 +938,13 @@ Class | Method | HTTP request | Description
  - [CronJobResponseAllOfScheduleCronjob](docs/CronJobResponseAllOfScheduleCronjob.md)
  - [CurrentCost](docs/CurrentCost.md)
  - [CustomDomain](docs/CustomDomain.md)
+ - [CustomDomainEnvironmentResponse](docs/CustomDomainEnvironmentResponse.md)
+ - [CustomDomainPortResponse](docs/CustomDomainPortResponse.md)
+ - [CustomDomainProjectResponse](docs/CustomDomainProjectResponse.md)
  - [CustomDomainRequest](docs/CustomDomainRequest.md)
  - [CustomDomainResponseList](docs/CustomDomainResponseList.md)
+ - [CustomDomainRouteResponse](docs/CustomDomainRouteResponse.md)
+ - [CustomDomainServiceResponse](docs/CustomDomainServiceResponse.md)
  - [CustomDomainStatusEnum](docs/CustomDomainStatusEnum.md)
  - [Database](docs/Database.md)
  - [DatabaseAccessibilityEnum](docs/DatabaseAccessibilityEnum.md)
@@ -1041,6 +1047,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentOverviewResponse](docs/EnvironmentOverviewResponse.md)
  - [EnvironmentOverviewResponseList](docs/EnvironmentOverviewResponseList.md)
  - [EnvironmentResponseList](docs/EnvironmentResponseList.md)
+ - [EnvironmentRoutingModeEnum](docs/EnvironmentRoutingModeEnum.md)
  - [EnvironmentServiceIdsAllRequest](docs/EnvironmentServiceIdsAllRequest.md)
  - [EnvironmentStats](docs/EnvironmentStats.md)
  - [EnvironmentStatsResponseList](docs/EnvironmentStatsResponseList.md)
@@ -1289,6 +1296,8 @@ Class | Method | HTTP request | Description
  - [OrganizationCrendentialsResponseList](docs/OrganizationCrendentialsResponseList.md)
  - [OrganizationCrendentialsResponseListResultsInner](docs/OrganizationCrendentialsResponseListResultsInner.md)
  - [OrganizationCurrentCost](docs/OrganizationCurrentCost.md)
+ - [OrganizationCustomDomainPaginatedResponseList](docs/OrganizationCustomDomainPaginatedResponseList.md)
+ - [OrganizationCustomDomainResponse](docs/OrganizationCustomDomainResponse.md)
  - [OrganizationCustomRole](docs/OrganizationCustomRole.md)
  - [OrganizationCustomRoleClusterPermission](docs/OrganizationCustomRoleClusterPermission.md)
  - [OrganizationCustomRoleClusterPermissionsInner](docs/OrganizationCustomRoleClusterPermissionsInner.md)
