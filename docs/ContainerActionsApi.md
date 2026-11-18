@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > models::Status deploy_container(container_id, container_deploy_request)
 Deploy container
 
-You must provide a container image tag
+For a container with an image source, you must provide a container image tag in `image_tag`. For a container with a Git repository source, you can provide a commit in `git_commit_id`.  Returns 400 when: - `image_tag` is sent for a container with a Git repository source, or `git_commit_id` for a container with an image source. 
 
 ### Parameters
 

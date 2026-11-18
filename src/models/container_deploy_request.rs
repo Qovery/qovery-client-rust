@@ -20,7 +20,7 @@ pub struct ContainerDeployRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub id: Option<Option<uuid::Uuid>>,
-    /// Image tag to deploy
+    /// Image tag to deploy, for a container with an image source. Sending it for a container with a Git repository source returns 400. A `null` value counts as not sent.
     #[serde(
         rename = "image_tag",
         default,
@@ -28,6 +28,14 @@ pub struct ContainerDeployRequest {
         skip_serializing_if = "Option::is_none"
     )]
     pub image_tag: Option<Option<String>>,
+    /// Commit to deploy, for a container with a Git repository source. When not specified, the container's stored commit is deployed. Sending it for a container with an image source returns 400. A `null` value counts as not sent.
+    #[serde(
+        rename = "git_commit_id",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub git_commit_id: Option<Option<String>>,
 }
 
 impl ContainerDeployRequest {
@@ -35,6 +43,7 @@ impl ContainerDeployRequest {
         ContainerDeployRequest {
             id: None,
             image_tag: None,
+            git_commit_id: None,
         }
     }
 }

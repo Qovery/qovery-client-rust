@@ -16,7 +16,7 @@ pub struct DeployAllRequestContainersInner {
     /// id of the container to be updated.
     #[serde(rename = "id")]
     pub id: uuid::Uuid,
-    /// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
+    /// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)  For a container with a Git repository source: - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at its stored commit; - a different `image_tag` returns 400.
     #[serde(rename = "image_tag", skip_serializing_if = "Option::is_none")]
     pub image_tag: Option<String>,
 }

@@ -99,7 +99,7 @@ pub enum PreviewContainerEnvironmentsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Triggers a new container deploy in each environment matching the following conditions - environment should have the auto-deploy enabled - the container should have the same image name and a different tag
+/// Triggers a new container deploy in each environment matching the following conditions - environment should have the auto-deploy enabled - the container should have the same image name and a different tag - the container should have an image source: containers with a Git repository source are skipped
 pub async fn auto_deploy_container_environments(
     configuration: &configuration::Configuration,
     organization_id: &str,
@@ -231,6 +231,7 @@ pub async fn clone_container(
     }
 }
 
+/// A container is created from an image: send `registry_id`, `image_name` and `tag`, or `source.image`.  Returns 400 when: - `source.git_repository` is sent: a Git repository source can only be set on update, with `PUT /container/{containerId}`; - `source` is sent together with `registry_id`, `image_name` or `tag`; - `source` has both `image` and `git_repository`, or neither; - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent; - `build_settings` is sent.
 pub async fn create_container(
     configuration: &configuration::Configuration,
     environment_id: &str,
@@ -533,7 +534,7 @@ pub async fn list_container(
     }
 }
 
-/// Triggers a new container preview for each environment matching the following conditions - preview environment feature should be enabled for the container - the container should have the same image name and a different tag
+/// Triggers a new container preview for each environment matching the following conditions - preview environment feature should be enabled for the container - the container should have the same image name and a different tag - the container should have an image source: containers with a Git repository source are skipped
 pub async fn preview_container_environments(
     configuration: &configuration::Configuration,
     organization_id: &str,

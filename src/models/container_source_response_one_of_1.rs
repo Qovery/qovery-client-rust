@@ -12,13 +12,15 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct BaseJobResponseAllOfSourceOneOf1 {
-    #[serde(rename = "docker")]
-    pub docker: models::JobSourceDockerResponse,
+pub struct ContainerSourceResponseOneOf1 {
+    #[serde(rename = "git_repository")]
+    pub git_repository: models::ContainerGitRepositorySourceResponse,
 }
 
-impl BaseJobResponseAllOfSourceOneOf1 {
-    pub fn new(docker: models::JobSourceDockerResponse) -> BaseJobResponseAllOfSourceOneOf1 {
-        BaseJobResponseAllOfSourceOneOf1 { docker }
+impl ContainerSourceResponseOneOf1 {
+    pub fn new(
+        git_repository: models::ContainerGitRepositorySourceResponse,
+    ) -> ContainerSourceResponseOneOf1 {
+        ContainerSourceResponseOneOf1 { git_repository }
     }
 }

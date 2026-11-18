@@ -23,15 +23,17 @@ pub struct ContainerRequest {
     /// give a description to this container
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// id of the linked registry
-    #[serde(rename = "registry_id")]
-    pub registry_id: String,
-    /// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
-    #[serde(rename = "image_name")]
-    pub image_name: String,
-    /// tag of the image container
-    #[serde(rename = "tag")]
-    pub tag: String,
+    /// id of the linked registry. Required on create unless `source` is sent. See `source` for the rules on update.
+    #[serde(rename = "registry_id", skip_serializing_if = "Option::is_none")]
+    pub registry_id: Option<String>,
+    /// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`  Required on create unless `source` is sent. See `source` for the rules on update.
+    #[serde(rename = "image_name", skip_serializing_if = "Option::is_none")]
+    pub image_name: Option<String>,
+    /// tag of the image container. Required on create unless `source` is sent. See `source` for the rules on update.
+    #[serde(rename = "tag", skip_serializing_if = "Option::is_none")]
+    pub tag: Option<String>,
+    #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
+    pub source: Option<models::ContainerSourceRequest>,
     #[serde(rename = "arguments", skip_serializing_if = "Option::is_none")]
     pub arguments: Option<Vec<String>>,
     /// optional entrypoint when launching container
@@ -73,10 +75,10 @@ pub struct ContainerRequest {
     pub max_running_instances: Option<i32>,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
-    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
+    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
-    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
+    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
     #[serde(
         rename = "auto_deploy",
         default,
@@ -93,24 +95,22 @@ pub struct ContainerRequest {
     pub icon_uri: Option<String>,
     #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
+    /// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a switch to `git_repository` without it, the defaults of a new application are used. - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
+    #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
+    pub build_settings: Option<models::BuildSettings>,
 }
 
 impl ContainerRequest {
-    pub fn new(
-        name: String,
-        registry_id: String,
-        image_name: String,
-        tag: String,
-        healthchecks: models::Healthcheck,
-    ) -> ContainerRequest {
+    pub fn new(name: String, healthchecks: models::Healthcheck) -> ContainerRequest {
         ContainerRequest {
             storage: None,
             ports: None,
             name,
             description: None,
-            registry_id,
-            image_name,
-            tag,
+            registry_id: None,
+            image_name: None,
+            tag: None,
+            source: None,
             arguments: None,
             entrypoint: None,
             cpu: None,
@@ -127,6 +127,7 @@ impl ContainerRequest {
             labels_groups: None,
             icon_uri: None,
             autoscaling: None,
+            build_settings: None,
         }
     }
 }

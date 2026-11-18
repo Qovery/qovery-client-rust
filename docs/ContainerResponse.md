@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **icon_uri** | **String** | Icon URI representing the container. | 
 **service_type** | [**models::ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **autoscaling** | Option<[**models::KedaAutoscalingResponse**](KedaAutoscalingResponse.md)> |  | [optional]
+**source** | Option<[**models::ContainerSourceResponse**](ContainerSourceResponse.md)> |  | [optional]
+**build_settings** | Option<[**models::BuildSettings**](BuildSettings.md)> | Build settings of a container with a Git repository source. Absent for a container with an image source. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

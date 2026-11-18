@@ -13,12 +13,12 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BaseJobResponseAllOfSourceOneOf {
-    #[serde(rename = "image")]
-    pub image: models::ContainerSource,
+    #[serde(rename = "docker")]
+    pub docker: models::JobSourceDockerResponse,
 }
 
 impl BaseJobResponseAllOfSourceOneOf {
-    pub fn new(image: models::ContainerSource) -> BaseJobResponseAllOfSourceOneOf {
-        BaseJobResponseAllOfSourceOneOf { image }
+    pub fn new(docker: models::JobSourceDockerResponse) -> BaseJobResponseAllOfSourceOneOf {
+        BaseJobResponseAllOfSourceOneOf { docker }
     }
 }

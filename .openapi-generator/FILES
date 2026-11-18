@@ -134,7 +134,6 @@ docs/Base.md
 docs/BaseJobResponse.md
 docs/BaseJobResponseAllOfSource.md
 docs/BaseJobResponseAllOfSourceOneOf.md
-docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BillingApi.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -332,6 +331,8 @@ docs/ContainerCustomDomainApi.md
 docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryApi.md
 docs/ContainerEnvironmentVariableApi.md
+docs/ContainerGitRepositorySourceRequest.md
+docs/ContainerGitRepositorySourceResponse.md
 docs/ContainerImageCheckRequest.md
 docs/ContainerMainCallsApi.md
 docs/ContainerNetwork.md
@@ -353,6 +354,13 @@ docs/ContainerResponse.md
 docs/ContainerResponseList.md
 docs/ContainerSecretApi.md
 docs/ContainerSource.md
+docs/ContainerSourceRequest.md
+docs/ContainerSourceRequestOneOf.md
+docs/ContainerSourceRequestOneOf1.md
+docs/ContainerSourceRequestOneOfImage.md
+docs/ContainerSourceResponse.md
+docs/ContainerSourceResponseOneOf.md
+docs/ContainerSourceResponseOneOf1.md
 docs/ContainerVersionResponse.md
 docs/ContainerVersionResponseList.md
 docs/ContainersApi.md
@@ -1272,7 +1280,6 @@ src/models/base.rs
 src/models/base_job_response.rs
 src/models/base_job_response_all_of_source.rs
 src/models/base_job_response_all_of_source_one_of.rs
-src/models/base_job_response_all_of_source_one_of_1.rs
 src/models/billing_external_id.rs
 src/models/billing_info.rs
 src/models/billing_info_request.rs
@@ -1457,6 +1464,8 @@ src/models/commit_response_list.rs
 src/models/company_size_enum.rs
 src/models/container_advanced_settings.rs
 src/models/container_deploy_request.rs
+src/models/container_git_repository_source_request.rs
+src/models/container_git_repository_source_response.rs
 src/models/container_image_check_request.rs
 src/models/container_network.rs
 src/models/container_network_request.rs
@@ -1475,6 +1484,13 @@ src/models/container_request.rs
 src/models/container_response.rs
 src/models/container_response_list.rs
 src/models/container_source.rs
+src/models/container_source_request.rs
+src/models/container_source_request_one_of.rs
+src/models/container_source_request_one_of_1.rs
+src/models/container_source_request_one_of_image.rs
+src/models/container_source_response.rs
+src/models/container_source_response_one_of.rs
+src/models/container_source_response_one_of_1.rs
 src/models/container_version_response.rs
 src/models/container_version_response_list.rs
 src/models/cost.rs

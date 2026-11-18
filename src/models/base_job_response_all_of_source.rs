@@ -14,12 +14,12 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum BaseJobResponseAllOfSource {
+    ContainerSourceResponseOneOf(models::ContainerSourceResponseOneOf),
     BaseJobResponseAllOfSourceOneOf(models::BaseJobResponseAllOfSourceOneOf),
-    BaseJobResponseAllOfSourceOneOf1(models::BaseJobResponseAllOfSourceOneOf1),
 }
 
 impl Default for BaseJobResponseAllOfSource {
     fn default() -> Self {
-        Self::BaseJobResponseAllOfSourceOneOf(Default::default())
+        Self::ContainerSourceResponseOneOf(Default::default())
     }
 }
