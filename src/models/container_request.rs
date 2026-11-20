@@ -75,10 +75,10 @@ pub struct ContainerRequest {
     pub max_running_instances: Option<i32>,
     #[serde(rename = "healthchecks")]
     pub healthchecks: models::Healthcheck,
-    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
+    /// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a create from, or a switch to, `git_repository`, it is set to false.
     #[serde(rename = "auto_preview", skip_serializing_if = "Option::is_none")]
     pub auto_preview: Option<bool>,
-    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
+    /// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a create from, or a switch to, `git_repository`, it is set to false.
     #[serde(
         rename = "auto_deploy",
         default,
@@ -95,7 +95,7 @@ pub struct ContainerRequest {
     pub icon_uri: Option<String>,
     #[serde(rename = "autoscaling", skip_serializing_if = "Option::is_none")]
     pub autoscaling: Option<models::KedaAutoscalingRequest>,
-    /// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a switch to `git_repository` without it, the defaults of a new application are used. - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
+    /// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a create from, or a switch to, `git_repository` without it, the defaults of a new application are used. - Sending it when the container is created with, keeps, or switches to, an image source returns 400.
     #[serde(rename = "build_settings", skip_serializing_if = "Option::is_none")]
     pub build_settings: Option<models::BuildSettings>,
 }

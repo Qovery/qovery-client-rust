@@ -55,6 +55,17 @@ pub enum GetContainerStatusError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`list_container_commit`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListContainerCommitError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_container_links`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -290,6 +301,75 @@ pub async fn get_container_status(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetContainerStatusError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns the last 100 commits of the branch of the Git repository the container builds from, as `listApplicationCommit` and `listJobCommit` do for applications and jobs. `startId` and `gitCommitId` are accepted and ignored.  Returns 400 when the container has an image source. Returns 404 when the Git provider cannot list the commits.
+pub async fn list_container_commit(
+    configuration: &configuration::Configuration,
+    container_id: &str,
+    start_id: Option<&str>,
+    git_commit_id: Option<&str>,
+) -> Result<models::CommitResponseList, Error<ListContainerCommitError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_container_id = container_id;
+    let p_query_start_id = start_id;
+    let p_query_git_commit_id = git_commit_id;
+
+    let uri_str = format!(
+        "{}/container/{containerId}/commit",
+        configuration.base_path,
+        containerId = crate::apis::urlencode(p_path_container_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_start_id {
+        req_builder = req_builder.query(&[("startId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_git_commit_id {
+        req_builder = req_builder.query(&[("gitCommitId", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::CommitResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::CommitResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListContainerCommitError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

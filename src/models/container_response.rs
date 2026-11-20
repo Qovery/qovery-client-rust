@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ContainerResponse : `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
+/// ContainerResponse : `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git; a container created from Git has none yet, so it reports the cluster's build registry, the repository name and the tag `pending-first-build`. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContainerResponse {
     #[serde(rename = "id")]
@@ -112,7 +112,7 @@ pub struct ContainerResponse {
 }
 
 impl ContainerResponse {
-    /// `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
+    /// `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git; a container created from Git has none yet, so it reports the cluster's build registry, the repository name and the tag `pending-first-build`. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
     pub fn new(
         id: uuid::Uuid,
         created_at: String,

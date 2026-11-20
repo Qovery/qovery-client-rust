@@ -11,16 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ContainerGitRepositorySourceRequest : The Git repository and the Dockerfile that Qovery builds into the container image.
+/// ContainerGitRepositorySourceRequest : The Git repository and the Dockerfile that Qovery builds into the container image. `owner` and `name` are not needed: the repository is read from `url`. They are still accepted, and ignored.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContainerGitRepositorySourceRequest {
-    /// application git repository URL
+    /// Git repository URL
     #[serde(rename = "url")]
     pub url: String,
     /// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one
     #[serde(rename = "branch", skip_serializing_if = "Option::is_none")]
     pub branch: Option<String>,
-    /// indicates the root path of the application.
+    /// indicates the root path in the repository.
     #[serde(rename = "root_path", skip_serializing_if = "Option::is_none")]
     pub root_path: Option<String>,
     /// The git token id on Qovery side
@@ -47,7 +47,7 @@ pub struct ContainerGitRepositorySourceRequest {
 }
 
 impl ContainerGitRepositorySourceRequest {
-    /// The Git repository and the Dockerfile that Qovery builds into the container image.
+    /// The Git repository and the Dockerfile that Qovery builds into the container image. `owner` and `name` are not needed: the repository is read from `url`. They are still accepted, and ignored.
     pub fn new(
         url: String,
         provider: models::GitProviderEnum,

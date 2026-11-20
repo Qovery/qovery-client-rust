@@ -253,6 +253,7 @@ Class | Method | HTTP request | Description
 *ContainerMainCallsApi* | [**edit_container**](docs/ContainerMainCallsApi.md#edit_container) | **PUT** /container/{containerId} | Edit container
 *ContainerMainCallsApi* | [**get_container**](docs/ContainerMainCallsApi.md#get_container) | **GET** /container/{containerId} | Get container by ID
 *ContainerMainCallsApi* | [**get_container_status**](docs/ContainerMainCallsApi.md#get_container_status) | **GET** /container/{containerId}/status | Get container status
+*ContainerMainCallsApi* | [**list_container_commit**](docs/ContainerMainCallsApi.md#list_container_commit) | **GET** /container/{containerId}/commit | List last container commits
 *ContainerMainCallsApi* | [**list_container_links**](docs/ContainerMainCallsApi.md#list_container_links) | **GET** /container/{containerId}/link | List all URLs of the container
 *ContainerRegistriesApi* | [**create_container_registry**](docs/ContainerRegistriesApi.md#create_container_registry) | **POST** /organization/{organizationId}/containerRegistry | Create a container registry
 *ContainerRegistriesApi* | [**delete_container_registry**](docs/ContainerRegistriesApi.md#delete_container_registry) | **DELETE** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
