@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelfManagedClusterCredentials : Cloud credential of the organization that the cluster runs on, of the same provider as the cluster. This operation only takes and returns its id.
+/// SelfManagedClusterCredentials : Cloud credential of the organization that the cluster runs on, of the same provider as the cluster; an on-premise credential for the on-premise providers. This operation only takes and returns its id.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelfManagedClusterCredentials {
     /// Id of an existing cloud credential of the organization
@@ -20,7 +20,7 @@ pub struct SelfManagedClusterCredentials {
 }
 
 impl SelfManagedClusterCredentials {
-    /// Cloud credential of the organization that the cluster runs on, of the same provider as the cluster. This operation only takes and returns its id.
+    /// Cloud credential of the organization that the cluster runs on, of the same provider as the cluster; an on-premise credential for the on-premise providers. This operation only takes and returns its id.
     pub fn new(id: uuid::Uuid) -> SelfManagedClusterCredentials {
         SelfManagedClusterCredentials { id }
     }

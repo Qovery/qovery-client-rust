@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelfManagedClusterRegistryResponse : Default registry of the cluster, derived from its cloud credential and region: ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry on Scaleway.
+/// SelfManagedClusterRegistryResponse : Registry of the cluster. On AWS, GCP and Scaleway it is derived from the cloud credential and region: ECR, Artifact Registry or Scaleway Container Registry. On an on-premise provider it is the generic registry given in the request, or an empty generic registry.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelfManagedClusterRegistryResponse {
     #[serde(rename = "id")]
@@ -21,7 +21,7 @@ pub struct SelfManagedClusterRegistryResponse {
 }
 
 impl SelfManagedClusterRegistryResponse {
-    /// Default registry of the cluster, derived from its cloud credential and region: ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry on Scaleway.
+    /// Registry of the cluster. On AWS, GCP and Scaleway it is derived from the cloud credential and region: ECR, Artifact Registry or Scaleway Container Registry. On an on-premise provider it is the generic registry given in the request, or an empty generic registry.
     pub fn new(
         id: uuid::Uuid,
         kind: models::ContainerRegistryKindEnum,

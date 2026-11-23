@@ -17,10 +17,10 @@ pub struct SelfManagedClusterRequest {
     pub name: String,
     #[serde(rename = "production", skip_serializing_if = "Option::is_none")]
     pub production: Option<bool>,
-    /// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
+    /// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. ON_PREMISE, HETZNER, OVH, CIVO, ORACLE and IBM are the on-premise providers, for any other Kubernetes: the cluster kind is SELF_MANAGED. They are not generally available yet and answer 400 outside a short list of Qovery test organizations.
     #[serde(rename = "provider")]
     pub provider: Provider,
-    /// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway.
+    /// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway; `on-premise` for the on-premise providers.
     #[serde(rename = "region")]
     pub region: String,
     #[serde(rename = "credentials")]
@@ -31,6 +31,8 @@ pub struct SelfManagedClusterRequest {
     #[serde(rename = "clusterInputs", skip_serializing_if = "Option::is_none")]
     pub cluster_inputs:
         Option<std::collections::HashMap<String, std::collections::HashMap<String, String>>>,
+    #[serde(rename = "registry", skip_serializing_if = "Option::is_none")]
+    pub registry: Option<models::SelfManagedClusterRegistryRequest>,
 }
 
 impl SelfManagedClusterRequest {
@@ -49,10 +51,11 @@ impl SelfManagedClusterRequest {
             credentials,
             platform,
             cluster_inputs: None,
+            registry: None,
         }
     }
 }
-/// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
+/// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. ON_PREMISE, HETZNER, OVH, CIVO, ORACLE and IBM are the on-premise providers, for any other Kubernetes: the cluster kind is SELF_MANAGED. They are not generally available yet and answer 400 outside a short list of Qovery test organizations.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Provider {
     #[serde(rename = "AWS")]
@@ -61,6 +64,18 @@ pub enum Provider {
     Gcp,
     #[serde(rename = "SCW")]
     Scw,
+    #[serde(rename = "ON_PREMISE")]
+    OnPremise,
+    #[serde(rename = "HETZNER")]
+    Hetzner,
+    #[serde(rename = "OVH")]
+    Ovh,
+    #[serde(rename = "CIVO")]
+    Civo,
+    #[serde(rename = "ORACLE")]
+    Oracle,
+    #[serde(rename = "IBM")]
+    Ibm,
 }
 
 impl Default for Provider {
