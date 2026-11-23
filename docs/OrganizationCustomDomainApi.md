@@ -4,8 +4,40 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**bulk_delete_organization_custom_domain**](OrganizationCustomDomainApi.md#bulk_delete_organization_custom_domain) | **POST** /organization/{organizationId}/customDomain/bulkDelete | Delete custom domains of several environments
 [**list_organization_custom_domain**](OrganizationCustomDomainApi.md#list_organization_custom_domain) | **GET** /organization/{organizationId}/customDomain | List organization custom domains
 
+
+
+## bulk_delete_organization_custom_domain
+
+> models::CustomDomainDeletionResponse bulk_delete_organization_custom_domain(organization_id, custom_domain_bulk_delete_item_request)
+Delete custom domains of several environments
+
+Delete custom domains of several environments of the organization at once: all of them, or none. Each item deletes every row of the domain name in its environment, for every service routing it, with their routes. The caller needs the permission to manage each environment. An environment of another organization refuses the whole call with a 403, and nothing is deleted. Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**custom_domain_bulk_delete_item_request** | [**Vec<models::CustomDomainBulkDeleteItemRequest>**](CustomDomainBulkDeleteItemRequest.md) |  | [required] |
+
+### Return type
+
+[**models::CustomDomainDeletionResponse**](CustomDomainDeletionResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## list_organization_custom_domain

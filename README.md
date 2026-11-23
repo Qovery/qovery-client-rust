@@ -72,6 +72,7 @@ Class | Method | HTTP request | Description
 *ApplicationCustomDomainApi* | [**edit_custom_domain**](docs/ApplicationCustomDomainApi.md#edit_custom_domain) | **PUT** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
 *ApplicationCustomDomainApi* | [**get_application_custom_domain**](docs/ApplicationCustomDomainApi.md#get_application_custom_domain) | **GET** /application/{applicationId}/customDomain/{customDomainId} | Get an application custom domain
 *ApplicationCustomDomainApi* | [**list_application_custom_domain**](docs/ApplicationCustomDomainApi.md#list_application_custom_domain) | **GET** /application/{applicationId}/customDomain | List application custom domains
+*ApplicationCustomDomainApi* | [**list_application_custom_domain_view**](docs/ApplicationCustomDomainApi.md#list_application_custom_domain_view) | **GET** /application/{applicationId}/customDomainView | List the domains of the application
 *ApplicationDeploymentHistoryApi* | [**list_application_deployment_history**](docs/ApplicationDeploymentHistoryApi.md#list_application_deployment_history) | **GET** /application/{applicationId}/deploymentHistory | List application deploys
 *ApplicationDeploymentHistoryApi* | [**list_application_deployment_history_v2**](docs/ApplicationDeploymentHistoryApi.md#list_application_deployment_history_v2) | **GET** /application/{applicationId}/deploymentHistoryV2 | List application deploys
 *ApplicationDeploymentRestrictionApi* | [**create_application_deployment_restriction**](docs/ApplicationDeploymentRestrictionApi.md#create_application_deployment_restriction) | **POST** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
@@ -240,6 +241,7 @@ Class | Method | HTTP request | Description
 *ContainerCustomDomainApi* | [**edit_container_custom_domain**](docs/ContainerCustomDomainApi.md#edit_container_custom_domain) | **PUT** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
 *ContainerCustomDomainApi* | [**get_container_custom_domain**](docs/ContainerCustomDomainApi.md#get_container_custom_domain) | **GET** /container/{containerId}/customDomain/{customDomainId} | Get a container custom domain
 *ContainerCustomDomainApi* | [**list_container_custom_domain**](docs/ContainerCustomDomainApi.md#list_container_custom_domain) | **GET** /container/{containerId}/customDomain | List container custom domains
+*ContainerCustomDomainApi* | [**list_container_custom_domain_view**](docs/ContainerCustomDomainApi.md#list_container_custom_domain_view) | **GET** /container/{containerId}/customDomainView | List the domains of the container
 *ContainerDeploymentHistoryApi* | [**list_container_deployment_history**](docs/ContainerDeploymentHistoryApi.md#list_container_deployment_history) | **GET** /container/{containerId}/deploymentHistory | List container deployments
 *ContainerDeploymentHistoryApi* | [**list_container_deployment_history_v2**](docs/ContainerDeploymentHistoryApi.md#list_container_deployment_history_v2) | **GET** /container/{containerId}/deploymentHistoryV2 | List container deployments
 *ContainerEnvironmentVariableApi* | [**create_container_environment_variable**](docs/ContainerEnvironmentVariableApi.md#create_container_environment_variable) | **POST** /container/{containerId}/environmentVariable | Add an environment variable to the container
@@ -325,6 +327,12 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**stop_selected_services**](docs/EnvironmentActionsApi.md#stop_selected_services) | **POST** /environment/{environmentId}/service/stop | Stop services
 *EnvironmentActionsApi* | [**uninstall_environment**](docs/EnvironmentActionsApi.md#uninstall_environment) | **POST** /environment/{environmentId}/uninstall | Uninstall environment
 *EnvironmentActionsApi* | [**uninstall_selected_services**](docs/EnvironmentActionsApi.md#uninstall_selected_services) | **POST** /environment/{environmentId}/service/uninstall | Uninstall services
+*EnvironmentCustomDomainApi* | [**create_environment_custom_domain**](docs/EnvironmentCustomDomainApi.md#create_environment_custom_domain) | **POST** /environment/{environmentId}/customDomain | Create a custom domain for several services
+*EnvironmentCustomDomainApi* | [**delete_environment_custom_domain**](docs/EnvironmentCustomDomainApi.md#delete_environment_custom_domain) | **DELETE** /environment/{environmentId}/customDomain/{domainName} | Delete a custom domain of several services
+*EnvironmentCustomDomainApi* | [**edit_environment_custom_domain**](docs/EnvironmentCustomDomainApi.md#edit_environment_custom_domain) | **PUT** /environment/{environmentId}/customDomain/{domainName} | Edit a custom domain of several services
+*EnvironmentCustomDomainApi* | [**get_environment_custom_domain_cname_target**](docs/EnvironmentCustomDomainApi.md#get_environment_custom_domain_cname_target) | **GET** /environment/{environmentId}/customDomain/cnameTarget | Get the CNAME target of the environment
+*EnvironmentCustomDomainApi* | [**list_environment_custom_domain**](docs/EnvironmentCustomDomainApi.md#list_environment_custom_domain) | **GET** /environment/{environmentId}/customDomain | List environment custom domains
+*EnvironmentCustomDomainApi* | [**validate_environment_custom_domain**](docs/EnvironmentCustomDomainApi.md#validate_environment_custom_domain) | **POST** /environment/{environmentId}/customDomain/validate | Validate a custom domain for several services
 *EnvironmentDeploymentHistoryApi* | [**generate_deployment_build_usage_report**](docs/EnvironmentDeploymentHistoryApi.md#generate_deployment_build_usage_report) | **POST** /environment/{environmentId}/deploymentBuildUsageReport | Generate a Grafana snapshot report showing build runner pod usage for a specific deployment
 *EnvironmentDeploymentHistoryApi* | [**list_environment_deployment_history**](docs/EnvironmentDeploymentHistoryApi.md#list_environment_deployment_history) | **GET** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentHistoryApi* | [**list_environment_deployment_history_v2**](docs/EnvironmentDeploymentHistoryApi.md#list_environment_deployment_history_v2) | **GET** /environment/{environmentId}/deploymentHistoryV2 | List environment deployments
@@ -374,6 +382,7 @@ Class | Method | HTTP request | Description
 *HelmCustomDomainApi* | [**edit_helm_custom_domain**](docs/HelmCustomDomainApi.md#edit_helm_custom_domain) | **PUT** /helm/{helmId}/customDomain/{customDomainId} | Edit a Custom Domain
 *HelmCustomDomainApi* | [**get_helm_custom_domain**](docs/HelmCustomDomainApi.md#get_helm_custom_domain) | **GET** /helm/{helmId}/customDomain/{customDomainId} | Get a Custom Domain
 *HelmCustomDomainApi* | [**list_helm_custom_domain**](docs/HelmCustomDomainApi.md#list_helm_custom_domain) | **GET** /helm/{helmId}/customDomain | List helm custom domains
+*HelmCustomDomainApi* | [**list_helm_custom_domain_view**](docs/HelmCustomDomainApi.md#list_helm_custom_domain_view) | **GET** /helm/{helmId}/customDomainView | List the domains of the helm
 *HelmDeploymentHistoryApi* | [**list_helm_deployment_history**](docs/HelmDeploymentHistoryApi.md#list_helm_deployment_history) | **GET** /helm/{helmId}/deploymentHistory | List helm deployments
 *HelmDeploymentHistoryApi* | [**list_helm_deployment_history_v2**](docs/HelmDeploymentHistoryApi.md#list_helm_deployment_history_v2) | **GET** /helm/{helmId}/deploymentHistoryV2 | List helm deployments
 *HelmDeploymentRestrictionApi* | [**create_helm_deployment_restriction**](docs/HelmDeploymentRestrictionApi.md#create_helm_deployment_restriction) | **POST** /helm/{helmId}/deploymentRestriction | Create a helm deployment restriction
@@ -482,6 +491,7 @@ Class | Method | HTTP request | Description
 *OrganizationApiTokenApi* | [**delete_organization_api_token**](docs/OrganizationApiTokenApi.md#delete_organization_api_token) | **DELETE** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
 *OrganizationApiTokenApi* | [**list_organization_api_tokens**](docs/OrganizationApiTokenApi.md#list_organization_api_tokens) | **GET** /organization/{organizationId}/apiToken | List organization api tokens
 *OrganizationClusterLockApi* | [**list_cluster_lock**](docs/OrganizationClusterLockApi.md#list_cluster_lock) | **GET** /organization/{organizationId}/lock | List locked Cluster by organization
+*OrganizationCustomDomainApi* | [**bulk_delete_organization_custom_domain**](docs/OrganizationCustomDomainApi.md#bulk_delete_organization_custom_domain) | **POST** /organization/{organizationId}/customDomain/bulkDelete | Delete custom domains of several environments
 *OrganizationCustomDomainApi* | [**list_organization_custom_domain**](docs/OrganizationCustomDomainApi.md#list_organization_custom_domain) | **GET** /organization/{organizationId}/customDomain | List organization custom domains
 *OrganizationCustomRoleApi* | [**create_organization_custom_role**](docs/OrganizationCustomRoleApi.md#create_organization_custom_role) | **POST** /organization/{organizationId}/customRole | Create an organization custom role
 *OrganizationCustomRoleApi* | [**delete_organization_custom_role**](docs/OrganizationCustomRoleApi.md#delete_organization_custom_role) | **DELETE** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
@@ -947,14 +957,22 @@ Class | Method | HTTP request | Description
  - [CronJobResponseAllOfScheduleCronjob](docs/CronJobResponseAllOfScheduleCronjob.md)
  - [CurrentCost](docs/CurrentCost.md)
  - [CustomDomain](docs/CustomDomain.md)
+ - [CustomDomainBulkDeleteItemRequest](docs/CustomDomainBulkDeleteItemRequest.md)
+ - [CustomDomainDeletionResponse](docs/CustomDomainDeletionResponse.md)
  - [CustomDomainEnvironmentResponse](docs/CustomDomainEnvironmentResponse.md)
+ - [CustomDomainErrorCodeEnum](docs/CustomDomainErrorCodeEnum.md)
+ - [CustomDomainErrorResponse](docs/CustomDomainErrorResponse.md)
+ - [CustomDomainErrorsResponse](docs/CustomDomainErrorsResponse.md)
  - [CustomDomainPortResponse](docs/CustomDomainPortResponse.md)
+ - [CustomDomainProblemResponse](docs/CustomDomainProblemResponse.md)
  - [CustomDomainProjectResponse](docs/CustomDomainProjectResponse.md)
  - [CustomDomainRequest](docs/CustomDomainRequest.md)
  - [CustomDomainResponseList](docs/CustomDomainResponseList.md)
  - [CustomDomainRouteResponse](docs/CustomDomainRouteResponse.md)
+ - [CustomDomainServiceRequest](docs/CustomDomainServiceRequest.md)
  - [CustomDomainServiceResponse](docs/CustomDomainServiceResponse.md)
  - [CustomDomainStatusEnum](docs/CustomDomainStatusEnum.md)
+ - [CustomDomainValidationRequest](docs/CustomDomainValidationRequest.md)
  - [Database](docs/Database.md)
  - [DatabaseAccessibilityEnum](docs/DatabaseAccessibilityEnum.md)
  - [DatabaseConfiguration](docs/DatabaseConfiguration.md)
@@ -1037,6 +1055,9 @@ Class | Method | HTTP request | Description
  - [EnvDeploymentStatus](docs/EnvDeploymentStatus.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
+ - [EnvironmentCnameTargetResponse](docs/EnvironmentCnameTargetResponse.md)
+ - [EnvironmentCustomDomainRequest](docs/EnvironmentCustomDomainRequest.md)
+ - [EnvironmentCustomDomainResponse](docs/EnvironmentCustomDomainResponse.md)
  - [EnvironmentDeploymentRule](docs/EnvironmentDeploymentRule.md)
  - [EnvironmentDeploymentRuleEditRequest](docs/EnvironmentDeploymentRuleEditRequest.md)
  - [EnvironmentDeploymentStatusEnum](docs/EnvironmentDeploymentStatusEnum.md)
@@ -1088,6 +1109,8 @@ Class | Method | HTTP request | Description
  - [GcpStaticClusterCredentials](docs/GcpStaticClusterCredentials.md)
  - [GcpWorkloadIdentityFederationClusterCredentials](docs/GcpWorkloadIdentityFederationClusterCredentials.md)
  - [GcpWorkloadIdentityFederationCredentialsRequest](docs/GcpWorkloadIdentityFederationCredentialsRequest.md)
+ - [GeneratedHostnameKindEnum](docs/GeneratedHostnameKindEnum.md)
+ - [GeneratedHostnameResponse](docs/GeneratedHostnameResponse.md)
  - [GenericClusterCredentials](docs/GenericClusterCredentials.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GetClusterKubernetesEvents200Response](docs/GetClusterKubernetesEvents200Response.md)
@@ -1166,6 +1189,7 @@ Class | Method | HTTP request | Description
  - [HelmSourceRepositoryResponseRepository](docs/HelmSourceRepositoryResponseRepository.md)
  - [HelmVersionResponse](docs/HelmVersionResponse.md)
  - [HelmVersionResponseList](docs/HelmVersionResponseList.md)
+ - [ImpactedServiceResponse](docs/ImpactedServiceResponse.md)
  - [InfrastructureOutputs](docs/InfrastructureOutputs.md)
  - [IngressDeploymentStatusResponse](docs/IngressDeploymentStatusResponse.md)
  - [InternalNetworkMonitoring](docs/InternalNetworkMonitoring.md)
@@ -1307,6 +1331,7 @@ Class | Method | HTTP request | Description
  - [OrganizationCurrentCost](docs/OrganizationCurrentCost.md)
  - [OrganizationCustomDomainPaginatedResponseList](docs/OrganizationCustomDomainPaginatedResponseList.md)
  - [OrganizationCustomDomainResponse](docs/OrganizationCustomDomainResponse.md)
+ - [OrganizationCustomDomainResponseList](docs/OrganizationCustomDomainResponseList.md)
  - [OrganizationCustomRole](docs/OrganizationCustomRole.md)
  - [OrganizationCustomRoleClusterPermission](docs/OrganizationCustomRoleClusterPermission.md)
  - [OrganizationCustomRoleClusterPermissionsInner](docs/OrganizationCustomRoleClusterPermissionsInner.md)
@@ -1421,6 +1446,7 @@ Class | Method | HTTP request | Description
  - [Route53DnsProviderResponse](docs/Route53DnsProviderResponse.md)
  - [Route53StaticCredentialsRequest](docs/Route53StaticCredentialsRequest.md)
  - [Route53StaticCredentialsResponse](docs/Route53StaticCredentialsResponse.md)
+ - [RoutingCapabilitiesResponse](docs/RoutingCapabilitiesResponse.md)
  - [ScalarArrayItemResponse](docs/ScalarArrayItemResponse.md)
  - [ScalarFieldSchemaResponse](docs/ScalarFieldSchemaResponse.md)
  - [ScalewayClusterCredentials](docs/ScalewayClusterCredentials.md)
@@ -1448,6 +1474,11 @@ Class | Method | HTTP request | Description
  - [ServiceActionStatusEnum](docs/ServiceActionStatusEnum.md)
  - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
+ - [ServiceDomainCustomResponse](docs/ServiceDomainCustomResponse.md)
+ - [ServiceDomainKindEnum](docs/ServiceDomainKindEnum.md)
+ - [ServiceDomainQoveryResponse](docs/ServiceDomainQoveryResponse.md)
+ - [ServiceDomainResponse](docs/ServiceDomainResponse.md)
+ - [ServiceDomainResponseList](docs/ServiceDomainResponseList.md)
  - [ServiceEditWarning](docs/ServiceEditWarning.md)
  - [ServiceEditWarningCodeEnum](docs/ServiceEditWarningCodeEnum.md)
  - [ServiceEditWarnings](docs/ServiceEditWarnings.md)

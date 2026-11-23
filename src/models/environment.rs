@@ -45,6 +45,11 @@ pub struct Environment {
         skip_serializing_if = "Option::is_none"
     )]
     pub expires_at: Option<Option<String>>,
+    #[serde(
+        rename = "routing_capabilities",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub routing_capabilities: Option<models::RoutingCapabilitiesResponse>,
 }
 
 impl Environment {
@@ -71,6 +76,7 @@ impl Environment {
             cluster_id,
             cluster_name: None,
             expires_at: None,
+            routing_capabilities: None,
         }
     }
 }

@@ -33,6 +33,15 @@ pub struct OrganizationCustomDomainResponse {
     /// Whether the domain is behind a CDN. If `true`, Qovery only checks that the domain points to an IP; otherwise it checks that the domain resolves to the service load balancer.
     #[serde(rename = "use_cdn")]
     pub use_cdn: bool,
+    /// The hostnames the domain must point to with a CNAME record. One value, except for a legacy domain spread over several service routers.
+    #[serde(rename = "cname_targets", skip_serializing_if = "Option::is_none")]
+    pub cname_targets: Option<Vec<String>>,
+    /// Every hostname served for the domain by its routes.
+    #[serde(
+        rename = "generated_hostnames",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub generated_hostnames: Option<Vec<models::GeneratedHostnameResponse>>,
 }
 
 impl OrganizationCustomDomainResponse {
@@ -54,6 +63,8 @@ impl OrganizationCustomDomainResponse {
             routes,
             generate_certificate,
             use_cdn,
+            cname_targets: None,
+            generated_hostnames: None,
         }
     }
 }

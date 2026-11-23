@@ -13,6 +13,17 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
+/// struct for typed errors of method [`bulk_delete_organization_custom_domain`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum BulkDeleteOrganizationCustomDomainError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_organization_custom_domain`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -22,6 +33,71 @@ pub enum ListOrganizationCustomDomainError {
     Status403(),
     Status404(),
     UnknownValue(serde_json::Value),
+}
+
+/// Delete custom domains of several environments of the organization at once: all of them, or none. Each item deletes every row of the domain name in its environment, for every service routing it, with their routes. The caller needs the permission to manage each environment. An environment of another organization refuses the whole call with a 403, and nothing is deleted. Nothing is deployed: redeploy the services listed in `impacted_services` to apply the change.
+pub async fn bulk_delete_organization_custom_domain(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    custom_domain_bulk_delete_item_request: Vec<models::CustomDomainBulkDeleteItemRequest>,
+) -> Result<models::CustomDomainDeletionResponse, Error<BulkDeleteOrganizationCustomDomainError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_body_custom_domain_bulk_delete_item_request = custom_domain_bulk_delete_item_request;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/customDomain/bulkDelete",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_custom_domain_bulk_delete_item_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::CustomDomainDeletionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::CustomDomainDeletionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<BulkDeleteOrganizationCustomDomainError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
 }
 
 /// List the custom domains of every environment of the organization. Only organization admins can call it. Each result is one domain name of one environment, with every route that serves it: a domain shared by several services of an environment is a single result. Results are sorted by project name, environment name, environment id, then domain. A page never splits a domain.

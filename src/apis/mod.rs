@@ -155,6 +155,7 @@ pub mod deployment_queue_actions_api;
 pub mod deployment_stage_main_calls_api;
 pub mod environment_actions_api;
 pub mod environment_api;
+pub mod environment_custom_domain_api;
 pub mod environment_deployment_history_api;
 pub mod environment_deployment_rule_api;
 pub mod environment_export_api;
