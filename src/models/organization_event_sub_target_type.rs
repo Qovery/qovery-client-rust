@@ -85,6 +85,8 @@ pub enum OrganizationEventSubTargetType {
     RemoteAccess,
     #[serde(rename = "SECRET")]
     Secret,
+    #[serde(rename = "SKILL_PRESET")]
+    SkillPreset,
     #[serde(rename = "SSO")]
     Sso,
     #[serde(rename = "TERRAFORM")]
@@ -135,6 +137,7 @@ impl std::fmt::Display for OrganizationEventSubTargetType {
             Self::PolicyApiToken => write!(f, "POLICY_API_TOKEN"),
             Self::RemoteAccess => write!(f, "REMOTE_ACCESS"),
             Self::Secret => write!(f, "SECRET"),
+            Self::SkillPreset => write!(f, "SKILL_PRESET"),
             Self::Sso => write!(f, "SSO"),
             Self::Terraform => write!(f, "TERRAFORM"),
             Self::ToolCall => write!(f, "TOOL_CALL"),

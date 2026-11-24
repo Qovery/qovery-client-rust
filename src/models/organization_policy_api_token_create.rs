@@ -25,7 +25,7 @@ pub struct OrganizationPolicyApiTokenCreate {
     pub description: Option<String>,
     #[serde(rename = "role_name", skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
-    /// the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy.
+    /// The organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy. Fixed at creation.
     #[serde(rename = "role_id", skip_serializing_if = "Option::is_none")]
     pub role_id: Option<uuid::Uuid>,
     /// the generated token to send in 'Authorization' header prefixed by 'Token '. It is returned only here and cannot be retrieved afterwards.

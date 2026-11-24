@@ -115,6 +115,7 @@ impl From<&str> for ContentType {
 
 pub mod account_info_api;
 pub mod admin_api;
+pub mod agent_activity_api;
 pub mod agentic_workflows_api;
 pub mod alert_receivers_api;
 pub mod alert_rules_api;
@@ -211,6 +212,7 @@ pub mod referral_rewards_api;
 pub mod secret_manager_access_api;
 pub mod service_main_calls_api;
 pub mod service_status_api;
+pub mod skill_presets_api;
 pub mod terraform_actions_api;
 pub mod terraform_configuration_api;
 pub mod terraform_deployment_history_api;

@@ -64,6 +64,9 @@
 | Unlock | UNLOCK |
 | PolicyFailed | POLICY_FAILED |
 | AccessDenied | ACCESS_DENIED |
+| SkillLoad | SKILL_LOAD |
+| SkillPresetRejected | SKILL_PRESET_REJECTED |
+| SkillView | SKILL_VIEW |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

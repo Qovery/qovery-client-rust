@@ -39,6 +39,7 @@
 | PolicyApiToken | POLICY_API_TOKEN |
 | RemoteAccess | REMOTE_ACCESS |
 | Secret | SECRET |
+| SkillPreset | SKILL_PRESET |
 | Sso | SSO |
 | Terraform | TERRAFORM |
 | ToolCall | TOOL_CALL |

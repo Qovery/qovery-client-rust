@@ -34,6 +34,8 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**get_public_service_version**](docs/AdminApi.md#get_public_service_version) | **GET** /engine/serviceVersion | Get a service version
 *AdminApi* | [**list_user_sign_ups**](docs/AdminApi.md#list_user_sign_ups) | **GET** /admin/listUserSignUp | Search user signups
 *AdminApi* | [**store_cli_demo_debug_logs**](docs/AdminApi.md#store_cli_demo_debug_logs) | **POST** /admin/demoDebugLog | Store CLI demo debug logs
+*AgentActivityApi* | [**get_agent_activity**](docs/AgentActivityApi.md#get_agent_activity) | **GET** /organization/{organizationId}/agentActivity | Get agent activity
+*AgentActivityApi* | [**get_my_agent_activity**](docs/AgentActivityApi.md#get_my_agent_activity) | **GET** /organization/{organizationId}/agentActivity/me | Get my agent activity
 *AgenticWorkflowsApi* | [**cancel_agentic_workflow_deployment**](docs/AgenticWorkflowsApi.md#cancel_agentic_workflow_deployment) | **POST** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 *AgenticWorkflowsApi* | [**create_agentic_workflow**](docs/AgenticWorkflowsApi.md#create_agentic_workflow) | **POST** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 *AgenticWorkflowsApi* | [**delete_agentic_workflow**](docs/AgenticWorkflowsApi.md#delete_agentic_workflow) | **DELETE** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
@@ -581,6 +583,15 @@ Class | Method | HTTP request | Description
 *ServiceMainCallsApi* | [**get_service_git_webhook_status**](docs/ServiceMainCallsApi.md#get_service_git_webhook_status) | **GET** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
 *ServiceMainCallsApi* | [**sync_service_git_webhook**](docs/ServiceMainCallsApi.md#sync_service_git_webhook) | **POST** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
+*SkillPresetsApi* | [**create_skill_preset**](docs/SkillPresetsApi.md#create_skill_preset) | **POST** /organization/{organizationId}/skillPreset | Create a skill preset
+*SkillPresetsApi* | [**delete_skill_preset**](docs/SkillPresetsApi.md#delete_skill_preset) | **DELETE** /skillPreset/{skillPresetId} | Delete a skill preset
+*SkillPresetsApi* | [**edit_skill_preset**](docs/SkillPresetsApi.md#edit_skill_preset) | **PUT** /skillPreset/{skillPresetId} | Edit a skill preset
+*SkillPresetsApi* | [**get_resolved_skill**](docs/SkillPresetsApi.md#get_resolved_skill) | **GET** /organization/{organizationId}/skillPreset/resolved/skill/{skillName} | Get what to load for one skill
+*SkillPresetsApi* | [**get_resolved_skill_preset**](docs/SkillPresetsApi.md#get_resolved_skill_preset) | **GET** /organization/{organizationId}/skillPreset/resolved | Get the skill preset that applies to the caller
+*SkillPresetsApi* | [**get_skill_preset**](docs/SkillPresetsApi.md#get_skill_preset) | **GET** /skillPreset/{skillPresetId} | Get a skill preset
+*SkillPresetsApi* | [**get_skill_usage**](docs/SkillPresetsApi.md#get_skill_usage) | **GET** /organization/{organizationId}/skillPreset/usage | Get skill usage
+*SkillPresetsApi* | [**list_skill_preset_revisions**](docs/SkillPresetsApi.md#list_skill_preset_revisions) | **GET** /organization/{organizationId}/skillPreset/revision | List skill preset revisions
+*SkillPresetsApi* | [**list_skill_presets**](docs/SkillPresetsApi.md#list_skill_presets) | **GET** /organization/{organizationId}/skillPreset | List organization skill presets
 *TerraformActionsApi* | [**deploy_terraform**](docs/TerraformActionsApi.md#deploy_terraform) | **POST** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsApi* | [**redeploy_terraform**](docs/TerraformActionsApi.md#redeploy_terraform) | **POST** /terraform/{terraformId}/redeploy | Redeploy terraform
 *TerraformActionsApi* | [**uninstall_terraform**](docs/TerraformActionsApi.md#uninstall_terraform) | **POST** /terraform/{terraformId}/uninstall | Uninstall terraform
@@ -616,6 +627,19 @@ Class | Method | HTTP request | Description
 
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
+ - [AgentActionOutcome](docs/AgentActionOutcome.md)
+ - [AgentActionsByType](docs/AgentActionsByType.md)
+ - [AgentActivityByMember](docs/AgentActivityByMember.md)
+ - [AgentActivityByPolicyToken](docs/AgentActivityByPolicyToken.md)
+ - [AgentActivityBySkill](docs/AgentActivityBySkill.md)
+ - [AgentActivityCoverage](docs/AgentActivityCoverage.md)
+ - [AgentActivityEntry](docs/AgentActivityEntry.md)
+ - [AgentActivityPoint](docs/AgentActivityPoint.md)
+ - [AgentActivityResponse](docs/AgentActivityResponse.md)
+ - [AgentActivitySource](docs/AgentActivitySource.md)
+ - [AgentActivityTokenPoint](docs/AgentActivityTokenPoint.md)
+ - [AgentActivityTotals](docs/AgentActivityTotals.md)
+ - [AgentActorKind](docs/AgentActorKind.md)
  - [AgenticWorkflowExecutionMode](docs/AgenticWorkflowExecutionMode.md)
  - [AgenticWorkflowGovernance](docs/AgenticWorkflowGovernance.md)
  - [AgenticWorkflowHeader](docs/AgenticWorkflowHeader.md)
@@ -1502,7 +1526,39 @@ Class | Method | HTTP request | Description
  - [ServicesOverviewResponse](docs/ServicesOverviewResponse.md)
  - [SignUp](docs/SignUp.md)
  - [SignUpRequest](docs/SignUpRequest.md)
+ - [SkillLoadPurpose](docs/SkillLoadPurpose.md)
+ - [SkillPresetAssignedTo](docs/SkillPresetAssignedTo.md)
+ - [SkillPresetBase](docs/SkillPresetBase.md)
+ - [SkillPresetChangeType](docs/SkillPresetChangeType.md)
+ - [SkillPresetContentSummary](docs/SkillPresetContentSummary.md)
+ - [SkillPresetFindingSource](docs/SkillPresetFindingSource.md)
+ - [SkillPresetManifest](docs/SkillPresetManifest.md)
+ - [SkillPresetManifestResponse](docs/SkillPresetManifestResponse.md)
+ - [SkillPresetManifestSkill](docs/SkillPresetManifestSkill.md)
+ - [SkillPresetProblemResponse](docs/SkillPresetProblemResponse.md)
+ - [SkillPresetReference](docs/SkillPresetReference.md)
+ - [SkillPresetRejectionFinding](docs/SkillPresetRejectionFinding.md)
+ - [SkillPresetRejectionResponse](docs/SkillPresetRejectionResponse.md)
+ - [SkillPresetRequest](docs/SkillPresetRequest.md)
+ - [SkillPresetResolutionSource](docs/SkillPresetResolutionSource.md)
+ - [SkillPresetResolvedSkillResponse](docs/SkillPresetResolvedSkillResponse.md)
+ - [SkillPresetResponse](docs/SkillPresetResponse.md)
+ - [SkillPresetResponseList](docs/SkillPresetResponseList.md)
+ - [SkillPresetRevisionResponse](docs/SkillPresetRevisionResponse.md)
+ - [SkillPresetRevisionResponseList](docs/SkillPresetRevisionResponseList.md)
+ - [SkillPresetSecurityReview](docs/SkillPresetSecurityReview.md)
+ - [SkillPresetSecurityReviewVerdict](docs/SkillPresetSecurityReviewVerdict.md)
+ - [SkillPresetSkillMode](docs/SkillPresetSkillMode.md)
+ - [SkillPresetSkillRequest](docs/SkillPresetSkillRequest.md)
+ - [SkillPresetSkillResponse](docs/SkillPresetSkillResponse.md)
  - [SkillTrackingRequest](docs/SkillTrackingRequest.md)
+ - [SkillUsageBucket](docs/SkillUsageBucket.md)
+ - [SkillUsageByMember](docs/SkillUsageByMember.md)
+ - [SkillUsageByPreset](docs/SkillUsageByPreset.md)
+ - [SkillUsageBySkill](docs/SkillUsageBySkill.md)
+ - [SkillUsagePoint](docs/SkillUsagePoint.md)
+ - [SkillUsageResponse](docs/SkillUsageResponse.md)
+ - [SkillUsageTotals](docs/SkillUsageTotals.md)
  - [SlackAlertReceiverCreationRequest](docs/SlackAlertReceiverCreationRequest.md)
  - [SlackAlertReceiverEditRequest](docs/SlackAlertReceiverEditRequest.md)
  - [SlackAlertReceiverResponse](docs/SlackAlertReceiverResponse.md)

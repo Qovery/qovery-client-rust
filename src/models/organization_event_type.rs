@@ -135,6 +135,12 @@ pub enum OrganizationEventType {
     PolicyFailed,
     #[serde(rename = "ACCESS_DENIED")]
     AccessDenied,
+    #[serde(rename = "SKILL_LOAD")]
+    SkillLoad,
+    #[serde(rename = "SKILL_PRESET_REJECTED")]
+    SkillPresetRejected,
+    #[serde(rename = "SKILL_VIEW")]
+    SkillView,
 }
 
 impl std::fmt::Display for OrganizationEventType {
@@ -200,6 +206,9 @@ impl std::fmt::Display for OrganizationEventType {
             Self::Unlock => write!(f, "UNLOCK"),
             Self::PolicyFailed => write!(f, "POLICY_FAILED"),
             Self::AccessDenied => write!(f, "ACCESS_DENIED"),
+            Self::SkillLoad => write!(f, "SKILL_LOAD"),
+            Self::SkillPresetRejected => write!(f, "SKILL_PRESET_REJECTED"),
+            Self::SkillView => write!(f, "SKILL_VIEW"),
         }
     }
 }

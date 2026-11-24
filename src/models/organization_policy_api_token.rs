@@ -25,7 +25,7 @@ pub struct OrganizationPolicyApiToken {
     pub description: Option<String>,
     #[serde(rename = "role_name", skip_serializing_if = "Option::is_none")]
     pub role_name: Option<String>,
-    /// the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and `opa_policy`.
+    /// The organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and `opa_policy`. Fixed at creation.
     #[serde(rename = "role_id", skip_serializing_if = "Option::is_none")]
     pub role_id: Option<uuid::Uuid>,
     /// the Open Policy Agent (rego) policy evaluated on every request made with this token
