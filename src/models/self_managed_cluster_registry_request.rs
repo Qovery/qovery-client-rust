@@ -11,22 +11,42 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelfManagedClusterRegistryRequest : Generic registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `url` and `credentials` answers 400.
+/// SelfManagedClusterRegistryRequest : Registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `kind`, `url` and `credentials` answers 400.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelfManagedClusterRegistryRequest {
-    /// URL of the registry: `http` or `https` scheme, host and optional port only, without user info, path, query or fragment, and not localhost.
-    #[serde(rename = "url")]
-    pub url: String,
+    /// Kind of the registry. `GENERIC_CR` is any OCI registry reachable by URL, `GITHUB_CR` is GitHub Container Registry and `DOCKER_HUB` is Docker Hub; both require `credentials`.
+    #[serde(rename = "kind")]
+    pub kind: Kind,
+    /// URL of the registry. Required for `GENERIC_CR`: `http` or `https` scheme, host and optional port only, without user info, path, query or fragment, and not localhost. Optional for `GITHUB_CR` and `DOCKER_HUB`; when given, it must be `https://ghcr.io` or `https://docker.io`.
+    #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
     #[serde(rename = "credentials", skip_serializing_if = "Option::is_none")]
     pub credentials: Option<models::SelfManagedClusterRegistryCredentialsRequest>,
 }
 
 impl SelfManagedClusterRegistryRequest {
-    /// Generic registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `url` and `credentials` answers 400.
-    pub fn new(url: String) -> SelfManagedClusterRegistryRequest {
+    /// Registry of an on-premise cluster, created as the cluster's own registry. Only for the on-premise providers: it answers 400 on AWS, GCP and SCW, whose registry is derived from the cloud credential. Without it the cluster gets an empty generic registry, to configure with the container registry API before the first application deployment. An unknown key next to `kind`, `url` and `credentials` answers 400.
+    pub fn new(kind: Kind) -> SelfManagedClusterRegistryRequest {
         SelfManagedClusterRegistryRequest {
-            url,
+            kind,
+            url: None,
             credentials: None,
         }
+    }
+}
+/// Kind of the registry. `GENERIC_CR` is any OCI registry reachable by URL, `GITHUB_CR` is GitHub Container Registry and `DOCKER_HUB` is Docker Hub; both require `credentials`.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Kind {
+    #[serde(rename = "GENERIC_CR")]
+    GenericCr,
+    #[serde(rename = "GITHUB_CR")]
+    GithubCr,
+    #[serde(rename = "DOCKER_HUB")]
+    DockerHub,
+}
+
+impl Default for Kind {
+    fn default() -> Kind {
+        Self::GenericCr
     }
 }

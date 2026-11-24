@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelfManagedClusterRegistryCredentialsRequest : Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a registry without credentials.
+/// SelfManagedClusterRegistryCredentialsRequest : Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a `GENERIC_CR` registry without credentials.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelfManagedClusterRegistryCredentialsRequest {
     #[serde(rename = "username")]
@@ -21,7 +21,7 @@ pub struct SelfManagedClusterRegistryCredentialsRequest {
 }
 
 impl SelfManagedClusterRegistryCredentialsRequest {
-    /// Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a registry without credentials.
+    /// Credentials of the registry, checked before anything is created when Qovery can reach the registry; a refused login answers 400. Omit the object for a `GENERIC_CR` registry without credentials.
     pub fn new(username: String, password: String) -> SelfManagedClusterRegistryCredentialsRequest {
         SelfManagedClusterRegistryCredentialsRequest { username, password }
     }
