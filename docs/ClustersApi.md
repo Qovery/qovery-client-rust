@@ -69,7 +69,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 > models::SelfManagedClusterResponse create_self_managed_cluster(organization_id, self_managed_cluster_request)
 Create a self-managed cluster run by the Qovery Operator
 
-Creates a self-managed cluster on an existing cloud credential of the organization: AWS, GCP or Scaleway, or an on-premise credential for any other Kubernetes (`provider` `ON_PREMISE`, `HETZNER`, `OVH`, `CIVO`, `ORACLE` or `IBM`, in region `on-premise`). The on-premise providers are not generally available yet: they are accepted for a short list of Qovery test organizations and answer 400 for the others. The organization's plan is not checked. On AWS the credential only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which Qovery calls to check the credential whatever the cluster region; features that call other AWS services with the credential, such as managed databases or Terraform services using the cluster credentials, need more. Without `platform.templateKey` and `platform.templateVersion`, Qovery selects its self-managed platform template release and the response returns it: `\"platform\": {}` gives that release with its default configuration. Without `clusterInputs`, the cluster has no cluster inputs. The credential, including its registry access in the cluster region, and the platform configuration are checked before anything is created. One transaction then writes the cluster, its Qovery DNS and build providers, its default registry derived from the credential (ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry on Scaleway), its initial deployment status, its platform configuration and its Qovery Operator enrollment. No registry can be derived from an on-premise credential: the cluster gets the registry given in `registry`, or an empty generic registry to configure with the container registry API before the first application deployment. Install the Operator next with the cluster's Operator bootstrap.
+Creates a self-managed cluster on an existing cloud credential of the organization: AWS, GCP or Scaleway, or an on-premise credential for any other Kubernetes (`provider` `ON_PREMISE`, `HETZNER`, `OVH`, `CIVO`, `ORACLE` or `IBM`, in region `on-premise`). The on-premise providers are not generally available yet: they are accepted for a short list of Qovery test organizations and answer 400 for the others. The organization's plan, subscription or payment can refuse the creation: it then answers 402 and creates nothing. On AWS the credential only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which Qovery calls to check the credential whatever the cluster region; features that call other AWS services with the credential, such as managed databases or Terraform services using the cluster credentials, need more. Without `platform.templateKey` and `platform.templateVersion`, Qovery selects its self-managed platform template release and the response returns it: `\"platform\": {}` gives that release with its default configuration. Without `clusterInputs`, the cluster has no cluster inputs. The credential, including its registry access in the cluster region, and the platform configuration are checked before anything is created. One transaction then writes the cluster, its Qovery DNS and build providers, its default registry derived from the credential (ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry on Scaleway), its initial deployment status, its platform configuration and its Qovery Operator enrollment. No registry can be derived from an on-premise credential: the cluster gets the registry given in `registry`, or an empty generic registry to configure with the container registry API before the first application deployment. Install the Operator next with the cluster's Operator bootstrap.
 
 ### Parameters
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

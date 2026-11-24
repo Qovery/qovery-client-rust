@@ -36,6 +36,7 @@ pub enum CleanFailedJobsError {
 #[serde(untagged)]
 pub enum CloneEnvironmentError {
     Status401(),
+    Status402(models::PaymentRequiredProblemResponse),
     Status403(),
     Status404(),
     Status409(),

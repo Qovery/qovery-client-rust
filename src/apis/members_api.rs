@@ -92,6 +92,7 @@ pub enum PostAcceptInviteMemberError {
 pub enum PostInviteMemberError {
     Status400(),
     Status401(),
+    Status402(models::PaymentRequiredProblemResponse),
     Status403(),
     Status404(),
     Status409(),

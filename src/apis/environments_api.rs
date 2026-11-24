@@ -19,6 +19,7 @@ use serde::{de::Error as _, Deserialize, Serialize};
 pub enum CreateEnvironmentError {
     Status400(),
     Status401(),
+    Status402(models::PaymentRequiredProblemResponse),
     Status403(),
     Status404(),
     Status409(),
