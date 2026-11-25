@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > models::ApplicationDeploymentRestriction create_application_deployment_restriction(application_id, application_deployment_restriction_request)
 Create an application deployment restriction
 
-Create an application deployment restriction
+Create an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > delete_application_deployment_restriction(application_id, deployment_restriction_id)
 Delete an application deployment restriction
 
-Delete an application deployment restriction
+Delete an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::ApplicationDeploymentRestriction edit_application_deployment_restriction(application_id, deployment_restriction_id, application_deployment_restriction_request)
 Edit an application deployment restriction
 
-Edit an application deployment restriction
+Edit an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::ApplicationDeploymentRestrictionResponseList get_application_deployment_restrictions(application_id)
 Get application deployment restrictions
 
-Get application deployment restrictions
+Get application deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 

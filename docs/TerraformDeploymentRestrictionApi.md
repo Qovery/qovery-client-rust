@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > models::TerraformDeploymentRestrictionResponse create_terraform_deployment_restriction(terraform_id, terraform_deployment_restriction_request)
 Create a terraform deployment restriction
 
-Create a terraform deployment restriction
+Create a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > delete_terraform_deployment_restriction(terraform_id, deployment_restriction_id)
 Delete a terraform deployment restriction
 
-Delete a terraform deployment restriction
+Delete a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::TerraformDeploymentRestrictionResponse edit_terraform_deployment_restriction(terraform_id, deployment_restriction_id, terraform_deployment_restriction_request)
 Edit a terraform deployment restriction
 
-Edit a terraform deployment restriction
+Edit a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::TerraformDeploymentRestrictionResponseList get_terraform_deployment_restrictions(terraform_id)
 Get terraform deployment restrictions
 
-Get terraform deployment restrictions
+Get terraform deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 

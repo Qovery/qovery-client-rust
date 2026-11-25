@@ -55,7 +55,8 @@ pub enum GetApplicationDeploymentRestrictionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Create an application deployment restriction
+/// Create an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn create_application_deployment_restriction(
     configuration: &configuration::Configuration,
     application_id: &str,
@@ -126,7 +127,8 @@ pub async fn create_application_deployment_restriction(
     }
 }
 
-/// Delete an application deployment restriction
+/// Delete an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn delete_application_deployment_restriction(
     configuration: &configuration::Configuration,
     application_id: &str,
@@ -180,7 +182,8 @@ pub async fn delete_application_deployment_restriction(
     }
 }
 
-/// Edit an application deployment restriction
+/// Edit an application deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn edit_application_deployment_restriction(
     configuration: &configuration::Configuration,
     application_id: &str,
@@ -252,7 +255,8 @@ pub async fn edit_application_deployment_restriction(
     }
 }
 
-/// Get application deployment restrictions
+/// Get application deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn get_application_deployment_restrictions(
     configuration: &configuration::Configuration,
     application_id: &str,

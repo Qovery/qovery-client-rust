@@ -55,7 +55,8 @@ pub enum GetTerraformDeploymentRestrictionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Create a terraform deployment restriction
+/// Create a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn create_terraform_deployment_restriction(
     configuration: &configuration::Configuration,
     terraform_id: &str,
@@ -123,7 +124,8 @@ pub async fn create_terraform_deployment_restriction(
     }
 }
 
-/// Delete a terraform deployment restriction
+/// Delete a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn delete_terraform_deployment_restriction(
     configuration: &configuration::Configuration,
     terraform_id: &str,
@@ -177,7 +179,8 @@ pub async fn delete_terraform_deployment_restriction(
     }
 }
 
-/// Edit a terraform deployment restriction
+/// Edit a terraform deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn edit_terraform_deployment_restriction(
     configuration: &configuration::Configuration,
     terraform_id: &str,
@@ -246,7 +249,8 @@ pub async fn edit_terraform_deployment_restriction(
     }
 }
 
-/// Get terraform deployment restrictions
+/// Get terraform deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn get_terraform_deployment_restrictions(
     configuration: &configuration::Configuration,
     terraform_id: &str,

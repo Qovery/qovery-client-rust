@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > models::HelmDeploymentRestrictionResponse create_helm_deployment_restriction(helm_id, helm_deployment_restriction_request)
 Create a helm deployment restriction
 
-Create a helm deployment restriction
+Create a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > delete_helm_deployment_restriction(helm_id, deployment_restriction_id)
 Delete a helm deployment restriction
 
-Delete a helm deployment restriction
+Delete a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::HelmDeploymentRestrictionResponse edit_helm_deployment_restriction(helm_id, deployment_restriction_id, helm_deployment_restriction_request)
 Edit a helm deployment restriction
 
-Edit a helm deployment restriction
+Edit a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::HelmDeploymentRestrictionResponseList get_helm_deployment_restrictions(helm_id)
 Get helm deployment restrictions
 
-Get helm deployment restrictions
+Get helm deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 

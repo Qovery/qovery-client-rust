@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > models::JobDeploymentRestrictionResponse create_job_deployment_restriction(job_id, job_deployment_restriction_request)
 Create a job deployment restriction
 
-Create a job deployment restriction
+Create a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > delete_job_deployment_restriction(job_id, deployment_restriction_id)
 Delete a job deployment restriction
 
-Delete a job deployment restriction
+Delete a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::JobDeploymentRestrictionResponse edit_job_deployment_restriction(job_id, deployment_restriction_id, job_deployment_restriction_request)
 Edit a job deployment restriction
 
-Edit a job deployment restriction
+Edit a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::JobDeploymentRestrictionResponseList get_job_deployment_restrictions(job_id)
 Get job deployment restrictions
 
-Get job deployment restrictions
+Get job deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working. 
 
 ### Parameters
 

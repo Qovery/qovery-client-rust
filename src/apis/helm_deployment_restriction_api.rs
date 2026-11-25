@@ -55,7 +55,8 @@ pub enum GetHelmDeploymentRestrictionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Create a helm deployment restriction
+/// Create a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn create_helm_deployment_restriction(
     configuration: &configuration::Configuration,
     helm_id: &str,
@@ -121,7 +122,8 @@ pub async fn create_helm_deployment_restriction(
     }
 }
 
-/// Delete a helm deployment restriction
+/// Delete a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn delete_helm_deployment_restriction(
     configuration: &configuration::Configuration,
     helm_id: &str,
@@ -175,7 +177,8 @@ pub async fn delete_helm_deployment_restriction(
     }
 }
 
-/// Edit a helm deployment restriction
+/// Edit a helm deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn edit_helm_deployment_restriction(
     configuration: &configuration::Configuration,
     helm_id: &str,
@@ -241,7 +244,8 @@ pub async fn edit_helm_deployment_restriction(
     }
 }
 
-/// Get helm deployment restrictions
+/// Get helm deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn get_helm_deployment_restrictions(
     configuration: &configuration::Configuration,
     helm_id: &str,

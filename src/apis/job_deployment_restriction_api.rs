@@ -55,7 +55,8 @@ pub enum GetJobDeploymentRestrictionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Create a job deployment restriction
+/// Create a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn create_job_deployment_restriction(
     configuration: &configuration::Configuration,
     job_id: &str,
@@ -120,7 +121,8 @@ pub async fn create_job_deployment_restriction(
     }
 }
 
-/// Delete a job deployment restriction
+/// Delete a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn delete_job_deployment_restriction(
     configuration: &configuration::Configuration,
     job_id: &str,
@@ -174,7 +176,8 @@ pub async fn delete_job_deployment_restriction(
     }
 }
 
-/// Edit a job deployment restriction
+/// Edit a job deployment restriction  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn edit_job_deployment_restriction(
     configuration: &configuration::Configuration,
     job_id: &str,
@@ -239,7 +242,8 @@ pub async fn edit_job_deployment_restriction(
     }
 }
 
-/// Get job deployment restrictions
+/// Get job deployment restrictions  Deprecated: use `/service/{serviceId}/deploymentRestriction`, which works for every service kind. This endpoint keeps working.
+#[deprecated]
 pub async fn get_job_deployment_restrictions(
     configuration: &configuration::Configuration,
     job_id: &str,

@@ -13,10 +13,56 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
+/// struct for typed errors of method [`create_service_deployment_restriction`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreateServiceDeploymentRestrictionError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`delete_service_deployment_restriction`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DeleteServiceDeploymentRestrictionError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`edit_service_deployment_restriction`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum EditServiceDeploymentRestrictionError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    Status409(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_service_git_webhook_status`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetServiceGitWebhookStatusError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`list_service_deployment_restrictions`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ListServiceDeploymentRestrictionsError {
     Status400(),
     Status401(),
     Status403(),
@@ -35,6 +81,197 @@ pub enum SyncServiceGitWebhookError {
     Status424(),
     Status429(),
     UnknownValue(serde_json::Value),
+}
+
+/// Creates a deployment restriction on a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.  Returns 400 when the service cannot have restrictions: a job or container with an image source, a Helm or Terraform service not using a Git repository, or a kind without restrictions: a database or an agentic workflow.
+pub async fn create_service_deployment_restriction(
+    configuration: &configuration::Configuration,
+    service_id: &str,
+    service_deployment_restriction_request: Option<models::ServiceDeploymentRestrictionRequest>,
+) -> Result<
+    models::ServiceDeploymentRestrictionResponse,
+    Error<CreateServiceDeploymentRestrictionError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_service_id = service_id;
+    let p_body_service_deployment_restriction_request = service_deployment_restriction_request;
+
+    let uri_str = format!(
+        "{}/service/{serviceId}/deploymentRestriction",
+        configuration.base_path,
+        serviceId = crate::apis::urlencode(p_path_service_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_service_deployment_restriction_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CreateServiceDeploymentRestrictionError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Deletes a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.  Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.  Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+pub async fn delete_service_deployment_restriction(
+    configuration: &configuration::Configuration,
+    service_id: &str,
+    deployment_restriction_id: &str,
+) -> Result<(), Error<DeleteServiceDeploymentRestrictionError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_service_id = service_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+
+    let uri_str = format!(
+        "{}/service/{serviceId}/deploymentRestriction/{deploymentRestrictionId}",
+        configuration.base_path,
+        serviceId = crate::apis::urlencode(p_path_service_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DeleteServiceDeploymentRestrictionError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Edits a deployment restriction of a service. Works for applications, jobs, Helm, Terraform and containers.  Returns 400 when the service is a container with an image source, or a kind that cannot have deployment restrictions: a database or an agentic workflow.
+pub async fn edit_service_deployment_restriction(
+    configuration: &configuration::Configuration,
+    service_id: &str,
+    deployment_restriction_id: &str,
+    service_deployment_restriction_request: Option<models::ServiceDeploymentRestrictionRequest>,
+) -> Result<
+    models::ServiceDeploymentRestrictionResponse,
+    Error<EditServiceDeploymentRestrictionError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_service_id = service_id;
+    let p_path_deployment_restriction_id = deployment_restriction_id;
+    let p_body_service_deployment_restriction_request = service_deployment_restriction_request;
+
+    let uri_str = format!(
+        "{}/service/{serviceId}/deploymentRestriction/{deploymentRestrictionId}",
+        configuration.base_path,
+        serviceId = crate::apis::urlencode(p_path_service_id),
+        deploymentRestrictionId = crate::apis::urlencode(p_path_deployment_restriction_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_service_deployment_restriction_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<EditServiceDeploymentRestrictionError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
 }
 
 /// Returns the webhook status for a git-based service. Checks if the Qovery webhook is correctly configured on the git provider (GitHub, GitLab, or Bitbucket).
@@ -88,6 +325,69 @@ pub async fn get_service_git_webhook_status(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetServiceGitWebhookStatusError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Lists the deployment restrictions of a service. Works for applications, jobs, Helm, Terraform and containers. Restrictions filter which pushes to the source branch deploy the service, by changed file path.  Works on any container, whatever its source: a container's restrictions survive a switch to an image source, without effect until it switches back to a Git repository source.  Returns 400 when the service is a kind that cannot have deployment restrictions: a database or an agentic workflow.
+pub async fn list_service_deployment_restrictions(
+    configuration: &configuration::Configuration,
+    service_id: &str,
+) -> Result<
+    models::ServiceDeploymentRestrictionResponseList,
+    Error<ListServiceDeploymentRestrictionsError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_service_id = service_id;
+
+    let uri_str = format!(
+        "{}/service/{serviceId}/deploymentRestriction",
+        configuration.base_path,
+        serviceId = crate::apis::urlencode(p_path_service_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponseList`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ServiceDeploymentRestrictionResponseList`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ListServiceDeploymentRestrictionsError> =
+            serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

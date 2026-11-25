@@ -580,7 +580,11 @@ Class | Method | HTTP request | Description
 *ReferralRewardsApi* | [**post_account_reward_claim**](docs/ReferralRewardsApi.md#post_account_reward_claim) | **POST** /account/rewardClaim | Claim a reward
 *SecretManagerAccessApi* | [**list_secret_manager_access_external_secrets**](docs/SecretManagerAccessApi.md#list_secret_manager_access_external_secrets) | **GET** /secretManagerAccess/{secretManagerAccessId}/associatedServices | List external secrets used by a secret manager access
 *SecretManagerAccessApi* | [**list_upstream_secrets_from_secret_provider**](docs/SecretManagerAccessApi.md#list_upstream_secrets_from_secret_provider) | **GET** /secretManagerAccess/{secretManagerAccessId}/secrets | List upstream secrets from secret provider
+*ServiceMainCallsApi* | [**create_service_deployment_restriction**](docs/ServiceMainCallsApi.md#create_service_deployment_restriction) | **POST** /service/{serviceId}/deploymentRestriction | Create a service deployment restriction
+*ServiceMainCallsApi* | [**delete_service_deployment_restriction**](docs/ServiceMainCallsApi.md#delete_service_deployment_restriction) | **DELETE** /service/{serviceId}/deploymentRestriction/{deploymentRestrictionId} | Delete a service deployment restriction
+*ServiceMainCallsApi* | [**edit_service_deployment_restriction**](docs/ServiceMainCallsApi.md#edit_service_deployment_restriction) | **PUT** /service/{serviceId}/deploymentRestriction/{deploymentRestrictionId} | Edit a service deployment restriction
 *ServiceMainCallsApi* | [**get_service_git_webhook_status**](docs/ServiceMainCallsApi.md#get_service_git_webhook_status) | **GET** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
+*ServiceMainCallsApi* | [**list_service_deployment_restrictions**](docs/ServiceMainCallsApi.md#list_service_deployment_restrictions) | **GET** /service/{serviceId}/deploymentRestriction | List service deployment restrictions
 *ServiceMainCallsApi* | [**sync_service_git_webhook**](docs/ServiceMainCallsApi.md#sync_service_git_webhook) | **POST** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusApi* | [**get_ingress_deployment_status**](docs/ServiceStatusApi.md#get_ingress_deployment_status) | **GET** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *SkillPresetsApi* | [**create_skill_preset**](docs/SkillPresetsApi.md#create_skill_preset) | **POST** /organization/{organizationId}/skillPreset | Create a skill preset
@@ -1499,6 +1503,9 @@ Class | Method | HTTP request | Description
  - [ServiceActionEnum](docs/ServiceActionEnum.md)
  - [ServiceActionStatusEnum](docs/ServiceActionStatusEnum.md)
  - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
+ - [ServiceDeploymentRestrictionRequest](docs/ServiceDeploymentRestrictionRequest.md)
+ - [ServiceDeploymentRestrictionResponse](docs/ServiceDeploymentRestrictionResponse.md)
+ - [ServiceDeploymentRestrictionResponseList](docs/ServiceDeploymentRestrictionResponseList.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
  - [ServiceDomainCustomResponse](docs/ServiceDomainCustomResponse.md)
  - [ServiceDomainKindEnum](docs/ServiceDomainKindEnum.md)

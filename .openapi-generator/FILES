@@ -974,6 +974,9 @@ docs/Service.md
 docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
 docs/ServiceAnnotationRequest.md
+docs/ServiceDeploymentRestrictionRequest.md
+docs/ServiceDeploymentRestrictionResponse.md
+docs/ServiceDeploymentRestrictionResponseList.md
 docs/ServiceDeploymentStatusEnum.md
 docs/ServiceDomainCustomResponse.md
 docs/ServiceDomainKindEnum.md
@@ -2116,6 +2119,9 @@ src/models/service.rs
 src/models/service_action_enum.rs
 src/models/service_action_status_enum.rs
 src/models/service_annotation_request.rs
+src/models/service_deployment_restriction_request.rs
+src/models/service_deployment_restriction_response.rs
+src/models/service_deployment_restriction_response_list.rs
 src/models/service_deployment_status_enum.rs
 src/models/service_domain_custom_response.rs
 src/models/service_domain_kind_enum.rs
