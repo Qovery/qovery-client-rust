@@ -24,6 +24,17 @@ pub enum BulkDeleteOrganizationCustomDomainError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`check_organization_custom_domains`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CheckOrganizationCustomDomainsError {
+    Status400(),
+    Status401(),
+    Status403(),
+    Status404(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`list_organization_custom_domain`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -91,6 +102,94 @@ pub async fn bulk_delete_organization_custom_domain(
     } else {
         let content = resp.text().await?;
         let entity: Option<BulkDeleteOrganizationCustomDomainError> =
+            serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Check the DNS of the custom domains of a page of the organization domains list, in one call. Only organization admins can call it. The query parameters are the ones of `listOrganizationCustomDomain`: the same values select the same domains, in the same order. There is one result per domain name of one environment, and one check per service the domain routes to. A check that could not run (cluster unreachable, timeout, service never deployed) has a `null` `status`; the other checks are still returned.
+pub async fn check_organization_custom_domains(
+    configuration: &configuration::Configuration,
+    organization_id: &str,
+    project_id: Option<&str>,
+    environment_id: Option<&str>,
+    search: Option<&str>,
+    page: Option<i32>,
+    page_size: Option<i32>,
+) -> Result<
+    models::OrganizationCustomDomainCheckListResponse,
+    Error<CheckOrganizationCustomDomainsError>,
+> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_organization_id = organization_id;
+    let p_query_project_id = project_id;
+    let p_query_environment_id = environment_id;
+    let p_query_search = search;
+    let p_query_page = page;
+    let p_query_page_size = page_size;
+
+    let uri_str = format!(
+        "{}/organization/{organizationId}/customDomain/check",
+        configuration.base_path,
+        organizationId = crate::apis::urlencode(p_path_organization_id)
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_project_id {
+        req_builder = req_builder.query(&[("projectId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_environment_id {
+        req_builder = req_builder.query(&[("environmentId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_search {
+        req_builder = req_builder.query(&[("search", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_page_size {
+        req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.header("Authorization", value);
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::OrganizationCustomDomainCheckListResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::OrganizationCustomDomainCheckListResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<CheckOrganizationCustomDomainsError> =
             serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,

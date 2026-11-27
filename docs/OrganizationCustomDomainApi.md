@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bulk_delete_organization_custom_domain**](OrganizationCustomDomainApi.md#bulk_delete_organization_custom_domain) | **POST** /organization/{organizationId}/customDomain/bulkDelete | Delete custom domains of several environments
+[**check_organization_custom_domains**](OrganizationCustomDomainApi.md#check_organization_custom_domains) | **GET** /organization/{organizationId}/customDomain/check | Check the DNS of the organization's custom domains
 [**list_organization_custom_domain**](OrganizationCustomDomainApi.md#list_organization_custom_domain) | **GET** /organization/{organizationId}/customDomain | List organization custom domains
 
 
@@ -35,6 +36,41 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## check_organization_custom_domains
+
+> models::OrganizationCustomDomainCheckListResponse check_organization_custom_domains(organization_id, project_id, environment_id, search, page, page_size)
+Check the DNS of the organization's custom domains
+
+Check the DNS of the custom domains of a page of the organization domains list, in one call. Only organization admins can call it. The query parameters are the ones of `listOrganizationCustomDomain`: the same values select the same domains, in the same order. There is one result per domain name of one environment, and one check per service the domain routes to. A check that could not run (cluster unreachable, timeout, service never deployed) has a `null` `status`; the other checks are still returned. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**organization_id** | **uuid::Uuid** | Organization ID | [required] |
+**project_id** | Option<**uuid::Uuid**> | Only check the domains of this project. A project of another organization gives an empty list. |  |
+**environment_id** | Option<**uuid::Uuid**> | Only check the domains of this environment. An environment of another organization gives an empty list. |  |
+**search** | Option<**String**> | Only check the domains whose name contains this text, ignoring case. The text is trimmed and matched literally, with no wildcard. A blank value does not filter. |  |
+**page** | Option<**i32**> | The page to check, starting at 1. A page after the last one has no results. |  |[default to 1]
+**page_size** | Option<**i32**> | The number of domains per page. |  |[default to 20]
+
+### Return type
+
+[**models::OrganizationCustomDomainCheckListResponse**](OrganizationCustomDomainCheckListResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

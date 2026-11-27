@@ -494,6 +494,7 @@ Class | Method | HTTP request | Description
 *OrganizationApiTokenApi* | [**list_organization_api_tokens**](docs/OrganizationApiTokenApi.md#list_organization_api_tokens) | **GET** /organization/{organizationId}/apiToken | List organization api tokens
 *OrganizationClusterLockApi* | [**list_cluster_lock**](docs/OrganizationClusterLockApi.md#list_cluster_lock) | **GET** /organization/{organizationId}/lock | List locked Cluster by organization
 *OrganizationCustomDomainApi* | [**bulk_delete_organization_custom_domain**](docs/OrganizationCustomDomainApi.md#bulk_delete_organization_custom_domain) | **POST** /organization/{organizationId}/customDomain/bulkDelete | Delete custom domains of several environments
+*OrganizationCustomDomainApi* | [**check_organization_custom_domains**](docs/OrganizationCustomDomainApi.md#check_organization_custom_domains) | **GET** /organization/{organizationId}/customDomain/check | Check the DNS of the organization's custom domains
 *OrganizationCustomDomainApi* | [**list_organization_custom_domain**](docs/OrganizationCustomDomainApi.md#list_organization_custom_domain) | **GET** /organization/{organizationId}/customDomain | List organization custom domains
 *OrganizationCustomRoleApi* | [**create_organization_custom_role**](docs/OrganizationCustomRoleApi.md#create_organization_custom_role) | **POST** /organization/{organizationId}/customRole | Create an organization custom role
 *OrganizationCustomRoleApi* | [**delete_organization_custom_role**](docs/OrganizationCustomRoleApi.md#delete_organization_custom_role) | **DELETE** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
@@ -1357,9 +1358,12 @@ Class | Method | HTTP request | Description
  - [OrganizationCrendentialsResponseList](docs/OrganizationCrendentialsResponseList.md)
  - [OrganizationCrendentialsResponseListResultsInner](docs/OrganizationCrendentialsResponseListResultsInner.md)
  - [OrganizationCurrentCost](docs/OrganizationCurrentCost.md)
+ - [OrganizationCustomDomainCheckListResponse](docs/OrganizationCustomDomainCheckListResponse.md)
+ - [OrganizationCustomDomainCheckResponse](docs/OrganizationCustomDomainCheckResponse.md)
  - [OrganizationCustomDomainPaginatedResponseList](docs/OrganizationCustomDomainPaginatedResponseList.md)
  - [OrganizationCustomDomainResponse](docs/OrganizationCustomDomainResponse.md)
  - [OrganizationCustomDomainResponseList](docs/OrganizationCustomDomainResponseList.md)
+ - [OrganizationCustomDomainServiceCheck](docs/OrganizationCustomDomainServiceCheck.md)
  - [OrganizationCustomRole](docs/OrganizationCustomRole.md)
  - [OrganizationCustomRoleClusterPermission](docs/OrganizationCustomRoleClusterPermission.md)
  - [OrganizationCustomRoleClusterPermissionsInner](docs/OrganizationCustomRoleClusterPermissionsInner.md)

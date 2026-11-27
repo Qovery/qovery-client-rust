@@ -813,9 +813,12 @@ docs/OrganizationCrendentialsResponseList.md
 docs/OrganizationCrendentialsResponseListResultsInner.md
 docs/OrganizationCurrentCost.md
 docs/OrganizationCustomDomainApi.md
+docs/OrganizationCustomDomainCheckListResponse.md
+docs/OrganizationCustomDomainCheckResponse.md
 docs/OrganizationCustomDomainPaginatedResponseList.md
 docs/OrganizationCustomDomainResponse.md
 docs/OrganizationCustomDomainResponseList.md
+docs/OrganizationCustomDomainServiceCheck.md
 docs/OrganizationCustomRole.md
 docs/OrganizationCustomRoleApi.md
 docs/OrganizationCustomRoleClusterPermission.md
@@ -1973,9 +1976,12 @@ src/models/organization_credit_code_request.rs
 src/models/organization_crendentials_response_list.rs
 src/models/organization_crendentials_response_list_results_inner.rs
 src/models/organization_current_cost.rs
+src/models/organization_custom_domain_check_list_response.rs
+src/models/organization_custom_domain_check_response.rs
 src/models/organization_custom_domain_paginated_response_list.rs
 src/models/organization_custom_domain_response.rs
 src/models/organization_custom_domain_response_list.rs
+src/models/organization_custom_domain_service_check.rs
 src/models/organization_custom_role.rs
 src/models/organization_custom_role_cluster_permission.rs
 src/models/organization_custom_role_cluster_permissions_inner.rs
