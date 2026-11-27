@@ -129,6 +129,7 @@ pub async fn clone_job(
     }
 }
 
+/// Returns 404 when `source.image.registry_id` is a registry of another organization. The response does not name the registry.  Returns 400 when: - `source` has both `image` and `docker`; - `source.image.image_name` with `source.image.tag` is not found in the registry.
 pub async fn create_job(
     configuration: &configuration::Configuration,
     environment_id: &str,

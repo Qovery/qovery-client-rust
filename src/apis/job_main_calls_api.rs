@@ -120,7 +120,7 @@ pub async fn delete_job(
     }
 }
 
-/// - To edit the job you must have the admin permission.
+/// - To edit the job you must have the admin permission. - `source` can switch the job between `image` and `docker` in place. The job keeps its id, schedule, lifecycle events and variables. A switch from `docker` to `image` removes the job's Git repository link and resets its build settings. See `source` in the request body for the details.  Returns 404 when `source.image.registry_id` is a registry of another organization. The response does not name the registry.  Returns 400 when: - `source` has both `image` and `docker`; - `source.image.image_name` with `source.image.tag` is not found in the registry.
 pub async fn edit_job(
     configuration: &configuration::Configuration,
     job_id: &str,
